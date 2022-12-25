@@ -33,27 +33,30 @@ export default function Home({banners}: HomeProperties) {
                 {/*<meta name="viewport" content="width=device-width, initial-scale=1" />*/}
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
-            <Container text style={{marginTop: '7em'}}>
+            <Container text style={{marginTop: '7em', overflowX:'scroll'}}>
                 <Table definition className={'history'}>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell className={'no-border'}/>
                             <Table.HeaderCell>Runs</Table.HeaderCell>
-                            <Table.HeaderCell colSpan={2}>3.3</Table.HeaderCell>
-                            <Table.HeaderCell colSpan={2}>3.2</Table.HeaderCell>
+                            {getVersionParts(banners.characters["5"]).map(function (vp, idx) {
+                                return (
+                                    <Table.HeaderCell colSpan={vp.parts} key={idx}>{vp.version}</Table.HeaderCell>
+                                )
+                            })}
                         </Table.Row>
                     </Table.Header>
 
-                    <Table.Body>
-                        <Table.Row>
-                            <Table.Cell>Kamisato Ayato</Table.Cell>
-                            <Table.Cell>5</Table.Cell>
-                            <Table.Cell>Image</Table.Cell>
-                            <Table.Cell>15</Table.Cell>
-                            <Table.Cell>14</Table.Cell>
-                            <Table.Cell>13</Table.Cell>
-                        </Table.Row>
-                    </Table.Body>
+                    {/*<Table.Body>*/}
+                    {/*    <Table.Row>*/}
+                    {/*        <Table.Cell>Kamisato Ayato</Table.Cell>*/}
+                    {/*        <Table.Cell>5</Table.Cell>*/}
+                    {/*        <Table.Cell>Image</Table.Cell>*/}
+                    {/*        <Table.Cell>15</Table.Cell>*/}
+                    {/*        <Table.Cell>14</Table.Cell>*/}
+                    {/*        <Table.Cell>13</Table.Cell>*/}
+                    {/*    </Table.Row>*/}
+                    {/*</Table.Body>*/}
                 </Table>
             </Container>
         </>
