@@ -1,10 +1,10 @@
 import Head from 'next/head'
-// import styles from '../styles/Home.module.css'
 import {Banners} from '@/banners/types'
 
 import {
     Container,
     Header,
+    Table,
 } from 'semantic-ui-react'
 import getVersionParts from "@/banners/versions";
 
@@ -34,9 +34,27 @@ export default function Home({banners}: HomeProperties) {
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
             <Container text style={{marginTop: '7em'}}>
-                {Object.keys(banners.characters["5"]).map((item: string, index)=>{
-                    return <li key={index}>{item}: {banners.characters["5"][item]}</li>
-                })}
+                <Table definition className={'history'}>
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.HeaderCell className={'no-border'}/>
+                            <Table.HeaderCell>Runs</Table.HeaderCell>
+                            <Table.HeaderCell colSpan={2}>3.3</Table.HeaderCell>
+                            <Table.HeaderCell colSpan={2}>3.2</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+
+                    <Table.Body>
+                        <Table.Row>
+                            <Table.Cell>Kamisato Ayato</Table.Cell>
+                            <Table.Cell>5</Table.Cell>
+                            <Table.Cell>Image</Table.Cell>
+                            <Table.Cell>15</Table.Cell>
+                            <Table.Cell>14</Table.Cell>
+                            <Table.Cell>13</Table.Cell>
+                        </Table.Row>
+                    </Table.Body>
+                </Table>
             </Container>
         </>
     )

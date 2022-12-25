@@ -14,3 +14,28 @@ body {
   margin: 5em 0em 0em;
   padding: 5em 0em;
 }
+
+.history {
+  border-collapse:collapse!important;
+  border:0 !important;
+}
+
+.history td.no-border {
+  border:0!important
+}
+
+.history td {
+  border:1px solid #ddd
+}
+
+.history td:not(:first-of-type) {
+  text-align: center !important;
+}
+
+.history th:not(:first-of-type) {
+  border: 1px solid #ddd
+}
+
+.history th {
+  text-align: center !important;
+}
