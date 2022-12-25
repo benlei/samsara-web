@@ -26,10 +26,7 @@ export default function getVersionParts(banners: BannerResource): VersionParts[]
     }
 
     return _.chain(versionCounts)
-        .transform(function (res: VersionParts[], parts: number, version: string) {
-            res.push({version, parts})
-            return true;
-        }, [])
+        .transform((res: VersionParts[], parts: number, version: string) => res.push({version, parts}), [])
         .orderBy((vp: VersionParts) => vp.version, 'desc')
         .value()
 }
