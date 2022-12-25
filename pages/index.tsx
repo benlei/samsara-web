@@ -6,13 +6,14 @@ import {
     Container,
     Header,
 } from 'semantic-ui-react'
+import getVersionParts from "@/banners/versions";
 
 
 export const getServerSideProps = async () => {
 
     return {
         props: {
-            banners: require('../public/data/banners.json')
+            banners: require('@/data/banners.json')
         },
     };
 };
@@ -23,10 +24,7 @@ type HomeProperties = {
 
 
 export default function Home({banners}: HomeProperties) {
-    console.log(banners)
-    for (let characterKey in banners.characters["5"]) {
-
-    }
+    // console.log(getVersionParts(banners.characters["5"]))
     return (
         <>
             <Head>

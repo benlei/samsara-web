@@ -12,3 +12,8 @@ export type Banner = {
 export type BannerResource = {
     [name: string]: string[]
 }
+
+export type VersionParts = {
+    version: string;
+    parts: number;
+}
