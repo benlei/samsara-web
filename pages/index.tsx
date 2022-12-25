@@ -1,9 +1,16 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+// import styles from '../styles/Home.module.css'
 
-const inter = Inter({ subsets: ['latin'] })
+import {
+  Container,
+  Divider,
+  Dropdown,
+  Grid,
+  Header,
+  List,
+  Menu,
+  Segment,
+} from 'semantic-ui-react'
 
 export default function Home() {
   return (
@@ -15,82 +22,97 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="ui fixed inverted menu">
-          <div className="ui container">
-            <a href="#" className="header item">
+        <div>
+          <Menu fixed='top' inverted>
+            <Container>
+              <Menu.Item as='a' header>
                 Project Name
-            </a>
-            <a href="#" className="item">Home</a>
-            <div className="ui simple dropdown item">
-              Dropdown <i className="dropdown icon"></i>
-              <div className="menu">
-                <a className="item" href="#">Link Item</a>
-                <a className="item" href="#">Link Item</a>
-                <div className="divider"></div>
-                <div className="header">Header Item</div>
-                <div className="item">
-                  <i className="dropdown icon"></i>
-                  Sub Menu
-                  <div className="menu">
-                    <a className="item" href="#">Link Item</a>
-                    <a className="item" href="#">Link Item</a>
-                  </div>
-                </div>
-                <a className="item" href="#">Link Item</a>
-              </div>
-            </div>
-          </div>
-        </div>
+              </Menu.Item>
+              <Menu.Item as='a'>Home</Menu.Item>
 
-        <div className="ui main text container">
-          <h1 className="ui header">Semantic UI Fixed Template</h1>
-          <p>This is a basic fixed menu template using fixed size containers.</p>
-          <p>A text container is used for the main container, which is useful for single column layouts</p>
-        </div>
+              <Dropdown item simple text='Dropdown'>
+                <Dropdown.Menu>
+                  <Dropdown.Item>List Item</Dropdown.Item>
+                  <Dropdown.Item>List Item</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Header>Header Item</Dropdown.Header>
+                  <Dropdown.Item>
+                    <i className='dropdown icon' />
+                    <span className='text'>Submenu</span>
+                    <Dropdown.Menu>
+                      <Dropdown.Item>List Item</Dropdown.Item>
+                      <Dropdown.Item>List Item</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown.Item>
+                  <Dropdown.Item>List Item</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Container>
+          </Menu>
 
-        <div className="ui inverted vertical footer segment">
-          <div className="ui center aligned container">
-            <div className="ui stackable inverted divided grid">
-              <div className="three wide column">
-                <h4 className="ui inverted header">Group 1</h4>
-                <div className="ui inverted link list">
-                  <a href="#" className="item">Link One</a>
-                  <a href="#" className="item">Link Two</a>
-                  <a href="#" className="item">Link Three</a>
-                  <a href="#" className="item">Link Four</a>
-                </div>
-              </div>
-              <div className="three wide column">
-                <h4 className="ui inverted header">Group 2</h4>
-                <div className="ui inverted link list">
-                  <a href="#" className="item">Link One</a>
-                  <a href="#" className="item">Link Two</a>
-                  <a href="#" className="item">Link Three</a>
-                  <a href="#" className="item">Link Four</a>
-                </div>
-              </div>
-              <div className="three wide column">
-                <h4 className="ui inverted header">Group 3</h4>
-                <div className="ui inverted link list">
-                  <a href="#" className="item">Link One</a>
-                  <a href="#" className="item">Link Two</a>
-                  <a href="#" className="item">Link Three</a>
-                  <a href="#" className="item">Link Four</a>
-                </div>
-              </div>
-              <div className="seven wide column">
-                <h4 className="ui inverted header">Footer Header</h4>
-                <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-              </div>
-            </div>
-            <div className="ui inverted section divider"></div>
-              <div className="ui horizontal inverted small divided link list">
-                <a className="item" href="#">Site Map</a>
-                <a className="item" href="#">Contact Us</a>
-                <a className="item" href="#">Terms and Conditions</a>
-                <a className="item" href="#">Privacy Policy</a>
-              </div>
-          </div>
+          <Container text style={{ marginTop: '7em' }}>
+            <Header as='h1'>Semantic UI React Fixed Template</Header>
+            <p>This is a basic fixed menu template using fixed size containers.</p>
+            <p>
+              A text container is used for the main container, which is useful for single column layouts.
+            </p>
+          </Container>
+
+          <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
+            <Container textAlign='center'>
+              <Grid divided inverted stackable>
+                <Grid.Column width={3}>
+                  <Header inverted as='h4' content='Group 1' />
+                  <List link inverted>
+                    <List.Item as='a'>Link One</List.Item>
+                    <List.Item as='a'>Link Two</List.Item>
+                    <List.Item as='a'>Link Three</List.Item>
+                    <List.Item as='a'>Link Four</List.Item>
+                  </List>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Header inverted as='h4' content='Group 2' />
+                  <List link inverted>
+                    <List.Item as='a'>Link One</List.Item>
+                    <List.Item as='a'>Link Two</List.Item>
+                    <List.Item as='a'>Link Three</List.Item>
+                    <List.Item as='a'>Link Four</List.Item>
+                  </List>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Header inverted as='h4' content='Group 3' />
+                  <List link inverted>
+                    <List.Item as='a'>Link One</List.Item>
+                    <List.Item as='a'>Link Two</List.Item>
+                    <List.Item as='a'>Link Three</List.Item>
+                    <List.Item as='a'>Link Four</List.Item>
+                  </List>
+                </Grid.Column>
+                <Grid.Column width={7}>
+                  <Header inverted as='h4' content='Footer Header' />
+                  <p>
+                    Extra space for a call to action inside the footer that could help re-engage users.
+                  </p>
+                </Grid.Column>
+              </Grid>
+
+              <Divider inverted section />
+              <List horizontal inverted divided link size='small'>
+                <List.Item as='a' href='#'>
+                  Site Map
+                </List.Item>
+                <List.Item as='a' href='#'>
+                  Contact Us
+                </List.Item>
+                <List.Item as='a' href='#'>
+                  Terms and Conditions
+                </List.Item>
+                <List.Item as='a' href='#'>
+                  Privacy Policy
+                </List.Item>
+              </List>
+            </Container>
+          </Segment>
         </div>
       </main>
     </>
