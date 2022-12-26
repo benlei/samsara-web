@@ -2,7 +2,7 @@ import Head from 'next/head'
 import {Banners, Rundown} from '@/banners/types'
 
 import {
-    Container, Icon,
+    Container, Form, Icon,
     Image, Label,
     Table,
 } from 'semantic-ui-react'
@@ -77,11 +77,36 @@ export default function Home({banners}: HomeProperties) {
                 {/*<meta name="viewport" content="width=device-width, initial-scale=1" />*/}
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
-            <Container style={{marginTop: '7em', overflowX: 'scroll'}}>
+            <Container style={{marginTop: '5em', overflowX: 'scroll'}}>
+                <Form style={{marginBottom: '3em'}}>
+                    <Form.Group inline>
+                        <label>Sort By</label>
+                        <Form.Radio
+                            label='First Patch'
+                            value='first'
+                        />
+                        <Form.Radio
+                            label='Last Patch'
+                            value='latest'
+                        />
+                        <Form.Radio
+                            label='Total Runs'
+                            value='runs'
+                        />
+                        <Label>
+                            <Icon name={'sort amount down'} size={'small'} /> Descending
+                        </Label>
+                    </Form.Group>
+
+                    <Form.Checkbox label='Hide Standard Characters' />
+                </Form>
+
                 <Table definition className={'history'}>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell className={'no-border'}/>
+                            <Table.HeaderCell className={'no-border'} style={{pointerEvents:'auto', padding:'0 .5em'}}>
+                                <Form.Input fluid placeholder='Filter...' />
+                            </Table.HeaderCell>
                             <Table.HeaderCell>
                                 <Icon name='redo' />
                             </Table.HeaderCell>
