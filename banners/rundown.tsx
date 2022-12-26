@@ -31,17 +31,19 @@ function fillWaitCounter(versions: string[], versionIndex: number, versionParts:
         const currBaseVersion: string = getBaseVersion(versions[bannerVersionIndex] || "99.99.99");
         const currVersionPart: number = getVersionPart(versions[bannerVersionIndex] || "99.99.99");
 
-        for (let i = start; i <= versionParts[versionIndex].parts; i++) {
-            if (currBaseVersion == versionParts[versionIndex].version && i == currVersionPart) {
-                resourceCounter.counter.push(0)
-                waitParts = 1
-                bannerVersionIndex++;
-            } else {
-                resourceCounter.counter.push(waitParts++)
-            }
+        if (currBaseVersion == versionParts[versionIndex].version && start == currVersionPart) {
+            resourceCounter.counter.push(0)
+            waitParts = 1
+            bannerVersionIndex++;
+        } else {
+            resourceCounter.counter.push(waitParts++)
         }
-        versionIndex--;
-        start = 1
+
+        start++;
+        if (start > versionParts[versionIndex].parts) {
+            start = 1;
+            versionIndex--;
+        }
     }
 }
 
@@ -69,7 +71,6 @@ export function getRundowns(banners: BannerResource): Rundown[] {
         resourceCounter.counter = resourceCounter.counter.reverse()
         result.push(resourceCounter)
     }
-
 
     return _.chain(result)
         .orderBy((r) => `${r.banners[r.banners.length - 1]}-${r.image}`, 'desc')

@@ -64,4 +64,19 @@ describe('getRundown()', () => {
             1, 0, -1, -1, -1, -1, -1, -1, -1
         ])
     });
+
+
+    it('Ensure yanfei looks about right', async () => {
+        const banners = require('@/data/banners.json')
+        const rundown = _.chain(getRundowns(banners.characters["4"]))
+            .filter((r) => r.name == 'Yanfei')
+            .first()
+            .value()
+
+        expect(rundown.name).toEqual("Yanfei")
+        expect(_.chain(rundown.counter)
+            .filter((v) => v == 0)
+            .value()
+            .length).toBeGreaterThan(5)
+    });
 })
