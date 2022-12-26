@@ -45,13 +45,10 @@ export function getRundown(banners: BannerResource): ResourceCounter[] {
         let waitParts = 0;
         let start = getVersionPart(banners[name][0]);
         let bannerVersionIndex = 0;
+
         while (versionIndex > -1) {
-            let currBaseVersion: string = "0";
-            let currVersionPart: number = 999;
-            if (bannerVersionIndex != banners[name].length) {
-                currBaseVersion = getBaseVersion(banners[name][bannerVersionIndex])
-                currVersionPart = getVersionPart(banners[name][bannerVersionIndex])
-            }
+            const currBaseVersion: string = getBaseVersion(banners[name][bannerVersionIndex] || "99.99.99");
+            const currVersionPart: number = getVersionPart(banners[name][bannerVersionIndex] || "99.99.99");
 
             for (let i = start; i <= versionParts[versionIndex].parts; i++) {
                 if (currBaseVersion == versionParts[versionIndex].version && i == currVersionPart) {
