@@ -10,20 +10,15 @@ function getImageFromName(name: string) {
 
 function fillPrereleaseCounter(versionParts: VersionParts[], resourceCounter: ResourceCounter, firstVersion: string): number {
     let versionIndex = versionParts.length - 1
+    let countParts = 0
+
     while (versionIndex > -1 && versionParts[versionIndex].version != getBaseVersion(firstVersion)) {
-        resourceCounter.counter = [
-            ...resourceCounter.counter,
-            ...Array(versionParts[versionIndex].parts).fill(-1)
-        ]
+        countParts += versionParts[versionIndex].parts
         versionIndex--;
     }
 
-    const versionPart = getVersionPart(firstVersion)
+    resourceCounter.counter = Array(countParts + getVersionPart(firstVersion) - 1).fill(-1)
 
-    resourceCounter.counter = [
-        ...resourceCounter.counter,
-        ...Array(versionPart - 1).fill(-1),
-    ]
     return versionIndex;
 }
 
