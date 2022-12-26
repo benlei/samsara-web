@@ -55,7 +55,7 @@ export function BannerRundown({bannerType, versionParts, rundown}: BannerBreakdo
 
     return (
         <>
-            <Table definition className={'history'}>
+            <Table definition unstackable className={'history'}>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell className={'no-border'} style={{pointerEvents: 'auto', padding: '0 .5em'}}>

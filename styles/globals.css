@@ -18,6 +18,7 @@ body {
 .history {
   border-collapse:collapse!important;
   border:0 !important;
+  margin-bottom: 2em !important;
 }
 
 .history td.no-border {
