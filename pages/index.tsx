@@ -2,8 +2,8 @@ import Head from 'next/head'
 import {Banners, Rundown} from '@/banners/types'
 
 import {
-    Container,
-    Image,
+    Container, Icon,
+    Image, Label,
     Table,
 } from 'semantic-ui-react'
 import {getRundown} from "@/banners/rundown";
@@ -71,7 +71,9 @@ export default function Home({banners}: HomeProperties) {
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell className={'no-border'}/>
-                            <Table.HeaderCell>Runs</Table.HeaderCell>
+                            <Table.HeaderCell>
+                                <Icon name='redo' />
+                            </Table.HeaderCell>
                             {versionParts.map(function (vp, idx) {
                                 return (
                                     <Table.HeaderCell colSpan={vp.parts} key={idx}>{vp.version}</Table.HeaderCell>
@@ -88,7 +90,9 @@ export default function Home({banners}: HomeProperties) {
                                         <Table.Cell>
                                             <span>{r.name}</span> <Image avatar src={`/images/characters/${r.image}.png`} alt={r.image}/>
                                         </Table.Cell>
-                                        <Table.Cell>{r.runs}</Table.Cell>
+                                        <Table.Cell>
+                                            <Label>{r.runs}</Label>
+                                        </Table.Cell>
                                         {
                                             r.counter.map((c, cI) => <Table.Cell key={rI + "-" + cI}>{getImageOrCounter('characters', r, c)}</Table.Cell>)
                                         }
@@ -101,7 +105,9 @@ export default function Home({banners}: HomeProperties) {
                     <Table.Footer>
                         <Table.Row>
                             <Table.HeaderCell className={'no-border'}/>
-                            <Table.HeaderCell>Runs</Table.HeaderCell>
+                            <Table.HeaderCell>
+                                <Icon name='redo' />
+                            </Table.HeaderCell>
                             {versionParts.map(function (vp, idx) {
                                 return (
                                     <Table.HeaderCell colSpan={vp.parts} key={idx}>{vp.version}</Table.HeaderCell>
