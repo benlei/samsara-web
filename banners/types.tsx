@@ -18,7 +18,7 @@ export type VersionParts = {
     parts: number;
 }
 
-export type ResourceCounter = {
+export type Rundown = {
     name: string;
     image: string;
     runs: number;

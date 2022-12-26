@@ -25,7 +25,7 @@ body {
 }
 
 .history td {
-  border:1px solid #ddd
+  border:1px solid #ddd;
 }
 
 .history td:not(:first-of-type) {
@@ -38,4 +38,17 @@ body {
 
 .history th {
   text-align: center !important;
+}
+
+.history * {
+  margin: 0 !important;
+}
+
+.history td:first-of-type {
+  white-space: nowrap;
+  text-align: right !important;
+}
+
+.history th {
+  font-weight: bold !important;
 }

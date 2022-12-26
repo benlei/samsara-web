@@ -1,14 +1,14 @@
-import {BannerResource, ResourceCounter, VersionParts} from "@/banners/types";
+import {BannerResource, Rundown, VersionParts} from "@/banners/types";
 import _ from "lodash";
 import getVersionParts, {getBaseVersion, getVersionPart} from "@/banners/version";
 
 function getImageFromName(name: string) {
-    return name.replaceAll(/[^a-zA-Z0-9\-]/ig, '')
+    return name.replaceAll(/[^a-zA-Z0-9 \-]/ig, '')
         .replaceAll(/ /g, '-')
         .replaceAll(/--+/g, '-');
 }
 
-function fillPrereleaseCounter(versionParts: VersionParts[], resourceCounter: ResourceCounter, firstVersion: string): number {
+function fillPrereleaseCounter(versionParts: VersionParts[], resourceCounter: Rundown, firstVersion: string): number {
     let versionIndex = versionParts.length - 1
     let countParts = 0
 
@@ -22,7 +22,7 @@ function fillPrereleaseCounter(versionParts: VersionParts[], resourceCounter: Re
     return versionIndex;
 }
 
-function fillWaitCounter(versions: string[], versionIndex: number, versionParts: VersionParts[], resourceCounter: ResourceCounter) {
+function fillWaitCounter(versions: string[], versionIndex: number, versionParts: VersionParts[], resourceCounter: Rundown) {
     let waitParts = 0;
     let start = getVersionPart(versions[0]);
     let bannerVersionIndex = 0;
@@ -45,12 +45,12 @@ function fillWaitCounter(versions: string[], versionIndex: number, versionParts:
     }
 }
 
-export function getRundown(banners: BannerResource): ResourceCounter[] {
+export function getRundown(banners: BannerResource): Rundown[] {
     const versionParts = getVersionParts(banners)
-    const result: ResourceCounter[] = []
+    const result: Rundown[] = []
 
     for (const name of Object.keys(banners)) {
-        let resourceCounter: ResourceCounter = {
+        let resourceCounter: Rundown = {
             name,
             image: getImageFromName(name),
             runs: banners[name].length,
