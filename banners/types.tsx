@@ -22,5 +22,6 @@ export type Rundown = {
     name: string;
     image: string;
     runs: number;
+    banners: string[];
     counter: number[];
 }

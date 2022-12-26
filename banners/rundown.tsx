@@ -45,7 +45,7 @@ function fillWaitCounter(versions: string[], versionIndex: number, versionParts:
     }
 }
 
-export function getRundown(banners: BannerResource): Rundown[] {
+export function getRundowns(banners: BannerResource): Rundown[] {
     const versionParts = getVersionParts(banners)
     const result: Rundown[] = []
 
@@ -54,6 +54,7 @@ export function getRundown(banners: BannerResource): Rundown[] {
             name,
             image: getImageFromName(name),
             runs: banners[name].length,
+            banners: banners[name],
             counter: [],
         }
 
@@ -71,6 +72,6 @@ export function getRundown(banners: BannerResource): Rundown[] {
 
 
     return _.chain(result)
-        .orderBy((rc) => `${banners[rc.name][0]}-${rc.image}`, 'desc')
+        .orderBy((r) => `${r.banners[0]}-${r.image}`, 'desc')
         .value()
 }

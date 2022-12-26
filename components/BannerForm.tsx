@@ -8,7 +8,6 @@ export default function BannerForm() {
     const [something, setSomething] = useState(true)
 
     function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-        console.log("I was clicked!")
         setSomething(!something)
 
         e.preventDefault()

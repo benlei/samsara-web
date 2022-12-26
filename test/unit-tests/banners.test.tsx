@@ -1,7 +1,7 @@
 import 'jest';
 import _ from "lodash";
 import getVersionParts from "@/banners/version";
-import {getRundown} from "@/banners/rundown";
+import {getRundowns} from "@/banners/rundown";
 
 describe('getVersionParts', () => {
     it('should get all version parts', async () => {
@@ -28,7 +28,7 @@ describe('getVersionParts', () => {
 describe('getRundown()', () => {
     it('should have last element as Venti', async () => {
         const banners = require('@/data/banners.json')
-        const rundown = getRundown(banners.characters["5"])
+        const rundown = getRundowns(banners.characters["5"])
         expect(rundown[rundown.length - 1].name).toEqual("Venti")
         expect(rundown[rundown.length - 1].image).toEqual("Venti")
         expect(rundown[rundown.length - 1].runs).toBeGreaterThan(3)
@@ -45,7 +45,7 @@ describe('getRundown()', () => {
     });
     it('should have Keqing once', async () => {
         const banners = require('@/data/banners.json')
-        const rundown = getRundown(banners.characters["5"])
+        const rundown = getRundowns(banners.characters["5"])
         expect(rundown[rundown.length - 8].name).toEqual("Keqing")
         expect(rundown[rundown.length - 8].counter.length).toBeGreaterThan(40)
         expect(rundown[rundown.length - 8].runs).toEqual(1)

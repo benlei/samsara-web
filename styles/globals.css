@@ -52,3 +52,9 @@ body {
 .history th {
   font-weight: bold !important;
 }
+
+.history .cell {
+  line-height: 2em;
+  width: 2em;
+  height: 2em;
+}
