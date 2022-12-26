@@ -50,6 +50,17 @@ function getImageOrCounter(type: string, rc: Rundown, counter: number): React.Re
     )
 }
 
+function getCounterStyle(c: number) {
+    if (c == 0) {
+        return {}
+    }
+
+    const lightness = 100 - Math.min(50, Math.floor(c * 2));
+    return {
+        backgroundColor: `hsl(0, 5%, ${lightness}%)`
+    }
+}
+
 export default function Home({banners}: HomeProperties) {
     let rundown = getRundown(banners.characters["5"])
     rundown = _.chain(rundown)
@@ -94,7 +105,7 @@ export default function Home({banners}: HomeProperties) {
                                             <Label>{r.runs}</Label>
                                         </Table.Cell>
                                         {
-                                            r.counter.map((c, cI) => <Table.Cell key={rI + "-" + cI}>{getImageOrCounter('characters', r, c)}</Table.Cell>)
+                                            r.counter.map((c, cI) => <Table.Cell key={rI + "-" + cI} style={getCounterStyle(c)}>{getImageOrCounter('characters', r, c)}</Table.Cell>)
                                         }
                                     </Table.Row>
                                 )
