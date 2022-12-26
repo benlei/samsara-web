@@ -72,6 +72,6 @@ export function getRundowns(banners: BannerResource): Rundown[] {
 
 
     return _.chain(result)
-        .orderBy((r) => `${r.banners[0]}-${r.image}`, 'desc')
+        .orderBy((r) => `${r.banners[r.banners.length - 1]}-${r.image}`, 'desc')
         .value()
 }
