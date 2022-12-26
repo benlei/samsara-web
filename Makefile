@@ -9,3 +9,6 @@ web:
 
 test:
 	source "$(NVM_DIR)/nvm.sh" && nvm exec npm test
+
+
+.PHONY: test

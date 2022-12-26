@@ -1,6 +1,7 @@
 import 'jest';
-import getVersionParts, {getRundown} from "@/banners/versions";
 import _ from "lodash";
+import getVersionParts from "@/banners/version";
+import {getRundown} from "@/banners/rundown";
 
 describe('getVersionParts', () => {
     it('should get all version parts', async () => {
