@@ -1,51 +1,60 @@
-import {BannerResource, ResourceCounter} from "@/banners/types";
+import {BannerResource, ResourceCounter, VersionParts} from "@/banners/types";
 import _ from "lodash";
 import getVersionParts, {getBaseVersion, getVersionPart} from "@/banners/version";
+
+function getImageFromName(name: string) {
+    return name.replaceAll(/[^a-zA-Z0-9\-]/ig, '')
+        .replaceAll(/ /g, '-')
+        .replaceAll(/--+/g, '-');
+}
+
+function fillPrereleaseCounter(versionParts: VersionParts[], resourceCounter: ResourceCounter, firstVersion: string): number {
+    let versionIndex = versionParts.length - 1
+    while (versionIndex > -1 && versionParts[versionIndex].version != getBaseVersion(firstVersion)) {
+        resourceCounter.counter = [
+            ...resourceCounter.counter,
+            ...Array(versionParts[versionIndex].parts).fill(-1)
+        ]
+        versionIndex--;
+    }
+
+    const versionPart = getVersionPart(firstVersion)
+
+    resourceCounter.counter = [
+        ...resourceCounter.counter,
+        ...Array(versionPart - 1).fill(-1),
+    ]
+    return versionIndex;
+}
 
 export function getRundown(banners: BannerResource): ResourceCounter[] {
     const versionParts = getVersionParts(banners)
     const result: ResourceCounter[] = []
 
     for (const name of Object.keys(banners)) {
-        let waitParts = -1;
-        let versionIndex = versionParts.length - 1;
         let resourceCounter: ResourceCounter = {
             name,
-            image: name.replaceAll(/[^a-zA-Z0-9\-]/ig, '')
-                .replaceAll(/ /g, '-')
-                .replaceAll(/--+/g, '-'),
+            image: getImageFromName(name),
             counter: [],
         }
 
 
-        const baseVersion = getBaseVersion(banners[name][0])
 
         // fill out versions before it was released
-        while (versionIndex > -1 && versionParts[versionIndex].version != baseVersion) {
-            resourceCounter.counter = [
-                ...resourceCounter.counter,
-                ...Array(versionParts[versionIndex].parts).fill(-1)
-            ]
-            versionIndex--;
-        }
-
-        const versionPart = getVersionPart(banners[name][0])
-        // fill out parts they didn't show up in as well
-        resourceCounter.counter = [
-            ...resourceCounter.counter,
-            ...Array(versionPart - 1).fill(-1),
-        ]
-
+        let versionIndex = fillPrereleaseCounter(versionParts, resourceCounter, banners[name][0]);
+        let waitParts = 0;
+        let start = getVersionPart(banners[name][0]);
         let bannerVersionIndex = 0;
-        let start = versionPart;
         while (versionIndex > -1) {
-            let currBaseVersion: string = "0"
+            let currBaseVersion: string = "0";
+            let currVersionPart: number = 999;
             if (bannerVersionIndex != banners[name].length) {
                 currBaseVersion = getBaseVersion(banners[name][bannerVersionIndex])
+                currVersionPart = getVersionPart(banners[name][bannerVersionIndex])
             }
 
             for (let i = start; i <= versionParts[versionIndex].parts; i++) {
-                if (currBaseVersion == versionParts[versionIndex].version && i == versionPart) {
+                if (currBaseVersion == versionParts[versionIndex].version && i == currVersionPart) {
                     resourceCounter.counter.push(0)
                     waitParts = 1
                     bannerVersionIndex++;
