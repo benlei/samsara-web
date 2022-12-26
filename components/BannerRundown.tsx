@@ -27,7 +27,7 @@ function getCounterStyle(c: number) {
         return {backgroundColor: '#fff'}
     }
 
-    const lightness = 100 - Math.min(50, Math.floor(c * 2));
+    const lightness = 100 - Math.min(36, Math.floor(c * 1.5));
     return {
         backgroundColor: `hsl(0, 5%, ${lightness}%)`
     }
