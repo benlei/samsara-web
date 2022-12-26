@@ -17,3 +17,9 @@ export type VersionParts = {
     version: string;
     parts: number;
 }
+
+export type ResourceCounter = {
+    name: string;
+    image: string;
+    counter: number[];
+}
