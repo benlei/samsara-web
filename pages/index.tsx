@@ -64,7 +64,7 @@ function getCounterStyle(c: number) {
 export default function Home({banners}: HomeProperties) {
     let rundown = getRundown(banners.characters["5"])
     rundown = _.chain(rundown)
-        .filter(isLimited)
+        // .filter(isLimited)
         // .orderBy((rc) => banners.characters["5"][rc.name][banners.characters["5"][rc.name].length - 1], 'desc')
         .value()
 
