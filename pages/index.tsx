@@ -9,19 +9,18 @@ import BannerRundownComponent from "@/components/BannerRundown";
 
 
 export async function getStaticProps() {
-
     return {
         props: {
             banners: require('@/data/banners.json')
         },
     };
-};
+}
 
 type HomeProperties = {
     banners: Banners
 }
 
-export default function BannerComponent({banners}: HomeProperties) {
+export default function Home({banners}: HomeProperties) {
 
     return (
         <>
@@ -32,7 +31,6 @@ export default function BannerComponent({banners}: HomeProperties) {
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
             <Container style={{marginTop: '3em', overflowX: 'scroll'}}>
-
                 <BannerRundownComponent bannerType={'characters'}
                                versionParts={getVersionParts(banners.characters['5'])}
                                rundown={getRundowns(banners.characters['5'])} />
