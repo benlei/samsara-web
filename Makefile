@@ -1,4 +1,7 @@
-default:
+default: build
+
+build:
+	source "$(NVM_DIR)/nvm.sh" && nvm exec npx @cloudflare/next-on-pages
 
 watch:
 	source "$(NVM_DIR)/nvm.sh" && nvm exec npx @cloudflare/next-on-pages --watch

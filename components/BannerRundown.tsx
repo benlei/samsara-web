@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Rundown, VersionParts} from "@/banners/types";
-import {Form, Icon, Image, Label, Table} from "semantic-ui-react";
+import {Form, Icon, Image, Label, Sticky, Table} from "semantic-ui-react";
 import _ from "lodash";
 
 
@@ -24,7 +24,7 @@ function getImageOrCounter(type: string, rc: Rundown, counter: number): React.Re
 
 function getCounterStyle(c: number) {
     if (c == 0) {
-        return {}
+        return {backgroundColor: '#fff'}
     }
 
     const lightness = 100 - Math.min(50, Math.floor(c * 2));
@@ -51,11 +51,10 @@ export function BannerRundown({bannerType, versionParts, rundown}: BannerBreakdo
         rundown = filteredRundown
     }
 
-
-
     return (
         <>
-            <Table definition unstackable className={'history'}>
+            <Table definition unstackable selectable className={'history'}>
+
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell className={'no-border'} style={{pointerEvents: 'auto', padding: '0 .5em'}}>

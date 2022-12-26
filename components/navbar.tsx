@@ -4,7 +4,7 @@ import {Container, Dropdown, Menu} from "semantic-ui-react";
 export default function Navbar({children}: React.PropsWithChildren) {
     return (
         <>
-            <Menu fixed='top' inverted>
+            <Menu inverted>
                 <Container>
                     <Menu.Item as='a' header>
                         Project Name
