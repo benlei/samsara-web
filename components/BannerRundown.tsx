@@ -33,84 +33,130 @@ function getCounterStyle(c: number) {
     }
 }
 
-type BannerBreakdownProps = {bannerType: string, versionParts: VersionParts[], rundown: Rundown[]}
-export function BannerRundown({bannerType, versionParts, rundown}: BannerBreakdownProps) {
-    const [filterText, setFilterText] = useState("");
+type BannerRundownProps = {
+    bannerType: string
+    versionParts: VersionParts[]
+    rundown: Rundown[]
+}
 
-    function handleFilterChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setFilterText(event.target.value);
+type BannerRundownState = {
+    filterText: string | null
+}
+
+export default class BannerRundownComponent extends React.Component<BannerRundownProps, BannerRundownState> {
+    constructor(props: BannerRundownProps) {
+        super(props);
+        this.state = {
+            filterText: null
+        }
     }
 
-    const filteredRundown = _.chain(rundown)
-        .filter((r) => r.name.toLowerCase().includes(filterText.toLowerCase()))
-        // .filter(isLimited)
-        // .orderBy((rc) => banners.characters["5"][rc.name][banners.characters["5"][rc.name].length - 1], 'desc')
-        .value()
 
-    if (filteredRundown.length) {
-        rundown = filteredRundown
+    private getFilteredRundown(filterText: string) {
+        let filterFunc = (r: Rundown) => r.name.toLowerCase().includes(filterText!.toLowerCase())
+        if (filterText.startsWith('/') && filterText.endsWith('/')) {
+            const re = new RegExp(filterText.substring(1, filterText.length - 1), 'ig')
+            filterFunc = (r: Rundown) => re.test(r.name)
+        }
+
+        const filteredRundown = _.chain(this.props.rundown)
+            .filter(filterFunc)
+            // .filter(isLimited)
+            // .orderBy((rc) => banners.characters["5"][rc.name][banners.characters["5"][rc.name].length - 1], 'desc')
+            .value()
+
+        if (filteredRundown.length) {
+            return filteredRundown
+        }
+        return this.props.rundown;
     }
 
-    return (
-        <>
-            <Table definition unstackable selectable className={'history'}>
+    handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState(() => ({
+            filterText: event.target.value,
+        }));
+    }
 
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell className={'no-border'} style={{pointerEvents: 'auto', padding: '0 .5em'}}>
-                            <Form.Input fluid
-                                        placeholder={'Filter ' + bannerType + '...'}
-                                        onChange={handleFilterChange}
-                                        value={filterText}
-                                        style={{minWidth: '12em'}} />
-                        </Table.HeaderCell>
-                        <Table.HeaderCell>
-                            <Icon name='redo'/>
-                        </Table.HeaderCell>
-                        {versionParts.map(function (vp, idx) {
-                            return (
-                                <Table.HeaderCell colSpan={vp.parts} key={idx}>{vp.version}</Table.HeaderCell>
-                            )
-                        })}
-                    </Table.Row>
-                </Table.Header>
+    componentDidMount = () => {
+        this.setState(() => ({
+            filterText: '',
+        }));
+    }
 
-                <Table.Body>
-                    {
-                        rundown.map(function (r, rI) {
-                            return (
-                                <Table.Row key={rI}>
-                                    <Table.Cell>
-                                        <span>{r.name}</span> <Image avatar src={`/images/characters/${r.image}.png`}
-                                                                     alt={r.image}/>
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Label>{r.runs}</Label>
-                                    </Table.Cell>
-                                    {
-                                        r.counter.map((c, cI) => <Table.Cell key={rI + "-" + cI}
-                                                                             style={getCounterStyle(c)}>{getImageOrCounter(bannerType, r, c)}</Table.Cell>)
-                                    }
-                                </Table.Row>
-                            )
-                        })
-                    }
-                </Table.Body>
+    render() {
+        let {versionParts, bannerType, rundown} = this.props
+        let {filterText} = this.state
+        if (filterText) {
+            rundown = this.getFilteredRundown(filterText);
+        }
 
-                <Table.Footer>
-                    <Table.Row>
-                        <Table.HeaderCell className={'no-border'}/>
-                        <Table.HeaderCell>
-                            <Icon name='redo'/>
-                        </Table.HeaderCell>
-                        {versionParts.map(function (vp, idx) {
-                            return (
-                                <Table.HeaderCell colSpan={vp.parts} key={idx}>{vp.version}</Table.HeaderCell>
-                            )
-                        })}
-                    </Table.Row>
-                </Table.Footer>
-            </Table>
-        </>
-    );
+        return (
+            <>
+                <Table definition unstackable selectable className={'history'}>
+
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.HeaderCell className={'no-border'}
+                                              style={{pointerEvents: 'auto', padding: '0 .5em'}}>
+                                <Form.Input fluid
+                                            placeholder={'Filter ' + bannerType + '...'}
+                                            onChange={this.handleFilterChange}
+                                            value={this.state.filterText}
+                                            style={{minWidth: '12em'}}/>
+                            </Table.HeaderCell>
+                            <Table.HeaderCell>
+                                <Icon name='redo'/>
+                            </Table.HeaderCell>
+                            {versionParts.map(function (vp, idx) {
+                                return (
+                                    <Table.HeaderCell colSpan={vp.parts} key={idx}>{vp.version}</Table.HeaderCell>
+                                )
+                            })}
+                        </Table.Row>
+                    </Table.Header>
+
+                    <Table.Body>
+                        {
+                            rundown.map(function (r, rI) {
+                                return (
+                                    <Table.Row key={rI}>
+                                        <Table.Cell>
+                                            <span>{r.name}</span>
+                                            <Image avatar
+                                                   src={`/images/characters/${r.image}.png`}
+                                                   alt={r.image}/>
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            <Label>{r.runs}</Label>
+                                        </Table.Cell>
+                                        {r.counter.map((c, cI) => (
+                                            <Table.Cell key={rI + "-" + cI} style={getCounterStyle(c)}>
+                                                {getImageOrCounter(bannerType, r, c)}
+                                            </Table.Cell>
+                                        ))}
+                                    </Table.Row>
+                                )
+                            })
+                        }
+                    </Table.Body>
+
+                    <Table.Footer>
+                        <Table.Row>
+                            <Table.HeaderCell className={'no-border'}/>
+                            <Table.HeaderCell>
+                                <Icon name='redo'/>
+                            </Table.HeaderCell>
+                            {versionParts.map((vp, idx) => (
+                                <Table.HeaderCell colSpan={vp.parts} key={idx}>
+                                    {vp.version}
+                                </Table.HeaderCell>
+                            ))}
+                        </Table.Row>
+                    </Table.Footer>
+                </Table>
+            </>
+        );
+
+    }
+
 }

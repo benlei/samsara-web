@@ -4,32 +4,32 @@ import {Container, Dropdown, Menu} from "semantic-ui-react";
 export default function Navbar({children}: React.PropsWithChildren) {
     return (
         <>
-            <Menu inverted>
-                <Container>
-                    <Menu.Item as='a' header>
-                        Project Name
-                    </Menu.Item>
-                    <Menu.Item as='a'>Home</Menu.Item>
-
-                    <Dropdown item simple text='Dropdown'>
-                        <Dropdown.Menu>
-                            <Dropdown.Item>List Item</Dropdown.Item>
-                            <Dropdown.Item>List Item</Dropdown.Item>
-                            <Dropdown.Divider />
-                            <Dropdown.Header>Header Item</Dropdown.Header>
-                            <Dropdown.Item>
-                                <i className='dropdown icon' />
-                                <span className='text'>Submenu</span>
-                                <Dropdown.Menu>
-                                    <Dropdown.Item>List Item</Dropdown.Item>
-                                    <Dropdown.Item>List Item</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown.Item>
-                            <Dropdown.Item>List Item</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </Container>
-            </Menu>
+            <Container>
+                <Menu pointing secondary>
+                    <Menu.Item
+                        name='home'
+                        active={true}
+                        // onClick={this.handleItemClick}
+                    />
+                    <Menu.Item
+                        name='messages'
+                        // active={activeItem === 'messages'}
+                        // onClick={this.handleItemClick}
+                    />
+                    <Menu.Item
+                        name='friends'
+                        // active={activeItem === 'friends'}
+                        // onClick={this.handleItemClick}
+                    />
+                    <Menu.Menu position='right'>
+                        <Menu.Item
+                            name='logout'
+                            // active={activeItem === 'logout'}
+                            // onClick={this.handleItemClick}
+                        />
+                    </Menu.Menu>
+                </Menu>
+            </Container>
         </>
     )
 }

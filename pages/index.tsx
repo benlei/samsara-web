@@ -5,7 +5,7 @@ import {Container, Image,} from 'semantic-ui-react'
 import {getRundowns} from "@/banners/rundown";
 import getVersionParts from "@/banners/version";
 import React from "react";
-import {BannerRundown} from "@/components/BannerRundown";
+import BannerRundownComponent from "@/components/BannerRundown";
 
 
 export async function getStaticProps() {
@@ -31,9 +31,9 @@ export default function BannerComponent({banners}: HomeProperties) {
                 {/*<meta name="viewport" content="width=device-width, initial-scale=1" />*/}
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
-            <Container style={{marginTop: '5em', overflowX: 'scroll'}}>
+            <Container style={{marginTop: '3em', overflowX: 'scroll'}}>
 
-                <BannerRundown bannerType={'characters'}
+                <BannerRundownComponent bannerType={'characters'}
                                versionParts={getVersionParts(banners.characters['5'])}
                                rundown={getRundowns(banners.characters['5'])} />
             </Container>
