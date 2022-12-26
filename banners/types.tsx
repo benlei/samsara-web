@@ -21,5 +21,6 @@ export type VersionParts = {
 export type ResourceCounter = {
     name: string;
     image: string;
+    runs: number;
     counter: number[];
 }

@@ -53,6 +53,7 @@ export function getRundown(banners: BannerResource): ResourceCounter[] {
         let resourceCounter: ResourceCounter = {
             name,
             image: getImageFromName(name),
+            runs: banners[name].length,
             counter: [],
         }
 
