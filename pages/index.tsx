@@ -9,10 +9,11 @@ import {
 import {getRundown} from "@/banners/rundown";
 import getVersionParts from "@/banners/version";
 import _ from "lodash";
-import React from "react";
+import React, {useState} from "react";
+import BannerForm from "@/components/bannerForm";
 
 
-export const getServerSideProps = async () => {
+export async function getStaticProps() {
 
     return {
         props: {
@@ -61,14 +62,26 @@ function getCounterStyle(c: number) {
     }
 }
 
-export default function Home({banners}: HomeProperties) {
-    let rundown = getRundown(banners.characters["5"])
+export default function BannerComponent({banners}: HomeProperties) {
+    const [bannerList, setBanners] = useState(banners)
+    const versionParts = getVersionParts(bannerList.characters["5"])
+    const [filterText, setFilterText] = useState("");
+
+    function handleFilterChange(event: React.ChangeEvent<HTMLInputElement>) {
+        console.log("in handleFilterChange")
+        setFilterText(event.target.value);
+        console.log(filterText)
+    }
+
+
+    let rundown = getRundown(bannerList.characters["5"])
     rundown = _.chain(rundown)
+        .filter((r) => r.name.toLowerCase().includes(filterText.toLowerCase()))
         // .filter(isLimited)
         // .orderBy((rc) => banners.characters["5"][rc.name][banners.characters["5"][rc.name].length - 1], 'desc')
         .value()
 
-    const versionParts = getVersionParts(banners.characters["5"])
+    console.log("Hello, world!!!!")
     return (
         <>
             <Head>
@@ -77,35 +90,16 @@ export default function Home({banners}: HomeProperties) {
                 {/*<meta name="viewport" content="width=device-width, initial-scale=1" />*/}
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
+            <div style={{marginTop: '5em'}}>
+                <BannerForm />
+            </div>
             <Container style={{marginTop: '5em', overflowX: 'scroll'}}>
-                <Form style={{marginBottom: '3em'}}>
-                    <Form.Group inline>
-                        <label>Sort By</label>
-                        <Form.Radio
-                            label='First Patch'
-                            value='first'
-                        />
-                        <Form.Radio
-                            label='Last Patch'
-                            value='latest'
-                        />
-                        <Form.Radio
-                            label='Total Runs'
-                            value='runs'
-                        />
-                        <Label>
-                            <Icon name={'sort amount down'} size={'small'} /> Descending
-                        </Label>
-                    </Form.Group>
-
-                    <Form.Checkbox label='Hide Standard Characters' />
-                </Form>
 
                 <Table definition className={'history'}>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell className={'no-border'} style={{pointerEvents:'auto', padding:'0 .5em'}}>
-                                <Form.Input fluid placeholder='Filter...' />
+                                <Form.Input fluid placeholder='Filter...' onChange={handleFilterChange} value={filterText} />
                             </Table.HeaderCell>
                             <Table.HeaderCell>
                                 <Icon name='redo' />
