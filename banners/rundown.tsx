@@ -27,6 +27,29 @@ function fillPrereleaseCounter(versionParts: VersionParts[], resourceCounter: Re
     return versionIndex;
 }
 
+function fillWaitCounter(versions: string[], versionIndex: number, versionParts: VersionParts[], resourceCounter: ResourceCounter) {
+    let waitParts = 0;
+    let start = getVersionPart(versions[0]);
+    let bannerVersionIndex = 0;
+
+    while (versionIndex > -1) {
+        const currBaseVersion: string = getBaseVersion(versions[bannerVersionIndex] || "99.99.99");
+        const currVersionPart: number = getVersionPart(versions[bannerVersionIndex] || "99.99.99");
+
+        for (let i = start; i <= versionParts[versionIndex].parts; i++) {
+            if (currBaseVersion == versionParts[versionIndex].version && i == currVersionPart) {
+                resourceCounter.counter.push(0)
+                waitParts = 1
+                bannerVersionIndex++;
+            } else {
+                resourceCounter.counter.push(waitParts++)
+            }
+        }
+        versionIndex--;
+        start = 1
+    }
+}
+
 export function getRundown(banners: BannerResource): ResourceCounter[] {
     const versionParts = getVersionParts(banners)
     const result: ResourceCounter[] = []
@@ -38,31 +61,13 @@ export function getRundown(banners: BannerResource): ResourceCounter[] {
             counter: [],
         }
 
-
-
         // fill out versions before it was released
-        let versionIndex = fillPrereleaseCounter(versionParts, resourceCounter, banners[name][0]);
-        let waitParts = 0;
-        let start = getVersionPart(banners[name][0]);
-        let bannerVersionIndex = 0;
-
-        while (versionIndex > -1) {
-            const currBaseVersion: string = getBaseVersion(banners[name][bannerVersionIndex] || "99.99.99");
-            const currVersionPart: number = getVersionPart(banners[name][bannerVersionIndex] || "99.99.99");
-
-            for (let i = start; i <= versionParts[versionIndex].parts; i++) {
-                if (currBaseVersion == versionParts[versionIndex].version && i == currVersionPart) {
-                    resourceCounter.counter.push(0)
-                    waitParts = 1
-                    bannerVersionIndex++;
-                } else {
-                    resourceCounter.counter.push(waitParts++)
-                }
-            }
-            versionIndex--;
-            start = 1
-        }
-
+        fillWaitCounter(
+            banners[name],
+            fillPrereleaseCounter(versionParts, resourceCounter, banners[name][0]),
+            versionParts,
+            resourceCounter
+        );
 
         resourceCounter.counter = resourceCounter.counter.reverse()
         result.push(resourceCounter)
