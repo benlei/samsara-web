@@ -92,6 +92,28 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
         return !this.props.standards!.includes(r.name)
     }
 
+    sortByName = (r: Rundown) => r.name
+    sortByRunsLastPatch = (r: Rundown) => String(r.banners.length)+' '+r.banners[r.banners.length - 1]+' ' +r.name
+    sortByRunsFirstPatch = (r: Rundown) => String(r.banners.length)+' '+r.banners[0]+' ' + r.name
+    sortByFirst = (r: Rundown) => r.banners[0]+r.name
+    sortByLast = (r: Rundown) => r.banners[r.banners.length - 1]+r.name
+
+    getSortFunction = () => {
+        switch(this.props.sortBy) {
+            default:
+            case 'last':
+                return this.sortByLast
+            case 'first':
+                return this.sortByFirst
+            case 'runs-first':
+                return this.sortByRunsFirstPatch
+            case 'runs-last':
+                return this.sortByRunsLastPatch
+            case 'name':
+                return this.sortByName
+        }
+    }
+
     render() {
         let {versionParts, bannerType, rundown} = this.props
         let {filterText} = this.state
@@ -101,6 +123,7 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
 
         rundown = _.chain(rundown)
             .filter(this.isLimitedFilter)
+            .orderBy(this.getSortFunction(), this.props.order === 'asc' ? 'asc' : 'desc')
             .value()
 
         return (

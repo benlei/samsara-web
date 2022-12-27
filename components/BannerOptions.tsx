@@ -1,5 +1,5 @@
-import React, {Dispatch, SetStateAction, useState} from "react";
-import {Button, CheckboxProps, Form, Icon, Label, LabelProps} from "semantic-ui-react";
+import React from "react";
+import {CheckboxProps, Form, Icon, Label} from "semantic-ui-react";
 import {BannerOptions, BannerOptionSetters} from "@/banners/types";
 
 type Properties = {
@@ -55,9 +55,15 @@ export default class BannerOptionsComponent extends React.Component<Properties, 
                             onChange={this.handleSortByChange}
                         />
                         <Form.Radio
-                            label='Total Runs'
-                            value='runs'
-                            checked={this.props.sortBy === 'runs'}
+                            label='Total Runs (by last patch)'
+                            value='runs-last'
+                            checked={this.props.sortBy === 'runs-last'}
+                            onChange={this.handleSortByChange}
+                        />
+                        <Form.Radio
+                            label='Total Runs (by first patch)'
+                            value='runs-first'
+                            checked={this.props.sortBy === 'runs-first'}
                             onChange={this.handleSortByChange}
                         />
                         <Form.Radio
