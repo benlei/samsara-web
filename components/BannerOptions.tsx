@@ -29,8 +29,8 @@ export default class BannerOptionsComponent extends React.Component<Properties, 
             return <>
                 <Icon name={'sort amount up'} size={'small'}/> Ascending
             </>
-
         }
+
         return <>
             <Icon name={'sort amount down'} size={'small'}/> Descending
         </>
@@ -76,7 +76,7 @@ export default class BannerOptionsComponent extends React.Component<Properties, 
                     <Form.Field>
                         <Form.Checkbox label='Hide Standard Characters'
                                        onChange={this.handleChangeLimitedOnly}
-                                       checked={this.props.limitedOnly}
+                                       checked={this.props.limitedOnly ?? false}
                         />
                     </Form.Field>
                 )}

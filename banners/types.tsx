@@ -30,13 +30,13 @@ export type Rundown = {
 
 
 export type BannerOptions = {
-    limitedOnly: boolean
-    sortBy: string
-    order: string
+    limitedOnly: boolean | null | undefined
+    sortBy: string | null
+    order: string | null
 }
 
 export type BannerOptionSetters = {
-    setOrder: Dispatch<SetStateAction<string>>
-    setSortBy: Dispatch<SetStateAction<string>>
-    setLimitedOnly: Dispatch<SetStateAction<boolean>>
+    setOrder: Dispatch<SetStateAction<any>>
+    setSortBy: Dispatch<SetStateAction<any>>
+    setLimitedOnly: Dispatch<SetStateAction<any>>
 }

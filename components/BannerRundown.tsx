@@ -37,6 +37,7 @@ type BannerRundownProps = {
     bannerType: string
     versionParts: VersionParts[]
     rundown: Rundown[]
+    standards?: string[]
 } & BannerOptions
 
 type BannerRundownState = {
@@ -83,12 +84,24 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
         this.setState({filterText: ''});
     }
 
+    isLimitedFilter = (r: Rundown) => {
+        if (this.props.limitedOnly !== true || typeof this.props.standards === 'undefined') {
+            return true
+        }
+
+        return !this.props.standards!.includes(r.name)
+    }
+
     render() {
         let {versionParts, bannerType, rundown} = this.props
         let {filterText} = this.state
         if (filterText) {
             rundown = this.getFilteredRundown(filterText);
         }
+
+        rundown = _.chain(rundown)
+            .filter(this.isLimitedFilter)
+            .value()
 
         return (
             <>
@@ -123,8 +136,8 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
                                             <span>
                                                 {r.name}
                                             </span> <Image avatar
-                                                   src={`/images/characters/${r.image}.png`}
-                                                   alt={r.image}/>
+                                                           src={`/images/characters/${r.image}.png`}
+                                                           alt={r.image}/>
                                         </Table.Cell>
                                         <Table.Cell>
                                             <Label>{r.runs}</Label>

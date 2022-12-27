@@ -22,9 +22,9 @@ type Properties = {
 }
 
 export default function Home({banners}: Properties) {
-    const [limitedOnly, setLimitedOnly] = useState(false)
-    const [sortBy, setSortBy] = useState('last')
-    const [order, setOrder] = useState('desc')
+    const [limitedOnly, setLimitedOnly] = useState(true)
+    const [sortBy, setSortBy] = useState(null)
+    const [order, setOrder] = useState(null)
 
     return (
         <>
@@ -47,6 +47,7 @@ export default function Home({banners}: Properties) {
                                         limitedOnly={limitedOnly}
                                         order={order}
                                         sortBy={sortBy}
+                                        standards={['Keqing', 'Tighnari']}
                 />
             </Container>
         </>
