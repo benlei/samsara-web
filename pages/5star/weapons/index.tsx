@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {Banners} from '@/banners/types'
 import React from "react";
-import BannerPageComponent from "@/components/BannerPageComponent";
+import BannerPageComponent from "@/components/BannerPage";
 
 
 export async function getStaticProps() {

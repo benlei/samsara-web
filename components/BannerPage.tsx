@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import {Container} from "semantic-ui-react";
 import BannerOptionsComponent from "@/components/BannerOptions";
-import BannerRundownComponent from "@/components/BannerRundown";
+import BannerTableComponent from "@/components/BannerTable";
 import getVersionParts from "@/banners/version";
 import {getRundowns} from "@/banners/rundown";
 import BannerDownloadComponent from "@/components/BannerDownload";
@@ -65,14 +65,14 @@ export default class BannerPageComponent extends React.Component<Properties, Sta
                     />
                 </Container>
                 <Container style={{overflowX: 'scroll'}}>
-                    <BannerRundownComponent bannerType={bannerType}
-                                            versionParts={getVersionParts(banners)}
-                                            rundown={getRundowns(banners)}
-                                            limitedOnly={limitedOnly}
-                                            order={order}
-                                            sortBy={sortBy}
-                                            standards={standards}
-                                            ref={this.componentRef}
+                    <BannerTableComponent bannerType={bannerType}
+                                          versionParts={getVersionParts(banners)}
+                                          rundown={getRundowns(banners)}
+                                          limitedOnly={limitedOnly}
+                                          order={order}
+                                          sortBy={sortBy}
+                                          standards={standards}
+                                          ref={this.componentRef}
 
                     />
                 </Container>
