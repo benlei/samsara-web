@@ -1,10 +1,9 @@
 name: Data Updater
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
-  push:
-    branches:
-      - gh-actions-setup
-#  workflow_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 8 * * 3'
 
 jobs:
   update:
