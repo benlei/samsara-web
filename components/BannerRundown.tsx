@@ -1,8 +1,9 @@
-import React, {Dispatch, SetStateAction} from "react";
+import React from "react";
 import {BannerOptions, Rundown, VersionParts} from "@/banners/types";
-import {Form, Icon, Image, Label, Table} from "semantic-ui-react";
+import {Image, Label, Table} from "semantic-ui-react";
 import _ from "lodash";
 import BannerHeaderComponent from "@/components/BannerHeader";
+import BannerFooterComponent from "@/components/BannerFooter";
 
 
 function getImageOrCounter(type: string, rc: Rundown, counter: number): React.ReactElement {
@@ -49,7 +50,6 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
         }
     }
 
-
     private getFilteredRundown(filterText: string) {
         let filterFunc = (r: Rundown) => r.name.toLowerCase().includes(filterText!.toLowerCase())
         if (filterText.startsWith('/') && filterText.endsWith('/')) {
@@ -90,13 +90,13 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
     }
 
     sortByName = (r: Rundown) => r.name
-    sortByRunsLastPatch = (r: Rundown) => String(r.banners.length)+' '+r.banners[r.banners.length - 1]+' ' +r.name
-    sortByRunsFirstPatch = (r: Rundown) => String(r.banners.length)+' '+r.banners[0]+' ' + r.name
-    sortByFirst = (r: Rundown) => r.banners[0]+r.name
-    sortByLast = (r: Rundown) => r.banners[r.banners.length - 1]+r.name
+    sortByRunsLastPatch = (r: Rundown) => String(r.banners.length) + ' ' + r.banners[r.banners.length - 1] + ' ' + r.name
+    sortByRunsFirstPatch = (r: Rundown) => String(r.banners.length) + ' ' + r.banners[0] + ' ' + r.name
+    sortByFirst = (r: Rundown) => r.banners[0] + r.name
+    sortByLast = (r: Rundown) => r.banners[r.banners.length - 1] + r.name
 
     getSortFunction = () => {
-        switch(this.props.sortBy) {
+        switch (this.props.sortBy) {
             default:
             case 'last':
                 return this.sortByLast
@@ -158,23 +158,9 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
                         }
                     </Table.Body>
 
-                    <Table.Footer>
-                        <Table.Row>
-                            <Table.HeaderCell className={'no-border'}/>
-                            <Table.HeaderCell>
-                                <Icon name='redo'/>
-                            </Table.HeaderCell>
-                            {versionParts.map((vp, idx) => (
-                                <Table.HeaderCell colSpan={vp.parts} key={idx}>
-                                    {vp.version}
-                                </Table.HeaderCell>
-                            ))}
-                        </Table.Row>
-                    </Table.Footer>
+                    <BannerFooterComponent versionParts={versionParts}/>
                 </Table>
             </>
         );
-
     }
-
 }
