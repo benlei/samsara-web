@@ -6,6 +6,7 @@ import getVersionParts from "@/banners/version";
 import {getRundowns} from "@/banners/rundown";
 import BannerDownloadComponent from "@/components/banners/BannerDownload";
 import {BannerResource} from "@/banners/types";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 type Properties = {
     banners: BannerResource
@@ -65,16 +66,18 @@ export default class BannerPageComponent extends React.Component<Properties, Sta
                     />
                 </Container>
                 <Container style={{overflowX: 'scroll'}}>
-                    <BannerTableComponent bannerType={bannerType}
-                                          versionParts={getVersionParts(banners)}
-                                          rundown={getRundowns(banners)}
-                                          limitedOnly={limitedOnly}
-                                          order={order}
-                                          sortBy={sortBy}
-                                          standards={standards}
-                                          ref={this.componentRef}
+                    <ScrollContainer className="scroll-container" hideScrollbars={false}>
+                        <BannerTableComponent bannerType={bannerType}
+                                              versionParts={getVersionParts(banners)}
+                                              rundown={getRundowns(banners)}
+                                              limitedOnly={limitedOnly}
+                                              order={order}
+                                              sortBy={sortBy}
+                                              standards={standards}
+                                              ref={this.componentRef}
 
-                    />
+                        />
+                    </ScrollContainer>
                 </Container>
                 <Container style={{marginTop: '2em'}}>
                     <BannerDownloadComponent bannerRef={this.componentRef}/>
