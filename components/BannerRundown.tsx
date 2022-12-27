@@ -2,6 +2,7 @@ import React, {Dispatch, SetStateAction} from "react";
 import {BannerOptions, Rundown, VersionParts} from "@/banners/types";
 import {Form, Icon, Image, Label, Table} from "semantic-ui-react";
 import _ from "lodash";
+import BannerHeaderComponent from "@/components/BannerHeader";
 
 
 function getImageOrCounter(type: string, rc: Rundown, counter: number): React.ReactElement {
@@ -125,27 +126,12 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
         return (
             <>
                 <Table definition unstackable selectable className={'history'} style={{marginTop: '1em'}}>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.HeaderCell className={'no-border'}
-                                              style={{pointerEvents: 'auto', padding: '0 .5em'}}>
-                                <Form.Input fluid
-                                            placeholder={'Filter ' + bannerType + '...'}
-                                            onChange={this.handleFilterChange}
-                                            value={this.state.filterText}
-                                            style={{minWidth: '16em'}}/>
-                            </Table.HeaderCell>
-                            <Table.HeaderCell>
-                                <Icon name='redo'/>
-                            </Table.HeaderCell>
-                            {versionParts.map(function (vp, idx) {
-                                return (
-                                    <Table.HeaderCell colSpan={vp.parts} key={idx}>{vp.version}</Table.HeaderCell>
-                                )
-                            })}
-                        </Table.Row>
-                    </Table.Header>
-
+                    <BannerHeaderComponent
+                        versionParts={versionParts}
+                        onChange={this.handleFilterChange}
+                        bannerType={bannerType}
+                        filterText={filterText}
+                    />
                     <Table.Body>
                         {
                             rundown.map(function (r, rI) {
