@@ -22,9 +22,9 @@ type Properties = {
 }
 
 export default function Home({banners}: Properties) {
-    const [limitedOnly, setLimitedOnly] = useState(false)
-    const [sortBy, setSortBy] = useState('last')
-    const [order, setOrder] = useState('desc')
+    const [limitedOnly, setLimitedOnly] = useState(true)
+    const [sortBy, setSortBy] = useState(null)
+    const [order, setOrder] = useState(null)
 
     return (
         <>
@@ -41,9 +41,9 @@ export default function Home({banners}: Properties) {
                 />
             </Container>
             <Container style={{overflowX: 'scroll'}}>
-                <BannerRundownComponent bannerType={'characters'}
-                                        versionParts={getVersionParts(banners.characters['4'])}
-                                        rundown={getRundowns(banners.characters['4'])}
+                <BannerRundownComponent bannerType={'weapons'}
+                                        versionParts={getVersionParts(banners.weapons['4'])}
+                                        rundown={getRundowns(banners.weapons['4'])}
                                         limitedOnly={limitedOnly}
                                         order={order}
                                         sortBy={sortBy}

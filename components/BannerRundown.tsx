@@ -137,7 +137,7 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
                                             placeholder={'Filter ' + bannerType + '...'}
                                             onChange={this.handleFilterChange}
                                             value={this.state.filterText}
-                                            style={{minWidth: '12em'}}/>
+                                            style={{minWidth: '16em'}}/>
                             </Table.HeaderCell>
                             <Table.HeaderCell>
                                 <Icon name='redo'/>
@@ -159,7 +159,7 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
                                             <span>
                                                 {r.name}
                                             </span> <Image avatar
-                                                           src={`/images/characters/${r.image}.png`}
+                                                           src={`/images/${bannerType}/${r.image}.png`}
                                                            alt={r.image}/>
                                         </Table.Cell>
                                         <Table.Cell>
