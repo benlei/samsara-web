@@ -1,12 +1,8 @@
-import React, {Dispatch, SetStateAction, useState} from "react";
+import React, {Dispatch, SetStateAction} from "react";
 import {BannerOptions, Rundown, VersionParts} from "@/banners/types";
-import {Form, Icon, Image, Label, Sticky, Table} from "semantic-ui-react";
+import {Form, Icon, Image, Label, Table} from "semantic-ui-react";
 import _ from "lodash";
 
-
-function isLimited(rc: Rundown) {
-    return rc.name != "Keqing" && rc.name != "Tighnari"
-}
 
 function getImageOrCounter(type: string, rc: Rundown, counter: number): React.ReactElement {
     if (counter == 0) {

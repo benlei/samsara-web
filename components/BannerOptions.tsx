@@ -8,10 +8,6 @@ type Properties = {
 
 type States = {}
 
-type SortByEvent = {
-    value: string
-}
-
 export default class BannerOptionsComponent extends React.Component<Properties, States> {
     handleSortByChange = (event: React.FormEvent<HTMLInputElement>, {value}: CheckboxProps) => this.props.setSortBy(String(value))
     flipOrder = () => this.props.setOrder(this.props.order == 'desc' ? 'asc' : 'desc')
@@ -77,6 +73,7 @@ export default class BannerOptionsComponent extends React.Component<Properties, 
                         </Label>
                     </Form.Group>
                 </Form.Field>
+
 
                 {this.props.showLimitedOnly && (
                     <Form.Field>

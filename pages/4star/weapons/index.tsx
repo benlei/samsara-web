@@ -1,12 +1,7 @@
 import Head from 'next/head'
 import {Banners} from '@/banners/types'
-
-import {Container} from 'semantic-ui-react'
-import {getRundowns} from "@/banners/rundown";
-import getVersionParts from "@/banners/version";
-import React, {useState} from "react";
-import BannerRundownComponent from "@/components/BannerRundown";
-import BannerOptionsComponent from "@/components/BannerOptions";
+import React from "react";
+import BannerPageComponent from "@/components/BannerPageComponent";
 
 
 export async function getStaticProps() {
@@ -22,10 +17,6 @@ type Properties = {
 }
 
 export default function Home({banners}: Properties) {
-    const [limitedOnly, setLimitedOnly] = useState(true)
-    const [sortBy, setSortBy] = useState(null)
-    const [order, setOrder] = useState(null)
-
     return (
         <>
             <Head>
@@ -34,21 +25,10 @@ export default function Home({banners}: Properties) {
                 {/*<meta name="viewport" content="width=device-width, initial-scale=1" />*/}
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
-            <Container style={{marginTop: '2em'}}>
-                <BannerOptionsComponent showLimitedOnly={false} limitedOnly={limitedOnly} setLimitedOnly={setLimitedOnly}
-                                        order={order} setOrder={setOrder}
-                                        sortBy={sortBy} setSortBy={setSortBy}
-                />
-            </Container>
-            <Container style={{overflowX: 'scroll'}}>
-                <BannerRundownComponent bannerType={'weapons'}
-                                        versionParts={getVersionParts(banners.weapons['4'])}
-                                        rundown={getRundowns(banners.weapons['4'])}
-                                        limitedOnly={limitedOnly}
-                                        order={order}
-                                        sortBy={sortBy}
-                />
-            </Container>
+            <BannerPageComponent bannerType={'weapons'}
+                                 banners={banners.weapons['4']}
+                                 showLimitedOnly={false}
+            />
         </>
     )
 }
