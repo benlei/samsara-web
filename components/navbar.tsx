@@ -22,8 +22,8 @@ export default function Navbar({children}: React.PropsWithChildren) {
                             <Dropdown.Item>4 <Icon name={'star'}/></Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Menu.Item>Forums</Menu.Item>
-                    <Menu.Item>Contact Us</Menu.Item>
+                    <Menu.Item>Resin Timer</Menu.Item>
+                    <Menu.Item>Artifact Rotation</Menu.Item>
                 </Menu>
             </Container>
         </>

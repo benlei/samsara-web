@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import {Banners} from '@/banners/types'
 
-import {Container, Image,} from 'semantic-ui-react'
+import {Container} from 'semantic-ui-react'
 import {getRundowns} from "@/banners/rundown";
 import getVersionParts from "@/banners/version";
-import React from "react";
+import React, {useState} from "react";
 import BannerRundownComponent from "@/components/BannerRundown";
+import BannerOptionsComponent from "@/components/BannerOptions";
 
 
 export async function getStaticProps() {
@@ -16,11 +17,14 @@ export async function getStaticProps() {
     };
 }
 
-type HomeProperties = {
+type Properties = {
     banners: Banners
 }
 
-export default function Home({banners}: HomeProperties) {
+export default function Home({banners}: Properties) {
+    const [limitedOnly, setLimitedOnly] = useState(false)
+    const [sortBy, setSortBy] = useState('last')
+    const [order, setOrder] = useState('desc')
 
     return (
         <>
@@ -30,10 +34,20 @@ export default function Home({banners}: HomeProperties) {
                 {/*<meta name="viewport" content="width=device-width, initial-scale=1" />*/}
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
-            <Container style={{marginTop: '3em', overflowX: 'scroll'}}>
+            <Container style={{marginTop: '2em'}}>
+                <BannerOptionsComponent showLimitedOnly={false} limitedOnly={limitedOnly} setLimitedOnly={setLimitedOnly}
+                                        order={order} setOrder={setOrder}
+                                        sortBy={sortBy} setSortBy={setSortBy}
+                />
+            </Container>
+            <Container style={{overflowX: 'scroll'}}>
                 <BannerRundownComponent bannerType={'characters'}
-                               versionParts={getVersionParts(banners.characters['4'])}
-                               rundown={getRundowns(banners.characters['4'])} />
+                                        versionParts={getVersionParts(banners.characters['4'])}
+                                        rundown={getRundowns(banners.characters['4'])}
+                                        limitedOnly={limitedOnly}
+                                        order={order}
+                                        sortBy={sortBy}
+                />
             </Container>
         </>
     )

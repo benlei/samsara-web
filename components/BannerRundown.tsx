@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Rundown, VersionParts} from "@/banners/types";
+import React, {Dispatch, SetStateAction, useState} from "react";
+import {BannerOptions, Rundown, VersionParts} from "@/banners/types";
 import {Form, Icon, Image, Label, Sticky, Table} from "semantic-ui-react";
 import _ from "lodash";
 
@@ -37,7 +37,7 @@ type BannerRundownProps = {
     bannerType: string
     versionParts: VersionParts[]
     rundown: Rundown[]
-}
+} & BannerOptions
 
 type BannerRundownState = {
     filterText: string | null
@@ -55,8 +55,12 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
     private getFilteredRundown(filterText: string) {
         let filterFunc = (r: Rundown) => r.name.toLowerCase().includes(filterText!.toLowerCase())
         if (filterText.startsWith('/') && filterText.endsWith('/')) {
-            const re = new RegExp(filterText.substring(1, filterText.length - 1), 'ig')
-            filterFunc = (r: Rundown) => re.test(r.name)
+            try {
+                const re = new RegExp(filterText.substring(1, filterText.length - 1), 'i')
+                filterFunc = (r: Rundown) => re.test(r.name)
+            } catch (ignore) {
+
+            }
         }
 
         const filteredRundown = _.chain(this.props.rundown)
@@ -72,15 +76,11 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
     }
 
     handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState(() => ({
-            filterText: event.target.value,
-        }));
+        this.setState({filterText: event.target.value});
     }
 
     componentDidMount = () => {
-        this.setState(() => ({
-            filterText: '',
-        }));
+        this.setState({filterText: ''});
     }
 
     render() {
@@ -92,8 +92,7 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
 
         return (
             <>
-                <Table definition unstackable selectable className={'history'}>
-
+                <Table definition unstackable selectable className={'history'} style={{marginTop: '1em'}}>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell className={'no-border'}
@@ -121,8 +120,9 @@ export default class BannerRundownComponent extends React.Component<BannerRundow
                                 return (
                                     <Table.Row key={rI}>
                                         <Table.Cell>
-                                            <span>{r.name}</span>
-                                            <Image avatar
+                                            <span>
+                                                {r.name}
+                                            </span> <Image avatar
                                                    src={`/images/characters/${r.image}.png`}
                                                    alt={r.image}/>
                                         </Table.Cell>

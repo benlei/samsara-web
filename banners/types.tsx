@@ -1,3 +1,5 @@
+import {Dispatch, SetStateAction} from "react";
+
 export type Banners = {
     characters: Banner;
 
@@ -24,4 +26,17 @@ export type Rundown = {
     runs: number;
     banners: string[];
     counter: number[];
+}
+
+
+export type BannerOptions = {
+    limitedOnly: boolean
+    sortBy: string
+    order: string
+}
+
+export type BannerOptionSetters = {
+    setOrder: Dispatch<SetStateAction<string>>
+    setSortBy: Dispatch<SetStateAction<string>>
+    setLimitedOnly: Dispatch<SetStateAction<boolean>>
 }
