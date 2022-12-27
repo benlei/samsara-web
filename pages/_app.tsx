@@ -1,7 +1,23 @@
-import '../styles/globals.css'
+import '@/styles/globals.css'
 import 'semantic-ui-css/semantic.min.css'
-import type { AppProps } from 'next/app'
+import React from 'react';
+import App, { AppProps } from 'next/app';
+import Layout from '@/components/layout';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+class MyApp extends App<AppProps> {
+    render() {
+        const { Component, pageProps } = this.props;
+
+        return (
+            <>
+                {/* Add any global styles or other components here */}
+                <Layout>
+                    <Component {...pageProps} />
+
+                </Layout>
+            </>
+        );
+    }
 }
+
+export default MyApp;
