@@ -26,7 +26,7 @@ export default function Navbar({children}: React.PropsWithChildren) {
     return (
         <>
             <Container style={{marginTop: '.5em'}}>
-                <Menu secondary pointing>
+                <Menu secondary pointing stackable>
                     <Menu.Item as={'a'} href='/'>
                         <Icon name={'home'}/> Samsara
                     </Menu.Item>
