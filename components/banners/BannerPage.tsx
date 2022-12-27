@@ -20,6 +20,7 @@ type States = {
     limitedOnly: boolean | null
     sortBy: string | null
     order: string | null
+    expand: boolean | null
 }
 
 export default class BannerPageComponent extends React.Component<Properties, States> {
@@ -32,6 +33,7 @@ export default class BannerPageComponent extends React.Component<Properties, Sta
             limitedOnly: null,
             sortBy: null,
             order: null,
+            expand: null,
         }
 
         this.componentRef = React.createRef()
@@ -49,12 +51,25 @@ export default class BannerPageComponent extends React.Component<Properties, Sta
             limitedOnly,
             sortBy,
             order,
+            expand,
         } = this.state
 
 
         const setLimitedOnly = (v: boolean) => this.setState({limitedOnly: v})
         const setSortBy = (v: string) => this.setState({sortBy: v})
         const setOrder = (v: string) => this.setState({order: v})
+        const setExpand = (v: boolean) => this.setState({expand: v})
+
+        const getBannerContainerStyle = (expand: boolean) => {
+            if (expand) {
+                return {
+                    paddingLeft: '1em',
+                    paddingRight: '1em',
+                }
+            }
+
+            return {}
+        }
 
         return (
             <>
@@ -63,9 +78,10 @@ export default class BannerPageComponent extends React.Component<Properties, Sta
                                             setLimitedOnly={setLimitedOnly}
                                             order={order} setOrder={setOrder}
                                             sortBy={sortBy} setSortBy={setSortBy}
+                                            expand={expand} setExpand={setExpand}
                     />
                 </Container>
-                <Container style={{overflowX: 'scroll'}}>
+                <Container style={{overflowX: 'scroll', ...getBannerContainerStyle(expand ?? false)}} fluid={expand ?? false}>
                     <ScrollContainer className="scroll-container" hideScrollbars={false}>
                         <BannerTableComponent bannerType={bannerType}
                                               versionParts={getVersionParts(banners)}

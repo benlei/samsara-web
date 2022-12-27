@@ -1,9 +1,11 @@
-import React from "react";
+import React, {Dispatch, SetStateAction} from "react";
 import {CheckboxProps, Form, Icon, Label, Radio} from "semantic-ui-react";
 import {BannerOptions, BannerOptionSetters} from "@/banners/types";
 
 type Properties = {
     showLimitedOnly: boolean
+    expand: boolean | null
+    setExpand: Dispatch<SetStateAction<any>>
 } & BannerOptions & BannerOptionSetters
 
 type States = {}
@@ -13,11 +15,13 @@ export default class BannerOptionsComponent extends React.Component<Properties, 
     flipOrder = () => this.props.setOrder(this.props.order == 'desc' ? 'asc' : 'desc')
 
     handleChangeLimitedOnly = () => this.props.setLimitedOnly(!this.props.limitedOnly)
+    handleExpand = () => this.props.setExpand(!this.props.expand)
 
     componentDidMount = () => {
         this.props.setSortBy('last');
         this.props.setOrder('desc');
         this.props.setLimitedOnly(false);
+        this.props.setExpand(false);
     }
 
     getOrderElement = () => {
@@ -75,14 +79,23 @@ export default class BannerOptionsComponent extends React.Component<Properties, 
                 </Form.Field>
 
 
-                {this.props.showLimitedOnly && (
+                <Form.Group widths='equal'>
                     <Form.Field>
-                        <Radio toggle label='Hide Standard Characters'
-                                       onChange={this.handleChangeLimitedOnly}
-                                       checked={this.props.limitedOnly ?? false}
+                        <Radio toggle label='Expand'
+                               onChange={this.handleExpand}
+                               checked={this.props.expand ?? false}
                         />
                     </Form.Field>
-                )}
+
+                    {this.props.showLimitedOnly && (
+                        <Form.Field>
+                            <Radio toggle label='Hide Standard Characters'
+                                   onChange={this.handleChangeLimitedOnly}
+                                   checked={this.props.limitedOnly ?? false}
+                            />
+                        </Form.Field>
+                    )}
+                </Form.Group>
             </Form>
         </>;
     }
