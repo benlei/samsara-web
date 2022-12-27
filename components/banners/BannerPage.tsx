@@ -1,10 +1,10 @@
 import React from "react";
 import {Container} from "semantic-ui-react";
-import BannerOptionsComponent from "@/components/BannerOptions";
-import BannerTableComponent from "@/components/BannerTable";
+import BannerOptionsComponent from "@/components/banners/BannerOptions";
+import BannerTableComponent from "@/components/banners/BannerTable";
 import getVersionParts from "@/banners/version";
 import {getRundowns} from "@/banners/rundown";
-import BannerDownloadComponent from "@/components/BannerDownload";
+import BannerDownloadComponent from "@/components/banners/BannerDownload";
 import {BannerResource} from "@/banners/types";
 
 type Properties = {

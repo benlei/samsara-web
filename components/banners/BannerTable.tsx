@@ -2,9 +2,9 @@ import React from "react";
 import {BannerOptions, Rundown, VersionParts} from "@/banners/types";
 import {Table} from "semantic-ui-react";
 import _ from "lodash";
-import BannerHeaderComponent from "@/components/BannerHeader";
-import BannerFooterComponent from "@/components/BannerFooter";
-import BannerRowComponent from "@/components/BannerRow";
+import BannerHeaderComponent from "@/components/banners/BannerHeader";
+import BannerFooterComponent from "@/components/banners/BannerFooter";
+import BannerRowComponent from "@/components/banners/BannerRow";
 
 
 type BannerRundownProps = {
