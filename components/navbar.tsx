@@ -24,7 +24,7 @@ export default function Navbar({children}: React.PropsWithChildren) {
             <Container style={{marginTop: '.5em'}}>
                 <Menu>
                     <Menu.Item as={'a'} href='/'>
-                        <Icon name={'home'}/>
+                        <Icon name={'home'}/> Samsara
                     </Menu.Item>
                     <Dropdown text='Character Banners' pointing className={'link item ' + getCharacterBannerActive()}>
                         <Dropdown.Menu>
@@ -39,7 +39,6 @@ export default function Navbar({children}: React.PropsWithChildren) {
                         </Dropdown.Menu>
                     </Dropdown>
                     <Menu.Item>Resin Timer</Menu.Item>
-                    <Menu.Item>Artifact Rotation</Menu.Item>
                 </Menu>
             </Container>
         </>
