@@ -99,7 +99,7 @@ export default class BannerTableComponent extends React.Component<BannerRundownP
 
         return (
             <>
-                <Table definition unstackable selectable className={'history'} style={{marginTop: '1em'}}>
+                <Table definition unstackable selectable compact className={'history'} style={{marginTop: '1em'}}>
                     <BannerHeaderComponent
                         versionParts={versionParts}
                         onChange={this.handleFilterChange}
