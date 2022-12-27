@@ -1,0 +1,58 @@
+name: Data Updater
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches:
+      - gh-actions-setup
+#  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/checkout@v3
+        with:
+          repository: git@github.com:genshin-samsara/samsara-tools.git
+          ssh-key: ${{ secrets.TOOLS_PRIVATE_KEY }}
+          path: 'samsara-tools'
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.2.2
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: ./samsara-tools/.venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: cd samsara-tools && poetry install --no-interaction --no-root
+
+      - name: Load up data
+        run: cd samsara-tools && poetry run python pull_banners.py --output-json ../public/data/banners.json --output-image-dir ../public/images/
+
+      - name: Get the file diff in public
+        run: |
+          echo "diff_lines=$(git diff --stat HEAD  -- public/ | wc -l | awk '{$1=$1};1')" >> $GITHUB_ENV
+
+      - name: Push new data
+        if: ${{ env.diff_lines != '0' }}
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add public/
+          git commit -m "generated: automatic data updating"
+          git push
