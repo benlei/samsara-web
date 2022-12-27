@@ -1,5 +1,5 @@
 import React from "react";
-import {CheckboxProps, Form, Icon, Label} from "semantic-ui-react";
+import {CheckboxProps, Form, Icon, Label, Radio} from "semantic-ui-react";
 import {BannerOptions, BannerOptionSetters} from "@/banners/types";
 
 type Properties = {
@@ -77,7 +77,7 @@ export default class BannerOptionsComponent extends React.Component<Properties, 
 
                 {this.props.showLimitedOnly && (
                     <Form.Field>
-                        <Form.Checkbox label='Hide Standard Characters'
+                        <Radio toggle label='Hide Standard Characters'
                                        onChange={this.handleChangeLimitedOnly}
                                        checked={this.props.limitedOnly ?? false}
                         />

@@ -19,10 +19,14 @@ export default function Navbar({children}: React.PropsWithChildren) {
         return ''
     }
 
+    function getResinActive() {
+        return asPath == '/resin' ? 'active' : '';
+    }
+
     return (
         <>
             <Container style={{marginTop: '.5em'}}>
-                <Menu>
+                <Menu secondary pointing>
                     <Menu.Item as={'a'} href='/'>
                         <Icon name={'home'}/> Samsara
                     </Menu.Item>
@@ -38,7 +42,7 @@ export default function Navbar({children}: React.PropsWithChildren) {
                             <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/></Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Menu.Item>Resin Timer</Menu.Item>
+                    <Menu.Item as={'a'} href={'/resin'} className={getResinActive()}>Resin Timer</Menu.Item>
                 </Menu>
             </Container>
         </>
