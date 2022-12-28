@@ -82,7 +82,7 @@ export default class BannerPageComponent extends React.Component<Properties, Sta
                     />
                 </Container>
                 <Container style={{overflowX: 'scroll', ...getBannerContainerStyle(expand ?? false)}} fluid={expand ?? false}>
-                    <ScrollContainer className="scroll-container" hideScrollbars={false}>
+                    <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
                         <BannerTableComponent bannerType={bannerType}
                                               versionParts={getVersionParts(banners)}
                                               rundown={getRundowns(banners)}
