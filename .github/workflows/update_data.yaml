@@ -1,5 +1,4 @@
 name: Data Updater
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   workflow_dispatch:
   schedule:
