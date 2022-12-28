@@ -40,8 +40,14 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: cd samsara-tools && poetry install --no-interaction --no-root
 
-      - name: Load up data
+      - name: Load up banner data
         run: cd samsara-tools && poetry run python pull_banners.py --output-json ../public/data/banners.json --output-image-dir ../public/images/
+
+      - name: Load up character data
+        run: cd samsara-tools && poetry run python pull_characters.py --output-json ../public/data/characters.json --output-image-dir ../public/images/
+
+      - name: Load up artifact data
+        run: cd samsara-tools && poetry run python pull_artifacts.py --output-json ../public/data/artifacts.json --output-image-dir ../public/images/
 
       - name: Get the file diff in public
         run: |
