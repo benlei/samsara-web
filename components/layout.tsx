@@ -1,8 +1,6 @@
-'use client';
-
 import React from "react";
 import Head from 'next/head'
-import Navbar from './navbar'
+import Navbar, {NavbarMobile} from './navbar'
 import Footer from './footer'
 
 export default function Layout({children}: React.PropsWithChildren) {
@@ -16,7 +14,8 @@ export default function Layout({children}: React.PropsWithChildren) {
                 <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes"/>
             </Head>
             <main>
-                <Navbar></Navbar>
+                <Navbar />
+                <NavbarMobile />
                 {children}
                 <Footer></Footer>
             </main>

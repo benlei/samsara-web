@@ -25,12 +25,12 @@ export default function Navbar({children}: React.PropsWithChildren) {
 
     return (
         <>
-            <Container style={{marginTop: '.5em'}}>
-                <Menu secondary pointing stackable>
+            <Container style={{marginTop: '.5em'}} className={'desktop'}>
+                <Menu secondary pointing>
                     <Menu.Item as={'a'} href='/'>
                         <Icon name={'home'}/> Samsara
                     </Menu.Item>
-                    <Dropdown text='Character Banners' pointing className={'link item ' + getCharacterBannerActive()}>
+                    <Dropdown text='Character Banners' pointing className={'link item '}>
                         <Dropdown.Menu>
                             <Dropdown.Item as={'a'} href='/'>5 <Icon name={'star'}/></Dropdown.Item>
                             <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon name={'star'}/></Dropdown.Item>
@@ -46,5 +46,35 @@ export default function Navbar({children}: React.PropsWithChildren) {
                 </Menu>
             </Container>
         </>
+    )
+}
+
+
+export function NavbarMobile() {
+    const {asPath} = useRouter();
+    function getResinActive() {
+        return asPath == '/resin' ? 'active' : '';
+    }
+
+    return (
+        <Container style={{marginTop: '.5em', display: 'none'}} className={'mobile'}>
+            <Menu secondary pointing>
+                <Menu.Item as={'a'} href='/'>
+                    <Icon name={'home'}/> Samsara
+                </Menu.Item>
+                <Dropdown text='Banners' pointing className={'link item'}>
+                    <Dropdown.Menu>
+                        <Dropdown.Header>Characters</Dropdown.Header>
+                        <Dropdown.Item as={'a'} href='/'>5 <Icon name={'star'}/></Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon name={'star'}/></Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Header>Weapons</Dropdown.Header>
+                        <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon name={'star'}/></Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/></Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Menu.Item as={'a'} href={'/resin'} className={getResinActive()}>Resin Timer</Menu.Item>
+            </Menu>
+        </Container>
     )
 }
