@@ -1,6 +1,10 @@
 import React from "react";
-import {Button, Container, Form, Image, Label, List, Step, Table} from "semantic-ui-react";
+import {Container, Form, Image, Label, List, Table} from "semantic-ui-react";
 import Head from "next/head";
+import ArtifactStepComponent from "@/components/artifacts/ArtifactStep";
+import ArtifactConfigLoadDownloadComponent from "@/components/artifacts/ArtifactConfigLoadDownload";
+import AddArtifactRotationComponent from "@/components/artifacts/AddArtifactRotation";
+import {getArtifacts} from "@/artifacts/artifacts";
 
 type Properties = {
     characters: any
@@ -9,6 +13,21 @@ type Properties = {
 
 type States = {
     hoverRow: number
+    rotations: Rotations
+}
+
+type Rotations = {
+    fixed: boolean // fixed # of days between all rotations, or no
+    fixedDays: number
+    data: Rotation[]
+}
+
+type Rotation = {
+    domain: string,
+    teams: string[][]
+    characters: string[]
+    days?: number
+    note: string
 }
 
 
@@ -26,7 +45,8 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
         super(props);
 
         this.state = {
-            hoverRow: -1
+            hoverRow: -1,
+            rotations: {fixed: true, fixedDays: 3, data: []},
         }
     }
 
@@ -35,6 +55,13 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
         //     date: new Date(),
         //     military: false,
         // })
+
+        this.setState({
+            rotations: {
+                ...this.state.rotations,
+                ...JSON.parse(localStorage.getItem("rotations") || "{}"),
+            }
+        })
     }
 
     handleHover = (key: number) => {
@@ -43,45 +70,21 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
         }
     }
 
+    clearHover = () => {
+        this.setState({hoverRow: -1})
+    }
+
     render() {
         return (
             <>
                 <Head>
                     <title>Artifact Rotations - Samsara</title>
                 </Head>
+                <ArtifactStepComponent/>
+                <ArtifactConfigLoadDownloadComponent/>
+
                 <Container style={{marginTop: '2em'}}>
-                    <Step.Group widths={3}>
-                        <Step>
-                            <Step.Content>
-                                <Step.Title>Yesterday</Step.Title>
-                            </Step.Content>
-                        </Step>
-                        <Step active>
-                            <Step.Content>
-                                <Step.Title>Today</Step.Title>
-                            </Step.Content>
-                        </Step>
-                        <Step disabled>
-                            <Step.Content>
-                                <Step.Title>Tomorrow</Step.Title>
-                            </Step.Content>
-                        </Step>
-                    </Step.Group>
-                </Container>
-                <Container text style={{marginTop: '2em'}} textAlign={"center"}>
-                    <Form>
-                        <Form.Group widths={"equal"}>
-                            <Form.Field>
-                                <Button content='Download Settings (JSON)' icon='download' labelPosition='left'/>
-                            </Form.Field>
-                            <Form.Field>
-                                <Button content='Load Settings (JSON)' icon='upload' labelPosition='right'/>
-                            </Form.Field>
-                        </Form.Group>
-                    </Form>
-                </Container>
-                <Container style={{marginTop: '2em'}}>
-                    <Table unstackable>
+                    <Table unstackable onMouseLeave={this.clearHover}>
                         <Table.Header>
                             <Table.Row>
                                 <Table.HeaderCell>#</Table.HeaderCell>
@@ -93,7 +96,15 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                         </Table.Header>
 
                         <Table.Body>
-                            <Table.Row onMouseEnter={this.handleHover(1)}>
+                            {this.state.rotations.data.length ? <>
+
+                            </> : <>
+                                {/*<AddArtifactRotationComponent editable={false} deletable={false} index={0}*/}
+                                {/*    artifacts={getArtifacts(this.props.artifacts)}*/}
+                                {/*/>*/}
+                            </>
+                            }
+                            <Table.Row onMouseEnter={this.handleHover(99)}>
                                 <Table.Cell verticalAlign={'top'}>
                                     1
                                 </Table.Cell>
@@ -142,20 +153,23 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     </Container>
                                 </Table.Cell>
                             </Table.Row>
-                            {this.state.hoverRow == 1 && (
+                            {this.state.hoverRow == 99 && (
                                 <Table.Row>
                                     <Table.Cell verticalAlign={'top'} colSpan={5} textAlign={'center'}>
                                         <Form style={{marginTop: '1em'}}>
                                             <Form.Group widths='equal'>
-                                                <Form.Button content='New Rotation' color={'green'} icon='add' labelPosition='left' />
-                                                <Form.Button content={'Edit #'+this.state.hoverRow} icon='edit' labelPosition='left' disabled />
-                                                <Form.Button content='Delete' color={'red'} icon='delete' labelPosition='left' />
+                                                <Form.Button content='New Rotation' color={'green'} icon='add'
+                                                             labelPosition='left'/>
+                                                <Form.Button content={'Edit #' + this.state.hoverRow} icon='edit'
+                                                             labelPosition='left' disabled/>
+                                                <Form.Button content='Delete' color={'red'} icon='delete'
+                                                             labelPosition='left'/>
                                             </Form.Group>
                                         </Form>
                                     </Table.Cell>
                                 </Table.Row>
                             )}
-                            <Table.Row onMouseEnter={this.handleHover(2)}>
+                            <Table.Row onMouseEnter={this.handleHover(999)}>
                                 <Table.Cell verticalAlign={'top'}>
                                     2
                                 </Table.Cell>
@@ -204,6 +218,22 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     </Container>
                                 </Table.Cell>
                             </Table.Row>
+                            {this.state.hoverRow == 999 && (
+                                <Table.Row>
+                                    <Table.Cell verticalAlign={'top'} colSpan={5} textAlign={'center'}>
+                                        <Form style={{marginTop: '1em'}}>
+                                            <Form.Group widths='equal'>
+                                                <Form.Button content='New Rotation' color={'green'} icon='add'
+                                                             labelPosition='left'/>
+                                                <Form.Button content={'Edit #' + this.state.hoverRow} icon='edit'
+                                                             labelPosition='left' disabled/>
+                                                <Form.Button content='Delete' color={'red'} icon='delete'
+                                                             labelPosition='left'/>
+                                            </Form.Group>
+                                        </Form>
+                                    </Table.Cell>
+                                </Table.Row>
+                            )}
                         </Table.Body>
                     </Table>
                 </Container>
