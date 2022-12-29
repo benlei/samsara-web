@@ -7,12 +7,14 @@ enum Phase {
     Add,
     Edit,
     Delete,
+    Sync,
 }
 
 type Properties = {
     index: number
     editable: boolean
     deletable: boolean
+    syncable: boolean
     data: ArtifactRotationData
 }
 
@@ -21,6 +23,11 @@ type States = {
 }
 
 export default class AddArtifactRotationComponent extends React.Component<Properties, States> {
+    public static defaultProps = {
+        editable: true,
+        deletable: true,
+        syncable: true,
+    };
 
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
@@ -44,9 +51,15 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                                 <Form.Button content='New Rotation' color={'green'} icon='add'
                                              labelPosition='left' onClick={this.addClicked}/>
                                 <Form.Button
-                                    content={'Edit #' + (this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index)}
+                                    content={'Edit Rotation #' + (this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index)}
                                     icon='edit'
                                     labelPosition='left' disabled={!this.props.editable}/>
+
+                                <Form.Button
+                                    content={'Start Rotation at #' + (this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index)}
+                                    icon='pin'
+                                    labelPosition='left' disabled={!this.props.syncable}/>
+
                                 <Form.Button content='Delete' color={'red'} icon='delete'
                                              labelPosition='left' disabled={!this.props.deletable}/>
                             </Form.Group>

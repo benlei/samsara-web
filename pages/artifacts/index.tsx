@@ -239,6 +239,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
 
                             {this.state.activeIndex == -1 &&
                                 <AddArtifactRotationComponent editable={false} deletable={false} index={-1}
+                                                              syncable={false}
                                                               data={data}/>
                             }
                         </Table.Body>
