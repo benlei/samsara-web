@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Container, Form, Image, Label, List, Step, Table, TextArea} from "semantic-ui-react";
+import {Button, Container, Form, Image, Label, List, Step, Table} from "semantic-ui-react";
 import Head from "next/head";
 
 type Properties = {
@@ -7,7 +7,9 @@ type Properties = {
     artifacts: any
 }
 
-type States = {}
+type States = {
+    hoverRow: number
+}
 
 
 export async function getStaticProps() {
@@ -23,8 +25,9 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
 
-        // this.state = {
-        // }
+        this.state = {
+            hoverRow: -1
+        }
     }
 
     componentDidMount = () => {
@@ -32,6 +35,12 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
         //     date: new Date(),
         //     military: false,
         // })
+    }
+
+    handleHover = (key: number) => {
+        return () => {
+            this.setState({hoverRow: key})
+        }
     }
 
     render() {
@@ -79,12 +88,12 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                 <Table.HeaderCell>Artifacts</Table.HeaderCell>
                                 <Table.HeaderCell>Teams</Table.HeaderCell>
                                 <Table.HeaderCell>For Characters</Table.HeaderCell>
-                                <Table.HeaderCell>Options</Table.HeaderCell>
+                                <Table.HeaderCell>Notes</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
 
                         <Table.Body>
-                            <Table.Row>
+                            <Table.Row onMouseEnter={this.handleHover(1)}>
                                 <Table.Cell verticalAlign={'top'}>
                                     1
                                 </Table.Cell>
@@ -131,10 +140,22 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     <Container fluid style={{marginBottom: '1em'}}>
                                         Blah blah blah yes my note is this
                                     </Container>
-                                    <Button content='Edit' icon='edit' labelPosition='left' size={'mini'} />
                                 </Table.Cell>
                             </Table.Row>
-                            <Table.Row>
+                            {this.state.hoverRow == 1 && (
+                                <Table.Row>
+                                    <Table.Cell verticalAlign={'top'} colSpan={5} textAlign={'center'}>
+                                        <Form style={{marginTop: '1em'}}>
+                                            <Form.Group widths='equal'>
+                                                <Form.Button content='New Rotation' color={'green'} icon='add' labelPosition='left' />
+                                                <Form.Button content={'Edit #'+this.state.hoverRow} icon='edit' labelPosition='left' disabled />
+                                                <Form.Button content='Delete' color={'red'} icon='delete' labelPosition='left' />
+                                            </Form.Group>
+                                        </Form>
+                                    </Table.Cell>
+                                </Table.Row>
+                            )}
+                            <Table.Row onMouseEnter={this.handleHover(2)}>
                                 <Table.Cell verticalAlign={'top'}>
                                     2
                                 </Table.Cell>
@@ -181,21 +202,10 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     <Container fluid style={{marginBottom: '1em'}}>
                                         No notes
                                     </Container>
-                                    {/*On hover of this cell, show the edit button */}
-                                    <Button content='Edit' icon='edit' labelPosition='left' size={'mini'} />
                                 </Table.Cell>
                             </Table.Row>
                         </Table.Body>
-
-                        <Table.Footer>
-                            <Table.Row>
-                                <Table.Cell colSpan={5} textAlign={'center'}>
-                                    Put the add new entry here!
-                                </Table.Cell>
-                            </Table.Row>
-                        </Table.Footer>
                     </Table>
-
                 </Container>
             </>
         );
