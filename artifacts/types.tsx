@@ -44,7 +44,7 @@ export type Rotations = {
     fixed: boolean // fixed # of days between all rotations, or no
     fixedDays: number
     date: string
-    teams: Team
+    teams: Teams
     data: Rotation[]
 }
 
@@ -56,6 +56,11 @@ export type Rotation = {
     note: string
 }
 
+export type Teams = {
+    [uuid: string]: Team
+}
+
 export type Team = {
-    [name: string]: string[]
+    name: string
+    characters: string[]
 }

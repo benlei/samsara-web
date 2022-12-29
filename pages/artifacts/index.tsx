@@ -1,5 +1,5 @@
 import React from "react";
-import {Accordion, AccordionTitleProps, Container, Icon, Image, Label, List, Table} from "semantic-ui-react";
+import {Accordion, AccordionTitleProps, Container, Icon, Image, List, Table} from "semantic-ui-react";
 import Head from "next/head";
 import ArtifactStepComponent from "@/components/artifacts/ArtifactStep";
 import ArtifactConfigLoadDownloadComponent from "@/components/artifacts/ArtifactConfigLoadDownload";
@@ -7,6 +7,7 @@ import {ArtifactRotationData, ArtifactsDomainsData, Rotations} from "@/artifacts
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
 import AddArtifactRotationComponent from "@/components/artifacts/AddArtifactRotation";
+import ArtifactDomainComponent from "@/components/artifacts/ArtifactDomain";
 
 type Properties = {
     characters: string[]
@@ -96,23 +97,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     1
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    <List>
-                                        <List.Item>
-                                            <Label image>
-                                                <Image src='/images/artifacts/Blizzard-Strayer.png'
-                                                /> Blizzard Strayer
-                                            </Label>
-                                        </List.Item>
-                                        <List.Item>
-                                            <Label image>
-                                                <Image src='/images/artifacts/Heart-of-Depth.png'
-                                                /> Heart of Depth
-                                            </Label>
-                                        </List.Item>
-                                        <List.Item>
-                                            <Label basic>Peak of Vindagnyr</Label>
-                                        </List.Item>
-                                    </List>
+                                    <ArtifactDomainComponent data={data} domain={'City of Gold'}/>
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
                                     <List>
@@ -151,23 +136,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     2
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    <List>
-                                        <List.Item>
-                                            <Label image>
-                                                <Image src='/images/artifacts/Blizzard-Strayer.png'
-                                                /> Blizzard Strayer
-                                            </Label>
-                                        </List.Item>
-                                        <List.Item>
-                                            <Label image>
-                                                <Image src='/images/artifacts/Heart-of-Depth.png'
-                                                /> Heart of Depth
-                                            </Label>
-                                        </List.Item>
-                                        <List.Item>
-                                            <Label basic>Peak of Vindagnyr</Label>
-                                        </List.Item>
-                                    </List>
+                                    <ArtifactDomainComponent data={data} domain={'Peak of Vindagnyr'}/>
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
                                     <List>

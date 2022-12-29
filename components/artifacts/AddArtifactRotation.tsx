@@ -1,6 +1,8 @@
-import {Form, Grid, Image, Label, List, Segment, Table} from "semantic-ui-react";
+import {Form, Grid, Segment, Table} from "semantic-ui-react";
 import React from "react";
 import {ArtifactRotationData} from "@/artifacts/types";
+import _ from "lodash";
+import ArtifactDomainComponent from "@/components/artifacts/ArtifactDomain";
 
 enum Phase {
     Prompt,
@@ -41,7 +43,17 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
         this.setState({phase: Phase.Add})
     }
 
+    getSortedDomainNames = () => {
+        return _.chain(Object.keys(this.props.data.artifactDomains))
+            .orderBy((name) => name)
+            .value()
+    }
+
     render() {
+        const {
+            artifacts,
+            artifactDomains,
+        } = this.props.data
         return (
             <Table.Row>
                 <Table.Cell verticalAlign={'top'} colSpan={4} textAlign={'center'}>
@@ -68,32 +80,14 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                     }
                     {this.state.phase == Phase.Add &&
                         <>
-                            <Grid columns={4} stackable style={{marginTop: '1em'}} textAlign={'left'}>
-                                <Grid.Column>
-                                    <Segment>
-                                        <List>
-                                            <List.Item>
-                                                <Label image>
-                                                    <Image
-                                                        src={'/images/artifacts/' + this.props.data.artifacts["Desert Pavilion Chronicle"].image + '.png'}
-                                                        alt={this.props.data.artifacts["Desert Pavilion Chronicle"].image}
-                                                    /> {this.props.data.artifacts["Desert Pavilion Chronicle"].name}
-                                                </Label>
-                                            </List.Item>
-                                            <List.Item>
-                                                <Label image>
-                                                    <Image
-                                                        src={'/images/artifacts/' + this.props.data.artifacts["Flower of Paradise Lost"].image + '.png'}
-                                                        alt={this.props.data.artifacts["Flower of Paradise Lost"].image}
-                                                    /> {this.props.data.artifacts["Flower of Paradise Lost"].name}
-                                                </Label>
-                                            </List.Item>
-                                            <List.Item>
-                                                <Label basic>City of Gold</Label>
-                                            </List.Item>
-                                        </List>
-                                    </Segment>
-                                </Grid.Column>
+                            <Grid columns={3} stackable style={{marginTop: '1em'}} textAlign={'left'}>
+                                {this.getSortedDomainNames().map((domainName) =>
+                                    <Grid.Column key={domainName}>
+                                        <Segment>
+                                            <ArtifactDomainComponent data={this.props.data} domain={domainName} />
+                                        </Segment>
+                                    </Grid.Column>
+                                )}
                             </Grid>
                         </>
                     }
