@@ -44,13 +44,18 @@ export type Rotations = {
     fixed: boolean // fixed # of days between all rotations, or no
     fixedDays: number
     date: string
+    teams: Team
     data: Rotation[]
 }
 
 export type Rotation = {
     domain: string,
-    teams: string[][]
+    teams: string[]
     characters: string[]
     days?: number
     note: string
+}
+
+export type Team = {
+    [name: string]: string[]
 }

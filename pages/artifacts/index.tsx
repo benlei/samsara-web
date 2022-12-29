@@ -33,7 +33,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
 
         this.state = {
             activeIndex: -1,
-            rotations: {fixed: true, fixedDays: 3, date: '2023-01-01', data: []},
+            rotations: {fixed: true, fixedDays: 3, date: '2023-01-01', teams: {}, data: []},
         }
     }
 
