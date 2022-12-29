@@ -79,9 +79,9 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                     <Table unstackable>
                         <Table.Header>
                             <Table.Row>
-                                <Table.HeaderCell>#</Table.HeaderCell>
-                                <Table.HeaderCell>Artifacts</Table.HeaderCell>
-                                <Table.HeaderCell>Teams</Table.HeaderCell>
+                                <Table.HeaderCell style={{width: '3em'}}>#</Table.HeaderCell>
+                                <Table.HeaderCell style={{width: '18em'}}>Artifacts</Table.HeaderCell>
+                                <Table.HeaderCell style={{width: '16em'}}>Teams</Table.HeaderCell>
                                 <Table.HeaderCell>Info</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
