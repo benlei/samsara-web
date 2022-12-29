@@ -1,3 +1,5 @@
+import {Characters} from "@/characters/types";
+
 export type ArtifactDomains = {
     [domain: string]: ArtifactDomain
 }
@@ -29,5 +31,26 @@ export type ArtifactsData = {
 
 export type ArtifactDomainsData = {
     [domain: string]: string[]
+}
 
+export type ArtifactRotationData = {
+    artifacts: Artifacts
+    artifactDomains: ArtifactDomains
+    characters: Characters
+    rotations: Rotations
+}
+
+export type Rotations = {
+    fixed: boolean // fixed # of days between all rotations, or no
+    fixedDays: number
+    date: string
+    data: Rotation[]
+}
+
+export type Rotation = {
+    domain: string,
+    teams: string[][]
+    characters: string[]
+    days?: number
+    note: string
 }

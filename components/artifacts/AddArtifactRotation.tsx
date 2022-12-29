@@ -1,6 +1,6 @@
 import {Checkbox, Form, Grid, Table} from "semantic-ui-react";
 import React from "react";
-import {ArtifactDomains, Artifacts} from "@/artifacts/types";
+import {ArtifactRotationData} from "@/artifacts/types";
 
 enum Phase {
     Prompt,
@@ -13,8 +13,7 @@ type Properties = {
     index: number
     editable: boolean
     deletable: boolean
-    artifactDomains: ArtifactDomains
-    artifacts: Artifacts
+    data: ArtifactRotationData
 }
 
 type States = {
@@ -44,8 +43,10 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                             <Form.Group widths='equal'>
                                 <Form.Button content='New Rotation' color={'green'} icon='add'
                                              labelPosition='left' onClick={this.addClicked}/>
-                                <Form.Button content={'Edit #' + (this.props.index + 1)} icon='edit'
-                                             labelPosition='left' disabled={!this.props.editable}/>
+                                <Form.Button
+                                    content={'Edit #' + (this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index)}
+                                    icon='edit'
+                                    labelPosition='left' disabled={!this.props.editable}/>
                                 <Form.Button content='Delete' color={'red'} icon='delete'
                                              labelPosition='left' disabled={!this.props.deletable}/>
                             </Form.Group>

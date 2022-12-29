@@ -1,35 +1,22 @@
 import React from "react";
-import {Container, Form, Image, Label, List, Table} from "semantic-ui-react";
+import {Accordion, AccordionTitleProps, Container, Form, Icon, Image, Label, List, Table} from "semantic-ui-react";
 import Head from "next/head";
 import ArtifactStepComponent from "@/components/artifacts/ArtifactStep";
 import ArtifactConfigLoadDownloadComponent from "@/components/artifacts/ArtifactConfigLoadDownload";
+import {ArtifactRotationData, ArtifactsDomainsData, Rotations} from "@/artifacts/types";
+import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
+import {getCharacters} from "@/characters/characters";
 import AddArtifactRotationComponent from "@/components/artifacts/AddArtifactRotation";
-import {getArtifacts} from "@/artifacts/artifacts";
 
 type Properties = {
-    characters: any
-    artifacts: any
+    characters: string[]
+    artifacts: ArtifactsDomainsData
 }
 
 type States = {
-    hoverRow: number
+    activeIndex: number
     rotations: Rotations
 }
-
-type Rotations = {
-    fixed: boolean // fixed # of days between all rotations, or no
-    fixedDays: number
-    data: Rotation[]
-}
-
-type Rotation = {
-    domain: string,
-    teams: string[][]
-    characters: string[]
-    days?: number
-    note: string
-}
-
 
 export async function getStaticProps() {
     return {
@@ -45,8 +32,8 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
         super(props);
 
         this.state = {
-            hoverRow: -1,
-            rotations: {fixed: true, fixedDays: 3, data: []},
+            activeIndex: -1,
+            rotations: {fixed: true, fixedDays: 3, date: '2023-01-01', data: []},
         }
     }
 
@@ -64,17 +51,22 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
         })
     }
 
-    handleHover = (key: number) => {
-        return () => {
-            this.setState({hoverRow: key})
-        }
-    }
+    handleClick = (event: any, titleProps: AccordionTitleProps) => {
+        const {index} = titleProps
+        const {activeIndex} = this.state
+        const newIndex = activeIndex === index ? -1 : index
 
-    clearHover = () => {
-        this.setState({hoverRow: -1})
-    }
+        this.setState({activeIndex: newIndex as number})
+    };
 
     render() {
+        const data: ArtifactRotationData = {
+            "artifacts": getArtifacts(this.props.artifacts),
+            "artifactDomains": getArtifactDomains(this.props.artifacts),
+            "characters": getCharacters(this.props.characters),
+            "rotations": this.state.rotations,
+        }
+
         return (
             <>
                 <Head>
@@ -84,7 +76,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                 <ArtifactConfigLoadDownloadComponent/>
 
                 <Container style={{marginTop: '2em'}}>
-                    <Table unstackable onMouseLeave={this.clearHover}>
+                    <Table unstackable>
                         <Table.Header>
                             <Table.Row>
                                 <Table.HeaderCell>#</Table.HeaderCell>
@@ -96,15 +88,11 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                         </Table.Header>
 
                         <Table.Body>
-                            {this.state.rotations.data.length ? <>
+                            {this.state.rotations.data.length && <>
 
-                            </> : <>
-                                {/*<AddArtifactRotationComponent editable={false} deletable={false} index={0}*/}
-                                {/*    artifacts={getArtifacts(this.props.artifacts)}*/}
-                                {/*/>*/}
-                            </>
-                            }
-                            <Table.Row onMouseEnter={this.handleHover(99)}>
+                            </>}
+
+                            <Table.Row>
                                 <Table.Cell verticalAlign={'top'}>
                                     1
                                 </Table.Cell>
@@ -151,16 +139,23 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     <Container fluid style={{marginBottom: '1em'}}>
                                         Blah blah blah yes my note is this
                                     </Container>
+                                    <Accordion>
+                                        <Accordion.Title active={this.state.activeIndex === 99}
+                                                         onClick={this.handleClick} index={99}>
+                                            <Icon name='dropdown'/>
+                                            Expand Options
+                                        </Accordion.Title>
+                                    </Accordion>
                                 </Table.Cell>
                             </Table.Row>
-                            {this.state.hoverRow == 99 && (
+                            {this.state.activeIndex == 99 && (
                                 <Table.Row>
                                     <Table.Cell verticalAlign={'top'} colSpan={5} textAlign={'center'}>
                                         <Form style={{marginTop: '1em'}}>
                                             <Form.Group widths='equal'>
                                                 <Form.Button content='New Rotation' color={'green'} icon='add'
                                                              labelPosition='left'/>
-                                                <Form.Button content={'Edit #' + this.state.hoverRow} icon='edit'
+                                                <Form.Button content={'Edit #' + this.state.activeIndex} icon='edit'
                                                              labelPosition='left' disabled/>
                                                 <Form.Button content='Delete' color={'red'} icon='delete'
                                                              labelPosition='left'/>
@@ -169,7 +164,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     </Table.Cell>
                                 </Table.Row>
                             )}
-                            <Table.Row onMouseEnter={this.handleHover(999)}>
+                            <Table.Row>
                                 <Table.Cell verticalAlign={'top'}>
                                     2
                                 </Table.Cell>
@@ -216,16 +211,23 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     <Container fluid style={{marginBottom: '1em'}}>
                                         No notes
                                     </Container>
+                                    <Accordion>
+                                        <Accordion.Title active={this.state.activeIndex === 999}
+                                                         onClick={this.handleClick} index={999}>
+                                            <Icon name='dropdown'/>
+                                            Expand Options
+                                        </Accordion.Title>
+                                    </Accordion>
                                 </Table.Cell>
                             </Table.Row>
-                            {this.state.hoverRow == 999 && (
+                            {this.state.activeIndex == 999 && (
                                 <Table.Row>
                                     <Table.Cell verticalAlign={'top'} colSpan={5} textAlign={'center'}>
                                         <Form style={{marginTop: '1em'}}>
                                             <Form.Group widths='equal'>
                                                 <Form.Button content='New Rotation' color={'green'} icon='add'
                                                              labelPosition='left'/>
-                                                <Form.Button content={'Edit #' + this.state.hoverRow} icon='edit'
+                                                <Form.Button content={'Edit #' + this.state.activeIndex} icon='edit'
                                                              labelPosition='left' disabled/>
                                                 <Form.Button content='Delete' color={'red'} icon='delete'
                                                              labelPosition='left'/>
@@ -234,6 +236,11 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     </Table.Cell>
                                 </Table.Row>
                             )}
+
+                            {this.state.activeIndex == -1 &&
+                                <AddArtifactRotationComponent editable={false} deletable={false} index={-1}
+                                                              data={data}/>
+                            }
                         </Table.Body>
                     </Table>
                 </Container>
