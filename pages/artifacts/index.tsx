@@ -88,9 +88,9 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                         </Table.Header>
 
                         <Table.Body>
-                            {this.state.rotations.data.length && <>
+                            {/*{this.state.rotations.data.length && <>*/}
 
-                            </>}
+                            {/*</>}*/}
 
                             <Table.Row>
                                 <Table.Cell verticalAlign={'top'}>

@@ -1,4 +1,4 @@
-import {Checkbox, Form, Grid, Table} from "semantic-ui-react";
+import {Form, Grid, Image, Label, List, Segment, Table} from "semantic-ui-react";
 import React from "react";
 import {ArtifactRotationData} from "@/artifacts/types";
 
@@ -31,15 +31,15 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
     }
 
     addClicked = () => {
-
+        this.setState({phase: Phase.Add})
     }
 
     render() {
         return (
             <Table.Row>
                 <Table.Cell verticalAlign={'top'} colSpan={5} textAlign={'center'}>
-                    <Form style={{marginTop: '1em'}}>
-                        {this.state.phase == Phase.Prompt &&
+                    {this.state.phase == Phase.Prompt &&
+                        <Form style={{marginTop: '1em'}}>
                             <Form.Group widths='equal'>
                                 <Form.Button content='New Rotation' color={'green'} icon='add'
                                              labelPosition='left' onClick={this.addClicked}/>
@@ -50,25 +50,40 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                                 <Form.Button content='Delete' color={'red'} icon='delete'
                                              labelPosition='left' disabled={!this.props.deletable}/>
                             </Form.Group>
+                        </Form>
 
-                        }
-                        {this.state.phase == Phase.Add &&
-                            <>
-                                <Form.Group>
-                                    <Grid columns={2} divided>
-                                        <Grid.Row>
-                                            <Grid.Column>
-                                                <Checkbox label={'Something'}/>
-                                            </Grid.Column>
-                                            <Grid.Column>
-                                                <Checkbox label={'Something Else'}/>
-                                            </Grid.Column>
-                                        </Grid.Row>
-                                    </Grid>
-                                </Form.Group>
-                            </>
-                        }
-                    </Form>
+                    }
+                    {this.state.phase == Phase.Add &&
+                        <>
+                            <Grid columns={4} stackable style={{marginTop: '1em'}} textAlign={'left'}>
+                                <Grid.Column>
+                                    <Segment>
+                                        <List>
+                                            <List.Item>
+                                                <Label image>
+                                                    <Image
+                                                        src={'/images/artifacts/' + this.props.data.artifacts["Desert Pavilion Chronicle"].image + '.png'}
+                                                        alt={this.props.data.artifacts["Desert Pavilion Chronicle"].image}
+                                                    /> {this.props.data.artifacts["Desert Pavilion Chronicle"].name}
+                                                </Label>
+                                            </List.Item>
+                                            <List.Item>
+                                                <Label image>
+                                                    <Image
+                                                        src={'/images/artifacts/' + this.props.data.artifacts["Flower of Paradise Lost"].image + '.png'}
+                                                        alt={this.props.data.artifacts["Flower of Paradise Lost"].image}
+                                                    /> {this.props.data.artifacts["Flower of Paradise Lost"].name}
+                                                </Label>
+                                            </List.Item>
+                                            <List.Item>
+                                                <Label basic>City of Gold</Label>
+                                            </List.Item>
+                                        </List>
+                                    </Segment>
+                                </Grid.Column>
+                            </Grid>
+                        </>
+                    }
                 </Table.Cell>
             </Table.Row>
         )
