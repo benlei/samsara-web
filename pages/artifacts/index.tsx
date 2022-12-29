@@ -114,7 +114,8 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     <Image avatar src='/images/characters/Collei.png'/>
                                     <Image avatar src='/images/characters/Albedo.png'/>
                                     <Image avatar src='/images/characters/Aloy.png'/>
-                                    <Container fluid style={{marginBottom: '1em'}}>
+                                    <Container fluid style={{marginTop: '1em'}}
+                                               className={'grey'}>
                                         Blah blah blah yes my note is this
                                     </Container>
                                     <Accordion>
@@ -177,6 +178,5 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                 </Container>
             </>
         )
-            ;
     }
 }

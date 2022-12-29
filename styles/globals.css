@@ -66,6 +66,19 @@ body {
   width: 2em;
   height: 2em;
 }
+
 .menu .item {
   font-weight: 700 !important;
+}
+
+.grey {
+  color: #666;
+}
+
+.item .bold {
+  font-weight: 500;
+}
+
+.item .small {
+  font-size: small;
 }
