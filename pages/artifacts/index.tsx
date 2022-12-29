@@ -1,5 +1,5 @@
 import React from "react";
-import {Accordion, AccordionTitleProps, Container, Form, Icon, Image, Label, List, Table} from "semantic-ui-react";
+import {Accordion, AccordionTitleProps, Container, Icon, Image, Label, List, Table} from "semantic-ui-react";
 import Head from "next/head";
 import ArtifactStepComponent from "@/components/artifacts/ArtifactStep";
 import ArtifactConfigLoadDownloadComponent from "@/components/artifacts/ArtifactConfigLoadDownload";
@@ -82,8 +82,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                 <Table.HeaderCell>#</Table.HeaderCell>
                                 <Table.HeaderCell>Artifacts</Table.HeaderCell>
                                 <Table.HeaderCell>Teams</Table.HeaderCell>
-                                <Table.HeaderCell>For Characters</Table.HeaderCell>
-                                <Table.HeaderCell>Notes</Table.HeaderCell>
+                                <Table.HeaderCell>Info</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
 
@@ -126,16 +125,10 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     </List>
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    <List>
-                                        <List.Item>
-                                            <Image avatar src='/images/characters/Amber.png'/>
-                                            <Image avatar src='/images/characters/Collei.png'/>
-                                            <Image avatar src='/images/characters/Albedo.png'/>
-                                            <Image avatar src='/images/characters/Aloy.png'/>
-                                        </List.Item>
-                                    </List>
-                                </Table.Cell>
-                                <Table.Cell verticalAlign={'top'}>
+                                    <Image avatar src='/images/characters/Amber.png'/>
+                                    <Image avatar src='/images/characters/Collei.png'/>
+                                    <Image avatar src='/images/characters/Albedo.png'/>
+                                    <Image avatar src='/images/characters/Aloy.png'/>
                                     <Container fluid style={{marginBottom: '1em'}}>
                                         Blah blah blah yes my note is this
                                     </Container>
@@ -149,20 +142,9 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                 </Table.Cell>
                             </Table.Row>
                             {this.state.activeIndex == 99 && (
-                                <Table.Row>
-                                    <Table.Cell verticalAlign={'top'} colSpan={5} textAlign={'center'}>
-                                        <Form style={{marginTop: '1em'}}>
-                                            <Form.Group widths='equal'>
-                                                <Form.Button content='New Rotation' color={'green'} icon='add'
-                                                             labelPosition='left'/>
-                                                <Form.Button content={'Edit #' + this.state.activeIndex} icon='edit'
-                                                             labelPosition='left' disabled/>
-                                                <Form.Button content='Delete' color={'red'} icon='delete'
-                                                             labelPosition='left'/>
-                                            </Form.Group>
-                                        </Form>
-                                    </Table.Cell>
-                                </Table.Row>
+                                <AddArtifactRotationComponent editable={false} deletable={false} index={-1}
+                                                              syncable={false}
+                                                              data={data}/>
                             )}
                             <Table.Row>
                                 <Table.Cell verticalAlign={'top'}>
@@ -198,16 +180,6 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     </List>
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    <List>
-                                        <List.Item>
-                                            <Image avatar src='/images/characters/Amber.png'/>
-                                            <Image avatar src='/images/characters/Collei.png'/>
-                                            <Image avatar src='/images/characters/Albedo.png'/>
-                                            <Image avatar src='/images/characters/Aloy.png'/>
-                                        </List.Item>
-                                    </List>
-                                </Table.Cell>
-                                <Table.Cell verticalAlign={'top'}>
                                     <Container fluid style={{marginBottom: '1em'}}>
                                         No notes
                                     </Container>
@@ -221,20 +193,9 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                 </Table.Cell>
                             </Table.Row>
                             {this.state.activeIndex == 999 && (
-                                <Table.Row>
-                                    <Table.Cell verticalAlign={'top'} colSpan={5} textAlign={'center'}>
-                                        <Form style={{marginTop: '1em'}}>
-                                            <Form.Group widths='equal'>
-                                                <Form.Button content='New Rotation' color={'green'} icon='add'
-                                                             labelPosition='left'/>
-                                                <Form.Button content={'Edit #' + this.state.activeIndex} icon='edit'
-                                                             labelPosition='left' disabled/>
-                                                <Form.Button content='Delete' color={'red'} icon='delete'
-                                                             labelPosition='left'/>
-                                            </Form.Group>
-                                        </Form>
-                                    </Table.Cell>
-                                </Table.Row>
+                                <AddArtifactRotationComponent editable={false} deletable={false} index={-1}
+                                                              syncable={false}
+                                                              data={data}/>
                             )}
 
                             {this.state.activeIndex == -1 &&
@@ -246,6 +207,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                     </Table>
                 </Container>
             </>
-        );
+        )
+            ;
     }
 }

@@ -44,7 +44,7 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
     render() {
         return (
             <Table.Row>
-                <Table.Cell verticalAlign={'top'} colSpan={5} textAlign={'center'}>
+                <Table.Cell verticalAlign={'top'} colSpan={4} textAlign={'center'}>
                     {this.state.phase == Phase.Prompt &&
                         <Form style={{marginTop: '1em'}}>
                             <Form.Group widths='equal'>
