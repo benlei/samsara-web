@@ -80,8 +80,8 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                         <Table.Header>
                             <Table.Row>
                                 <Table.HeaderCell style={{width: '3em'}}>#</Table.HeaderCell>
-                                <Table.HeaderCell style={{width: '17em'}}>Artifacts</Table.HeaderCell>
-                                <Table.HeaderCell style={{width: '15em'}}>Teams</Table.HeaderCell>
+                                <Table.HeaderCell style={{width: '16em'}}>Artifacts</Table.HeaderCell>
+                                <Table.HeaderCell style={{width: '13em'}}>Teams</Table.HeaderCell>
                                 <Table.HeaderCell>Info</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
