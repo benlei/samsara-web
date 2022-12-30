@@ -79,7 +79,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                 {/*<ArtifactStepComponent/>*/}
                 <ArtifactConfigLoadDownload/>
 
-                <Container style={{marginTop: '2em'}}>
+                <Container style={{marginTop: '2em'}} className={'artifact-rotations'}>
                     <Table unstackable>
                         <Table.Header>
                             <Table.Row>

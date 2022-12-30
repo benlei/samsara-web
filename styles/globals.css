@@ -82,3 +82,7 @@ body {
 .item .small, .item.small {
   font-size: small;
 }
+
+.artifact-rotations .ui.grid > .column:not(.row) {
+  padding-top: .5rem;
+}
