@@ -46,7 +46,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
         // })
 
         this.setState({
-            ...JSON.parse(localStorage.getItem("rotations") || "{}"),
+            ...JSON.parse(localStorage.getItem("artifactRotationData") || "{}"),
         })
     }
 
