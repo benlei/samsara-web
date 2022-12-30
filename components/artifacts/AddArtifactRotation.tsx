@@ -1,4 +1,4 @@
-import {Checkbox, Container, Form, Grid, Input, Segment, Table} from "semantic-ui-react";
+import {Checkbox, Container, Form, Grid, Header, Input, Segment, Table} from "semantic-ui-react";
 import React from "react";
 import {ArtifactRotationData} from "@/artifacts/types";
 import _ from "lodash";
@@ -123,6 +123,7 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                     {this.state.phase == Phase.Add &&
                         <>
                             <Container textAlign={'left'}>
+                                <Header as='h3'>Add New Rotation</Header>
                                 <Form>
                                     <Form.Group>
                                         <Form.Field width={'six'}>
@@ -132,7 +133,7 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                                             />
                                         </Form.Field>
                                     </Form.Group>
-                                    <Form.Group>
+                                    <Form.Group style={{marginTop: '1em'}}>
                                         <Form.Field>
                                             <Checkbox label='Show Artifact Descriptions'
                                                       onClick={this.flipShowDescription}

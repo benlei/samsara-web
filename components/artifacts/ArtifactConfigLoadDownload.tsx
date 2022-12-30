@@ -10,12 +10,12 @@ export default class ArtifactConfigLoadDownloadComponent extends React.Component
         return (
             <Container text style={{marginTop: '2em'}} textAlign={"center"}>
                 <Form>
-                    <Form.Group widths={"equal"}>
+                    <Form.Group widths={"equal"} inline>
                         <Form.Field>
-                            <Button content='Download Settings (JSON)' icon='download' labelPosition='left'/>
+                            <Button content='Download Settings' icon='download' labelPosition='left'/>
                         </Form.Field>
                         <Form.Field>
-                            <Button content='Load Settings (JSON)' icon='upload' labelPosition='right'/>
+                            <Button content='Load Settings' icon='upload' labelPosition='right'/>
                         </Form.Field>
                     </Form.Group>
                 </Form>

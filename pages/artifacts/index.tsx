@@ -8,6 +8,7 @@ import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
 import AddArtifactRotationComponent from "@/components/artifacts/AddArtifactRotation";
 import ArtifactDomainComponent from "@/components/artifacts/ArtifactDomain";
+import TeamSetupComponent from "@/components/artifacts/TeamSetup";
 
 type Properties = {
     characters: string[]
@@ -16,8 +17,7 @@ type Properties = {
 
 type States = {
     activeIndex: number
-    rotations: Rotations
-}
+} & Rotations
 
 export async function getStaticProps() {
     return {
@@ -34,7 +34,11 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
 
         this.state = {
             activeIndex: -1,
-            rotations: {fixed: true, fixedDays: 3, date: '2023-01-01', teams: {}, data: []},
+            fixed: true,
+            fixedDays: 3,
+            date: '2023-01-01',
+            teams: {},
+            data: [],
         }
     }
 
@@ -45,10 +49,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
         // })
 
         this.setState({
-            rotations: {
-                ...this.state.rotations,
-                ...JSON.parse(localStorage.getItem("rotations") || "{}"),
-            }
+            ...JSON.parse(localStorage.getItem("rotations") || "{}"),
         })
     }
 
@@ -65,7 +66,13 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
             "artifacts": getArtifacts(this.props.artifacts),
             "artifactDomains": getArtifactDomains(this.props.artifacts),
             "characters": getCharacters(this.props.characters),
-            "rotations": this.state.rotations,
+            "rotations": {
+                "fixed": this.state.fixed,
+                "fixedDays": this.state.fixedDays,
+                "date": this.state.date,
+                "teams": this.state.teams,
+                "data": this.state.data,
+            },
         }
 
         return (
@@ -75,6 +82,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                 </Head>
                 <ArtifactStepComponent/>
                 <ArtifactConfigLoadDownloadComponent/>
+                <TeamSetupComponent data={data.rotations}/>
 
                 <Container style={{marginTop: '2em'}}>
                     <Table unstackable>
