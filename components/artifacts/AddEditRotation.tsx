@@ -1,6 +1,6 @@
 import {Table} from "semantic-ui-react";
-import React from "react";
-import {ArtifactRotationData} from "@/artifacts/types";
+import React, { Dispatch } from "react";
+import {ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
 import AddEditPrompt from "@/components/artifacts/AddEditPrompt";
 import AddEditDomain from "./AddEditDomain";
 
@@ -18,6 +18,7 @@ type Properties = {
     deletable: boolean
     syncable: boolean
     data: ArtifactRotationData
+    rotationsManager: RotationsManager
 }
 
 type States = {
@@ -56,6 +57,12 @@ export default class AddEditRotation extends React.Component<Properties, States>
         this.setState({selectedDomain: this.state.selectedDomain === domain ? "" : domain})
     }
 
+    createRotation = () => {
+        this.setState({
+
+        })
+    }
+
 
     render() {
         return (
@@ -70,6 +77,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
                             onAddClicked={this.addClicked}
                         />
                     }
+                    {/*TODO: add ability to set rotation index in domain too*/}
                     {this.state.phase == Phase.Domain &&
                         <AddEditDomain
                             data={this.props.data}
@@ -77,6 +85,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
                             onCancel={this.cancelClicked}
                             selectedDomain={this.state.selectedDomain}
                         />
+
                         // <>
                         //     <AddEditTeam data={this.props.data.rotations}
                         //                  characters={this.props.data.characters}/>

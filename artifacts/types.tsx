@@ -63,3 +63,10 @@ export type Team = {
     name: string
     characters: string[]
 }
+
+export type RotationsManager = {
+    insert: (index: number, rotation: Rotation) => void
+    set: (index: number, rotation: Rotation) => void
+    move: (oldIndex: number, newIndex: number) => void
+    delete: (index: number) => void
+}

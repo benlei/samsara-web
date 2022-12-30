@@ -2,7 +2,7 @@ import React from "react";
 import {Accordion, AccordionTitleProps, Container, Icon, Image, List, Table} from "semantic-ui-react";
 import Head from "next/head";
 import ArtifactConfigLoadDownload from "@/components/artifacts/ArtifactConfigLoadDownload";
-import {ArtifactRotationData, ArtifactsDomainsData, Rotations} from "@/artifacts/types";
+import {ArtifactRotationData, ArtifactsDomainsData, Rotation, Rotations, RotationsManager} from "@/artifacts/types";
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
@@ -56,7 +56,63 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
         const newIndex = activeIndex === index ? -1 : index
 
         this.setState({activeIndex: newIndex as number})
-    };
+    }
+
+    insertRotation = (index: number, rotation: Rotation) => {
+        this.setState({
+            data: [
+                ...this.state.data.slice(0, index),
+                rotation,
+                ...this.state.data.slice(index),
+            ]
+        })
+    }
+
+    // literally exactly same thing
+    setRotation = (index: number, rotation: Rotation) => {
+        this.setState({
+            data: [
+                ...this.state.data.slice(0, index),
+                rotation,
+                ...this.state.data.slice(index + 1),
+            ]
+        })
+    }
+
+    moveRotation = (index: number, newIndex: number) => {
+        if (newIndex >= this.state.data.length || newIndex < 0) {
+            return
+        }
+
+        if (index < newIndex) {
+            this.setState({
+                data: [
+                    ...this.state.data.slice(0, index),
+                    ...this.state.data.slice(index + 1, newIndex),
+                    this.state.data[index],
+                    ...this.state.data.slice(newIndex),
+                ]
+            })
+        } else {
+            this.setState({
+                data: [
+                    ...this.state.data.slice(0, newIndex),
+                    this.state.data[index],
+                    ...this.state.data.slice(newIndex, index),
+                    ...this.state.data.slice(index + 1),
+                ]
+            })
+        }
+    }
+    deleteRotation = (index: number) => {
+        this.setState({
+            data: [
+                ...this.state.data.slice(0, index),
+                ...this.state.data.slice(index + 1),
+            ]
+        })
+    }
+
 
     render() {
         const data: ArtifactRotationData = {
@@ -69,6 +125,13 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                 "date": this.state.date,
                 "data": this.state.data,
             },
+        }
+
+        const manager: RotationsManager = {
+            insert: this.insertRotation,
+            move: this.moveRotation,
+            delete: this.deleteRotation,
+            set: this.setRotation,
         }
 
         return (
@@ -130,11 +193,11 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                     </Accordion>
                                 </Table.Cell>
                             </Table.Row>
-                            {this.state.activeIndex == 99 && (
-                                <AddEditRotation editable={false} deletable={false} index={-1}
-                                                          syncable={false}
-                                                          data={data}/>
-                            )}
+                            {/*{this.state.activeIndex == 99 && (*/}
+                            {/*    <AddEditRotation editable={false} deletable={false} index={-1}*/}
+                            {/*                     syncable={false}*/}
+                            {/*                     data={data}/>*/}
+                            {/*)}*/}
                             <Table.Row>
                                 <Table.Cell verticalAlign={'top'}>
                                     2
@@ -165,16 +228,17 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                     </Accordion>
                                 </Table.Cell>
                             </Table.Row>
-                            {this.state.activeIndex == 999 && (
-                                <AddEditRotation editable={false} deletable={false} index={-1}
-                                                          syncable={false}
-                                                          data={data}/>
-                            )}
+                            {/*{this.state.activeIndex == 999 && (*/}
+                            {/*    <AddEditRotation editable={false} deletable={false} index={-1}*/}
+                            {/*                     syncable={false}*/}
+                            {/*                     data={data}/>*/}
+                            {/*)}*/}
 
                             {this.state.activeIndex == -1 &&
                                 <AddEditRotation editable={false} deletable={false} index={-1}
-                                                          syncable={false}
-                                                          data={data}/>
+                                                 syncable={false}
+                                                 rotationsManager={manager}
+                                                 data={data}/>
                             }
                         </Table.Body>
                     </Table>
