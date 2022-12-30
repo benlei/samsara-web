@@ -79,6 +79,6 @@ body {
   font-weight: 500;
 }
 
-.item .small {
+.item .small, .item.small {
   font-size: small;
 }

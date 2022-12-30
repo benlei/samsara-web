@@ -1,4 +1,4 @@
-import {Form, Grid, Segment, Table} from "semantic-ui-react";
+import {Checkbox, Container, Form, Grid, Input, Segment, Table} from "semantic-ui-react";
 import React from "react";
 import {ArtifactRotationData} from "@/artifacts/types";
 import _ from "lodash";
@@ -22,6 +22,8 @@ type Properties = {
 
 type States = {
     phase: Phase
+    showDescriptions: boolean
+    filterArtifacts: string
 }
 
 export default class AddArtifactRotationComponent extends React.Component<Properties, States> {
@@ -36,6 +38,8 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
 
         this.state = {
             phase: Phase.Prompt,
+            showDescriptions: false,
+            filterArtifacts: "",
         }
     }
 
@@ -43,11 +47,41 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
         this.setState({phase: Phase.Add})
     }
 
-    getSortedDomainNames = () => {
+    getFilteredSortedDomainNames = () => {
         return _.chain(Object.keys(this.props.data.artifactDomains))
+            .filter(this.getFilterArtifactFunc())
             .orderBy((name) => name)
             .value()
     }
+
+    flipShowDescription = () => {
+        this.setState({showDescriptions: !this.state.showDescriptions})
+    }
+
+    handleFilterArtifacts = _.debounce((event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({filterArtifacts: event.target.value});
+    }, 500)
+
+    private getFilterArtifactFunc() {
+        const getText = (domain: string): string => {
+            return [
+                domain,
+                ...this.props.data.artifactDomains[domain].artifacts.map((artifact) => `${artifact}\n${this.props.data.artifacts[artifact].description}`),
+            ].join("\n")
+        }
+
+        let filterFunc = (s: string) => getText(s).toLowerCase().includes(this.state.filterArtifacts.toLowerCase())
+        if (this.state.filterArtifacts.startsWith('/') && this.state.filterArtifacts.endsWith('/')) {
+            try {
+                const re = new RegExp(this.state.filterArtifacts.substring(1, this.state.filterArtifacts.length - 1), 'i')
+                filterFunc = (s: string) => re.test(getText(s))
+            } catch (ignore) {
+
+            }
+        }
+        return filterFunc
+    }
+
 
     render() {
         const {
@@ -80,11 +114,31 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                     }
                     {this.state.phase == Phase.Add &&
                         <>
+                            <Container textAlign={'left'}>
+                                <Form>
+                                    <Form.Group>
+                                        <Form.Field width={'six'}>
+                                            <label>Select Domain</label>
+                                            <Input fluid placeholder='Filter by Artifact or Domain...'
+                                                   onChange={this.handleFilterArtifacts}
+                                            />
+                                        </Form.Field>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Field>
+                                            <Checkbox label='Show Artifact Descriptions'
+                                                      onClick={this.flipShowDescription}
+                                                      checked={this.state.showDescriptions}/>
+                                        </Form.Field>
+                                    </Form.Group>
+                                </Form>
+                            </Container>
                             <Grid columns={3} stackable style={{marginTop: '1em'}} textAlign={'left'}>
-                                {this.getSortedDomainNames().map((domainName) =>
+                                {this.getFilteredSortedDomainNames().map((domainName) =>
                                     <Grid.Column key={domainName}>
                                         <Segment>
-                                            <ArtifactDomainComponent data={this.props.data} domain={domainName} />
+                                            <ArtifactDomainComponent data={this.props.data} domain={domainName}
+                                                                     showDescription={this.state.showDescriptions}/>
                                         </Segment>
                                     </Grid.Column>
                                 )}

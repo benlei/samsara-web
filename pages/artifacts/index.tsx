@@ -97,7 +97,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     1
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    <ArtifactDomainComponent data={data} domain={'City of Gold'}/>
+                                    <ArtifactDomainComponent data={data} domain={'Slumbering Court'} popover/>
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
                                     <List>
@@ -137,7 +137,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     2
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    <ArtifactDomainComponent data={data} domain={'Peak of Vindagnyr'}/>
+                                    <ArtifactDomainComponent data={data} domain={'Peak of Vindagnyr'} popover/>
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
                                     <List>
