@@ -11,7 +11,7 @@ type Properties = {
 
 type States = {}
 
-export default class ArtifactDomainComponent extends React.Component<Properties, States> {
+export default class ArtifactDomain extends React.Component<Properties, States> {
     public static defaultProps = {
         popover: false,
         showDescription: false,

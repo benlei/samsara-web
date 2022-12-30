@@ -7,7 +7,7 @@ type Properties = {
 
 type States = {}
 
-export default class BannerDownloadComponent extends React.Component<Properties, States> {
+export default class BannerDownload extends React.Component<Properties, States> {
     download = async () => {
         const { exportComponentAsPNG } = await import('react-component-export-image')
         await exportComponentAsPNG(this.props.bannerRef, {fileName: 'banner-rundown.png'})

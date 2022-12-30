@@ -12,7 +12,7 @@ type Properties = {
 
 type States = {}
 
-export default class BannerHeaderComponent extends React.Component<Properties, States> {
+export default class BannerHeader extends React.Component<Properties, States> {
     render() {
         const {
             bannerType,

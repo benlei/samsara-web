@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {Banners} from '@/banners/types'
 import React from "react";
-import BannerPageComponent from "@/components/banners/BannerPage";
+import BannerPage from "@/components/banners/BannerPage";
 
 
 export async function getStaticProps() {
@@ -16,7 +16,7 @@ type Properties = {
     banners: Banners
 }
 
-export default function Home({banners}: Properties) {
+export default function FiveStarCharactersHome({banners}: Properties) {
     return (
         <>
             <Head>
@@ -25,7 +25,7 @@ export default function Home({banners}: Properties) {
                 {/*<meta name="viewport" content="width=device-width, initial-scale=1" />*/}
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
-            <BannerPageComponent bannerType={'characters'}
+            <BannerPage bannerType={'characters'}
                                  banners={banners.characters['5']}
                                  standards={['Keqing', 'Tighnari']}
                                  showLimitedOnly={true}

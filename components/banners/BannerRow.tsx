@@ -33,7 +33,7 @@ function getCounterStyle(c: number) {
         backgroundColor: `hsl(0, 5%, ${lightness}%)`
     }
 }
-export default class BannerRowComponent extends React.Component<Properties, States> {
+export default class BannerRow extends React.Component<Properties, States> {
     render() {
         const {
             rundown,

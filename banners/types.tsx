@@ -29,7 +29,7 @@ export type Rundown = {
 }
 
 
-export type BannerOptions = {
+export type BannerFilterSortOptions = {
     limitedOnly: boolean | null | undefined
     sortBy: string | null
     order: string | null

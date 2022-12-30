@@ -1,15 +1,16 @@
-import {Checkbox, Container, Form, Grid, Header, Input, Segment, Table} from "semantic-ui-react";
+import {Button, Checkbox, Container, Form, Grid, Header, Input, Segment, Table} from "semantic-ui-react";
 import React from "react";
 import {ArtifactRotationData} from "@/artifacts/types";
 import _ from "lodash";
-import ArtifactDomainComponent from "@/components/artifacts/ArtifactDomain";
+import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
+import AddEditTeam from "@/components/artifacts/AddEditTeam";
 
 enum Phase {
     Prompt,
-    Add,
-    Edit,
-    Delete,
-    Sync,
+    Domain,
+    Team,
+    Characters,
+    Save,
 }
 
 type Properties = {
@@ -27,7 +28,7 @@ type States = {
     selectedDomain: string
 }
 
-export default class AddArtifactRotationComponent extends React.Component<Properties, States> {
+export default class AddEditRotation extends React.Component<Properties, States> {
     public static defaultProps = {
         editable: true,
         deletable: true,
@@ -46,7 +47,14 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
     }
 
     addClicked = () => {
-        this.setState({phase: Phase.Add})
+        this.setState({phase: Phase.Domain})
+    }
+
+    cancelClicked = () => {
+        this.setState({
+            selectedDomain: "",
+            phase: Phase.Prompt,
+        })
     }
 
     getFilteredSortedDomainNames = () => {
@@ -120,7 +128,7 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                         </Form>
 
                     }
-                    {this.state.phase == Phase.Add &&
+                    {this.state.phase == Phase.Domain &&
                         <>
                             <Container textAlign={'left'}>
                                 <Header as='h3'>Add New Rotation</Header>
@@ -147,12 +155,24 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                                     <Grid.Column key={domainName}>
                                         <Segment onClick={this.selectDomain(domainName)}
                                                  className={this.state.selectedDomain == domainName ? 'secondary green' : ''}>
-                                            <ArtifactDomainComponent data={this.props.data} domain={domainName}
+                                            <ArtifactDomain data={this.props.data} domain={domainName}
                                                                      showDescription={this.state.showDescriptions}/>
                                         </Segment>
                                     </Grid.Column>
                                 )}
                             </Grid>
+                            <AddEditTeam data={this.props.data.rotations}
+                                                characters={this.props.data.characters}/>
+                            <Form.Group inline style={{marginTop: '1em', textAlign: 'left'}}>
+                                <Form.Field>
+                                    <Button color={'green'}>
+                                        Create
+                                    </Button>
+                                    <Button color={'red'} onClick={this.cancelClicked}>
+                                        Cancel
+                                    </Button>
+                                </Form.Field>
+                            </Form.Group>
                         </>
                     }
                 </Table.Cell>

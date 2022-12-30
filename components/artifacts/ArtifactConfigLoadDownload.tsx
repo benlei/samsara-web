@@ -5,7 +5,7 @@ type Properties = {}
 
 type States = {}
 
-export default class ArtifactConfigLoadDownloadComponent extends React.Component<Properties, States> {
+export default class ArtifactConfigLoadDownload extends React.Component<Properties, States> {
     render() {
         return (
             <Container text style={{marginTop: '2em'}} textAlign={"center"}>

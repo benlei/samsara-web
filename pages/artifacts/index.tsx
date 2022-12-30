@@ -1,14 +1,12 @@
 import React from "react";
 import {Accordion, AccordionTitleProps, Container, Icon, Image, List, Table} from "semantic-ui-react";
 import Head from "next/head";
-import ArtifactStepComponent from "@/components/artifacts/ArtifactStep";
-import ArtifactConfigLoadDownloadComponent from "@/components/artifacts/ArtifactConfigLoadDownload";
+import ArtifactConfigLoadDownload from "@/components/artifacts/ArtifactConfigLoadDownload";
 import {ArtifactRotationData, ArtifactsDomainsData, Rotations} from "@/artifacts/types";
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
-import AddArtifactRotationComponent from "@/components/artifacts/AddArtifactRotation";
-import ArtifactDomainComponent from "@/components/artifacts/ArtifactDomain";
-import TeamSetupComponent from "@/components/artifacts/TeamSetup";
+import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
+import AddEditRotation from "@/components/artifacts/AddEditRotation";
 
 type Properties = {
     characters: string[]
@@ -28,7 +26,7 @@ export async function getStaticProps() {
     };
 }
 
-export default class ArtifactRotationComponent extends React.Component<Properties, States> {
+export default class ArtifactsHome extends React.Component<Properties, States> {
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
 
@@ -37,7 +35,6 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
             fixed: true,
             fixedDays: 3,
             date: '2023-01-01',
-            teams: {},
             data: [],
         }
     }
@@ -70,7 +67,6 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                 "fixed": this.state.fixed,
                 "fixedDays": this.state.fixedDays,
                 "date": this.state.date,
-                "teams": this.state.teams,
                 "data": this.state.data,
             },
         }
@@ -80,9 +76,8 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                 <Head>
                     <title>Artifact Rotations - Samsara</title>
                 </Head>
-                <ArtifactStepComponent/>
-                <ArtifactConfigLoadDownloadComponent/>
-                <TeamSetupComponent data={data.rotations}/>
+                {/*<ArtifactStepComponent/>*/}
+                <ArtifactConfigLoadDownload/>
 
                 <Container style={{marginTop: '2em'}}>
                     <Table unstackable>
@@ -90,7 +85,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                             <Table.Row>
                                 <Table.HeaderCell style={{width: '3em'}}>#</Table.HeaderCell>
                                 <Table.HeaderCell>Artifacts</Table.HeaderCell>
-                                <Table.HeaderCell>Teams</Table.HeaderCell>
+                                <Table.HeaderCell>Team</Table.HeaderCell>
                                 <Table.HeaderCell>Info</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
@@ -105,7 +100,7 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                     1
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    <ArtifactDomainComponent data={data} domain={'Slumbering Court'} popover/>
+                                    <ArtifactDomain data={data} domain={'Slumbering Court'} popover/>
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
                                     <List>
@@ -136,16 +131,16 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                 </Table.Cell>
                             </Table.Row>
                             {this.state.activeIndex == 99 && (
-                                <AddArtifactRotationComponent editable={false} deletable={false} index={-1}
-                                                              syncable={false}
-                                                              data={data}/>
+                                <AddEditRotation editable={false} deletable={false} index={-1}
+                                                          syncable={false}
+                                                          data={data}/>
                             )}
                             <Table.Row>
                                 <Table.Cell verticalAlign={'top'}>
                                     2
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    <ArtifactDomainComponent data={data} domain={'Peak of Vindagnyr'} popover/>
+                                    <ArtifactDomain data={data} domain={'Peak of Vindagnyr'} popover/>
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
                                     <List>
@@ -171,15 +166,15 @@ export default class ArtifactRotationComponent extends React.Component<Propertie
                                 </Table.Cell>
                             </Table.Row>
                             {this.state.activeIndex == 999 && (
-                                <AddArtifactRotationComponent editable={false} deletable={false} index={-1}
-                                                              syncable={false}
-                                                              data={data}/>
+                                <AddEditRotation editable={false} deletable={false} index={-1}
+                                                          syncable={false}
+                                                          data={data}/>
                             )}
 
                             {this.state.activeIndex == -1 &&
-                                <AddArtifactRotationComponent editable={false} deletable={false} index={-1}
-                                                              syncable={false}
-                                                              data={data}/>
+                                <AddEditRotation editable={false} deletable={false} index={-1}
+                                                          syncable={false}
+                                                          data={data}/>
                             }
                         </Table.Body>
                     </Table>

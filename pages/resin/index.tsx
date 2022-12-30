@@ -43,7 +43,7 @@ function getHumanReadable24HourTime(now: Date, date: Date): string {
     return `${hours}:${minutes}`
 }
 
-export default class ResinPageComponent extends React.Component<Properties, States> {
+export default class ResinHome extends React.Component<Properties, States> {
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
 
@@ -70,7 +70,7 @@ export default class ResinPageComponent extends React.Component<Properties, Stat
 
     render() {
         const resin: Resin[] = []
-        const now = this.state.date
+        const now = new Date(this.state.date.getTime())
         for (let i = 0; i <= MAX_RESIN; i++) {
             resin.push({
                 count: i,

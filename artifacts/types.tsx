@@ -44,7 +44,6 @@ export type Rotations = {
     fixed: boolean // fixed # of days between all rotations, or no
     fixedDays: number
     date: string
-    teams: Teams
     data: Rotation[]
 }
 

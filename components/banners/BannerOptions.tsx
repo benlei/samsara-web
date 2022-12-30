@@ -1,16 +1,16 @@
 import React, {Dispatch, SetStateAction} from "react";
 import {CheckboxProps, Form, Icon, Label, Radio} from "semantic-ui-react";
-import {BannerOptions, BannerOptionSetters} from "@/banners/types";
+import {BannerFilterSortOptions, BannerOptionSetters} from "@/banners/types";
 
 type Properties = {
     showLimitedOnly: boolean
     expand: boolean | null
     setExpand: Dispatch<SetStateAction<any>>
-} & BannerOptions & BannerOptionSetters
+} & BannerFilterSortOptions & BannerOptionSetters
 
 type States = {}
 
-export default class BannerOptionsComponent extends React.Component<Properties, States> {
+export default class BannerOptions extends React.Component<Properties, States> {
     handleSortByChange = (event: React.FormEvent<HTMLInputElement>, {value}: CheckboxProps) => this.props.setSortBy(String(value))
     flipOrder = () => this.props.setOrder(this.props.order == 'desc' ? 'asc' : 'desc')
 
