@@ -4,6 +4,7 @@ import {ArtifactRotationData} from "@/artifacts/types";
 import _ from "lodash";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import AddEditTeam from "@/components/artifacts/AddEditTeam";
+import AddEditPrompt from "@/components/artifacts/AddEditPrompt";
 
 enum Phase {
     Prompt,
@@ -108,25 +109,13 @@ export default class AddEditRotation extends React.Component<Properties, States>
             <Table.Row>
                 <Table.Cell verticalAlign={'top'} colSpan={4} textAlign={'center'}>
                     {this.state.phase == Phase.Prompt &&
-                        <Form style={{marginTop: '1em'}}>
-                            <Form.Group widths='equal'>
-                                <Form.Button content='New Rotation' color={'green'} icon='add'
-                                             labelPosition='left' onClick={this.addClicked}/>
-                                <Form.Button
-                                    content={'Edit Rotation #' + (this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index)}
-                                    icon='edit'
-                                    labelPosition='left' disabled={!this.props.editable}/>
-
-                                <Form.Button
-                                    content={'Start Rotation at #' + (this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index)}
-                                    icon='pin'
-                                    labelPosition='left' disabled={!this.props.syncable}/>
-
-                                <Form.Button content='Delete' color={'red'} icon='delete'
-                                             labelPosition='left' disabled={!this.props.deletable}/>
-                            </Form.Group>
-                        </Form>
-
+                        <AddEditPrompt
+                            deletable={this.props.deletable}
+                            syncable={this.props.syncable}
+                            editable={this.props.editable}
+                            index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
+                            onAddClicked={this.addClicked}
+                        />
                     }
                     {this.state.phase == Phase.Domain &&
                         <>
@@ -156,13 +145,13 @@ export default class AddEditRotation extends React.Component<Properties, States>
                                         <Segment onClick={this.selectDomain(domainName)}
                                                  className={this.state.selectedDomain == domainName ? 'secondary green' : ''}>
                                             <ArtifactDomain data={this.props.data} domain={domainName}
-                                                                     showDescription={this.state.showDescriptions}/>
+                                                            showDescription={this.state.showDescriptions}/>
                                         </Segment>
                                     </Grid.Column>
                                 )}
                             </Grid>
                             <AddEditTeam data={this.props.data.rotations}
-                                                characters={this.props.data.characters}/>
+                                         characters={this.props.data.characters}/>
                             <Form.Group inline style={{marginTop: '1em', textAlign: 'left'}}>
                                 <Form.Field>
                                     <Button color={'green'}>
