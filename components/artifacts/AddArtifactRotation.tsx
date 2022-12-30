@@ -24,6 +24,7 @@ type States = {
     phase: Phase
     showDescriptions: boolean
     filterArtifacts: string
+    selectedDomain: string
 }
 
 export default class AddArtifactRotationComponent extends React.Component<Properties, States> {
@@ -40,6 +41,7 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
             phase: Phase.Prompt,
             showDescriptions: false,
             filterArtifacts: "",
+            selectedDomain: "",
         }
     }
 
@@ -58,9 +60,15 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
         this.setState({showDescriptions: !this.state.showDescriptions})
     }
 
-    handleFilterArtifacts = _.debounce((event: React.ChangeEvent<HTMLInputElement>) => {
+    handleFilterArtifacts = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({filterArtifacts: event.target.value});
-    }, 500)
+    }
+
+    selectDomain = (domain: string) => {
+        return () => {
+            this.setState({selectedDomain: this.state.selectedDomain === domain ? "" : domain})
+        }
+    }
 
     private getFilterArtifactFunc() {
         const getText = (domain: string): string => {
@@ -118,7 +126,7 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                                 <Form>
                                     <Form.Group>
                                         <Form.Field width={'six'}>
-                                            <label>Select Domain</label>
+                                            <label>Select Domain (required)</label>
                                             <Input fluid placeholder='Filter by Artifact or Domain...'
                                                    onChange={this.handleFilterArtifacts}
                                             />
@@ -136,7 +144,8 @@ export default class AddArtifactRotationComponent extends React.Component<Proper
                             <Grid columns={3} stackable style={{marginTop: '1em'}} textAlign={'left'}>
                                 {this.getFilteredSortedDomainNames().map((domainName) =>
                                     <Grid.Column key={domainName}>
-                                        <Segment>
+                                        <Segment onClick={this.selectDomain(domainName)}
+                                                 className={this.state.selectedDomain == domainName ? 'secondary green' : ''}>
                                             <ArtifactDomainComponent data={this.props.data} domain={domainName}
                                                                      showDescription={this.state.showDescriptions}/>
                                         </Segment>
