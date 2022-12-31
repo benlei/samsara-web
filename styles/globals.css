@@ -86,3 +86,7 @@ body {
 .artifact-rotations .ui.grid > .column:not(.row) {
   padding-top: .5rem;
 }
+
+.hidden {
+  visibility: hidden
+}

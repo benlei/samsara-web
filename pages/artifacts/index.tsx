@@ -31,7 +31,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
         super(props);
 
         this.state = {
-            activeIndex: -1,
+            activeIndex: 0,
             fixed: true,
             fixedDays: 3,
             date: '2023-01-01',
@@ -40,14 +40,25 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
     }
 
     componentDidMount = () => {
-        // this.setState({
-        //     date: new Date(),
-        //     military: false,
-        // })
+        try {
+            const savedData: Rotations = JSON.parse(localStorage.getItem("artifactRotationData") || "{}")
+            this.setState({
+                ...savedData,
+                activeIndex: (savedData.data?.length ?? 1) - 1
+            })
+        } catch (ignore) {
 
-        this.setState({
-            ...JSON.parse(localStorage.getItem("artifactRotationData") || "{}"),
-        })
+        }
+    }
+
+    commit = () => {
+        const data: Rotations = {
+            "fixed": this.state.fixed,
+            "fixedDays": this.state.fixedDays,
+            "date": this.state.date,
+            "data": this.state.data,
+        }
+        localStorage.setItem("artifactRotationData", JSON.stringify(data))
     }
 
     handleClick = (event: any, titleProps: AccordionTitleProps) => {
@@ -58,28 +69,30 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
         this.setState({activeIndex: newIndex as number})
     }
 
-    insertRotation = (index: number, rotation: Rotation) => {
+    insertRotation = (index: number, rotation: Rotation, newActiveIndex?: number) => {
         this.setState({
             data: [
                 ...this.state.data.slice(0, index),
                 rotation,
                 ...this.state.data.slice(index),
-            ]
-        })
+            ],
+            activeIndex: newActiveIndex ?? index,
+        }, this.commit)
     }
 
     // literally exactly same thing
-    setRotation = (index: number, rotation: Rotation) => {
+    setRotation = (index: number, rotation: Rotation, newActiveIndex?: number) => {
         this.setState({
             data: [
                 ...this.state.data.slice(0, index),
                 rotation,
                 ...this.state.data.slice(index + 1),
-            ]
-        })
+            ],
+            activeIndex: newActiveIndex ?? index,
+        }, this.commit)
     }
 
-    moveRotation = (index: number, newIndex: number) => {
+    moveRotation = (index: number, newIndex: number, newActiveIndex?: number) => {
         if (newIndex >= this.state.data.length || newIndex < 0) {
             return
         }
@@ -91,8 +104,9 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                     ...this.state.data.slice(index + 1, newIndex),
                     this.state.data[index],
                     ...this.state.data.slice(newIndex),
-                ]
-            })
+                ],
+                activeIndex: newActiveIndex ?? index,
+            }, this.commit)
         } else {
             this.setState({
                 data: [
@@ -100,21 +114,24 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                     this.state.data[index],
                     ...this.state.data.slice(newIndex, index),
                     ...this.state.data.slice(index + 1),
-                ]
-            })
+                ],
+                activeIndex: newActiveIndex ?? index,
+            }, this.commit)
         }
     }
-    deleteRotation = (index: number) => {
+    deleteRotation = (index: number, newActiveIndex?: number) => {
         this.setState({
             data: [
                 ...this.state.data.slice(0, index),
                 ...this.state.data.slice(index + 1),
-            ]
-        })
+            ],
+            activeIndex: newActiveIndex ?? -1,
+        }, this.commit)
     }
 
 
     render() {
+        console.log(this.state.data)
         const data: ArtifactRotationData = {
             "artifacts": getArtifacts(this.props.artifacts),
             "artifactDomains": getArtifactDomains(this.props.artifacts),
@@ -148,94 +165,59 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                             <Table.Row>
                                 <Table.HeaderCell style={{width: '3em'}}>#</Table.HeaderCell>
                                 <Table.HeaderCell>Artifacts</Table.HeaderCell>
-                                <Table.HeaderCell>Team</Table.HeaderCell>
+                                <Table.HeaderCell style={{minWidth: '14em'}}>Team</Table.HeaderCell>
                                 <Table.HeaderCell>Info</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
 
                         <Table.Body>
-                            {/*{this.state.rotations.data.length && <>*/}
+                            {this.state.data.map((r, k) =>
+                                <>
+                                    <Table.Row key={k}>
+                                        <Table.Cell verticalAlign={'top'}>
+                                            {k+1}
+                                        </Table.Cell>
+                                        <Table.Cell verticalAlign={'top'}>
+                                            <ArtifactDomain data={data} domain={r.domain} popover/>
+                                        </Table.Cell>
+                                        <Table.Cell verticalAlign={'top'}>
+                                            <List>
+                                                <List.Item>
+                                                    <Image avatar src='/images/characters/Amber.png' alt={'Amber'}/>
+                                                    <Image avatar src='/images/characters/Amber.png' alt={'Amber'}/>
+                                                    <Image avatar src='/images/characters/Amber.png' alt={'Amber'}/>
+                                                    <Image avatar src='/images/characters/Amber.png' alt={'Amber'}/>
+                                                </List.Item>
+                                            </List>
+                                        </Table.Cell>
+                                        <Table.Cell verticalAlign={'top'}>
+                                            <Image avatar alt={'Character'} src='/images/characters/Amber.png'/>
+                                            <Image avatar alt={'Character'} src='/images/characters/Collei.png'/>
+                                            <Image avatar alt={'Character'} src='/images/characters/Albedo.png'/>
+                                            <Image avatar alt={'Character'} src='/images/characters/Aloy.png'/>
+                                            <Container fluid style={{marginTop: '1em'}}
+                                                       className={'grey'}>
+                                                Blah blah blah yes my note is this
+                                            </Container>
+                                            <Accordion>
+                                                <Accordion.Title active={this.state.activeIndex === k}
+                                                                 onClick={this.handleClick} index={k}>
+                                                    <Icon name='dropdown'/>
+                                                    Expand Options
+                                                </Accordion.Title>
+                                            </Accordion>
+                                        </Table.Cell>
+                                    </Table.Row>
+                                    {this.state.activeIndex === k &&
+                                        <AddEditRotation index={k}
+                                                         rotationsManager={manager}
+                                                         data={data}/>
+                                    }
+                                </>
+                            )}
 
-                            {/*</>}*/}
-
-                            <Table.Row>
-                                <Table.Cell verticalAlign={'top'}>
-                                    1
-                                </Table.Cell>
-                                <Table.Cell verticalAlign={'top'}>
-                                    <ArtifactDomain data={data} domain={'Slumbering Court'} popover/>
-                                </Table.Cell>
-                                <Table.Cell verticalAlign={'top'}>
-                                    <List>
-                                        <List.Item>
-                                            <Image avatar src='/images/characters/Amber.png'/>
-                                            <Image avatar src='/images/characters/Amber.png'/>
-                                            <Image avatar src='/images/characters/Amber.png'/>
-                                            <Image avatar src='/images/characters/Amber.png'/>
-                                        </List.Item>
-                                    </List>
-                                </Table.Cell>
-                                <Table.Cell verticalAlign={'top'}>
-                                    <Image avatar src='/images/characters/Amber.png'/>
-                                    <Image avatar src='/images/characters/Collei.png'/>
-                                    <Image avatar src='/images/characters/Albedo.png'/>
-                                    <Image avatar src='/images/characters/Aloy.png'/>
-                                    <Container fluid style={{marginTop: '1em'}}
-                                               className={'grey'}>
-                                        Blah blah blah yes my note is this
-                                    </Container>
-                                    <Accordion>
-                                        <Accordion.Title active={this.state.activeIndex === 99}
-                                                         onClick={this.handleClick} index={99}>
-                                            <Icon name='dropdown'/>
-                                            Expand Options
-                                        </Accordion.Title>
-                                    </Accordion>
-                                </Table.Cell>
-                            </Table.Row>
-                            {/*{this.state.activeIndex == 99 && (*/}
-                            {/*    <AddEditRotation editable={false} deletable={false} index={-1}*/}
-                            {/*                     syncable={false}*/}
-                            {/*                     data={data}/>*/}
-                            {/*)}*/}
-                            <Table.Row>
-                                <Table.Cell verticalAlign={'top'}>
-                                    2
-                                </Table.Cell>
-                                <Table.Cell verticalAlign={'top'}>
-                                    <ArtifactDomain data={data} domain={'Peak of Vindagnyr'} popover/>
-                                </Table.Cell>
-                                <Table.Cell verticalAlign={'top'}>
-                                    <List>
-                                        <List.Item>
-                                            <Image avatar src='/images/characters/Amber.png'/>
-                                            <Image avatar src='/images/characters/Amber.png'/>
-                                            <Image avatar src='/images/characters/Amber.png'/>
-                                            <Image avatar src='/images/characters/Amber.png'/>
-                                        </List.Item>
-                                    </List>
-                                </Table.Cell>
-                                <Table.Cell verticalAlign={'top'}>
-                                    <Container fluid style={{marginBottom: '1em'}}>
-                                        No notes
-                                    </Container>
-                                    <Accordion>
-                                        <Accordion.Title active={this.state.activeIndex === 999}
-                                                         onClick={this.handleClick} index={999}>
-                                            <Icon name='dropdown'/>
-                                            Expand Options
-                                        </Accordion.Title>
-                                    </Accordion>
-                                </Table.Cell>
-                            </Table.Row>
-                            {/*{this.state.activeIndex == 999 && (*/}
-                            {/*    <AddEditRotation editable={false} deletable={false} index={-1}*/}
-                            {/*                     syncable={false}*/}
-                            {/*                     data={data}/>*/}
-                            {/*)}*/}
-
-                            {this.state.activeIndex == -1 &&
-                                <AddEditRotation editable={false} deletable={false} index={-1}
+                            {!this.state.data.length &&
+                                <AddEditRotation editable={false} deletable={false} index={0}
                                                  syncable={false}
                                                  rotationsManager={manager}
                                                  data={data}/>

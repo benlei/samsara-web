@@ -1,16 +1,10 @@
 import {Table} from "semantic-ui-react";
-import React, { Dispatch } from "react";
+import React from "react";
 import {ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
 import AddEditPrompt from "@/components/artifacts/AddEditPrompt";
 import AddEditDomain from "./AddEditDomain";
+import {AddEditPhase} from "@/artifacts/enums";
 
-enum Phase {
-    Prompt,
-    Domain,
-    Team,
-    Characters,
-    Save,
-}
 
 type Properties = {
     index: number
@@ -22,8 +16,9 @@ type Properties = {
 }
 
 type States = {
-    phase: Phase
-    selectedDomain: string
+    phase: AddEditPhase
+    // selectedDomain: string
+    preparedRotation: Rotation
 }
 
 export default class AddEditRotation extends React.Component<Properties, States> {
@@ -37,29 +32,35 @@ export default class AddEditRotation extends React.Component<Properties, States>
         super(props);
 
         this.state = {
-            phase: Phase.Prompt,
-            selectedDomain: "",
+            phase: AddEditPhase.Prompt,
+            preparedRotation: {
+                "domain": "",
+                "teams": [],
+                "characters": [],
+                "note": "",
+            },
         }
     }
 
     addClicked = () => {
-        this.setState({phase: Phase.Domain})
+        this.setState({phase: AddEditPhase.Domain})
     }
+
+    setPhase = (phase: AddEditPhase) => this.setState({phase: phase})
 
     cancelClicked = () => {
         this.setState({
-            selectedDomain: "",
-            phase: Phase.Prompt,
+            // selectedDomain: "",
+            phase: AddEditPhase.Prompt,
         })
     }
 
     selectDomain = (domain: string) => {
-        this.setState({selectedDomain: this.state.selectedDomain === domain ? "" : domain})
-    }
-
-    createRotation = () => {
         this.setState({
-
+            preparedRotation: {
+                ...this.state.preparedRotation,
+                domain: this.state.preparedRotation.domain === domain ? "" : domain
+            }
         })
     }
 
@@ -68,22 +69,25 @@ export default class AddEditRotation extends React.Component<Properties, States>
         return (
             <Table.Row>
                 <Table.Cell verticalAlign={'top'} colSpan={4} textAlign={'center'}>
-                    {this.state.phase == Phase.Prompt &&
+                    {this.state.phase == AddEditPhase.Prompt &&
                         <AddEditPrompt
                             deletable={this.props.deletable}
                             syncable={this.props.syncable}
                             editable={this.props.editable}
-                            index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
+                            index={this.props.index}
                             onAddClicked={this.addClicked}
                         />
                     }
                     {/*TODO: add ability to set rotation index in domain too*/}
-                    {this.state.phase == Phase.Domain &&
+                    {this.state.phase == AddEditPhase.Domain &&
                         <AddEditDomain
                             data={this.props.data}
                             onClickDomain={this.selectDomain}
+                            setPhase={this.setPhase}
                             onCancel={this.cancelClicked}
-                            selectedDomain={this.state.selectedDomain}
+                            preparedRotation={this.state.preparedRotation}
+                            index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
+                            manager={this.props.rotationsManager}
                         />
 
                         // <>
@@ -101,6 +105,11 @@ export default class AddEditRotation extends React.Component<Properties, States>
                         //     </Form.Group>
                         // </>
                     }
+
+
+                    {this.state.phase === AddEditPhase.Save && <>
+                        Saved!
+                    </>}
                 </Table.Cell>
             </Table.Row>
         )

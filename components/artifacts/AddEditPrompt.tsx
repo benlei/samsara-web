@@ -30,19 +30,24 @@ export default class AddEditPrompt extends React.Component<Properties, States> {
                         content='New Rotation' color={'green'} icon='add'
                         labelPosition='left' onClick={this.props.onAddClicked}/>
                     <Form.Button
-                        content={'Edit Rotation #' + this.props.index}
+                        content={'Edit #' + (this.props.index+1)}
                         icon='edit' onClick={this.props.onEditClicked}
-                        labelPosition='left' disabled={!this.props.editable}/>
+                        labelPosition='left'
+                        className={this.props.editable ? '': 'hidden'}
+                    />
 
                     <Form.Button
-                        content={'Start Rotation at #' + this.props.index}
+                        content={'Start Rotation at #' + (this.props.index+1)}
                         icon='pin' onClick={this.props.onStartRotationClicked}
-                        labelPosition='left' disabled={!this.props.syncable}/>
+                        labelPosition='left'
+                        className={this.props.syncable ? '': 'hidden'}
+                    />
 
                     <Form.Button
-                        content='Delete' color={'red'} icon='delete'
+                        content={'Delete #' + (this.props.index+1)} color={'red'} icon='delete'
                         labelPosition='left' onClick={this.props.onDeleteClicked}
-                        disabled={!this.props.deletable}/>
+                        className={this.props.deletable ? '': 'hidden'}
+                    />
                 </Form.Group>
             </Form>
         )

@@ -65,8 +65,8 @@ export type Team = {
 }
 
 export type RotationsManager = {
-    insert: (index: number, rotation: Rotation) => void
-    set: (index: number, rotation: Rotation) => void
-    move: (oldIndex: number, newIndex: number) => void
-    delete: (index: number) => void
+    insert: (index: number, rotation: Rotation, newActiveIndex?: number) => void
+    set: (index: number, rotation: Rotation, newActiveIndex?: number) => void
+    move: (oldIndex: number, newIndex: number, newActiveIndex?: number) => void
+    delete: (index: number, newActiveIndex?: number) => void
 }

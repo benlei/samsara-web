@@ -1,14 +1,18 @@
 import React, {Dispatch} from "react";
-import {Button, Checkbox, Container, Form, Grid, Header, Input, Segment} from "semantic-ui-react";
+import {Button, Checkbox, Container, Form, Grid, Header, Icon, Input, Popup, Segment} from "semantic-ui-react";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import _ from "lodash";
-import {ArtifactRotationData} from "@/artifacts/types";
+import {ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
+import {AddEditPhase} from "@/artifacts/enums";
 
 type Properties = {
-    selectedDomain: string
+    preparedRotation: Rotation
+    setPhase: (phase: AddEditPhase) => void
     onClickDomain: Dispatch<any>
     onCancel: Dispatch<any>
     data: ArtifactRotationData
+    manager: RotationsManager
+    index: number
 }
 
 type States = {
@@ -72,6 +76,23 @@ export default class AddEditDomain extends React.Component<Properties, States> {
         }
     }
 
+    createRotation = (atIndex: number) => {
+        return () => {
+            // TODO: should shake submit with error
+            if (!this.props.preparedRotation.domain.length) {
+                return
+            }
+
+
+            this.props.manager.insert(atIndex, {
+                ...this.props.preparedRotation,
+            })
+
+            this.props.setPhase(AddEditPhase.Prompt)
+        }
+    }
+
+
     render() {
         return (
             <Container textAlign={'left'} style={{padding: '1em'}}>
@@ -98,7 +119,7 @@ export default class AddEditDomain extends React.Component<Properties, States> {
                     {this.getFilteredSortedDomainNames().map((domainName) =>
                         <Grid.Column key={domainName}>
                             <Segment onClick={this.onClickDomain(domainName)}
-                                     className={this.props.selectedDomain == domainName ? 'secondary green' : 'grey'}>
+                                     className={this.props.preparedRotation.domain == domainName ? 'secondary green' : 'grey'}>
                                 <ArtifactDomain data={this.props.data} domain={domainName}
                                                 showDescription={this.state.showDescriptions}/>
                             </Segment>
@@ -108,9 +129,30 @@ export default class AddEditDomain extends React.Component<Properties, States> {
                 <Form style={{marginTop: '2em'}}>
                     <Form.Group inline style={{textAlign: 'left'}}>
                         <Form.Field>
-                            <Button color={'green'}>
-                                Create
-                            </Button>
+                            {!!this.props.data.rotations.data.length &&
+                                <Popup on={'click'} trigger={
+                                    <Button color={'green'} icon labelPosition={'left'}>
+                                        <Icon name='caret down'/> Create
+                                    </Button>
+                                } pinned flowing position={'bottom left'}>
+                                    <Button color={'green'} icon labelPosition={'left'}
+                                            onClick={this.createRotation(this.props.index + 1)}>
+                                        <Icon name='arrow alternate circle down'/>
+                                        Below #{this.props.index + 1}
+                                    </Button>
+                                    <Button color={'green'} icon labelPosition={'right'}
+                                            onClick={this.createRotation(this.props.index)}>
+                                        Above #{this.props.index+1}
+                                        <Icon name='arrow alternate circle up'/>
+                                    </Button>
+                                </Popup>
+                            }
+                            {!this.props.data.rotations.data.length &&
+                                <Button color={'green'} icon labelPosition={'left'}
+                                        onClick={this.createRotation(0)}>
+                                    <Icon name={'add'}/> Create #1
+                                </Button>
+                            }
                             <Button color={'grey'}>
                                 Setup Team
                             </Button>
