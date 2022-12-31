@@ -200,9 +200,9 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                         <Table.Header>
                             <Table.Row>
                                 <Table.HeaderCell style={{width: '3rem'}}>#</Table.HeaderCell>
-                                <Table.HeaderCell>Artifacts</Table.HeaderCell>
-                                <Table.HeaderCell>Intended Characters</Table.HeaderCell>
-                                <Table.HeaderCell>Info</Table.HeaderCell>
+                                <Table.HeaderCell style={{width: '20rem'}}>Artifacts</Table.HeaderCell>
+                                <Table.HeaderCell style={{width: '12rem'}}>Intended</Table.HeaderCell>
+                                <Table.HeaderCell style={{width: '40rem'}}>Info</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
 
@@ -217,25 +217,32 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                             <ArtifactDomain data={data} domain={r.domain} popover/>
                                         </Table.Cell>
                                         <Table.Cell verticalAlign={'top'}>
-                                            <List>
-                                                {!r.characters.length &&
-                                                    <List.Item>
-                                                        <Image src={`/images/UnknownCharacter.png`} avatar
-                                                               alt={'Unknown Character'}
-                                                        />
-                                                    </List.Item>
-                                                }
-                                                {_.chunk(r.characters, 6).map((chunk, k) =>
-                                                    <List.Item key={k}>
-                                                        {chunk.map((c, j) =>
-                                                            <Image
-                                                                avatar
-                                                                src={`/images/characters/${data.characters[c].image}.png`}
-                                                                alt={data.characters[c].image} key={j}/>
-                                                        )}
-                                                    </List.Item>
-                                                )}
-                                            </List>
+                                            {r.characters.map((c, k) =>
+                                                <Image
+                                                    avatar
+                                                    src={`/images/characters/${data.characters[c].image}.png`}
+                                                    alt={data.characters[c].image} key={k}/>
+                                            )}
+
+                                            {/*<List>*/}
+                                            {/*    {!r.characters.length &&*/}
+                                            {/*        <List.Item>*/}
+                                            {/*            <Image src={`/images/UnknownCharacter.png`} avatar*/}
+                                            {/*                   alt={'Unknown Character'}*/}
+                                            {/*            />*/}
+                                            {/*        </List.Item>*/}
+                                            {/*    }*/}
+                                            {/*    {_.chunk(r.characters, 4).map((chunk, k) =>*/}
+                                            {/*        <List.Item key={k}>*/}
+                                            {/*            {chunk.map((c, j) =>*/}
+                                            {/*                <Image*/}
+                                            {/*                    avatar*/}
+                                            {/*                    src={`/images/characters/${data.characters[c].image}.png`}*/}
+                                            {/*                    alt={data.characters[c].image} key={j}/>*/}
+                                            {/*            )}*/}
+                                            {/*        </List.Item>*/}
+                                            {/*    )}*/}
+                                            {/*</List>*/}
                                         </Table.Cell>
                                         <Table.Cell verticalAlign={'top'}>
                                             <Container fluid
