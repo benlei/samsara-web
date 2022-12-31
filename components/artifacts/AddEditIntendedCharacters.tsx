@@ -82,7 +82,7 @@ export default class AddEditIntendedCharacters extends React.Component<Propertie
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Field width={'six'}>
+                        <Form.Field width={'eight'}>
                             {!this.props.preparedRotation.characters.length &&
                                 <Image src={`/images/UnknownCharacter.png`} avatar
                                        alt={'Unknown Character'}
