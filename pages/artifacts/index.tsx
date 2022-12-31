@@ -225,7 +225,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                                         />
                                                     </List.Item>
                                                 }
-                                                {_.chunk(r.characters, 8).map((chunk, k) =>
+                                                {_.chunk(r.characters, 6).map((chunk, k) =>
                                                     <List.Item key={k}>
                                                         {chunk.map((c, j) =>
                                                             <Image
