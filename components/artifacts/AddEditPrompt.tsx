@@ -54,7 +54,7 @@ export default class AddEditPrompt extends React.Component<Properties, States> {
                             <Form>
                                 <Form.Field>
                                     <Form.Button
-                                        label={'Are you sure?'}
+                                        label={'Are you sure? This change will be irreversible!'}
                                         content={'Yes, Delete #' + (this.props.index + 1)} color={'red'} icon='delete'
                                         labelPosition='left' onClick={this.props.onDeleteClicked}
                                     />
