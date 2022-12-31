@@ -41,6 +41,16 @@ export type ArtifactRotationData = {
     rotations: Rotations
 }
 
+export type RotationStorage = {
+    active?: string
+    presets?: RotationPresets[]
+}
+
+export type RotationPresets = {
+    name: string
+    rotations: Rotations
+}
+
 export type Rotations = {
     fixed: boolean // fixed # of days between all rotations, or no
     fixedDays: number

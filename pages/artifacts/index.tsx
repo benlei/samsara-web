@@ -2,13 +2,19 @@ import React from "react";
 import {Accordion, AccordionTitleProps, Container, Icon, Image, List, Table} from "semantic-ui-react";
 import Head from "next/head";
 import ArtifactConfigLoadDownload from "@/components/artifacts/ArtifactConfigLoadDownload";
-import {AddEdit, ArtifactRotationData, ArtifactsDomainsData, Rotation, Rotations, RotationsManager} from "@/artifacts/types";
+import {
+    ArtifactRotationData,
+    ArtifactsDomainsData,
+    Rotation,
+    Rotations,
+    RotationsManager,
+    RotationStorage
+} from "@/artifacts/types";
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import AddEditRotation from "@/components/artifacts/AddEditRotation";
 import _ from "lodash";
-import {AddEditPhase} from "@/artifacts/enums";
 
 type Properties = {
     characters: string[]
@@ -28,6 +34,8 @@ export async function getStaticProps() {
     };
 }
 
+const V1StorageKey = "v1_artifact_rotation"
+
 export default class ArtifactsHome extends React.Component<Properties, States> {
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
@@ -43,10 +51,21 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
 
     componentDidMount = () => {
         try {
-            const savedData: Rotations = JSON.parse(localStorage.getItem("artifactRotationData") || "{}")
+            const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
+
+            if (!rotationStorage.active) {
+                return
+            }
+
+            const rotations: Rotations = _.chain(rotationStorage.presets)
+                .find((r) => r.name === rotationStorage.active)
+                .value()
+                .rotations
+
+
             this.setState({
-                ...savedData,
-                activeIndex: (savedData.data?.length ?? 1) - 1
+                ...rotations,
+                activeIndex: (rotations.data?.length ?? 1) - 1
             })
         } catch (ignore) {
 
@@ -60,7 +79,23 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
             "date": this.state.date,
             "data": this.state.data,
         }
-        localStorage.setItem("artifactRotationData", JSON.stringify(data))
+
+        const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
+        if (!rotationStorage.presets?.length) {
+            const store: RotationStorage = {
+                active: 'default',
+                presets: [{name: 'default', rotations: data}],
+            }
+            localStorage.setItem(V1StorageKey, JSON.stringify(store))
+            return
+        }
+
+        const idx = _.chain(rotationStorage.presets)
+            .findIndex((p) => p.name === rotationStorage.active)
+            .value()
+
+        rotationStorage.presets[idx].rotations = data
+        localStorage.setItem(V1StorageKey, JSON.stringify(rotationStorage))
     }
 
     handleClick = (event: any, titleProps: AccordionTitleProps) => {
