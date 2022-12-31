@@ -84,7 +84,7 @@ export default class AddEditAddButton extends React.Component<Properties, States
                                 <Button color={this.props.preparedRotation.domain ? 'green' : 'yellow'} icon
                                         labelPosition={'left'}
                                 >
-                                    <Icon name='caret down'/> Create #1
+                                    <Icon name='add'/> Create #1
                                 </Button>
                             } pinned position={'bottom left'}>
                                 <p>You must select a domain first</p>
