@@ -239,20 +239,24 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                         </Table.Cell>
                                         <Table.Cell verticalAlign={'top'}>
                                             <Container fluid
-                                                       className={'grey'}>
+                                                       className={'grey x-small'}>
                                                 <p>
                                                     <strong>{r.days ?? data.rotations.fixedDays}</strong> Rotation
                                                     Day{(r.days ?? data.rotations.fixedDays) !== 1 && 's'}
                                                 </p>
-                                                <p>Blah blah blah yes my note is this</p>
+                                                {r.note.split("\n").map((note, k) =>
+                                                    <p key={k}>{note}</p>
+                                                )}
                                             </Container>
-                                            <Accordion>
-                                                <Accordion.Title active={this.state.activeIndex === k}
-                                                                 onClick={this.handleClick} index={k}>
-                                                    <Icon name='dropdown'/>
-                                                    {this.state.activeIndex === k ? 'Collapse' : 'Expand'} Options
-                                                </Accordion.Title>
-                                            </Accordion>
+                                            <Container fluid style={{marginTop: '.5rem'}}>
+                                                <Accordion>
+                                                    <Accordion.Title active={this.state.activeIndex === k}
+                                                                     onClick={this.handleClick} index={k}>
+                                                        <Icon name='dropdown'/>
+                                                        {this.state.activeIndex === k ? 'Collapse' : 'Expand'} Options
+                                                    </Accordion.Title>
+                                                </Accordion>
+                                            </Container>
                                         </Table.Cell>
                                     </Table.Row>
                                     {this.state.activeIndex === k &&

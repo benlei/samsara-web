@@ -5,6 +5,7 @@ import AddEditPrompt from "@/components/artifacts/AddEditPrompt";
 import AddEditDomain from "./AddEditDomain";
 import {AddEditPhase} from "@/artifacts/enums";
 import AddEditIntendedCharacters from "@/components/artifacts/AddEditIntendedCharacters";
+import AddEditInfo from "@/components/artifacts/AddEditInfo";
 
 
 type Properties = {
@@ -35,12 +36,17 @@ export default class AddEditRotation extends React.Component<Properties, States>
 
         this.state = {
             phase: AddEditPhase.Prompt,
-            preparedRotation: {
-                domain: "",
-                characters: [],
-                note: "",
-            },
+            preparedRotation: this.getBaseRotation(),
             addEdit: AddEdit.Add,
+        }
+    }
+
+    getBaseRotation = (): Rotation => {
+        return {
+            domain: "",
+            characters: [],
+            note: "",
+            days: this.props.data.rotations.fixedDays,
         }
     }
 
@@ -48,11 +54,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
         this.setState({
             phase: AddEditPhase.Domain,
             addEdit: AddEdit.Add,
-            preparedRotation: {
-                domain: "",
-                characters: [],
-                note: "",
-            }
+            preparedRotation: this.getBaseRotation(),
         })
     }
 
@@ -72,11 +74,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
         this.setState({
             // selectedDomain: "",
             phase: AddEditPhase.Prompt,
-            preparedRotation: {
-                "domain": "",
-                "characters": [],
-                "note": "",
-            },
+            preparedRotation: this.getBaseRotation(),
         })
     }
 
@@ -108,7 +106,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
                         <AddEditDomain
                             addEdit={this.state.addEdit}
                             data={this.props.data}
-                            updateRotation={this.updatePreparedRotation}
+                            updatePreparedRotation={this.updatePreparedRotation}
                             setPhase={this.setPhase}
                             onCancel={this.cancelClicked}
                             preparedRotation={this.state.preparedRotation}
@@ -121,7 +119,20 @@ export default class AddEditRotation extends React.Component<Properties, States>
                         <AddEditIntendedCharacters
                             addEdit={this.state.addEdit}
                             data={this.props.data}
-                            updateRotation={this.updatePreparedRotation}
+                            updatePreparedRotation={this.updatePreparedRotation}
+                            setPhase={this.setPhase}
+                            onCancel={this.cancelClicked}
+                            preparedRotation={this.state.preparedRotation}
+                            index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
+                            manager={this.props.rotationsManager}
+                        />
+                    }
+
+                    {this.state.phase == AddEditPhase.Info &&
+                        <AddEditInfo
+                            addEdit={this.state.addEdit}
+                            data={this.props.data}
+                            updatePreparedRotation={this.updatePreparedRotation}
                             setPhase={this.setPhase}
                             onCancel={this.cancelClicked}
                             preparedRotation={this.state.preparedRotation}

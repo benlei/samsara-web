@@ -64,7 +64,7 @@ export default class AddEditDomain extends React.Component<Properties, States> {
 
     onClickDomain = (domain: string) => {
         return () => {
-            this.props.updateRotation({
+            this.props.updatePreparedRotation({
                 ...this.props.preparedRotation,
                 domain: this.props.preparedRotation.domain === domain ? "" : domain
             })

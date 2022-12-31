@@ -79,8 +79,8 @@ export type RotationsManager = {
 
 export type AddEditButtonsProperties = {
     preparedRotation: Rotation
+    updatePreparedRotation: (rotation: Rotation) => void
     data: ArtifactRotationData
-    updateRotation: (rotation: Rotation) => void
     manager: RotationsManager
     setPhase: (phase: AddEditPhase) => void
     onCancel: () => void

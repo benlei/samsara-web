@@ -47,14 +47,14 @@ export default class AddEditIntendedCharacters extends React.Component<Propertie
     addCharacterHandler = (characterName: string) => {
         return () => {
             if (this.props.preparedRotation.characters.includes(characterName)) {
-                this.props.updateRotation({
+                this.props.updatePreparedRotation({
                     ...this.props.preparedRotation,
                     characters: _.chain(this.props.preparedRotation.characters)
                         .filter((c) => c != characterName)
                         .value()
                 })
             } else {
-                this.props.updateRotation({
+                this.props.updatePreparedRotation({
                     ...this.props.preparedRotation,
                     characters: [...this.props.preparedRotation.characters, characterName],
                 })
