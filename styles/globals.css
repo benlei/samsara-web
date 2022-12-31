@@ -90,3 +90,7 @@ body {
 .hidden {
   visibility: hidden
 }
+
+button {
+  white-space: nowrap;
+}

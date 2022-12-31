@@ -4,8 +4,9 @@ import Head from "next/head";
 
 type Properties = {}
 type States = {
-    date: Date
+    date: number
     military: boolean
+    intervalId: any
 }
 
 type Resin = {
@@ -43,23 +44,32 @@ function getHumanReadable24HourTime(now: Date, date: Date): string {
     return `${hours}:${minutes}`
 }
 
+function getTime(): number {
+    return Math.floor(Date.now() / 1000)
+}
+
 export default class ResinHome extends React.Component<Properties, States> {
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
 
         this.state = {
-            date: new Date(),
+            date: getTime(),
             military: false,
+            intervalId: 0,
         }
     }
 
     componentDidMount = () => {
         this.setState({
-            date: new Date(),
+            date: getTime(),
             military: false,
+            intervalId: setInterval(() => this.setState({date: getTime()}), 5000),
         })
+    }
 
-        setInterval(() => this.setState({date: new Date()}), 5000)
+
+    componentWillUnmount() {
+        clearInterval(this.state.intervalId)
     }
 
     flipMilitary = () => {
@@ -70,7 +80,7 @@ export default class ResinHome extends React.Component<Properties, States> {
 
     render() {
         const resin: Resin[] = []
-        const now = new Date(this.state.date.getTime())
+        const now = new Date(this.state.date)
         for (let i = 0; i <= MAX_RESIN; i++) {
             resin.push({
                 count: i,
