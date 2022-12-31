@@ -1,4 +1,4 @@
-import {Container, Form, Header, Image, List} from "semantic-ui-react";
+import {Container, Divider, Form, Header, Image} from "semantic-ui-react";
 import React from "react";
 import {AddEditButtonsProperties} from "@/artifacts/types";
 import _ from "lodash";
@@ -7,7 +7,9 @@ import AddEditButtons from "@/components/artifacts/AddEditButtons";
 
 type Properties = {} & AddEditButtonsProperties
 
-type States = {}
+type States = {
+    filterText: string
+}
 
 export default class AddEditTeam extends React.Component<Properties, States> {
     // public static defaultProps = {
@@ -19,97 +21,93 @@ export default class AddEditTeam extends React.Component<Properties, States> {
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
 
-        this.state = {}
+        this.state = {
+            filterText: ""
+        }
     }
 
-    getFilteredSortedCharacters = () => {
-        return _.chain(this.props.data.characters)
-            .orderBy((c) => c.name, 'asc')
-            // .chunk(16)
+    getFilteredCharacters = (characters: string[]) => {
+        let filterFunc = (c: string) => c.toLowerCase().includes(this.state.filterText.toLowerCase())
+        if (this.state.filterText.startsWith('/') && this.state.filterText.endsWith('/')) {
+            try {
+                const re = new RegExp(this.state.filterText.substring(1, this.state.filterText.length - 1), 'i')
+                filterFunc = (r: string) => re.test(r)
+            } catch (ignore) {
+
+            }
+        }
+
+        const filteredChracters = _.chain(characters)
+            .filter(filterFunc)
             .value()
+
+        return filteredChracters.length ? filteredChracters : characters
     }
 
+    addCharacterHandler = (characterName: string) => {
+        return () => {
+            if (this.props.preparedRotation.team.includes(characterName)) {
+                this.props.updateRotation({
+                    ...this.props.preparedRotation,
+                    team: _.chain(this.props.preparedRotation.team)
+                        .filter((c) => c != characterName)
+                        .value()
+                })
+            } else if (this.props.preparedRotation.team.length >= 4) {
+                return
+            } else {
+                this.props.updateRotation({
+                    ...this.props.preparedRotation,
+                    team: [...this.props.preparedRotation.team, characterName],
+                })
+            }
+        }
+    }
+
+    handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({filterText: event.target.value});
+    }
 
     render() {
         return (
             <Container textAlign={'left'} style={{marginTop: '2em'}}>
-                <Header as='h3'>Add New Team</Header>
+                <Header as='h3'>Select Team Characters</Header>
                 <Form>
-                    <Form.Group>
-                        <Form.Field width={'eight'}>
-                            <Form.Input fluid label='Team Name' placeholder='Enter Team Name...'/>
-                        </Form.Field>
-                    </Form.Group>
-
-                    <Form.Group>
-                        <Form.Field>
-                            <label>Team Characters</label>
-                        </Form.Field>
-                    </Form.Group>
-
-                    <List divided relaxed>
-                        <List.Item>
-                            <Image avatar alt={'UnknownCharacter'}
-                                   src={'/images/UnknownCharacter.png'}/>
-                            <List.Content>
-                                <List.Header>Semantic-Org/Semantic-UI</List.Header>
-                                <List.Description as='a'>Updated 10 mins ago</List.Description>
-                            </List.Content>
-                        </List.Item>
-                        <List.Item>
-                            <Image avatar alt={'UnknownCharacter'}
-                                   src={'/images/UnknownCharacter.png'}/>
-                            <List.Content>
-                                <List.Header>Semantic-Org/Semantic-UI-Docs</List.Header>
-                                <List.Description as='a'>Updated 22 mins ago</List.Description>
-                            </List.Content>
-                        </List.Item>
-                        <List.Item>
-                            <Image avatar alt={'blah'} src={'/images/characters/Amber.png'}/>
-                            <List.Content>
-                                <List.Header>Semantic-Org/Semantic-UI-Meteor</List.Header>
-                                <List.Description>Move Up | Move Down | Remove</List.Description>
-                            </List.Content>
-                        </List.Item>
-                        <List.Item>
-                            <Image avatar alt={'UnknownCharacter'}
-                                   src={'/images/UnknownCharacter.png'}/>
-                            <List.Content>
-                                <List.Header>No selected character</List.Header>
-                                <List.Description as='a'>Click on a character from below to
-                                    add</List.Description>
-                            </List.Content>
-                        </List.Item>
-                    </List>
-
-                    {/*<Divider />*/}
                     <Form.Group>
                         <Form.Field width={'six'}>
                             <Form.Input fluid label={'Select Characters'}
-                                        placeholder='Filter Character Name...'/>
+                                        placeholder='Filter Character Name...'
+                                        value={this.state.filterText}
+                                        onChange={this.handleFilterChange}
+                            />
                         </Form.Field>
                     </Form.Group>
 
                     <Container>
-                        {/*{this.getFilteredSortedCharacters().map((rowCharacter, k) =>*/}
-                        {/*    <div key={k} className={'character-select-row'}>*/}
-                        {this.getFilteredSortedCharacters().map((c, k) =>
-                            <Image src={`/images/characters/${c.image}.png`} avatar alt={c.image} key={k}/>
+                        {this.props.preparedRotation.team.slice(0, 4).map((c, k) =>
+                            <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
+                                   alt={this.props.data.characters[c].image} key={k}
+                                   className={'active'}
+                                   onClick={this.addCharacterHandler(this.props.data.characters[c].name)}
+                            />
                         )}
-                        {/*</div>*/}
-                        {/*)}    */}
+                        {_.range(0, 4 - Math.min(4, this.props.preparedRotation.team.length)).map((c) =>
+                            <Image src={`/images/UnknownCharacter.png`} avatar
+                                   alt={'Unknown Character'} key={c}
+                            />
+                        )}
                     </Container>
-
-                    {/*<Form.Group inline style={{marginTop: '1em'}}>*/}
-                    {/*    <Form.Field>*/}
-                    {/*        <Button color={'green'} onClick={this.updatePhase(Phase.Prompt)}>*/}
-                    {/*            Create*/}
-                    {/*        </Button>*/}
-                    {/*        <Button color={'red'} onClick={this.updatePhase(Phase.Prompt)}>*/}
-                    {/*            Cancel*/}
-                    {/*        </Button>*/}
-                    {/*    </Form.Field>*/}
-                    {/*</Form.Group>*/}
+                    <Container>
+                        <Divider />
+                        {this.getFilteredCharacters(_.chain(Object.keys(this.props.data.characters).sort())
+                            .filter((c) => !this.props.preparedRotation.team.includes(c))
+                            .value()).map((c, k) =>
+                            <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
+                                   alt={this.props.data.characters[c].image} key={k}
+                                   onClick={this.addCharacterHandler(this.props.data.characters[c].name)}
+                            />
+                        )}
+                    </Container>
                 </Form>
 
                 <AddEditButtons disableTeams {...this.props}/>

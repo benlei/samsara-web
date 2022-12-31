@@ -50,7 +50,7 @@ export type Rotations = {
 
 export type Rotation = {
     domain: string,
-    teams: string[]
+    team: string[]
     characters: string[]
     days?: number
     note: string
@@ -75,6 +75,7 @@ export type RotationsManager = {
 export type AddEditButtonsProperties = {
     preparedRotation: Rotation
     data: ArtifactRotationData
+    updateRotation: (rotation: Rotation) => void
     manager: RotationsManager
     setPhase: (phase: AddEditPhase) => void
     onCancel: () => void

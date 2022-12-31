@@ -183,12 +183,12 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                         <Table.Cell verticalAlign={'top'}>
                                             <List>
                                                 <List.Item>
-                                                    {r.teams.slice(0, 4).map((c, j) =>
+                                                    {r.team.slice(0, 4).map((c, j) =>
                                                         <Image avatar
                                                                src={`/images/characters/${data.characters[c].image}.png`}
                                                                alt={data.characters[c].image} key={j}/>
                                                     )}
-                                                    {_.range(4 - r.teams.slice(0, 4).length).map((n, j) =>
+                                                    {_.range(4 - r.team.slice(0, 4).length).map((n, j) =>
                                                         <Image avatar src='/images/UnknownCharacter.png' alt={'Unknown'}
                                                                key={j}/>
                                                     )}

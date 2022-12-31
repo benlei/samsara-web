@@ -1,20 +1,11 @@
-import React, {Dispatch} from "react";
+import React from "react";
 import {Checkbox, Container, Form, Grid, Header, Input, Segment} from "semantic-ui-react";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import _ from "lodash";
-import {ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
-import {AddEditPhase} from "@/artifacts/enums";
+import {AddEditButtonsProperties} from "@/artifacts/types";
 import AddEditButtons from "./AddEditButtons";
 
-type Properties = {
-    preparedRotation: Rotation
-    setPhase: (phase: AddEditPhase) => void
-    onClickDomain: Dispatch<any>
-    onCancel: () => void
-    data: ArtifactRotationData
-    manager: RotationsManager
-    index: number
-}
+type Properties = {} & AddEditButtonsProperties
 
 type States = {
     showDescriptions: boolean
@@ -73,7 +64,10 @@ export default class AddEditDomain extends React.Component<Properties, States> {
 
     onClickDomain = (domain: string) => {
         return () => {
-            this.props.onClickDomain(domain)
+            this.props.updateRotation({
+                ...this.props.preparedRotation,
+                domain: this.props.preparedRotation.domain === domain ? "" : domain
+            })
         }
     }
 

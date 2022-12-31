@@ -36,7 +36,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
             phase: AddEditPhase.Prompt,
             preparedRotation: {
                 "domain": "",
-                "teams": [],
+                "team": [],
                 "characters": [],
                 "note": "",
             },
@@ -55,24 +55,19 @@ export default class AddEditRotation extends React.Component<Properties, States>
             phase: AddEditPhase.Prompt,
             preparedRotation: {
                 "domain": "",
-                "teams": [],
+                "team": [],
                 "characters": [],
                 "note": "",
             },
         })
     }
 
-    selectDomain = (domain: string) => {
-        this.setState({
-            preparedRotation: {
-                ...this.state.preparedRotation,
-                domain: this.state.preparedRotation.domain === domain ? "" : domain
-            }
-        })
-    }
-
     deleteRotation = () => {
         this.props.rotationsManager.delete(this.props.index)
+    }
+
+    updatePreparedRotation = (rotation: Rotation)=> {
+        this.setState({preparedRotation: rotation})
     }
 
 
@@ -94,7 +89,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
                     {this.state.phase == AddEditPhase.Domain &&
                         <AddEditDomain
                             data={this.props.data}
-                            onClickDomain={this.selectDomain}
+                            updateRotation={this.updatePreparedRotation}
                             setPhase={this.setPhase}
                             onCancel={this.cancelClicked}
                             preparedRotation={this.state.preparedRotation}
@@ -105,7 +100,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
 
                     {this.state.phase == AddEditPhase.Team &&
                         <AddEditTeam data={this.props.data}
-                                     // onClickDomain={this.selectDomain}
+                                     updateRotation={this.updatePreparedRotation}
                                      setPhase={this.setPhase}
                                      onCancel={this.cancelClicked}
                                      preparedRotation={this.state.preparedRotation}

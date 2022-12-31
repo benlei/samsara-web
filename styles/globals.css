@@ -94,3 +94,7 @@ body {
 button {
   white-space: nowrap;
 }
+
+img.active {
+  border: 2px solid #21ba45
+}
