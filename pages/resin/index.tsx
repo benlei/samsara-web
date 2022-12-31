@@ -45,7 +45,7 @@ function getHumanReadable24HourTime(now: Date, date: Date): string {
 }
 
 function getTime(): number {
-    return Math.floor(Date.now() / 1000)
+    return Math.floor(Date.now() / 1000) * 1000
 }
 
 export default class ResinHome extends React.Component<Properties, States> {
@@ -53,7 +53,7 @@ export default class ResinHome extends React.Component<Properties, States> {
         super(props);
 
         this.state = {
-            date: getTime(),
+            date: 0,
             military: false,
             intervalId: 0,
         }
