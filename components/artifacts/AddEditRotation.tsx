@@ -4,7 +4,7 @@ import {ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/type
 import AddEditPrompt from "@/components/artifacts/AddEditPrompt";
 import AddEditDomain from "./AddEditDomain";
 import {AddEditPhase} from "@/artifacts/enums";
-import AddEditTeam from "./AddEditTeam";
+import AddEditIntendedCharacters from "@/components/artifacts/AddEditIntendedCharacters";
 
 
 type Properties = {
@@ -36,7 +36,6 @@ export default class AddEditRotation extends React.Component<Properties, States>
             phase: AddEditPhase.Prompt,
             preparedRotation: {
                 "domain": "",
-                "team": [],
                 "characters": [],
                 "note": "",
             },
@@ -55,7 +54,6 @@ export default class AddEditRotation extends React.Component<Properties, States>
             phase: AddEditPhase.Prompt,
             preparedRotation: {
                 "domain": "",
-                "team": [],
                 "characters": [],
                 "note": "",
             },
@@ -66,7 +64,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
         this.props.rotationsManager.delete(this.props.index)
     }
 
-    updatePreparedRotation = (rotation: Rotation)=> {
+    updatePreparedRotation = (rotation: Rotation) => {
         this.setState({preparedRotation: rotation})
     }
 
@@ -85,7 +83,6 @@ export default class AddEditRotation extends React.Component<Properties, States>
                             onDeleteClicked={this.deleteRotation}
                         />
                     }
-                    {/*TODO: add ability to set rotation index in domain too*/}
                     {this.state.phase == AddEditPhase.Domain &&
                         <AddEditDomain
                             data={this.props.data}
@@ -98,14 +95,15 @@ export default class AddEditRotation extends React.Component<Properties, States>
                         />
                     }
 
-                    {this.state.phase == AddEditPhase.Team &&
-                        <AddEditTeam data={this.props.data}
-                                     updateRotation={this.updatePreparedRotation}
-                                     setPhase={this.setPhase}
-                                     onCancel={this.cancelClicked}
-                                     preparedRotation={this.state.preparedRotation}
-                                     index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
-                                     manager={this.props.rotationsManager}
+                    {this.state.phase == AddEditPhase.Characters &&
+                        <AddEditIntendedCharacters
+                            data={this.props.data}
+                            updateRotation={this.updatePreparedRotation}
+                            setPhase={this.setPhase}
+                            onCancel={this.cancelClicked}
+                            preparedRotation={this.state.preparedRotation}
+                            index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
+                            manager={this.props.rotationsManager}
                         />
                     }
                 </Table.Cell>

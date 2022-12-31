@@ -50,19 +50,9 @@ export type Rotations = {
 
 export type Rotation = {
     domain: string,
-    team: string[]
     characters: string[]
     days?: number
     note: string
-}
-
-export type Teams = {
-    [uuid: string]: Team
-}
-
-export type Team = {
-    name: string
-    characters: string[]
 }
 
 export type RotationsManager = {

@@ -11,7 +11,7 @@ type States = {
     filterText: string
 }
 
-export default class AddEditTeam extends React.Component<Properties, States> {
+export default class AddEditIntendedCharacters extends React.Component<Properties, States> {
     // public static defaultProps = {
     //     editable: true,
     //     deletable: true,
@@ -46,19 +46,17 @@ export default class AddEditTeam extends React.Component<Properties, States> {
 
     addCharacterHandler = (characterName: string) => {
         return () => {
-            if (this.props.preparedRotation.team.includes(characterName)) {
+            if (this.props.preparedRotation.characters.includes(characterName)) {
                 this.props.updateRotation({
                     ...this.props.preparedRotation,
-                    team: _.chain(this.props.preparedRotation.team)
+                    characters: _.chain(this.props.preparedRotation.characters)
                         .filter((c) => c != characterName)
                         .value()
                 })
-            } else if (this.props.preparedRotation.team.length >= 4) {
-                return
             } else {
                 this.props.updateRotation({
                     ...this.props.preparedRotation,
-                    team: [...this.props.preparedRotation.team, characterName],
+                    characters: [...this.props.preparedRotation.characters, characterName],
                 })
             }
         }
@@ -70,8 +68,8 @@ export default class AddEditTeam extends React.Component<Properties, States> {
 
     render() {
         return (
-            <Container textAlign={'left'} style={{marginTop: '2em'}}>
-                <Header as='h3'>Select Team Characters</Header>
+            <Container textAlign={'left'} style={{padding: '1em'}}>
+                <Header as='h3'>Select Intended Characters</Header>
                 <Form>
                     <Form.Group>
                         <Form.Field width={'six'}>
@@ -83,24 +81,24 @@ export default class AddEditTeam extends React.Component<Properties, States> {
                         </Form.Field>
                     </Form.Group>
 
-                    <Container>
-                        {this.props.preparedRotation.team.slice(0, 4).map((c, k) =>
+                    <Container style={{marginTop: '1rem'}}>
+                        {!this.props.preparedRotation.characters.length &&
+                            <Image src={`/images/UnknownCharacter.png`} avatar
+                                   alt={'Unknown Character'}
+                            />
+                        }
+                        {this.props.preparedRotation.characters.map((c, k) =>
                             <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
                                    alt={this.props.data.characters[c].image} key={k}
                                    className={'active'}
                                    onClick={this.addCharacterHandler(this.props.data.characters[c].name)}
                             />
                         )}
-                        {_.range(0, 4 - Math.min(4, this.props.preparedRotation.team.length)).map((c) =>
-                            <Image src={`/images/UnknownCharacter.png`} avatar
-                                   alt={'Unknown Character'} key={c}
-                            />
-                        )}
                     </Container>
                     <Container>
-                        <Divider />
+                        <Divider/>
                         {this.getFilteredCharacters(_.chain(Object.keys(this.props.data.characters).sort())
-                            .filter((c) => !this.props.preparedRotation.team.includes(c))
+                            .filter((c) => !this.props.preparedRotation.characters.includes(c))
                             .value()).map((c, k) =>
                             <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
                                    alt={this.props.data.characters[c].image} key={k}
@@ -110,7 +108,7 @@ export default class AddEditTeam extends React.Component<Properties, States> {
                     </Container>
                 </Form>
 
-                <AddEditButtons disableTeams {...this.props}/>
+                <AddEditButtons disableCharacters {...this.props}/>
             </Container>
         )
     }

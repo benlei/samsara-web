@@ -5,8 +5,8 @@ import {AddEditPhase} from "@/artifacts/enums";
 
 type Properties = {
     disableDomains: boolean
-    disableTeams: boolean
     disableCharacters: boolean
+    disableInfo: boolean
 } & AddEditButtonsProperties
 
 type States = {}
@@ -14,7 +14,7 @@ type States = {}
 export default class AddEditButtons extends React.Component<Properties, States> {
     public static defaultProps = {
         disableDomains: false,
-        disableTeams: false,
+        disableInfo: false,
         disableCharacters: false,
     }
 
@@ -29,7 +29,6 @@ export default class AddEditButtons extends React.Component<Properties, States> 
 
     createRotation = (atIndex: number) => {
         return () => {
-            // TODO: should shake submit with error
             if (!this.props.preparedRotation.domain.length) {
                 return
             }
@@ -45,8 +44,8 @@ export default class AddEditButtons extends React.Component<Properties, States> 
 
     render() {
         return (
-            <Form style={{marginTop: '2em'}}>
-                <Form.Group widths='equal' style={{textAlign: 'left'}}>
+            <Form style={{marginTop: '2em', textAlign: 'center'}}>
+                <Form.Group widths='equal'>
                     <Form.Field>
                         {!!this.props.data.rotations.data.length &&
                             <Popup on={'click'} trigger={
@@ -126,21 +125,23 @@ export default class AddEditButtons extends React.Component<Properties, States> 
                                 disabled={this.props.disableDomains}
                                 onClick={this.setPhaseHandler(AddEditPhase.Domain)}
                         >
-                            Select Domain
-                        </Button>
-                    </Form.Field>
-                    <Form.Field>
-                        <Button color={this.props.disableTeams ? 'grey' : 'blue'}
-                                disabled={this.props.disableTeams}
-                                onClick={this.setPhaseHandler(AddEditPhase.Team)}
-                        >
-                            Setup Team
+                            Domain
                         </Button>
                     </Form.Field>
                     <Form.Field>
                         <Button color={this.props.disableCharacters ? 'grey' : 'blue'}
-                                disabled={this.props.disableCharacters}>
-                            Select Characters
+                                disabled={this.props.disableCharacters}
+                                onClick={this.setPhaseHandler(AddEditPhase.Characters)}
+                        >
+                            Intended Characters
+                        </Button>
+                    </Form.Field>
+                    <Form.Field>
+                        <Button color={this.props.disableInfo ? 'grey' : 'blue'}
+                                disabled={this.props.disableInfo}
+                                onClick={this.setPhaseHandler(AddEditPhase.Info)}
+                        >
+                            Info
                         </Button>
                     </Form.Field>
                     <Form.Field>

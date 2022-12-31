@@ -163,9 +163,9 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                     <Table unstackable>
                         <Table.Header>
                             <Table.Row>
-                                <Table.HeaderCell style={{width: '3em'}}>#</Table.HeaderCell>
+                                <Table.HeaderCell style={{width: '3rem'}}>#</Table.HeaderCell>
                                 <Table.HeaderCell>Artifacts</Table.HeaderCell>
-                                <Table.HeaderCell style={{minWidth: '14em'}}>Team</Table.HeaderCell>
+                                <Table.HeaderCell>Intended Characters</Table.HeaderCell>
                                 <Table.HeaderCell>Info</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
@@ -182,32 +182,33 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                         </Table.Cell>
                                         <Table.Cell verticalAlign={'top'}>
                                             <List>
-                                                <List.Item>
-                                                    {r.team.slice(0, 4).map((c, j) =>
-                                                        <Image avatar
-                                                               src={`/images/characters/${data.characters[c].image}.png`}
-                                                               alt={data.characters[c].image} key={j}/>
-                                                    )}
-                                                    {_.range(4 - r.team.slice(0, 4).length).map((n, j) =>
-                                                        <Image avatar src='/images/UnknownCharacter.png' alt={'Unknown'}
-                                                               key={j}/>
-                                                    )}
-                                                </List.Item>
+                                                {!r.characters.length &&
+                                                    <List.Item>
+                                                        <Image src={`/images/UnknownCharacter.png`} avatar
+                                                               alt={'Unknown Character'}
+                                                        />
+                                                    </List.Item>
+                                                }
+                                                {_.chunk(r.characters, 8).map((chunk, k) =>
+                                                    <List.Item key={k}>
+                                                        {chunk.map((c, j) =>
+                                                            <Image
+                                                                avatar
+                                                                src={`/images/characters/${data.characters[c].image}.png`}
+                                                                alt={data.characters[c].image} key={j}/>
+                                                        )}
+                                                    </List.Item>
+                                                )}
                                             </List>
                                         </Table.Cell>
                                         <Table.Cell verticalAlign={'top'}>
-                                            {r.characters.map((c, j) =>
-                                                <Image avatar
-                                                       src={`/images/characters/${data.characters[c].image}.png`}
-                                                       alt={data.characters[c].image} key={j}/>
-                                            )}
-                                            <Image avatar alt={'Character'} src='/images/characters/Amber.png'/>
-                                            <Image avatar alt={'Character'} src='/images/characters/Collei.png'/>
-                                            <Image avatar alt={'Character'} src='/images/characters/Albedo.png'/>
-                                            <Image avatar alt={'Character'} src='/images/characters/Aloy.png'/>
-                                            <Container fluid style={{marginTop: '1em'}}
+                                            <Container fluid
                                                        className={'grey'}>
-                                                Blah blah blah yes my note is this
+                                                <p>
+                                                    <strong>{r.days ?? data.rotations.fixedDays}</strong> Rotation
+                                                    Day{(r.days ?? data.rotations.fixedDays) !== 1 && 's'}
+                                                </p>
+                                                <p>Blah blah blah yes my note is this</p>
                                             </Container>
                                             <Accordion>
                                                 <Accordion.Title active={this.state.activeIndex === k}
