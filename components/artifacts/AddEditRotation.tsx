@@ -1,6 +1,6 @@
 import {Table} from "semantic-ui-react";
 import React from "react";
-import {ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
+import {AddEdit, ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
 import AddEditPrompt from "@/components/artifacts/AddEditPrompt";
 import AddEditDomain from "./AddEditDomain";
 import {AddEditPhase} from "@/artifacts/enums";
@@ -20,6 +20,7 @@ type States = {
     phase: AddEditPhase
     // selectedDomain: string
     preparedRotation: Rotation
+    addEdit: AddEdit
 }
 
 export default class AddEditRotation extends React.Component<Properties, States> {
@@ -35,15 +36,34 @@ export default class AddEditRotation extends React.Component<Properties, States>
         this.state = {
             phase: AddEditPhase.Prompt,
             preparedRotation: {
-                "domain": "",
-                "characters": [],
-                "note": "",
+                domain: "",
+                characters: [],
+                note: "",
             },
+            addEdit: AddEdit.Add,
         }
     }
 
     addClicked = () => {
-        this.setState({phase: AddEditPhase.Domain})
+        this.setState({
+            phase: AddEditPhase.Domain,
+            addEdit: AddEdit.Add,
+            preparedRotation: {
+                domain: "",
+                characters: [],
+                note: "",
+            }
+        })
+    }
+
+    editClicked = () => {
+        this.setState({
+            phase: AddEditPhase.Domain,
+            addEdit: AddEdit.Edit,
+            preparedRotation: {
+                ...this.props.data.rotations.data[this.props.index],
+            }
+        })
     }
 
     setPhase = (phase: AddEditPhase) => this.setState({phase: phase})
@@ -80,11 +100,13 @@ export default class AddEditRotation extends React.Component<Properties, States>
                             editable={this.props.editable}
                             index={this.props.index}
                             onAddClicked={this.addClicked}
+                            onEditClicked={this.editClicked}
                             onDeleteClicked={this.deleteRotation}
                         />
                     }
                     {this.state.phase == AddEditPhase.Domain &&
                         <AddEditDomain
+                            addEdit={this.state.addEdit}
                             data={this.props.data}
                             updateRotation={this.updatePreparedRotation}
                             setPhase={this.setPhase}
@@ -97,6 +119,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
 
                     {this.state.phase == AddEditPhase.Characters &&
                         <AddEditIntendedCharacters
+                            addEdit={this.state.addEdit}
                             data={this.props.data}
                             updateRotation={this.updatePreparedRotation}
                             setPhase={this.setPhase}

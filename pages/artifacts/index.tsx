@@ -2,12 +2,13 @@ import React from "react";
 import {Accordion, AccordionTitleProps, Container, Icon, Image, List, Table} from "semantic-ui-react";
 import Head from "next/head";
 import ArtifactConfigLoadDownload from "@/components/artifacts/ArtifactConfigLoadDownload";
-import {ArtifactRotationData, ArtifactsDomainsData, Rotation, Rotations, RotationsManager} from "@/artifacts/types";
+import {AddEdit, ArtifactRotationData, ArtifactsDomainsData, Rotation, Rotations, RotationsManager} from "@/artifacts/types";
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import AddEditRotation from "@/components/artifacts/AddEditRotation";
 import _ from "lodash";
+import {AddEditPhase} from "@/artifacts/enums";
 
 type Properties = {
     characters: string[]

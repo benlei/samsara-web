@@ -55,6 +55,11 @@ export type Rotation = {
     note: string
 }
 
+export enum AddEdit {
+    Add,
+    Edit,
+}
+
 export type RotationsManager = {
     insert: (index: number, rotation: Rotation, newActiveIndex?: number) => void
     set: (index: number, rotation: Rotation, newActiveIndex?: number) => void
@@ -70,4 +75,5 @@ export type AddEditButtonsProperties = {
     setPhase: (phase: AddEditPhase) => void
     onCancel: () => void
     index: number
+    addEdit: AddEdit
 }

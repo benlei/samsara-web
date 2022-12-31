@@ -1,8 +1,8 @@
 import React from "react";
 import {Checkbox, Container, Form, Grid, Header, Input, Segment} from "semantic-ui-react";
-import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import _ from "lodash";
-import {AddEditButtonsProperties} from "@/artifacts/types";
+import {AddEdit, AddEditButtonsProperties} from "@/artifacts/types";
+import ArtifactDomain from "./ArtifactDomain";
 import AddEditButtons from "./AddEditButtons";
 
 type Properties = {} & AddEditButtonsProperties
@@ -75,7 +75,7 @@ export default class AddEditDomain extends React.Component<Properties, States> {
     render() {
         return (
             <Container textAlign={'left'} style={{padding: '1em'}}>
-                <Header as='h3'>Add New Rotation</Header>
+                <Header as='h3'>{this.props.addEdit == AddEdit.Add ? 'Add New' : 'Edit'} Rotation</Header>
                 <Form>
                     <Form.Group>
                         <Form.Field width={'six'}>
