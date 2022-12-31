@@ -1,15 +1,16 @@
 import React, {Dispatch} from "react";
-import {Button, Checkbox, Container, Form, Grid, Header, Icon, Input, Popup, Segment} from "semantic-ui-react";
+import {Checkbox, Container, Form, Grid, Header, Input, Segment} from "semantic-ui-react";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import _ from "lodash";
 import {ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
 import {AddEditPhase} from "@/artifacts/enums";
+import AddEditButtons from "./AddEditButtons";
 
 type Properties = {
     preparedRotation: Rotation
     setPhase: (phase: AddEditPhase) => void
     onClickDomain: Dispatch<any>
-    onCancel: Dispatch<any>
+    onCancel: () => void
     data: ArtifactRotationData
     manager: RotationsManager
     index: number
@@ -76,22 +77,6 @@ export default class AddEditDomain extends React.Component<Properties, States> {
         }
     }
 
-    createRotation = (atIndex: number) => {
-        return () => {
-            // TODO: should shake submit with error
-            if (!this.props.preparedRotation.domain.length) {
-                return
-            }
-
-
-            this.props.manager.insert(atIndex, {
-                ...this.props.preparedRotation,
-            })
-
-            this.props.setPhase(AddEditPhase.Prompt)
-        }
-    }
-
 
     render() {
         return (
@@ -126,99 +111,9 @@ export default class AddEditDomain extends React.Component<Properties, States> {
                         </Grid.Column>
                     )}
                 </Grid>
-                <Form style={{marginTop: '2em'}}>
-                    <Form.Group widths='equal' style={{textAlign: 'left'}}>
-                        <Form.Field>
-                            {!!this.props.data.rotations.data.length &&
-                                <Popup on={'click'} trigger={
-                                    <Button color={this.props.preparedRotation.domain ? 'green' : 'yellow'} icon
-                                            labelPosition={'left'}
-                                    >
-                                        <Icon name='caret down'/> Create
-                                    </Button>
-                                }
-                                       pinned
-                                       position={'bottom left'}>
-                                    {!this.props.preparedRotation.domain &&
-                                        <p>You must select a domain first</p>
-                                    }
 
-                                    {!!this.props.preparedRotation.domain &&
-                                        <Form>
-                                            <Form.Group widths={'equal'}>
-                                                <Form.Field>
-                                                    <Button color={'green'} icon labelPosition={'left'}
-                                                            onClick={this.createRotation(0)}>
-                                                        <Icon name='angle double up'/>
-                                                        Top
-                                                    </Button>
-                                                </Form.Field>
-                                                <Form.Field>
-                                                    <Button color={'green'} icon labelPosition={'left'}
-                                                            onClick={this.createRotation(this.props.index)}>
-                                                        <Icon name='arrow alternate circle up'/>
-                                                        Above #{this.props.index + 1}
-                                                    </Button>
-                                                </Form.Field>
-                                                <Form.Field>
-                                                    <Button color={'green'} icon labelPosition={'left'}
-                                                            onClick={this.createRotation(this.props.index + 1)}>
-                                                        <Icon name='arrow alternate circle down'/>
-                                                        Below #{this.props.index + 1}
-                                                    </Button>
-                                                </Form.Field>
-                                                <Form.Field>
-                                                    <Button color={'green'} icon labelPosition={'left'}
-                                                            onClick={this.createRotation(this.props.data.rotations.data.length)}>
-                                                        <Icon name='angle double down'/>
-                                                        Bottom
-                                                    </Button>
-                                                </Form.Field>
-                                            </Form.Group>
-                                        </Form>
-                                    }
-                                </Popup>
-                            }
-                            {!this.props.data.rotations.data.length &&
-                                <>
-                                    {!this.props.preparedRotation.domain &&
-                                        <Popup on={'click'} trigger={
-                                            <Button color={this.props.preparedRotation.domain ? 'green' : 'yellow'} icon
-                                                    labelPosition={'left'}
-                                            >
-                                                <Icon name='caret down'/> Create #1
-                                            </Button>
-                                        } pinned position={'bottom left'}>
-                                            <p>You must select a domain first</p>
-                                        </Popup>
-                                    }
+                <AddEditButtons disableDomains {...this.props}/>
 
-                                    {!!this.props.preparedRotation.domain &&
-                                        <Button color={'green'} icon labelPosition={'left'}
-                                                onClick={this.createRotation(0)}>
-                                            <Icon name={'add'}/> Create #1
-                                        </Button>
-                                    }
-                                </>
-                            }
-                        </Form.Field>
-                        <Form.Field>
-                            <Button color={'grey'}>
-                                Setup Team
-                            </Button>
-                        </Form.Field>
-                        <Form.Field>
-                            <Button color={'grey'}>
-                                Select Characters
-                            </Button>
-                        </Form.Field>
-                        <Form.Field>
-                            <Button color={'red'} onClick={this.props.onCancel}>
-                                Cancel
-                            </Button>
-                        </Form.Field>
-                    </Form.Group>
-                </Form>
             </Container>
         )
     }

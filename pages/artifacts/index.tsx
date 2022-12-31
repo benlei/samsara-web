@@ -132,7 +132,6 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
 
 
     render() {
-        console.log(this.state.data)
         const data: ArtifactRotationData = {
             "artifacts": getArtifacts(this.props.artifacts),
             "artifactDomains": getArtifactDomains(this.props.artifacts),

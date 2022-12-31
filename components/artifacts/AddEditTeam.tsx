@@ -1,14 +1,11 @@
 import {Container, Form, Header, Image, List} from "semantic-ui-react";
 import React from "react";
-import {Rotations} from "@/artifacts/types";
-import {Characters} from "@/characters/types";
+import {AddEditButtonsProperties} from "@/artifacts/types";
 import _ from "lodash";
+import AddEditButtons from "@/components/artifacts/AddEditButtons";
 
 
-type Properties = {
-    data: Rotations
-    characters: Characters
-}
+type Properties = {} & AddEditButtonsProperties
 
 type States = {}
 
@@ -26,7 +23,7 @@ export default class AddEditTeam extends React.Component<Properties, States> {
     }
 
     getFilteredSortedCharacters = () => {
-        return _.chain(this.props.characters)
+        return _.chain(this.props.data.characters)
             .orderBy((c) => c.name, 'asc')
             // .chunk(16)
             .value()
@@ -114,6 +111,8 @@ export default class AddEditTeam extends React.Component<Properties, States> {
                     {/*    </Form.Field>*/}
                     {/*</Form.Group>*/}
                 </Form>
+
+                <AddEditButtons disableTeams {...this.props}/>
             </Container>
         )
     }

@@ -1,4 +1,5 @@
 import {Characters} from "@/characters/types";
+import {AddEditPhase} from "@/artifacts/enums";
 
 export type ArtifactDomains = {
     [domain: string]: ArtifactDomain
@@ -69,4 +70,13 @@ export type RotationsManager = {
     set: (index: number, rotation: Rotation, newActiveIndex?: number) => void
     move: (oldIndex: number, newIndex: number, newActiveIndex?: number) => void
     delete: (index: number, newActiveIndex?: number) => void
+}
+
+export type AddEditButtonsProperties = {
+    preparedRotation: Rotation
+    data: ArtifactRotationData
+    manager: RotationsManager
+    setPhase: (phase: AddEditPhase) => void
+    onCancel: () => void
+    index: number
 }

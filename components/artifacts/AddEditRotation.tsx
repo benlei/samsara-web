@@ -4,6 +4,7 @@ import {ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/type
 import AddEditPrompt from "@/components/artifacts/AddEditPrompt";
 import AddEditDomain from "./AddEditDomain";
 import {AddEditPhase} from "@/artifacts/enums";
+import AddEditTeam from "./AddEditTeam";
 
 
 type Properties = {
@@ -100,27 +101,18 @@ export default class AddEditRotation extends React.Component<Properties, States>
                             index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
                             manager={this.props.rotationsManager}
                         />
-
-                        // <>
-                        //     <AddEditTeam data={this.props.data.rotations}
-                        //                  characters={this.props.data.characters}/>
-                        //     <Form.Group inline style={{marginTop: '1em', textAlign: 'left'}}>
-                        //         <Form.Field>
-                        //             <Button color={'green'}>
-                        //                 Create
-                        //             </Button>
-                        //             <Button color={'red'} onClick={this.cancelClicked}>
-                        //                 Cancel
-                        //             </Button>
-                        //         </Form.Field>
-                        //     </Form.Group>
-                        // </>
                     }
 
-
-                    {this.state.phase === AddEditPhase.Save && <>
-                        Saved!
-                    </>}
+                    {this.state.phase == AddEditPhase.Team &&
+                        <AddEditTeam data={this.props.data}
+                                     // onClickDomain={this.selectDomain}
+                                     setPhase={this.setPhase}
+                                     onCancel={this.cancelClicked}
+                                     preparedRotation={this.state.preparedRotation}
+                                     index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
+                                     manager={this.props.rotationsManager}
+                        />
+                    }
                 </Table.Cell>
             </Table.Row>
         )

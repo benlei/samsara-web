@@ -3,5 +3,4 @@ export enum AddEditPhase {
     Domain,
     Team,
     Characters,
-    Save,
 }
