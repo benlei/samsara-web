@@ -246,7 +246,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                         </Table.Cell>
                                         <Table.Cell verticalAlign={'top'}>
                                             <Container fluid
-                                                       className={'grey x-small'}>
+                                                       className={'grey'}>
                                                 <p>
                                                     <strong>{r.days ?? data.rotations.fixedDays}</strong> Rotation
                                                     Day{(r.days ?? data.rotations.fixedDays) !== 1 && 's'}

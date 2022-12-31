@@ -81,31 +81,31 @@ export default class AddEditIntendedCharacters extends React.Component<Propertie
                         </Form.Field>
                     </Form.Group>
 
-                    <Container style={{marginTop: '1rem'}}>
-                        {!this.props.preparedRotation.characters.length &&
-                            <Image src={`/images/UnknownCharacter.png`} avatar
-                                   alt={'Unknown Character'}
-                            />
-                        }
-                        {this.props.preparedRotation.characters.map((c, k) =>
-                            <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
-                                   alt={this.props.data.characters[c].image} key={k}
-                                   className={'active'}
-                                   onClick={this.addCharacterHandler(this.props.data.characters[c].name)}
-                            />
-                        )}
-                    </Container>
-                    <Container>
-                        <Divider/>
-                        {this.getFilteredCharacters(_.chain(Object.keys(this.props.data.characters).sort())
-                            .filter((c) => !this.props.preparedRotation.characters.includes(c))
-                            .value()).map((c, k) =>
-                            <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
-                                   alt={this.props.data.characters[c].image} key={k}
-                                   onClick={this.addCharacterHandler(this.props.data.characters[c].name)}
-                            />
-                        )}
-                    </Container>
+                    <Form.Group>
+                        <Form.Field width={'six'}>
+                            {!this.props.preparedRotation.characters.length &&
+                                <Image src={`/images/UnknownCharacter.png`} avatar
+                                       alt={'Unknown Character'}
+                                />
+                            }
+                            {this.props.preparedRotation.characters.map((c, k) =>
+                                <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
+                                       alt={this.props.data.characters[c].image} key={k}
+                                       className={'active'}
+                                       onClick={this.addCharacterHandler(this.props.data.characters[c].name)}
+                                />
+                            )}
+                            <Divider/>
+                            {this.getFilteredCharacters(_.chain(Object.keys(this.props.data.characters).sort())
+                                .filter((c) => !this.props.preparedRotation.characters.includes(c))
+                                .value()).map((c, k) =>
+                                <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
+                                       alt={this.props.data.characters[c].image} key={k}
+                                       onClick={this.addCharacterHandler(this.props.data.characters[c].name)}
+                                />
+                            )}
+                        </Form.Field>
+                    </Form.Group>
                 </Form>
 
                 <AddEditButtons disableCharacters {...this.props}/>

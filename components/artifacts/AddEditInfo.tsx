@@ -54,7 +54,7 @@ export default class AddEditInfo extends React.Component<Properties, States> {
                     <Form.Group style={{marginTop: '1em'}}>
                         <Form.Field width={'ten'}>
                             <label>Preview</label>
-                            <Container className={'grey x-small'}>
+                            <Container className={'grey'}>
                                 {this.props.preparedRotation.note.split("\n").map((note, k) =>
                                     <p key={k}>{note}</p>
                                 )}
