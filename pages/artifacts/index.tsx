@@ -7,6 +7,7 @@ import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import AddEditRotation from "@/components/artifacts/AddEditRotation";
+import _ from "lodash";
 
 type Properties = {
     characters: string[]
@@ -175,7 +176,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                 <>
                                     <Table.Row key={k}>
                                         <Table.Cell verticalAlign={'top'}>
-                                            {k+1}
+                                            {k + 1}
                                         </Table.Cell>
                                         <Table.Cell verticalAlign={'top'}>
                                             <ArtifactDomain data={data} domain={r.domain} popover/>
@@ -183,14 +184,24 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                         <Table.Cell verticalAlign={'top'}>
                                             <List>
                                                 <List.Item>
-                                                    <Image avatar src='/images/characters/Amber.png' alt={'Amber'}/>
-                                                    <Image avatar src='/images/characters/Amber.png' alt={'Amber'}/>
-                                                    <Image avatar src='/images/characters/Amber.png' alt={'Amber'}/>
-                                                    <Image avatar src='/images/characters/Amber.png' alt={'Amber'}/>
+                                                    {r.teams.slice(0, 4).map((c, j) =>
+                                                        <Image avatar
+                                                               src={`/images/characters/${data.characters[c].image}.png`}
+                                                               alt={data.characters[c].image} key={j}/>
+                                                    )}
+                                                    {_.range(4 - r.teams.slice(0, 4).length).map((n, j) =>
+                                                        <Image avatar src='/images/UnknownCharacter.png' alt={'Unknown'}
+                                                               key={j}/>
+                                                    )}
                                                 </List.Item>
                                             </List>
                                         </Table.Cell>
                                         <Table.Cell verticalAlign={'top'}>
+                                            {r.characters.map((c, j) =>
+                                                <Image avatar
+                                                       src={`/images/characters/${data.characters[c].image}.png`}
+                                                       alt={data.characters[c].image} key={j}/>
+                                            )}
                                             <Image avatar alt={'Character'} src='/images/characters/Amber.png'/>
                                             <Image avatar alt={'Character'} src='/images/characters/Collei.png'/>
                                             <Image avatar alt={'Character'} src='/images/characters/Albedo.png'/>
