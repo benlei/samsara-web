@@ -203,7 +203,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                                                 <Accordion.Title active={this.state.activeIndex === k}
                                                                  onClick={this.handleClick} index={k}>
                                                     <Icon name='dropdown'/>
-                                                    Expand Options
+                                                    {this.state.activeIndex === k ? 'Collapse' : 'Expand'} Options
                                                 </Accordion.Title>
                                             </Accordion>
                                         </Table.Cell>

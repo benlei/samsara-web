@@ -134,17 +134,32 @@ export default class AddEditDomain extends React.Component<Properties, States> {
                                     <Button color={'green'} icon labelPosition={'left'}>
                                         <Icon name='caret down'/> Create
                                     </Button>
-                                } pinned flowing position={'bottom left'}>
-                                    <Button color={'green'} icon labelPosition={'left'}
-                                            onClick={this.createRotation(this.props.index + 1)}>
-                                        <Icon name='arrow alternate circle down'/>
-                                        Below #{this.props.index + 1}
-                                    </Button>
-                                    <Button color={'green'} icon labelPosition={'right'}
-                                            onClick={this.createRotation(this.props.index)}>
-                                        Above #{this.props.index+1}
-                                        <Icon name='arrow alternate circle up'/>
-                                    </Button>
+                                } pinned position={'bottom left'}>
+                                    <Container>
+                                        <Button color={'green'} icon labelPosition={'left'}
+                                                onClick={this.createRotation(this.props.index + 1)}>
+                                            <Icon name='arrow alternate circle down'/>
+                                            Below #{this.props.index + 1}
+                                        </Button>
+                                        <Button color={'green'} icon labelPosition={'right'}
+                                                onClick={this.createRotation(this.props.index)}>
+                                            Above #{this.props.index + 1}
+                                            <Icon name='arrow alternate circle up'/>
+                                        </Button>
+                                    </Container>
+
+                                    <Container style={{marginTop: '.5rem'}}>
+                                        <Button color={'green'} icon labelPosition={'left'}
+                                                onClick={this.createRotation(this.props.data.rotations.data.length)}>
+                                            <Icon name='angle double down'/>
+                                            Bottom
+                                        </Button>
+                                        <Button color={'green'} icon labelPosition={'right'}
+                                                onClick={this.createRotation(0)}>
+                                            Top
+                                            <Icon name='angle double up'/>
+                                        </Button>
+                                    </Container>
                                 </Popup>
                             }
                             {!this.props.data.rotations.data.length &&

@@ -52,6 +52,12 @@ export default class AddEditRotation extends React.Component<Properties, States>
         this.setState({
             // selectedDomain: "",
             phase: AddEditPhase.Prompt,
+            preparedRotation: {
+                "domain": "",
+                "teams": [],
+                "characters": [],
+                "note": "",
+            },
         })
     }
 
@@ -62,6 +68,10 @@ export default class AddEditRotation extends React.Component<Properties, States>
                 domain: this.state.preparedRotation.domain === domain ? "" : domain
             }
         })
+    }
+
+    deleteRotation = () => {
+        this.props.rotationsManager.delete(this.props.index)
     }
 
 
@@ -76,6 +86,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
                             editable={this.props.editable}
                             index={this.props.index}
                             onAddClicked={this.addClicked}
+                            onDeleteClicked={this.deleteRotation}
                         />
                     }
                     {/*TODO: add ability to set rotation index in domain too*/}
