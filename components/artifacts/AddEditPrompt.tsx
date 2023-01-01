@@ -33,31 +33,28 @@ export default class AddEditPrompt extends React.Component<Properties, States> {
                         content={'Edit #' + (this.props.index + 1)}
                         icon='edit' onClick={this.props.onEditClicked}
                         labelPosition='left'
-                        className={this.props.editable ? '' : 'hidden'}
-                    />
+                        className={this.props.editable ? '' : 'hidden'}/>
 
                     <Form.Button
                         content={'Start Rotation at #' + (this.props.index + 1)}
                         icon='pin' onClick={this.props.onStartRotationClicked}
                         labelPosition='left'
-                        className={this.props.syncable ? '' : 'hidden'}
-                    />
+                        className={this.props.syncable ? '' : 'hidden'}/>
 
                     <Form.Field>
-                        <Popup on={'click'} trigger={
-                            <Button color={'red'} icon labelPosition={'left'}
-                                    className={this.props.deletable ? '' : 'hidden'}
-                            >
-                                <Icon name={'delete'}/> Delete #{this.props.index + 1}
-                            </Button>
-                        } pinned position={'bottom left'}>
+                        <Popup on={'click'}
+                               trigger={
+                                   <Button color={'red'} icon labelPosition={'left'}
+                                           className={this.props.deletable ? '' : 'hidden'}>
+                                       <Icon name={'delete'}/> Delete #{this.props.index + 1}
+                                   </Button>
+                               } pinned position={'bottom left'}>
                             <Form>
                                 <Form.Field>
                                     <Form.Button
                                         label={'Are you sure? This change will be irreversible!'}
                                         content={'Yes, Delete #' + (this.props.index + 1)} color={'red'} icon='delete'
-                                        labelPosition='left' onClick={this.props.onDeleteClicked}
-                                    />
+                                        labelPosition='left' onClick={this.props.onDeleteClicked}/>
                                 </Form.Field>
                             </Form>
                         </Popup>

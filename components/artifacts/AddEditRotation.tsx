@@ -103,42 +103,40 @@ export default class AddEditRotation extends React.Component<Properties, States>
                         />
                     }
                     {this.state.phase == AddEditPhase.Domain &&
-                        <AddEditDomain
-                            addEdit={this.state.addEdit}
-                            data={this.props.data}
-                            updatePreparedRotation={this.updatePreparedRotation}
-                            setPhase={this.setPhase}
-                            onCancel={this.cancelClicked}
-                            preparedRotation={this.state.preparedRotation}
-                            index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
-                            manager={this.props.rotationsManager}
-                        />
-                    }
+                        <>
+                            <AddEditDomain
+                                addEdit={this.state.addEdit}
+                                data={this.props.data}
+                                updatePreparedRotation={this.updatePreparedRotation}
+                                setPhase={this.setPhase}
+                                onCancel={this.cancelClicked}
+                                preparedRotation={this.state.preparedRotation}
+                                index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
+                                manager={this.props.rotationsManager}
+                            />
 
-                    {this.state.phase == AddEditPhase.Characters &&
-                        <AddEditIntendedCharacters
-                            addEdit={this.state.addEdit}
-                            data={this.props.data}
-                            updatePreparedRotation={this.updatePreparedRotation}
-                            setPhase={this.setPhase}
-                            onCancel={this.cancelClicked}
-                            preparedRotation={this.state.preparedRotation}
-                            index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
-                            manager={this.props.rotationsManager}
-                        />
-                    }
+                            <AddEditIntendedCharacters
+                                addEdit={this.state.addEdit}
+                                data={this.props.data}
+                                updatePreparedRotation={this.updatePreparedRotation}
+                                setPhase={this.setPhase}
+                                onCancel={this.cancelClicked}
+                                preparedRotation={this.state.preparedRotation}
+                                index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
+                                manager={this.props.rotationsManager}
+                            />
 
-                    {this.state.phase == AddEditPhase.Info &&
-                        <AddEditInfo
-                            addEdit={this.state.addEdit}
-                            data={this.props.data}
-                            updatePreparedRotation={this.updatePreparedRotation}
-                            setPhase={this.setPhase}
-                            onCancel={this.cancelClicked}
-                            preparedRotation={this.state.preparedRotation}
-                            index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
-                            manager={this.props.rotationsManager}
-                        />
+                            <AddEditInfo
+                                addEdit={this.state.addEdit}
+                                data={this.props.data}
+                                updatePreparedRotation={this.updatePreparedRotation}
+                                setPhase={this.setPhase}
+                                onCancel={this.cancelClicked}
+                                preparedRotation={this.state.preparedRotation}
+                                index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
+                                manager={this.props.rotationsManager}
+                            />
+                        </>
                     }
                 </Table.Cell>
             </Table.Row>

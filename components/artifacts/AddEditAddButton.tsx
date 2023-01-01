@@ -27,21 +27,21 @@ export default class AddEditAddButton extends React.Component<Properties, States
     render() {
         return (
             <>
-                {!!this.props.data.rotations.data.length &&
-                    <Popup on={'click'} trigger={
-                        <Button color={this.props.preparedRotation.domain ? 'green' : 'yellow'} icon
-                                labelPosition={'left'}
-                        >
-                            <Icon name='caret down'/> Create
-                        </Button>
-                    }
-                           pinned
-                           position={'bottom left'}>
-                        {!this.props.preparedRotation.domain &&
-                            <p>You must select a domain first</p>
+                {!!this.props.data.rotations.data.length ? (
+                    <Popup
+                        on={'click'}
+                        trigger={
+                            <Button color={this.props.preparedRotation.domain ? 'green' : 'yellow'} icon
+                                    labelPosition={'left'}
+                            >
+                                <Icon name='caret down'/> Create
+                            </Button>
                         }
-
-                        {!!this.props.preparedRotation.domain &&
+                        pinned
+                        position={'bottom left'}>
+                        {!this.props.preparedRotation.domain ? (
+                            <p>You must select a domain first</p>
+                        ) : (
                             <Form>
                                 <Form.Group widths={'equal'}>
                                     <Form.Field>
@@ -74,31 +74,29 @@ export default class AddEditAddButton extends React.Component<Properties, States
                                     </Form.Field>
                                 </Form.Group>
                             </Form>
-                        }
+                        )}
                     </Popup>
-                }
-                {!this.props.data.rotations.data.length &&
+                ) : (
                     <>
-                        {!this.props.preparedRotation.domain &&
-                            <Popup on={'click'} trigger={
-                                <Button color={this.props.preparedRotation.domain ? 'green' : 'yellow'} icon
-                                        labelPosition={'left'}
-                                >
-                                    <Icon name='add'/> Create #1
-                                </Button>
-                            } pinned position={'bottom left'}>
+                        {!this.props.preparedRotation.domain ? (
+                            <Popup
+                                on={'click'}
+                                trigger={
+                                    <Button color={this.props.preparedRotation.domain ? 'green' : 'yellow'} icon
+                                            labelPosition={'left'}>
+                                        <Icon name='add'/> Create #1
+                                    </Button>
+                                } pinned position={'bottom left'}>
                                 <p>You must select a domain first</p>
                             </Popup>
-                        }
-
-                        {!!this.props.preparedRotation.domain &&
+                        ) : (
                             <Button color={'green'} icon labelPosition={'left'}
                                     onClick={this.createRotation(0)}>
                                 <Icon name={'add'}/> Create #1
                             </Button>
-                        }
+                        )}
                     </>
-                }
+                )}
             </>
         )
     }

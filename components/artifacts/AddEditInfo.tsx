@@ -34,11 +34,13 @@ export default class AddEditInfo extends React.Component<Properties, States> {
                 <Header as='h3'>Manage Info</Header>
                 <Form>
                     <Form.Group>
-                        <Form.Field width={'six'}>
+                        <Form.Field width={'four'}>
                             <label>Set Total Rotation Days</label>
-                            <Input fluid type={'number'} min={1} max={10000} disabled={this.props.data.rotations.fixed}
-                                   onChange={this.onChangeDays} value={this.props.preparedRotation.days}
-                            />
+                            {this.props.data.rotations.fixed
+                                ? <strong>{this.props.data.rotations.fixedDays}</strong>
+                                : <Input fluid type={'number'} min={1} max={10000}
+                                         onChange={this.onChangeDays} value={this.props.preparedRotation.days}/>
+                            }
                         </Form.Field>
                     </Form.Group>
                     <Form.Group style={{marginTop: '1em'}}>

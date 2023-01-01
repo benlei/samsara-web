@@ -76,11 +76,13 @@ export default class ArtifactDomain extends React.Component<Properties, States> 
                                 /> <span className={'grey bold'}>{artifacts[artifact].name}</span>
                             </div>
                         </List.Item>
-                        {this.props.showDescription && <List.Item className={'small'}>
-                            {artifacts[artifact].description.split('\n').map((d, k) =>
-                                <p key={k}>{d}</p>
-                            )}
-                        </List.Item>}
+                        {this.props.showDescription &&
+                            <List.Item className={'small'}>
+                                {artifacts[artifact].description.split('\n').map((d, k) =>
+                                    <p key={k}>{d}</p>
+                                )}
+                            </List.Item>
+                        }
                     </React.Fragment>
                 )}
                 <List.Item>

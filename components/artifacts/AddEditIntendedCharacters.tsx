@@ -76,8 +76,7 @@ export default class AddEditIntendedCharacters extends React.Component<Propertie
                             <Form.Input fluid label={'Select Characters'}
                                         placeholder='Filter Character Name...'
                                         value={this.state.filterText}
-                                        onChange={this.handleFilterChange}
-                            />
+                                        onChange={this.handleFilterChange}/>
                         </Form.Field>
                     </Form.Group>
 
@@ -98,11 +97,11 @@ export default class AddEditIntendedCharacters extends React.Component<Propertie
                             <Divider/>
                             {this.getFilteredCharacters(_.chain(Object.keys(this.props.data.characters).sort())
                                 .filter((c) => !this.props.preparedRotation.characters.includes(c))
-                                .value()).map((c, k) =>
-                                <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
-                                       alt={this.props.data.characters[c].image} key={k}
-                                       onClick={this.addCharacterHandler(this.props.data.characters[c].name)}
-                                />
+                                .value()).map((c, k) => (
+                                    <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
+                                           alt={this.props.data.characters[c].image} key={k}
+                                           onClick={this.addCharacterHandler(this.props.data.characters[c].name)}/>
+                                )
                             )}
                         </Form.Field>
                     </Form.Group>

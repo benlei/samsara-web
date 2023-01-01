@@ -43,24 +43,21 @@ export default class AddEditButtons extends React.Component<Properties, States> 
                     <Form.Field>
                         <Button color={this.props.disableDomains ? 'grey' : 'blue'}
                                 disabled={this.props.disableDomains}
-                                onClick={this.setPhaseHandler(AddEditPhase.Domain)}
-                        >
+                                onClick={this.setPhaseHandler(AddEditPhase.Domain)}>
                             Domain
                         </Button>
                     </Form.Field>
                     <Form.Field>
                         <Button color={this.props.disableCharacters ? 'grey' : 'blue'}
                                 disabled={this.props.disableCharacters}
-                                onClick={this.setPhaseHandler(AddEditPhase.Characters)}
-                        >
+                                onClick={this.setPhaseHandler(AddEditPhase.Characters)}>
                             Intended Characters
                         </Button>
                     </Form.Field>
                     <Form.Field>
                         <Button color={this.props.disableInfo ? 'grey' : 'blue'}
                                 disabled={this.props.disableInfo}
-                                onClick={this.setPhaseHandler(AddEditPhase.Info)}
-                        >
+                                onClick={this.setPhaseHandler(AddEditPhase.Info)}>
                             Info
                         </Button>
                     </Form.Field>

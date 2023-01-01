@@ -2,8 +2,8 @@ import React from "react";
 import {Checkbox, Container, Form, Grid, Header, Input, Segment} from "semantic-ui-react";
 import _ from "lodash";
 import {AddEdit, AddEditButtonsProperties} from "@/artifacts/types";
-import ArtifactDomain from "./ArtifactDomain";
-import AddEditButtons from "./AddEditButtons";
+import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
+import AddEditButtons from "@/components/artifacts/AddEditButtons";
 
 type Properties = {} & AddEditButtonsProperties
 
@@ -107,7 +107,6 @@ export default class AddEditDomain extends React.Component<Properties, States> {
                 </Grid>
 
                 <AddEditButtons disableDomains {...this.props}/>
-
             </Container>
         )
     }
