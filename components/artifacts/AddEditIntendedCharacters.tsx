@@ -1,8 +1,7 @@
-import {Container, Divider, Form, Header, Image} from "semantic-ui-react";
+import {Container, Divider, Form, Icon, Image, Input} from "semantic-ui-react";
 import React from "react";
 import {AddEditSharedProperties} from "@/artifacts/types";
 import _ from "lodash";
-import AddEditSubmit from "@/components/artifacts/AddEditSubmit";
 
 
 type Properties = {} & AddEditSharedProperties
@@ -69,14 +68,18 @@ export default class AddEditIntendedCharacters extends React.Component<Propertie
     render() {
         return (
             <Container textAlign={'left'} style={{padding: '1em'}}>
-                <Header as='h3'>Select Intended Characters</Header>
                 <Form>
                     <Form.Group>
                         <Form.Field width={'six'}>
-                            <Form.Input fluid label={'Select Characters'}
-                                        placeholder='Filter Character Name...'
-                                        value={this.state.filterText}
-                                        onChange={this.handleFilterChange}/>
+                            <label>Select Intended Characters</label>
+                            <Input fluid label={'Select Characters'}
+                                   placeholder='Filter Character Name...'
+                                   value={this.state.filterText}
+                                   onChange={this.handleFilterChange}
+                                   icon>
+                                <input/>
+                                <Icon name='search'/>
+                            </Input>
                         </Form.Field>
                     </Form.Group>
 

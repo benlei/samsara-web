@@ -1,13 +1,22 @@
-import {Button, Form, Icon, Popup} from "semantic-ui-react";
+import {Button, Form, Icon, Input, Popup} from "semantic-ui-react";
 import React from "react";
 import {AddEditSharedProperties} from "@/artifacts/types";
 import {AddEditPhase} from "@/artifacts/enums";
 
 type Properties = {} & AddEditSharedProperties
 
-type States = {}
+type States = {
+    position: number
+}
 
 export default class AddEditAddButton extends React.Component<Properties, States> {
+    constructor(props: Readonly<Properties> | Properties) {
+        super(props);
+
+        this.state = {
+            position: props.index + 2,
+        }
+    }
 
     createRotation = (atIndex: number) => {
         return () => {
@@ -21,6 +30,19 @@ export default class AddEditAddButton extends React.Component<Properties, States
             })
 
             this.props.setPhase(AddEditPhase.Prompt)
+        }
+    }
+
+    changePosition = (event: React.ChangeEvent<HTMLInputElement>) => {
+        try {
+            this.setState({
+                position: Math.min(
+                    this.props.data.rotations.data.length + 1,
+                    Math.max(parseInt(event.target.value) || this.state.position, 1)
+                )
+            });
+        } catch (ignore) {
+
         }
     }
 
@@ -43,34 +65,28 @@ export default class AddEditAddButton extends React.Component<Properties, States
                             <p>You must select a domain first</p>
                         ) : (
                             <Form>
-                                <Form.Group widths={'equal'}>
+                                <Form.Group>
                                     <Form.Field>
-                                        <Button color={'green'} icon labelPosition={'left'}
-                                                onClick={this.createRotation(0)}>
-                                            <Icon name='angle double up'/>
-                                            Top
-                                        </Button>
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <Button color={'green'} icon labelPosition={'left'}
-                                                onClick={this.createRotation(this.props.index)}>
-                                            <Icon name='arrow alternate circle up'/>
-                                            Above #{this.props.index + 1}
-                                        </Button>
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <Button color={'green'} icon labelPosition={'left'}
+                                        <Button color={'green'} icon labelPosition={'right'}
                                                 onClick={this.createRotation(this.props.index + 1)}>
-                                            <Icon name='arrow alternate circle down'/>
-                                            Below #{this.props.index + 1}
+                                            Insert as #{this.props.index + 2}
+                                            <Icon name='add'/>
                                         </Button>
                                     </Form.Field>
+                                </Form.Group>
+                                <Form.Group style={{marginTop: '1rem'}}>
                                     <Form.Field>
-                                        <Button color={'green'} icon labelPosition={'left'}
-                                                onClick={this.createRotation(this.props.data.rotations.data.length)}>
-                                            <Icon name='angle double down'/>
-                                            Bottom
-                                        </Button>
+                                        <label>-or- Insert to Specific Position</label>
+                                        <Input
+                                            action={{
+                                                color: 'green',
+                                                icon: 'add',
+                                                onClick: this.createRotation(this.state.position - 1),
+                                            }}
+                                            placeholder='Enter # Position'
+                                            value={this.state.position}
+                                            onChange={this.changePosition}
+                                        />
                                     </Form.Field>
                                 </Form.Group>
                             </Form>

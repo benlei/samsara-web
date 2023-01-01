@@ -30,7 +30,6 @@ export default class AddEditInfo extends React.Component<Properties, States> {
     render() {
         return (
             <Container textAlign={'left'} style={{padding: '1em'}}>
-                <Header as='h3'>Manage Info</Header>
                 <Form>
                     <Form.Group>
                         <Form.Field width={'four'}>

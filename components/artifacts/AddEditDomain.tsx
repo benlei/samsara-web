@@ -1,9 +1,8 @@
 import React from "react";
-import {Checkbox, Container, Form, Grid, Header, Input, Segment} from "semantic-ui-react";
+import {Checkbox, Container, Form, Grid, Header, Icon, Input, Segment} from "semantic-ui-react";
 import _ from "lodash";
 import {AddEdit, AddEditSharedProperties} from "@/artifacts/types";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
-import AddEditSubmit from "@/components/artifacts/AddEditSubmit";
 
 type Properties = {} & AddEditSharedProperties
 
@@ -75,14 +74,16 @@ export default class AddEditDomain extends React.Component<Properties, States> {
     render() {
         return (
             <Container textAlign={'left'} style={{padding: '1em'}}>
-                <Header as='h3'>{this.props.addEdit == AddEdit.Add ? 'Add New' : 'Edit'} Rotation</Header>
                 <Form>
                     <Form.Group>
                         <Form.Field width={'six'}>
                             <label>Select Domain (required)</label>
                             <Input fluid placeholder='Filter by Artifact or Domain...'
                                    onChange={this.handleFilterArtifacts}
-                            />
+                                   icon>
+                                <input/>
+                                <Icon name='search'/>
+                            </Input>
                         </Form.Field>
                     </Form.Group>
                     <Form.Group style={{marginTop: '1em'}}>
