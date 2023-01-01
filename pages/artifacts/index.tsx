@@ -138,9 +138,9 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
             this.setState({
                 data: [
                     ...this.state.data.slice(0, index),
-                    ...this.state.data.slice(index + 1, newIndex),
+                    ...this.state.data.slice(index + 1, newIndex + 1),
                     this.state.data[index],
-                    ...this.state.data.slice(newIndex),
+                    ...this.state.data.slice(newIndex + 1),
                 ],
                 activeIndex: newActiveIndex ?? newIndex,
             }, this.commit)
