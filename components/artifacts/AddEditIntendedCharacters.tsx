@@ -1,11 +1,11 @@
 import {Container, Divider, Form, Header, Image} from "semantic-ui-react";
 import React from "react";
-import {AddEditButtonsProperties} from "@/artifacts/types";
+import {AddEditSharedProperties} from "@/artifacts/types";
 import _ from "lodash";
-import AddEditButtons from "@/components/artifacts/AddEditButtons";
+import AddEditSubmit from "@/components/artifacts/AddEditSubmit";
 
 
-type Properties = {} & AddEditButtonsProperties
+type Properties = {} & AddEditSharedProperties
 
 type States = {
     filterText: string
@@ -106,8 +106,6 @@ export default class AddEditIntendedCharacters extends React.Component<Propertie
                         </Form.Field>
                     </Form.Group>
                 </Form>
-
-                <AddEditButtons disableCharacters {...this.props}/>
             </Container>
         )
     }

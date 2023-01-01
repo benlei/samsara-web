@@ -1,9 +1,8 @@
 import {Container, Form, Header, Input, TextArea} from "semantic-ui-react";
 import React, {ChangeEvent} from "react";
-import {AddEditButtonsProperties} from "@/artifacts/types";
-import AddEditButtons from "@/components/artifacts/AddEditButtons";
+import {AddEditSharedProperties} from "@/artifacts/types";
 
-type Properties = {} & AddEditButtonsProperties
+type Properties = {} & AddEditSharedProperties
 
 type States = {}
 
@@ -64,8 +63,6 @@ export default class AddEditInfo extends React.Component<Properties, States> {
                         </Form.Field>
                     </Form.Group>
                 </Form>
-
-                <AddEditButtons disableInfo {...this.props}/>
             </Container>
         )
     }

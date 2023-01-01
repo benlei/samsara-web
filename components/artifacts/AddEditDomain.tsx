@@ -1,11 +1,11 @@
 import React from "react";
 import {Checkbox, Container, Form, Grid, Header, Input, Segment} from "semantic-ui-react";
 import _ from "lodash";
-import {AddEdit, AddEditButtonsProperties} from "@/artifacts/types";
+import {AddEdit, AddEditSharedProperties} from "@/artifacts/types";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
-import AddEditButtons from "@/components/artifacts/AddEditButtons";
+import AddEditSubmit from "@/components/artifacts/AddEditSubmit";
 
-type Properties = {} & AddEditButtonsProperties
+type Properties = {} & AddEditSharedProperties
 
 type States = {
     showDescriptions: boolean
@@ -105,8 +105,6 @@ export default class AddEditDomain extends React.Component<Properties, States> {
                         </Grid.Column>
                     )}
                 </Grid>
-
-                <AddEditButtons disableDomains {...this.props}/>
             </Container>
         )
     }

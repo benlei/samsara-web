@@ -77,7 +77,7 @@ export type RotationsManager = {
     delete: (index: number, newActiveIndex?: number) => void
 }
 
-export type AddEditButtonsProperties = {
+export type AddEditSharedProperties = {
     preparedRotation: Rotation
     updatePreparedRotation: (rotation: Rotation) => void
     data: ArtifactRotationData

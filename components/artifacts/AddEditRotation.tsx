@@ -1,11 +1,13 @@
 import {Table} from "semantic-ui-react";
 import React from "react";
-import {AddEdit, ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
+import {AddEdit, AddEditSharedProperties, ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
 import AddEditPrompt from "@/components/artifacts/AddEditPrompt";
 import AddEditDomain from "./AddEditDomain";
 import {AddEditPhase} from "@/artifacts/enums";
 import AddEditIntendedCharacters from "@/components/artifacts/AddEditIntendedCharacters";
 import AddEditInfo from "@/components/artifacts/AddEditInfo";
+import AddEditSubmit from "@/components/artifacts/AddEditSubmit";
+import AddEditMenu from "@/components/artifacts/AddEditMenu";
 
 
 type Properties = {
@@ -88,10 +90,21 @@ export default class AddEditRotation extends React.Component<Properties, States>
 
 
     render() {
+        const addEditButtonsProperties: AddEditSharedProperties = {
+            addEdit: this.state.addEdit,
+            data: this.props.data,
+            updatePreparedRotation: this.updatePreparedRotation,
+            setPhase: this.setPhase,
+            onCancel: this.cancelClicked,
+            preparedRotation: this.state.preparedRotation,
+            index: this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index,
+            manager: this.props.rotationsManager,
+        }
+
         return (
             <Table.Row>
                 <Table.Cell verticalAlign={'top'} colSpan={4} textAlign={'center'}>
-                    {this.state.phase == AddEditPhase.Prompt &&
+                    {this.state.phase == AddEditPhase.Prompt ? (
                         <AddEditPrompt
                             deletable={this.props.deletable}
                             syncable={this.props.syncable}
@@ -101,43 +114,21 @@ export default class AddEditRotation extends React.Component<Properties, States>
                             onEditClicked={this.editClicked}
                             onDeleteClicked={this.deleteRotation}
                         />
-                    }
-                    {this.state.phase == AddEditPhase.Domain &&
+                    ) : (
                         <>
-                            <AddEditDomain
-                                addEdit={this.state.addEdit}
-                                data={this.props.data}
-                                updatePreparedRotation={this.updatePreparedRotation}
-                                setPhase={this.setPhase}
-                                onCancel={this.cancelClicked}
-                                preparedRotation={this.state.preparedRotation}
-                                index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
-                                manager={this.props.rotationsManager}
-                            />
-
-                            <AddEditIntendedCharacters
-                                addEdit={this.state.addEdit}
-                                data={this.props.data}
-                                updatePreparedRotation={this.updatePreparedRotation}
-                                setPhase={this.setPhase}
-                                onCancel={this.cancelClicked}
-                                preparedRotation={this.state.preparedRotation}
-                                index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
-                                manager={this.props.rotationsManager}
-                            />
-
-                            <AddEditInfo
-                                addEdit={this.state.addEdit}
-                                data={this.props.data}
-                                updatePreparedRotation={this.updatePreparedRotation}
-                                setPhase={this.setPhase}
-                                onCancel={this.cancelClicked}
-                                preparedRotation={this.state.preparedRotation}
-                                index={this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index}
-                                manager={this.props.rotationsManager}
-                            />
+                            <AddEditMenu phase={this.state.phase} {...addEditButtonsProperties} />
+                            {this.state.phase == AddEditPhase.Domain &&
+                                <AddEditDomain {...addEditButtonsProperties}/>
+                            }
+                            {this.state.phase == AddEditPhase.Characters &&
+                                <AddEditIntendedCharacters {...addEditButtonsProperties} />
+                            }
+                            {this.state.phase == AddEditPhase.Info &&
+                                <AddEditInfo {...addEditButtonsProperties} />
+                            }
+                            <AddEditSubmit {...addEditButtonsProperties}/>
                         </>
-                    }
+                    )}
                 </Table.Cell>
             </Table.Row>
         )

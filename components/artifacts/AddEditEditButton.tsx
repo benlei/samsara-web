@@ -1,9 +1,9 @@
 import {Button, Icon, Popup} from "semantic-ui-react";
 import React from "react";
-import {AddEditButtonsProperties} from "@/artifacts/types";
+import {AddEditSharedProperties} from "@/artifacts/types";
 import {AddEditPhase} from "@/artifacts/enums";
 
-type Properties = {} & AddEditButtonsProperties
+type Properties = {} & AddEditSharedProperties
 
 type States = {}
 
