@@ -32,7 +32,7 @@ export default class AddEditAddButton extends React.Component<Properties, States
         }
     }
 
-    createRotationByPosition = (position: number) => this.createRotation(position - 1)
+    createRotationByPosition = (position: number) => this.createRotation(position - 1)()
 
     render() {
         return (
