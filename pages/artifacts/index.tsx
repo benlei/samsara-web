@@ -1,5 +1,5 @@
 import React from "react";
-import {Accordion, AccordionTitleProps, Container, Icon, Image, List, Table} from "semantic-ui-react";
+import {Accordion, AccordionTitleProps, Container, Icon, Image, Table} from "semantic-ui-react";
 import Head from "next/head";
 import ArtifactConfigLoadDownload from "@/components/artifacts/ArtifactConfigLoadDownload";
 import {
@@ -130,7 +130,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
     }
 
     moveRotation = (index: number, newIndex: number, newActiveIndex?: number) => {
-        if (newIndex >= this.state.data.length || newIndex < 0) {
+        if (newIndex >= this.state.data.length || newIndex < 0 || index == newIndex) {
             return
         }
 
@@ -142,7 +142,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                     this.state.data[index],
                     ...this.state.data.slice(newIndex),
                 ],
-                activeIndex: newActiveIndex ?? index,
+                activeIndex: newActiveIndex ?? newIndex,
             }, this.commit)
         } else {
             this.setState({
@@ -152,7 +152,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                     ...this.state.data.slice(newIndex, index),
                     ...this.state.data.slice(index + 1),
                 ],
-                activeIndex: newActiveIndex ?? index,
+                activeIndex: newActiveIndex ?? newIndex,
             }, this.commit)
         }
     }

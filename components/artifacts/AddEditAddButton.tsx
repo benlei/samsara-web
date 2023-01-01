@@ -1,13 +1,12 @@
-import {Button, Form, Icon, Input, Popup} from "semantic-ui-react";
+import {Button, Form, Icon, Popup} from "semantic-ui-react";
 import React from "react";
 import {AddEditSharedProperties} from "@/artifacts/types";
 import {AddEditPhase} from "@/artifacts/enums";
+import NumberRangeInput from "@/components/artifacts/NumberRangeInput";
 
 type Properties = {} & AddEditSharedProperties
 
-type States = {
-    position: number
-}
+type States = {}
 
 export default class AddEditAddButton extends React.Component<Properties, States> {
     constructor(props: Readonly<Properties> | Properties) {
@@ -33,18 +32,7 @@ export default class AddEditAddButton extends React.Component<Properties, States
         }
     }
 
-    changePosition = (event: React.ChangeEvent<HTMLInputElement>) => {
-        try {
-            this.setState({
-                position: Math.min(
-                    this.props.data.rotations.data.length + 1,
-                    Math.max(parseInt(event.target.value) || this.state.position, 1)
-                )
-            });
-        } catch (ignore) {
-
-        }
-    }
+    createRotationByPosition = (position: number) => this.createRotation(position - 1)
 
     render() {
         return (
@@ -77,15 +65,14 @@ export default class AddEditAddButton extends React.Component<Properties, States
                                 <Form.Group style={{marginTop: '1rem'}}>
                                     <Form.Field>
                                         <label>-or- Insert to Specific Position</label>
-                                        <Input
-                                            action={{
-                                                color: 'green',
-                                                icon: 'add',
-                                                onClick: this.createRotation(this.state.position - 1),
-                                            }}
-                                            placeholder='Enter # Position'
-                                            value={this.state.position}
-                                            onChange={this.changePosition}
+                                        <NumberRangeInput
+                                            min={1}
+                                            max={this.props.data.rotations.data.length + 1}
+                                            defaultValue={this.props.index + 2}
+                                            color={'green'}
+                                            icon={'add'}
+                                            onSubmit={this.createRotationByPosition}
+                                            placeholder={'Enter # Position'}
                                         />
                                     </Form.Field>
                                 </Form.Group>

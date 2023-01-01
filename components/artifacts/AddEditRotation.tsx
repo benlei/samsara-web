@@ -15,6 +15,7 @@ type Properties = {
     editable: boolean
     deletable: boolean
     syncable: boolean
+    movable: boolean
     data: ArtifactRotationData
     rotationsManager: RotationsManager
 }
@@ -31,6 +32,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
         editable: true,
         deletable: true,
         syncable: true,
+        movable: true,
     };
 
     constructor(props: Readonly<Properties> | Properties) {
@@ -88,6 +90,9 @@ export default class AddEditRotation extends React.Component<Properties, States>
         this.setState({preparedRotation: rotation})
     }
 
+    moveRotation = (position: number) => {
+        this.props.rotationsManager.move(this.props.index, position - 1)
+    }
 
     render() {
         const addEditButtonsProperties: AddEditSharedProperties = {
@@ -106,13 +111,16 @@ export default class AddEditRotation extends React.Component<Properties, States>
                 <Table.Cell verticalAlign={'top'} colSpan={4} textAlign={'center'}>
                     {this.state.phase == AddEditPhase.Prompt ? (
                         <AddEditPrompt
+                            data={this.props.data.rotations}
                             deletable={this.props.deletable}
                             syncable={this.props.syncable}
                             editable={this.props.editable}
+                            movable={this.props.movable}
                             index={this.props.index}
                             onAddClicked={this.addClicked}
                             onEditClicked={this.editClicked}
                             onDeleteClicked={this.deleteRotation}
+                            onMoveClicked={this.moveRotation}
                         />
                     ) : (
                         <>
