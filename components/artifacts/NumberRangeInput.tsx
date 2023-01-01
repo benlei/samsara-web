@@ -55,6 +55,7 @@ export default class NumberRangeInput extends React.Component<Properties, States
                     icon: this.props.icon,
                     onClick: () => this.props.onSubmit(this.state.position),
                 }}
+                type={'number'}
                 placeholder={this.props.placeholder}
                 value={this.state.position}
                 onChange={this.changePosition}
