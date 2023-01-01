@@ -2,7 +2,7 @@ import {Button, Form, Icon, Popup} from "semantic-ui-react";
 import React from "react";
 import {AddEditSharedProperties} from "@/artifacts/types";
 import {AddEditPhase} from "@/artifacts/enums";
-import NumberRangeInput from "@/components/artifacts/NumberRangeInput";
+import NumberRangeInput from "@/components/NumberRangeInput";
 
 type Properties = {} & AddEditSharedProperties
 

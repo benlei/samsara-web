@@ -1,6 +1,6 @@
 import React, {Dispatch} from "react";
 import {Button, Form, Icon, Popup} from "semantic-ui-react";
-import NumberRangeInput from "@/components/artifacts/NumberRangeInput";
+import NumberRangeInput from "@/components/NumberRangeInput";
 import {Rotations} from "@/artifacts/types";
 
 type Properties = {

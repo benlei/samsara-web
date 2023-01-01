@@ -1,13 +1,13 @@
 import {Table} from "semantic-ui-react";
 import React from "react";
 import {AddEdit, AddEditSharedProperties, ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
-import AddEditPrompt from "@/components/artifacts/AddEditPrompt";
+import AddEditPrompt from "@/components/artifacts/addEdit/AddEditPrompt";
 import AddEditDomain from "./AddEditDomain";
 import {AddEditPhase} from "@/artifacts/enums";
-import AddEditIntendedCharacters from "@/components/artifacts/AddEditIntendedCharacters";
-import AddEditInfo from "@/components/artifacts/AddEditInfo";
-import AddEditSubmit from "@/components/artifacts/AddEditSubmit";
-import AddEditMenu from "@/components/artifacts/AddEditMenu";
+import AddEditIntendedCharacters from "@/components/artifacts/addEdit/AddEditIntendedCharacters";
+import AddEditInfo from "@/components/artifacts/addEdit/AddEditInfo";
+import AddEditSubmit from "@/components/artifacts/addEdit/AddEditSubmit";
+import AddEditMenu from "@/components/artifacts/addEdit/AddEditMenu";
 
 
 type Properties = {

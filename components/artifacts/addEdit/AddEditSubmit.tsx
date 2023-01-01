@@ -2,8 +2,8 @@ import {Button, Container, Form} from "semantic-ui-react";
 import React from "react";
 import {AddEdit, AddEditSharedProperties} from "@/artifacts/types";
 import {AddEditPhase} from "@/artifacts/enums";
-import AddEditAddButton from "@/components/artifacts/AddEditAddButton";
-import AddEditEditButton from "@/components/artifacts/AddEditEditButton";
+import AddEditAddButton from "@/components/artifacts/addEdit/AddEditAddButton";
+import AddEditEditButton from "@/components/artifacts/addEdit/AddEditEditButton";
 
 type Properties = {} & AddEditSharedProperties
 

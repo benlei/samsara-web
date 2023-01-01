@@ -13,7 +13,7 @@ import {
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
-import AddEditRotation from "@/components/artifacts/AddEditRotation";
+import AddEditRotation from "@/components/artifacts/addEdit/AddEditRotation";
 import _ from "lodash";
 
 type Properties = {
