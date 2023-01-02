@@ -70,9 +70,9 @@ export enum AddEdit {
     Edit,
 }
 
-export type RotationsManager = {
-    insert: (index: number, rotation: Rotation, newActiveIndex?: number) => void
-    set: (index: number, rotation: Rotation, newActiveIndex?: number) => void
+export type ListManager<Type> = {
+    insert: (index: number, el: Type, newActiveIndex?: number) => void
+    set: (index: number, el: Type, newActiveIndex?: number) => void
     move: (oldIndex: number, newIndex: number, newActiveIndex?: number) => void
     delete: (index: number, newActiveIndex?: number) => void
 }
@@ -81,7 +81,7 @@ export type AddEditSharedProperties = {
     preparedRotation: Rotation
     updatePreparedRotation: (rotation: Rotation) => void
     data: ArtifactRotationData
-    manager: RotationsManager
+    manager: ListManager<Rotation>
     setPhase: (phase: AddEditRotationPhase) => void
     onCancel: () => void
     index: number

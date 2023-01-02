@@ -2,11 +2,11 @@ import {Accordion, AccordionTitleProps, Container, Icon, Image, Table} from "sem
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import AddEditRotation from "@/components/artifacts/rotations/AddEditRotation";
 import React from "react";
-import {ArtifactRotationData, RotationsManager} from "@/artifacts/types";
+import {ArtifactRotationData, ListManager, Rotation} from "@/artifacts/types";
 
 type Property = {
     data: ArtifactRotationData
-    manager: RotationsManager
+    manager: ListManager<Rotation>
     activeIndex: number
     setActiveIndex: (activeIndex: number) => any
 }

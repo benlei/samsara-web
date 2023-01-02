@@ -5,7 +5,7 @@ import {
     ArtifactsDomainsData,
     Rotation,
     Rotations,
-    RotationsManager,
+    ListManager,
     RotationStorage
 } from "@/artifacts/types";
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
@@ -141,7 +141,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             },
         }
 
-        const manager: RotationsManager = {
+        const manager: ListManager<Rotation> = {
             insert: this.insertRotation,
             move: this.moveRotation,
             delete: this.deleteRotation,
