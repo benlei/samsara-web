@@ -19,13 +19,21 @@ export default function AddEditPresetPrompt() {
                     // className={this.props.editable ? '' : 'hidden'}
                 />
 
+                <Form.Button
+                    content={'Swap'}
+                    icon={'exchange'}
+                    // onClick={this.props.onStartRotationClicked}
+                    labelPosition='left'
+                    // className={this.props.syncable ? '' : 'hidden'}
+                />
+
                 <Form.Field>
                     <Popup on={'click'}
                            trigger={
                                <Button icon labelPosition={'left'}
                                    // className={this.props.deletable ? '' : 'hidden'}
                                >
-                                   <Icon name={'exchange'}/> Set Position
+                                   <Icon name={'arrows alternate vertical'}/> Set Position
                                </Button>
                            } pinned position={'bottom left'}>
                         <Form>

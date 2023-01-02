@@ -42,7 +42,7 @@ export default class AddEditPrompt extends React.Component<Properties, States> {
                         className={this.props.editable ? '' : 'hidden'}/>
 
                     <Form.Button
-                        content={'Start Rotation'}
+                        content={'Start Here'}
                         icon='pin' onClick={this.props.onStartRotationClicked}
                         labelPosition='left'
                         className={this.props.syncable ? '' : 'hidden'}/>
@@ -52,7 +52,7 @@ export default class AddEditPrompt extends React.Component<Properties, States> {
                                trigger={
                                    <Button icon labelPosition={'left'}
                                            className={this.props.deletable ? '' : 'hidden'}>
-                                       <Icon name={'exchange'}/> Set Position
+                                       <Icon name={'arrows alternate vertical'}/> Set Position
                                    </Button>
                                } pinned position={'bottom left'}>
                             <Form>
