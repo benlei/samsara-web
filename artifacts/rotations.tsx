@@ -1,4 +1,15 @@
-export default {}
+
+export const V1StorageKey = "v1_artifact_rotation"
+
+export function dateAsString(date: Date): string {
+    return date.getFullYear()
+        + '-' + String(date.getMonth() < 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1)
+        + '-' + String(date.getDate() < 10 ? `0${date.getDate()}` : date.getDate())
+}
+
+export function dateStringAsDate(dateStr: string): Date {
+    return new Date(dateStr)
+}
 
 
 /**

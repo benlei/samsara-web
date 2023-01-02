@@ -1,7 +1,6 @@
 import React from "react";
-import {Accordion, AccordionTitleProps, Container, Icon, Image, Table} from "semantic-ui-react";
+import {Accordion, Container, Header, Icon, Image, Table} from "semantic-ui-react";
 import Head from "next/head";
-import ArtifactConfigLoadDownload from "@/components/artifacts/ArtifactConfigLoadDownload";
 import {
     ArtifactRotationData,
     ArtifactsDomainsData,
@@ -15,6 +14,9 @@ import {getCharacters} from "@/characters/characters";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import AddEditRotation from "@/components/artifacts/addEdit/AddEditRotation";
 import _ from "lodash";
+import {dateAsString, V1StorageKey} from "@/artifacts/rotations";
+import RotationSummary from "@/components/artifacts/RotationSummary";
+import {ArtifactTable} from "@/components/artifacts/ArtifactTable";
 
 type Properties = {
     characters: string[]
@@ -23,6 +25,7 @@ type Properties = {
 
 type States = {
     activeIndex: number
+    storage: RotationStorage
 } & Rotations
 
 export async function getStaticProps() {
@@ -34,8 +37,6 @@ export async function getStaticProps() {
     };
 }
 
-const V1StorageKey = "v1_artifact_rotation"
-
 export default class ArtifactsHome extends React.Component<Properties, States> {
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
@@ -46,6 +47,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
             fixedDays: 3,
             date: '2023-01-01',
             data: [],
+            storage: {},
         }
     }
 
@@ -65,7 +67,8 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
 
             this.setState({
                 ...rotations,
-                activeIndex: (rotations.data?.length ?? 1) - 1
+                activeIndex: (rotations.data?.length ?? 1) - 1,
+                storage: rotationStorage,
             })
         } catch (ignore) {
 
@@ -87,6 +90,9 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                 presets: [{name: 'default', rotations: data}],
             }
             localStorage.setItem(V1StorageKey, JSON.stringify(store))
+            this.setState({
+                storage: store
+            })
             return
         }
 
@@ -96,15 +102,13 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
 
         rotationStorage.presets[idx].rotations = data
         localStorage.setItem(V1StorageKey, JSON.stringify(rotationStorage))
+
+        this.setState({
+            storage: rotationStorage
+        })
     }
 
-    handleClick = (event: any, titleProps: AccordionTitleProps) => {
-        const {index} = titleProps
-        const {activeIndex} = this.state
-        const newIndex = activeIndex === index ? -1 : index
-
-        this.setState({activeIndex: newIndex as number})
-    }
+    setActiveIndex = (activeIndex: number) => this.setState({activeIndex})
 
     insertRotation = (index: number, rotation: Rotation, newActiveIndex?: number) => {
         this.setState({
@@ -114,6 +118,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                 ...this.state.data.slice(index),
             ],
             activeIndex: newActiveIndex ?? index,
+            date: this.state.data.length ? this.state.date : dateAsString(new Date()),
         }, this.commit)
     }
 
@@ -192,97 +197,14 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                 <Head>
                     <title>Artifact Rotations - Samsara</title>
                 </Head>
+
+                <RotationSummary storage={this.state.storage} data={data}/>
                 {/*<ArtifactStepComponent/>*/}
-                <ArtifactConfigLoadDownload/>
 
-                <Container style={{marginTop: '2em'}} className={'artifact-rotations'}>
-                    <Table unstackable>
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell style={{width: '3rem'}}>#</Table.HeaderCell>
-                                <Table.HeaderCell style={{width: '20rem'}}>Artifacts</Table.HeaderCell>
-                                <Table.HeaderCell style={{width: '12rem'}}>Intended</Table.HeaderCell>
-                                <Table.HeaderCell style={{width: '40rem'}}>Info</Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
+                {/*<PresetRotations/>*/}
 
-                        <Table.Body>
-                            {this.state.data.map((r, k) =>
-                                <>
-                                    <Table.Row key={k}>
-                                        <Table.Cell verticalAlign={'top'}>
-                                            {k + 1}
-                                        </Table.Cell>
-                                        <Table.Cell verticalAlign={'top'}>
-                                            <ArtifactDomain data={data} domain={r.domain} popover/>
-                                        </Table.Cell>
-                                        <Table.Cell verticalAlign={'top'}>
-                                            {r.characters.map((c, k) =>
-                                                <Image
-                                                    avatar
-                                                    src={`/images/characters/${data.characters[c].image}.png`}
-                                                    alt={data.characters[c].image} key={k}/>
-                                            )}
-
-                                            {/*<List>*/}
-                                            {/*    {!r.characters.length &&*/}
-                                            {/*        <List.Item>*/}
-                                            {/*            <Image src={`/images/UnknownCharacter.png`} avatar*/}
-                                            {/*                   alt={'Unknown Character'}*/}
-                                            {/*            />*/}
-                                            {/*        </List.Item>*/}
-                                            {/*    }*/}
-                                            {/*    {_.chunk(r.characters, 4).map((chunk, k) =>*/}
-                                            {/*        <List.Item key={k}>*/}
-                                            {/*            {chunk.map((c, j) =>*/}
-                                            {/*                <Image*/}
-                                            {/*                    avatar*/}
-                                            {/*                    src={`/images/characters/${data.characters[c].image}.png`}*/}
-                                            {/*                    alt={data.characters[c].image} key={j}/>*/}
-                                            {/*            )}*/}
-                                            {/*        </List.Item>*/}
-                                            {/*    )}*/}
-                                            {/*</List>*/}
-                                        </Table.Cell>
-                                        <Table.Cell verticalAlign={'top'}>
-                                            <Container fluid
-                                                       className={'grey'}>
-                                                <p>
-                                                    <strong>{r.days ?? data.rotations.fixedDays}</strong> Rotation
-                                                    Day{(r.days ?? data.rotations.fixedDays) !== 1 && 's'}
-                                                </p>
-                                                {r.note.split("\n").map((note, k) =>
-                                                    <p key={k}>{note}</p>
-                                                )}
-                                            </Container>
-                                            <Container fluid style={{marginTop: '.5rem'}}>
-                                                <Accordion>
-                                                    <Accordion.Title active={this.state.activeIndex === k}
-                                                                     onClick={this.handleClick} index={k}>
-                                                        <Icon name='dropdown'/>
-                                                        {this.state.activeIndex === k ? 'Collapse' : 'Expand'} Options
-                                                    </Accordion.Title>
-                                                </Accordion>
-                                            </Container>
-                                        </Table.Cell>
-                                    </Table.Row>
-                                    {this.state.activeIndex === k &&
-                                        <AddEditRotation index={k}
-                                                         rotationsManager={manager}
-                                                         data={data}/>
-                                    }
-                                </>
-                            )}
-
-                            {!this.state.data.length &&
-                                <AddEditRotation editable={false} deletable={false} index={0}
-                                                 syncable={false}
-                                                 rotationsManager={manager}
-                                                 data={data}/>
-                            }
-                        </Table.Body>
-                    </Table>
-                </Container>
+                <ArtifactTable data={data} manager={manager} activeIndex={this.state.activeIndex}
+                               setActiveIndex={this.setActiveIndex}/>
             </>
         )
     }

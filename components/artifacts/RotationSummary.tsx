@@ -1,0 +1,69 @@
+import {Accordion, Container, Icon, Table} from "semantic-ui-react";
+import React, {useState} from "react";
+import {ArtifactRotationData, RotationStorage} from "@/artifacts/types";
+import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
+
+type Property = {
+    data: ArtifactRotationData
+    storage: RotationStorage
+}
+
+export default function RotationSummary({
+                                            data,
+                                            storage,
+                                        }: Property) {
+    const [accordionIndex, setAccordianIndex] = useState(-1)
+
+    return (
+        <Container style={{marginTop: '2em'}} className={'artifact-rotations'}>
+            <Table unstackable>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell style={{width: '3rem'}}>#</Table.HeaderCell>
+                        <Table.HeaderCell style={{width: '20rem'}}>Preset Name</Table.HeaderCell>
+                        <Table.HeaderCell>Current Rotation</Table.HeaderCell>
+                        <Table.HeaderCell>Next Rotation</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                    {storage.presets?.map((preset, k) =>
+                        <>
+                            <Table.Row key={k}>
+                                <Table.Cell verticalAlign={'top'}>{k + 1}</Table.Cell>
+                                <Table.Cell verticalAlign={'top'}>
+                                    {preset.name}
+
+                                    <Accordion>
+                                        <Accordion.Title active={accordionIndex === k}
+                                                         onClick={
+                                                             () => setAccordianIndex(k == accordionIndex ? -1 : k)
+                                                         }
+                                                         index={k}>
+                                            <Icon name='dropdown'/>
+                                            {accordionIndex === k ? 'Collapse' : 'Expand'} Options
+                                        </Accordion.Title>
+                                    </Accordion>
+
+                                </Table.Cell>
+                                <Table.Cell verticalAlign={'top'}>
+                                    <ArtifactDomain data={data} domain={'Ridge Watch'}/>
+                                </Table.Cell>
+                                <Table.Cell verticalAlign={'top'}>
+                                    <ArtifactDomain data={data} domain={'Momiji-Dyed Court'}/>
+                                </Table.Cell>
+                            </Table.Row>
+                            {accordionIndex === k &&
+                                <Table.Row key={k}>
+                                    <Table.Cell colSpan={4}>
+                                        I need to add stuff here
+                                    </Table.Cell>
+                                </Table.Row>
+                            }
+                        </>
+                    )}
+                </Table.Body>
+            </Table>
+        </Container>
+    )
+}
