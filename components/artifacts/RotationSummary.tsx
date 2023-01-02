@@ -8,11 +8,21 @@ type Property = {
     storage: RotationStorage
 }
 
+function isEmptyStorage(storage: RotationStorage): boolean {
+    return (storage.presets?.length === 1
+            || storage.presets?.length === 0)
+        && storage.presets?.[0]?.rotations.data.length === 0
+}
+
 export default function RotationSummary({
                                             data,
                                             storage,
                                         }: Property) {
     const [accordionIndex, setAccordianIndex] = useState(-1)
+
+    if (isEmptyStorage(storage)) {
+        return null
+    }
 
     return (
         <Container style={{marginTop: '2em'}} className={'artifact-rotations'}>
