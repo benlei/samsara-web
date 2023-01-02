@@ -29,23 +29,30 @@ export default class AddEditPrompt extends React.Component<Properties, States> {
 
     render() {
         return (
-            <Form style={{marginTop: '1em'}}>
+            <Form style={{marginTop: '1em', textAlign: 'center'}}>
                 <Form.Group widths='equal'>
                     <Form.Button
-                        content='New Rotation' color={'green'} icon='add'
+                        content='New Rotation' color={'teal'} icon='add'
                         labelPosition='left' onClick={this.props.onAddClicked}/>
+
                     <Form.Button
-                        content={'Edit #' + (this.props.index + 1)}
+                        content={'Edit'}
                         icon='edit' onClick={this.props.onEditClicked}
                         labelPosition='left'
                         className={this.props.editable ? '' : 'hidden'}/>
+
+                    <Form.Button
+                        content={'Start Rotation'}
+                        icon='pin' onClick={this.props.onStartRotationClicked}
+                        labelPosition='left'
+                        className={this.props.syncable ? '' : 'hidden'}/>
 
                     <Form.Field>
                         <Popup on={'click'}
                                trigger={
                                    <Button icon labelPosition={'left'}
                                            className={this.props.deletable ? '' : 'hidden'}>
-                                       <Icon name={'exchange'}/> Change Position of #{this.props.index + 1}
+                                       <Icon name={'exchange'}/> Set Position
                                    </Button>
                                } pinned position={'bottom left'}>
                             <Form>
@@ -54,7 +61,7 @@ export default class AddEditPrompt extends React.Component<Properties, States> {
                                         min={1}
                                         max={this.props.data.data.length}
                                         defaultValue={this.props.index + 1}
-                                        color={'green'}
+                                        color={'teal'}
                                         icon={'exchange'}
                                         onSubmit={this.props.onMoveClicked}
                                     />
@@ -63,25 +70,20 @@ export default class AddEditPrompt extends React.Component<Properties, States> {
                         </Popup>
                     </Form.Field>
 
-                    <Form.Button
-                        content={'Start Rotation at #' + (this.props.index + 1)}
-                        icon='pin' onClick={this.props.onStartRotationClicked}
-                        labelPosition='left'
-                        className={this.props.syncable ? '' : 'hidden'}/>
-
                     <Form.Field>
                         <Popup on={'click'}
                                trigger={
                                    <Button color={'red'} icon labelPosition={'left'}
                                            className={this.props.deletable ? '' : 'hidden'}>
-                                       <Icon name={'delete'}/> Delete #{this.props.index + 1}
+                                       <Icon name={'delete'}/> Delete
                                    </Button>
                                } pinned position={'bottom left'}>
                             <Form>
                                 <Form.Field>
                                     <Form.Button
                                         label={'Are you sure? This change will be irreversible!'}
-                                        content={'Yes, Delete #' + (this.props.index + 1)} color={'red'} icon='delete'
+                                        content={'Yes, Delete #' + (this.props.index + 1)} color={'red'}
+                                        icon='delete'
                                         labelPosition='left' onClick={this.props.onDeleteClicked}/>
                                 </Form.Field>
                             </Form>

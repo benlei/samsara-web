@@ -2,6 +2,7 @@ import {Accordion, Container, Icon, Table} from "semantic-ui-react";
 import React, {useState} from "react";
 import {ArtifactRotationData, RotationStorage} from "@/artifacts/types";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
+import AddEditPresetPrompt from "@/components/artifacts/presets/AddEdditPresetPrompt";
 
 type Property = {
     data: ArtifactRotationData
@@ -66,7 +67,7 @@ export default function RotationSummary({
                             {accordionIndex === k &&
                                 <Table.Row key={k}>
                                     <Table.Cell colSpan={4}>
-                                        I need to add stuff here
+                                        <AddEditPresetPrompt/>
                                     </Table.Cell>
                                 </Table.Row>
                             }

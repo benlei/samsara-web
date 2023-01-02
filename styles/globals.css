@@ -101,3 +101,6 @@ button {
 img.active {
     border: 2px solid #21ba45
 }
+.accordion .title.active {
+    font-weight: 700;
+}

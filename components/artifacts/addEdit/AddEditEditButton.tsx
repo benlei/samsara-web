@@ -23,17 +23,17 @@ export default class AddEditEditButton extends React.Component<Properties, State
                     <Popup
                         on={'click'}
                         trigger={
-                            <Button color={this.props.preparedRotation.domain ? 'green' : 'yellow'} icon
+                            <Button color={this.props.preparedRotation.domain ? 'teal' : 'yellow'} icon
                                     labelPosition={'left'}>
-                                <Icon name='edit'/> Update #{this.props.index}
+                                <Icon name='edit'/> Update
                             </Button>
                         } pinned position={'bottom left'}>
                         <p>You must select a domain first</p>
                     </Popup>
                 ) : (
-                    <Button color={'green'} icon labelPosition={'left'}
+                    <Button color={'teal'} icon labelPosition={'left'}
                             onClick={this.updateRotation}>
-                        <Icon name={'edit'}/> Update #{this.props.index}
+                        <Icon name={'edit'}/> Update
                     </Button>
                 )}
             </>

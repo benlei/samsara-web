@@ -44,7 +44,7 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
         this.state = {
             activeIndex: 0,
             fixed: true,
-            fixedDays: 3,
+            fixedDays: 7,
             date: '2023-01-01',
             data: [],
             storage: {},

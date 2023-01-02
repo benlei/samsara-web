@@ -41,7 +41,7 @@ export default class AddEditAddButton extends React.Component<Properties, States
                     <Popup
                         on={'click'}
                         trigger={
-                            <Button color={this.props.preparedRotation.domain ? 'green' : 'yellow'} icon
+                            <Button color={this.props.preparedRotation.domain ? 'teal' : 'yellow'} icon
                                     labelPosition={'left'}
                             >
                                 <Icon name='caret down'/> Create
@@ -55,7 +55,7 @@ export default class AddEditAddButton extends React.Component<Properties, States
                             <Form>
                                 <Form.Group>
                                     <Form.Field>
-                                        <Button color={'green'} icon labelPosition={'right'}
+                                        <Button color={'teal'} icon labelPosition={'right'}
                                                 onClick={this.createRotation(this.props.index + 1)}>
                                             Insert as #{this.props.index + 2}
                                             <Icon name='add'/>
@@ -69,7 +69,7 @@ export default class AddEditAddButton extends React.Component<Properties, States
                                             min={1}
                                             max={this.props.data.rotations.data.length + 1}
                                             defaultValue={this.props.index + 2}
-                                            color={'green'}
+                                            color={'teal'}
                                             icon={'add'}
                                             onSubmit={this.createRotationByPosition}
                                             placeholder={'Enter # Position'}
@@ -85,7 +85,7 @@ export default class AddEditAddButton extends React.Component<Properties, States
                             <Popup
                                 on={'click'}
                                 trigger={
-                                    <Button color={this.props.preparedRotation.domain ? 'green' : 'yellow'} icon
+                                    <Button color={this.props.preparedRotation.domain ? 'teal' : 'yellow'} icon
                                             labelPosition={'left'}>
                                         <Icon name='add'/> Create #1
                                     </Button>
@@ -93,7 +93,7 @@ export default class AddEditAddButton extends React.Component<Properties, States
                                 <p>You must select a domain first</p>
                             </Popup>
                         ) : (
-                            <Button color={'green'} icon labelPosition={'left'}
+                            <Button color={'teal'} icon labelPosition={'left'}
                                     onClick={this.createRotation(0)}>
                                 <Icon name={'add'}/> Create #1
                             </Button>
