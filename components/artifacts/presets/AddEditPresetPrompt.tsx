@@ -4,11 +4,13 @@ import React from "react";
 type Properties = {
     addClicked: () => any
     editClicked: () => any
+    index: number
 }
 export default function AddEditPresetPrompt(
     {
         addClicked,
-        editClicked
+        editClicked,
+        index,
     }: Properties
 ) {
     return (
@@ -25,6 +27,7 @@ export default function AddEditPresetPrompt(
                     icon='edit'
                     onClick={editClicked}
                     labelPosition='left'
+                    className={index === -1 ? 'hidden' : ''}
                 />
 
                 <Form.Button
@@ -32,12 +35,15 @@ export default function AddEditPresetPrompt(
                     icon={'exchange'}
                     // onClick={this.props.onStartRotationClicked}
                     labelPosition='left'
+                    className={index === -1 ? 'hidden' : ''}
                 />
 
                 <Form.Field>
                     <Popup on={'click'}
                            trigger={
-                               <Button icon labelPosition={'left'}>
+                               <Button icon labelPosition={'left'}
+                                       className={index === -1 ? 'hidden' : ''}
+                               >
                                    <Icon name={'arrows alternate vertical'}/> Set Position
                                </Button>
                            } pinned position={'bottom left'}>
@@ -61,7 +67,7 @@ export default function AddEditPresetPrompt(
                     <Popup on={'click'}
                            trigger={
                                <Button color={'red'} icon labelPosition={'left'}
-                                   // className={this.props.deletable ? '' : 'hidden'}
+                                       className={index === -1 ? 'hidden' : ''}
                                >
                                    <Icon name={'delete'}/> Delete
                                </Button>

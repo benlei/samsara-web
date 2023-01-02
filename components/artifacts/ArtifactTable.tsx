@@ -88,8 +88,7 @@ export function ArtifactTable(
                     )}
 
                     {!data.rotations.data.length &&
-                        <AddEditRotation editable={false} deletable={false} index={0}
-                                         syncable={false}
+                        <AddEditRotation index={-1}
                                          rotationsManager={manager}
                                          data={data}/>
                     }

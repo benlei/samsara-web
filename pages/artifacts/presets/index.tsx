@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import Head from "next/head";
-import {ArtifactsDomainsData, RotationStorage} from "@/artifacts/types";
+import {RotationStorage} from "@/artifacts/types";
 import {V1StorageKey} from "@/artifacts/rotations";
-import PresetAndRotationSummary from "@/components/artifacts/PresetAndRotationSummary";
+import ArtifactRotationPresets from "@/components/artifacts/ArtifactRotationPresets";
 
 
 export default function ManageArtifactRotationPresets({}) {
@@ -28,7 +28,7 @@ export default function ManageArtifactRotationPresets({}) {
                 <title>Artifact Rotations - Samsara</title>
             </Head>
 
-            <PresetAndRotationSummary
+            <ArtifactRotationPresets
                 storage={storage}
                 setStorage={setStorage}
             />

@@ -6,10 +6,6 @@ import {Rotations} from "@/artifacts/types";
 type Properties = {
     index: number
     data: Rotations
-    editable: boolean
-    syncable: boolean
-    deletable: boolean
-    movable: boolean
     onAddClicked: Dispatch<any>
     onEditClicked: Dispatch<any>
     onStartRotationClicked: Dispatch<any>
@@ -39,19 +35,19 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                         content={'Edit'}
                         icon='edit' onClick={this.props.onEditClicked}
                         labelPosition='left'
-                        className={this.props.editable ? '' : 'hidden'}/>
+                        className={this.props.index == -1 ? 'hidden' : ''}/>
 
                     <Form.Button
                         content={'Start Here'}
                         icon='pin' onClick={this.props.onStartRotationClicked}
                         labelPosition='left'
-                        className={this.props.syncable ? '' : 'hidden'}/>
+                        className={this.props.index == -1 ? 'hidden' : ''}/>
 
                     <Form.Field>
                         <Popup on={'click'}
                                trigger={
                                    <Button icon labelPosition={'left'}
-                                           className={this.props.deletable ? '' : 'hidden'}>
+                                           className={this.props.index == -1 ? 'hidden' : ''}>
                                        <Icon name={'arrows alternate vertical'}/> Set Position
                                    </Button>
                                } pinned position={'bottom left'}>
@@ -74,7 +70,7 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                         <Popup on={'click'}
                                trigger={
                                    <Button color={'red'} icon labelPosition={'left'}
-                                           className={this.props.deletable ? '' : 'hidden'}>
+                                           className={this.props.index == -1 ? 'hidden' : ''}>
                                        <Icon name={'delete'}/> Delete
                                    </Button>
                                } pinned position={'bottom left'}>

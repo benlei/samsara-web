@@ -14,16 +14,12 @@ function isEmptyStorage(storage: RotationStorage): boolean {
         && storage.presets?.[0]?.rotations.data.length === 0
 }
 
-export default function PresetAndRotationSummary(
+export default function ArtifactRotationPresets(
     {
         storage,
     }: Property
 ) {
     const [accordionIndex, setAccordianIndex] = useState(-1)
-
-    if (isEmptyStorage(storage)) {
-        return null
-    }
 
     return (
         <Container style={{marginTop: '2em'}} className={'artifact-rotations'}>
@@ -80,6 +76,20 @@ export default function PresetAndRotationSummary(
                             }
                         </>
                     )}
+                    {isEmptyStorage(storage) &&
+                        <Table.Row>
+                            <Table.Cell colSpan={2}>
+                                <AddEditPreset
+                                    index={-1}
+                                    storage={storage}
+                                    // data={data}
+                                    // preset={preset}
+                                    // phase={phase}
+                                    // setPhase={setPhase}
+                                />
+                            </Table.Cell>
+                        </Table.Row>
+                    }
                 </Table.Body>
             </Table>
         </Container>

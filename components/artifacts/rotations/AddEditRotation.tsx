@@ -12,10 +12,6 @@ import AddEditRotationMenu from "@/components/artifacts/rotations/AddEditRotatio
 
 type Properties = {
     index: number
-    editable: boolean
-    deletable: boolean
-    syncable: boolean
-    movable: boolean
     data: ArtifactRotationData
     rotationsManager: RotationsManager
 }
@@ -28,13 +24,6 @@ type States = {
 }
 
 export default class AddEditRotation extends React.Component<Properties, States> {
-    public static defaultProps = {
-        editable: true,
-        deletable: true,
-        syncable: true,
-        movable: true,
-    };
-
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
 
@@ -112,10 +101,6 @@ export default class AddEditRotation extends React.Component<Properties, States>
                     {this.state.phase == AddEditRotationPhase.Prompt ? (
                         <AddEditRotationPrompt
                             data={this.props.data.rotations}
-                            deletable={this.props.deletable}
-                            syncable={this.props.syncable}
-                            editable={this.props.editable}
-                            movable={this.props.movable}
                             index={this.props.index}
                             onAddClicked={this.addClicked}
                             onEditClicked={this.editClicked}
