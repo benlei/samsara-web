@@ -1,11 +1,9 @@
 import {Accordion, Container, Icon, Table} from "semantic-ui-react";
 import React, {useState} from "react";
-import {ArtifactRotationData, RotationStorage} from "@/artifacts/types";
-import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
+import {RotationStorage} from "@/artifacts/types";
 import {AddEditPreset} from "@/components/artifacts/presets/AddEditPreset";
 
 type Property = {
-    data: ArtifactRotationData
     storage: RotationStorage
     setStorage: (storage: RotationStorage) => any
 }
@@ -16,10 +14,11 @@ function isEmptyStorage(storage: RotationStorage): boolean {
         && storage.presets?.[0]?.rotations.data.length === 0
 }
 
-export default function PresetAndRotationSummary({
-                                                     data,
-                                                     storage,
-                                                 }: Property) {
+export default function PresetAndRotationSummary(
+    {
+        storage,
+    }: Property
+) {
     const [accordionIndex, setAccordianIndex] = useState(-1)
 
     if (isEmptyStorage(storage)) {
@@ -33,8 +32,8 @@ export default function PresetAndRotationSummary({
                     <Table.Row>
                         <Table.HeaderCell style={{width: '3rem'}}>#</Table.HeaderCell>
                         <Table.HeaderCell style={{width: '20rem'}}>Preset Name</Table.HeaderCell>
-                        <Table.HeaderCell>Current Rotation</Table.HeaderCell>
-                        <Table.HeaderCell>Next Rotation</Table.HeaderCell>
+                        {/*<Table.HeaderCell>Current Rotation</Table.HeaderCell>*/}
+                        {/*<Table.HeaderCell>Next Rotation</Table.HeaderCell>*/}
                     </Table.Row>
                 </Table.Header>
 
@@ -58,16 +57,16 @@ export default function PresetAndRotationSummary({
                                     </Accordion>
 
                                 </Table.Cell>
-                                <Table.Cell verticalAlign={'top'}>
-                                    <ArtifactDomain data={data} domain={'Ridge Watch'}/>
-                                </Table.Cell>
-                                <Table.Cell verticalAlign={'top'}>
-                                    <ArtifactDomain data={data} domain={'Momiji-Dyed Court'}/>
-                                </Table.Cell>
+                                {/*<Table.Cell verticalAlign={'top'}>*/}
+                                {/*    <ArtifactDomain data={data} domain={'Ridge Watch'}/>*/}
+                                {/*</Table.Cell>*/}
+                                {/*<Table.Cell verticalAlign={'top'}>*/}
+                                {/*    <ArtifactDomain data={data} domain={'Momiji-Dyed Court'}/>*/}
+                                {/*</Table.Cell>*/}
                             </Table.Row>
                             {accordionIndex === k &&
                                 <Table.Row key={k}>
-                                    <Table.Cell colSpan={4}>
+                                    <Table.Cell colSpan={2}>
                                         <AddEditPreset
                                             index={k}
                                             storage={storage}
