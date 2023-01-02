@@ -27,7 +27,7 @@ export function AddEditPreset(
         setPreparedPreset(
             _.cloneDeep<RotationPresets>(storage?.presets?.[index] ?? getBasePreparedReset('2023-01-01'))
         )
-    }, [])
+    }, [storage?.presets, index])
 
     function addClicked() {
         setPhase(AddEditPresetPhase.AddEdit)

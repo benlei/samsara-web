@@ -1,28 +1,25 @@
 import {Button, Form} from "semantic-ui-react";
 import React from "react";
+import AddEditPresetAddButton from "@/components/artifacts/presets/AddEditPresetAddButton";
+import AddEditPresetEditButton from "@/components/artifacts/presets/AddEditPresetEditButton";
 
 type Properties = {
     cancelClicked: () => any
     isAdd: boolean
 }
 
-export default function AddEditPresetSubmit(
-    {
-        cancelClicked,
-        isAdd,
-    }: Properties
-) {
+export default function AddEditPresetSubmit(props: Properties) {
     return (
         <Form.Group widths='equal' style={{marginTop: '1em'}}>
             <Form.Field>
-                {/*{this.props.addEdit == AddEdit.Add &&*/}
-                {/*    <AddEditRotationAddButton {...this.props} />*/}
-                {/*}*/}
-                {/*{this.props.addEdit == AddEdit.Edit &&*/}
-                {/*    <AddEditRotationEditButton {...this.props} />*/}
-                {/*}*/}
+                {props.isAdd &&
+                    <AddEditPresetAddButton/>
+                }
+                {!props.isAdd &&
+                    <AddEditPresetEditButton/>
+                }
 
-                <Button color={'red'} onClick={cancelClicked}>
+                <Button color={'red'} onClick={props.cancelClicked}>
                     Cancel
                 </Button>
             </Form.Field>
