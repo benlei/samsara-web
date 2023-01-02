@@ -1,34 +1,47 @@
-import {Button, Container, Form} from "semantic-ui-react";
+import {Checkbox, Container, Form, Input} from "semantic-ui-react";
 import React from "react";
+import AddEditPresetSubmit from "@/components/artifacts/presets/AddEditPresetSubmit";
+import {RotationStorage} from "@/artifacts/types";
 
 type Properties = {
     cancelClicked: () => any
     isAdd: boolean
+    index: number
+    storage: RotationStorage
 }
 
-export default function AddEditPresetConfig(
-    {
-        cancelClicked,
-        isAdd,
-    }: Properties
-) {
+export default function AddEditPresetConfig(props: Properties) {
     return (
         <Container fluid textAlign={'left'} style={{padding: '1em'}}>
-            <Form style={{marginTop: '2em'}}>
-                <Form.Group widths='equal'>
-                    <Form.Field>
-                        {/*{this.props.addEdit == AddEdit.Add &&*/}
-                        {/*    <AddEditRotationAddButton {...this.props} />*/}
-                        {/*}*/}
-                        {/*{this.props.addEdit == AddEdit.Edit &&*/}
-                        {/*    <AddEditRotationEditButton {...this.props} />*/}
-                        {/*}*/}
-
-                        <Button color={'red'} onClick={cancelClicked}>
-                            Cancel
-                        </Button>
+            <Form>
+                <Form.Group>
+                    <Form.Field width={'six'}>
+                        <label>Set Preset Name</label>
+                        <Input fluid
+                            // onChange={this.onChangeDays}
+                               value={props.storage.presets?.[props.index].name}
+                        />
                     </Form.Field>
                 </Form.Group>
+
+                <Form.Group style={{marginTop: '1em'}}>
+                    <Form.Field width={'four'}>
+                        <label>Fixed Rotation Days?</label>
+                        <Checkbox checked={props.storage.presets?.[props.index].rotations.fixed}/>
+                    </Form.Field>
+                </Form.Group>
+
+                <Form.Group style={{marginTop: '1em'}}>
+                    <Form.Field width={'four'}>
+                        <label>Number of rotation days</label>
+                        <Input fluid
+                            // onChange={this.onChangeDays}
+                               value={props.storage.presets?.[props.index].rotations.fixedDays}
+                        />
+                    </Form.Field>
+                </Form.Group>
+
+                <AddEditPresetSubmit {...props} />
             </Form>
         </Container>
     )

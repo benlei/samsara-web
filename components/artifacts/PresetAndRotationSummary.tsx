@@ -70,6 +70,7 @@ export default function PresetAndRotationSummary({
                                     <Table.Cell colSpan={4}>
                                         <AddEditPreset
                                             index={k}
+                                            storage={storage}
                                             // data={data}
                                             // preset={preset}
                                             // phase={phase}

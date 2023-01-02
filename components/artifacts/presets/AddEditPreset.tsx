@@ -2,14 +2,17 @@ import AddEditPresetPrompt from "@/components/artifacts/presets/AddEditPresetPro
 import {useState} from "react";
 import {AddEditPresetPhase} from "@/artifacts/enums";
 import AddEditPresetConfig from "@/components/artifacts/presets/AddEditPresetConfig";
+import {RotationStorage} from "@/artifacts/types";
 
 type Properties = {
     index: number
+    storage: RotationStorage
 }
 
 export function AddEditPreset(
     {
-        index
+        index,
+        storage
     }: Properties
 ) {
     const [phase, setPhase] = useState(AddEditPresetPhase.Prompt)
@@ -40,6 +43,8 @@ export function AddEditPreset(
 
             {phase == AddEditPresetPhase.AddEdit &&
                 <AddEditPresetConfig
+                    storage={storage}
+                    index={index}
                     isAdd={isAdd}
                     cancelClicked={cancelClicked}
                 />
