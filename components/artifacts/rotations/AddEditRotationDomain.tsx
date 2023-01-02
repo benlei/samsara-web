@@ -1,7 +1,7 @@
 import React from "react";
-import {Checkbox, Container, Form, Grid, Header, Icon, Input, Segment} from "semantic-ui-react";
+import {Checkbox, Container, Form, Grid, Icon, Input, Segment} from "semantic-ui-react";
 import _ from "lodash";
-import {AddEdit, AddEditSharedProperties} from "@/artifacts/types";
+import {AddEditSharedProperties} from "@/artifacts/types";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 
 type Properties = {} & AddEditSharedProperties

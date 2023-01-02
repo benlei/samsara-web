@@ -11,12 +11,6 @@ type States = {
 }
 
 export default class AddEditRotationIntendedCharacters extends React.Component<Properties, States> {
-    // public static defaultProps = {
-    //     editable: true,
-    //     deletable: true,
-    //     syncable: true,
-    // };
-
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
 

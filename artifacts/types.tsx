@@ -38,24 +38,21 @@ export type ArtifactRotationData = {
     artifacts: Artifacts
     artifactDomains: ArtifactDomains
     characters: Characters
-    rotations: Rotations
+    preset: RotationPreset
 }
 
 export type RotationStorage = {
     active: number
-    presets: RotationPresets[]
+    presets: RotationPreset[]
 }
 
-export type RotationPresets = {
+export type RotationPreset = {
     name: string
-    rotations: Rotations
-}
 
-export type Rotations = {
     fixed: boolean // fixed # of days between all rotations, or no
     fixedDays: number
     date: string
-    data: Rotation[]
+    rotations: Rotation[]
 }
 
 export type Rotation = {

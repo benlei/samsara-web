@@ -1,4 +1,4 @@
-import {RotationPresets} from "@/artifacts/types";
+import {RotationPreset} from "@/artifacts/types";
 import {v4 as uuidv4} from "uuid";
 
 export const V1StorageKey = "v1_artifact_rotation"
@@ -16,15 +16,13 @@ export function dateStringAsDate(dateStr: string): Date {
     return new Date(dateStr)
 }
 
-export function getBasePreparedReset(date: string): RotationPresets {
+export function getBasePreparedReset(date: string): RotationPreset {
     return {
         name: `default (${uuidv4()})`,
-        rotations: {
-            fixed: DefaultIsFixed,
-            fixedDays: DefaultFixedDays,
-            data: [],
-            date,
-        }
+        fixed: DefaultIsFixed,
+        fixedDays: DefaultFixedDays,
+        rotations: [],
+        date,
     }
 }
 

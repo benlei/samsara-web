@@ -3,9 +3,9 @@ import Head from "next/head";
 import {
     ArtifactRotationData,
     ArtifactsDomainsData,
-    Rotation,
-    Rotations,
     ListManager,
+    Rotation,
+    RotationPreset,
     RotationStorage
 } from "@/artifacts/types";
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
@@ -22,7 +22,7 @@ type Properties = {
 
 type States = {
     activeIndex: number
-} & Rotations
+} & RotationPreset
 
 export async function getStaticProps() {
     return {
@@ -42,7 +42,8 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             fixed: DefaultIsFixed,
             fixedDays: DefaultFixedDays,
             date: '2023-01-01',
-            data: [],
+            rotations: [],
+            name: 'default',
         }
     }
 
@@ -54,12 +55,11 @@ export default class ManageArtifactRotations extends React.Component<Properties,
                 return
             }
 
-            const rotations: Rotations = rotationStorage.presets[rotationStorage.active].rotations
-
+            const preset: RotationPreset = rotationStorage.presets[rotationStorage.active]
 
             this.setState({
-                ...rotations,
-                activeIndex: (rotations.data?.length ?? 1) - 1,
+                ...preset,
+                activeIndex: (preset.rotations.length ?? 1) - 1,
             })
         } catch (ignore) {
 
@@ -67,11 +67,12 @@ export default class ManageArtifactRotations extends React.Component<Properties,
     }
 
     commit = () => {
-        const data: Rotations = {
-            "fixed": this.state.fixed,
-            "fixedDays": this.state.fixedDays,
-            "date": this.state.date,
-            "data": this.state.data,
+        const data: RotationPreset = {
+            name: this.state.name,
+            fixed: this.state.fixed,
+            fixedDays: this.state.fixedDays,
+            date: this.state.date,
+            rotations: this.state.rotations,
         }
 
         const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
@@ -81,14 +82,14 @@ export default class ManageArtifactRotations extends React.Component<Properties,
                 active: 0,
                 presets: [{
                     ...preset,
-                    rotations: data
+                    rotations: this.state.rotations,
                 }],
             }
             localStorage.setItem(V1StorageKey, JSON.stringify(store))
             return
         }
 
-        rotationStorage.presets[rotationStorage.active].rotations = data
+        rotationStorage.presets[rotationStorage.active] = data
         localStorage.setItem(V1StorageKey, JSON.stringify(rotationStorage))
     }
 
@@ -96,48 +97,49 @@ export default class ManageArtifactRotations extends React.Component<Properties,
 
     insertRotation = (index: number, rotation: Rotation, newActiveIndex?: number) => {
         this.setState({
-            data: ClonedList.insert(this.state.data, index, rotation),
+            rotations: ClonedList.insert(this.state.rotations, index, rotation),
             activeIndex: newActiveIndex ?? index,
-            date: this.state.data.length ? this.state.date : dateAsString(new Date()),
+            date: this.state.rotations.length ? this.state.date : dateAsString(new Date()),
         }, this.commit)
     }
 
     // literally exactly same thing
     setRotation = (index: number, rotation: Rotation, newActiveIndex?: number) => {
         this.setState({
-            data: ClonedList.set(this.state.data, index, rotation),
+            rotations: ClonedList.set(this.state.rotations, index, rotation),
             activeIndex: newActiveIndex ?? index,
         }, this.commit)
     }
 
     moveRotation = (index: number, newIndex: number, newActiveIndex?: number) => {
-        if (newIndex >= this.state.data.length || newIndex < 0 || index == newIndex) {
+        if (newIndex >= this.state.rotations.length || newIndex < 0 || index == newIndex) {
             return
         }
 
         this.setState({
-            data: ClonedList.move(this.state.data, index, newIndex),
+            rotations: ClonedList.move(this.state.rotations, index, newIndex),
             activeIndex: newActiveIndex ?? newIndex,
         }, this.commit)
     }
 
     deleteRotation = (index: number, newActiveIndex?: number) => {
         this.setState({
-            data: ClonedList.remove(this.state.data, index),
+            rotations: ClonedList.remove(this.state.rotations, index),
             activeIndex: newActiveIndex ?? -1,
         }, this.commit)
     }
 
     render() {
         const data: ArtifactRotationData = {
-            "artifacts": getArtifacts(this.props.artifacts),
-            "artifactDomains": getArtifactDomains(this.props.artifacts),
-            "characters": getCharacters(this.props.characters),
-            "rotations": {
-                "fixed": this.state.fixed,
-                "fixedDays": this.state.fixedDays,
-                "date": this.state.date,
-                "data": this.state.data,
+            artifacts: getArtifacts(this.props.artifacts),
+            artifactDomains: getArtifactDomains(this.props.artifacts),
+            characters: getCharacters(this.props.characters),
+            preset: {
+                name: this.state.name,
+                fixed: this.state.fixed,
+                fixedDays: this.state.fixedDays,
+                date: this.state.date,
+                rotations: this.state.rotations,
             },
         }
 

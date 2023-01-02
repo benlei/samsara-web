@@ -1,11 +1,11 @@
 import React, {Dispatch} from "react";
 import {Button, Form, Icon, Popup} from "semantic-ui-react";
 import NumberRangeInputWithIcon from "@/components/NumberRangeInputWithIcon";
-import {Rotations} from "@/artifacts/types";
+import {RotationPreset} from "@/artifacts/types";
 
 type Properties = {
     index: number
-    data: Rotations
+    preset: RotationPreset
     onAddClicked: Dispatch<any>
     onEditClicked: Dispatch<any>
     onStartRotationClicked: Dispatch<any>
@@ -55,7 +55,7 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                                 <Form.Field>
                                     <NumberRangeInputWithIcon
                                         min={1}
-                                        max={this.props.data.data.length}
+                                        max={this.props.preset.rotations.length}
                                         defaultValue={this.props.index + 1}
                                         color={'teal'}
                                         icon={'exchange'}

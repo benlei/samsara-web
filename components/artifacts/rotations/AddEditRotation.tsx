@@ -39,7 +39,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
             domain: "",
             characters: [],
             note: "",
-            days: this.props.data.rotations.fixedDays,
+            days: this.props.data.preset.fixedDays,
         }
     }
 
@@ -56,7 +56,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
             phase: AddEditRotationPhase.Domain,
             addEdit: AddEdit.Edit,
             preparedRotation: {
-                ...this.props.data.rotations.data[this.props.index],
+                ...this.props.data.preset.rotations[this.props.index],
             }
         })
     }
@@ -91,7 +91,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
             setPhase: this.setPhase,
             onCancel: this.cancelClicked,
             preparedRotation: this.state.preparedRotation,
-            index: this.props.index == -1 ? this.props.data.rotations.data.length : this.props.index,
+            index: this.props.index == -1 ? this.props.data.preset.rotations.length : this.props.index,
             manager: this.props.rotationsManager,
         }
 
@@ -100,7 +100,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
                 <Table.Cell verticalAlign={'top'} colSpan={4} textAlign={'center'}>
                     {this.state.phase == AddEditRotationPhase.Prompt ? (
                         <AddEditRotationPrompt
-                            data={this.props.data.rotations}
+                            preset={this.props.data.preset}
                             index={this.props.index}
                             onAddClicked={this.addClicked}
                             onEditClicked={this.editClicked}

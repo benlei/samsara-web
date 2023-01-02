@@ -2,7 +2,7 @@ import AddEditPresetPrompt from "@/components/artifacts/presets/AddEditPresetPro
 import {useEffect, useState} from "react";
 import {AddEditPresetPhase} from "@/artifacts/enums";
 import AddEditPresetConfig from "@/components/artifacts/presets/AddEditPresetConfig";
-import {RotationPresets, RotationStorage} from "@/artifacts/types";
+import {ListManager, RotationPreset, RotationStorage} from "@/artifacts/types";
 import {dateAsString, getBasePreparedReset} from "@/artifacts/presets";
 import _ from "lodash";
 
@@ -25,7 +25,7 @@ export function AddEditPreset(
 
     useEffect(() => {
         setPreparedPreset(
-            _.cloneDeep<RotationPresets>(storage?.presets?.[index] ?? getBasePreparedReset('2023-01-01'))
+            _.cloneDeep<RotationPreset>(storage?.presets?.[index] ?? getBasePreparedReset('2023-01-01'))
         )
     }, [storage?.presets, index])
 
@@ -44,9 +44,11 @@ export function AddEditPreset(
     function cancelClicked() {
         setPhase(AddEditPresetPhase.Prompt)
         setPreparedPreset(
-            _.cloneDeep<RotationPresets>(storage?.presets?.[index] ?? getBasePreparedReset(dateAsString(new Date())))
+            _.cloneDeep<RotationPreset>(storage?.presets?.[index] ?? getBasePreparedReset(dateAsString(new Date())))
         )
     }
+
+    // const manager: ListManager<RotationPreset>
 
     return (
         <>

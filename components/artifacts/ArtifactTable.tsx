@@ -39,7 +39,7 @@ export function ArtifactTable(
                 </Table.Header>
 
                 <Table.Body>
-                    {data.rotations.data.map((r, k) =>
+                    {data.preset.rotations.map((r, k) =>
                         <>
                             <Table.Row key={k}>
                                 <Table.Cell verticalAlign={'top'}>
@@ -60,8 +60,8 @@ export function ArtifactTable(
                                     <Container fluid
                                                className={'grey'}>
                                         <p>
-                                            <strong>{r.days ?? data.rotations.fixedDays}</strong> Rotation
-                                            Day{(r.days ?? data.rotations.fixedDays) !== 1 && 's'}
+                                            <strong>{r.days ?? data.preset.fixedDays}</strong> Rotation
+                                            Day{(r.days ?? data.preset.fixedDays) !== 1 && 's'}
                                         </p>
                                         {r.note.split("\n").map((note, k) =>
                                             <p key={k}>{note}</p>
@@ -86,7 +86,7 @@ export function ArtifactTable(
                         </>
                     )}
 
-                    {!data.rotations.data.length &&
+                    {!data.preset.rotations.length &&
                         <AddEditRotation index={-1}
                                          rotationsManager={manager}
                                          data={data}/>

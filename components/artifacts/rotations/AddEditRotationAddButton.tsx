@@ -37,7 +37,7 @@ export default class AddEditRotationAddButton extends React.Component<Properties
     render() {
         return (
             <>
-                {!!this.props.data.rotations.data.length ? (
+                {!!this.props.data.preset.rotations.length ? (
                     <Popup
                         on={'click'}
                         trigger={
@@ -67,7 +67,7 @@ export default class AddEditRotationAddButton extends React.Component<Properties
                                         <label>-or- Insert to Specific Position</label>
                                         <NumberRangeInputWithIcon
                                             min={1}
-                                            max={this.props.data.rotations.data.length + 1}
+                                            max={this.props.data.preset.rotations.length + 1}
                                             defaultValue={this.props.index + 2}
                                             color={'teal'}
                                             icon={'add'}

@@ -34,8 +34,8 @@ export default class AddEditRotationInfo extends React.Component<Properties, Sta
                     <Form.Group>
                         <Form.Field width={'four'}>
                             <label>Set Total Rotation Days</label>
-                            {this.props.data.rotations.fixed
-                                ? <strong>{this.props.data.rotations.fixedDays}</strong>
+                            {this.props.data.preset.fixed
+                                ? <strong>{this.props.data.preset.fixedDays}</strong>
                                 : <Input fluid type={'number'} min={1} max={10000}
                                          onChange={this.onChangeDays} value={this.props.preparedRotation.days}/>
                             }

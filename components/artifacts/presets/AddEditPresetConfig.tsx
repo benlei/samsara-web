@@ -1,32 +1,32 @@
 import {Checkbox, Container, Form, Input} from "semantic-ui-react";
 import React from "react";
 import AddEditPresetSubmit from "@/components/artifacts/presets/AddEditPresetSubmit";
-import {RotationPresets, RotationStorage} from "@/artifacts/types";
+import {RotationPreset, RotationStorage} from "@/artifacts/types";
 import _ from "lodash";
 import NumberRangeInput from "@/components/NumberRangeInput";
 
 type Properties = {
     cancelClicked: () => any
     isAdd: boolean
-    preparedPreset: RotationPresets
-    setPreparedPreset: (preset: RotationPresets) => any
+    preparedPreset: RotationPreset
+    setPreparedPreset: (preset: RotationPreset) => any
 }
 
 export default function AddEditPresetConfig(props: Properties) {
     function handleFixedClicked() {
-        const newPreset = _.cloneDeep<RotationPresets>(props.preparedPreset)
-        newPreset.rotations.fixed = !newPreset.rotations.fixed
+        const newPreset = _.cloneDeep<RotationPreset>(props.preparedPreset)
+        newPreset.fixed = !newPreset.fixed
         props.setPreparedPreset(newPreset)
     }
 
     function handleFixedDaysChanged(num: number) {
-        const newPreset = _.cloneDeep<RotationPresets>(props.preparedPreset)
-        newPreset.rotations.fixedDays = num
+        const newPreset = _.cloneDeep<RotationPreset>(props.preparedPreset)
+        newPreset.fixedDays = num
         props.setPreparedPreset(newPreset)
     }
 
     function handleNameChange(event: React.ChangeEvent<HTMLInputElement>) {
-        const newPreset = _.cloneDeep<RotationPresets>(props.preparedPreset)
+        const newPreset = _.cloneDeep<RotationPreset>(props.preparedPreset)
         newPreset.name = event.target.value
         props.setPreparedPreset(newPreset)
     }
@@ -47,7 +47,7 @@ export default function AddEditPresetConfig(props: Properties) {
                 <Form.Group style={{marginTop: '1em'}}>
                     <Form.Field width={'four'}>
                         <label>Fixed Rotation Days?</label>
-                        <Checkbox checked={props.preparedPreset.rotations.fixed} onClick={handleFixedClicked}/>
+                        <Checkbox checked={props.preparedPreset.fixed} onClick={handleFixedClicked}/>
                     </Form.Field>
                 </Form.Group>
 
@@ -57,10 +57,10 @@ export default function AddEditPresetConfig(props: Properties) {
                         <NumberRangeInput
                             min={1}
                             max={1000}
-                            defaultValue={props.preparedPreset.rotations.fixedDays}
+                            defaultValue={props.preparedPreset.fixedDays}
                             onChange={handleFixedDaysChanged}
                             placeholder={'Enter # days'}
-                            disabled={!props.preparedPreset.rotations.fixed}
+                            disabled={!props.preparedPreset.fixed}
                         />
                     </Form.Field>
                 </Form.Group>
