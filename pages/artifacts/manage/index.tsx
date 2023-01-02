@@ -12,7 +12,7 @@ import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
 import {dateAsString, DefaultFixedDays, DefaultIsFixed, getBasePreparedReset, V1StorageKey} from "@/artifacts/presets";
 import {ArtifactTable} from "@/components/artifacts/ArtifactTable";
-import * as list from "@/artifacts/list";
+import ClonedList from "@/artifacts/list";
 
 
 type Properties = {
@@ -96,7 +96,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
 
     insertRotation = (index: number, rotation: Rotation, newActiveIndex?: number) => {
         this.setState({
-            data: list.insert(this.state.data, index, rotation),
+            data: ClonedList.insert(this.state.data, index, rotation),
             activeIndex: newActiveIndex ?? index,
             date: this.state.data.length ? this.state.date : dateAsString(new Date()),
         }, this.commit)
@@ -105,7 +105,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
     // literally exactly same thing
     setRotation = (index: number, rotation: Rotation, newActiveIndex?: number) => {
         this.setState({
-            data: list.set(this.state.data, index, rotation),
+            data: ClonedList.set(this.state.data, index, rotation),
             activeIndex: newActiveIndex ?? index,
         }, this.commit)
     }
@@ -116,14 +116,14 @@ export default class ManageArtifactRotations extends React.Component<Properties,
         }
 
         this.setState({
-            data: list.move(this.state.data, index, newIndex),
+            data: ClonedList.move(this.state.data, index, newIndex),
             activeIndex: newActiveIndex ?? newIndex,
         }, this.commit)
     }
 
     deleteRotation = (index: number, newActiveIndex?: number) => {
         this.setState({
-            data: list.remove(this.state.data, index),
+            data: ClonedList.remove(this.state.data, index),
             activeIndex: newActiveIndex ?? -1,
         }, this.commit)
     }
