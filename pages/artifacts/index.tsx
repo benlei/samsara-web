@@ -3,8 +3,6 @@ import Head from "next/head";
 import {Container} from "semantic-ui-react";
 
 
-// TODO: make this page instead show all the "show on overview" presets
-
 export async function getStaticProps() {
     return {
         props: {
@@ -21,7 +19,7 @@ export default function ArtifactRotationsOverview() {
                 <title>Artifact Rotations - Samsara</title>
             </Head>
 
-            <Container style={{marginTop:'2em'}}>
+            <Container style={{marginTop: '2em'}}>
                 <p>
                     This is the Genshin Impact End Game: Artifact farming. You can use this tool however you like.
                     Personally I don&#39;t upgrade any artifacts until the end of 1 domain rotation, which for me is the

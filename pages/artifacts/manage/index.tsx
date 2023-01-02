@@ -11,11 +11,8 @@ import {
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
 import _ from "lodash";
-import {dateAsString, V1StorageKey} from "@/artifacts/rotations";
+import {dateAsString, DefaultFixedDays, DefaultIsFixed, getBasePreparedReset, V1StorageKey} from "@/artifacts/presets";
 import {ArtifactTable} from "@/components/artifacts/ArtifactTable";
-
-
-// TODO: split up the artifact + preset stuff. make this page instead show all the "show on overview" presets
 
 
 type Properties = {
@@ -25,7 +22,6 @@ type Properties = {
 
 type States = {
     activeIndex: number
-    storage: RotationStorage
 } & Rotations
 
 export async function getStaticProps() {
@@ -43,11 +39,10 @@ export default class ManageArtifactRotations extends React.Component<Properties,
 
         this.state = {
             activeIndex: 0,
-            fixed: true,
-            fixedDays: 7,
+            fixed: DefaultIsFixed,
+            fixedDays: DefaultFixedDays,
             date: '2023-01-01',
             data: [],
-            storage: {},
         }
     }
 
@@ -68,7 +63,6 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             this.setState({
                 ...rotations,
                 activeIndex: (rotations.data?.length ?? 1) - 1,
-                storage: rotationStorage,
             })
         } catch (ignore) {
 
@@ -85,14 +79,15 @@ export default class ManageArtifactRotations extends React.Component<Properties,
 
         const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
         if (!rotationStorage.presets?.length) {
+            const preset = getBasePreparedReset(dateAsString(new Date()))
             const store: RotationStorage = {
-                active: 'default',
-                presets: [{name: 'default', rotations: data}],
+                active: preset.name,
+                presets: [{
+                    ...preset,
+                    rotations: data
+                }],
             }
             localStorage.setItem(V1StorageKey, JSON.stringify(store))
-            this.setState({
-                storage: store
-            })
             return
         }
 
@@ -102,10 +97,6 @@ export default class ManageArtifactRotations extends React.Component<Properties,
 
         rotationStorage.presets[idx].rotations = data
         localStorage.setItem(V1StorageKey, JSON.stringify(rotationStorage))
-
-        this.setState({
-            storage: rotationStorage
-        })
     }
 
     setActiveIndex = (activeIndex: number) => this.setState({activeIndex})

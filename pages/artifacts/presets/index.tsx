@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Head from "next/head";
 import {RotationStorage} from "@/artifacts/types";
-import {V1StorageKey} from "@/artifacts/rotations";
+import {V1StorageKey} from "@/artifacts/presets";
 import ArtifactRotationPresets from "@/components/artifacts/ArtifactRotationPresets";
 
 

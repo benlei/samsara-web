@@ -1,5 +1,10 @@
+import {RotationPresets} from "@/artifacts/types";
+import {v4 as uuidv4} from "uuid";
 
 export const V1StorageKey = "v1_artifact_rotation"
+
+export const DefaultIsFixed = true
+export const DefaultFixedDays = 7
 
 export function dateAsString(date: Date): string {
     return date.getFullYear()
@@ -11,6 +16,17 @@ export function dateStringAsDate(dateStr: string): Date {
     return new Date(dateStr)
 }
 
+export function getBasePreparedReset(date: string): RotationPresets {
+    return {
+        name: `default (${uuidv4()})`,
+        rotations: {
+            fixed: DefaultIsFixed,
+            fixedDays: DefaultFixedDays,
+            data: [],
+            date,
+        }
+    }
+}
 
 /**
  * General mentality is that any changes should technically keep you in same domain for the day.

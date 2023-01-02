@@ -1,13 +1,15 @@
 import {Checkbox, Container, Form, Input} from "semantic-ui-react";
 import React from "react";
 import AddEditPresetSubmit from "@/components/artifacts/presets/AddEditPresetSubmit";
-import {RotationStorage} from "@/artifacts/types";
+import {RotationPresets, RotationStorage} from "@/artifacts/types";
 
 type Properties = {
     cancelClicked: () => any
     isAdd: boolean
     index: number
     storage: RotationStorage
+    preparedPreset: RotationPresets
+    setPreparedPreset: (preset: RotationPresets) => any
 }
 
 export default function AddEditPresetConfig(props: Properties) {
@@ -33,7 +35,7 @@ export default function AddEditPresetConfig(props: Properties) {
 
                 <Form.Group style={{marginTop: '1em'}}>
                     <Form.Field width={'four'}>
-                        <label>Number of rotation days</label>
+                        <label>Number of Rotation Days</label>
                         <Input fluid
                             // onChange={this.onChangeDays}
                                value={props.storage.presets?.[props.index].rotations.fixedDays}

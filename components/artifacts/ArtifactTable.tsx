@@ -1,4 +1,4 @@
-import {Accordion, AccordionTitleProps, Container, Header, Icon, Image, Table} from "semantic-ui-react";
+import {Accordion, AccordionTitleProps, Container, Icon, Image, Table} from "semantic-ui-react";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import AddEditRotation from "@/components/artifacts/rotations/AddEditRotation";
 import React from "react";
@@ -28,7 +28,6 @@ export function ArtifactTable(
 
     return (
         <Container style={{marginTop: '2em'}} className={'artifact-rotations'}>
-            <Header size='large'>default Preset</Header>
             <Table unstackable>
                 <Table.Header>
                     <Table.Row>

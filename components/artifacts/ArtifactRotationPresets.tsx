@@ -9,9 +9,7 @@ type Property = {
 }
 
 function isEmptyStorage(storage: RotationStorage): boolean {
-    return (storage.presets?.length === 1
-            || storage.presets?.length === 0)
-        && storage.presets?.[0]?.rotations.data.length === 0
+    return !storage.presets?.length
 }
 
 export default function ArtifactRotationPresets(
