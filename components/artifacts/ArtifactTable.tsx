@@ -1,6 +1,6 @@
 import {Accordion, AccordionTitleProps, Container, Header, Icon, Image, Table} from "semantic-ui-react";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
-import AddEditRotation from "@/components/artifacts/addEdit/AddEditRotation";
+import AddEditRotation from "@/components/artifacts/rotations/AddEditRotation";
 import React from "react";
 import {ArtifactRotationData, RotationsManager} from "@/artifacts/types";
 
