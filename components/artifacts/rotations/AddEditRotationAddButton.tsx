@@ -2,7 +2,7 @@ import {Button, Form, Icon, Popup} from "semantic-ui-react";
 import React from "react";
 import {AddEditSharedProperties} from "@/artifacts/types";
 import {AddEditRotationPhase} from "@/artifacts/enums";
-import NumberRangeInput from "@/components/NumberRangeInput";
+import NumberRangeInputWithIcon from "@/components/NumberRangeInputWithIcon";
 
 type Properties = {} & AddEditSharedProperties
 
@@ -65,7 +65,7 @@ export default class AddEditRotationAddButton extends React.Component<Properties
                                 <Form.Group style={{marginTop: '1rem'}}>
                                     <Form.Field>
                                         <label>-or- Insert to Specific Position</label>
-                                        <NumberRangeInput
+                                        <NumberRangeInputWithIcon
                                             min={1}
                                             max={this.props.data.rotations.data.length + 1}
                                             defaultValue={this.props.index + 2}

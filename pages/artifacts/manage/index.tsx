@@ -10,7 +10,6 @@ import {
 } from "@/artifacts/types";
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
-import _ from "lodash";
 import {dateAsString, DefaultFixedDays, DefaultIsFixed, getBasePreparedReset, V1StorageKey} from "@/artifacts/presets";
 import {ArtifactTable} from "@/components/artifacts/ArtifactTable";
 
@@ -50,14 +49,11 @@ export default class ManageArtifactRotations extends React.Component<Properties,
         try {
             const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
 
-            if (!rotationStorage.active) {
+            if (rotationStorage.active === null || typeof rotationStorage.active === 'undefined') {
                 return
             }
 
-            const rotations: Rotations = _.chain(rotationStorage.presets)
-                .find((r) => r.name === rotationStorage.active)
-                .value()
-                .rotations
+            const rotations: Rotations = rotationStorage.presets[rotationStorage.active].rotations
 
 
             this.setState({
@@ -81,7 +77,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
         if (!rotationStorage.presets?.length) {
             const preset = getBasePreparedReset(dateAsString(new Date()))
             const store: RotationStorage = {
-                active: preset.name,
+                active: 0,
                 presets: [{
                     ...preset,
                     rotations: data
@@ -91,11 +87,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             return
         }
 
-        const idx = _.chain(rotationStorage.presets)
-            .findIndex((p) => p.name === rotationStorage.active)
-            .value()
-
-        rotationStorage.presets[idx].rotations = data
+        rotationStorage.presets[rotationStorage.active].rotations = data
         localStorage.setItem(V1StorageKey, JSON.stringify(rotationStorage))
     }
 

@@ -1,6 +1,6 @@
 import React, {Dispatch} from "react";
 import {Button, Form, Icon, Popup} from "semantic-ui-react";
-import NumberRangeInput from "@/components/NumberRangeInput";
+import NumberRangeInputWithIcon from "@/components/NumberRangeInputWithIcon";
 import {Rotations} from "@/artifacts/types";
 
 type Properties = {
@@ -53,7 +53,7 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                                } pinned position={'bottom left'}>
                             <Form>
                                 <Form.Field>
-                                    <NumberRangeInput
+                                    <NumberRangeInputWithIcon
                                         min={1}
                                         max={this.props.data.data.length}
                                         defaultValue={this.props.index + 1}

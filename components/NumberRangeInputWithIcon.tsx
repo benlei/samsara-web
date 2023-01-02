@@ -4,24 +4,24 @@ import React from "react";
 type Properties = {
     min: number
     max: number
-    onChange: (num: number) => void
-    invalidVal: number
+    onSubmit: (number: number) => void
     placeholder: string
+    color: string
+    invalidColor: string
+    icon: string
     defaultValue: number
-    disabled: boolean
 }
 
 type States = {
     num: string
 }
 
-export default class NumberRangeInput extends React.Component<Properties, States> {
+export default class NumberRangeInputWithIcon extends React.Component<Properties, States> {
     public static defaultProps = {
         min: 1,
         placeholder: null,
         defaultValue: -1,
-        invalidVal: -1,
-        disabled: false,
+        invalidColor: 'yellow',
     }
 
 
@@ -41,27 +41,38 @@ export default class NumberRangeInput extends React.Component<Properties, States
             this.setState({
                 num: event.target.value,
             })
-            this.props.onChange(this.props.invalidVal)
         } else {
-            const num = Math.min(
-                this.props.max,
-                Math.max(parseInt(event.target.value), this.props.min)
-            )
             this.setState({
-                num: String(num)
+                num: String(Math.min(
+                    this.props.max,
+                    Math.max(parseInt(event.target.value), this.props.min)
+                ))
             })
-            this.props.onChange(num)
         }
+
     }
 
     render() {
         return (
             <Input
+                action={{
+                    color: isNaN(parseInt(this.state.num)) ? this.props.invalidColor : this.props.color,
+                    icon: this.props.icon,
+                    onClick: () => {
+                        if (isNaN(parseInt(this.state.num))) {
+                            return
+                        }
+
+                        this.props.onSubmit(Math.min(
+                            this.props.max,
+                            Math.max(parseInt(this.state.num), this.props.min)
+                        ))
+                    },
+                }}
                 type={'number'}
                 placeholder={this.props.placeholder}
                 value={this.state.num}
                 onChange={this.changePosition}
-                disabled={this.props.disabled}
             />
         )
     }

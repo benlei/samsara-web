@@ -4,12 +4,12 @@ import {RotationStorage} from "@/artifacts/types";
 import {AddEditPreset} from "@/components/artifacts/presets/AddEditPreset";
 
 type Property = {
-    storage: RotationStorage
+    storage: RotationStorage | null
     setStorage: (storage: RotationStorage) => any
 }
 
-function isEmptyStorage(storage: RotationStorage): boolean {
-    return !storage.presets?.length
+function isEmptyStorage(storage: RotationStorage | null): boolean {
+    return !storage?.presets?.length
 }
 
 export default function ArtifactRotationPresets(
@@ -32,7 +32,7 @@ export default function ArtifactRotationPresets(
                 </Table.Header>
 
                 <Table.Body>
-                    {storage.presets?.map((preset, k) =>
+                    {storage?.presets.map((preset, k) =>
                         <>
                             <Table.Row key={k}>
                                 <Table.Cell verticalAlign={'top'}>{k + 1}</Table.Cell>

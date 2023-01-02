@@ -1,15 +1,15 @@
 import AddEditPresetPrompt from "@/components/artifacts/presets/AddEditPresetPrompt";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {AddEditPresetPhase} from "@/artifacts/enums";
 import AddEditPresetConfig from "@/components/artifacts/presets/AddEditPresetConfig";
 import {RotationPresets, RotationStorage} from "@/artifacts/types";
-import {getBasePreparedReset} from "@/artifacts/presets";
+import {dateAsString, getBasePreparedReset} from "@/artifacts/presets";
 import _ from "lodash";
 
 
 type Properties = {
     index: number
-    storage: RotationStorage
+    storage: RotationStorage | null
 }
 
 
@@ -21,22 +21,31 @@ export function AddEditPreset(
 ) {
     const [phase, setPhase] = useState(AddEditPresetPhase.Prompt)
     const [isAdd, setIsAdd] = useState(true)
-    const [preparedPreset, setPreparedPreset] = useState(
-        _.cloneDeep<RotationPresets>(storage.presets?.[index] ?? getBasePreparedReset('2023-01-01')),
-    )
+    const [preparedPreset, setPreparedPreset] = useState(getBasePreparedReset('2023-01-01'))
+
+    useEffect(() => {
+        setPreparedPreset(
+            _.cloneDeep<RotationPresets>(storage?.presets?.[index] ?? getBasePreparedReset('2023-01-01'))
+        )
+    }, [])
 
     function addClicked() {
         setPhase(AddEditPresetPhase.AddEdit)
+        setPreparedPreset(getBasePreparedReset(dateAsString(new Date())))
         setIsAdd(true)
     }
 
     function editClicked() {
         setPhase(AddEditPresetPhase.AddEdit)
+        // setPreparedPreset(preparedPreset)
         setIsAdd(false)
     }
 
     function cancelClicked() {
         setPhase(AddEditPresetPhase.Prompt)
+        setPreparedPreset(
+            _.cloneDeep<RotationPresets>(storage?.presets?.[index] ?? getBasePreparedReset(dateAsString(new Date())))
+        )
     }
 
     return (
@@ -53,8 +62,6 @@ export function AddEditPreset(
                 <AddEditPresetConfig
                     preparedPreset={preparedPreset}
                     setPreparedPreset={setPreparedPreset}
-                    storage={storage}
-                    index={index}
                     isAdd={isAdd}
                     cancelClicked={cancelClicked}
                 />

@@ -42,8 +42,8 @@ export type ArtifactRotationData = {
 }
 
 export type RotationStorage = {
-    active?: string
-    presets?: RotationPresets[]
+    active: number
+    presets: RotationPresets[]
 }
 
 export type RotationPresets = {
