@@ -2,11 +2,12 @@ import {Accordion, Container, Icon, Table} from "semantic-ui-react";
 import React, {useState} from "react";
 import {ArtifactRotationData, RotationStorage} from "@/artifacts/types";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
-import AddEditPresetPrompt from "@/components/artifacts/presets/AddEditPresetPrompt";
+import {AddEditPreset} from "@/components/artifacts/presets/AddEditPreset";
 
 type Property = {
     data: ArtifactRotationData
     storage: RotationStorage
+    setStorage: (storage: RotationStorage) => any
 }
 
 function isEmptyStorage(storage: RotationStorage): boolean {
@@ -15,10 +16,10 @@ function isEmptyStorage(storage: RotationStorage): boolean {
         && storage.presets?.[0]?.rotations.data.length === 0
 }
 
-export default function RotationSummary({
-                                            data,
-                                            storage,
-                                        }: Property) {
+export default function PresetAndRotationSummary({
+                                                     data,
+                                                     storage,
+                                                 }: Property) {
     const [accordionIndex, setAccordianIndex] = useState(-1)
 
     if (isEmptyStorage(storage)) {
@@ -67,7 +68,13 @@ export default function RotationSummary({
                             {accordionIndex === k &&
                                 <Table.Row key={k}>
                                     <Table.Cell colSpan={4}>
-                                        <AddEditPresetPrompt/>
+                                        <AddEditPreset
+                                            index={k}
+                                            // data={data}
+                                            // preset={preset}
+                                            // phase={phase}
+                                            // setPhase={setPhase}
+                                        />
                                     </Table.Cell>
                                 </Table.Row>
                             }

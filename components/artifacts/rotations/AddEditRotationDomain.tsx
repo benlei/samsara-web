@@ -73,7 +73,7 @@ export default class AddEditRotationDomain extends React.Component<Properties, S
 
     render() {
         return (
-            <Container textAlign={'left'} style={{padding: '1em'}}>
+            <Container fluid textAlign={'left'} style={{padding: '1em'}}>
                 <Form>
                     <Form.Group>
                         <Form.Field width={'six'}>

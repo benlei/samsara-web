@@ -1,5 +1,5 @@
 import {Characters} from "@/characters/types";
-import {AddEditPhase} from "@/artifacts/enums";
+import {AddEditRotationPhase} from "@/artifacts/enums";
 
 export type ArtifactDomains = {
     [domain: string]: ArtifactDomain
@@ -82,7 +82,7 @@ export type AddEditSharedProperties = {
     updatePreparedRotation: (rotation: Rotation) => void
     data: ArtifactRotationData
     manager: RotationsManager
-    setPhase: (phase: AddEditPhase) => void
+    setPhase: (phase: AddEditRotationPhase) => void
     onCancel: () => void
     index: number
     addEdit: AddEdit

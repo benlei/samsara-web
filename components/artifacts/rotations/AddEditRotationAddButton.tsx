@@ -1,7 +1,7 @@
 import {Button, Form, Icon, Popup} from "semantic-ui-react";
 import React from "react";
 import {AddEditSharedProperties} from "@/artifacts/types";
-import {AddEditPhase} from "@/artifacts/enums";
+import {AddEditRotationPhase} from "@/artifacts/enums";
 import NumberRangeInput from "@/components/NumberRangeInput";
 
 type Properties = {} & AddEditSharedProperties
@@ -28,7 +28,7 @@ export default class AddEditRotationAddButton extends React.Component<Properties
                 ...this.props.preparedRotation,
             })
 
-            this.props.setPhase(AddEditPhase.Prompt)
+            this.props.setPhase(AddEditRotationPhase.Prompt)
         }
     }
 

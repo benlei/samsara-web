@@ -67,7 +67,7 @@ export default class AddEditRotationIntendedCharacters extends React.Component<P
 
     render() {
         return (
-            <Container textAlign={'left'} style={{padding: '1em'}}>
+            <Container fluid textAlign={'left'} style={{padding: '1em'}}>
                 <Form>
                     <Form.Group>
                         <Form.Field width={'six'}>

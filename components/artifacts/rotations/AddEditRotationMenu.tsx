@@ -1,37 +1,37 @@
 import {Container, Menu} from "semantic-ui-react";
 import React from "react";
 import {AddEditSharedProperties} from "@/artifacts/types";
-import {AddEditPhase} from "@/artifacts/enums";
+import {AddEditRotationPhase} from "@/artifacts/enums";
 
 type Properties = {
-    phase: AddEditPhase
+    phase: AddEditRotationPhase
 } & AddEditSharedProperties
 
 type States = {}
 
 export default class ArtifactConfigLoadDownload extends React.Component<Properties, States> {
-    setPhaseHandler = (phase: AddEditPhase) => {
+    setPhaseHandler = (phase: AddEditRotationPhase) => {
         return () => this.props.setPhase(phase)
     }
 
     render() {
         return (
-            <Container textAlign={'left'} style={{padding: '1em'}}>
+            <Container fluid textAlign={'left'} style={{padding: '1em'}}>
                 <Menu stackable secondary>
                     <Menu.Item
                         name='Select Domain'
-                        active={this.props.phase == AddEditPhase.Domain}
-                        onClick={this.setPhaseHandler(AddEditPhase.Domain)}
+                        active={this.props.phase == AddEditRotationPhase.Domain}
+                        onClick={this.setPhaseHandler(AddEditRotationPhase.Domain)}
                     />
                     <Menu.Item
                         name='Select Intended Characters'
-                        active={this.props.phase == AddEditPhase.Characters}
-                        onClick={this.setPhaseHandler(AddEditPhase.Characters)}
+                        active={this.props.phase == AddEditRotationPhase.Characters}
+                        onClick={this.setPhaseHandler(AddEditRotationPhase.Characters)}
                     />
                     <Menu.Item
                         name='Set Rotation Info'
-                        active={this.props.phase == AddEditPhase.Info}
-                        onClick={this.setPhaseHandler(AddEditPhase.Info)}
+                        active={this.props.phase == AddEditRotationPhase.Info}
+                        onClick={this.setPhaseHandler(AddEditRotationPhase.Info)}
                     />
                 </Menu>
             </Container>

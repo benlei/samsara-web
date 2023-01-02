@@ -1,22 +1,30 @@
 import {Button, Form, Icon, Popup} from "semantic-ui-react";
 import React from "react";
 
-export default function AddEditPresetPrompt() {
+type Properties = {
+    addClicked: () => any
+    editClicked: () => any
+}
+export default function AddEditPresetPrompt(
+    {
+        addClicked,
+        editClicked
+    }: Properties
+) {
     return (
         <Form style={{marginTop: '1em', textAlign: 'center'}}>
             <Form.Group widths='equal'>
                 <Form.Button
                     content='New Preset' color={'teal'} icon='add'
                     labelPosition='left'
-                    // onClick={this.props.onAddClicked}
+                    onClick={addClicked}
                 />
 
                 <Form.Button
                     content={'Edit'}
                     icon='edit'
-                    // onClick={this.props.onEditClicked}
+                    onClick={editClicked}
                     labelPosition='left'
-                    // className={this.props.editable ? '' : 'hidden'}
                 />
 
                 <Form.Button
@@ -24,15 +32,12 @@ export default function AddEditPresetPrompt() {
                     icon={'exchange'}
                     // onClick={this.props.onStartRotationClicked}
                     labelPosition='left'
-                    // className={this.props.syncable ? '' : 'hidden'}
                 />
 
                 <Form.Field>
                     <Popup on={'click'}
                            trigger={
-                               <Button icon labelPosition={'left'}
-                                   // className={this.props.deletable ? '' : 'hidden'}
-                               >
+                               <Button icon labelPosition={'left'}>
                                    <Icon name={'arrows alternate vertical'}/> Set Position
                                </Button>
                            } pinned position={'bottom left'}>

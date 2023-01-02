@@ -12,7 +12,7 @@ import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
 import _ from "lodash";
 import {dateAsString, V1StorageKey} from "@/artifacts/rotations";
-import RotationSummary from "@/components/artifacts/RotationSummary";
+import PresetAndRotationSummary from "@/components/artifacts/PresetAndRotationSummary";
 import {ArtifactTable} from "@/components/artifacts/ArtifactTable";
 
 type Properties = {
@@ -168,6 +168,14 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
         }, this.commit)
     }
 
+    setStorage = (storage: RotationStorage) => {
+        this.setState({
+            storage,
+        })
+
+        localStorage.setItem(V1StorageKey, JSON.stringify(storage))
+    }
+
 
     render() {
         const data: ArtifactRotationData = {
@@ -195,10 +203,11 @@ export default class ArtifactsHome extends React.Component<Properties, States> {
                     <title>Artifact Rotations - Samsara</title>
                 </Head>
 
-                <RotationSummary storage={this.state.storage} data={data}/>
-                {/*<ArtifactStepComponent/>*/}
-
-                {/*<PresetRotations/>*/}
+                <PresetAndRotationSummary
+                    storage={this.state.storage}
+                    setStorage={this.setStorage}
+                    data={data}
+                />
 
                 <ArtifactTable data={data} manager={manager} activeIndex={this.state.activeIndex}
                                setActiveIndex={this.setActiveIndex}/>

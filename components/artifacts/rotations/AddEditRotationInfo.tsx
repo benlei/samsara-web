@@ -29,7 +29,7 @@ export default class AddEditRotationInfo extends React.Component<Properties, Sta
 
     render() {
         return (
-            <Container textAlign={'left'} style={{padding: '1em'}}>
+            <Container fluid textAlign={'left'} style={{padding: '1em'}}>
                 <Form>
                     <Form.Group>
                         <Form.Field width={'four'}>
@@ -54,7 +54,7 @@ export default class AddEditRotationInfo extends React.Component<Properties, Sta
                     <Form.Group style={{marginTop: '1em'}}>
                         <Form.Field width={'ten'}>
                             <label>Preview</label>
-                            <Container className={'grey'}>
+                            <Container fluid className={'grey'}>
                                 {this.props.preparedRotation.note.split("\n").map((note, k) =>
                                     <p key={k}>{note}</p>
                                 )}

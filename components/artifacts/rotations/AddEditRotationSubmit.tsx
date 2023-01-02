@@ -1,7 +1,7 @@
 import {Button, Container, Form} from "semantic-ui-react";
 import React from "react";
 import {AddEdit, AddEditSharedProperties} from "@/artifacts/types";
-import {AddEditPhase} from "@/artifacts/enums";
+import {AddEditRotationPhase} from "@/artifacts/enums";
 import AddEditRotationAddButton from "@/components/artifacts/rotations/AddEditRotationAddButton";
 import AddEditRotationEditButton from "@/components/artifacts/rotations/AddEditRotationEditButton";
 
@@ -14,13 +14,13 @@ export default class AddEditRotationSubmit extends React.Component<Properties, S
         super(props);
     }
 
-    setPhaseHandler = (phase: AddEditPhase) => {
+    setPhaseHandler = (phase: AddEditRotationPhase) => {
         return () => this.props.setPhase(phase)
     }
 
     render() {
         return (
-            <Container textAlign={'left'} style={{padding: '1em'}}>
+            <Container fluid textAlign={'left'} style={{padding: '1em'}}>
                 <Form style={{marginTop: '2em'}}>
                     <Form.Group widths='equal'>
                         <Form.Field>

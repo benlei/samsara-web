@@ -1,7 +1,7 @@
 import {Table} from "semantic-ui-react";
 import React from "react";
 import {AddEdit, AddEditSharedProperties, ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
-import {AddEditPhase} from "@/artifacts/enums";
+import {AddEditRotationPhase} from "@/artifacts/enums";
 import AddEditRotationPrompt from "@/components/artifacts/rotations/AddEditRotationPrompt";
 import AddEditRotationDomain from "@/components/artifacts//rotations/AddEditRotationDomain";
 import AddEditRotationIntendedCharacters from "@/components/artifacts/rotations/AddEditRotationIntendedCharacters";
@@ -21,7 +21,7 @@ type Properties = {
 }
 
 type States = {
-    phase: AddEditPhase
+    phase: AddEditRotationPhase
     // selectedDomain: string
     preparedRotation: Rotation
     addEdit: AddEdit
@@ -39,7 +39,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
         super(props);
 
         this.state = {
-            phase: AddEditPhase.Prompt,
+            phase: AddEditRotationPhase.Prompt,
             preparedRotation: this.getBaseRotation(),
             addEdit: AddEdit.Add,
         }
@@ -56,7 +56,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
 
     addClicked = () => {
         this.setState({
-            phase: AddEditPhase.Domain,
+            phase: AddEditRotationPhase.Domain,
             addEdit: AddEdit.Add,
             preparedRotation: this.getBaseRotation(),
         })
@@ -64,7 +64,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
 
     editClicked = () => {
         this.setState({
-            phase: AddEditPhase.Domain,
+            phase: AddEditRotationPhase.Domain,
             addEdit: AddEdit.Edit,
             preparedRotation: {
                 ...this.props.data.rotations.data[this.props.index],
@@ -72,12 +72,12 @@ export default class AddEditRotation extends React.Component<Properties, States>
         })
     }
 
-    setPhase = (phase: AddEditPhase) => this.setState({phase: phase})
+    setPhase = (phase: AddEditRotationPhase) => this.setState({phase: phase})
 
     cancelClicked = () => {
         this.setState({
             // selectedDomain: "",
-            phase: AddEditPhase.Prompt,
+            phase: AddEditRotationPhase.Prompt,
             preparedRotation: this.getBaseRotation(),
         })
     }
@@ -109,7 +109,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
         return (
             <Table.Row>
                 <Table.Cell verticalAlign={'top'} colSpan={4} textAlign={'center'}>
-                    {this.state.phase == AddEditPhase.Prompt ? (
+                    {this.state.phase == AddEditRotationPhase.Prompt ? (
                         <AddEditRotationPrompt
                             data={this.props.data.rotations}
                             deletable={this.props.deletable}
@@ -125,13 +125,13 @@ export default class AddEditRotation extends React.Component<Properties, States>
                     ) : (
                         <>
                             <AddEditRotationMenu phase={this.state.phase} {...addEditButtonsProperties} />
-                            {this.state.phase == AddEditPhase.Domain &&
+                            {this.state.phase == AddEditRotationPhase.Domain &&
                                 <AddEditRotationDomain {...addEditButtonsProperties}/>
                             }
-                            {this.state.phase == AddEditPhase.Characters &&
+                            {this.state.phase == AddEditRotationPhase.Characters &&
                                 <AddEditRotationIntendedCharacters {...addEditButtonsProperties} />
                             }
-                            {this.state.phase == AddEditPhase.Info &&
+                            {this.state.phase == AddEditRotationPhase.Info &&
                                 <AddEditRotationInfo {...addEditButtonsProperties} />
                             }
                             <AddEditRotationSubmit {...addEditButtonsProperties}/>
