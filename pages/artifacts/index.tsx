@@ -1,5 +1,4 @@
 import React from "react";
-import {Accordion, Container, Header, Icon, Image, Table} from "semantic-ui-react";
 import Head from "next/head";
 import {
     ArtifactRotationData,
@@ -11,8 +10,6 @@ import {
 } from "@/artifacts/types";
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
-import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
-import AddEditRotation from "@/components/artifacts/addEdit/AddEditRotation";
 import _ from "lodash";
 import {dateAsString, V1StorageKey} from "@/artifacts/rotations";
 import RotationSummary from "@/components/artifacts/RotationSummary";

@@ -2,14 +2,14 @@ import {Button, Container, Form} from "semantic-ui-react";
 import React from "react";
 import {AddEdit, AddEditSharedProperties} from "@/artifacts/types";
 import {AddEditPhase} from "@/artifacts/enums";
-import AddEditAddButton from "@/components/artifacts/addEdit/AddEditAddButton";
-import AddEditEditButton from "@/components/artifacts/addEdit/AddEditEditButton";
+import AddEditRotationAddButton from "@/components/artifacts/rotations/AddEditRotationAddButton";
+import AddEditRotationEditButton from "@/components/artifacts/rotations/AddEditRotationEditButton";
 
 type Properties = {} & AddEditSharedProperties
 
 type States = {}
 
-export default class AddEditSubmit extends React.Component<Properties, States> {
+export default class AddEditRotationSubmit extends React.Component<Properties, States> {
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
     }
@@ -25,10 +25,10 @@ export default class AddEditSubmit extends React.Component<Properties, States> {
                     <Form.Group widths='equal'>
                         <Form.Field>
                             {this.props.addEdit == AddEdit.Add &&
-                                <AddEditAddButton {...this.props} />
+                                <AddEditRotationAddButton {...this.props} />
                             }
                             {this.props.addEdit == AddEdit.Edit &&
-                                <AddEditEditButton {...this.props} />
+                                <AddEditRotationEditButton {...this.props} />
                             }
 
                             <Button color={'red'} onClick={this.props.onCancel}>

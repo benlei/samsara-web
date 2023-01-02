@@ -6,7 +6,7 @@ type Properties = {} & AddEditSharedProperties
 
 type States = {}
 
-export default class AddEditInfo extends React.Component<Properties, States> {
+export default class AddEditRotationInfo extends React.Component<Properties, States> {
     onChangeDays = (event: ChangeEvent<HTMLInputElement>) => {
         const value = parseInt(event.target.value, 10);
 

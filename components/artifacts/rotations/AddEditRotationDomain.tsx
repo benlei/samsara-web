@@ -11,7 +11,7 @@ type States = {
     filterArtifacts: string
 }
 
-export default class AddEditDomain extends React.Component<Properties, States> {
+export default class AddEditRotationDomain extends React.Component<Properties, States> {
     public static defaultProps = {
         onClickDomain: null,
         onCancel: null,

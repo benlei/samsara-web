@@ -19,7 +19,7 @@ type Properties = {
 
 type States = {}
 
-export default class AddEditPrompt extends React.Component<Properties, States> {
+export default class AddEditRotationPrompt extends React.Component<Properties, States> {
     public static defaultProps = {
         onAddClicked: null,
         onEditClicked: null,

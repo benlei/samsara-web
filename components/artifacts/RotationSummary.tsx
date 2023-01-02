@@ -2,7 +2,7 @@ import {Accordion, Container, Icon, Table} from "semantic-ui-react";
 import React, {useState} from "react";
 import {ArtifactRotationData, RotationStorage} from "@/artifacts/types";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
-import AddEditPresetPrompt from "@/components/artifacts/presets/AddEdditPresetPrompt";
+import AddEditPresetPrompt from "@/components/artifacts/presets/AddEditPresetPrompt";
 
 type Property = {
     data: ArtifactRotationData

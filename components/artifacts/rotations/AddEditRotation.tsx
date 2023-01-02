@@ -1,13 +1,13 @@
 import {Table} from "semantic-ui-react";
 import React from "react";
 import {AddEdit, AddEditSharedProperties, ArtifactRotationData, Rotation, RotationsManager} from "@/artifacts/types";
-import AddEditPrompt from "@/components/artifacts/addEdit/AddEditPrompt";
-import AddEditDomain from "./AddEditDomain";
 import {AddEditPhase} from "@/artifacts/enums";
-import AddEditIntendedCharacters from "@/components/artifacts/addEdit/AddEditIntendedCharacters";
-import AddEditInfo from "@/components/artifacts/addEdit/AddEditInfo";
-import AddEditSubmit from "@/components/artifacts/addEdit/AddEditSubmit";
-import AddEditMenu from "@/components/artifacts/addEdit/AddEditMenu";
+import AddEditRotationPrompt from "@/components/artifacts/rotations/AddEditRotationPrompt";
+import AddEditRotationDomain from "@/components/artifacts//rotations/AddEditRotationDomain";
+import AddEditRotationIntendedCharacters from "@/components/artifacts/rotations/AddEditRotationIntendedCharacters";
+import AddEditRotationInfo from "@/components/artifacts/rotations/AddEditRotationInfo";
+import AddEditRotationSubmit from "@/components/artifacts/rotations/AddEditRotationSubmit";
+import AddEditRotationMenu from "@/components/artifacts/rotations/AddEditRotationMenu";
 
 
 type Properties = {
@@ -110,7 +110,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
             <Table.Row>
                 <Table.Cell verticalAlign={'top'} colSpan={4} textAlign={'center'}>
                     {this.state.phase == AddEditPhase.Prompt ? (
-                        <AddEditPrompt
+                        <AddEditRotationPrompt
                             data={this.props.data.rotations}
                             deletable={this.props.deletable}
                             syncable={this.props.syncable}
@@ -124,17 +124,17 @@ export default class AddEditRotation extends React.Component<Properties, States>
                         />
                     ) : (
                         <>
-                            <AddEditMenu phase={this.state.phase} {...addEditButtonsProperties} />
+                            <AddEditRotationMenu phase={this.state.phase} {...addEditButtonsProperties} />
                             {this.state.phase == AddEditPhase.Domain &&
-                                <AddEditDomain {...addEditButtonsProperties}/>
+                                <AddEditRotationDomain {...addEditButtonsProperties}/>
                             }
                             {this.state.phase == AddEditPhase.Characters &&
-                                <AddEditIntendedCharacters {...addEditButtonsProperties} />
+                                <AddEditRotationIntendedCharacters {...addEditButtonsProperties} />
                             }
                             {this.state.phase == AddEditPhase.Info &&
-                                <AddEditInfo {...addEditButtonsProperties} />
+                                <AddEditRotationInfo {...addEditButtonsProperties} />
                             }
-                            <AddEditSubmit {...addEditButtonsProperties}/>
+                            <AddEditRotationSubmit {...addEditButtonsProperties}/>
                         </>
                     )}
                 </Table.Cell>

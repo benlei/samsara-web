@@ -10,7 +10,7 @@ type States = {
     filterText: string
 }
 
-export default class AddEditIntendedCharacters extends React.Component<Properties, States> {
+export default class AddEditRotationIntendedCharacters extends React.Component<Properties, States> {
     // public static defaultProps = {
     //     editable: true,
     //     deletable: true,

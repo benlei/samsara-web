@@ -8,7 +8,7 @@ type Properties = {} & AddEditSharedProperties
 
 type States = {}
 
-export default class AddEditAddButton extends React.Component<Properties, States> {
+export default class AddEditRotationAddButton extends React.Component<Properties, States> {
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
 

@@ -7,7 +7,7 @@ type Properties = {} & AddEditSharedProperties
 
 type States = {}
 
-export default class AddEditEditButton extends React.Component<Properties, States> {
+export default class AddEditRotationEditButton extends React.Component<Properties, States> {
     updateRotation = () => {
         this.props.manager.set(this.props.index, {
             ...this.props.preparedRotation,
