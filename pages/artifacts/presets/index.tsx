@@ -25,7 +25,7 @@ export default function ManageArtifactRotationPresets({}) {
     return (
         <>
             <Head>
-                <title>Artifact Rotations - Samsara</title>
+                <title>Presets for Artifact Rotations - Samsara</title>
             </Head>
 
             <ArtifactRotationPresets

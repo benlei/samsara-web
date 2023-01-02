@@ -1,31 +1,31 @@
 import React from "react";
-import {Container, Divider, Dropdown, Grid, Header, Icon, List, Menu, Segment} from "semantic-ui-react";
+import {Container, Grid, Header, Icon, List, Segment} from "semantic-ui-react";
 
 export default function Footer({children}: React.PropsWithChildren) {
     return (
         <>
-            <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
+            <Segment inverted vertical style={{margin: '5em 0em 0em', padding: '5em 0em'}}>
                 <Container textAlign='center'>
                     <Grid divided inverted stackable>
-                        {/*<Grid.Column width={4}>*/}
-                        {/*    <Header inverted as='h4' content='Community' />*/}
-                        {/*    <List link inverted>*/}
-                        {/*        <List.Item as='a'>N/A</List.Item>*/}
-                        {/*    </List>*/}
-                        {/*</Grid.Column>*/}
                         <Grid.Column width={6}>
-                            <Header inverted as='h4' content='Links' />
+                            <Header inverted as='h4' content='Links'/>
                             <List link inverted>
                                 <List.Item as={'a'} href={'https://github.com/genshin-samsara/samsara-ssr'}>
-                                    <Icon name={'github'} /> GitHub
+                                    <Icon name={'github'}/> GitHub
                                 </List.Item>
                             </List>
                         </Grid.Column>
                         <Grid.Column width={10} textAlign={'left'}>
-                            <Header inverted as='h4' content='About' />
+                            <Header inverted as='h4' content='About'/>
                             <p>
                                 This hobby site currently does not directly store any data about its users. It is,
                                 however, hosted using <a href={'https://pages.cloudflare.com/'}>Cloudflare Pages</a>.
+                            </p>
+
+                            <p>
+                                However this site currently does store data onto your browser&#39;s local storage if you
+                                use the Artifact Rotations feature - for persistence purposes. This is necessary for
+                                the functionality of this feature from this site.
                             </p>
 
                             <p>
@@ -36,22 +36,6 @@ export default function Footer({children}: React.PropsWithChildren) {
                             </p>
                         </Grid.Column>
                     </Grid>
-
-                    {/*<Divider inverted section />*/}
-                    {/*<List horizontal inverted divided link size='small'>*/}
-                    {/*    <List.Item as='a' href='#'>*/}
-                    {/*        Site Map*/}
-                    {/*    </List.Item>*/}
-                    {/*    <List.Item as='a' href='#'>*/}
-                    {/*        Contact Us*/}
-                    {/*    </List.Item>*/}
-                    {/*    <List.Item as='a' href='#'>*/}
-                    {/*        Terms and Conditions*/}
-                    {/*    </List.Item>*/}
-                    {/*    <List.Item as='a' href='#'>*/}
-                    {/*        Privacy Policy*/}
-                    {/*    </List.Item>*/}
-                    {/*</List>*/}
                 </Container>
             </Segment>
         </>

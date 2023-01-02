@@ -194,7 +194,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
         return (
             <>
                 <Head>
-                    <title>Artifact Rotations - Samsara</title>
+                    <title>Manage Artifact Rotation - Samsara</title>
                 </Head>
 
                 <ArtifactTable data={data} manager={manager} activeIndex={this.state.activeIndex}
