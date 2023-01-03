@@ -10,7 +10,15 @@ import {
 } from "@/artifacts/types";
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import {getCharacters} from "@/characters/characters";
-import {dateAsString, DefaultFixedDays, DefaultIsFixed, getBasePreparedReset, V1StorageKey} from "@/artifacts/presets";
+import {
+    calculateDateForRotation,
+    dateAsString,
+    DefaultFixedDays,
+    DefaultIsFixed,
+    getBasePreparedReset,
+    getRotationIndexAndDay,
+    V1StorageKey
+} from "@/artifacts/presets";
 import {ArtifactTable} from "@/components/artifacts/ArtifactTable";
 import ClonedList from "@/artifacts/list";
 import {v4} from "uuid";
@@ -45,7 +53,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             activeIndex: 0,
             fixed: DefaultIsFixed,
             fixedDays: DefaultFixedDays,
-            date: '01-01-2023',
+            date: '2023/01/01',
             rotations: [],
             name: 'default',
             cacheId: '',
@@ -119,6 +127,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
         if (rotationStorage.presets[rotationStorage.active].rotations.length === 0 && data.rotations.length === 1) {
             data.date = dateAsString(new Date())
         }
+        console.log(data)
 
         if (rotationStorage.cacheId != this.state.cacheId) {
             console.log("How'd you get here? :)")
@@ -137,19 +146,43 @@ export default class ManageArtifactRotations extends React.Component<Properties,
     setActiveIndex = (activeIndex: number) => this.setState({activeIndex})
 
     insertRotation = (index: number, rotation: Rotation, newActiveIndex?: number) => {
+        const pre = getRotationIndexAndDay(this.state, new Date())
+
         this.setState({
             rotations: ClonedList.insert(this.state.rotations, index, rotation),
             activeIndex: newActiveIndex ?? index,
             date: this.state.rotations.length ? this.state.date : dateAsString(new Date()),
-        }, this.commit)
+        }, () => {
+            if (index <= pre.index && this.state.rotations.length > 1) {
+                this.setState({
+                    date: calculateDateForRotation(this.state, pre.index + 1, pre.day, new Date())
+                }, this.commit)
+            } else {
+                this.commit()
+            }
+        })
     }
 
     // literally exactly same thing
     setRotation = (index: number, rotation: Rotation, newActiveIndex?: number) => {
+        const pre = getRotationIndexAndDay(this.state, new Date())
+
         this.setState({
             rotations: ClonedList.set(this.state.rotations, index, rotation),
             activeIndex: newActiveIndex ?? index,
-        }, this.commit)
+        }, () => {
+            this.setState({
+                date: calculateDateForRotation(
+                    this.state,
+                    pre.index,
+                    index === pre.index ? Math.min(
+                        this.state.fixed ? this.state.fixedDays : rotation.days ?? 1,
+                        pre.day
+                    ) : pre.day,
+                    new Date()
+                )
+            }, this.commit)
+        })
     }
 
     moveRotation = (index: number, newIndex: number, newActiveIndex?: number) => {
@@ -157,17 +190,45 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             return
         }
 
+        const pre = getRotationIndexAndDay(this.state, new Date())
+
         this.setState({
             rotations: ClonedList.move(this.state.rotations, index, newIndex),
             activeIndex: newActiveIndex ?? newIndex,
-        }, this.commit)
+        }, () => {
+            if (pre.index == index) {
+                this.setState({
+                    date: calculateDateForRotation(this.state, newIndex, pre.day, new Date())
+                }, this.commit)
+            } else if (index < newIndex && pre.index > index && pre.index <= newIndex) {
+                this.setState({
+                    date: calculateDateForRotation(this.state, pre.index - 1, pre.day, new Date())
+                }, this.commit)
+            } else if (newIndex < index && pre.index >= newIndex && pre.index < index) {
+                this.setState({
+                    date: calculateDateForRotation(this.state, pre.index + 1, pre.day, new Date())
+                }, this.commit)
+            }
+        })
     }
 
     deleteRotation = (index: number, newActiveIndex?: number) => {
+        const pre = getRotationIndexAndDay(this.state, new Date())
+
         this.setState({
             rotations: ClonedList.remove(this.state.rotations, index),
             activeIndex: newActiveIndex ?? -1,
-        }, this.commit)
+        }, () => {
+            if (index === pre.index) {
+                this.setState({
+                    date: calculateDateForRotation(this.state, pre.index, 1, new Date())
+                }, this.commit)
+            } else if (index < pre.index) {
+                this.setState({
+                    date: calculateDateForRotation(this.state, pre.index - 1, pre.day, new Date())
+                }, this.commit)
+            }
+        })
     }
 
     render() {

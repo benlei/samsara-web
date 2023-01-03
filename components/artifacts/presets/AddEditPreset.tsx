@@ -27,7 +27,7 @@ export function AddEditPreset(
 ) {
     const [phase, setPhase] = useState(AddEditPresetPhase.Prompt)
     const [isAdd, setIsAdd] = useState(true)
-    const [preparedPreset, setPreparedPreset] = useState(getBasePreparedReset('default', '01-01-2023'))
+    const [preparedPreset, setPreparedPreset] = useState(getBasePreparedReset('default', '2023/01/01'))
 
     useEffect(() => {
         setPreparedPreset(
