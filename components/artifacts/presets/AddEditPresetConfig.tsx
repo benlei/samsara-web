@@ -13,6 +13,7 @@ type Properties = {
     setPreparedPreset: (preset: RotationPreset) => any
     manager: ListManager<RotationPreset>
     storage: RotationStorage
+    returnToPrompt: () => void
 }
 
 export default function AddEditPresetConfig(props: Properties) {

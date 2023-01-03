@@ -74,6 +74,7 @@ export function AddEditPreset(
                     setPreparedPreset={setPreparedPreset}
                     storage={storage}
                     isAdd={isAdd}
+                    returnToPrompt={() => setPhase(AddEditPresetPhase.Prompt)}
                     cancelClicked={cancelClicked}
                     manager={manager}
                 />

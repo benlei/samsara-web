@@ -12,6 +12,7 @@ type Properties = {
     setPreparedPreset: (preset: RotationPreset) => any
     manager: ListManager<RotationPreset>
     storage: RotationStorage
+    returnToPrompt: () => void
 }
 
 export default function AddEditPresetSubmit(props: Properties) {
@@ -22,7 +23,7 @@ export default function AddEditPresetSubmit(props: Properties) {
                     <AddEditPresetAddButton {...props}/>
                 }
                 {!props.isAdd &&
-                    <AddEditPresetEditButton/>
+                    <AddEditPresetEditButton {...props}/>
                 }
 
                 <Button color={'red'} onClick={props.cancelClicked}>
