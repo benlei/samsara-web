@@ -6,6 +6,7 @@ import ArtifactRotationPresets from "@/components/artifacts/ArtifactRotationPres
 import _ from "lodash";
 import {v4} from "uuid";
 import Stale from "@/components/Stale";
+import ArtifactConfigLoadDownload from "@/components/artifacts/ArtifactConfigLoadDownload";
 
 
 export default function ManageArtifactRotationPresets({}) {
@@ -20,7 +21,7 @@ export default function ManageArtifactRotationPresets({}) {
 
     useEffect(() => {
         try {
-            const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "null")
+            const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
 
             if (_.isNil(rotationStorage?.active)) {
                 return
@@ -36,7 +37,7 @@ export default function ManageArtifactRotationPresets({}) {
 
     function setStorageAndCommit(newStorage: RotationStorage) {
         try {
-            const rotationStorage: RotationStorage | null = JSON.parse(localStorage.getItem(V1StorageKey) || "null")
+            const rotationStorage: RotationStorage | null = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
 
             if (storage.cacheId != '' && rotationStorage?.cacheId != storage.cacheId) {
                 setStale(true)
@@ -59,10 +60,16 @@ export default function ManageArtifactRotationPresets({}) {
             {stale ? (
                 <Stale/>
             ) : (
-                <ArtifactRotationPresets
-                    storage={storage}
-                    setStorage={setStorageAndCommit}
-                />
+                <>
+                    <ArtifactConfigLoadDownload
+                        setStorage={setStorageAndCommit}
+                    />
+
+                    <ArtifactRotationPresets
+                        storage={storage}
+                        setStorage={setStorageAndCommit}
+                    />
+                </>
             )}
         </>
     )

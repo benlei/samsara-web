@@ -49,7 +49,7 @@ export default function ArtifactRotationsOverview(
 
     useEffect(() => {
         try {
-            const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "null")
+            const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
 
             if (_.isNil(rotationStorage?.active)) {
                 return
