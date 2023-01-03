@@ -3,6 +3,7 @@ import {calculateDateForRotation, dateStringAsDate, getRotationIndexAndDay} from
 
 const FIXED_STORAGE: RotationStorage = {
     active: 0,
+    cacheId: '',
     presets: [
         {
             name: "blah",
@@ -20,6 +21,7 @@ const FIXED_STORAGE: RotationStorage = {
 
 const UNFIXED_STORAGE: RotationStorage = {
     active: 0,
+    cacheId: '',
     presets: [
         {
             name: "blah",

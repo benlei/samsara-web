@@ -13,6 +13,8 @@ import {getCharacters} from "@/characters/characters";
 import {dateAsString, DefaultFixedDays, DefaultIsFixed, getBasePreparedReset, V1StorageKey} from "@/artifacts/presets";
 import {ArtifactTable} from "@/components/artifacts/ArtifactTable";
 import ClonedList from "@/artifacts/list";
+import {v4} from "uuid";
+import _ from "lodash";
 
 
 type Properties = {
@@ -22,6 +24,8 @@ type Properties = {
 
 type States = {
     activeIndex: number
+    cacheId: string
+    intervalId: any
 } & RotationPreset
 
 export async function getStaticProps() {
@@ -44,26 +48,44 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             date: '01-01-2023',
             rotations: [],
             name: 'default',
+            cacheId: '',
+            intervalId: 0,
         }
     }
 
-    componentDidMount = () => {
+    loadRotationStorage = () => {
         try {
-            const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
+            const storage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
 
-            if (rotationStorage.active === null || typeof rotationStorage.active === 'undefined') {
+            if (_.isNil(storage?.active)) {
                 return
             }
 
-            const preset: RotationPreset = rotationStorage.presets[rotationStorage.active]
+            if (storage.cacheId != this.state.cacheId) {
+                const preset: RotationPreset = storage.presets[storage.active]
 
-            this.setState({
-                ...preset,
-                activeIndex: (preset.rotations.length ?? 1) - 1,
-            })
+                this.setState({
+                    ...preset,
+                    activeIndex: (preset.rotations.length ?? 1) - 1,
+                    cacheId: storage.cacheId,
+                })
+            }
         } catch (ignore) {
 
         }
+
+    }
+
+    componentDidMount = () => {
+        this.loadRotationStorage()
+
+        this.setState({
+            intervalId: setInterval(() => this.loadRotationStorage(), 1000)
+        })
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.intervalId)
     }
 
     commit = () => {
@@ -80,12 +102,16 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             const preset = getBasePreparedReset('default', dateAsString(new Date()))
             const store: RotationStorage = {
                 active: 0,
+                cacheId: v4(),
                 presets: [{
                     ...preset,
                     rotations: this.state.rotations,
                 }],
             }
             localStorage.setItem(V1StorageKey, JSON.stringify(store))
+            this.setState({
+                cacheId: store.cacheId
+            })
             return
         }
 
@@ -94,8 +120,18 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             data.date = dateAsString(new Date())
         }
 
+        if (rotationStorage.cacheId != this.state.cacheId) {
+            console.log("How'd you get here? :)")
+            return
+        }
+
+        rotationStorage.cacheId = v4()
         rotationStorage.presets[rotationStorage.active] = data
         localStorage.setItem(V1StorageKey, JSON.stringify(rotationStorage))
+
+        this.setState({
+            cacheId: rotationStorage.cacheId,
+        })
     }
 
     setActiveIndex = (activeIndex: number) => this.setState({activeIndex})

@@ -22,6 +22,7 @@ export default function ArtifactRotationPresets(
         delete(index: number, newActiveIndex?: number) {
             setStorage({
                 active: storage.active === index ? 0 : storage.active,
+                cacheId: storage.cacheId,
                 presets: ClonedList.remove(storage.presets, index),
             })
 
@@ -37,6 +38,7 @@ export default function ArtifactRotationPresets(
 
             setStorage({
                 active,
+                cacheId: storage.cacheId,
                 presets: ClonedList.insert(storage.presets, index, el),
             })
 
@@ -55,6 +57,7 @@ export default function ArtifactRotationPresets(
 
             setStorage({
                 active,
+                cacheId: storage.cacheId,
                 presets: ClonedList.move(storage.presets, oldIndex, newIndex),
             })
 
@@ -63,6 +66,7 @@ export default function ArtifactRotationPresets(
         set(index: number, el: RotationPreset, newActiveIndex?: number) {
             setStorage({
                 active: storage.active,
+                cacheId: storage.cacheId,
                 presets: ClonedList.set(storage.presets, index, el),
             })
 
@@ -73,6 +77,7 @@ export default function ArtifactRotationPresets(
     function setActiveStorage(index: number) {
         setStorage({
             active: index,
+            cacheId: storage.cacheId,
             presets: _.cloneDeep<RotationPreset[]>(storage.presets),
         })
     }
