@@ -77,7 +77,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
 
         const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
         if (!rotationStorage.presets?.length) {
-            const preset = getBasePreparedReset(dateAsString(new Date()))
+            const preset = getBasePreparedReset('default', dateAsString(new Date()))
             const store: RotationStorage = {
                 active: 0,
                 presets: [{

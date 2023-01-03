@@ -7,7 +7,10 @@ import _ from "lodash";
 
 
 export default function ManageArtifactRotationPresets({}) {
-    const [storage, setStorage] = useState<RotationStorage | null>(null)
+    const [storage, setStorage] = useState<RotationStorage>({
+        active: 0,
+        presets: []
+    })
 
     useEffect(() => {
         try {
@@ -23,6 +26,11 @@ export default function ManageArtifactRotationPresets({}) {
         }
     }, [])
 
+    function setStorageAndCommit(storage: RotationStorage) {
+        setStorage(storage)
+        localStorage.setItem(V1StorageKey, JSON.stringify(storage))
+    }
+
     return (
         <>
             <Head>
@@ -31,7 +39,7 @@ export default function ManageArtifactRotationPresets({}) {
 
             <ArtifactRotationPresets
                 storage={storage}
-                setStorage={setStorage}
+                setStorage={setStorageAndCommit}
             />
         </>
     )

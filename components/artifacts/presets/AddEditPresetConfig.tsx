@@ -1,15 +1,18 @@
 import {Checkbox, Container, Form, Input} from "semantic-ui-react";
 import React from "react";
 import AddEditPresetSubmit from "@/components/artifacts/presets/AddEditPresetSubmit";
-import {RotationPreset, RotationStorage} from "@/artifacts/types";
+import {ListManager, RotationPreset, RotationStorage} from "@/artifacts/types";
 import _ from "lodash";
 import NumberRangeInput from "@/components/NumberRangeInput";
 
 type Properties = {
+    index: number
     cancelClicked: () => any
     isAdd: boolean
     preparedPreset: RotationPreset
     setPreparedPreset: (preset: RotationPreset) => any
+    manager: ListManager<RotationPreset>
+    storage: RotationStorage
 }
 
 export default function AddEditPresetConfig(props: Properties) {
@@ -40,6 +43,7 @@ export default function AddEditPresetConfig(props: Properties) {
                         <Input fluid
                                onChange={handleNameChange}
                                value={props.preparedPreset.name}
+                               placeholder={'Enter preset name...'}
                         />
                     </Form.Field>
                 </Form.Group>

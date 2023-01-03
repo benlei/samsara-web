@@ -9,29 +9,35 @@ import _ from "lodash";
 
 type Properties = {
     index: number
-    storage: RotationStorage | null
+    storage: RotationStorage
+    manager: ListManager<RotationPreset>
+    setActiveStorage: (index: number) => void
+    closeAccordion: () => void
 }
 
 
 export function AddEditPreset(
     {
         index,
-        storage
+        storage,
+        manager,
+        setActiveStorage,
+        closeAccordion,
     }: Properties
 ) {
     const [phase, setPhase] = useState(AddEditPresetPhase.Prompt)
     const [isAdd, setIsAdd] = useState(true)
-    const [preparedPreset, setPreparedPreset] = useState(getBasePreparedReset('2023-01-01'))
+    const [preparedPreset, setPreparedPreset] = useState(getBasePreparedReset('default', '2023-01-01'))
 
     useEffect(() => {
         setPreparedPreset(
-            _.cloneDeep<RotationPreset>(storage?.presets?.[index] ?? getBasePreparedReset('2023-01-01'))
+            _.cloneDeep<RotationPreset>(storage.presets[index])
         )
     }, [storage?.presets, index])
 
     function addClicked() {
         setPhase(AddEditPresetPhase.AddEdit)
-        setPreparedPreset(getBasePreparedReset(dateAsString(new Date())))
+        setPreparedPreset(getBasePreparedReset('', dateAsString(new Date())))
         setIsAdd(true)
     }
 
@@ -44,11 +50,9 @@ export function AddEditPreset(
     function cancelClicked() {
         setPhase(AddEditPresetPhase.Prompt)
         setPreparedPreset(
-            _.cloneDeep<RotationPreset>(storage?.presets?.[index] ?? getBasePreparedReset(dateAsString(new Date())))
+            _.cloneDeep<RotationPreset>(storage.presets[index])
         )
     }
-
-    // const manager: ListManager<RotationPreset>
 
     return (
         <>
@@ -57,15 +61,21 @@ export function AddEditPreset(
                     index={index}
                     addClicked={addClicked}
                     editClicked={editClicked}
+                    manager={manager}
+                    setActiveStorage={setActiveStorage}
+                    closeAccordion={closeAccordion}
                 />
             }
 
             {phase == AddEditPresetPhase.AddEdit &&
                 <AddEditPresetConfig
+                    index={index}
                     preparedPreset={preparedPreset}
                     setPreparedPreset={setPreparedPreset}
+                    storage={storage}
                     isAdd={isAdd}
                     cancelClicked={cancelClicked}
+                    manager={manager}
                 />
             }
         </>

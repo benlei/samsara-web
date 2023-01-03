@@ -1,16 +1,23 @@
 import {Button, Form, Icon, Popup} from "semantic-ui-react";
 import React from "react";
+import {ListManager, RotationPreset} from "@/artifacts/types";
 
 type Properties = {
     addClicked: () => any
     editClicked: () => any
     index: number
+    manager: ListManager<RotationPreset>
+    setActiveStorage: (index: number) => void
+    closeAccordion: () => void
 }
 export default function AddEditPresetPrompt(
     {
         addClicked,
         editClicked,
         index,
+        manager,
+        setActiveStorage,
+        closeAccordion,
     }: Properties
 ) {
     return (
@@ -33,7 +40,11 @@ export default function AddEditPresetPrompt(
                 <Form.Button
                     content={'Swap'}
                     icon={'exchange'}
-                    // onClick={this.props.onStartRotationClicked}
+                    color={'blue'}
+                    onClick={() => {
+                        setActiveStorage(index)
+                        closeAccordion()
+                    }}
                     labelPosition='left'
                     className={index === -1 ? 'hidden' : ''}
                 />

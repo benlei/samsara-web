@@ -48,7 +48,6 @@ export type RotationStorage = {
 
 export type RotationPreset = {
     name: string
-
     fixed: boolean // fixed # of days between all rotations, or no
     fixedDays: number
     date: string
