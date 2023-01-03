@@ -52,7 +52,7 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                     <Form.Field>
                         <Popup on={'click'}
                                trigger={
-                                   <Button icon labelPosition={'left'}
+                                   <Button icon labelPosition={'left'} color={'olive'}
                                            className={this.props.index == -1 ? 'hidden' : ''}>
                                        <Icon name={'pin'}/> Start Here
                                    </Button>
@@ -64,7 +64,7 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                                         min={1}
                                         max={this.props.preset.fixed ? this.props.preset.fixedDays : 1000}
                                         defaultValue={getNumberRangeDefault(this.props.preset, this.props.index)}
-                                        color={'teal'}
+                                        color={'olive'}
                                         icon={'pin'}
                                         onSubmit={this.props.onStartRotationClicked}
                                     />
