@@ -49,8 +49,8 @@ export default function Navbar({children}: React.PropsWithChildren) {
                     <Dropdown text='Artifact Rotations' pointing className={'link item ' + getrtifactRotationActive()}>
                         <Dropdown.Menu>
                             <Dropdown.Item as={'a'} href='/artifacts'>Overview</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/artifacts/manage'>Manage Rotations</Dropdown.Item>
                             <Dropdown.Item as={'a'} href='/artifacts/presets'>Manage Presets</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/artifacts/manage'>Manage Rotations</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Menu.Item as={'a'} href={'/resin'} className={getResinActive()}>Resin Timer</Menu.Item>
@@ -80,8 +80,8 @@ export function NavbarMobile() {
                         <Dropdown.Divider/>
                         <Dropdown.Header>Artifact Rotations</Dropdown.Header>
                         <Dropdown.Item as={'a'} href='/artifacts'>Overview</Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/artifacts/manage'>Manage Rotations</Dropdown.Item>
                         <Dropdown.Item as={'a'} href='/artifacts/presets'>Manage Presets</Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/artifacts/manage'>Manage Rotations</Dropdown.Item>
                         <Dropdown.Divider/>
                         <Dropdown.Header>Resin</Dropdown.Header>
                         <Dropdown.Item as={'a'} href='/resin'>24H Resin Timer</Dropdown.Item>
