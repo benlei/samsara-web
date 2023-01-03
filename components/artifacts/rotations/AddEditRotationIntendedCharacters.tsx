@@ -77,15 +77,17 @@ export default class AddEditRotationIntendedCharacters extends React.Component<P
                         </Form.Field>
                     </Form.Group>
 
-                    <Form.Group>
+                    <Form.Group style={{marginTop: '1em'}}>
                         <Form.Field width={'eight'}>
                             {!this.props.preparedRotation.characters.length &&
-                                <Image src={`/images/UnknownCharacter.png`} avatar
+                                <Image src={`/images/UnknownCharacter.png`}
+                                       circular size={'tiny'} inline
                                        alt={'Unknown Character'}
                                 />
                             }
                             {this.props.preparedRotation.characters.map((c, k) =>
-                                <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
+                                <Image src={`/images/characters/${this.props.data.characters[c].image}.png`}
+                                       circular size={'tiny'} inline
                                        alt={this.props.data.characters[c].image} key={k}
                                        className={'active'}
                                        onClick={this.addCharacterHandler(this.props.data.characters[c].name)}
@@ -95,7 +97,8 @@ export default class AddEditRotationIntendedCharacters extends React.Component<P
                             {this.getFilteredCharacters(_.chain(Object.keys(this.props.data.characters).sort())
                                 .filter((c) => !this.props.preparedRotation.characters.includes(c))
                                 .value()).map((c, k) => (
-                                    <Image src={`/images/characters/${this.props.data.characters[c].image}.png`} avatar
+                                    <Image src={`/images/characters/${this.props.data.characters[c].image}.png`}
+                                           circular size={'tiny'} inline
                                            alt={this.props.data.characters[c].image} key={k}
                                            onClick={this.addCharacterHandler(this.props.data.characters[c].name)}/>
                                 )

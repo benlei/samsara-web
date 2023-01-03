@@ -14,7 +14,9 @@ type Properties = {
     onMoveClicked: (position: number) => void
 }
 
-type States = {}
+type States = {
+    startHereOpen: boolean
+}
 
 function getNumberRangeDefault(preset: RotationPreset, index: number): number {
     const pre = getRotationIndexAndDay(preset, new Date())
@@ -34,6 +36,17 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
         onDeleteClicked: null,
     };
 
+
+    constructor(props: Readonly<Properties> | Properties) {
+        super(props);
+
+        this.state = {
+            startHereOpen: false,
+        }
+    }
+
+    openCloseHandler = () => this.setState({startHereOpen: !this.state.startHereOpen})
+
     render() {
         return (
             <Form style={{marginTop: '1em', textAlign: 'center'}}>
@@ -51,6 +64,8 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
 
                     <Form.Field>
                         <Popup on={'click'}
+                               open={this.state.startHereOpen}
+                               onOpen={this.openCloseHandler}
                                trigger={
                                    <Button icon labelPosition={'left'} color={'olive'}
                                            className={this.props.index == -1 ? 'hidden' : ''}>
@@ -66,7 +81,10 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                                         defaultValue={getNumberRangeDefault(this.props.preset, this.props.index)}
                                         color={'olive'}
                                         icon={'pin'}
-                                        onSubmit={this.props.onStartRotationClicked}
+                                        onSubmit={(position: number) => {
+                                            this.props.onStartRotationClicked(position)
+                                            this.openCloseHandler()
+                                        }}
                                     />
                                 </Form.Field>
                             </Form>
