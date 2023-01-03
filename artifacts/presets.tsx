@@ -75,8 +75,7 @@ export function calculateDateForRotation(
 
     rotationDays += day - 1
 
-    // getTime doesn't include the tz offset
-    return dateAsString(new Date(currDate.getTime() - (rotationDays * DayMillisec) + (currDate.getTimezoneOffset() * 60 * 1000)))
+    return dateAsString(new Date(currDate.getTime() - (rotationDays * DayMillisec)))
 }
 
 /**
