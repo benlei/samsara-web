@@ -14,6 +14,7 @@ type Properties = {
     index: number
     data: ArtifactRotationData
     rotationsManager: ListManager<Rotation>
+    setRotationDate: (index: number, day: number) => any
 }
 
 type States = {
@@ -83,6 +84,10 @@ export default class AddEditRotation extends React.Component<Properties, States>
         this.props.rotationsManager.move(this.props.index, position - 1)
     }
 
+    handleStartRotation = (position: number) => {
+        this.props.setRotationDate(this.props.index, position)
+    }
+
     render() {
         const addEditButtonsProperties: AddEditSharedProperties = {
             addEdit: this.state.addEdit,
@@ -106,6 +111,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
                             onEditClicked={this.editClicked}
                             onDeleteClicked={this.deleteRotation}
                             onMoveClicked={this.moveRotation}
+                            onStartRotationClicked={this.handleStartRotation}
                         />
                     ) : (
                         <>

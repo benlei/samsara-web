@@ -24,6 +24,7 @@ import ClonedList from "@/artifacts/list";
 import {v4} from "uuid";
 import _ from "lodash";
 import Stale from "@/components/Stale";
+import {Container, Header} from "semantic-ui-react";
 
 
 type Properties = {
@@ -73,19 +74,21 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             }
 
             if (storage.cacheId != this.state.cacheId) {
-                const preset: RotationPreset = storage.presets[storage.active]
-
                 this.setState({
-                    ...preset,
-                    activeIndex: (preset.rotations.length ?? 1) - 1,
                     cacheId: storage.cacheId,
+                })
+            }
+
+            if (!_.isNil(storage.presets[storage.active])) {
+                this.setState({
+                    ...storage.presets[storage.active],
+                    activeIndex: (storage.presets[storage.active].rotations.length ?? 1) - 1,
                 })
             }
         } catch (ignore) {
 
         }
     }
-
 
     commit = () => {
         const data: RotationPreset = {
@@ -227,6 +230,12 @@ export default class ManageArtifactRotations extends React.Component<Properties,
         })
     }
 
+    setRotationDate = (index: number, day: number) => {
+        this.setState({
+            date: calculateDateForRotation(this.state, index, day, new Date()),
+        }, this.commit)
+    }
+
     render() {
         const data: ArtifactRotationData = {
             artifacts: getArtifacts(this.props.artifacts),
@@ -248,6 +257,11 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             set: this.setRotation,
         }
 
+        let activeRotation = {index: -1, day: -1}
+        if (this.state.rotations.length) {
+            activeRotation = getRotationIndexAndDay(this.state, new Date())
+        }
+
         return (
             <>
                 <Head>
@@ -257,8 +271,18 @@ export default class ManageArtifactRotations extends React.Component<Properties,
                 {this.state.stale ? (
                     <Stale/>
                 ) : (
-                    <ArtifactTable data={data} manager={manager} activeIndex={this.state.activeIndex}
-                                   setActiveIndex={this.setActiveIndex}/>
+                    <>
+                        <Container style={{marginTop: '2em'}}>
+                            <Header size='huge'>{this.state.name}</Header>
+                        </Container>
+                        <ArtifactTable data={data} manager={manager} activeIndex={this.state.activeIndex}
+                                       setActiveIndex={this.setActiveIndex}
+                                       setRotationDate={this.setRotationDate}
+                                       rotationIndex={activeRotation.index}
+                                       rotationDay={activeRotation.day}
+
+                        />
+                    </>
                 )}
             </>
         )

@@ -27,7 +27,7 @@ export function getBasePreparedReset(name: string, date: string): RotationPreset
     }
 }
 
-function getDays(preset: RotationPreset, index: number): number {
+export function getDays(preset: RotationPreset, index: number): number {
     if (preset.fixed) {
         return preset.fixedDays
     }

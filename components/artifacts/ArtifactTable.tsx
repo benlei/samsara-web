@@ -2,18 +2,17 @@ import {Accordion, AccordionTitleProps, Container, Icon, Image, Table} from "sem
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import AddEditRotation from "@/components/artifacts/rotations/AddEditRotation";
 import React from "react";
-import {ArtifactRotationData, ListManager, Rotation, RotationPreset} from "@/artifacts/types";
-import {DefaultFixedDays} from "@/artifacts/presets";
+import {ArtifactRotationData, ListManager, Rotation} from "@/artifacts/types";
+import {getDays} from "@/artifacts/presets";
 
 type Property = {
     data: ArtifactRotationData
     manager: ListManager<Rotation>
     activeIndex: number
     setActiveIndex: (activeIndex: number) => any
-}
-
-function getDays(preset: RotationPreset, rotation: Rotation): number {
-    return preset.fixed ? preset.fixedDays : (rotation.days ?? DefaultFixedDays)
+    setRotationDate: (index: number, day: number) => any
+    rotationIndex: number
+    rotationDay: number
 }
 
 export function ArtifactTable(
@@ -22,6 +21,9 @@ export function ArtifactTable(
         manager,
         activeIndex,
         setActiveIndex,
+        setRotationDate,
+        rotationIndex,
+        rotationDay,
     }: Property
 ) {
     const handleClick = (event: any, titleProps: AccordionTitleProps) => {
@@ -33,7 +35,7 @@ export function ArtifactTable(
 
 
     return (
-        <Container style={{marginTop: '2em'}} className={'artifact-rotations'}>
+        <Container style={{marginTop: '1em'}} className={'artifact-rotations'}>
             <Table unstackable>
                 <Table.Header>
                     <Table.Row>
@@ -47,7 +49,7 @@ export function ArtifactTable(
                 <Table.Body>
                     {data.preset.rotations.map((r, k) =>
                         <>
-                            <Table.Row key={k}>
+                            <Table.Row key={k} positive={k === rotationIndex}>
                                 <Table.Cell verticalAlign={'top'}>
                                     {k + 1}
                                 </Table.Cell>
@@ -55,22 +57,29 @@ export function ArtifactTable(
                                     <ArtifactDomain data={data} domain={r.domain} popover/>
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    {r.characters.map((c, k) =>
+                                    {r.characters.map((c, j) =>
                                         <Image
                                             avatar
                                             src={`/images/characters/${data.characters[c].image}.png`}
-                                            alt={data.characters[c].image} key={k}/>
+                                            alt={data.characters[c].image} key={j}/>
                                     )}
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
                                     <Container fluid
                                                className={'grey'}>
-                                        <p>
-                                            <strong>
-                                                {getDays(data.preset, r)}
-                                            </strong> Rotation
-                                            Day{getDays(data.preset, r) !== 1 && 's'}
-                                        </p>
+                                        {k === rotationIndex ? (
+                                            <p>
+                                                Day <strong>{rotationDay}</strong> of <strong>{
+                                                getDays(data.preset, k)}</strong> (active)
+                                            </p>
+                                        ) : (
+                                            <p>
+                                                <strong>
+                                                    {getDays(data.preset, k)}
+                                                </strong> Day{getDays(data.preset, k) !== 1 && 's'} of Rotation
+                                            </p>
+                                        )}
+
                                         {r.note.split("\n").map((note, k) =>
                                             <p key={k}>{note}</p>
                                         )}
@@ -89,7 +98,9 @@ export function ArtifactTable(
                             {activeIndex === k &&
                                 <AddEditRotation index={k}
                                                  rotationsManager={manager}
-                                                 data={data}/>
+                                                 data={data}
+                                                 setRotationDate={setRotationDate}
+                                />
                             }
                         </>
                     )}
@@ -97,7 +108,9 @@ export function ArtifactTable(
                     {!data.preset.rotations.length &&
                         <AddEditRotation index={-1}
                                          rotationsManager={manager}
-                                         data={data}/>
+                                         data={data}
+                                         setRotationDate={setRotationDate}
+                        />
                     }
                 </Table.Body>
             </Table>

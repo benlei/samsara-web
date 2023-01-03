@@ -2,6 +2,7 @@ import React, {Dispatch} from "react";
 import {Button, Form, Icon, Popup} from "semantic-ui-react";
 import NumberRangeInputWithIcon from "@/components/NumberRangeInputWithIcon";
 import {RotationPreset} from "@/artifacts/types";
+import {getDays, getRotationIndexAndDay} from "@/artifacts/presets";
 
 type Properties = {
     index: number
@@ -14,6 +15,16 @@ type Properties = {
 }
 
 type States = {}
+
+function getNumberRangeDefault(preset: RotationPreset, index: number): number {
+    const pre = getRotationIndexAndDay(preset, new Date())
+
+    if (pre.index === index) {
+        return pre.day
+    }
+
+    return 1
+}
 
 export default class AddEditRotationPrompt extends React.Component<Properties, States> {
     public static defaultProps = {
@@ -37,11 +48,31 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                         labelPosition='left'
                         className={this.props.index == -1 ? 'hidden' : ''}/>
 
-                    <Form.Button
-                        content={'Start Here'}
-                        icon='pin' onClick={this.props.onStartRotationClicked}
-                        labelPosition='left'
-                        className={this.props.index == -1 ? 'hidden' : ''}/>
+
+                    <Form.Field>
+                        <Popup on={'click'}
+                               trigger={
+                                   <Button icon labelPosition={'left'}
+                                           className={this.props.index == -1 ? 'hidden' : ''}>
+                                       <Icon name={'pin'}/> Start Here
+                                   </Button>
+                               } pinned position={'bottom left'}>
+                            <Form>
+                                <Form.Field>
+                                    <label>Set Day to Start With</label>
+                                    <NumberRangeInputWithIcon
+                                        min={1}
+                                        max={this.props.preset.fixed ? this.props.preset.fixedDays : 1000}
+                                        defaultValue={getNumberRangeDefault(this.props.preset, this.props.index)}
+                                        color={'teal'}
+                                        icon={'pin'}
+                                        onSubmit={this.props.onStartRotationClicked}
+                                    />
+                                </Form.Field>
+                            </Form>
+                        </Popup>
+                    </Form.Field>
+
 
                     <Form.Field>
                         <Popup on={'click'}
@@ -55,7 +86,7 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                                 <Form.Field>
                                     <NumberRangeInputWithIcon
                                         min={1}
-                                        max={this.props.preset.rotations.length}
+                                        max={getDays(this.props.preset, this.props.index)}
                                         defaultValue={this.props.index + 1}
                                         color={'teal'}
                                         icon={'exchange'}
