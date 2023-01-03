@@ -17,7 +17,7 @@ export default class ArtifactConfigLoadDownload extends React.Component<Properti
     render() {
         return (
             <Container fluid textAlign={'left'} style={{padding: '1em'}}>
-                <Menu stackable secondary>
+                <Menu stackable secondary pointing>
                     <Menu.Item
                         name='Select Domain'
                         active={this.props.phase == AddEditRotationPhase.Domain}
