@@ -41,7 +41,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             activeIndex: 0,
             fixed: DefaultIsFixed,
             fixedDays: DefaultFixedDays,
-            date: '2023-01-01',
+            date: '01-01-2023',
             rotations: [],
             name: 'default',
         }

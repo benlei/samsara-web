@@ -5,10 +5,12 @@ export const V1StorageKey = "v1_artifact_rotation"
 export const DefaultIsFixed = true
 export const DefaultFixedDays = 7
 
+const DayMillisec = 24 * 60 * 60 * 1000
+
 export function dateAsString(date: Date): string {
-    return date.getFullYear()
-        + '-' + String(date.getMonth() < 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1)
+    return String(date.getMonth() < 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1)
         + '-' + String(date.getDate() < 10 ? `0${date.getDate()}` : date.getDate())
+        + '-' + date.getFullYear()
 }
 
 export function dateStringAsDate(dateStr: string): Date {
@@ -25,31 +27,31 @@ export function getBasePreparedReset(name: string, date: string): RotationPreset
     }
 }
 
-
-export function getRotationIndexAndDay(storage: RotationStorage, presetIndex: number, endDate: Date): { index: number, day: number } {
-    function getDays(index: number): number {
-        if (storage.presets[presetIndex].fixed) {
-            return storage.presets[presetIndex].fixedDays
-        }
-
-        return storage.presets[presetIndex].rotations[index].days ?? 1
+function getDays(preset: RotationPreset, index: number): number {
+    if (preset.fixed) {
+        return preset.fixedDays
     }
 
+    return preset.rotations[index].days ?? 1
+}
+
+export function getRotationIndexAndDay(storage: RotationStorage, presetIndex: number, endDate: Date): { index: number, day: number } {
     const startDate = new Date(storage.presets[presetIndex].date)
     const currDate = new Date(dateAsString(endDate))
 
-    let totalDays = Math.floor((currDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)) + 1
+
+    let totalDays = Math.floor((currDate.getTime() - startDate.getTime()) / DayMillisec)
 
     let rotationDays = 0
     for (let i = 0; i < storage.presets[presetIndex].rotations.length; i++) {
-        rotationDays += getDays(i)
+        rotationDays += getDays(storage.presets[presetIndex], i)
     }
 
     totalDays %= rotationDays
 
     let index = 0
-    while (totalDays >= getDays(index)) {
-        totalDays -= getDays(index)
+    while (totalDays >= getDays(storage.presets[presetIndex], index)) {
+        totalDays -= getDays(storage.presets[presetIndex], index)
         index++
     }
 
@@ -57,6 +59,24 @@ export function getRotationIndexAndDay(storage: RotationStorage, presetIndex: nu
         index,
         day: totalDays + 1,
     }
+}
+
+export function calculateDateForRotation(
+    storage: RotationStorage,
+    presetIndex: number,
+    index: number,
+    day: number,
+    currDate: Date,
+): string {
+    let rotationDays = 0
+    for (let i = 0; i < index; i++) {
+        rotationDays += getDays(storage.presets[presetIndex], i)
+    }
+
+    rotationDays += day - 1
+
+    // getTime doesn't include the tz offset
+    return dateAsString(new Date(currDate.getTime() - (rotationDays * DayMillisec) + (currDate.getTimezoneOffset() * 60 * 1000)))
 }
 
 /**
