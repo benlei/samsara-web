@@ -26,7 +26,16 @@ export default function PresetCurrentNextCells(
             <Table.Cell verticalAlign={'top'}>
                 <ArtifactDomain data={data} domain={preset.rotations[curr.index].domain} popover
                                 additionalLabel={
-                                    <Label basic color='blue'>Day {curr.day} of {getDays(preset, curr.index)}</Label>
+                                    <>
+                                        <Label basic color='grey'
+                                               style={{marginBottom: '.5em'}}>
+                                            {curr.index + 1} of {preset.rotations.length}
+                                        </Label>
+                                        <Label basic color='blue'
+                                               style={{marginBottom: '.5em'}}>
+                                            Day {curr.day} of {getDays(preset, curr.index)}
+                                        </Label>
+                                    </>
                                 }
                 />
 
@@ -55,7 +64,15 @@ export default function PresetCurrentNextCells(
             <Table.Cell verticalAlign={'top'}>
                 <ArtifactDomain data={data} domain={preset.rotations[next.index].domain} popover
                                 additionalLabel={
-                                    <Label basic color={'grey'}>In {next.day} day{next.day === 1 ? '' : 's'}</Label>
+                                    <>
+
+                                        <Label basic color={'grey'} style={{marginBottom: '.5em'}}>
+                                            {next.index + 1} of {preset.rotations.length}
+                                        </Label>
+                                        <Label basic color={'grey'} style={{marginBottom: '.5em'}}>
+                                            In {next.day} day{next.day === 1 ? '' : 's'}
+                                        </Label>
+                                    </>
                                 }
                 />
 
