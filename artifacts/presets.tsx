@@ -1,4 +1,4 @@
-import {RotationPreset} from "@/artifacts/types";
+import {RotationPreset, RotationStorage} from "@/artifacts/types";
 
 export const V1StorageKey = "v1_artifact_rotation"
 
@@ -22,6 +22,40 @@ export function getBasePreparedReset(name: string, date: string): RotationPreset
         rotations: [],
         name,
         date,
+    }
+}
+
+
+export function getRotationIndexAndDay(storage: RotationStorage, presetIndex: number, endDate: Date): { index: number, day: number } {
+    function getDays(index: number): number {
+        if (storage.presets[presetIndex].fixed) {
+            return storage.presets[presetIndex].fixedDays
+        }
+
+        return storage.presets[presetIndex].rotations[index].days ?? 1
+    }
+
+    const startDate = new Date(storage.presets[presetIndex].date)
+    const currDate = new Date(dateAsString(endDate))
+
+    let totalDays = Math.floor((currDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)) + 1
+
+    let rotationDays = 0
+    for (let i = 0; i < storage.presets[presetIndex].rotations.length; i++) {
+        rotationDays += getDays(i)
+    }
+
+    totalDays %= rotationDays
+
+    let index = 0
+    while (totalDays >= getDays(index)) {
+        totalDays -= getDays(index)
+        index++
+    }
+
+    return {
+        index,
+        day: totalDays + 1,
     }
 }
 
