@@ -1,12 +1,8 @@
 import {BannerResource, Rundown, VersionParts} from "@/banners/types";
 import _ from "lodash";
 import getVersionParts, {getBaseVersion, getVersionPart} from "@/banners/version";
+import {getImageFromName} from "@/format/image";
 
-function getImageFromName(name: string) {
-    return name.replaceAll(/[^a-zA-Z0-9 \-]/ig, '')
-        .replaceAll(/ /g, '-')
-        .replaceAll(/--+/g, '-');
-}
 
 function fillPrereleaseCounter(versionParts: VersionParts[], resourceCounter: Rundown, firstVersion: string): number {
     let versionIndex = versionParts.length - 1

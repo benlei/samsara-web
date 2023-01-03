@@ -1,71 +1,106 @@
 body {
-  background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
 
 @media (max-width: 992px) {
-  .desktop {
-    display: none !important;
-  }
-  .mobile {
-    display: block !important;
-  }
+    .desktop {
+        display: none !important;
+    }
+
+    .mobile {
+        display: block !important;
+    }
 }
 
 .ui.menu .item img.logo {
-  margin-right: 1.5em;
+    margin-right: 1.5em;
 }
+
 .main.container {
-  margin-top: 7em;
+    margin-top: 7em;
 }
+
 .ui.footer.segment {
-  margin: 5em 0em 0em;
-  padding: 5em 0em;
+    margin: 5em 0em 0em;
+    padding: 5em 0em;
 }
 
 .history {
-  border-collapse:collapse!important;
-  border:0 !important;
-  margin-bottom: 2em !important;
+    border-collapse: collapse !important;
+    border: 0 !important;
+    margin-bottom: 2em !important;
 }
 
 .history td.no-border {
-  border:0!important
+    border: 0 !important
 }
 
 .history td {
-  border:1px solid #ddd;
+    border: 1px solid #ddd;
 }
 
 .history td:not(:first-of-type) {
-  text-align: center !important;
+    text-align: center !important;
 }
 
 .history th:not(:first-of-type) {
-  border: 1px solid #ddd
+    border: 1px solid #ddd
 }
 
 .history th {
-  text-align: center !important;
+    text-align: center !important;
 }
 
 .history * {
-  margin: 0 !important;
+    margin: 0 !important;
 }
 
 .history td:first-of-type {
-  white-space: nowrap;
-  text-align: right !important;
+    white-space: nowrap;
+    text-align: right !important;
 }
 
 .history th {
-  font-weight: bold !important;
+    font-weight: bold !important;
 }
 
 .history .cell {
-  line-height: 2em;
-  width: 2em;
-  height: 2em;
+    line-height: 2em;
+    width: 2em;
+    height: 2em;
 }
+
 .menu .item {
-  font-weight: 700 !important;;
+    font-weight: 700 !important;
+}
+
+.grey {
+    color: #666;
+}
+
+.item .bold {
+    font-weight: 500;
+}
+
+.item .small, .item.small {
+    font-size: small;
+}
+
+.artifact-rotations .ui.grid > .column:not(.row) {
+    padding-top: .5rem;
+}
+
+.hidden {
+    visibility: hidden
+}
+
+button {
+    white-space: nowrap;
+}
+
+img.active {
+    border: 2px solid #21ba45
+}
+.accordion .title.active {
+    font-weight: 700;
 }

@@ -1,10 +1,10 @@
 import React from "react";
 import {Container} from "semantic-ui-react";
-import BannerOptionsComponent from "@/components/banners/BannerOptions";
-import BannerTableComponent from "@/components/banners/BannerTable";
+import BannerOptions from "@/components/banners/BannerOptions";
+import BannerTable from "@/components/banners/BannerTable";
 import getVersionParts from "@/banners/version";
 import {getRundowns} from "@/banners/rundown";
-import BannerDownloadComponent from "@/components/banners/BannerDownload";
+import BannerDownload from "@/components/banners/BannerDownload";
 import {BannerResource} from "@/banners/types";
 import ScrollContainer from "react-indiana-drag-scroll";
 
@@ -23,7 +23,7 @@ type States = {
     expand: boolean | null
 }
 
-export default class BannerPageComponent extends React.Component<Properties, States> {
+export default class BannerPage extends React.Component<Properties, States> {
     private componentRef: React.RefObject<any>
 
     constructor(props: Readonly<Properties> | Properties) {
@@ -74,7 +74,7 @@ export default class BannerPageComponent extends React.Component<Properties, Sta
         return (
             <>
                 <Container style={{marginTop: '2em'}}>
-                    <BannerOptionsComponent showLimitedOnly={showLimitedOnly} limitedOnly={limitedOnly}
+                    <BannerOptions showLimitedOnly={showLimitedOnly} limitedOnly={limitedOnly}
                                             setLimitedOnly={setLimitedOnly}
                                             order={order} setOrder={setOrder}
                                             sortBy={sortBy} setSortBy={setSortBy}
@@ -83,7 +83,7 @@ export default class BannerPageComponent extends React.Component<Properties, Sta
                 </Container>
                 <Container style={{overflowX: 'scroll', ...getBannerContainerStyle(expand ?? false)}} fluid={expand ?? false}>
                     <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
-                        <BannerTableComponent bannerType={bannerType}
+                        <BannerTable bannerType={bannerType}
                                               versionParts={getVersionParts(banners)}
                                               rundown={getRundowns(banners)}
                                               limitedOnly={limitedOnly}
@@ -96,7 +96,7 @@ export default class BannerPageComponent extends React.Component<Properties, Sta
                     </ScrollContainer>
                 </Container>
                 <Container style={{marginTop: '2em'}}>
-                    <BannerDownloadComponent bannerRef={this.componentRef}/>
+                    <BannerDownload bannerRef={this.componentRef}/>
                 </Container>
             </>
         )

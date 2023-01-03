@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from "react";
-import {Form, Icon, InputOnChangeData, Table} from "semantic-ui-react";
+import {Icon, Input, InputOnChangeData, Table} from "semantic-ui-react";
 import {VersionParts} from "@/banners/types";
 
 
@@ -12,7 +12,7 @@ type Properties = {
 
 type States = {}
 
-export default class BannerHeaderComponent extends React.Component<Properties, States> {
+export default class BannerHeader extends React.Component<Properties, States> {
     render() {
         const {
             bannerType,
@@ -25,11 +25,14 @@ export default class BannerHeaderComponent extends React.Component<Properties, S
                 <Table.Row>
                     <Table.HeaderCell className={'no-border'}
                                       style={{pointerEvents: 'auto', padding: '0 .5em'}}>
-                        <Form.Input fluid
-                                    placeholder={'Filter ' + bannerType + '...'}
-                                    onChange={onChange}
-                                    value={filterText}
-                                    style={{minWidth: '16em'}}/>
+                        <Input fluid
+                               placeholder={'Filter ' + bannerType + '...'}
+                               onChange={onChange}
+                               value={filterText}
+                               style={{minWidth: '16em'}} icon>
+                            <input />
+                            <Icon name='search'/>
+                        </Input>
                     </Table.HeaderCell>
                     <Table.HeaderCell>
                         <Icon name='redo'/>

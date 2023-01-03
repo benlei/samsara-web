@@ -1,10 +1,10 @@
 import React from "react";
-import {BannerOptions, Rundown, VersionParts} from "@/banners/types";
+import {BannerFilterSortOptions, Rundown, VersionParts} from "@/banners/types";
 import {Table} from "semantic-ui-react";
 import _ from "lodash";
-import BannerHeaderComponent from "@/components/banners/BannerHeader";
-import BannerFooterComponent from "@/components/banners/BannerFooter";
-import BannerRowComponent from "@/components/banners/BannerRow";
+import BannerHeader from "@/components/banners/BannerHeader";
+import BannerFooter from "@/components/banners/BannerFooter";
+import BannerRow from "@/components/banners/BannerRow";
 
 
 type BannerRundownProps = {
@@ -12,13 +12,13 @@ type BannerRundownProps = {
     versionParts: VersionParts[]
     rundown: Rundown[]
     standards?: string[]
-} & BannerOptions
+} & BannerFilterSortOptions
 
 type BannerRundownState = {
     filterText: string | null
 }
 
-export default class BannerTableComponent extends React.Component<BannerRundownProps, BannerRundownState> {
+export default class BannerTable extends React.Component<BannerRundownProps, BannerRundownState> {
     constructor(props: BannerRundownProps) {
         super(props);
         this.state = {
@@ -100,21 +100,21 @@ export default class BannerTableComponent extends React.Component<BannerRundownP
         return (
             <>
                 <Table definition unstackable selectable compact className={'history'} style={{marginTop: '1em'}}>
-                    <BannerHeaderComponent
+                    <BannerHeader
                         versionParts={versionParts}
                         onChange={this.handleFilterChange}
                         bannerType={bannerType}
                         filterText={filterText}
                     />
                     <Table.Body>
-                        {rundown.map((r, rI) => <BannerRowComponent key={rI}
+                        {rundown.map((r, rI) => <BannerRow key={rI}
                                                                     bannerType={bannerType}
                                                                     rundown={r}
                             />
                         )}
                     </Table.Body>
 
-                    <BannerFooterComponent versionParts={versionParts}/>
+                    <BannerFooter versionParts={versionParts}/>
                 </Table>
             </>
         );

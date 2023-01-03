@@ -18,6 +18,9 @@
     "paths": {
       "@/styles/*": ["styles/*"],
       "@/banners/*": ["banners/*"],
+      "@/artifacts/*": ["artifacts/*"],
+      "@/characters/*": ["characters/*"],
+      "@/format/*": ["format/*"],
       "@/components/*": ["components/*"],
       "@/pages/*": ["pages/*"],
       "@/data/*": ["public/data/*"]
