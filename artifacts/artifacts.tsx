@@ -1,8 +1,8 @@
-import {ArtifactDomains, Artifacts, ArtifactsDomainsData} from "@/artifacts/types";
+import {ArtifactDomains, Artifacts, ArtifactJsonProperties} from "@/artifacts/types";
 import {getImageFromName} from "@/format/image";
 import _ from "lodash";
 
-export function getArtifacts(data: ArtifactsDomainsData): Artifacts {
+export function getArtifacts(data: ArtifactJsonProperties): Artifacts {
     return _.chain(data.artifacts)
         .mapValues((description, artifactName) => {
             return {
@@ -13,7 +13,7 @@ export function getArtifacts(data: ArtifactsDomainsData): Artifacts {
         }).value()
 }
 
-export function getArtifactDomains(data: ArtifactsDomainsData): ArtifactDomains {
+export function getArtifactDomains(data: ArtifactJsonProperties): ArtifactDomains {
     return _.chain(data.domains)
         .mapValues((artifacts, name) => {
             return {

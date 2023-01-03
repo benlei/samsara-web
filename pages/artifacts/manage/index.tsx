@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import {
     ArtifactRotationData,
-    ArtifactsDomainsData,
+    ArtifactJsonProperties,
     ListManager,
     Rotation,
     RotationPreset,
@@ -29,7 +29,7 @@ import {Container, Header} from "semantic-ui-react";
 
 type Properties = {
     characters: string[]
-    artifacts: ArtifactsDomainsData
+    artifacts: ArtifactJsonProperties
 }
 
 type States = {
@@ -237,7 +237,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
     render() {
         const data: ArtifactRotationData = {
             artifacts: getArtifacts(this.props.artifacts),
-            artifactDomains: getArtifactDomains(this.props.artifacts),
+            domains: getArtifactDomains(this.props.artifacts),
             characters: getCharacters(this.props.characters),
             preset: {
                 name: this.state.name,

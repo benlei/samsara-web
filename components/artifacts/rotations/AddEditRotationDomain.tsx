@@ -27,7 +27,7 @@ export default class AddEditRotationDomain extends React.Component<Properties, S
     }
 
     getFilteredSortedDomainNames = () => {
-        return _.chain(Object.keys(this.props.data.artifactDomains))
+        return _.chain(Object.keys(this.props.data.domains))
             .filter(this.getFilterArtifactFunc())
             .orderBy((name) => name)
             .value()
@@ -45,7 +45,7 @@ export default class AddEditRotationDomain extends React.Component<Properties, S
         const getText = (domain: string): string => {
             return [
                 domain,
-                ...this.props.data.artifactDomains[domain].artifacts.map((artifact) => `${artifact}\n${this.props.data.artifacts[artifact].description}`),
+                ...this.props.data.domains[domain].artifacts.map((artifact) => `${artifact}\n${this.props.data.artifacts[artifact].description}`),
             ].join("\n")
         }
 

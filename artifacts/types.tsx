@@ -21,7 +21,7 @@ export type Artifact = {
 }
 
 
-export type ArtifactsDomainsData = {
+export type ArtifactJsonProperties = {
     artifacts: ArtifactsData
     domains: ArtifactDomainsData
 }
@@ -34,12 +34,19 @@ export type ArtifactDomainsData = {
     [domain: string]: string[]
 }
 
-export type ArtifactRotationData = {
+export type ArtifactsArtifactDomains = {
     artifacts: Artifacts
-    artifactDomains: ArtifactDomains
+    domains: ArtifactDomains
+}
+
+export type ArtifactRotationData = {
     characters: Characters
     preset: RotationPreset
-}
+} & ArtifactsArtifactDomains
+
+export type ArtifactRotationSummaryProperties = {
+    characters: Characters
+} & ArtifactsArtifactDomains
 
 export type RotationStorage = {
     active: number

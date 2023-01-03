@@ -1,12 +1,13 @@
 import {Image, Label, List, Popup} from "semantic-ui-react";
 import React from "react";
-import {ArtifactRotationData} from "@/artifacts/types";
+import {ArtifactRotationData, ArtifactsArtifactDomains, ArtifactJsonProperties} from "@/artifacts/types";
 
 type Properties = {
-    data: ArtifactRotationData
+    data: ArtifactsArtifactDomains
     domain: string
     popover: boolean
     showDescription: boolean
+    additionalLabel?: React.ReactNode
 }
 
 type States = {}
@@ -15,21 +16,22 @@ export default class ArtifactDomain extends React.Component<Properties, States> 
     public static defaultProps = {
         popover: false,
         showDescription: false,
+        additionalLabel: null,
     };
 
     render() {
         const {
             artifacts,
-            artifactDomains,
+            domains,
         } = this.props.data
 
-        if (artifactDomains[this.props.domain] === undefined) {
+        if (domains[this.props.domain] === undefined) {
             return <></>
         }
 
         return (
             <List>
-                {this.props.popover && artifactDomains[this.props.domain].artifacts.map((artifact, k) =>
+                {this.props.popover && domains[this.props.domain].artifacts.map((artifact, k) =>
                     <List.Item key={k}>
                         <Popup
                             trigger={
@@ -65,7 +67,7 @@ export default class ArtifactDomain extends React.Component<Properties, States> 
                     </List.Item>
                 )}
 
-                {!this.props.popover && artifactDomains[this.props.domain].artifacts.map((artifact, k) =>
+                {!this.props.popover && domains[this.props.domain].artifacts.map((artifact, k) =>
                     <React.Fragment key={k}>
                         <List.Item>
                             <div>
@@ -86,7 +88,8 @@ export default class ArtifactDomain extends React.Component<Properties, States> 
                     </React.Fragment>
                 )}
                 <List.Item>
-                    <Label basic>{artifactDomains[this.props.domain].name}</Label>
+                    <Label basic style={{marginBottom: '.5em'}}>{domains[this.props.domain].name}</Label>
+                    {this.props.additionalLabel}
                 </List.Item>
             </List>
         )
