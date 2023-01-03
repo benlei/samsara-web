@@ -2,13 +2,18 @@ import {Accordion, AccordionTitleProps, Container, Icon, Image, Table} from "sem
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import AddEditRotation from "@/components/artifacts/rotations/AddEditRotation";
 import React from "react";
-import {ArtifactRotationData, ListManager, Rotation} from "@/artifacts/types";
+import {ArtifactRotationData, ListManager, Rotation, RotationPreset} from "@/artifacts/types";
+import {DefaultFixedDays} from "@/artifacts/presets";
 
 type Property = {
     data: ArtifactRotationData
     manager: ListManager<Rotation>
     activeIndex: number
     setActiveIndex: (activeIndex: number) => any
+}
+
+function getDays(preset: RotationPreset, rotation: Rotation): number {
+    return preset.fixed ? preset.fixedDays : (rotation.days ?? DefaultFixedDays)
 }
 
 export function ArtifactTable(
@@ -25,6 +30,7 @@ export function ArtifactTable(
 
         setActiveIndex(newIndex as number)
     }
+
 
     return (
         <Container style={{marginTop: '2em'}} className={'artifact-rotations'}>
@@ -60,8 +66,10 @@ export function ArtifactTable(
                                     <Container fluid
                                                className={'grey'}>
                                         <p>
-                                            <strong>{r.days ?? data.preset.fixedDays}</strong> Rotation
-                                            Day{(r.days ?? data.preset.fixedDays) !== 1 && 's'}
+                                            <strong>
+                                                {getDays(data.preset, r)}
+                                            </strong> Rotation
+                                            Day{getDays(data.preset, r) !== 1 && 's'}
                                         </p>
                                         {r.note.split("\n").map((note, k) =>
                                             <p key={k}>{note}</p>

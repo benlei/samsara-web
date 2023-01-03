@@ -4,6 +4,7 @@ import AddEditPresetSubmit from "@/components/artifacts/presets/AddEditPresetSub
 import {ListManager, RotationPreset, RotationStorage} from "@/artifacts/types";
 import _ from "lodash";
 import NumberRangeInput from "@/components/NumberRangeInput";
+import {calculateDateForRotation, getRotationIndexAndDay} from "@/artifacts/presets";
 
 type Properties = {
     index: number
@@ -26,6 +27,12 @@ export default function AddEditPresetConfig(props: Properties) {
     function handleFixedDaysChanged(num: number) {
         const newPreset = _.cloneDeep<RotationPreset>(props.preparedPreset)
         newPreset.fixedDays = num
+
+        if (props.preparedPreset.fixed) {
+            const pre = getRotationIndexAndDay(props.preparedPreset, new Date())
+            newPreset.date = calculateDateForRotation(newPreset, pre.index, Math.min(num, pre.day), new Date())
+        }
+
         props.setPreparedPreset(newPreset)
     }
 

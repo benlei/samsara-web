@@ -32,7 +32,7 @@ function getDays(preset: RotationPreset, index: number): number {
         return preset.fixedDays
     }
 
-    return preset.rotations[index].days ?? 1
+    return preset.rotations[index].days ?? DefaultFixedDays
 }
 
 export function getRotationIndexAndDay(preset: RotationPreset, endDate: Date): { index: number, day: number } {

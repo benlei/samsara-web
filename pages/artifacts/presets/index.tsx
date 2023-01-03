@@ -5,6 +5,7 @@ import {V1StorageKey} from "@/artifacts/presets";
 import ArtifactRotationPresets from "@/components/artifacts/ArtifactRotationPresets";
 import _ from "lodash";
 import {v4} from "uuid";
+import Stale from "@/components/Stale";
 
 
 export default function ManageArtifactRotationPresets({}) {
@@ -14,37 +15,31 @@ export default function ManageArtifactRotationPresets({}) {
         presets: []
     })
 
+    const [stale, setStale] = useState(false)
+
 
     useEffect(() => {
-        function loadRotationStorage() {
-            try {
-                const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "null")
+        try {
+            const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "null")
 
-                if (_.isNil(rotationStorage?.active)) {
-                    return
-                }
-
-                if (rotationStorage.cacheId != storage.cacheId) {
-                    setStorage((oldStorage) => rotationStorage)
-                }
-            } catch (ignore) {
-
+            if (_.isNil(rotationStorage?.active)) {
+                return
             }
+
+            if (rotationStorage.cacheId != storage.cacheId) {
+                setStorage((oldStorage) => rotationStorage)
+            }
+        } catch (ignore) {
+
         }
-
-        loadRotationStorage()
-
-        const interval = setInterval(() => loadRotationStorage(), 1000);
-
-        return () => clearInterval(interval);
     }, [storage])
 
     function setStorageAndCommit(newStorage: RotationStorage) {
         try {
             const rotationStorage: RotationStorage | null = JSON.parse(localStorage.getItem(V1StorageKey) || "null")
 
-            // how'd u get in here? ;)
             if (storage.cacheId != '' && rotationStorage?.cacheId != storage.cacheId) {
+                setStale(true)
                 return
             }
         } catch (ignore) {
@@ -61,10 +56,14 @@ export default function ManageArtifactRotationPresets({}) {
                 <title>Presets for Artifact Rotations - Samsara</title>
             </Head>
 
-            <ArtifactRotationPresets
-                storage={storage}
-                setStorage={setStorageAndCommit}
-            />
+            {stale ? (
+                <Stale/>
+            ) : (
+                <ArtifactRotationPresets
+                    storage={storage}
+                    setStorage={setStorageAndCommit}
+                />
+            )}
         </>
     )
 }

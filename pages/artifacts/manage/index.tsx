@@ -23,6 +23,7 @@ import {ArtifactTable} from "@/components/artifacts/ArtifactTable";
 import ClonedList from "@/artifacts/list";
 import {v4} from "uuid";
 import _ from "lodash";
+import Stale from "@/components/Stale";
 
 
 type Properties = {
@@ -33,7 +34,8 @@ type Properties = {
 type States = {
     activeIndex: number
     cacheId: string
-    intervalId: any
+    stale: boolean
+    // intervalId: any
 } & RotationPreset
 
 export async function getStaticProps() {
@@ -57,11 +59,12 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             rotations: [],
             name: 'default',
             cacheId: '',
-            intervalId: 0,
+            stale: false,
+            // intervalId: 0,
         }
     }
 
-    loadRotationStorage = () => {
+    componentDidMount = () => {
         try {
             const storage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
 
@@ -81,20 +84,8 @@ export default class ManageArtifactRotations extends React.Component<Properties,
         } catch (ignore) {
 
         }
-
     }
 
-    componentDidMount = () => {
-        this.loadRotationStorage()
-
-        this.setState({
-            intervalId: setInterval(() => this.loadRotationStorage(), 1000)
-        })
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.state.intervalId)
-    }
 
     commit = () => {
         const data: RotationPreset = {
@@ -106,6 +97,13 @@ export default class ManageArtifactRotations extends React.Component<Properties,
         }
 
         const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
+        if (!_.isNil(rotationStorage.presets) && this.state.cacheId != rotationStorage.cacheId) {
+            this.setState({
+                stale: true,
+            })
+            return;
+        }
+
         if (!rotationStorage.presets?.length) {
             const preset = getBasePreparedReset('default', dateAsString(new Date()))
             const store: RotationStorage = {
@@ -126,12 +124,6 @@ export default class ManageArtifactRotations extends React.Component<Properties,
         // reset rotation to today; it's a new single entry!
         if (rotationStorage.presets[rotationStorage.active].rotations.length === 0 && data.rotations.length === 1) {
             data.date = dateAsString(new Date())
-        }
-        console.log(data)
-
-        if (rotationStorage.cacheId != this.state.cacheId) {
-            console.log("How'd you get here? :)")
-            return
         }
 
         rotationStorage.cacheId = v4()
@@ -208,6 +200,8 @@ export default class ManageArtifactRotations extends React.Component<Properties,
                 this.setState({
                     date: calculateDateForRotation(this.state, pre.index + 1, pre.day, new Date())
                 }, this.commit)
+            } else {
+                this.commit()
             }
         })
     }
@@ -227,6 +221,8 @@ export default class ManageArtifactRotations extends React.Component<Properties,
                 this.setState({
                     date: calculateDateForRotation(this.state, pre.index - 1, pre.day, new Date())
                 }, this.commit)
+            } else {
+                this.commit()
             }
         })
     }
@@ -258,8 +254,12 @@ export default class ManageArtifactRotations extends React.Component<Properties,
                     <title>Manage Artifact Rotation - Samsara</title>
                 </Head>
 
-                <ArtifactTable data={data} manager={manager} activeIndex={this.state.activeIndex}
-                               setActiveIndex={this.setActiveIndex}/>
+                {this.state.stale ? (
+                    <Stale/>
+                ) : (
+                    <ArtifactTable data={data} manager={manager} activeIndex={this.state.activeIndex}
+                                   setActiveIndex={this.setActiveIndex}/>
+                )}
             </>
         )
     }
