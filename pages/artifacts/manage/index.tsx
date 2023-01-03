@@ -36,7 +36,6 @@ type States = {
     activeIndex: number
     cacheId: string
     stale: boolean
-    // intervalId: any
 } & RotationPreset
 
 export async function getStaticProps() {
@@ -61,7 +60,6 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             name: 'default',
             cacheId: '',
             stale: false,
-            // intervalId: 0,
         }
     }
 
