@@ -43,8 +43,18 @@ export default function ArtifactRotationPresets(
             setAccordianIndex(newActiveIndex ?? index)
         },
         move(oldIndex: number, newIndex: number, newActiveIndex?: number) {
+            let active = storage.active
+
+            if (active == oldIndex) {
+                active = newIndex
+            } else if (oldIndex < newIndex && active > oldIndex && active <= newIndex) {
+                active--
+            } else if (newIndex < oldIndex && active >= newIndex && active < oldIndex) {
+                active++
+            }
+
             setStorage({
-                active: newIndex,
+                active,
                 presets: ClonedList.move(storage.presets, oldIndex, newIndex),
             })
 

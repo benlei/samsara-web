@@ -1,6 +1,7 @@
 import {Button, Form, Icon, Popup} from "semantic-ui-react";
 import React from "react";
-import {ListManager, RotationPreset} from "@/artifacts/types";
+import {ListManager, RotationPreset, RotationStorage} from "@/artifacts/types";
+import NumberRangeInputWithIcon from "@/components/NumberRangeInputWithIcon";
 
 type Properties = {
     addClicked: () => any
@@ -9,6 +10,7 @@ type Properties = {
     manager: ListManager<RotationPreset>
     setActiveStorage: (index: number) => void
     closeAccordion: () => void
+    storage: RotationStorage
 }
 export default function AddEditPresetPrompt(
     {
@@ -18,6 +20,7 @@ export default function AddEditPresetPrompt(
         manager,
         setActiveStorage,
         closeAccordion,
+        storage,
     }: Properties
 ) {
     return (
@@ -60,15 +63,14 @@ export default function AddEditPresetPrompt(
                            } pinned position={'bottom left'}>
                         <Form>
                             <Form.Field>
-                                Hi
-                                {/*<NumberRangeInput*/}
-                                {/*    min={1}*/}
-                                {/*    max={this.props.data.data.length}*/}
-                                {/*    defaultValue={this.props.index + 1}*/}
-                                {/*    color={'teal'}*/}
-                                {/*    icon={'exchange'}*/}
-                                {/*    onSubmit={this.props.onMoveClicked}*/}
-                                {/*/>*/}
+                                <NumberRangeInputWithIcon
+                                    min={1}
+                                    max={storage.presets.length}
+                                    defaultValue={index + 1}
+                                    color={'teal'}
+                                    icon={'exchange'}
+                                    onSubmit={(position: number) => manager.move(index, position - 1)}
+                                />
                             </Form.Field>
                         </Form>
                     </Popup>
@@ -86,10 +88,10 @@ export default function AddEditPresetPrompt(
                         <Form>
                             <Form.Field>
                                 <Form.Button
-                                    label={'Are you sure? This change will be irreversible!'}
-                                    content={'Yes, Delete # 1'} color={'red'} icon='delete'
+                                    label={'Are you sure? This change will be irreversible!' + (index === storage.active ? ' After deleting this preset, the next immediate first preset will be swapped to, if possible.' : '')}
+                                    content={'Yes, Delete #' + (index + 1)} color={'red'} icon='delete'
                                     labelPosition='left'
-                                    // onClick={this.props.onDeleteClicked}
+                                    onClick={() => manager.delete(index)}
                                 />
                             </Form.Field>
                         </Form>

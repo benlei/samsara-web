@@ -89,6 +89,11 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             return
         }
 
+        // reset rotation to today; it's a new single entry!
+        if (rotationStorage.presets[rotationStorage.active].rotations.length === 0 && data.rotations.length === 1) {
+            data.date = dateAsString(new Date())
+        }
+
         rotationStorage.presets[rotationStorage.active] = data
         localStorage.setItem(V1StorageKey, JSON.stringify(rotationStorage))
     }

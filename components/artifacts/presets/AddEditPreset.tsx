@@ -58,6 +58,7 @@ export function AddEditPreset(
         <>
             {phase == AddEditPresetPhase.Prompt &&
                 <AddEditPresetPrompt
+                    storage={storage}
                     index={index}
                     addClicked={addClicked}
                     editClicked={editClicked}
