@@ -1,5 +1,6 @@
 import {Container, Form, Icon, Input, Label, Radio} from "semantic-ui-react";
 import React, {useEffect, useState} from "react";
+import _ from "lodash";
 
 type Properties = {
     sortBy: string
@@ -114,14 +115,13 @@ export default function SummaryOptions(
                 <Form.Field>
                     <Input fluid
                            placeholder={'Filter name...'}
-                           onChange={(event) => setFilterText(event.target.value)}
-                           value={filterText}
+                           onChange={_.debounce((event) => setFilterText(event.target.value), 500)}
+                           // value={filterText}
                            icon>
                         <input/>
                         <Icon name='search'/>
                     </Input>
                 </Form.Field>
-
             </Form>
         </Container>
     )
