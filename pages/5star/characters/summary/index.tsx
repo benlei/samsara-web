@@ -1,9 +1,10 @@
-import {Container, Image, Label, Progress, Table} from "semantic-ui-react";
+import {Container, Image, Label, LabelProps, Progress, Table} from "semantic-ui-react";
 import {BannerSummary, getResourceSummaries} from "@/banners/summary";
 import getVersionParts from "@/banners/version";
 import _ from "lodash";
 import dayjs from "dayjs";
 import React from "react";
+import {ProgressProps} from "semantic-ui-react/dist/commonjs/modules/Progress/Progress";
 
 export async function getStaticProps() {
     return {
@@ -31,10 +32,42 @@ export default function FiveStarBannerSummary(props: { banners: { [name: string]
 
     /**
      * TODO (SEE BELOW)
-     * - perhaps have the ability to select what data (labels) you want to see (default days since last patch)
      * - still need to be able to change what to sort by + direction
      * - still need to be able to filter by name.
      */
+    function getProgressPropsByPercent(p: number): ProgressProps {
+        const result: ProgressProps = {
+            percent: p,
+        }
+
+        if (p >= 50) {
+            result.color = 'grey'
+        } else if (p >= 15) {
+            result.color = 'black'
+            result.disabled = true
+        } else {
+            result.color = 'grey'
+            result.disabled = true
+        }
+
+        return result
+    }
+
+    function getLabelPropsByPercent(p: number): LabelProps {
+        const result: LabelProps = {}
+
+        if (p >= 50) {
+            result.color = 'grey'
+        } else if (p >= 15) {
+            result.color = 'black'
+            result.className = 'disabled'
+        } else {
+            result.color = 'grey'
+            result.className = 'disabled'
+        }
+
+        return result
+    }
 
     return (
         <Container text style={{marginTop: '2em'}} textAlign={"center"}>
@@ -49,42 +82,14 @@ export default function FiveStarBannerSummary(props: { banners: { [name: string]
                                 <p>{s.name}</p>
                             </Table.Cell>
                             <Table.Cell verticalAlign={'top'}>
-                                <Progress percent={100 * s.daysSinceLastRun / maxVal}
-                                          size={'small'} color={'black'} disabled/>
+                                <Progress
+                                    {...getProgressPropsByPercent(100 * s.daysSinceLastRun / maxVal)}
+                                    size={'small'}/>
 
-                                {/*{s.avgDaysInterval != -1 &&*/}
-                                {/*    <Label basic>*/}
-                                {/*        {s.avgDaysInterval}*/}
-                                {/*        <Label.Detail>days (avg)</Label.Detail>*/}
-                                {/*    </Label>*/}
-                                {/*}*/}
-
-                                <Label basic color={'grey'}>
+                                <Label basic {...getLabelPropsByPercent(100 * s.daysSinceLastRun / maxVal)}>
                                     {s.daysSinceLastRun}
                                     <Label.Detail>days ago</Label.Detail>
                                 </Label>
-                                {/*<Label basic>*/}
-                                {/*    {s.bannersSinceLastRun}*/}
-                                {/*    <Label.Detail>Banners</Label.Detail>*/}
-                                {/*</Label>*/}
-                                {/*<Label basic>*/}
-                                {/*    {s.patchesSinceLastRun}*/}
-                                {/*    <Label.Detail>Patches</Label.Detail>*/}
-                                {/*</Label>*/}
-
-                                {/*{s.avgBannerGapInterval != -1 &&*/}
-                                {/*    <Label basic>*/}
-                                {/*        {s.avgBannerGapInterval}*/}
-                                {/*        <Label.Detail>Banners</Label.Detail>*/}
-                                {/*    </Label>*/}
-                                {/*}*/}
-
-                                {/*{s.avgPatchGapInterval != -1 &&*/}
-                                {/*    <Label basic>*/}
-                                {/*        {s.avgPatchGapInterval}*/}
-                                {/*        <Label.Detail>Patches</Label.Detail>*/}
-                                {/*    </Label>*/}
-                                {/*}*/}
                             </Table.Cell>
                         </Table.Row>
                     )}

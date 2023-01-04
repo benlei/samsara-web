@@ -107,7 +107,7 @@ img.active {
 }
 .summary .progress {
     margin-top: .5rem !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: .6rem !important;
 }
 
 .summary td:first-of-type {
