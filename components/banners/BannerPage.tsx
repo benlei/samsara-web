@@ -17,10 +17,10 @@ type Properties = {
 }
 
 type States = {
-    limitedOnly: boolean | null
-    sortBy: string | null
-    order: string | null
-    expand: boolean | null
+    limitedOnly: boolean
+    sortBy: string
+    order: string
+    expand: boolean
     ssr: boolean
 }
 
@@ -31,10 +31,10 @@ export default class BannerPage extends React.Component<Properties, States> {
         super(props);
 
         this.state = {
-            limitedOnly: null,
-            sortBy: null,
-            order: null,
-            expand: null,
+            limitedOnly: true,
+            sortBy: 'last',
+            order: 'desc',
+            expand: false,
             ssr: true,
         }
 

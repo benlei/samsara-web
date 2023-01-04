@@ -19,9 +19,9 @@ export type Rundown = {
 
 
 export type BannerFilterSortOptions = {
-    limitedOnly: boolean | null | undefined
-    sortBy: string | null
-    order: string | null
+    limitedOnly: boolean
+    sortBy: string
+    order: string
 }
 
 export type BannerOptionSetters = {

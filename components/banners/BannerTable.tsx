@@ -56,7 +56,7 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
     }
 
     isLimitedFilter = (r: Rundown) => {
-        if (this.props.limitedOnly !== true || typeof this.props.standards === 'undefined') {
+        if (!this.props.limitedOnly || typeof this.props.standards === 'undefined') {
             return true
         }
 

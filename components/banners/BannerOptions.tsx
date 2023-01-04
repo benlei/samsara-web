@@ -4,13 +4,24 @@ import {BannerFilterSortOptions, BannerOptionSetters} from "@/banners/types";
 
 type Properties = {
     showLimitedOnly: boolean
-    expand: boolean | null
+    expand: boolean
     setExpand: Dispatch<SetStateAction<any>>
 } & BannerFilterSortOptions & BannerOptionSetters
 
-type States = {}
+type States = {
+    ssr: boolean
+}
 
 export default class BannerOptions extends React.Component<Properties, States> {
+
+    constructor(props: Readonly<Properties> | Properties) {
+        super(props);
+
+        this.state = {
+            ssr: true
+        }
+    }
+
     handleSortByChange = (event: React.FormEvent<HTMLInputElement>, {value}: CheckboxProps) => this.props.setSortBy(String(value))
     flipOrder = () => this.props.setOrder(this.props.order == 'desc' ? 'asc' : 'desc')
 
@@ -18,10 +29,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
     handleExpand = () => this.props.setExpand(!this.props.expand)
 
     componentDidMount = () => {
-        this.props.setSortBy('last');
-        this.props.setOrder('desc');
-        this.props.setLimitedOnly(true);
-        this.props.setExpand(false);
+        this.setState({ssr: false})
     }
 
     getOrderElement = () => {
@@ -37,6 +45,10 @@ export default class BannerOptions extends React.Component<Properties, States> {
     }
 
     render() {
+        if (this.state.ssr) {
+            return null
+        }
+
         return <>
             <Form>
                 <Form.Field>
@@ -83,7 +95,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
                     <Form.Field>
                         <Radio toggle label='Expand'
                                onChange={this.handleExpand}
-                               checked={this.props.expand ?? false}
+                               checked={this.props.expand}
                         />
                     </Form.Field>
 
@@ -91,7 +103,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
                         <Form.Field>
                             <Radio toggle label='Hide Standard Characters'
                                    onChange={this.handleChangeLimitedOnly}
-                                   checked={!!this.props.limitedOnly}
+                                   checked={this.props.limitedOnly}
                             />
                         </Form.Field>
                     )}
