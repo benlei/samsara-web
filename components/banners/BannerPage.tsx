@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Loader} from "semantic-ui-react";
+import {Container} from "semantic-ui-react";
 import BannerOptions from "@/components/banners/BannerOptions";
 import BannerTable from "@/components/banners/BannerTable";
 import getVersionParts from "@/banners/version";
@@ -21,7 +21,6 @@ type States = {
     sortBy: string
     order: string
     expand: boolean
-    ssr: boolean
 }
 
 export default class BannerPage extends React.Component<Properties, States> {
@@ -35,23 +34,12 @@ export default class BannerPage extends React.Component<Properties, States> {
             sortBy: 'last',
             order: 'desc',
             expand: false,
-            ssr: true,
         }
 
         this.componentRef = React.createRef()
     }
 
-
-    componentDidMount=() => this.setState({ssr: false})
-
     render() {
-        // the html page is huge (+100kb)
-        if (this.state.ssr) {
-            return (
-                <Loader active inline='centered' style={{marginTop: '2em'}} />
-            )
-        }
-
         const {
             banners,
             bannerType,
@@ -87,22 +75,23 @@ export default class BannerPage extends React.Component<Properties, States> {
             <>
                 <Container style={{marginTop: '2em'}}>
                     <BannerOptions showLimitedOnly={showLimitedOnly} limitedOnly={limitedOnly}
-                                            setLimitedOnly={setLimitedOnly}
-                                            order={order} setOrder={setOrder}
-                                            sortBy={sortBy} setSortBy={setSortBy}
-                                            expand={expand} setExpand={setExpand}
+                                   setLimitedOnly={setLimitedOnly}
+                                   order={order} setOrder={setOrder}
+                                   sortBy={sortBy} setSortBy={setSortBy}
+                                   expand={expand} setExpand={setExpand}
                     />
                 </Container>
-                <Container style={{overflowX: 'scroll', ...getBannerContainerStyle(expand ?? false)}} fluid={expand ?? false}>
+                <Container style={{overflowX: 'scroll', ...getBannerContainerStyle(expand ?? false)}}
+                           fluid={expand ?? false}>
                     <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
                         <BannerTable bannerType={bannerType}
-                                              versionParts={getVersionParts(banners)}
-                                              rundown={getRundowns(banners)}
-                                              limitedOnly={limitedOnly}
-                                              order={order}
-                                              sortBy={sortBy}
-                                              standards={standards}
-                                              ref={this.componentRef}
+                                     versionParts={getVersionParts(banners)}
+                                     rundown={getRundowns(banners)}
+                                     limitedOnly={limitedOnly}
+                                     order={order}
+                                     sortBy={sortBy}
+                                     standards={standards}
+                                     ref={this.componentRef}
 
                         />
                     </ScrollContainer>
