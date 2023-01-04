@@ -32,18 +32,6 @@ export default class BannerOptions extends React.Component<Properties, States> {
         this.setState({ssr: false})
     }
 
-    getOrderElement = () => {
-        if (this.props.order == 'asc') {
-            return <>
-                <Icon name={'sort amount up'} size={'small'}/> Ascending
-            </>
-        }
-
-        return <>
-            <Icon name={'sort amount down'} size={'small'}/> Descending
-        </>
-    }
-
     render() {
         if (this.state.ssr) {
             return null
@@ -85,7 +73,15 @@ export default class BannerOptions extends React.Component<Properties, States> {
                             onChange={this.handleSortByChange}
                         />
                         <Label onClick={this.flipOrder} className={'button'}>
-                            {this.getOrderElement()}
+                            {this.props.order === 'asc' ? (
+                                <>
+                                    <Icon name={'sort amount up'} size={'small'}/> Ascending
+                                </>
+                            ) : (
+                                <>
+                                    <Icon name={'sort amount down'} size={'small'}/> Descending
+                                </>
+                            )}
                         </Label>
                     </Form.Group>
                 </Form.Field>

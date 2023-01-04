@@ -1,17 +1,17 @@
 import {Container, Image, Label, LabelProps, Progress, Table} from "semantic-ui-react";
 import React from "react";
 import _ from "lodash";
-import {BannerSummary, getResourceSummaries} from "@/banners/summary";
+import {BannerSummary, getResourceSummaries, ResourceSummary} from "@/banners/summary";
 import dayjs from "dayjs";
 import {VersionParts} from "@/banners/types";
 import {ProgressProps} from "semantic-ui-react/dist/commonjs/modules/Progress/Progress";
 
 type Properties = {
     versionParts: VersionParts[]
-    banners:  { [name: string]: BannerSummary }
+    banners: { [name: string]: BannerSummary }
     type: string
     sortBy: string
-    order: string,
+    order: 'asc' | 'desc' | boolean,
     limitedOnly: boolean
     standard?: string[]
 }
@@ -63,12 +63,57 @@ export default function SummaryTable(
 
     }: Properties
 ) {
+    function getField(b: ResourceSummary): number {
+        switch (sortBy) {
+            default:
+            case 'last-day':
+                return b.daysSinceLastRun
+            case 'last-banner':
+                return b.bannersSinceLastRun
+            case 'last-patch':
+                return b.patchesSinceLastRun
+            case 'avg-days':
+                return b.avgDaysInterval
+            case 'avg-banner':
+                return b.avgBannerGapInterval
+            case 'avg-patch':
+                return b.avgPatchGapInterval
+            case 'runs':
+                return b.runs
+        }
+    }
+
+    function getFieldHumanName(b: ResourceSummary, count: number): string {
+        switch (sortBy) {
+            default:
+            case 'last-day':
+                return 'day' + (count === 1 ? '' : 's') + ' ago'
+            case 'last-banner':
+                return 'banner' + (count == 1 ? '' : 's') + ' ago'
+            case 'last-patch':
+                return 'patch' + (count === 1 ? '' : 'es') + ' ago'
+            case 'avg-days':
+                return 'avg. days'
+            case 'avg-banner':
+                return 'avg. banners'
+            case 'avg-patch':
+                return 'avg. patches'
+            case 'runs':
+                return 'run' + (count === 1 ? '' : 's')
+        }
+    }
+
     const summary = _.chain(getResourceSummaries(versionParts, banners, dayjs()))
-        .filter((b) => b.name != 'Keqing' && b.name != 'Tighnari')
-        .orderBy((b) => b.daysSinceLastRun, 'desc')
+        .filter((b) => !limitedOnly || !standard!.includes(b.name))
+        .filter((b) => !sortBy.startsWith('avg') || getField(b) > 0)
+        .orderBy([
+            (b) => getField(b),
+            (b) => sortBy.startsWith('avg') ? b.runs : b.name,
+            (b) => b.name,
+        ], order)
         .value()
 
-    const maxVal = summary[0].daysSinceLastRun
+    const maxVal = getField(summary[order == 'desc' ? 0 : summary.length - 1])
 
     return (
         <Container text style={{marginTop: '2em'}} textAlign={"center"}>
@@ -78,18 +123,27 @@ export default function SummaryTable(
                         <Table.Row key={k}>
                             <Table.Cell verticalAlign={'top'}>
                                 <Image avatar
-                                       src={`/images/weapons/${s.image}.png`}
+                                       src={`/images/${type}/${s.image}.png`}
                                        alt={s.image}/>
                                 <p>{s.name}</p>
                             </Table.Cell>
                             <Table.Cell verticalAlign={'top'}>
                                 <Progress
-                                    {...getProgressPropsByPercent(100 * s.daysSinceLastRun / maxVal)}
+                                    {...getProgressPropsByPercent(100 * Math.max(0, getField(s)) / Math.max(1, maxVal))}
                                     size={'small'}/>
 
-                                <Label basic {...getLabelPropsByPercent(100 * s.daysSinceLastRun / maxVal)}>
-                                    {s.daysSinceLastRun}
-                                    <Label.Detail>days ago</Label.Detail>
+                                {sortBy.startsWith('avg') &&
+                                    <Label
+                                        basic {...getLabelPropsByPercent(100 * Math.max(0, getField(s)) / Math.max(1, maxVal))}>
+                                        {s.runs}
+                                        <Label.Detail>run{s.runs === 1 ? '' : 's'}</Label.Detail>
+                                    </Label>
+                                }
+
+                                <Label
+                                    basic {...getLabelPropsByPercent(100 * Math.max(0, getField(s)) / Math.max(1, maxVal))}>
+                                    {Math.max(0, getField(s))}
+                                    <Label.Detail>{getFieldHumanName(s, Math.max(0, getField(s)))}</Label.Detail>
                                 </Label>
                             </Table.Cell>
                         </Table.Row>

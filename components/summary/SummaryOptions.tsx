@@ -57,6 +57,12 @@ export default function SummaryOptions(
                     </Form.Group>
                     <Form.Group widths='equal' inline>
                         <Form.Radio
+                            label='Avg.# of Days in Between'
+                            value='avg-days'
+                            checked={sortBy === 'avg-days'}
+                            onChange={() => setSortBy('avg-days')}
+                        />
+                        <Form.Radio
                             label='Avg. # of Banners in Between'
                             value='avg-banner'
                             checked={sortBy === 'avg-banner'}
@@ -68,11 +74,13 @@ export default function SummaryOptions(
                             checked={sortBy === 'avg-patch'}
                             onChange={() => setSortBy('avg-patch')}
                         />
+                    </Form.Group>
+                    <Form.Group widths='equal' inline>
                         <Form.Radio
-                            label='Avg.# of Days in Between'
-                            value='avg-days'
-                            checked={sortBy === 'avg-days'}
-                            onChange={() => setSortBy('avg-days')}
+                            label='Total Runs'
+                            value='runs'
+                            checked={sortBy === 'runs'}
+                            onChange={() => setSortBy('runs')}
                         />
                     </Form.Group>
                 </Form.Field>

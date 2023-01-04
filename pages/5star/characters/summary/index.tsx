@@ -8,7 +8,7 @@ import SummaryTable from "@/components/summary/SummaryTable";
 export async function getStaticProps() {
     return {
         props: {
-            banners: require('@/data/bannersSummary.json').weapons['5']
+            banners: require('@/data/bannersSummary.json').characters['5']
         },
     };
 }
@@ -41,7 +41,7 @@ export default function FiveStarCharacterSummary(props: { banners: { [name: stri
             />
 
             <SummaryTable
-                sortBy={sortBy} order={order} limitedOnly={limitedOnly}
+                sortBy={sortBy} order={order as 'desc' | 'asc'} limitedOnly={limitedOnly}
                 type={'characters'} banners={props.banners} versionParts={versionParts}
                 standard={['Keqing', 'Tighnari']}
             />

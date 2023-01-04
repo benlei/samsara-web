@@ -64,10 +64,27 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
     }
 
     sortByName = (r: Rundown) => r.name
-    sortByRunsLastPatch = (r: Rundown) => String(r.banners.length) + ' ' + r.banners[r.banners.length - 1] + ' ' + r.name
-    sortByRunsFirstPatch = (r: Rundown) => String(r.banners.length) + ' ' + r.banners[0] + ' ' + r.name
-    sortByFirst = (r: Rundown) => r.banners[0] + r.name
-    sortByLast = (r: Rundown) => r.banners[r.banners.length - 1] + r.name
+    sortByRunsLastPatch = [
+        (r: Rundown) => String(r.banners.length),
+        (r: Rundown) => r.banners[r.banners.length - 1],
+        this.sortByName,
+    ]
+
+    sortByRunsFirstPatch = [
+        (r: Rundown) => String(r.banners.length),
+        (r: Rundown) => r.banners[0],
+        this.sortByName,
+    ]
+
+    sortByFirst = [
+        (r: Rundown) => r.banners[0],
+        this.sortByName,
+    ]
+
+    sortByLast = [
+        (r: Rundown) => r.banners[r.banners.length - 1],
+        this.sortByName,
+    ]
 
     getSortFunction = () => {
         switch (this.props.sortBy) {
@@ -108,8 +125,8 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
                     />
                     <Table.Body>
                         {rundown.map((r, rI) => <BannerRow key={rI}
-                                                                    bannerType={bannerType}
-                                                                    rundown={r}
+                                                           bannerType={bannerType}
+                                                           rundown={r}
                             />
                         )}
                     </Table.Body>
