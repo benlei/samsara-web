@@ -1,4 +1,4 @@
-import {Container, Form, Icon, Label, Radio} from "semantic-ui-react";
+import {Container, Form, Icon, Input, Label, Radio} from "semantic-ui-react";
 import React, {useEffect, useState} from "react";
 
 type Properties = {
@@ -9,6 +9,8 @@ type Properties = {
     limitedOnly: boolean
     setLimitedOnly: (limitedOnly: boolean) => any
     showLimitedOnly?: boolean
+    filterText: string
+    setFilterText: (text: string) => any
 }
 
 export default function SummaryOptions(
@@ -20,6 +22,8 @@ export default function SummaryOptions(
         setOrder,
         setLimitedOnly,
         showLimitedOnly = false,
+        filterText,
+        setFilterText,
     }: Properties
 ) {
     const [ssr, setSsr] = useState(true)
@@ -106,6 +110,17 @@ export default function SummaryOptions(
                         </Form.Field>
                     )}
                 </Form.Group>
+
+                <Form.Field>
+                    <Input fluid
+                           placeholder={'Filter name...'}
+                           onChange={(event) => setFilterText(event.target.value)}
+                           value={filterText}
+                           icon>
+                        <input/>
+                        <Icon name='search'/>
+                    </Input>
+                </Form.Field>
 
             </Form>
         </Container>

@@ -1,5 +1,5 @@
 import React from "react";
-import {BannerFilterSortOptions, Rundown, VersionParts} from "@/banners/types";
+import {BannerFilterSortOptions, ResourceBanner, VersionParts} from "@/banners/types";
 import {Table} from "semantic-ui-react";
 import _ from "lodash";
 import BannerHeader from "@/components/banners/BannerHeader";
@@ -10,7 +10,7 @@ import BannerRow from "@/components/banners/BannerRow";
 type BannerRundownProps = {
     bannerType: string
     versionParts: VersionParts[]
-    rundown: Rundown[]
+    rundown: ResourceBanner[]
     standards?: string[]
 } & BannerFilterSortOptions
 
@@ -27,11 +27,11 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
     }
 
     private getFilteredRundown(filterText: string) {
-        let filterFunc = (r: Rundown) => r.name.toLowerCase().includes(filterText!.toLowerCase())
+        let filterFunc = (r: ResourceBanner) => r.name.toLowerCase().includes(filterText!.toLowerCase())
         if (filterText.startsWith('/') && filterText.endsWith('/')) {
             try {
                 const re = new RegExp(filterText.substring(1, filterText.length - 1), 'i')
-                filterFunc = (r: Rundown) => re.test(r.name)
+                filterFunc = (r: ResourceBanner) => re.test(r.name)
             } catch (ignore) {
 
             }
@@ -55,7 +55,7 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
         this.setState({filterText: ''});
     }
 
-    isLimitedFilter = (r: Rundown) => {
+    isLimitedFilter = (r: ResourceBanner) => {
         if (!this.props.limitedOnly || typeof this.props.standards === 'undefined') {
             return true
         }
@@ -63,26 +63,26 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
         return !this.props.standards!.includes(r.name)
     }
 
-    sortByName = (r: Rundown) => r.name
+    sortByName = (r: ResourceBanner) => r.name
     sortByRunsLastPatch = [
-        (r: Rundown) => String(r.banners.length),
-        (r: Rundown) => r.banners[r.banners.length - 1],
+        (r: ResourceBanner) => String(r.banners.length),
+        (r: ResourceBanner) => r.banners[r.banners.length - 1],
         this.sortByName,
     ]
 
     sortByRunsFirstPatch = [
-        (r: Rundown) => String(r.banners.length),
-        (r: Rundown) => r.banners[0],
+        (r: ResourceBanner) => String(r.banners.length),
+        (r: ResourceBanner) => r.banners[0],
         this.sortByName,
     ]
 
     sortByFirst = [
-        (r: Rundown) => r.banners[0],
+        (r: ResourceBanner) => r.banners[0],
         this.sortByName,
     ]
 
     sortByLast = [
-        (r: Rundown) => r.banners[r.banners.length - 1],
+        (r: ResourceBanner) => r.banners[r.banners.length - 1],
         this.sortByName,
     ]
 

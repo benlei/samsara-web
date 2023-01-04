@@ -9,7 +9,7 @@ export type VersionParts = {
     parts: number;
 }
 
-export type Rundown = {
+export type ResourceBanner = {
     name: string;
     image: string;
     runs: number;

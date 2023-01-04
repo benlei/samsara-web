@@ -18,6 +18,7 @@ export default function FiveStarCharacterSummary(props: { banners: { [name: stri
     const [sortBy, setSortBy] = useState('last-day')
     const [order, setOrder] = useState('desc')
     const [limitedOnly, setLimitedOnly] = useState(true)
+    const [filterText, setFilterText] = useState("")
 
     const versionParts = getVersionParts(
         _.chain(props.banners)
@@ -36,12 +37,12 @@ export default function FiveStarCharacterSummary(props: { banners: { [name: stri
     return (
         <>
             <SummaryOptions
-                sortBy={sortBy} order={order} limitedOnly={limitedOnly}
-                setOrder={setOrder} setSortBy={setSortBy} setLimitedOnly={setLimitedOnly}
+                sortBy={sortBy} order={order} limitedOnly={limitedOnly} filterText={filterText}
+                setOrder={setOrder} setSortBy={setSortBy} setLimitedOnly={setLimitedOnly} setFilterText={setFilterText}
             />
 
             <SummaryTable
-                sortBy={sortBy} order={order as 'desc' | 'asc'} limitedOnly={limitedOnly}
+                sortBy={sortBy} order={order as 'desc' | 'asc'} limitedOnly={limitedOnly} filterText={filterText}
                 type={'characters'} banners={props.banners} versionParts={versionParts}
                 standard={['Keqing', 'Tighnari']}
             />

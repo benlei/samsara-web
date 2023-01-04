@@ -7,6 +7,7 @@ import {VersionParts} from "@/banners/types";
 import {ProgressProps} from "semantic-ui-react/dist/commonjs/modules/Progress/Progress";
 
 type Properties = {
+    filterText: string
     versionParts: VersionParts[]
     banners: { [name: string]: BannerSummary }
     type: string
@@ -60,7 +61,7 @@ export default function SummaryTable(
         order,
         limitedOnly,
         standard = [],
-
+        filterText,
     }: Properties
 ) {
     function getField(b: ResourceSummary): number {
@@ -103,7 +104,24 @@ export default function SummaryTable(
         }
     }
 
-    const summary = _.chain(getResourceSummaries(versionParts, banners, dayjs()))
+    function getFilterFunction(): (s: ResourceSummary) => boolean {
+        if (!filterText.trim().length) {
+            return () => true
+        }
+
+        if (filterText.startsWith('/') && filterText.endsWith('/')) {
+            try {
+                const re = new RegExp(filterText.substring(1, filterText.length - 1), 'i')
+                return (s: ResourceSummary) => re.test(s.name)
+            } catch (ignore) {
+
+            }
+        }
+
+        return (s: ResourceSummary) => s.name.toLowerCase().includes(filterText!.toLowerCase())
+    }
+
+    const baseSummary = _.chain(getResourceSummaries(versionParts, banners, dayjs()))
         .filter((b) => !limitedOnly || !standard!.includes(b.name))
         .filter((b) => !sortBy.startsWith('avg') || getField(b) > 0)
         .orderBy([
@@ -113,7 +131,9 @@ export default function SummaryTable(
         ], order)
         .value()
 
-    const maxVal = getField(summary[order == 'desc' ? 0 : summary.length - 1])
+    const filteredSummary = _.filter(baseSummary, getFilterFunction())
+    const summary = filteredSummary.length ? filteredSummary : baseSummary
+    const maxVal = getField(baseSummary[order == 'desc' ? 0 : baseSummary.length - 1])
 
     return (
         <Container text style={{marginTop: '2em'}} textAlign={"center"}>
