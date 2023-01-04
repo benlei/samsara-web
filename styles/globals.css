@@ -98,6 +98,7 @@ button {
 img.active {
     border: 2px solid #21ba45
 }
+
 .accordion .title.active {
     font-weight: 700;
 }
@@ -106,6 +107,7 @@ img.active {
     border: 0 !important;
     /*margin-bottom: .5rem !important;*/
 }
+
 .summary .progress {
     margin-top: .5rem !important;
     margin-bottom: .6rem !important;
@@ -129,4 +131,28 @@ img.active {
 .summary td:not(:first-of-type) {
     text-align: right !important;
     width: 100rem
+}
+
+.dark .bar {
+    background-color: #777 !important;
+}
+
+.dark.label {
+    color: #777 !important;
+}
+
+.normal .bar {
+    background-color: #aaa !important;
+}
+
+.normal.label {
+    color: #aaa !important;
+}
+
+.light .bar {
+    background-color: #ccc !important;
+}
+
+.light.label {
+    color: #ccc !important;
 }

@@ -4,9 +4,9 @@ import BannerOptions from "@/components/banners/BannerOptions";
 import BannerTable from "@/components/banners/BannerTable";
 import getVersionParts from "@/banners/version";
 import {getRundowns} from "@/banners/rundown";
-import BannerDownload from "@/components/banners/BannerDownload";
 import {BannerResource} from "@/banners/types";
 import ScrollContainer from "react-indiana-drag-scroll";
+import PngDownloadButton from "@/components/PngDownloadButton";
 
 type Properties = {
     banners: BannerResource
@@ -96,7 +96,7 @@ export default class BannerPage extends React.Component<Properties, States> {
                     </ScrollContainer>
                 </Container>
                 <Container style={{marginTop: '2em'}}>
-                    <BannerDownload bannerRef={this.componentRef}/>
+                    <PngDownloadButton componentRef={this.componentRef} name={'banner-history'} />
                 </Container>
             </>
         )

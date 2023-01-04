@@ -10,7 +10,6 @@ type Properties = {
     limitedOnly: boolean
     setLimitedOnly: (limitedOnly: boolean) => any
     showLimitedOnly?: boolean
-    filterText: string
     setFilterText: (text: string) => any
 }
 
@@ -23,7 +22,6 @@ export default function SummaryOptions(
         setOrder,
         setLimitedOnly,
         showLimitedOnly = false,
-        filterText,
         setFilterText,
     }: Properties
 ) {

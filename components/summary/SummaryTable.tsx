@@ -1,10 +1,9 @@
-import {Container, Image, Label, LabelProps, Progress, Table} from "semantic-ui-react";
+import {Image, Label, Progress, Table} from "semantic-ui-react";
 import React from "react";
 import _ from "lodash";
 import {BannerSummary, getResourceSummaries, ResourceSummary} from "@/banners/summary";
 import dayjs from "dayjs";
 import {VersionParts} from "@/banners/types";
-import {ProgressProps} from "semantic-ui-react/dist/commonjs/modules/Progress/Progress";
 
 type Properties = {
     filterText: string
@@ -17,39 +16,16 @@ type Properties = {
     standard?: string[]
 }
 
+const HighRange = 60
+const MidRange = 25
 
-function getProgressPropsByPercent(p: number): ProgressProps {
-    const result: ProgressProps = {
-        percent: p,
+function getColorClassName(p: number): string {
+    if (p >= HighRange) {
+        return 'dark'
+    } else if (p >= MidRange) {
+        return 'normal'
     }
-
-    if (p >= 50) {
-        result.color = 'grey'
-    } else if (p >= 15) {
-        result.color = 'black'
-        result.disabled = true
-    } else {
-        result.color = 'grey'
-        result.disabled = true
-    }
-
-    return result
-}
-
-function getLabelPropsByPercent(p: number): LabelProps {
-    const result: LabelProps = {}
-
-    if (p >= 50) {
-        result.color = 'grey'
-    } else if (p >= 15) {
-        result.color = 'black'
-        result.className = 'disabled'
-    } else {
-        result.color = 'grey'
-        result.className = 'disabled'
-    }
-
-    return result
+    return 'light'
 }
 
 export default function SummaryTable(
@@ -135,41 +111,43 @@ export default function SummaryTable(
     const summary = filteredSummary.length ? filteredSummary : baseSummary
     const maxVal = getField(baseSummary[order == 'desc' ? 0 : baseSummary.length - 1])
 
+
+    function getPercent(s: ResourceSummary): number {
+        return 100 * Math.max(0, getField(s)) / Math.max(1, maxVal)
+    }
+
     return (
-        <Container text style={{marginTop: '1em'}} textAlign={"center"}>
-            <Table basic='very' celled collapsing unstackable className={'summary'}>
-                <Table.Body>
-                    {summary.map((s, k) =>
-                        <Table.Row key={k}>
-                            <Table.Cell verticalAlign={'top'}>
-                                <Image avatar
-                                       src={`/images/${type}/${s.image}.png`}
-                                       alt={s.image}/>
-                                <p>{s.name}</p>
-                            </Table.Cell>
-                            <Table.Cell verticalAlign={'top'}>
-                                <Progress
-                                    {...getProgressPropsByPercent(100 * Math.max(0, getField(s)) / Math.max(1, maxVal))}
-                                    size={'small'}/>
+        <Table basic='very' celled collapsing unstackable className={'summary'}>
+            <Table.Body>
+                {summary.map((s, k) =>
+                    <Table.Row key={k}>
+                        <Table.Cell verticalAlign={'top'}>
+                            <Image avatar
+                                   src={`/images/${type}/${s.image}.png`}
+                                   alt={s.image}/>
+                            <p>{s.name}</p>
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'}>
+                            <Progress
+                                percent={getPercent(s)}
+                                className={getColorClassName(getPercent(s))}
+                                size={'small'}/>
 
-                                {sortBy.startsWith('avg') &&
-                                    <Label
-                                        basic {...getLabelPropsByPercent(100 * Math.max(0, getField(s)) / Math.max(1, maxVal))}>
-                                        {s.runs}
-                                        <Label.Detail>run{s.runs === 1 ? '' : 's'}</Label.Detail>
-                                    </Label>
-                                }
-
-                                <Label
-                                    basic {...getLabelPropsByPercent(100 * Math.max(0, getField(s)) / Math.max(1, maxVal))}>
-                                    {Math.max(0, getField(s))}
-                                    <Label.Detail>{getFieldHumanName(s, Math.max(0, getField(s)))}</Label.Detail>
+                            {sortBy.startsWith('avg') &&
+                                <Label basic className={getColorClassName(getPercent(s))}>
+                                    {s.runs}
+                                    <Label.Detail>run{s.runs === 1 ? '' : 's'}</Label.Detail>
                                 </Label>
-                            </Table.Cell>
-                        </Table.Row>
-                    )}
-                </Table.Body>
-            </Table>
-        </Container>
+                            }
+
+                            <Label basic className={getColorClassName(getPercent(s))}>
+                                {Math.max(0, getField(s))}
+                                <Label.Detail>{getFieldHumanName(s, Math.max(0, getField(s)))}</Label.Detail>
+                            </Label>
+                        </Table.Cell>
+                    </Table.Row>
+                )}
+            </Table.Body>
+        </Table>
     )
 }

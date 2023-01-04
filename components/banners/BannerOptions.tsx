@@ -41,7 +41,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
             <Form>
                 <Form.Field>
                     <label>Sort By</label>
-                    <Form.Group inline>
+                    <Form.Group widths='equal' inline>
                         <Form.Radio
                             label='Last Patch Run'
                             value='last'
@@ -55,6 +55,14 @@ export default class BannerOptions extends React.Component<Properties, States> {
                             onChange={this.handleSortByChange}
                         />
                         <Form.Radio
+                            label='Name'
+                            value='name'
+                            checked={this.props.sortBy === 'name'}
+                            onChange={this.handleSortByChange}
+                        />
+                    </Form.Group>
+                    <Form.Group widths='equal' inline>
+                        <Form.Radio
                             label='Total Runs (by last patch)'
                             value='runs-last'
                             checked={this.props.sortBy === 'runs-last'}
@@ -66,12 +74,14 @@ export default class BannerOptions extends React.Component<Properties, States> {
                             checked={this.props.sortBy === 'runs-first'}
                             onChange={this.handleSortByChange}
                         />
-                        <Form.Radio
-                            label='Name'
-                            value='name'
-                            checked={this.props.sortBy === 'name'}
-                            onChange={this.handleSortByChange}
-                        />
+                        <Form.Field>
+                        </Form.Field>
+                    </Form.Group>
+                </Form.Field>
+
+
+                <Form.Group widths='equal'>
+                    <Form.Field>
                         <Label onClick={this.flipOrder} className={'button'}>
                             {this.props.order === 'asc' ? (
                                 <>
@@ -83,11 +93,8 @@ export default class BannerOptions extends React.Component<Properties, States> {
                                 </>
                             )}
                         </Label>
-                    </Form.Group>
-                </Form.Field>
+                    </Form.Field>
 
-
-                <Form.Group widths='equal'>
                     <Form.Field>
                         <Radio toggle label='Expand'
                                onChange={this.handleExpand}
