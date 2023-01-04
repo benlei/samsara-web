@@ -61,12 +61,12 @@ export default function ManageArtifactRotationPresets({}) {
                 <Stale/>
             ) : (
                 <>
-                    <ArtifactConfigLoadDownload
+                    <ArtifactRotationPresets
+                        storage={storage}
                         setStorage={setStorageAndCommit}
                     />
 
-                    <ArtifactRotationPresets
-                        storage={storage}
+                    <ArtifactConfigLoadDownload
                         setStorage={setStorageAndCommit}
                     />
                 </>

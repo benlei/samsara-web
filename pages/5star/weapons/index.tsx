@@ -2,6 +2,7 @@ import Head from 'next/head'
 import {BannerResource} from '@/banners/types'
 import React from "react";
 import BannerPage from "@/components/banners/BannerPage";
+import {Container, Header} from "semantic-ui-react";
 
 
 export async function getStaticProps() {
@@ -25,6 +26,9 @@ export default function FiveStarWeaponsHome({banners}: Properties) {
                 {/*<meta name="viewport" content="width=device-width, initial-scale=1" />*/}
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
+            <Container style={{marginTop: '2em'}}>
+                <Header size={'large'}>5&#x2605; Weapon Banner History</Header>
+            </Container>
             <BannerPage bannerType={'weapons'}
                         banners={banners}
                         showLimitedOnly={false}

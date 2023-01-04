@@ -11,7 +11,6 @@ import ScrollContainer from "react-indiana-drag-scroll";
 type Properties = {
     banners: BannerResource
     bannerType: string
-
     standards?: string[]
     showLimitedOnly: boolean
 }
@@ -73,7 +72,7 @@ export default class BannerPage extends React.Component<Properties, States> {
 
         return (
             <>
-                <Container style={{marginTop: '2em'}}>
+                <Container style={{marginTop: '1em'}}>
                     <BannerOptions showLimitedOnly={showLimitedOnly} limitedOnly={limitedOnly}
                                    setLimitedOnly={setLimitedOnly}
                                    order={order} setOrder={setOrder}

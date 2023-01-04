@@ -4,6 +4,8 @@ import _ from "lodash";
 import React, {useState} from "react";
 import SummaryOptions from "@/components/summary/SummaryOptions";
 import SummaryTable from "@/components/summary/SummaryTable";
+import {Container, Header} from "semantic-ui-react";
+import Head from "next/head";
 
 export async function getStaticProps() {
     return {
@@ -36,6 +38,14 @@ export default function FiveStarCharacterSummary(props: { banners: { [name: stri
 
     return (
         <>
+            <Head>
+                <title>5&#x2605; Character Summary - Samsara</title>
+            </Head>
+
+            <Container text style={{marginTop: '2em'}}>
+                <Header size={'medium'}>5&#x2605; Character Summary</Header>
+            </Container>
+
             <SummaryOptions
                 sortBy={sortBy} order={order} limitedOnly={limitedOnly} filterText={filterText}
                 setOrder={setOrder} setSortBy={setSortBy} setLimitedOnly={setLimitedOnly} setFilterText={setFilterText}

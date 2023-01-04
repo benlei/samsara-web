@@ -1,4 +1,4 @@
-import {Accordion, Container, Icon, Table} from "semantic-ui-react";
+import {Accordion, Container, Header, Icon, Table} from "semantic-ui-react";
 import React, {useState} from "react";
 import {ListManager, RotationPreset, RotationStorage} from "@/artifacts/types";
 import {AddEditPreset} from "@/components/artifacts/presets/AddEditPreset";
@@ -84,6 +84,7 @@ export default function ArtifactRotationPresets(
 
     return (
         <Container style={{marginTop: '2em'}} className={'artifact-rotations'}>
+            <Header size={'large'}>Manage Presets</Header>
             <Table unstackable>
                 <Table.Header>
                     <Table.Row>

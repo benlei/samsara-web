@@ -136,7 +136,7 @@ export default function SummaryTable(
     const maxVal = getField(baseSummary[order == 'desc' ? 0 : baseSummary.length - 1])
 
     return (
-        <Container text style={{marginTop: '2em'}} textAlign={"center"}>
+        <Container text style={{marginTop: '1em'}} textAlign={"center"}>
             <Table basic='very' celled collapsing unstackable className={'summary'}>
                 <Table.Body>
                     {summary.map((s, k) =>

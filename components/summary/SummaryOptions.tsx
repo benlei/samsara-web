@@ -36,7 +36,7 @@ export default function SummaryOptions(
     }
 
     return (
-        <Container text style={{marginTop: '2em'}}>
+        <Container text style={{marginTop: '1em'}}>
             <Form>
                 <Form.Field>
                     <label>Sort By</label>
