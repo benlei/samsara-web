@@ -1,5 +1,5 @@
 import {Container, Image, Label, Progress, Table} from "semantic-ui-react";
-import {BannerSummary, getResourceSummaries, ResourceSummary} from "@/banners/summary";
+import {BannerSummary, getResourceSummaries} from "@/banners/summary";
 import getVersionParts from "@/banners/version";
 import _ from "lodash";
 import dayjs from "dayjs";
@@ -29,20 +29,16 @@ export default function FiveStarBannerSummary(props: { banners: { [name: string]
     const maxVal = summary[0].daysSinceLastRun
 
 
-    function hasAverages(s: ResourceSummary): boolean {
-        return s.avgBannerGapInterval + s.avgPatchGapInterval + s.avgPatchGapInterval > -3
-    }
+    /**
+     * TODO (SEE BELOW)
+     * - perhaps have the ability to select what data (labels) you want to see (default days since last patch)
+     * - still need to be able to change what to sort by + direction
+     * - still need to be able to filter by name.
+     */
 
     return (
         <Container text style={{marginTop: '2em'}} textAlign={"center"}>
             <Table basic='very' celled collapsing unstackable className={'summary'}>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell></Table.HeaderCell>
-                        <Table.HeaderCell style={{width: '100rem'}}>Length</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
-
                 <Table.Body>
                     {summary.map((s, k) =>
                         <Table.Row key={k}>
@@ -56,14 +52,14 @@ export default function FiveStarBannerSummary(props: { banners: { [name: string]
                                 <Progress percent={100 * s.daysSinceLastRun / maxVal}
                                           size={'small'} color={'black'} disabled/>
 
-                                {s.avgDaysInterval != -1 &&
-                                    <Label basic>
-                                        {s.avgDaysInterval}
-                                        <Label.Detail>days (avg)</Label.Detail>
-                                    </Label>
-                                }
+                                {/*{s.avgDaysInterval != -1 &&*/}
+                                {/*    <Label basic>*/}
+                                {/*        {s.avgDaysInterval}*/}
+                                {/*        <Label.Detail>days (avg)</Label.Detail>*/}
+                                {/*    </Label>*/}
+                                {/*}*/}
 
-                                <Label basic>
+                                <Label basic color={'grey'}>
                                     {s.daysSinceLastRun}
                                     <Label.Detail>days ago</Label.Detail>
                                 </Label>

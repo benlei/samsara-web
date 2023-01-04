@@ -103,7 +103,7 @@ img.active {
 }
 
 .summary .label {
-    margin-bottom: .5rem !important;
+    /*margin-bottom: .5rem !important;*/
 }
 .summary .progress {
     margin-top: .5rem !important;
@@ -127,4 +127,5 @@ img.active {
 
 .summary td:not(:first-of-type) {
     text-align: right !important;
+    width: 100rem
 }

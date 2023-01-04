@@ -1,5 +1,5 @@
 import React from "react";
-import {Container} from "semantic-ui-react";
+import {Container, Loader} from "semantic-ui-react";
 import BannerOptions from "@/components/banners/BannerOptions";
 import BannerTable from "@/components/banners/BannerTable";
 import getVersionParts from "@/banners/version";
@@ -21,6 +21,7 @@ type States = {
     sortBy: string | null
     order: string | null
     expand: boolean | null
+    ssr: boolean
 }
 
 export default class BannerPage extends React.Component<Properties, States> {
@@ -34,12 +35,23 @@ export default class BannerPage extends React.Component<Properties, States> {
             sortBy: null,
             order: null,
             expand: null,
+            ssr: true,
         }
 
         this.componentRef = React.createRef()
     }
 
+
+    componentDidMount=() => this.setState({ssr: false})
+
     render() {
+        // the html page is huge (+100kb)
+        if (this.state.ssr) {
+            return (
+                <Loader active inline='centered' style={{marginTop: '2em'}} />
+            )
+        }
+
         const {
             banners,
             bannerType,
