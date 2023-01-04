@@ -48,6 +48,7 @@ body {
 }
 
 .history th {
+    font-weight: bold !important;
     text-align: center !important;
 }
 
@@ -58,10 +59,6 @@ body {
 .history td:first-of-type {
     white-space: nowrap;
     text-align: right !important;
-}
-
-.history th {
-    font-weight: bold !important;
 }
 
 .history .cell {
@@ -103,4 +100,31 @@ img.active {
 }
 .accordion .title.active {
     font-weight: 700;
+}
+
+.summary .label {
+    margin-bottom: .5rem !important;
+}
+.summary .progress {
+    margin-top: .5rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.summary td:first-of-type {
+    text-align: right !important;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.summary td:first-of-type p {
+    margin-top: .5rem
+}
+
+.ui.progress .bar {
+    min-width: 0 !important;
+}
+
+.summary td:not(:first-of-type) {
+    text-align: right !important;
 }

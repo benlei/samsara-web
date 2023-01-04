@@ -9,6 +9,7 @@ import {
     getResourceSummaries
 } from "@/banners/summary";
 import dayjs from "dayjs";
+import _ from "lodash";
 
 const VersionPartsDummyData: VersionParts[] = [
     {version: '1.0', parts: 2},
@@ -80,6 +81,12 @@ describe('getBannerPatchGap', () => {
 
 describe('getBannerGap', () => {
     it('should get the correct banner differences', async () => {
+        expect(getBannerGap(VersionPartsDummyData, "1.0.1", "1.1.1"))
+            .toEqual(1)
+
+        expect(getBannerGap(VersionPartsDummyData, "1.0.1", "1.1.2"))
+            .toEqual(2)
+
         expect(getBannerGap(VersionPartsDummyData, "1.0.1", "2.0.1"))
             .toEqual(14)
 
@@ -89,6 +96,16 @@ describe('getBannerGap', () => {
         expect(getBannerGap(VersionPartsDummyData, "1.5.1", "3.2.1"))
             .toEqual(25)
     });
+
+    it('should return 0 if current banner is 3.2.1', async () => {
+        expect(getBannerGap(VersionPartsDummyData, "3.2.1", "3.2.2"))
+            .toEqual(0)
+    });
+
+    it('should return -1 if current banner is 3.2.2 to 3.2.2', async () => {
+        expect(getBannerGap(VersionPartsDummyData, "3.2.2", "3.2.2"))
+            .toEqual(-1)
+    });
 })
 describe('getAvgPatchGapInterval', () => {
     it('should get the avg patch gap for a character', async () => {
@@ -96,7 +113,7 @@ describe('getAvgPatchGapInterval', () => {
             .toEqual(6)
 
         expect(getAvgPatchGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Venti"]))
-            .toEqual(5.667)
+            .toEqual(5.7)
 
         expect(getAvgPatchGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Yoimiya"]))
             .toEqual(5.5)
@@ -114,7 +131,7 @@ describe('getAvgBannerGapInterval', () => {
             .toEqual(11)
 
         expect(getAvgBannerGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Venti"]))
-            .toEqual(10.667)
+            .toEqual(10.7)
 
         expect(getAvgBannerGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Yoimiya"]))
             .toEqual(9.5)
@@ -132,7 +149,7 @@ describe('getAvgDayInterval', () => {
             .toEqual(231)
 
         expect(getAvgDayInterval(BannerSummariesDummyData["Venti"]))
-            .toEqual(223.333)
+            .toEqual(223.3)
 
         expect(getAvgDayInterval(BannerSummariesDummyData["Yoimiya"]))
             .toEqual(203.5)
@@ -147,44 +164,59 @@ describe('getAvgDayInterval', () => {
 
 describe('getResourceSummaries', () => {
     it('should get resource summary correctly', async () => {
-        expect(getResourceSummaries(VersionPartsDummyData, BannerSummariesDummyData, dayjs("2023-01-03")))
-            .toEqual({
-                "Fake": {
-                    "name": "Fake",
-                    "image": "Fake",
-                    "avgBannerGapInterval": -1,
-                    "avgDaysInterval": -1,
-                    "avgPatchGapInterval": -1,
-                    "daysSinceLastRun": 490,
-                    "runs": 1
-                },
-                "Hu Tao": {
-                    "name": "Hu Tao",
-                    "image": "Hu-Tao",
-                    "avgBannerGapInterval": 11,
-                    "avgDaysInterval": 231,
-                    "avgPatchGapInterval": 6,
-                    "daysSinceLastRun": 406,
-                    "runs": 2
-                },
-                "Venti": {
-                    "name": "Venti",
-                    "image": "Venti",
-                    "avgBannerGapInterval": 10.667,
-                    "avgDaysInterval": 223.333,
-                    "avgPatchGapInterval": 5.667,
-                    "daysSinceLastRun": 81,
-                    "runs": 4
-                },
-                "Yoimiya": {
-                    "name": "Yoimiya",
-                    "image": "Yoimiya",
-                    "avgBannerGapInterval": 9.5,
-                    "avgDaysInterval": 203.5,
-                    "avgPatchGapInterval": 5.5,
-                    "daysSinceLastRun": 46,
-                    "runs": 3
-                }
-            })
+        expect(_.orderBy(
+            getResourceSummaries(VersionPartsDummyData, BannerSummariesDummyData, dayjs("2023-01-03")),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "avgBannerGapInterval": -1,
+                        "avgDaysInterval": -1,
+                        "avgPatchGapInterval": -1,
+                        "daysSinceLastRun": 490,
+                        "bannersSinceLastRun": 22,
+                        "patchesSinceLastRun": 11,
+                        "runs": 1
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "avgBannerGapInterval": 11,
+                        "avgDaysInterval": 231,
+                        "avgPatchGapInterval": 6,
+                        "daysSinceLastRun": 406,
+                        "bannersSinceLastRun": 18,
+                        "patchesSinceLastRun": 9,
+                        "runs": 2
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "avgBannerGapInterval": 10.7,
+                        "avgDaysInterval": 223.3,
+                        "avgPatchGapInterval": 5.7,
+                        "daysSinceLastRun": 81,
+                        "bannersSinceLastRun": 3,
+                        "patchesSinceLastRun": 1,
+                        "runs": 4
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "avgBannerGapInterval": 9.5,
+                        "avgDaysInterval": 203.5,
+                        "avgPatchGapInterval": 5.5,
+                        "daysSinceLastRun": 46,
+                        "bannersSinceLastRun": 1,
+                        "patchesSinceLastRun": 0,
+                        "runs": 3
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
     });
 })

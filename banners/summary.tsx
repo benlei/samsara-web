@@ -9,6 +9,8 @@ export type ResourceSummary = {
     image: string
     runs: number
     daysSinceLastRun: number
+    bannersSinceLastRun: number
+    patchesSinceLastRun: number
     avgBannerGapInterval: number
     avgPatchGapInterval: number
     avgDaysInterval: number
@@ -38,6 +40,10 @@ export function getBannerGap(versionParts: VersionParts[], oldVersion: string, n
     const baseNewVersion = getBaseVersion(newVersion)
     const baseNewVersionPart = getVersionPart(newVersion)
 
+    if (baseOldVersion == baseNewVersion) {
+        return baseNewVersionPart - baseOldVersionPart - 1
+    }
+
     let startIndex = _.findIndex(versionParts, (vp) => vp.version === baseOldVersion);
     const endIndex = _.findIndex(versionParts, (vp) => vp.version === baseNewVersion);
 
@@ -61,7 +67,7 @@ export function getAvgPatchGapInterval(versionParts: VersionParts[], banner: Ban
         sum += getBannerPatchGap(versionParts, banner.versions[i], banner.versions[i + 1])
     }
 
-    return _.round(sum / (banner.versions.length - 1), 3)
+    return _.round(sum / (banner.versions.length - 1), 1)
 }
 
 export function getAvgBannerGapInterval(versionParts: VersionParts[], banner: BannerSummary): number {
@@ -74,7 +80,7 @@ export function getAvgBannerGapInterval(versionParts: VersionParts[], banner: Ba
         sum += getBannerGap(versionParts, banner.versions[i], banner.versions[i + 1])
     }
 
-    return _.round(sum / (banner.versions.length - 1), 3)
+    return _.round(sum / (banner.versions.length - 1), 1)
 }
 
 export function getAvgDayInterval(banner: BannerSummary): number {
@@ -87,14 +93,14 @@ export function getAvgDayInterval(banner: BannerSummary): number {
         sum += dayjs(banner.dates[i + 1].start).diff(dayjs(banner.dates[i].end), 'day')
     }
 
-    return _.round(sum / (banner.dates.length - 1), 3)
+    return _.round(sum / (banner.dates.length - 1), 1)
 }
 
 export function getResourceSummaries(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
     currDate: Dayjs,
-): { [name: string]: ResourceSummary } {
+): ResourceSummary[] {
     // const versionParts = getVersionParts(
     //     _.chain(bannerSummaries)
     //         .mapValues((b) => b.versions)
@@ -102,18 +108,28 @@ export function getResourceSummaries(
     //     'asc',
     // )
 
-    let result: { [name: string]: ResourceSummary } = {}
+    const result: ResourceSummary[] = []
 
     _.forIn(bannerSummaries, (banner, name) => {
-        result[name] = {
+        result.push({
             name,
             image: getImageFromName(name),
             runs: banner.versions.length,
             daysSinceLastRun: Math.max(0, currDate.diff(dayjs(banner.dates[banner.dates.length - 1].end), 'day')),
+            bannersSinceLastRun: getBannerGap(
+                versionParts,
+                banner.versions[banner.versions.length - 1],
+                `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
+            ) + 1,
+            patchesSinceLastRun: getBannerPatchGap(
+                versionParts,
+                banner.versions[banner.versions.length - 1],
+                `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
+            ),
             avgBannerGapInterval: getAvgBannerGapInterval(versionParts, banner),
             avgPatchGapInterval: getAvgPatchGapInterval(versionParts, banner),
             avgDaysInterval: getAvgDayInterval(banner),
-        }
+        })
     })
 
     return result

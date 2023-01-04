@@ -20,7 +20,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
     componentDidMount = () => {
         this.props.setSortBy('last');
         this.props.setOrder('desc');
-        this.props.setLimitedOnly(false);
+        this.props.setLimitedOnly(true);
         this.props.setExpand(false);
     }
 
@@ -91,7 +91,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
                         <Form.Field>
                             <Radio toggle label='Hide Standard Characters'
                                    onChange={this.handleChangeLimitedOnly}
-                                   checked={this.props.limitedOnly ?? false}
+                                   checked={!!this.props.limitedOnly}
                             />
                         </Form.Field>
                     )}
