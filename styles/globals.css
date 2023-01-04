@@ -103,6 +103,7 @@ img.active {
 }
 
 .summary .label {
+    border: 0 !important;
     /*margin-bottom: .5rem !important;*/
 }
 .summary .progress {

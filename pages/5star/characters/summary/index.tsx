@@ -9,7 +9,7 @@ import {ProgressProps} from "semantic-ui-react/dist/commonjs/modules/Progress/Pr
 export async function getStaticProps() {
     return {
         props: {
-            banners: require('@/data/bannersSummary.json').characters['5']
+            banners: require('@/data/bannersSummary.json').weapons['5']
         },
     };
 }
@@ -77,7 +77,7 @@ export default function FiveStarBannerSummary(props: { banners: { [name: string]
                         <Table.Row key={k}>
                             <Table.Cell verticalAlign={'top'}>
                                 <Image avatar
-                                       src={`/images/characters/${s.image}.png`}
+                                       src={`/images/weapons/${s.image}.png`}
                                        alt={s.image}/>
                                 <p>{s.name}</p>
                             </Table.Cell>
