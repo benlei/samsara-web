@@ -1,8 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import {
-    ArtifactRotationData,
     ArtifactJsonProperties,
+    ArtifactRotationData,
     ListManager,
     Rotation,
     RotationPreset,
@@ -21,10 +21,10 @@ import {
 } from "@/artifacts/presets";
 import {ArtifactTable} from "@/components/artifacts/ArtifactTable";
 import ClonedList from "@/artifacts/list";
-import {v4} from "uuid";
 import _ from "lodash";
 import Stale from "@/components/Stale";
 import {Container, Header} from "semantic-ui-react";
+import {nanoid} from "nanoid";
 
 
 type Properties = {
@@ -109,7 +109,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             const preset = getBasePreparedReset('default', dateAsString(new Date()))
             const store: RotationStorage = {
                 active: 0,
-                cacheId: v4(),
+                cacheId: nanoid(),
                 presets: [{
                     ...preset,
                     rotations: this.state.rotations,
@@ -127,7 +127,7 @@ export default class ManageArtifactRotations extends React.Component<Properties,
             data.date = dateAsString(new Date())
         }
 
-        rotationStorage.cacheId = v4()
+        rotationStorage.cacheId = nanoid()
         rotationStorage.presets[rotationStorage.active] = data
         localStorage.setItem(V1StorageKey, JSON.stringify(rotationStorage))
 
