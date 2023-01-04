@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import {Banners} from '@/banners/types'
+import {BannerResource} from '@/banners/types'
 import React from "react";
 import BannerPage from "@/components/banners/BannerPage";
 
@@ -7,13 +7,13 @@ import BannerPage from "@/components/banners/BannerPage";
 export async function getStaticProps() {
     return {
         props: {
-            banners: require('@/data/banners.json')
+            banners: require('@/data/banners.json').weapons['5']
         },
     };
 }
 
 type Properties = {
-    banners: Banners
+    banners: BannerResource
 }
 
 export default function FiveStarWeaponsHome({banners}: Properties) {
@@ -26,8 +26,8 @@ export default function FiveStarWeaponsHome({banners}: Properties) {
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
             <BannerPage bannerType={'weapons'}
-                                 banners={banners.weapons['5']}
-                                 showLimitedOnly={false}
+                        banners={banners}
+                        showLimitedOnly={false}
             />
         </>
     )
