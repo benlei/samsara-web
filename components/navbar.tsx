@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Divider, Dropdown, Icon, Menu} from "semantic-ui-react";
+import {Container, Dropdown, Icon, Menu} from "semantic-ui-react";
 import {useRouter} from 'next/router';
 
 export default function Navbar({children}: React.PropsWithChildren) {
@@ -32,23 +32,30 @@ export default function Navbar({children}: React.PropsWithChildren) {
             <Container style={{marginTop: '.5em'}} className={'desktop'}>
                 <Menu secondary pointing>
                     <Menu.Item as={'a'} href='/'>
-                        <Icon name={'home'}/> Samsara
+                        Samsara
                     </Menu.Item>
-                    <Dropdown text='Character Banners' pointing className={'link item '+ getCharacterBannerActive()}>
+                    <Dropdown text='Character Banners' pointing className={'link item ' + getCharacterBannerActive()}>
                         <Dropdown.Menu>
-                            <Dropdown.Item as={'a'} href='/5star/characters/summary'>5 <Icon name={'star'}/> Summary</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/5star/characters'>5 <Icon name={'star'}/> History</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/5star/characters/summary'>5 <Icon
+                                name={'star'}/> Summary</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/5star/characters'>5 <Icon
+                                name={'star'}/> History</Dropdown.Item>
                             <Dropdown.Divider/>
-                            <Dropdown.Item as={'a'} href='/4star/characters/summary'>4 <Icon name={'star'}/> Summary</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon name={'star'}/> History</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/4star/characters/summary'>4 <Icon
+                                name={'star'}/> Summary</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon
+                                name={'star'}/> History</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown text='Weapon Banners' pointing className={'link item ' + getWeaponBannerActive()}>
                         <Dropdown.Menu>
-                            <Dropdown.Item as={'a'} href='/5star/weapons/summary'>5 <Icon name={'star'}/> Summary</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon name={'star'}/> History</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/5star/weapons/summary'>5 <Icon
+                                name={'star'}/> Summary</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon
+                                name={'star'}/> History</Dropdown.Item>
                             <Dropdown.Divider/>
-                            <Dropdown.Item as={'a'} href='/4star/weapons/summary'>4 <Icon name={'star'}/> Summary</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/4star/weapons/summary'>4 <Icon
+                                name={'star'}/> Summary</Dropdown.Item>
                             <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/>History</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -72,20 +79,23 @@ export function NavbarMobile() {
         <Container style={{marginTop: '.5em', display: 'none'}} className={'mobile'}>
             <Menu secondary pointing>
                 <Menu.Item as={'a'} href='/'>
-                    <Icon name={'home'}/> Samsara
+                    Samsara
                 </Menu.Item>
                 <Dropdown text='Banners' pointing className={'link item'}>
                     <Dropdown.Menu>
                         <Dropdown.Header>Characters Banners</Dropdown.Header>
                         <Dropdown.Item as={'a'} href='/'>5 <Icon name={'star'}/> Summary</Dropdown.Item>
                         <Dropdown.Item as={'a'} href='/5star/characters'>5 <Icon name={'star'}/> History</Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/4star/characters/summary'>4 <Icon name={'star'}/> Summary</Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/4star/characters/summary'>4 <Icon
+                            name={'star'}/> Summary</Dropdown.Item>
                         <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon name={'star'}/> History</Dropdown.Item>
                         <Dropdown.Divider/>
                         <Dropdown.Header>Weapons Banners</Dropdown.Header>
-                        <Dropdown.Item as={'a'} href='/5star/weapons/summary'>5 <Icon name={'star'}/> Summary</Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/5star/weapons/summary'>5 <Icon
+                            name={'star'}/> Summary</Dropdown.Item>
                         <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon name={'star'}/> History</Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/4star/weapons/summary'>4 <Icon name={'star'}/> Summary</Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/4star/weapons/summary'>4 <Icon
+                            name={'star'}/> Summary</Dropdown.Item>
                         <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/> History</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
