@@ -64,7 +64,7 @@ export default function SummaryOptions(
                     </Form.Group>
                     <Form.Group widths='equal' inline>
                         <Form.Radio
-                            label='Avg.# of Days in Between'
+                            label='Avg. # of Days in Between'
                             value='avg-days'
                             checked={sortBy === 'avg-days'}
                             onChange={() => setSortBy('avg-days')}
