@@ -1,8 +1,12 @@
 import {Image, Label, Progress, Table} from "semantic-ui-react";
-import {CommonSummaryProperties, getColorClassName, getDaysSinceLastRunCountSummary, getFilterFunction, getPercent} from "@/banners/summary";
+import {CommonSummaryProperties, getColorClassName, getDaysSinceRunCountSummary, getFilterFunction, getPercent} from "@/banners/summary";
 import _ from "lodash";
 import dayjs from "dayjs";
 import React, {useEffect, useState} from "react";
+
+type Properties = {
+    date: string
+} & CommonSummaryProperties
 
 export default function DaysSinceLast(
     {
@@ -12,19 +16,19 @@ export default function DaysSinceLast(
         order,
         date,
         filterText,
-    }: CommonSummaryProperties
+    }: Properties
 ) {
     const [now, setNow] = useState(date)
     useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
 
-    const baseSummary = _.chain(getDaysSinceLastRunCountSummary(versionParts, banners, date))
+    const baseSummary = _.chain(getDaysSinceRunCountSummary(versionParts, banners, date))
         .orderBy([
             (b) => b.count,
             (b) => b.name,
         ], order)
         .value()
 
-    const filteredSummary = _.filter(getFilterFunction(filterText))
+    const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))
     const maxVal = baseSummary[order == 'desc' ? 0 : baseSummary.length - 1].count
     const summary = filteredSummary.length ? filteredSummary : baseSummary
 

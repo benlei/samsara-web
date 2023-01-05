@@ -7,7 +7,6 @@ export default function PatchesSinceLast(
         banners,
         type,
         order,
-        date,
         filterText,
     }: CommonSummaryProperties
 ) {

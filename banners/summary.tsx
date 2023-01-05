@@ -49,7 +49,6 @@ export type CommonSummaryProperties = {
     banners: { [name: string]: BannerSummary }
     type: string
     order: 'asc' | 'desc' | boolean
-    date: string
     filterText: string
 }
 
@@ -191,7 +190,7 @@ export function getFilterFunction(filterText: string): (s: CountSummary | Averag
     return (s) => s.name.toLowerCase().includes(filterText!.toLowerCase())
 }
 
-export function getDaysSinceLastRunCountSummary(
+export function getDaysSinceRunCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
     currDate: string,
@@ -206,6 +205,27 @@ export function getDaysSinceLastRunCountSummary(
             name,
             image: getImageFromName(name),
             count: Math.max(0, currDayjs.diff(dayjs.utc(banner.dates[banner.dates.length - 1].end), 'day')),
+        })
+    })
+
+    return result
+}
+
+export function getBannersSinceLastCountSummary(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+): CountSummary[] {
+    const result: CountSummary[] = []
+
+    _.forIn(bannerSummaries, (banner, name) => {
+        result.push({
+            name,
+            image: getImageFromName(name),
+            count: getBannerGap(
+                versionParts,
+                banner.versions[banner.versions.length - 1],
+                `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
+            ) + 1,
         })
     })
 

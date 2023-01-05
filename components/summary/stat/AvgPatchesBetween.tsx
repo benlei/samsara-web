@@ -7,7 +7,6 @@ export default function AvgPatchesBetween(
         banners,
         type,
         order,
-        date,
         filterText,
     }: CommonSummaryProperties
 ) {

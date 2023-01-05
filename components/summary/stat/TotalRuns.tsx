@@ -7,7 +7,6 @@ export default function TotalRuns(
         banners,
         type,
         order,
-        date,
         filterText,
     }: CommonSummaryProperties
 ) {

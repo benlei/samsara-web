@@ -7,7 +7,6 @@ export default function AvgBannersBetween(
         banners,
         type,
         order,
-        date,
         filterText,
     }: CommonSummaryProperties
 ) {

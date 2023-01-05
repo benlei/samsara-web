@@ -7,7 +7,6 @@ export default function AvgDaysBetween(
         banners,
         type,
         order,
-        date,
         filterText,
     }: CommonSummaryProperties
 ) {

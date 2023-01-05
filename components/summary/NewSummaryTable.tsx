@@ -15,6 +15,7 @@ type Properties = {
     limitedOnly: boolean
     sortBy: string
     standard?: string[]
+    date: string
 } & CommonSummaryProperties
 
 export default function NewSummaryTable(
@@ -38,14 +39,13 @@ export default function NewSummaryTable(
         versionParts,
         type,
         order,
-        date,
         filterText,
         banners: baseBanners,
     }
 
     return (
         <Table basic='very' celled collapsing unstackable className={'summary'}>
-            {sortBy === 'last-day' && <DaysSinceLast {...commonProps} />}
+            {sortBy === 'last-day' && <DaysSinceLast {...commonProps} date={date}/>}
             {sortBy === 'last-banner' && <BannersSinceLast {...commonProps} />}
             {sortBy === 'last-patch' && <PatchesSinceLast {...commonProps} />}
             {sortBy === 'avg-days' && <AvgDaysBetween {...commonProps} />}

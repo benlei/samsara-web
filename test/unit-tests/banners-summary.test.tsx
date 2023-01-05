@@ -6,7 +6,8 @@ import {
     getAvgPatchGapInterval,
     getBannerGap,
     getBannerPatchGap,
-    getDaysSinceLastRunCountSummary,
+    getBannersSinceLastCountSummary,
+    getDaysSinceRunCountSummary,
     getResourceSummaries
 } from "@/banners/summary";
 import dayjs from "dayjs";
@@ -226,10 +227,10 @@ describe('getResourceSummaries', () => {
 })
 
 
-describe('getDaysSinceLastRunCountSummary', () => {
+describe('getDaysSinceRunCountSummary', () => {
     it('should return the number of days since last run', () => {
         expect(_.orderBy(
-            getDaysSinceLastRunCountSummary(VersionPartsDummyData, BannerSummariesDummyData, "2023-01-03"),
+            getDaysSinceRunCountSummary(VersionPartsDummyData, BannerSummariesDummyData, "2023-01-03"),
             (b) => b.name,
             'asc'
         ))
@@ -253,6 +254,41 @@ describe('getDaysSinceLastRunCountSummary', () => {
                         "name": "Yoimiya",
                         "image": "Yoimiya",
                         "count": 46,
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
+})
+
+describe('getBannersSinceLastCountSummary', () => {
+    it('should return the number of banners since last run', () => {
+        expect(_.orderBy(
+            getBannersSinceLastCountSummary(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "count": 22,
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "count": 18,
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "count": 3,
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "count": 1,
                     },
                 ],
                 (b) => b.name,
