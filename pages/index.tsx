@@ -1,17 +1,19 @@
 import {BannerSummary} from "@/banners/summary";
 import React from "react";
 import SummaryPage from "@/components/SummaryPage";
+import dayjs, {Dayjs} from "dayjs";
 
 export async function getStaticProps() {
     return {
         props: {
-            banners: require('@/data/bannersSummary.json').characters['5']
+            banners: require('@/data/bannersSummary.json').characters['5'],
+            date: dayjs().toISOString()
         },
     };
 }
 
 
-export default function FiveStarCharacterSummary(props: { banners: { [name: string]: BannerSummary } }) {
+export default function FiveStarCharacterSummary(props: { banners: { [name: string]: BannerSummary }, date: string }) {
 
     return (
         <SummaryPage

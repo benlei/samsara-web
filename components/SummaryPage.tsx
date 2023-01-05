@@ -7,9 +7,10 @@ import getVersionParts from "@/banners/version";
 import _ from "lodash";
 import {BannerSummary} from "@/banners/summary";
 import PngDownloadButton from "@/components/PngDownloadButton";
+import {Dayjs} from "dayjs";
 
 type Properties = {
-    data: { banners: { [name: string]: BannerSummary } }
+    data: { banners: { [name: string]: BannerSummary }, date: string }
     title: string
     type: string
     standard?: string[]
@@ -65,6 +66,7 @@ export default function SummaryPage(
                         filterText={filterText}
                         type={type} banners={data.banners} versionParts={versionParts}
                         standard={standard}
+                        date={data.date}
                     />
                 </Ref>
                 <PngDownloadButton componentRef={ref} name={'summary'}/>

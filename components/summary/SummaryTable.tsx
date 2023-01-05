@@ -2,7 +2,7 @@ import {Image, Label, Progress, Table} from "semantic-ui-react";
 import React, {useEffect, useState} from "react";
 import _ from "lodash";
 import {BannerSummary, getResourceSummaries, ResourceSummary} from "@/banners/summary";
-import dayjs from "dayjs";
+import dayjs, {Dayjs} from "dayjs";
 import {VersionParts} from "@/banners/types";
 
 type Properties = {
@@ -14,6 +14,7 @@ type Properties = {
     order: 'asc' | 'desc' | boolean,
     limitedOnly: boolean
     standard?: string[]
+    date: string
 }
 
 const HighRange = 60
@@ -38,6 +39,7 @@ export default function SummaryTable(
         limitedOnly,
         standard = [],
         filterText,
+        date,
     }: Properties
 ) {
     function getField(b: ResourceSummary): number {
@@ -97,8 +99,7 @@ export default function SummaryTable(
         return (s: ResourceSummary) => s.name.toLowerCase().includes(filterText!.toLowerCase())
     }
 
-    // necessary to keep page up to date
-    const [now, setNow] = useState(dayjs())
+    const [now, setNow] = useState(dayjs(date))
     useEffect(() => setNow(dayjs()), [])
 
     const baseSummary = _.chain(getResourceSummaries(versionParts, banners, now))
