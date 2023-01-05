@@ -27,9 +27,9 @@ export default function PresetCurrentNextCells(
                 <ArtifactDomain data={data} domain={preset.rotations[curr.index].domain} popover
                                 additionalLabel={
                                     <>
-                                        <Label basic color='grey'
+                                        <Label basic className={'disabled'}
                                                style={{marginBottom: '.5em'}}>
-                                            {curr.index + 1} of {preset.rotations.length}
+                                            #{curr.index + 1}
                                         </Label>
                                         <Label basic color='blue'
                                                style={{marginBottom: '.5em'}}>
@@ -66,8 +66,9 @@ export default function PresetCurrentNextCells(
                                 additionalLabel={
                                     <>
 
-                                        <Label basic color={'grey'} style={{marginBottom: '.5em'}}>
-                                            {next.index + 1} of {preset.rotations.length}
+                                        <Label basic className={'disabled'}
+                                               style={{marginBottom: '.5em'}}>
+                                            #{next.index + 1}
                                         </Label>
                                         <Label basic color={'grey'} style={{marginBottom: '.5em'}}>
                                             In {next.day} day{next.day === 1 ? '' : 's'}
