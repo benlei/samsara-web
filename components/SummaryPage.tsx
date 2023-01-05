@@ -1,13 +1,12 @@
 import Head from "next/head";
 import {Container, Header, Ref} from "semantic-ui-react";
 import SummaryOptions from "@/components/summary/SummaryOptions";
-import SummaryTable from "@/components/summary/SummaryTable";
 import React, {useEffect, useState} from "react";
 import getVersionParts from "@/banners/version";
 import _ from "lodash";
 import {BannerSummary} from "@/banners/summary";
 import PngDownloadButton from "@/components/PngDownloadButton";
-import {Dayjs} from "dayjs";
+import NewSummaryTable from "@/components/summary/NewSummaryTable";
 
 type Properties = {
     data: { banners: { [name: string]: BannerSummary }, date: string }
@@ -61,7 +60,7 @@ export default function SummaryPage(
 
             <Container text={!expand} style={{marginTop: '1em'}} textAlign={"center"}>
                 <Ref innerRef={ref}>
-                    <SummaryTable
+                    <NewSummaryTable
                         sortBy={sortBy} order={order as 'desc' | 'asc'} limitedOnly={limitedOnly}
                         filterText={filterText}
                         type={type} banners={data.banners} versionParts={versionParts}

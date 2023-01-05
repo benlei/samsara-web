@@ -5,6 +5,9 @@ import {VersionParts} from "@/banners/types";
 import {getImageFromName} from "@/format/image";
 import utc from "dayjs/plugin/utc";
 
+const HighRange = 60
+const MidRange = 25
+
 export type ResourceSummary = {
     name: string
     image: string
@@ -17,6 +20,20 @@ export type ResourceSummary = {
     avgDaysInterval: number
 }
 
+export type CountSummary = {
+    name: string
+    image: string
+    count: number
+}
+
+export type AverageSummary = {
+    name: string
+    image: string
+    average: number
+    standardDeviation: number
+    count: number
+}
+
 export type BannerSummary = {
     versions: string[]
     dates: DateRange[]
@@ -25,6 +42,15 @@ export type BannerSummary = {
 export type DateRange = {
     start: string
     end: string
+}
+
+export type CommonSummaryProperties = {
+    versionParts: VersionParts[]
+    banners: { [name: string]: BannerSummary }
+    type: string
+    order: 'asc' | 'desc' | boolean
+    date: string
+    filterText: string
 }
 
 export function getBannerPatchGap(versionParts: VersionParts[], oldVersion: string, newVersion: string): number {
@@ -125,6 +151,61 @@ export function getResourceSummaries(
             avgBannerGapInterval: getAvgBannerGapInterval(versionParts, banner),
             avgPatchGapInterval: getAvgPatchGapInterval(versionParts, banner),
             avgDaysInterval: getAvgDayInterval(banner),
+        })
+    })
+
+    return result
+}
+
+//=======================================================
+// New Stuff
+//=======================================================
+
+export function getColorClassName(p: number): string {
+    if (p >= HighRange) {
+        return 'dark'
+    } else if (p >= MidRange) {
+        return 'normal'
+    }
+    return 'light'
+}
+
+export function getPercent(nom: number, denom: number): number {
+    return 100 * Math.max(0, nom) / Math.max(1, denom)
+}
+
+export function getFilterFunction(filterText: string): (s: CountSummary | AverageSummary) => boolean {
+    if (!filterText.trim().length) {
+        return () => true
+    }
+
+    if (filterText.startsWith('/') && filterText.endsWith('/')) {
+        try {
+            const re = new RegExp(filterText.substring(1, filterText.length - 1), 'i')
+            return (s) => re.test(s.name)
+        } catch (ignore) {
+
+        }
+    }
+
+    return (s) => s.name.toLowerCase().includes(filterText!.toLowerCase())
+}
+
+export function getDaysSinceLastRunCountSummary(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+    currDate: string,
+): CountSummary[] {
+    dayjs.extend(utc);
+
+    const result: CountSummary[] = []
+    const currDayjs = dayjs.utc(currDate)
+
+    _.forIn(bannerSummaries, (banner, name) => {
+        result.push({
+            name,
+            image: getImageFromName(name),
+            count: Math.max(0, currDayjs.diff(dayjs.utc(banner.dates[banner.dates.length - 1].end), 'day')),
         })
     })
 

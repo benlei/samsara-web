@@ -6,6 +6,7 @@ import {
     getAvgPatchGapInterval,
     getBannerGap,
     getBannerPatchGap,
+    getDaysSinceLastRunCountSummary,
     getResourceSummaries
 } from "@/banners/summary";
 import dayjs from "dayjs";
@@ -222,4 +223,40 @@ describe('getResourceSummaries', () => {
                 'asc',
             ))
     });
+})
+
+
+describe('getDaysSinceLastRunCountSummary', () => {
+    it('should return the number of days since last run', () => {
+        expect(_.orderBy(
+            getDaysSinceLastRunCountSummary(VersionPartsDummyData, BannerSummariesDummyData, "2023-01-03"),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "count": 490,
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "count": 406,
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "count": 81,
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "count": 46,
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
 })
