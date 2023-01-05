@@ -3,6 +3,7 @@ import _ from "lodash";
 import dayjs, {Dayjs} from "dayjs";
 import {VersionParts} from "@/banners/types";
 import {getImageFromName} from "@/format/image";
+import utc from "dayjs/plugin/utc";
 
 export type ResourceSummary = {
     name: string
@@ -90,7 +91,7 @@ export function getAvgDayInterval(banner: BannerSummary): number {
 
     let sum = 0
     for (let i = 0; i < banner.dates.length - 1; i++) {
-        sum += dayjs(banner.dates[i + 1].start).diff(dayjs(banner.dates[i].end), 'day')
+        sum += dayjs.utc(banner.dates[i + 1].start).diff(dayjs.utc(banner.dates[i].end), 'day')
     }
 
     return _.round(sum / (banner.dates.length - 1), 1)
@@ -101,12 +102,7 @@ export function getResourceSummaries(
     bannerSummaries: { [name: string]: BannerSummary },
     currDate: Dayjs,
 ): ResourceSummary[] {
-    // const versionParts = getVersionParts(
-    //     _.chain(bannerSummaries)
-    //         .mapValues((b) => b.versions)
-    //         .value(),
-    //     'asc',
-    // )
+    dayjs.extend(utc);
 
     const result: ResourceSummary[] = []
 
@@ -115,7 +111,7 @@ export function getResourceSummaries(
             name,
             image: getImageFromName(name),
             runs: banner.versions.length,
-            daysSinceLastRun: Math.max(0, currDate.diff(dayjs(banner.dates[banner.dates.length - 1].end), 'day')),
+            daysSinceLastRun: Math.max(0, currDate.diff(dayjs.utc(banner.dates[banner.dates.length - 1].end), 'day')),
             bannersSinceLastRun: getBannerGap(
                 versionParts,
                 banner.versions[banner.versions.length - 1],

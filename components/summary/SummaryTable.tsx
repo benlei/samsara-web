@@ -4,6 +4,7 @@ import _ from "lodash";
 import {BannerSummary, getResourceSummaries, ResourceSummary} from "@/banners/summary";
 import dayjs, {Dayjs} from "dayjs";
 import {VersionParts} from "@/banners/types";
+import utc from "dayjs/plugin/utc";
 
 type Properties = {
     filterText: string
@@ -42,6 +43,8 @@ export default function SummaryTable(
         date,
     }: Properties
 ) {
+    dayjs.extend(utc);
+
     function getField(b: ResourceSummary): number {
         switch (sortBy) {
             default:
@@ -100,9 +103,9 @@ export default function SummaryTable(
     }
 
     const [now, setNow] = useState(date)
-    useEffect(() => setNow(dayjs().toISOString()), [])
+    useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
 
-    const baseSummary = _.chain(getResourceSummaries(versionParts, banners, dayjs(now)))
+    const baseSummary = _.chain(getResourceSummaries(versionParts, banners, dayjs.utc(now)))
         .filter((b) => !limitedOnly || !standard!.includes(b.name))
         .filter((b) => !sortBy.startsWith('avg') || getField(b) > 0)
         .orderBy([

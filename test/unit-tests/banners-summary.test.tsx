@@ -10,6 +10,9 @@ import {
 } from "@/banners/summary";
 import dayjs from "dayjs";
 import _ from "lodash";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(utc);
 
 const VersionPartsDummyData: VersionParts[] = [
     {version: '1.0', parts: 2},
@@ -165,7 +168,7 @@ describe('getAvgDayInterval', () => {
 describe('getResourceSummaries', () => {
     it('should get resource summary correctly', async () => {
         expect(_.orderBy(
-            getResourceSummaries(VersionPartsDummyData, BannerSummariesDummyData, dayjs("2023-01-03")),
+            getResourceSummaries(VersionPartsDummyData, BannerSummariesDummyData, dayjs.utc("2023-01-03")),
             (b) => b.name,
             'asc'
         ))

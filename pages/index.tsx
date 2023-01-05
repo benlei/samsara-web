@@ -1,13 +1,15 @@
 import {BannerSummary} from "@/banners/summary";
 import React from "react";
 import SummaryPage from "@/components/SummaryPage";
-import dayjs, {Dayjs} from "dayjs";
+import dayjs from "dayjs";
+import utc from 'dayjs/plugin/utc'
 
 export async function getStaticProps() {
+    dayjs.extend(utc);
     return {
         props: {
             banners: require('@/data/bannersSummary.json').characters['5'],
-            date: dayjs().toISOString()
+            date: dayjs.utc().toISOString().substring(0, 10)
         },
     };
 }
