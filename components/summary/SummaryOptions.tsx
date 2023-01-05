@@ -108,6 +108,7 @@ export default function SummaryOptions(
                         <Radio toggle label='Expand'
                                onChange={() => setExpand(!expand)}
                                checked={expand}
+                               className={'desktop'}
                         />
                     </Form.Field>
 
@@ -125,7 +126,6 @@ export default function SummaryOptions(
                     <Input fluid
                            placeholder={'Filter name...'}
                            onChange={_.debounce((event) => setFilterText(event.target.value), 500)}
-                        // value={filterText}
                            icon>
                         <input/>
                         <Icon name='search'/>

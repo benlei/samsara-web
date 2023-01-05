@@ -99,6 +99,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
                         <Radio toggle label='Expand'
                                onChange={this.handleExpand}
                                checked={this.props.expand}
+                               className={'desktop'}
                         />
                     </Form.Field>
 
