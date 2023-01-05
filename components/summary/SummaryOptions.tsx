@@ -9,6 +9,8 @@ type Properties = {
     setOrder: (order: string) => any
     limitedOnly: boolean
     setLimitedOnly: (limitedOnly: boolean) => any
+    expand: boolean
+    setExpand: (expand: boolean) => any
     showLimitedOnly?: boolean
     setFilterText: (text: string) => any
 }
@@ -23,6 +25,8 @@ export default function SummaryOptions(
         setLimitedOnly,
         showLimitedOnly = false,
         setFilterText,
+        expand,
+        setExpand,
     }: Properties
 ) {
     const [ssr, setSsr] = useState(true)
@@ -34,7 +38,7 @@ export default function SummaryOptions(
     }
 
     return (
-        <Container text style={{marginTop: '1em'}}>
+        <Container text={!expand} style={{marginTop: '1em'}}>
             <Form>
                 <Form.Field>
                     <label>Sort By</label>
@@ -100,21 +104,28 @@ export default function SummaryOptions(
                         </Label>
                     </Form.Field>
 
-                    {showLimitedOnly && (
-                        <Form.Field>
+                    <Form.Field>
+                        <Radio toggle label='Expand'
+                               onChange={() => setExpand(!expand)}
+                               checked={expand}
+                        />
+                    </Form.Field>
+
+                    <Form.Field>
+                        {showLimitedOnly && (
                             <Radio toggle label='Hide Standard Characters'
                                    onChange={() => setLimitedOnly(!limitedOnly)}
                                    checked={limitedOnly}
                             />
-                        </Form.Field>
-                    )}
+                        )}
+                    </Form.Field>
                 </Form.Group>
 
                 <Form.Field>
                     <Input fluid
                            placeholder={'Filter name...'}
                            onChange={_.debounce((event) => setFilterText(event.target.value), 500)}
-                           // value={filterText}
+                        // value={filterText}
                            icon>
                         <input/>
                         <Icon name='search'/>

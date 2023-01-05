@@ -26,6 +26,7 @@ export default function SummaryPage(
     const [order, setOrder] = useState('desc')
     const [limitedOnly, setLimitedOnly] = useState(true)
     const [filterText, setFilterText] = useState("")
+    const [expand, setExpand] = useState(true)
 
     const versionParts = getVersionParts(
         _.chain(data.banners)
@@ -47,16 +48,17 @@ export default function SummaryPage(
                 <title>{title} - Samsara</title>
             </Head>
 
-            <Container text style={{marginTop: '2em'}}>
+            <Container text={!expand} style={{marginTop: '2em'}}>
                 <Header size={'medium'}>{title}</Header>
             </Container>
 
             <SummaryOptions
                 sortBy={sortBy} order={order} limitedOnly={limitedOnly} showLimitedOnly={!!standard?.length}
                 setOrder={setOrder} setSortBy={setSortBy} setLimitedOnly={setLimitedOnly} setFilterText={setFilterText}
+                expand={expand} setExpand={setExpand}
             />
 
-            <Container text style={{marginTop: '1em'}} textAlign={"center"}>
+            <Container text={!expand} style={{marginTop: '1em'}} textAlign={"center"}>
                 <Ref innerRef={ref}>
                     <SummaryTable
                         sortBy={sortBy} order={order as 'desc' | 'asc'} limitedOnly={limitedOnly}
