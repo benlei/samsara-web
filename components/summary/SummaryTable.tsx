@@ -99,10 +99,10 @@ export default function SummaryTable(
         return (s: ResourceSummary) => s.name.toLowerCase().includes(filterText!.toLowerCase())
     }
 
-    const [now, setNow] = useState(dayjs(date))
-    useEffect(() => setNow(dayjs()), [])
+    const [now, setNow] = useState(date)
+    useEffect(() => setNow(dayjs().toISOString()), [])
 
-    const baseSummary = _.chain(getResourceSummaries(versionParts, banners, now))
+    const baseSummary = _.chain(getResourceSummaries(versionParts, banners, dayjs(now)))
         .filter((b) => !limitedOnly || !standard!.includes(b.name))
         .filter((b) => !sortBy.startsWith('avg') || getField(b) > 0)
         .orderBy([
