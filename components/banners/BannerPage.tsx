@@ -4,23 +4,22 @@ import BannerOptions from "@/components/banners/BannerOptions";
 import BannerTable from "@/components/banners/BannerTable";
 import getVersionParts from "@/banners/version";
 import {getRundowns} from "@/banners/rundown";
-import BannerDownload from "@/components/banners/BannerDownload";
 import {BannerResource} from "@/banners/types";
 import ScrollContainer from "react-indiana-drag-scroll";
+import PngDownloadButton from "@/components/PngDownloadButton";
 
 type Properties = {
     banners: BannerResource
     bannerType: string
-
     standards?: string[]
     showLimitedOnly: boolean
 }
 
 type States = {
-    limitedOnly: boolean | null
-    sortBy: string | null
-    order: string | null
-    expand: boolean | null
+    limitedOnly: boolean
+    sortBy: string
+    order: string
+    expand: boolean
 }
 
 export default class BannerPage extends React.Component<Properties, States> {
@@ -30,10 +29,10 @@ export default class BannerPage extends React.Component<Properties, States> {
         super(props);
 
         this.state = {
-            limitedOnly: null,
-            sortBy: null,
-            order: null,
-            expand: null,
+            limitedOnly: true,
+            sortBy: 'last',
+            order: 'desc',
+            expand: false,
         }
 
         this.componentRef = React.createRef()
@@ -73,30 +72,31 @@ export default class BannerPage extends React.Component<Properties, States> {
 
         return (
             <>
-                <Container style={{marginTop: '2em'}}>
+                <Container style={{marginTop: '1em'}}>
                     <BannerOptions showLimitedOnly={showLimitedOnly} limitedOnly={limitedOnly}
-                                            setLimitedOnly={setLimitedOnly}
-                                            order={order} setOrder={setOrder}
-                                            sortBy={sortBy} setSortBy={setSortBy}
-                                            expand={expand} setExpand={setExpand}
+                                   setLimitedOnly={setLimitedOnly}
+                                   order={order} setOrder={setOrder}
+                                   sortBy={sortBy} setSortBy={setSortBy}
+                                   expand={expand} setExpand={setExpand}
                     />
                 </Container>
-                <Container style={{overflowX: 'scroll', ...getBannerContainerStyle(expand ?? false)}} fluid={expand ?? false}>
+                <Container style={{overflowX: 'scroll', ...getBannerContainerStyle(expand ?? false)}}
+                           fluid={expand ?? false}>
                     <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
                         <BannerTable bannerType={bannerType}
-                                              versionParts={getVersionParts(banners)}
-                                              rundown={getRundowns(banners)}
-                                              limitedOnly={limitedOnly}
-                                              order={order}
-                                              sortBy={sortBy}
-                                              standards={standards}
-                                              ref={this.componentRef}
+                                     versionParts={getVersionParts(banners)}
+                                     rundown={getRundowns(banners)}
+                                     limitedOnly={limitedOnly}
+                                     order={order}
+                                     sortBy={sortBy}
+                                     standards={standards}
+                                     ref={this.componentRef}
 
                         />
                     </ScrollContainer>
                 </Container>
                 <Container style={{marginTop: '2em'}}>
-                    <BannerDownload bannerRef={this.componentRef}/>
+                    <PngDownloadButton componentRef={this.componentRef} name={'banner-history'} />
                 </Container>
             </>
         )

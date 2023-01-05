@@ -4,13 +4,24 @@ import {BannerFilterSortOptions, BannerOptionSetters} from "@/banners/types";
 
 type Properties = {
     showLimitedOnly: boolean
-    expand: boolean | null
+    expand: boolean
     setExpand: Dispatch<SetStateAction<any>>
 } & BannerFilterSortOptions & BannerOptionSetters
 
-type States = {}
+type States = {
+    ssr: boolean
+}
 
 export default class BannerOptions extends React.Component<Properties, States> {
+
+    constructor(props: Readonly<Properties> | Properties) {
+        super(props);
+
+        this.state = {
+            ssr: true
+        }
+    }
+
     handleSortByChange = (event: React.FormEvent<HTMLInputElement>, {value}: CheckboxProps) => this.props.setSortBy(String(value))
     flipOrder = () => this.props.setOrder(this.props.order == 'desc' ? 'asc' : 'desc')
 
@@ -18,30 +29,19 @@ export default class BannerOptions extends React.Component<Properties, States> {
     handleExpand = () => this.props.setExpand(!this.props.expand)
 
     componentDidMount = () => {
-        this.props.setSortBy('last');
-        this.props.setOrder('desc');
-        this.props.setLimitedOnly(false);
-        this.props.setExpand(false);
-    }
-
-    getOrderElement = () => {
-        if (this.props.order == 'asc') {
-            return <>
-                <Icon name={'sort amount up'} size={'small'}/> Ascending
-            </>
-        }
-
-        return <>
-            <Icon name={'sort amount down'} size={'small'}/> Descending
-        </>
+        this.setState({ssr: false})
     }
 
     render() {
+        if (this.state.ssr) {
+            return null
+        }
+
         return <>
             <Form>
                 <Form.Field>
                     <label>Sort By</label>
-                    <Form.Group inline>
+                    <Form.Group widths='equal' inline>
                         <Form.Radio
                             label='Last Patch Run'
                             value='last'
@@ -55,6 +55,14 @@ export default class BannerOptions extends React.Component<Properties, States> {
                             onChange={this.handleSortByChange}
                         />
                         <Form.Radio
+                            label='Name'
+                            value='name'
+                            checked={this.props.sortBy === 'name'}
+                            onChange={this.handleSortByChange}
+                        />
+                    </Form.Group>
+                    <Form.Group widths='equal' inline>
+                        <Form.Radio
                             label='Total Runs (by last patch)'
                             value='runs-last'
                             checked={this.props.sortBy === 'runs-last'}
@@ -66,35 +74,43 @@ export default class BannerOptions extends React.Component<Properties, States> {
                             checked={this.props.sortBy === 'runs-first'}
                             onChange={this.handleSortByChange}
                         />
-                        <Form.Radio
-                            label='Name'
-                            value='name'
-                            checked={this.props.sortBy === 'name'}
-                            onChange={this.handleSortByChange}
-                        />
-                        <Label onClick={this.flipOrder} className={'button'}>
-                            {this.getOrderElement()}
-                        </Label>
+                        <Form.Field>
+                        </Form.Field>
                     </Form.Group>
                 </Form.Field>
 
 
                 <Form.Group widths='equal'>
                     <Form.Field>
+                        <Label onClick={this.flipOrder} className={'button'}>
+                            {this.props.order === 'asc' ? (
+                                <>
+                                    <Icon name={'sort amount up'} size={'small'}/> Ascending
+                                </>
+                            ) : (
+                                <>
+                                    <Icon name={'sort amount down'} size={'small'}/> Descending
+                                </>
+                            )}
+                        </Label>
+                    </Form.Field>
+
+                    <Form.Field>
                         <Radio toggle label='Expand'
                                onChange={this.handleExpand}
-                               checked={this.props.expand ?? false}
+                               checked={this.props.expand}
+                               className={'desktop'}
                         />
                     </Form.Field>
 
-                    {this.props.showLimitedOnly && (
-                        <Form.Field>
+                    <Form.Field>
+                        {this.props.showLimitedOnly && (
                             <Radio toggle label='Hide Standard Characters'
                                    onChange={this.handleChangeLimitedOnly}
-                                   checked={this.props.limitedOnly ?? false}
+                                   checked={this.props.limitedOnly}
                             />
-                        </Form.Field>
-                    )}
+                        )}
+                    </Form.Field>
                 </Form.Group>
             </Form>
         </>;

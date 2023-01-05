@@ -1,6 +1,8 @@
 import React, {ChangeEvent} from "react";
 import {Icon, Input, InputOnChangeData, Table} from "semantic-ui-react";
 import {VersionParts} from "@/banners/types";
+import _ from "lodash";
+import BannerSearch from "./BannerSearch";
 
 
 type Properties = {
@@ -25,14 +27,7 @@ export default class BannerHeader extends React.Component<Properties, States> {
                 <Table.Row>
                     <Table.HeaderCell className={'no-border'}
                                       style={{pointerEvents: 'auto', padding: '0 .5em'}}>
-                        <Input fluid
-                               placeholder={'Filter ' + bannerType + '...'}
-                               onChange={onChange}
-                               value={filterText}
-                               style={{minWidth: '16em'}} icon>
-                            <input />
-                            <Icon name='search'/>
-                        </Input>
+                        <BannerSearch onChange={onChange} />
                     </Table.HeaderCell>
                     <Table.HeaderCell>
                         <Icon name='redo'/>

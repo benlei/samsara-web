@@ -1,16 +1,5 @@
 import {Dispatch, SetStateAction} from "react";
 
-export type Banners = {
-    characters: Banner;
-
-    weapons: Banner;
-}
-
-export type Banner = {
-    4: BannerResource;
-    5: BannerResource;
-}
-
 export type BannerResource = {
     [name: string]: string[]
 }
@@ -20,7 +9,7 @@ export type VersionParts = {
     parts: number;
 }
 
-export type Rundown = {
+export type ResourceBanner = {
     name: string;
     image: string;
     runs: number;
@@ -30,9 +19,9 @@ export type Rundown = {
 
 
 export type BannerFilterSortOptions = {
-    limitedOnly: boolean | null | undefined
-    sortBy: string | null
-    order: string | null
+    limitedOnly: boolean
+    sortBy: string
+    order: string
 }
 
 export type BannerOptionSetters = {

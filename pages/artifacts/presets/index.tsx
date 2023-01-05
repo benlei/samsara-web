@@ -4,9 +4,9 @@ import {RotationStorage} from "@/artifacts/types";
 import {V1StorageKey} from "@/artifacts/presets";
 import ArtifactRotationPresets from "@/components/artifacts/ArtifactRotationPresets";
 import _ from "lodash";
-import {v4} from "uuid";
 import Stale from "@/components/Stale";
 import ArtifactConfigLoadDownload from "@/components/artifacts/ArtifactConfigLoadDownload";
+import {nanoid} from "nanoid";
 
 
 export default function ManageArtifactRotationPresets({}) {
@@ -46,7 +46,7 @@ export default function ManageArtifactRotationPresets({}) {
         } catch (ignore) {
 
         }
-        newStorage.cacheId = v4()
+        newStorage.cacheId = nanoid()
         setStorage(newStorage)
         localStorage.setItem(V1StorageKey, JSON.stringify(newStorage))
     }
@@ -61,12 +61,12 @@ export default function ManageArtifactRotationPresets({}) {
                 <Stale/>
             ) : (
                 <>
-                    <ArtifactConfigLoadDownload
+                    <ArtifactRotationPresets
+                        storage={storage}
                         setStorage={setStorageAndCommit}
                     />
 
-                    <ArtifactRotationPresets
-                        storage={storage}
+                    <ArtifactConfigLoadDownload
                         setStorage={setStorageAndCommit}
                     />
                 </>
