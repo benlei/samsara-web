@@ -1,24 +1,35 @@
 import {Image, Label, Progress, Table} from "semantic-ui-react";
 import {
-    CommonSummaryProperties, getBannersSinceLastCountSummary,
+    BannerSummary,
+    CommonSummaryProperties,
+    CountSummary,
     getColorClassName,
-    getDaysSinceRunCountSummary,
     getFilterFunction,
     getPercent
 } from "@/banners/summary";
 import _ from "lodash";
 import React from "react";
+import {VersionParts} from "@/banners/types";
 
-export default function BannersSinceLast(
+type Properties = {
+    singular: string
+    plural: string
+    counter: (versionParts: VersionParts[], bannerSummaries: { [name: string]: BannerSummary }) => CountSummary[]
+} & CommonSummaryProperties
+
+export default function BasicSinceLast(
     {
         versionParts,
         banners,
         type,
         order,
         filterText,
-    }: CommonSummaryProperties
+        singular,
+        plural,
+        counter,
+    }: Properties
 ) {
-    const baseSummary = _.chain(getBannersSinceLastCountSummary(versionParts, banners))
+    const baseSummary = _.chain(counter(versionParts, banners))
         .orderBy([
             (b) => b.count,
             (b) => b.name,
@@ -47,7 +58,7 @@ export default function BannersSinceLast(
 
                         <Label basic className={getColorClassName(getPercent(s.count, maxVal))}>
                             {s.count}
-                            <Label.Detail>banner{s.count === 1 ? '' : 's'} ago</Label.Detail>
+                            <Label.Detail>{s.count === 1 ? singular : plural}</Label.Detail>
                         </Label>
                     </Table.Cell>
                 </Table.Row>

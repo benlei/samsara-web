@@ -52,7 +52,7 @@ export type CommonSummaryProperties = {
     filterText: string
 }
 
-export function getBannerPatchGap(versionParts: VersionParts[], oldVersion: string, newVersion: string): number {
+export function getPatchGap(versionParts: VersionParts[], oldVersion: string, newVersion: string): number {
     const baseOldVersion = getBaseVersion(oldVersion)
     const baseNewVersion = getBaseVersion(newVersion)
 
@@ -90,7 +90,7 @@ export function getAvgPatchGapInterval(versionParts: VersionParts[], banner: Ban
 
     let sum = 0
     for (let i = 0; i < banner.versions.length - 1; i++) {
-        sum += getBannerPatchGap(versionParts, banner.versions[i], banner.versions[i + 1])
+        sum += getPatchGap(versionParts, banner.versions[i], banner.versions[i + 1])
     }
 
     return _.round(sum / (banner.versions.length - 1), 1)
@@ -142,7 +142,7 @@ export function getResourceSummaries(
                 banner.versions[banner.versions.length - 1],
                 `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
             ) + 1,
-            patchesSinceLastRun: getBannerPatchGap(
+            patchesSinceLastRun: getPatchGap(
                 versionParts,
                 banner.versions[banner.versions.length - 1],
                 `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
@@ -190,44 +190,81 @@ export function getFilterFunction(filterText: string): (s: CountSummary | Averag
     return (s) => s.name.toLowerCase().includes(filterText!.toLowerCase())
 }
 
-export function getDaysSinceRunCountSummary(
+export function getCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
-    currDate: string,
+    calculate: (banner: BannerSummary) => number,
 ): CountSummary[] {
-    dayjs.extend(utc);
-
     const result: CountSummary[] = []
-    const currDayjs = dayjs.utc(currDate)
 
     _.forIn(bannerSummaries, (banner, name) => {
         result.push({
             name,
             image: getImageFromName(name),
-            count: Math.max(0, currDayjs.diff(dayjs.utc(banner.dates[banner.dates.length - 1].end), 'day')),
+            count: calculate(banner),
         })
     })
 
     return result
 }
 
+export function getDaysSinceRunCountSummary(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+    currDate: string,
+): CountSummary[] {
+    dayjs.extend(utc);
+    const currDayjs = dayjs.utc(currDate)
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner) => Math.max(
+            0,
+            currDayjs.diff(
+                dayjs.utc(banner.dates[banner.dates.length - 1].end),
+                'day',
+            )
+        ),
+    )
+}
+
 export function getBannersSinceLastCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
 ): CountSummary[] {
-    const result: CountSummary[] = []
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner) => getBannerGap(
+            versionParts,
+            banner.versions[banner.versions.length - 1],
+            `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
+        ) + 1,
+    )
+}
 
-    _.forIn(bannerSummaries, (banner, name) => {
-        result.push({
-            name,
-            image: getImageFromName(name),
-            count: getBannerGap(
-                versionParts,
-                banner.versions[banner.versions.length - 1],
-                `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
-            ) + 1,
-        })
-    })
+export function getPatchesSinceLastCountSummary(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+): CountSummary[] {
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner) => getPatchGap(
+            versionParts,
+            banner.versions[banner.versions.length - 1],
+            `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
+        ),
+    )
+}
 
-    return result
+export function getRunsCountSummary(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+): CountSummary[] {
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner) => banner.versions.length,
+    )
 }

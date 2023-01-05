@@ -5,10 +5,12 @@ import {
     getAvgDayInterval,
     getAvgPatchGapInterval,
     getBannerGap,
-    getBannerPatchGap,
+    getPatchGap,
     getBannersSinceLastCountSummary,
     getDaysSinceRunCountSummary,
-    getResourceSummaries
+    getResourceSummaries,
+    getPatchesSinceLastCountSummary,
+    getRunsCountSummary
 } from "@/banners/summary";
 import dayjs from "dayjs";
 import _ from "lodash";
@@ -71,15 +73,15 @@ const BannerSummariesDummyData: { [name: string]: BannerSummary } = {
     },
 }
 
-describe('getBannerPatchGap', () => {
+describe('getPatchGap', () => {
     it('should get the correct patch difference', async () => {
-        expect(getBannerPatchGap(VersionPartsDummyData, "1.0.1", "2.0.1"))
+        expect(getPatchGap(VersionPartsDummyData, "1.0.1", "2.0.1"))
             .toEqual(7)
 
-        expect(getBannerPatchGap(VersionPartsDummyData, "1.0.2", "2.0.1"))
+        expect(getPatchGap(VersionPartsDummyData, "1.0.2", "2.0.1"))
             .toEqual(7)
 
-        expect(getBannerPatchGap(VersionPartsDummyData, "1.5.1", "3.2.1"))
+        expect(getPatchGap(VersionPartsDummyData, "1.5.1", "3.2.1"))
             .toEqual(13)
     });
 })
@@ -289,6 +291,76 @@ describe('getBannersSinceLastCountSummary', () => {
                         "name": "Yoimiya",
                         "image": "Yoimiya",
                         "count": 1,
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
+})
+
+describe('getPatchesSinceLastCountSummary', () => {
+    it('should return the number of patches since last run', () => {
+        expect(_.orderBy(
+            getPatchesSinceLastCountSummary(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "count": 11,
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "count": 9,
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "count": 1,
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "count": 0,
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
+})
+
+describe('getRunsCountSummary', () => {
+    it('should return the runs for each character', () => {
+        expect(_.orderBy(
+            getRunsCountSummary(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "count": 1,
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "count": 2,
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "count": 4,
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "count": 3,
                     },
                 ],
                 (b) => b.name,
