@@ -1,5 +1,5 @@
 import {Image, Label, Progress, Table} from "semantic-ui-react";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import _ from "lodash";
 import {BannerSummary, getResourceSummaries, ResourceSummary} from "@/banners/summary";
 import dayjs from "dayjs";
@@ -97,7 +97,11 @@ export default function SummaryTable(
         return (s: ResourceSummary) => s.name.toLowerCase().includes(filterText!.toLowerCase())
     }
 
-    const baseSummary = _.chain(getResourceSummaries(versionParts, banners, dayjs()))
+    // necessary to keep page up to date
+    const [now, setNow] = useState(dayjs())
+    useEffect(() => setNow(dayjs()), [])
+
+    const baseSummary = _.chain(getResourceSummaries(versionParts, banners, now))
         .filter((b) => !limitedOnly || !standard!.includes(b.name))
         .filter((b) => !sortBy.startsWith('avg') || getField(b) > 0)
         .orderBy([
