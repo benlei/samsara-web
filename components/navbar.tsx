@@ -1,19 +1,19 @@
 import React from "react";
-import {Container, Dropdown, Icon, Menu} from "semantic-ui-react";
+import {Container, Divider, Dropdown, Icon, Menu} from "semantic-ui-react";
 import {useRouter} from 'next/router';
 
 export default function Navbar({children}: React.PropsWithChildren) {
     const {asPath} = useRouter();
 
     function getCharacterBannerActive() {
-        if (asPath === '/' || asPath === '/4star/characters') {
+        if (asPath === '/' || asPath.includes('/characters')) {
             return 'active'
         }
         return ''
     }
 
     function getWeaponBannerActive() {
-        if (asPath === '/5star/weapons' || asPath === '/4star/weapons') {
+        if (asPath.includes('/weapons')) {
             return 'active'
         }
         return ''
@@ -34,16 +34,22 @@ export default function Navbar({children}: React.PropsWithChildren) {
                     <Menu.Item as={'a'} href='/'>
                         <Icon name={'home'}/> Samsara
                     </Menu.Item>
-                    <Dropdown text='Character Banners' pointing className={'link item '}>
+                    <Dropdown text='Character Banners' pointing className={'link item '+ getCharacterBannerActive()}>
                         <Dropdown.Menu>
-                            <Dropdown.Item as={'a'} href='/'>5 <Icon name={'star'}/></Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon name={'star'}/></Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/5star/characters/summary'>5 <Icon name={'star'}/> Summary</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/5star/characters'>5 <Icon name={'star'}/> History</Dropdown.Item>
+                            <Dropdown.Divider/>
+                            <Dropdown.Item as={'a'} href='/4star/characters/summary'>4 <Icon name={'star'}/> Summary</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon name={'star'}/> History</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown text='Weapon Banners' pointing className={'link item ' + getWeaponBannerActive()}>
                         <Dropdown.Menu>
-                            <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon name={'star'}/></Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/></Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/5star/weapons/summary'>5 <Icon name={'star'}/> Summary</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon name={'star'}/> History</Dropdown.Item>
+                            <Dropdown.Divider/>
+                            <Dropdown.Item as={'a'} href='/4star/weapons/summary'>4 <Icon name={'star'}/> Summary</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/>History</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown text='Artifact Rotations' pointing className={'link item ' + getrtifactRotationActive()}>
@@ -68,16 +74,23 @@ export function NavbarMobile() {
                 <Menu.Item as={'a'} href='/'>
                     <Icon name={'home'}/> Samsara
                 </Menu.Item>
-                <Dropdown text='Menu' pointing className={'link item'}>
+                <Dropdown text='Banners' pointing className={'link item'}>
                     <Dropdown.Menu>
                         <Dropdown.Header>Characters Banners</Dropdown.Header>
-                        <Dropdown.Item as={'a'} href='/'>5 <Icon name={'star'}/></Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon name={'star'}/></Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/'>5 <Icon name={'star'}/> Summary</Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/5star/characters'>5 <Icon name={'star'}/> History</Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/4star/characters/summary'>4 <Icon name={'star'}/> Summary</Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon name={'star'}/> History</Dropdown.Item>
                         <Dropdown.Divider/>
                         <Dropdown.Header>Weapons Banners</Dropdown.Header>
-                        <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon name={'star'}/></Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/></Dropdown.Item>
-                        <Dropdown.Divider/>
+                        <Dropdown.Item as={'a'} href='/5star/weapons/summary'>5 <Icon name={'star'}/> Summary</Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon name={'star'}/> History</Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/4star/weapons/summary'>4 <Icon name={'star'}/> Summary</Dropdown.Item>
+                        <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/> History</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown text='Tools' pointing className={'link item'}>
+                    <Dropdown.Menu>
                         <Dropdown.Header>Artifact Rotations</Dropdown.Header>
                         <Dropdown.Item as={'a'} href='/artifacts'>Overview</Dropdown.Item>
                         <Dropdown.Item as={'a'} href='/artifacts/presets'>Manage Presets</Dropdown.Item>
