@@ -5,6 +5,7 @@ import _ from "lodash";
 import BannerHeader from "@/components/banners/BannerHeader";
 import BannerFooter from "@/components/banners/BannerFooter";
 import BannerRow from "@/components/banners/BannerRow";
+import {getFilterFunction} from "@/banners/summary";
 
 
 type BannerRundownProps = {
@@ -15,44 +16,19 @@ type BannerRundownProps = {
 } & BannerFilterSortOptions
 
 type BannerRundownState = {
-    filterText: string | null
+    filterText: string
 }
 
 export default class BannerTable extends React.Component<BannerRundownProps, BannerRundownState> {
     constructor(props: BannerRundownProps) {
         super(props);
         this.state = {
-            filterText: null
+            filterText: '',
         }
-    }
-
-    private getFilteredRundown(filterText: string) {
-        let filterFunc = (r: ResourceBanner) => r.name.toLowerCase().includes(filterText!.toLowerCase())
-        if (filterText.startsWith('/') && filterText.endsWith('/')) {
-            try {
-                const re = new RegExp(filterText.substring(1, filterText.length - 1), 'i')
-                filterFunc = (r: ResourceBanner) => re.test(r.name)
-            } catch (ignore) {
-
-            }
-        }
-
-        const filteredRundown = _.chain(this.props.rundown)
-            .filter(filterFunc)
-            .value()
-
-        if (filteredRundown.length) {
-            return filteredRundown
-        }
-        return this.props.rundown;
     }
 
     handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({filterText: event.target.value});
-    }
-
-    componentDidMount = () => {
-        this.setState({filterText: ''});
     }
 
     isLimitedFilter = (r: ResourceBanner) => {
@@ -64,6 +40,7 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
     }
 
     sortByName = (r: ResourceBanner) => r.name
+
     sortByRunsLastPatch = [
         (r: ResourceBanner) => String(r.banners.length),
         (r: ResourceBanner) => r.banners[r.banners.length - 1],
@@ -98,7 +75,7 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
             case 'runs-last':
                 return this.sortByRunsLastPatch
             case 'name':
-                return this.sortByName
+                return [this.sortByName]
         }
     }
 
@@ -115,9 +92,13 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
 
     render() {
         let {versionParts, bannerType, rundown} = this.props
-        let {filterText} = this.state
-        if (filterText) {
-            rundown = this.getFilteredRundown(filterText);
+
+        const filteredRundown = _.chain(this.props.rundown)
+            .filter(getFilterFunction(this.state.filterText))
+            .value()
+
+        if (!filteredRundown.length) {
+            rundown = filteredRundown;
         }
 
         rundown = _.chain(rundown)
@@ -131,8 +112,6 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
                     <BannerHeader
                         versionParts={versionParts}
                         onChange={this.handleFilterChange}
-                        bannerType={bannerType}
-                        filterText={filterText}
                     />
                     <Table.Body>
                         {rundown.map((r, rI) => <BannerRow key={rI}

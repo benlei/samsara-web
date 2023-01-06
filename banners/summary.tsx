@@ -84,7 +84,7 @@ export function getPercent(nom: number, denom: number): number {
     return 100 * Math.max(0, nom) / Math.max(1, denom)
 }
 
-export function getFilterFunction(filterText: string): (s: CountSummary | AverageCountSummary) => boolean {
+export function getFilterFunction(filterText: string): (s: {name: string}) => boolean {
     if (!filterText.trim().length) {
         return () => true
     }

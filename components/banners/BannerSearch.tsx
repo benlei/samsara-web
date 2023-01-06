@@ -21,7 +21,7 @@ export default function BannerSearch(
     return (
         <Input fluid
                placeholder={'Filter name...'}
-               onChange={_.debounce(onChange, 500)}
+               onChange={_.debounce(onChange, 250)}
             // value={filterText}
                style={{minWidth: '16em'}} icon>
             <input/>

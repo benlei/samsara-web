@@ -125,7 +125,7 @@ export default function SummaryOptions(
                 <Form.Field>
                     <Input fluid
                            placeholder={'Filter name...'}
-                           onChange={_.debounce((event) => setFilterText(event.target.value), 500)}
+                           onChange={_.debounce((event) => setFilterText(event.target.value), 250)}
                            icon>
                         <input/>
                         <Icon name='search'/>
