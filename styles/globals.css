@@ -118,6 +118,7 @@ img.active {
     white-space: nowrap;
     font-weight: 600;
     font-size: 1rem;
+    padding-left: 1em !important;
 }
 
 .summary td:first-of-type p {
