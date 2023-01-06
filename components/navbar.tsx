@@ -56,7 +56,7 @@ export default function Navbar({children}: React.PropsWithChildren) {
                             <Dropdown.Divider/>
                             <Dropdown.Item as={'a'} href='/4star/weapons/summary'>4 <Icon
                                 name={'star'}/> Summary</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/>History</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/> History</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown text='Artifact Rotations' pointing className={'link item ' + getrtifactRotationActive()}>
