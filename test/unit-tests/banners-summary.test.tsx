@@ -10,7 +10,7 @@ import {
     getDaysSinceRunCountSummary,
     getResourceSummaries,
     getPatchesSinceLastCountSummary,
-    getRunsCountSummary
+    getRunsCountSummary, getAverageDaysInBetween
 } from "@/banners/summary";
 import dayjs from "dayjs";
 import _ from "lodash";
@@ -361,6 +361,50 @@ describe('getRunsCountSummary', () => {
                         "name": "Yoimiya",
                         "image": "Yoimiya",
                         "count": 3,
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
+})
+
+
+describe('getAverageDaysInBetween', () => {
+    it('should return the avg days stats for each character', () => {
+        expect(_.orderBy(
+            getAverageDaysInBetween(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "average": 0,
+                        "standardDeviation": 0,
+                        "count": 1
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "average": 231,
+                        "standardDeviation": 0,
+                        "count": 2
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "average": 223.3,
+                        "standardDeviation": 95.3,
+                        "count": 4
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "average": 203.5,
+                        "standardDeviation": 132.5,
+                        "count": 3
                     },
                 ],
                 (b) => b.name,

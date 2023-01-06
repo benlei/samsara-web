@@ -17,7 +17,7 @@ type Properties = {
     counter: (versionParts: VersionParts[], bannerSummaries: { [name: string]: BannerSummary }) => CountSummary[]
 } & CommonSummaryProperties
 
-export default function BasicSinceLast(
+export default function BasicCounterSummary(
     {
         versionParts,
         banners,

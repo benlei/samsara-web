@@ -26,7 +26,7 @@ export type CountSummary = {
     count: number
 }
 
-export type AverageSummary = {
+export type AverageCountSummary = {
     name: string
     image: string
     average: number
@@ -173,7 +173,7 @@ export function getPercent(nom: number, denom: number): number {
     return 100 * Math.max(0, nom) / Math.max(1, denom)
 }
 
-export function getFilterFunction(filterText: string): (s: CountSummary | AverageSummary) => boolean {
+export function getFilterFunction(filterText: string): (s: CountSummary | AverageCountSummary) => boolean {
     if (!filterText.trim().length) {
         return () => true
     }
@@ -190,7 +190,7 @@ export function getFilterFunction(filterText: string): (s: CountSummary | Averag
     return (s) => s.name.toLowerCase().includes(filterText!.toLowerCase())
 }
 
-export function getCountSummary(
+function getCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
     calculate: (banner: BannerSummary) => number,
@@ -266,5 +266,63 @@ export function getRunsCountSummary(
         versionParts,
         bannerSummaries,
         (banner) => banner.versions.length,
+    )
+}
+
+function getAverageCountSummary(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+    calculateAll: (versionParts: VersionParts[], banner: BannerSummary) => number[],
+): AverageCountSummary[] {
+    const result: AverageCountSummary[] = []
+
+    _.forIn(bannerSummaries, (banner, name) => {
+        const counters = calculateAll(versionParts, banner)
+        const average = counters.length ?
+            _.round(_.sum(counters) / counters.length, 1) : 0
+        const standardDeviation = counters.length ?
+            _.round(
+                Math.sqrt(
+                    _.sum(
+                        _.map(counters, (c) => Math.pow((c - average), 2))
+                    ) / counters.length
+                ), 1
+            ) : 0
+
+        result.push({
+            name,
+            image: getImageFromName(name),
+            count: banner.versions.length,
+            average,
+            standardDeviation,
+        })
+    })
+
+    return result
+}
+
+export function getAverageDaysInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+): AverageCountSummary[] {
+    dayjs.extend(utc);
+
+    function getDayGaps(ignore: any, banner: BannerSummary): number[] {
+        if (banner.dates.length < 2) {
+            return []
+        }
+
+        const result = []
+        for (let i = 0; i < banner.dates.length - 1; i++) {
+            result.push(dayjs.utc(banner.dates[i + 1].start).diff(dayjs.utc(banner.dates[i].end), 'day'))
+        }
+
+        return result
+    }
+
+    return getAverageCountSummary(
+        versionParts,
+        bannerSummaries,
+        getDayGaps,
     )
 }
