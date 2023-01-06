@@ -19,13 +19,17 @@ type Properties = {
 
 export default function AddEditPresetConfig(props: Properties) {
     function handleFixedClicked() {
-        const newPreset = _.cloneDeep<RotationPreset>(props.preparedPreset)
+        const newPreset = _.clone<RotationPreset>(props.preparedPreset)
         newPreset.fixed = !newPreset.fixed
         props.setPreparedPreset(newPreset)
     }
 
     function handleFixedDaysChanged(num: number) {
-        const newPreset = _.cloneDeep<RotationPreset>(props.preparedPreset)
+        if (num < 1) {
+            return
+        }
+
+        const newPreset = _.clone<RotationPreset>(props.preparedPreset)
         newPreset.fixedDays = num
 
         if (props.preparedPreset.fixed) {
@@ -37,7 +41,7 @@ export default function AddEditPresetConfig(props: Properties) {
     }
 
     function handleNameChange(event: React.ChangeEvent<HTMLInputElement>) {
-        const newPreset = _.cloneDeep<RotationPreset>(props.preparedPreset)
+        const newPreset = _.clone<RotationPreset>(props.preparedPreset)
         newPreset.name = event.target.value
         props.setPreparedPreset(newPreset)
     }
