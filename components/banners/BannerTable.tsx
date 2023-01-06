@@ -93,18 +93,18 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
     render() {
         let {versionParts, bannerType, rundown} = this.props
 
-        const filteredRundown = _.chain(this.props.rundown)
-            .filter(getFilterFunction(this.state.filterText))
-            .value()
-
-        if (!filteredRundown.length) {
-            rundown = filteredRundown;
-        }
-
         rundown = _.chain(rundown)
             .filter(this.isLimitedFilter)
             .orderBy(this.getSortFunction(), this.getOrderByOrders())
             .value()
+
+        const filteredRundown = _.chain(rundown)
+            .filter(getFilterFunction(this.state.filterText))
+            .value()
+
+        if (filteredRundown.length) {
+            rundown = filteredRundown;
+        }
 
         return (
             <>
