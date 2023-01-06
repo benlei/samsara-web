@@ -1,24 +1,12 @@
 import {getBaseVersion, getVersionPart} from "@/banners/version";
 import _ from "lodash";
-import dayjs, {Dayjs} from "dayjs";
+import dayjs from "dayjs";
 import {VersionParts} from "@/banners/types";
 import {getImageFromName} from "@/format/image";
 import utc from "dayjs/plugin/utc";
 
 const HighRange = 60
 const MidRange = 25
-
-export type ResourceSummary = {
-    name: string
-    image: string
-    runs: number
-    daysSinceLastRun: number
-    bannersSinceLastRun: number
-    patchesSinceLastRun: number
-    avgBannerGapInterval: number
-    avgPatchGapInterval: number
-    avgDaysInterval: number
-}
 
 export type CountSummary = {
     name: string
@@ -82,83 +70,6 @@ export function getBannerGap(versionParts: VersionParts[], oldVersion: string, n
 
     return total
 }
-
-export function getAvgPatchGapInterval(versionParts: VersionParts[], banner: BannerSummary): number {
-    if (banner.versions.length < 2) {
-        return -1
-    }
-
-    let sum = 0
-    for (let i = 0; i < banner.versions.length - 1; i++) {
-        sum += getPatchGap(versionParts, banner.versions[i], banner.versions[i + 1])
-    }
-
-    return _.round(sum / (banner.versions.length - 1), 1)
-}
-
-export function getAvgBannerGapInterval(versionParts: VersionParts[], banner: BannerSummary): number {
-    if (banner.versions.length < 2) {
-        return -1
-    }
-
-    let sum = 0
-    for (let i = 0; i < banner.versions.length - 1; i++) {
-        sum += getBannerGap(versionParts, banner.versions[i], banner.versions[i + 1])
-    }
-
-    return _.round(sum / (banner.versions.length - 1), 1)
-}
-
-export function getAvgDayInterval(banner: BannerSummary): number {
-    if (banner.dates.length < 2) {
-        return -1
-    }
-
-    let sum = 0
-    for (let i = 0; i < banner.dates.length - 1; i++) {
-        sum += dayjs.utc(banner.dates[i + 1].start).diff(dayjs.utc(banner.dates[i].end), 'day')
-    }
-
-    return _.round(sum / (banner.dates.length - 1), 1)
-}
-
-export function getResourceSummaries(
-    versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
-    currDate: Dayjs,
-): ResourceSummary[] {
-    dayjs.extend(utc);
-
-    const result: ResourceSummary[] = []
-
-    _.forIn(bannerSummaries, (banner, name) => {
-        result.push({
-            name,
-            image: getImageFromName(name),
-            runs: banner.versions.length,
-            daysSinceLastRun: Math.max(0, currDate.diff(dayjs.utc(banner.dates[banner.dates.length - 1].end), 'day')),
-            bannersSinceLastRun: getBannerGap(
-                versionParts,
-                banner.versions[banner.versions.length - 1],
-                `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
-            ) + 1,
-            patchesSinceLastRun: getPatchGap(
-                versionParts,
-                banner.versions[banner.versions.length - 1],
-                `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
-            ),
-            avgBannerGapInterval: getAvgBannerGapInterval(versionParts, banner),
-            avgPatchGapInterval: getAvgPatchGapInterval(versionParts, banner),
-            avgDaysInterval: getAvgDayInterval(banner),
-        })
-    })
-
-    return result
-}
-
-//=======================================================
-// New Stuff
-//=======================================================
 
 export function getColorClassName(p: number): string {
     if (p >= HighRange) {

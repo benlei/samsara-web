@@ -6,7 +6,7 @@ import getVersionParts from "@/banners/version";
 import _ from "lodash";
 import {BannerSummary} from "@/banners/summary";
 import PngDownloadButton from "@/components/PngDownloadButton";
-import NewSummaryTable from "@/components/summary/NewSummaryTable";
+import SummaryTable from "@/components/summary/SummaryTable";
 
 type Properties = {
     data: { banners: { [name: string]: BannerSummary }, date: string }
@@ -60,7 +60,7 @@ export default function SummaryPage(
 
             <Container text={!expand} style={{marginTop: '1em'}} textAlign={"center"}>
                 <Ref innerRef={ref}>
-                    <NewSummaryTable
+                    <SummaryTable
                         sortBy={sortBy} order={order as 'desc' | 'asc'} limitedOnly={limitedOnly}
                         filterText={filterText}
                         type={type} banners={data.banners} versionParts={versionParts}
