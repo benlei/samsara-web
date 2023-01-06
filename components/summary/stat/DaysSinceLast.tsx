@@ -25,7 +25,7 @@ export default function DaysSinceLast(
         .orderBy([
             (b) => b.count,
             (b) => b.name,
-        ], order)
+        ], [order, order])
         .value()
 
     const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))

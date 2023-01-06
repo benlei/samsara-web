@@ -35,7 +35,7 @@ export default function AverageCounterSummary(
             (b) => b.standardDeviation,
             (b) => b.count,
             (b) => b.name,
-        ], order)
+        ], [order, order, order, order])
         .value()
 
     const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))

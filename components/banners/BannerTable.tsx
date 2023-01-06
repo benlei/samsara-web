@@ -111,7 +111,7 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
 
         rundown = _.chain(rundown)
             .filter(this.isLimitedFilter)
-            .orderBy(this.getSortFunction(), this.props.order === 'asc' ? 'asc' : 'desc')
+            .orderBy(this.getSortFunction(), Array(this.getSortFunction().length).fill(this.props.order === 'asc' ? 'asc' : 'desc'))
             .value()
 
         return (
