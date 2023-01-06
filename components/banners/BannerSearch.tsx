@@ -10,22 +10,13 @@ export default function BannerSearch(
         onChange,
     }: Properties
 ) {
-    const [ssr, setSsr] = useState(true)
-
-    useEffect(() => setSsr(false), [])
-
-    if (ssr) {
-        return null
-    }
-
     return (
         <>
             <Input fluid
                    placeholder={'Filter name...'}
                    onChange={_.debounce(onChange, 250)}
-                   name={ssr}
                    style={{minWidth: '16em'}} icon>
-                <input/>
+                <input autoComplete={'off'} />
                 <Icon name='search'/>
             </Input>
         </>

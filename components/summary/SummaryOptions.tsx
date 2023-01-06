@@ -29,13 +29,9 @@ export default function SummaryOptions(
         setExpand,
     }: Properties
 ) {
-    const [ssr, setSsr] = useState(true)
+    const [ssrClientResetter, setSsrClientResetter] = useState('_')
 
-    useEffect(() => setSsr(false), [])
-
-    if (ssr) {
-        return null
-    }
+    useEffect(() => setSsrClientResetter(''), [])
 
     return (
         <>
@@ -48,18 +44,21 @@ export default function SummaryOptions(
                             value='last-day'
                             checked={sortBy === 'last-day'}
                             onChange={() => setSortBy('last-day')}
+                            name={ssrClientResetter}
                         />
                         <Form.Radio
                             label='Banners since Last Run'
                             value='last-banner'
                             checked={sortBy === 'last-banner'}
                             onChange={() => setSortBy('last-banner')}
+                            name={ssrClientResetter}
                         />
                         <Form.Radio
                             label='Patches since Last Run'
                             value='last-patch'
                             checked={sortBy === 'last-patch'}
                             onChange={() => setSortBy('last-patch')}
+                            name={ssrClientResetter}
                         />
                     </Form.Group>
                     <Form.Group widths='equal' inline>
@@ -68,18 +67,21 @@ export default function SummaryOptions(
                             value='avg-days'
                             checked={sortBy === 'avg-days'}
                             onChange={() => setSortBy('avg-days')}
+                            name={ssrClientResetter}
                         />
                         <Form.Radio
                             label='Avg. # of Banners in Between'
                             value='avg-banner'
                             checked={sortBy === 'avg-banner'}
                             onChange={() => setSortBy('avg-banner')}
+                            name={ssrClientResetter}
                         />
                         <Form.Radio
                             label='Avg. # of Patches in Between'
                             value='avg-patch'
                             checked={sortBy === 'avg-patch'}
                             onChange={() => setSortBy('avg-patch')}
+                            name={ssrClientResetter}
                         />
                     </Form.Group>
                     <Form.Group widths='equal' inline>
@@ -88,6 +90,7 @@ export default function SummaryOptions(
                             value='runs'
                             checked={sortBy === 'runs'}
                             onChange={() => setSortBy('runs')}
+                            name={ssrClientResetter}
                         />
                     </Form.Group>
                 </Form.Field>
@@ -109,6 +112,7 @@ export default function SummaryOptions(
                                onChange={() => setExpand(!expand)}
                                checked={expand}
                                className={'desktop'}
+                               name={ssrClientResetter}
                         />
                     </Form.Field>
 
@@ -117,6 +121,7 @@ export default function SummaryOptions(
                             <Radio toggle label='Hide Standard Characters'
                                    onChange={() => setLimitedOnly(!limitedOnly)}
                                    checked={limitedOnly}
+                                   name={ssrClientResetter}
                             />
                         )}
                     </Form.Field>
@@ -127,7 +132,7 @@ export default function SummaryOptions(
                            placeholder={'Filter name...'}
                            onChange={_.debounce((event) => setFilterText(event.target.value), 250)}
                            icon>
-                        <input/>
+                        <input autoComplete={'off'}/>
                         <Icon name='search'/>
                     </Input>
                 </Form.Field>
