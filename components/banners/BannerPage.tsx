@@ -97,7 +97,7 @@ export default class BannerPage extends React.Component<Properties, States> {
                         </Ref>
                     </ScrollContainer>
                 </Container>
-                <Container style={{marginTop: '2em'}}>
+                <Container style={{marginTop: '2em'}} textAlign={'center'}>
                     <PngDownloadButton node={this.componentRef} name={'banner-history'}/>
                 </Container>
             </>

@@ -16,7 +16,7 @@ export default function PngDownloadButton(
         // note: this lib uses react finddom - this will be deprecated in the future...
         const {exportComponentAsPNG} = await import('react-component-export-image')
 
-        // seems similar to https://github.com/niklasvh/html2canvas/issues/1438, but adding an extra 8
+        // seems similar to https://github.com/niklasvh/html2canvas/issues/1438
         await exportComponentAsPNG(node, {
             fileName: name + '.png',
             html2CanvasOptions: {
@@ -24,7 +24,7 @@ export default function PngDownloadButton(
                     node.current.scrollWidth ?? 0,
                     node.current.offsetWidth ?? 0,
                     node.current.clientWidth ?? 0,
-                ) + 16,
+                ) + 8,
             },
         })
     }
