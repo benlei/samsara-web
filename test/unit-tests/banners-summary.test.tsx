@@ -10,7 +10,7 @@ import {
     getDaysSinceRunCountSummary,
     getResourceSummaries,
     getPatchesSinceLastCountSummary,
-    getRunsCountSummary, getAverageDaysInBetween
+    getRunsCountSummary, getAverageDaysInBetween, getAverageBannersInBetween
 } from "@/banners/summary";
 import dayjs from "dayjs";
 import _ from "lodash";
@@ -404,6 +404,50 @@ describe('getAverageDaysInBetween', () => {
                         "image": "Yoimiya",
                         "average": 203.5,
                         "standardDeviation": 132.5,
+                        "count": 3
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
+})
+
+
+describe('getAverageBannersInBetween', () => {
+    it('should return the avg days stats for each character', () => {
+        expect(_.orderBy(
+            getAverageBannersInBetween(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "average": 0,
+                        "standardDeviation": 0,
+                        "count": 1
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "average": 11,
+                        "standardDeviation": 0,
+                        "count": 2
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "average": 10.7,
+                        "standardDeviation": 4.5,
+                        "count": 4
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "average": 9.5,
+                        "standardDeviation": 5.5,
                         "count": 3
                     },
                 ],

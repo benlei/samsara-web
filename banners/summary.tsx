@@ -326,3 +326,27 @@ export function getAverageDaysInBetween(
         getDayGaps,
     )
 }
+
+export function getAverageBannersInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+): AverageCountSummary[] {
+    function getAvgBannerGaps(versionParts: VersionParts[], banner: BannerSummary): number[] {
+        if (banner.versions.length < 2) {
+            return []
+        }
+
+        const result = []
+        for (let i = 0; i < banner.versions.length - 1; i++) {
+            result.push(getBannerGap(versionParts, banner.versions[i], banner.versions[i + 1]))
+        }
+
+        return result
+    }
+
+    return getAverageCountSummary(
+        versionParts,
+        bannerSummaries,
+        getAvgBannerGaps,
+    )
+}

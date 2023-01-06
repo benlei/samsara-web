@@ -2,7 +2,7 @@ import {Table} from "semantic-ui-react";
 import React from "react";
 import _ from "lodash";
 import {
-    CommonSummaryProperties, getAverageDaysInBetween,
+    CommonSummaryProperties, getAverageBannersInBetween, getAverageDaysInBetween,
     getBannersSinceLastCountSummary,
     getPatchesSinceLastCountSummary,
     getRunsCountSummary
@@ -65,7 +65,7 @@ export default function NewSummaryTable(
             {sortBy === 'avg-banner' &&
                 <AverageCounterSummary {...commonProps}
                                        singular={'banner'} plural={'banners'}
-                                       counter={getAverageDaysInBetween}
+                                       counter={getAverageBannersInBetween}
                 />}
             {sortBy === 'avg-patch' &&
                 <AverageCounterSummary {...commonProps}
