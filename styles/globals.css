@@ -130,7 +130,8 @@ img.active {
 
 .summary td:not(:first-of-type) {
     text-align: right !important;
-    width: 100rem
+    width: 100rem;
+    padding-right: 1em !important;
 }
 
 .dark .bar {
