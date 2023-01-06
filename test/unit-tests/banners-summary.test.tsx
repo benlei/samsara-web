@@ -1,12 +1,12 @@
 import {VersionParts} from "@/banners/types";
 import {
     BannerSummary,
-    getAvgBannerGapInterval,
-    getAvgDayInterval,
-    getAvgPatchGapInterval,
     getBannerGap,
-    getBannerPatchGap,
-    getResourceSummaries
+    getPatchGap,
+    getBannersSinceLastCountSummary,
+    getDaysSinceRunCountSummary,
+    getPatchesSinceLastCountSummary,
+    getRunsCountSummary, getAverageDaysInBetween, getAverageBannersInBetween, getAveragePatchesInBetween
 } from "@/banners/summary";
 import dayjs from "dayjs";
 import _ from "lodash";
@@ -69,15 +69,15 @@ const BannerSummariesDummyData: { [name: string]: BannerSummary } = {
     },
 }
 
-describe('getBannerPatchGap', () => {
+describe('getPatchGap', () => {
     it('should get the correct patch difference', async () => {
-        expect(getBannerPatchGap(VersionPartsDummyData, "1.0.1", "2.0.1"))
+        expect(getPatchGap(VersionPartsDummyData, "1.0.1", "2.0.1"))
             .toEqual(7)
 
-        expect(getBannerPatchGap(VersionPartsDummyData, "1.0.2", "2.0.1"))
+        expect(getPatchGap(VersionPartsDummyData, "1.0.2", "2.0.1"))
             .toEqual(7)
 
-        expect(getBannerPatchGap(VersionPartsDummyData, "1.5.1", "3.2.1"))
+        expect(getPatchGap(VersionPartsDummyData, "1.5.1", "3.2.1"))
             .toEqual(13)
     });
 })
@@ -110,65 +110,11 @@ describe('getBannerGap', () => {
             .toEqual(-1)
     });
 })
-describe('getAvgPatchGapInterval', () => {
-    it('should get the avg patch gap for a character', async () => {
-        expect(getAvgPatchGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Hu Tao"]))
-            .toEqual(6)
 
-        expect(getAvgPatchGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Venti"]))
-            .toEqual(5.7)
-
-        expect(getAvgPatchGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Yoimiya"]))
-            .toEqual(5.5)
-    });
-
-    it('should return -1 when character has only ran once', async () => {
-        expect(getAvgPatchGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Fake"]))
-            .toEqual(-1)
-    });
-})
-
-describe('getAvgBannerGapInterval', () => {
-    it('should get the avg banner gap for a character', async () => {
-        expect(getAvgBannerGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Hu Tao"]))
-            .toEqual(11)
-
-        expect(getAvgBannerGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Venti"]))
-            .toEqual(10.7)
-
-        expect(getAvgBannerGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Yoimiya"]))
-            .toEqual(9.5)
-    });
-
-    it('should return -1 when character has only ran once', async () => {
-        expect(getAvgBannerGapInterval(VersionPartsDummyData, BannerSummariesDummyData["Fake"]))
-            .toEqual(-1)
-    });
-})
-
-describe('getAvgDayInterval', () => {
-    it('should get the avg day interval for a character', async () => {
-        expect(getAvgDayInterval(BannerSummariesDummyData["Hu Tao"]))
-            .toEqual(231)
-
-        expect(getAvgDayInterval(BannerSummariesDummyData["Venti"]))
-            .toEqual(223.3)
-
-        expect(getAvgDayInterval(BannerSummariesDummyData["Yoimiya"]))
-            .toEqual(203.5)
-    });
-
-    it('should return -1 when character has only ran once', async () => {
-        expect(getAvgDayInterval(BannerSummariesDummyData["Fake"]))
-            .toEqual(-1)
-    });
-})
-
-
-describe('getResourceSummaries', () => {
-    it('should get resource summary correctly', async () => {
+describe('getDaysSinceRunCountSummary', () => {
+    it('should return the number of days since last run', () => {
         expect(_.orderBy(
-            getResourceSummaries(VersionPartsDummyData, BannerSummariesDummyData, dayjs.utc("2023-01-03")),
+            getDaysSinceRunCountSummary(VersionPartsDummyData, BannerSummariesDummyData, "2023-01-03"),
             (b) => b.name,
             'asc'
         ))
@@ -176,50 +122,263 @@ describe('getResourceSummaries', () => {
                     {
                         "name": "Fake",
                         "image": "Fake",
-                        "avgBannerGapInterval": -1,
-                        "avgDaysInterval": -1,
-                        "avgPatchGapInterval": -1,
-                        "daysSinceLastRun": 490,
-                        "bannersSinceLastRun": 22,
-                        "patchesSinceLastRun": 11,
-                        "runs": 1
+                        "count": 490,
                     },
                     {
                         "name": "Hu Tao",
                         "image": "Hu-Tao",
-                        "avgBannerGapInterval": 11,
-                        "avgDaysInterval": 231,
-                        "avgPatchGapInterval": 6,
-                        "daysSinceLastRun": 406,
-                        "bannersSinceLastRun": 18,
-                        "patchesSinceLastRun": 9,
-                        "runs": 2
+                        "count": 406,
                     },
                     {
                         "name": "Venti",
                         "image": "Venti",
-                        "avgBannerGapInterval": 10.7,
-                        "avgDaysInterval": 223.3,
-                        "avgPatchGapInterval": 5.7,
-                        "daysSinceLastRun": 81,
-                        "bannersSinceLastRun": 3,
-                        "patchesSinceLastRun": 1,
-                        "runs": 4
+                        "count": 81,
                     },
                     {
                         "name": "Yoimiya",
                         "image": "Yoimiya",
-                        "avgBannerGapInterval": 9.5,
-                        "avgDaysInterval": 203.5,
-                        "avgPatchGapInterval": 5.5,
-                        "daysSinceLastRun": 46,
-                        "bannersSinceLastRun": 1,
-                        "patchesSinceLastRun": 0,
-                        "runs": 3
+                        "count": 46,
                     },
                 ],
                 (b) => b.name,
                 'asc',
             ))
-    });
+    })
+})
+
+describe('getBannersSinceLastCountSummary', () => {
+    it('should return the number of banners since last run', () => {
+        expect(_.orderBy(
+            getBannersSinceLastCountSummary(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "count": 22,
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "count": 18,
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "count": 3,
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "count": 1,
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
+})
+
+describe('getPatchesSinceLastCountSummary', () => {
+    it('should return the number of patches since last run', () => {
+        expect(_.orderBy(
+            getPatchesSinceLastCountSummary(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "count": 11,
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "count": 9,
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "count": 1,
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "count": 0,
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
+})
+
+describe('getRunsCountSummary', () => {
+    it('should return the runs for each character', () => {
+        expect(_.orderBy(
+            getRunsCountSummary(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "count": 1,
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "count": 2,
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "count": 4,
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "count": 3,
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
+})
+
+
+describe('getAverageDaysInBetween', () => {
+    it('should return the avg days stats for each character', () => {
+        expect(_.orderBy(
+            getAverageDaysInBetween(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "average": 0,
+                        "standardDeviation": 0,
+                        "count": 1
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "average": 231,
+                        "standardDeviation": 0,
+                        "count": 2
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "average": 223.3,
+                        "standardDeviation": 95.3,
+                        "count": 4
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "average": 203.5,
+                        "standardDeviation": 132.5,
+                        "count": 3
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
+})
+
+
+describe('getAverageBannersInBetween', () => {
+    it('should return the avg banners stats for each character', () => {
+        expect(_.orderBy(
+            getAverageBannersInBetween(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "average": 0,
+                        "standardDeviation": 0,
+                        "count": 1
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "average": 11,
+                        "standardDeviation": 0,
+                        "count": 2
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "average": 10.7,
+                        "standardDeviation": 4.5,
+                        "count": 4
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "average": 9.5,
+                        "standardDeviation": 5.5,
+                        "count": 3
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
+})
+
+
+describe('getAveragePatchesInBetween', () => {
+    it('should return the avg patches stats for each character', () => {
+        expect(_.orderBy(
+            getAveragePatchesInBetween(VersionPartsDummyData, BannerSummariesDummyData),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual(_.orderBy([
+                    {
+                        "name": "Fake",
+                        "image": "Fake",
+                        "average": 0,
+                        "standardDeviation": 0,
+                        "count": 1
+                    },
+                    {
+                        "name": "Hu Tao",
+                        "image": "Hu-Tao",
+                        "average": 6,
+                        "standardDeviation": 0,
+                        "count": 2
+                    },
+                    {
+                        "name": "Venti",
+                        "image": "Venti",
+                        "average": 5.7,
+                        "standardDeviation": 2.4,
+                        "count": 4
+                    },
+                    {
+                        "name": "Yoimiya",
+                        "image": "Yoimiya",
+                        "average": 5.5,
+                        "standardDeviation": 2.5,
+                        "count": 3
+                    },
+                ],
+                (b) => b.name,
+                'asc',
+            ))
+    })
 })
