@@ -118,7 +118,7 @@ img.active {
     white-space: nowrap;
     font-weight: 600;
     font-size: 1rem;
-    padding-left: 1em !important;
+    /*padding-left: 1em !important;*/
 }
 
 .summary td:first-of-type p {
@@ -132,7 +132,7 @@ img.active {
 .summary td:not(:first-of-type) {
     text-align: right !important;
     width: 100rem;
-    padding-right: 1em !important;
+    /*padding-right: 1em !important;*/
 }
 
 .dark .bar {

@@ -1,22 +1,32 @@
-import React from "react";
+import React, {MutableRefObject} from "react";
 import {Button} from "semantic-ui-react";
 
 type Properties = {
-    componentRef: any
+    node: MutableRefObject<any>
     name: string
 }
 
 export default function PngDownloadButton(
     {
-        componentRef,
+        node,
         name,
     }: Properties
 ) {
     async function download() {
+        // note: this lib uses react finddom - this will be deprecated in the future...
         const {exportComponentAsPNG} = await import('react-component-export-image')
-        console.log('got past here')
-        console.log(componentRef)
-        await exportComponentAsPNG(componentRef, {fileName: name + '.png'})
+
+        // seems similar to https://github.com/niklasvh/html2canvas/issues/1438, but adding an extra 8
+        await exportComponentAsPNG(node, {
+            fileName: name + '.png',
+            html2CanvasOptions: {
+                width: Math.max(
+                    node.current.scrollWidth ?? 0,
+                    node.current.offsetWidth ?? 0,
+                    node.current.clientWidth ?? 0,
+                ) + 16,
+            },
+        })
     }
 
     return (

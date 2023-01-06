@@ -3,6 +3,7 @@ import React from "react";
 import SummaryPage from "@/components/SummaryPage";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import Head from "next/head";
 
 export async function getStaticProps() {
     dayjs.extend(utc);
@@ -18,10 +19,15 @@ export async function getStaticProps() {
 export default function FiveStarWeaponSummary(props: { banners: { [name: string]: BannerSummary }, date: string }) {
 
     return (
-        <SummaryPage
-            title={'5★ Weapon Summary'}
-            data={props}
-            type={'weapons'}
-        />
+        <>
+            <Head>
+                <title>5★ Weapon Summary - Samsara</title>
+            </Head>
+            <SummaryPage
+                title={'5★ Weapon Summary'}
+                data={props}
+                type={'weapons'}
+            />
+        </>
     )
 }

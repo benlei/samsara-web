@@ -1,5 +1,5 @@
 import React from "react";
-import {Container} from "semantic-ui-react";
+import {Container, Ref} from "semantic-ui-react";
 import BannerOptions from "@/components/banners/BannerOptions";
 import BannerTable from "@/components/banners/BannerTable";
 import getVersionParts from "@/banners/version";
@@ -83,20 +83,22 @@ export default class BannerPage extends React.Component<Properties, States> {
                 <Container style={{overflowX: 'scroll', ...getBannerContainerStyle(expand ?? false)}}
                            fluid={expand ?? false}>
                     <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
-                        <BannerTable bannerType={bannerType}
-                                     versionParts={getVersionParts(banners)}
-                                     rundown={getRundowns(banners)}
-                                     limitedOnly={limitedOnly}
-                                     order={order}
-                                     sortBy={sortBy}
-                                     standards={standards}
-                                     ref={this.componentRef}
+                        <Ref innerRef={this.componentRef}>
+                            <BannerTable bannerType={bannerType}
+                                         versionParts={getVersionParts(banners)}
+                                         rundown={getRundowns(banners)}
+                                         limitedOnly={limitedOnly}
+                                         order={order}
+                                         sortBy={sortBy}
+                                         standards={standards}
+                                         ref={this.componentRef}
 
-                        />
+                            />
+                        </Ref>
                     </ScrollContainer>
                 </Container>
                 <Container style={{marginTop: '2em'}}>
-                    <PngDownloadButton componentRef={this.componentRef} name={'banner-history'} />
+                    <PngDownloadButton node={this.componentRef} name={'banner-history'}/>
                 </Container>
             </>
         )

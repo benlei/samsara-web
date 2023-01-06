@@ -1,4 +1,3 @@
-import Head from "next/head";
 import {Container, Header, Ref} from "semantic-ui-react";
 import SummaryOptions from "@/components/summary/SummaryOptions";
 import React, {useEffect, useState} from "react";
@@ -44,22 +43,21 @@ export default function SummaryPage(
     }, [])
     return (
         <>
-            <Head>
-                <title>{title} - Samsara</title>
-            </Head>
-
             <Container text={!expand} style={{marginTop: '2em'}}>
                 <Header size={'medium'}>{title}</Header>
             </Container>
 
-            <SummaryOptions
-                sortBy={sortBy} order={order} limitedOnly={limitedOnly} showLimitedOnly={!!standard?.length}
-                setOrder={setOrder} setSortBy={setSortBy} setLimitedOnly={setLimitedOnly} setFilterText={setFilterText}
-                expand={expand} setExpand={setExpand}
-            />
+            <Container text={!expand} style={{marginTop: '1em'}}>
+                <SummaryOptions
+                    sortBy={sortBy} order={order} limitedOnly={limitedOnly} showLimitedOnly={!!standard?.length}
+                    setOrder={setOrder} setSortBy={setSortBy} setLimitedOnly={setLimitedOnly}
+                    setFilterText={setFilterText}
+                    expand={expand} setExpand={setExpand}
+                />
+            </Container>
 
-            <Container text={!expand} style={{marginTop: '1em'}} textAlign={"center"}>
-                <Ref innerRef={ref}>
+            <Ref innerRef={ref}>
+                <Container text={!expand} style={{marginTop: '1em'}} textAlign={"center"}>
                     <SummaryTable
                         sortBy={sortBy} order={order as 'desc' | 'asc'} limitedOnly={limitedOnly}
                         filterText={filterText}
@@ -67,8 +65,11 @@ export default function SummaryPage(
                         standard={standard}
                         date={data.date}
                     />
-                </Ref>
-                <PngDownloadButton componentRef={ref} name={'summary'}/>
+                </Container>
+            </Ref>
+
+            <Container text={!expand} style={{marginTop: '1em'}} textAlign={"center"}>
+                <PngDownloadButton node={ref} name={'summary'}/>
             </Container>
         </>
     )

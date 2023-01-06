@@ -1,4 +1,4 @@
-import {Container, Form, Icon, Input, Label, Radio} from "semantic-ui-react";
+import {Form, Icon, Input, Label, Radio} from "semantic-ui-react";
 import React, {useEffect, useState} from "react";
 import _ from "lodash";
 
@@ -38,7 +38,7 @@ export default function SummaryOptions(
     }
 
     return (
-        <Container text={!expand} style={{marginTop: '1em'}}>
+        <>
             <Form>
                 <Form.Field>
                     <label>Sort By</label>
@@ -132,6 +132,6 @@ export default function SummaryOptions(
                     </Input>
                 </Form.Field>
             </Form>
-        </Container>
+        </>
     )
 }
