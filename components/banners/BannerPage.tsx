@@ -80,7 +80,7 @@ export default class BannerPage extends React.Component<Properties, States> {
                                    expand={expand} setExpand={setExpand}
                     />
                 </Container>
-                <Container style={{overflowX: 'scroll', ...getBannerContainerStyle(expand ?? false)}}
+                <Container style={{overflowX: 'scroll', marginTop: '1em',  ...getBannerContainerStyle(expand ?? false)}}
                            fluid={expand ?? false}>
                     <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
                         <Ref innerRef={this.componentRef}>
