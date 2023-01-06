@@ -19,13 +19,14 @@ export default function PngDownloadButton(
         // seems similar to https://github.com/niklasvh/html2canvas/issues/1438
         await exportComponentAsPNG(node, {
             fileName: name + '.png',
-            html2CanvasOptions: {
-                width: Math.max(
-                    node.current.scrollWidth ?? 0,
-                    node.current.offsetWidth ?? 0,
-                    node.current.clientWidth ?? 0,
-                ) + 8,
-            },
+            // html2CanvasOptions: {
+            //     width: Math.max(
+            //         node.current.scrollWidth ?? 0,
+            //         node.current.offsetWidth ?? 0,
+            //         node.current.clientWidth ?? 0,
+            //     ) + 16,
+            //     x: -8
+            // },
         })
     }
 
