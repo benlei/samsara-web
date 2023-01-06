@@ -219,10 +219,6 @@ export function getAverageDaysInBetween(
     dayjs.extend(utc);
 
     function getDayGaps(ignore: any, banner: BannerSummary): number[] {
-        if (banner.dates.length < 2) {
-            return []
-        }
-
         const result = []
         for (let i = 0; i < banner.dates.length - 1; i++) {
             result.push(dayjs.utc(banner.dates[i + 1].start).diff(dayjs.utc(banner.dates[i].end), 'day'))
@@ -243,10 +239,6 @@ export function getAverageBannersInBetween(
     bannerSummaries: { [name: string]: BannerSummary },
 ): AverageCountSummary[] {
     function getAvgBannerGaps(versionParts: VersionParts[], banner: BannerSummary): number[] {
-        if (banner.versions.length < 2) {
-            return []
-        }
-
         const result = []
         for (let i = 0; i < banner.versions.length - 1; i++) {
             result.push(getBannerGap(versionParts, banner.versions[i], banner.versions[i + 1]))
@@ -267,10 +259,6 @@ export function getAveragePatchesInBetween(
     bannerSummaries: { [name: string]: BannerSummary },
 ): AverageCountSummary[] {
     function getAvgPatchGaps(versionParts: VersionParts[], banner: BannerSummary): number[] {
-        if (banner.versions.length < 2) {
-            return []
-        }
-
         const result = []
         for (let i = 0; i < banner.versions.length - 1; i++) {
             result.push(getPatchGap(versionParts, banner.versions[i], banner.versions[i + 1]))
