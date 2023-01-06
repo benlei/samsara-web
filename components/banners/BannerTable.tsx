@@ -102,6 +102,17 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
         }
     }
 
+    getOrderByOrders = () => {
+        switch (this.props.sortBy) {
+            default:
+                return Array(this.getSortFunction().length).fill(this.props.order === 'asc' ? 'asc' : 'desc')
+            case 'runs-first':
+                return this.props.order === 'asc' ? ['asc', 'asc', 'asc'] : ['desc', 'asc', 'desc']
+            case 'runs-last':
+                return this.props.order === 'asc' ? ['asc', 'desc', 'asc'] : ['desc', 'desc', 'desc']
+        }
+    }
+
     render() {
         let {versionParts, bannerType, rundown} = this.props
         let {filterText} = this.state
@@ -111,7 +122,7 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
 
         rundown = _.chain(rundown)
             .filter(this.isLimitedFilter)
-            .orderBy(this.getSortFunction(), Array(this.getSortFunction().length).fill(this.props.order === 'asc' ? 'asc' : 'desc'))
+            .orderBy(this.getSortFunction(), this.getOrderByOrders())
             .value()
 
         return (
