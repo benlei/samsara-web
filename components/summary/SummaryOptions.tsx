@@ -1,5 +1,5 @@
 import {Form, Icon, Input, Label, Radio} from "semantic-ui-react";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import _ from "lodash";
 
 type Properties = {
@@ -29,10 +29,6 @@ export default function SummaryOptions(
         setExpand,
     }: Properties
 ) {
-    const [ssrClientResetter, setSsrClientResetter] = useState('_')
-
-    useEffect(() => setSsrClientResetter(''), [])
-
     return (
         <>
             <Form>
@@ -44,21 +40,21 @@ export default function SummaryOptions(
                             value='last-day'
                             checked={sortBy === 'last-day'}
                             onChange={() => setSortBy('last-day')}
-                            name={ssrClientResetter}
+                            autoComplete={'off'}
                         />
                         <Form.Radio
                             label='Banners since Last Run'
                             value='last-banner'
                             checked={sortBy === 'last-banner'}
                             onChange={() => setSortBy('last-banner')}
-                            name={ssrClientResetter}
+                            autoComplete={'off'}
                         />
                         <Form.Radio
                             label='Patches since Last Run'
                             value='last-patch'
                             checked={sortBy === 'last-patch'}
                             onChange={() => setSortBy('last-patch')}
-                            name={ssrClientResetter}
+                            autoComplete={'off'}
                         />
                     </Form.Group>
                     <Form.Group widths='equal' inline>
@@ -67,21 +63,21 @@ export default function SummaryOptions(
                             value='avg-days'
                             checked={sortBy === 'avg-days'}
                             onChange={() => setSortBy('avg-days')}
-                            name={ssrClientResetter}
+                            autoComplete={'off'}
                         />
                         <Form.Radio
                             label='Avg. # of Banners in Between'
                             value='avg-banner'
                             checked={sortBy === 'avg-banner'}
                             onChange={() => setSortBy('avg-banner')}
-                            name={ssrClientResetter}
+                            autoComplete={'off'}
                         />
                         <Form.Radio
                             label='Avg. # of Patches in Between'
                             value='avg-patch'
                             checked={sortBy === 'avg-patch'}
                             onChange={() => setSortBy('avg-patch')}
-                            name={ssrClientResetter}
+                            autoComplete={'off'}
                         />
                     </Form.Group>
                     <Form.Group widths='equal' inline>
@@ -90,7 +86,7 @@ export default function SummaryOptions(
                             value='runs'
                             checked={sortBy === 'runs'}
                             onChange={() => setSortBy('runs')}
-                            name={ssrClientResetter}
+                            autoComplete={'off'}
                         />
                     </Form.Group>
                 </Form.Field>
@@ -112,7 +108,7 @@ export default function SummaryOptions(
                                onChange={() => setExpand(!expand)}
                                checked={expand}
                                className={'desktop'}
-                               name={ssrClientResetter}
+                               autoComplete={'off'}
                         />
                     </Form.Field>
 
@@ -121,7 +117,7 @@ export default function SummaryOptions(
                             <Radio toggle label='Hide Standard Characters'
                                    onChange={() => setLimitedOnly(!limitedOnly)}
                                    checked={limitedOnly}
-                                   name={ssrClientResetter}
+                                   autoComplete={'off'}
                             />
                         )}
                     </Form.Field>

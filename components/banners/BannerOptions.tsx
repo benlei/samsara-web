@@ -8,20 +8,9 @@ type Properties = {
     setExpand: Dispatch<SetStateAction<any>>
 } & BannerFilterSortOptions & BannerOptionSetters
 
-type States = {
-    ssrClientResetter: string
-}
+type States = {}
 
 export default class BannerOptions extends React.Component<Properties, States> {
-
-    constructor(props: Readonly<Properties> | Properties) {
-        super(props);
-
-        this.state = {
-            ssrClientResetter: "_"
-        }
-    }
-
     handleSortByChange = (event: React.FormEvent<HTMLInputElement>, {value}: CheckboxProps) => this.props.setSortBy(String(value))
     flipOrder = () => this.props.setOrder(this.props.order == 'desc' ? 'asc' : 'desc')
 
@@ -39,21 +28,21 @@ export default class BannerOptions extends React.Component<Properties, States> {
                     <label>Sort By</label>
                     <Form.Group widths='equal' inline>
                         <Form.Radio
-                            name={this.state.ssrClientResetter}
+                            autoComplete={'off'}
                             label='Last Patch Run'
                             value='last'
                             checked={this.props.sortBy === 'last'}
                             onChange={this.handleSortByChange}
                         />
                         <Form.Radio
-                            name={this.state.ssrClientResetter}
+                            autoComplete={'off'}
                             label='First Patch Run'
                             value='first'
                             checked={this.props.sortBy === 'first'}
                             onChange={this.handleSortByChange}
                         />
                         <Form.Radio
-                            name={this.state.ssrClientResetter}
+                            autoComplete={'off'}
                             label='Name'
                             value='name'
                             checked={this.props.sortBy === 'name'}
@@ -62,14 +51,14 @@ export default class BannerOptions extends React.Component<Properties, States> {
                     </Form.Group>
                     <Form.Group widths='equal' inline>
                         <Form.Radio
-                            name={this.state.ssrClientResetter}
+                            autoComplete={'off'}
                             label='Total Runs (by last patch)'
                             value='runs-last'
                             checked={this.props.sortBy === 'runs-last'}
                             onChange={this.handleSortByChange}
                         />
                         <Form.Radio
-                            name={this.state.ssrClientResetter}
+                            autoComplete={'off'}
                             label='Total Runs (by first patch)'
                             value='runs-first'
                             checked={this.props.sortBy === 'runs-first'}
@@ -101,7 +90,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
                                onChange={this.handleExpand}
                                checked={this.props.expand}
                                className={'desktop'}
-                               name={this.state.ssrClientResetter}
+                               autoComplete={'off'}
                         />
                     </Form.Field>
 
@@ -110,7 +99,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
                             <Radio toggle label='Hide Standard Characters'
                                    onChange={this.handleChangeLimitedOnly}
                                    checked={!!this.props.limitedOnly}
-                                   name={this.state.ssrClientResetter}
+                                   autoComplete={'off'}
                             />
                         )}
                     </Form.Field>
