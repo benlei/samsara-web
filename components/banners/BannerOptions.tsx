@@ -96,7 +96,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
 
                     <Form.Field>
                         {this.props.showLimitedOnly && (
-                            <Radio toggle label='Hide Standard Characters'
+                            <Radio toggle label='Hide One-Offs'
                                    onChange={this.handleChangeLimitedOnly}
                                    checked={!!this.props.limitedOnly}
                                    autoComplete={'off'}

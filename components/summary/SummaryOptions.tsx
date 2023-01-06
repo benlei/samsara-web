@@ -114,7 +114,7 @@ export default function SummaryOptions(
 
                     <Form.Field>
                         {showLimitedOnly && (
-                            <Radio toggle label='Hide Standard Characters'
+                            <Radio toggle label='Hide One-Offs'
                                    onChange={() => setLimitedOnly(!limitedOnly)}
                                    checked={limitedOnly}
                                    autoComplete={'off'}
