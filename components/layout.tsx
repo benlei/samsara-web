@@ -8,14 +8,21 @@ export default function Layout({children}: React.PropsWithChildren) {
         <>
             <Head>
                 <title>Samsara</title>
-                <link rel="icon" href="/favicon.ico" />
-                <meta name="description" content="Genshin Impact in a Loop. Character banner, weapon banners, resin, and potentially more to come!" />
-                <meta name="keywords" content="Genshin, Genshin Impact, banners, characters, weapons, resin, samsara, repeat, loop, history, rundown" />
-                <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes"/>
+                <link rel="icon" href="/favicon.ico"/>
+                <meta name="description"
+                      content="Genshin Impact in a Loop. Character banner, weapon banners, resin, and potentially more to come!"/>
+                <meta name="keywords"
+                      content="Genshin, Genshin Impact, banners, characters, weapons, resin, samsara, repeat, loop, history, rundown"/>
+                <meta name="viewport"
+                      content="width=device-width, initial-scale=.5, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes"/>
+                <script>
+                    {/*to prevent Firefox FOUC, this must be here*/}
+                    let FF_FOUC_FIX;
+                </script>
             </Head>
             <main>
-                <Navbar />
-                <NavbarMobile />
+                <Navbar/>
+                <NavbarMobile/>
                 {children}
                 <Footer></Footer>
             </main>
