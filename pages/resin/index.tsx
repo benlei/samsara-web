@@ -26,7 +26,7 @@ export default class ResinHome extends React.Component<Properties, States> {
         dayjs.extend(utc);
 
         this.state = {
-            date: dayjs.utc().toISOString(),
+            date: dayjs.utc("2023-01-01").toISOString(),
             utc: true,
             military: false,
             intervalId: 0,
