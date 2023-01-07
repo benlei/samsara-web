@@ -269,6 +269,7 @@ describe('getAverageDaysInBetween', () => {
                         "image": "Fake",
                         "average": 0,
                         "standardDeviation": 0,
+                        "discrepancy": false,
                         "count": 1
                     },
                     {
@@ -276,6 +277,7 @@ describe('getAverageDaysInBetween', () => {
                         "image": "Hu-Tao",
                         "average": 231,
                         "standardDeviation": 0,
+                        "discrepancy": false,
                         "count": 2
                     },
                     {
@@ -283,6 +285,7 @@ describe('getAverageDaysInBetween', () => {
                         "image": "Venti",
                         "average": 223.3,
                         "standardDeviation": 95.3,
+                        "discrepancy": false,
                         "count": 4
                     },
                     {
@@ -290,6 +293,7 @@ describe('getAverageDaysInBetween', () => {
                         "image": "Yoimiya",
                         "average": 203.5,
                         "standardDeviation": 132.5,
+                        "discrepancy": false,
                         "count": 3
                     },
                 ],
@@ -313,6 +317,7 @@ describe('getAverageBannersInBetween', () => {
                         "image": "Fake",
                         "average": 0,
                         "standardDeviation": 0,
+                        "discrepancy": false,
                         "count": 1
                     },
                     {
@@ -320,6 +325,7 @@ describe('getAverageBannersInBetween', () => {
                         "image": "Hu-Tao",
                         "average": 11,
                         "standardDeviation": 0,
+                        "discrepancy": false,
                         "count": 2
                     },
                     {
@@ -327,6 +333,7 @@ describe('getAverageBannersInBetween', () => {
                         "image": "Venti",
                         "average": 10.7,
                         "standardDeviation": 4.5,
+                        "discrepancy": false,
                         "count": 4
                     },
                     {
@@ -334,6 +341,7 @@ describe('getAverageBannersInBetween', () => {
                         "image": "Yoimiya",
                         "average": 9.5,
                         "standardDeviation": 5.5,
+                        "discrepancy": false,
                         "count": 3
                     },
                 ],
@@ -357,6 +365,7 @@ describe('getAveragePatchesInBetween', () => {
                         "image": "Fake",
                         "average": 0,
                         "standardDeviation": 0,
+                        "discrepancy": false,
                         "count": 1
                     },
                     {
@@ -364,6 +373,7 @@ describe('getAveragePatchesInBetween', () => {
                         "image": "Hu-Tao",
                         "average": 6,
                         "standardDeviation": 0,
+                        "discrepancy": false,
                         "count": 2
                     },
                     {
@@ -371,6 +381,7 @@ describe('getAveragePatchesInBetween', () => {
                         "image": "Venti",
                         "average": 5.7,
                         "standardDeviation": 2.4,
+                        "discrepancy": false,
                         "count": 4
                     },
                     {
@@ -378,6 +389,7 @@ describe('getAveragePatchesInBetween', () => {
                         "image": "Yoimiya",
                         "average": 5.5,
                         "standardDeviation": 2.5,
+                        "discrepancy": false,
                         "count": 3
                     },
                 ],

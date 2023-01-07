@@ -1,69 +1,58 @@
 import React from "react";
 import {Container, Form, Image, Radio, Table} from "semantic-ui-react";
 import Head from "next/head";
+import dayjs, {Dayjs} from "dayjs";
+import utc from "dayjs/plugin/utc";
 
 type Properties = {}
 type States = {
-    date: number
+    date: string
     military: boolean
     intervalId: any
+    utc: boolean
 }
 
 type Resin = {
     count: number
-    date: Date
+    date: Dayjs
 }
 
 const MAX_RESIN = 180
-const RESIN_INC_TIME_DIFF = 1000 * 60 * 8
-
-
-function getTodayTomorrow(now: Date, date: Date): string {
-    return now.getDate() == date.getDate() ? 'Today' : 'Tomorrow'
-}
-
-function getHumanReadable12HourTime(now: Date, date: Date): string {
-    let hours = '12'
-    if (date.getHours() % 12 !== 0) {
-        hours = String(date.getHours() % 12)
-        if (date.getHours() % 12 < 10) {
-            hours = '0' + (date.getHours() % 12)
-        }
-    }
-
-    let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : String(date.getMinutes())
-    let ampm = date.getHours() < 12 ? 'AM' : 'PM'
-
-    return `${hours}:${minutes} ${ampm}`
-}
-
-function getHumanReadable24HourTime(now: Date, date: Date): string {
-    let hours = date.getHours() < 10 ? '0' + date.getHours() : String(date.getHours())
-    let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : String(date.getMinutes())
-
-    return `${hours}:${minutes}`
-}
-
-function getTime(): number {
-    return Math.floor(Date.now() / 1000) * 1000
-}
 
 export default class ResinHome extends React.Component<Properties, States> {
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
 
+        dayjs.extend(utc);
+
         this.state = {
-            date: 0,
+            date: dayjs.utc("2023-01-01").toISOString(),
+            utc: true,
             military: false,
             intervalId: 0,
         }
     }
 
+    getDate = (date: string = this.state.date): Dayjs => {
+        if (this.state.utc) {
+            dayjs.extend(utc);
+            return dayjs.utc(date)
+        }
+
+        return dayjs(date)
+    }
+    getTodayTomorrow = (date: Dayjs): string => {
+        return this.getDate().isSame(date, 'date') ? 'Today' : 'Tomorrow'
+    }
+
     componentDidMount = () => {
         this.setState({
-            date: getTime(),
+            date: this.getDate(dayjs().toISOString()).toISOString(),
             military: false,
-            intervalId: setInterval(() => this.setState({date: getTime()}), 5000),
+            utc: false,
+            intervalId: setInterval(() => this.setState({
+                date: this.getDate(dayjs().toISOString()).toISOString()
+            }), 5000),
         })
     }
 
@@ -80,11 +69,11 @@ export default class ResinHome extends React.Component<Properties, States> {
 
     getResinList = () => {
         const result: Resin[] = []
-        const now = new Date(this.state.date)
+        const now = this.getDate()
         for (let i = 0; i <= MAX_RESIN; i++) {
             result.push({
                 count: i,
-                date: new Date(now.getTime() + (RESIN_INC_TIME_DIFF * i)),
+                date: now.add(8 * i, 'minutes'),
             })
         }
 
@@ -98,44 +87,41 @@ export default class ResinHome extends React.Component<Properties, States> {
                     <title>24H Resin Timer - Samsara</title>
                 </Head>
                 <Container text style={{marginTop: '2em'}} textAlign={"center"}>
-                    {this.state.date &&
-                        <>
-                            <Form>
-                                <Form.Field>
-                                    <Radio toggle label='24 Hour Time'
-                                           onChange={this.flipMilitary}
-                                           checked={this.state.military}
-                                    />
-                                </Form.Field>
-                            </Form>
-                            <Table compact celled selectable textAlign={'center'} size={'small'}>
-                                <Table.Header>
-                                    <Table.Row>
-                                        <Table.HeaderCell><Image avatar src={'/images/Resin.png'}
-                                                                 alt={'Resin'}/></Table.HeaderCell>
-                                        <Table.HeaderCell>Today/Tomorrow</Table.HeaderCell>
-                                        <Table.HeaderCell>Time</Table.HeaderCell>
-                                    </Table.Row>
-                                </Table.Header>
 
-                                <Table.Body>
-                                    {this.getResinList().map((r, key) =>
-                                        <Table.Row key={key}>
-                                            <Table.Cell>{r.count}</Table.Cell>
-                                            <Table.Cell>{getTodayTomorrow(new Date(this.state.date), r.date)}</Table.Cell>
-                                            <Table.Cell>
-                                                {this.state.military ? (
-                                                    getHumanReadable24HourTime(new Date(this.state.date), r.date)
-                                                ) : (
-                                                    getHumanReadable12HourTime(new Date(this.state.date), r.date)
-                                                )}
-                                            </Table.Cell>
-                                        </Table.Row>
-                                    )}
-                                </Table.Body>
-                            </Table>
-                        </>
-                    }
+                    <Form>
+                        <Form.Field>
+                            <Radio toggle label='24 Hour Time'
+                                   onChange={this.flipMilitary}
+                                   checked={this.state.military}
+                            />
+                        </Form.Field>
+                    </Form>
+                    <Table compact celled selectable textAlign={'center'} size={'small'}>
+                        <Table.Header>
+                            <Table.Row>
+                                <Table.HeaderCell><Image avatar src={'/images/Resin.png'}
+                                                         alt={'Resin'}/></Table.HeaderCell>
+                                <Table.HeaderCell>Today/Tomorrow</Table.HeaderCell>
+                                <Table.HeaderCell>Time</Table.HeaderCell>
+                            </Table.Row>
+                        </Table.Header>
+
+                        <Table.Body>
+                            {this.getResinList().map((r, key) =>
+                                <Table.Row key={key}>
+                                    <Table.Cell>{r.count}</Table.Cell>
+                                    <Table.Cell>{this.getTodayTomorrow(r.date)}</Table.Cell>
+                                    <Table.Cell>
+                                        {this.state.military ? (
+                                            r.date.format('HH:mm')
+                                        ) : (
+                                            r.date.format('hh:mm A')
+                                        )}
+                                    </Table.Cell>
+                                </Table.Row>
+                            )}
+                        </Table.Body>
+                    </Table>
                 </Container>
             </>
         );
