@@ -6,7 +6,11 @@ import {
     getBannersSinceLastCountSummary,
     getDaysSinceRunCountSummary,
     getPatchesSinceLastCountSummary,
-    getRunsCountSummary, getAverageDaysInBetween, getAverageBannersInBetween, getAveragePatchesInBetween
+    getRunsCountSummary,
+    getAverageDaysInBetween,
+    getAverageBannersInBetween,
+    getAveragePatchesInBetween,
+    UnknownFutureCount
 } from "@/banners/summary";
 import dayjs from "dayjs";
 import _ from "lodash";
@@ -64,7 +68,7 @@ const BannerSummariesDummyData: { [name: string]: BannerSummary } = {
     "Fake": {
         "versions": ["2.0.2"],
         "dates": [
-            {"start": "2021-08-10", "end": "2021-08-31"},
+            {"start": "2021-08-10", "end": ""},
         ]
     },
 }
@@ -122,7 +126,7 @@ describe('getDaysSinceRunCountSummary', () => {
                     {
                         "name": "Fake",
                         "image": "Fake",
-                        "count": 490,
+                        "count": UnknownFutureCount,
                     },
                     {
                         "name": "Hu Tao",

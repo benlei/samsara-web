@@ -7,6 +7,7 @@ import utc from "dayjs/plugin/utc";
 
 const HighRange = 60
 const MidRange = 25
+export const UnknownFutureCount = -999999999
 
 export type CountSummary = {
     name: string
@@ -81,10 +82,14 @@ export function getColorClassName(p: number): string {
 }
 
 export function getPercent(nom: number, denom: number): number {
+    if (nom < 0) {
+        return 0
+    }
+
     return 100 * Math.max(0, nom) / Math.max(1, denom)
 }
 
-export function getFilterFunction(filterText: string): (s: {name: string}) => boolean {
+export function getFilterFunction(filterText: string): (s: { name: string }) => boolean {
     if (!filterText.trim().length) {
         return () => true
     }
@@ -125,17 +130,34 @@ export function getDaysSinceRunCountSummary(
     currDate: string,
 ): CountSummary[] {
     dayjs.extend(utc);
+
+    function getLastEnd(banner: BannerSummary): string {
+        return banner.dates[banner.dates.length - 1].end
+    }
+
+    function getLastStart(banner: BannerSummary): string {
+        return banner.dates[banner.dates.length - 1].start
+    }
+
     const currDayjs = dayjs.utc(currDate)
     return getCountSummary(
         versionParts,
         bannerSummaries,
-        (banner) => Math.max(
-            0,
-            currDayjs.diff(
-                dayjs.utc(banner.dates[banner.dates.length - 1].end),
-                'day',
-            )
-        ),
+        (banner) => {
+            if (getLastEnd(banner) && getLastStart(banner)) {
+                if (currDayjs.isBefore(dayjs.utc(getLastStart(banner)))) {
+                    return currDayjs.diff(dayjs.utc(getLastStart(banner)), 'day')
+                }
+
+                return Math.max(0, currDayjs.diff(dayjs.utc(getLastEnd(banner)), 'day'))
+            }
+
+            if (getLastStart(banner) && currDayjs.isBefore(dayjs.utc(getLastStart(banner)))) {
+                return currDayjs.diff(dayjs.utc(getLastStart(banner)), 'day')
+            }
+
+            return UnknownFutureCount
+        },
     )
 }
 
@@ -203,7 +225,7 @@ function getAverageCountSummary(
         result.push({
             name,
             image: getImageFromName(name),
-            count: banner.versions.length,
+            count: counters.length + 1,
             average,
             standardDeviation,
         })
@@ -221,6 +243,9 @@ export function getAverageDaysInBetween(
     function getDayGaps(ignore: any, banner: BannerSummary): number[] {
         const result = []
         for (let i = 0; i < banner.dates.length - 1; i++) {
+            if (banner.dates[i].end == '' || banner.dates[i + 1].start == '') {
+                continue
+            }
             result.push(dayjs.utc(banner.dates[i + 1].start).diff(dayjs.utc(banner.dates[i].end), 'day'))
         }
 
