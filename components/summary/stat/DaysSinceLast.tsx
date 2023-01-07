@@ -1,5 +1,12 @@
 import {Image, Label, Progress, Table} from "semantic-ui-react";
-import {CommonSummaryProperties, getColorClassName, getDaysSinceRunCountSummary, getFilterFunction, getPercent} from "@/banners/summary";
+import {
+    CommonSummaryProperties,
+    getColorClassName,
+    getDaysSinceRunCountSummary,
+    getFilterFunction,
+    getPercent,
+    UnknownFutureCount
+} from "@/banners/summary";
 import _ from "lodash";
 import dayjs from "dayjs";
 import React, {useEffect, useState} from "react";
@@ -49,8 +56,17 @@ export default function DaysSinceLast(
                             size={'small'}/>
 
                         <Label basic className={getColorClassName(getPercent(s.count, maxVal))}>
-                            {s.count}
-                            <Label.Detail>day{s.count === 1 ? '' : 's'} ago</Label.Detail>
+                            {s.count === UnknownFutureCount ? '?' : Math.abs(s.count)}
+                            <Label.Detail>
+                                {s.count === UnknownFutureCount ? (
+                                    'the future'
+                                ) : (
+                                    (s.count < 0 ?
+                                            'more day' + (Math.abs(s.count) === 1 ? '' : 's')
+                                            : 'day' + (Math.abs(s.count) === 1 ? '' : 's') + ' ago'
+                                    )
+                                )}
+                            </Label.Detail>
                         </Label>
                     </Table.Cell>
                 </Table.Row>

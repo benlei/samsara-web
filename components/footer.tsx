@@ -20,12 +20,16 @@ export default function Footer({children}: React.PropsWithChildren) {
                             <p>
                                 This hobby site currently does not directly store any data about its users. It is,
                                 however, hosted using <a href={'https://pages.cloudflare.com/'}>Cloudflare Pages</a>.
+                                The data shown here is sourced from the <a
+                                href={
+                                    'https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki'
+                                }>Genshin Fandom</a> site.
                             </p>
 
                             <p>
-                                However this site currently does store data onto your browser&#39;s local storage if you
+                                This site currently does store data onto your browser&#39;s local storage if you
                                 use the Artifact Rotations feature - for persistence purposes. This is necessary for
-                                the functionality of this feature from this site.
+                                the functionality of that particular feature from this site.
                             </p>
 
                             <p>

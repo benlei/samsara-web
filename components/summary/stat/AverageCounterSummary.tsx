@@ -59,7 +59,7 @@ export default function AverageCounterSummary(
                             size={'small'}/>
 
                         <Label basic className={getColorClassName(getPercent(s.average, maxVal))}>
-                            {s.count}
+                            {s.count}{s.discrepancy && '+1'}
                             <Label.Detail>run{s.count === 1 ? '' : 's'}</Label.Detail>
                         </Label>
 
