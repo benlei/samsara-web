@@ -17,7 +17,7 @@ export default function Layout({children}: React.PropsWithChildren) {
                       content="width=device-width, initial-scale=.5, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes"/>
                 <script>
                     {/*to prevent Firefox FOUC, this must be here*/}
-                    let FF_FOUC_FIX;
+                    0
                 </script>
             </Head>
             <main>
