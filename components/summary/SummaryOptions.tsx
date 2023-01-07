@@ -85,7 +85,7 @@ export default function SummaryOptions(
                     </Form.Group>
                     <Form.Group widths='equal' inline>
                         <Form.Radio
-                            label={'Total Runs by ' + latestVersionPart.version}
+                            label={'Total Runs since ' + latestVersionPart.version}
                             value='runs'
                             checked={sortBy === 'runs'}
                             onChange={() => setSortBy('runs')}
