@@ -10,6 +10,10 @@ body {
     .mobile {
         display: block !important;
     }
+
+    .summary td:first-of-type {
+        white-space: pre-wrap !important;
+    }
 }
 
 .ui.menu .item img.logo {
