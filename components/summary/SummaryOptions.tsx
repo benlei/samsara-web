@@ -1,7 +1,7 @@
 import {Form, Icon, Input, Label, Radio} from "semantic-ui-react";
 import React from "react";
 import _ from "lodash";
-import { VersionParts } from "@/banners/types";
+import {VersionParts} from "@/banners/types";
 
 type Properties = {
     sortBy: string
@@ -39,21 +39,21 @@ export default function SummaryOptions(
                     <label>Sort By</label>
                     <Form.Group widths='equal' inline>
                         <Form.Radio
-                            label='Days since Last Run'
+                            label='# days since last run'
                             value='last-day'
                             checked={sortBy === 'last-day'}
                             onChange={() => setSortBy('last-day')}
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label={'Banners since ' + latestVersionPart.version}
+                            label={'# banners since last run (as of  ' + latestVersionPart.version + ')'}
                             value='last-banner'
                             checked={sortBy === 'last-banner'}
                             onChange={() => setSortBy('last-banner')}
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label={'Patches since ' + latestVersionPart.version}
+                            label={'# patches since last run (as of ' + latestVersionPart.version + ')'}
                             value='last-patch'
                             checked={sortBy === 'last-patch'}
                             onChange={() => setSortBy('last-patch')}
@@ -62,21 +62,21 @@ export default function SummaryOptions(
                     </Form.Group>
                     <Form.Group widths='equal' inline>
                         <Form.Radio
-                            label='Avg. # of Days in Between'
+                            label='Avg. # of days between runs'
                             value='avg-days'
                             checked={sortBy === 'avg-days'}
                             onChange={() => setSortBy('avg-days')}
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label='Avg. # of Banners in Between'
+                            label='Avg. # of banners between runs'
                             value='avg-banner'
                             checked={sortBy === 'avg-banner'}
                             onChange={() => setSortBy('avg-banner')}
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label='Avg. # of Patches in Between'
+                            label='Avg. # of patches between runs'
                             value='avg-patch'
                             checked={sortBy === 'avg-patch'}
                             onChange={() => setSortBy('avg-patch')}
@@ -85,7 +85,7 @@ export default function SummaryOptions(
                     </Form.Group>
                     <Form.Group widths='equal' inline>
                         <Form.Radio
-                            label={'Total Runs since ' + latestVersionPart.version}
+                            label={'Total runs (as of ' + latestVersionPart.version + ')'}
                             value='runs'
                             checked={sortBy === 'runs'}
                             onChange={() => setSortBy('runs')}
