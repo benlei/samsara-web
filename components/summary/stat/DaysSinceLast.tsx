@@ -61,7 +61,10 @@ export default function DaysSinceLast(
                                 {s.count === UnknownFutureCount ? (
                                     'the future'
                                 ) : (
-                                    (s.count < 0 ? 'more day' : 'day') + (Math.abs(s.count) === 1 ? '' : 's')
+                                    (s.count < 0 ?
+                                            'more day' + (Math.abs(s.count) === 1 ? '' : 's')
+                                            : 'day' + (Math.abs(s.count) === 1 ? '' : 's') + ' ago'
+                                    )
                                 )}
                             </Label.Detail>
                         </Label>

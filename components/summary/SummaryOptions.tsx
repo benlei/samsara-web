@@ -1,6 +1,7 @@
 import {Form, Icon, Input, Label, Radio} from "semantic-ui-react";
 import React from "react";
 import _ from "lodash";
+import { VersionParts } from "@/banners/types";
 
 type Properties = {
     sortBy: string
@@ -13,6 +14,7 @@ type Properties = {
     setExpand: (expand: boolean) => any
     showLimitedOnly?: boolean
     setFilterText: (text: string) => any
+    latestVersionPart: VersionParts
 }
 
 export default function SummaryOptions(
@@ -27,6 +29,7 @@ export default function SummaryOptions(
         setFilterText,
         expand,
         setExpand,
+        latestVersionPart,
     }: Properties
 ) {
     return (
@@ -43,14 +46,14 @@ export default function SummaryOptions(
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label='Banners since Last Run'
+                            label={'Banners since ' + latestVersionPart.version}
                             value='last-banner'
                             checked={sortBy === 'last-banner'}
                             onChange={() => setSortBy('last-banner')}
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label='Patches since Last Run'
+                            label={'Patches since ' + latestVersionPart.version}
                             value='last-patch'
                             checked={sortBy === 'last-patch'}
                             onChange={() => setSortBy('last-patch')}
@@ -82,7 +85,7 @@ export default function SummaryOptions(
                     </Form.Group>
                     <Form.Group widths='equal' inline>
                         <Form.Radio
-                            label='Total Runs'
+                            label={'Total Runs by ' + latestVersionPart.version}
                             value='runs'
                             checked={sortBy === 'runs'}
                             onChange={() => setSortBy('runs')}

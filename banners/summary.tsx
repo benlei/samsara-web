@@ -161,6 +161,7 @@ export function getDaysSinceRunCountSummary(
     )
 }
 
+
 export function getBannersSinceLastCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },

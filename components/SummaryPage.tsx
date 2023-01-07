@@ -53,6 +53,7 @@ export default function SummaryPage(
                     setOrder={setOrder} setSortBy={setSortBy} setLimitedOnly={setLimitedOnly}
                     setFilterText={setFilterText}
                     expand={expand} setExpand={setExpand}
+                    latestVersionPart={versionParts[versionParts.length - 1]}
                 />
             </Container>
 
