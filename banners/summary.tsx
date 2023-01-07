@@ -21,6 +21,7 @@ export type AverageCountSummary = {
     average: number
     standardDeviation: number
     count: number
+    discrepancy: boolean
 }
 
 export type BannerSummary = {
@@ -229,6 +230,7 @@ function getAverageCountSummary(
             count: counters.length + 1,
             average,
             standardDeviation,
+            discrepancy: counters.length + 1 != banner.versions.length,
         })
     })
 
