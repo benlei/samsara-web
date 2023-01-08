@@ -59,6 +59,7 @@ jobs:
   deploy:
     if: ${{ github.ref_name == 'main' }}
     needs: 'build'
+    runs-on: ubuntu-latest
     name: Deploy
     steps:
       - name: Trigger Deploy Hook
