@@ -13,5 +13,8 @@ web:
 test:
 	source "$(NVM_DIR)/nvm.sh" && nvm exec npm test
 
+integration-test:
+	source "$(NVM_DIR)/nvm.sh" && nvm exec playwright test
+
 
 .PHONY: test
