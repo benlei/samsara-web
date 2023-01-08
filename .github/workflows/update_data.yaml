@@ -12,7 +12,7 @@ jobs:
 
       - uses: actions/checkout@v3
         with:
-          repository: genshin-samsara/samsara-tools
+          repository: benlei/samsara-tools
           ssh-key: ${{ secrets.TOOLS_PRIVATE_KEY }}
           path: 'samsara-tools'
 

@@ -10,7 +10,7 @@ export default function Footer({children}: React.PropsWithChildren) {
                         <Grid.Column width={6}>
                             <Header inverted as='h4' content='Links'/>
                             <List link inverted>
-                                <List.Item as={'a'} href={'https://github.com/genshin-samsara/samsara-web'}>
+                                <List.Item as={'a'} href={'https://github.com/benlei/samsara-web'}>
                                     <Icon name={'github'}/> GitHub
                                 </List.Item>
                             </List>
