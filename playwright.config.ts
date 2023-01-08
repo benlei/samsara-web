@@ -8,6 +8,8 @@ const baseURL = `http://localhost:${PORT}`
 
 // Reference: https://playwright.dev/docs/test-configuration
 const config: PlaywrightTestConfig = {
+  // Concise 'dot' for CI, default 'list' when running locally
+  reporter: process.env.CI ? 'dot' : 'list',
   // Timeout per test
   timeout: 30 * 1000,
   // Test directory
@@ -15,7 +17,7 @@ const config: PlaywrightTestConfig = {
   // If a test fails, retry it additional 2 times
   retries: 0,
   // Artifacts folder where screenshots, videos, and traces are stored.
-  outputDir: 'test-results/',
+  outputDir: path.join(__dirname, 'test-results'),
 
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
@@ -31,9 +33,8 @@ const config: PlaywrightTestConfig = {
     // More information: https://playwright.dev/docs/api/class-testoptions#test-options-base-url
     baseURL,
 
-    // Retry a test if its failing with enabled tracing. This allows you to analyse the DOM, console logs, network traffic etc.
-    // More information: https://playwright.dev/docs/trace-viewer
-    trace: 'retry-with-trace',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
 
     // All available context options: https://playwright.dev/docs/api/class-browser#browser-new-context
     // contextOptions: {
