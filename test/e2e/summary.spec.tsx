@@ -1,7 +1,6 @@
-import { test, expect } from '@playwright/test'
+import {expect, test} from '@playwright/test'
 
-test('should be able to sort', async ({ page }) => {
-    // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
+test('should be able to sort in summary page', async ({page}) => {
     await page.goto('/')
     await expect(page.getByText('Venti')).toBeVisible()
     await expect(page.getByText('Keqing')).not.toBeVisible()
