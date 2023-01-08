@@ -1,4 +1,4 @@
-name: Build
+name: Samsara Workflow
 on:
   pull_request:
     types:
@@ -12,6 +12,7 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -38,3 +39,10 @@ jobs:
 
       - name: e2e tests
         run: npx playwright test
+  deploy:
+    if: ${{ github.ref_name == 'main' }}
+    needs: 'build'
+    name: Deploy
+    steps:
+      - name: Trigger Deploy Hook
+        run: curl -X POST "${{ secrets.CLOUDFLARE_HOOK }}"
