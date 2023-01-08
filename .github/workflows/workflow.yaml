@@ -30,6 +30,9 @@ jobs:
       - name: unit tests
         run: npm test
 
+      - name: build static pages
+        run: npx @cloudflare/next-on-pages
+
       - name: install playwright deps
         run: npx playwright install --with-deps
 
