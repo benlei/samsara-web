@@ -31,7 +31,7 @@ jobs:
         run: npm test
 
       - name: install playwright deps
-        run: playwright install --with-deps
+        run: npx playwright install --with-deps
 
       - name: e2e tests
-        run: playwright test
+        run: npx playwright test
