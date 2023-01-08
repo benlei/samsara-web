@@ -72,18 +72,16 @@ export default function ArtifactRotationsOverview(
     return (
         <>
             <Head>
-                <title>Artifact Rotations - Samsara</title>
+                <title>Artifact Rotations Overview - Samsara</title>
             </Head>
 
             <Container style={{marginTop: '2em'}}>
                 <Header size={'large'}>Artifact Rotations Overview</Header>
                 <p>
-                    This is the Genshin Impact End Game: Artifact farming. You can use this tool however you like.
-                    Personally I don&#39;t upgrade any artifacts until the end of 1 domain rotation, which for me is the
-                    equivalent of about 7 days. I find that this helps reduce the anxiety and disappointment
-                    of seeing all the artifacts I farmed for the day turn into, well, trash. Especially because
-                    usually, for me, at least 1 decent-ish piece (3 hits into CRIT) is possible within a week of
-                    artifact farming.
+                    If you have ever wanted to keep track of what artifact domains you want to do and for what characters,
+                    then this tool is for you! You can setup artifact rotations with different presets too, which can be
+                    utilized for people with multiple accounts. Once set up this tool can tell you which domain to
+                    farm, and for how much longer.
                 </p>
                 {!hasRotation() ? (
                     <p>
