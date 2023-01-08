@@ -1,9 +1,11 @@
-Upgrading Artifact Guide - for DPS
-==================================
+Basic Upgrading Artifact Guide for New Players
+==============================================
 
 I learned this method from fobm4ster, and think it's been fairly effective in helping decide what artifacts are/aren't worth upgrading further.
 
 The general idea is to get at least 3 hits into crit by +20, if possible. And if it's not possible at +12/+16, then it's not worth upgrading.
+
+This isn't the most optimal way to level artifacts, but it's simple and straightforward.
 
 Table of Contents
 =================
