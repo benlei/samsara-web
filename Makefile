@@ -12,6 +12,9 @@ web:
 test:
 	source "$(NVM_DIR)/nvm.sh" && nvm exec npm test
 
+lint:
+	source "$(NVM_DIR)/nvm.sh" && nvm exec -- npm run lint
+
 e2e:
 	source "$(NVM_DIR)/nvm.sh" && nvm exec -- playwright install --with-deps
 	source "$(NVM_DIR)/nvm.sh" && nvm exec playwright test
