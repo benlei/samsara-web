@@ -214,13 +214,12 @@ function getAverageCountSummary(
     _.forIn(bannerSummaries, (banner, name) => {
         const counters = calculateAll(versionParts, banner)
         const average = counters.length ? _.sum(counters) / counters.length : 0
-        const standardDeviation = counters.length ?
-            Math.sqrt(
-                _.sum(
-                    _.map(counters, (c) => Math.pow((c - average), 2))
-                ) / counters.length
-            )
-            : 0
+        const standardDeviation = counters.length ? Math.sqrt(
+            _.chain(counters)
+                .map((c) => Math.pow(c - average, 2))
+                .sum()
+                .value() / counters.length
+        ) : 0
 
         result.push({
             name,
