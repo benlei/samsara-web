@@ -37,30 +37,30 @@ export default function SummaryOptions(
             <Form>
                 <Form.Field>
                     <label>Sort By</label>
-                    <Form.Group widths='equal' inline>
+                    <Form.Group widths='equal'>
                         <Form.Radio
-                            label='# days since last run'
+                            label='# of days since last run'
                             value='last-day'
                             checked={sortBy === 'last-day'}
                             onChange={() => setSortBy('last-day')}
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label={'# banners since last run (as of  ' + latestVersionPart.version + ')'}
+                            label={'# of banners since last run (as of  ' + latestVersionPart.version + ')'}
                             value='last-banner'
                             checked={sortBy === 'last-banner'}
                             onChange={() => setSortBy('last-banner')}
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label={'# patches since last run (as of ' + latestVersionPart.version + ')'}
+                            label={'# of patches since last run (as of ' + latestVersionPart.version + ')'}
                             value='last-patch'
                             checked={sortBy === 'last-patch'}
                             onChange={() => setSortBy('last-patch')}
                             autoComplete={'off'}
                         />
                     </Form.Group>
-                    <Form.Group widths='equal' inline>
+                    <Form.Group widths='equal'>
                         <Form.Radio
                             label='Avg. # of days between runs'
                             value='avg-days'
@@ -83,7 +83,7 @@ export default function SummaryOptions(
                             autoComplete={'off'}
                         />
                     </Form.Group>
-                    <Form.Group widths='equal' inline>
+                    <Form.Group widths='equal'>
                         <Form.Radio
                             label={'Total runs (as of ' + latestVersionPart.version + ')'}
                             value='runs'
