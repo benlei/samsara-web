@@ -213,23 +213,21 @@ function getAverageCountSummary(
 
     _.forIn(bannerSummaries, (banner, name) => {
         const counters = calculateAll(versionParts, banner)
-        const average = counters.length ?
-            _.round(_.sum(counters) / counters.length, 1) : 0
+        const average = counters.length ? _.sum(counters) / counters.length : 0
         const standardDeviation = counters.length ?
-            _.round(
-                Math.sqrt(
-                    _.sum(
-                        _.map(counters, (c) => Math.pow((c - average), 2))
-                    ) / counters.length
-                ), 1
-            ) : 0
+            Math.sqrt(
+                _.sum(
+                    _.map(counters, (c) => Math.pow((c - average), 2))
+                ) / counters.length
+            )
+            : 0
 
         result.push({
             name,
             image: getImageFromName(name),
             count: counters.length + 1,
-            average,
-            standardDeviation,
+            average: _.round(average, 1),
+            standardDeviation: _.round(standardDeviation, 1),
             discrepancy: counters.length + 1 != banner.versions.length,
         })
     })
