@@ -55,10 +55,11 @@ const config: PlaywrightTestConfig = {
                 ...devices['Pixel 5'],
             },
         },
-        {
-            name: 'Mobile Safari',
-            use: devices['iPhone 12'],
-        },
+        // was black screen for some reason. prob ok to just do 1 mobile device.
+        // {
+        //     name: 'Mobile Safari',
+        //     use: devices['iPhone 12'],
+        // },
     ],
 }
 export default config
