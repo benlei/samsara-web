@@ -38,6 +38,8 @@ export default function Footer({children}: React.PropsWithChildren) {
                                 developer), but if someone wants to set such a system up, feel free to create
                                 some (small, digestable) PRs!
                             </p>
+                            
+                            <p>samsara.pages.dev is not affiliated with or endorsed by HoYoverse.</p>
                         </Grid.Column>
                     </Grid>
                 </Container>
