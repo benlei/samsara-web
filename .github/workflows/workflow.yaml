@@ -66,8 +66,8 @@ jobs:
         with:
           name: test-results
           path: |
-            test-results/**/.*.png
-            test-results/**/.*.webm
+            test-results/**/*.png
+            test-results/**/*.webm
   deploy:
     if: ${{ github.ref_name == 'main' }}
     needs: 'build'
