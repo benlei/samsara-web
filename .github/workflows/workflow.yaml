@@ -59,6 +59,15 @@ jobs:
 
       - name: e2e tests
         run: npx playwright test
+
+      - name: archive test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results
+          path: |
+            test-results/**/.*.png
+            test-results/**/.*.webm
   deploy:
     if: ${{ github.ref_name == 'main' }}
     needs: 'build'

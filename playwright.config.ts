@@ -11,7 +11,7 @@ const config: PlaywrightTestConfig = {
     // Concise 'dot' for CI, default 'list' when running locally
     reporter: 'list',
     // Timeout per test
-    timeout: 30 * 1000,
+    timeout: 15 * 1000,
     // Test directory
     testDir: path.join(__dirname, 'test/e2e'),
     // If a test fails, retry it additional 2 times

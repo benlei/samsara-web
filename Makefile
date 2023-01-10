@@ -17,6 +17,6 @@ lint:
 
 e2e:
 	source "$(NVM_DIR)/nvm.sh" && nvm exec -- playwright install --with-deps
-	source "$(NVM_DIR)/nvm.sh" && nvm exec playwright test
+	source "$(NVM_DIR)/nvm.sh" && nvm exec -- playwright test
 
 .PHONY: test
