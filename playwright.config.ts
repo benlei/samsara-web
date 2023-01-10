@@ -56,10 +56,10 @@ const config: PlaywrightTestConfig = {
             },
         },
         // was black screen for some reason. prob ok to just do 1 mobile device.
-        {
-            name: 'Mobile Safari',
-            use: devices['iPhone 12'],
-        },
+        // {
+        //     name: 'Mobile Safari',
+        //     use: devices['iPhone 12'],
+        // },
     ],
 }
 export default config

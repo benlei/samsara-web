@@ -58,7 +58,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: e2e tests
-        run: npx playwright test --headed
+        run: npx playwright test
 
       - name: archive test results
         uses: actions/upload-artifact@v3
