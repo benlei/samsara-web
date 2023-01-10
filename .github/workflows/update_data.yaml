@@ -2,7 +2,7 @@ name: Data Updater
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 8 * * 3'
+    - cron:  '30 4 * * 3'
 
 jobs:
   update:
