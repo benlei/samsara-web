@@ -58,9 +58,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: e2e tests
-        uses: GabrielBB/xvfb-action@v1
-        with:
-          run: npx playwright test --headed
+        run: xvfb-run -a npx playwright test --headed
 
       - name: archive test results
         uses: actions/upload-artifact@v3
