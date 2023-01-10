@@ -27,13 +27,13 @@ export default function PresetCurrentNextCells(
                 <ArtifactDomain data={data} domain={preset.rotations[curr.index].domain} popover
                                 additionalLabel={
                                     <>
-                                        <Label basic className={'disabled'}
-                                               style={{marginBottom: '.5em'}}>
-                                            #{curr.index + 1}
-                                        </Label>
                                         <Label basic color='blue'
                                                style={{marginBottom: '.5em'}}>
                                             Day {curr.day} of {getDays(preset, curr.index)}
+                                        </Label>
+                                        <Label basic className={'disabled'}
+                                               style={{marginBottom: '.5em'}}>
+                                            #{curr.index + 1}
                                         </Label>
                                     </>
                                 }
@@ -65,13 +65,12 @@ export default function PresetCurrentNextCells(
                 <ArtifactDomain data={data} domain={preset.rotations[next.index].domain} popover
                                 additionalLabel={
                                     <>
-
+                                        <Label basic color={'grey'} style={{marginBottom: '.5em'}}>
+                                            In {next.day} day{next.day === 1 ? '' : 's'}
+                                        </Label>
                                         <Label basic className={'disabled'}
                                                style={{marginBottom: '.5em'}}>
                                             #{next.index + 1}
-                                        </Label>
-                                        <Label basic color={'grey'} style={{marginBottom: '.5em'}}>
-                                            In {next.day} day{next.day === 1 ? '' : 's'}
                                         </Label>
                                     </>
                                 }
