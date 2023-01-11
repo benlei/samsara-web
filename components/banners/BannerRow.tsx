@@ -33,6 +33,7 @@ function getCounterStyle(c: number) {
         backgroundColor: `hsl(0, 5%, ${lightness}%)`
     }
 }
+
 export default class BannerRow extends React.Component<Properties, States> {
     render() {
         const {
@@ -48,8 +49,9 @@ export default class BannerRow extends React.Component<Properties, States> {
                     </span> <Image avatar
                                    src={`/images/${bannerType}/${rundown.image}.png`}
                                    alt={rundown.image}/>
+
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell style={getCounterStyle(0)}>
                     <Label>{rundown.runs}</Label>
                 </Table.Cell>
                 {rundown.counter.map((c, cI) => (

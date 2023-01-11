@@ -20,7 +20,7 @@ export default class BannerHeader extends React.Component<Properties, States> {
         return (
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell className={'no-border'}
+                    <Table.HeaderCell className={'borderless'}
                                       style={{pointerEvents: 'auto', padding: '0 .5em'}}>
                         <BannerSearch onChange={onChange}/>
                     </Table.HeaderCell>

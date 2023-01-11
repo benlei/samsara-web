@@ -17,7 +17,7 @@ export default class BannerFooter extends React.Component<Properties, States> {
         return (
             <Table.Footer>
                 <Table.Row>
-                    <Table.HeaderCell className={'no-border'}/>
+                    <Table.HeaderCell className={'borderless'}/>
                     <Table.HeaderCell>
                         <Icon name='redo'/>
                     </Table.HeaderCell>

@@ -35,7 +35,7 @@ body {
     margin-bottom: 2em !important;
 }
 
-.history td.no-border {
+.history .borderless {
     border: 0 !important
 }
 
