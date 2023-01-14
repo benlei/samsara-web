@@ -4,19 +4,19 @@ import {Container, Grid, Header, Icon, List, Segment} from "semantic-ui-react";
 export default function Footer({children}: React.PropsWithChildren) {
     return (
         <>
-            <Segment inverted vertical style={{margin: '5em 0em 0em', padding: '5em 0em'}}>
+            <Segment vertical style={{margin: '5em 0em 0em', padding: '5em 0em'}}>
                 <Container textAlign='center'>
-                    <Grid divided inverted stackable>
+                    <Grid divided stackable>
                         <Grid.Column width={6}>
-                            <Header inverted as='h4' content='Links'/>
-                            <List link inverted>
+                            <Header as='h4' content='Links'/>
+                            <List link>
                                 <List.Item as={'a'} href={'https://github.com/benlei/samsara-web'}>
                                     <Icon name={'github'}/> GitHub
                                 </List.Item>
                             </List>
                         </Grid.Column>
                         <Grid.Column width={10} textAlign={'left'}>
-                            <Header inverted as='h4' content='About'/>
+                            <Header as='h4' content='About'/>
                             <p>
                                 This hobby site currently does not directly store any data about its users. It is,
                                 however, hosted using <a href={'https://pages.cloudflare.com/'}>Cloudflare Pages</a>.
