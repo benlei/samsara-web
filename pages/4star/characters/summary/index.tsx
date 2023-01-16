@@ -10,7 +10,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            banners: require('@/data/bannersSummary.json').characters['4'],
+            banners: require('@/data/banners.json').characters['4'],
             date: dayjs.utc().toISOString().substring(0, 10)
         },
     };

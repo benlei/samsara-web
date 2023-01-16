@@ -9,7 +9,7 @@ export async function getStaticProps() {
     dayjs.extend(utc);
     return {
         props: {
-            banners: require('@/data/bannersSummary.json').weapons['5'],
+            banners: require('@/data/banners.json').weapons['5'],
             date: dayjs.utc().toISOString().substring(0, 10)
         },
     };
