@@ -5,8 +5,6 @@ import {VersionParts} from "@/banners/types";
 import {getImageFromName} from "@/format/image";
 import utc from "dayjs/plugin/utc";
 
-const HighRange = 60
-const MidRange = 25
 export const UnknownFutureCount = -999999999
 
 export type CountSummary = {
@@ -73,13 +71,25 @@ export function getBannerGap(versionParts: VersionParts[], oldVersion: string, n
     return total
 }
 
+const Dark9Percent = 85
+const Dark8Percent = 70
+const Dark7Percent = 55
+const Dark6Percent = 40
+const Dark5Percent = 25
+
 export function getColorClassName(p: number): string {
-    if (p >= HighRange) {
-        return 'dark'
-    } else if (p >= MidRange) {
-        return 'normal'
+    if (p >= Dark9Percent) {
+        return 'dark-9'
+    } else if (p >= Dark8Percent) {
+        return 'dark-8'
+    } else if (p >= Dark7Percent) {
+        return 'dark-7'
+    } else if (p >= Dark6Percent) {
+        return 'dark-6'
+    } else if (p >= Dark5Percent) {
+        return 'dark-5'
     }
-    return 'light'
+    return 'dark-4'
 }
 
 export function getPercent(nom: number, denom: number): number {
@@ -87,7 +97,7 @@ export function getPercent(nom: number, denom: number): number {
         return 0
     }
 
-    return 100 * Math.max(0, nom) / Math.max(1, denom)
+    return Math.max(.5, 100 * Math.max(0, nom) / Math.max(1, denom))
 }
 
 export function getFilterFunction(filterText: string): (s: { name: string }) => boolean {
