@@ -17,7 +17,10 @@ import {getCharacters} from "@/characters/characters";
 export async function getStaticProps() {
     return {
         props: {
-            characters: require('@/data/characters.json'),
+            characters: [
+                ...Object.keys(require('@/data/banners.json').characters['5']),
+                ...Object.keys(require('@/data/banners.json').characters['4']),
+            ],
             artifacts: require('@/data/artifacts.json'),
         },
     };
