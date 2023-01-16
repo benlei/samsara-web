@@ -11,16 +11,16 @@ import {V1StorageKey} from "@/artifacts/presets";
 import _ from "lodash";
 import {getArtifactDomains, getArtifacts} from "@/artifacts/artifacts";
 import PresetCurrentNextCells from "@/components/artifacts/PresetCurrentNextCells";
-import {getCharacters} from "@/characters/characters";
+import {addOneOffCharacters, getCharacters} from "@/characters/characters";
 
 
 export async function getStaticProps() {
     return {
         props: {
-            characters: [
+            characters: addOneOffCharacters([
                 ...Object.keys(require('@/data/banners.json').characters['5']),
                 ...Object.keys(require('@/data/banners.json').characters['4']),
-            ],
+            ]),
             artifacts: require('@/data/artifacts.json'),
         },
     };
