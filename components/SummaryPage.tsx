@@ -22,7 +22,7 @@ export default function SummaryPage(
     }: Properties
 ) {
     const [sortBy, setSortBy] = useState('last-day')
-    const [order, setOrder] = useState('desc')
+    const [order, setOrder] = useState('asc')
     const [limitedOnly, setLimitedOnly] = useState(true)
     const [filterText, setFilterText] = useState("")
     const [expand, setExpand] = useState(true)
