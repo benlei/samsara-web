@@ -1,5 +1,5 @@
 import {Container, Header, Ref} from "semantic-ui-react";
-import SummaryOptions from "@/components/summary/SummaryOptions";
+import SummaryOptions, { MobileSummaryOptions } from "@/components/summary/SummaryOptions";
 import React, {useEffect, useState} from "react";
 import getVersionParts from "@/banners/version";
 import _ from "lodash";
@@ -49,6 +49,13 @@ export default function SummaryPage(
 
             <Container text={!expand} style={{marginTop: '1em'}}>
                 <SummaryOptions
+                    sortBy={sortBy} order={order} limitedOnly={limitedOnly} showLimitedOnly={!!standard?.length}
+                    setOrder={setOrder} setSortBy={setSortBy} setLimitedOnly={setLimitedOnly}
+                    setFilterText={setFilterText}
+                    expand={expand} setExpand={setExpand}
+                    latestVersionPart={versionParts[versionParts.length - 1]}
+                />
+                <MobileSummaryOptions
                     sortBy={sortBy} order={order} limitedOnly={limitedOnly} showLimitedOnly={!!standard?.length}
                     setOrder={setOrder} setSortBy={setSortBy} setLimitedOnly={setLimitedOnly}
                     setFilterText={setFilterText}
