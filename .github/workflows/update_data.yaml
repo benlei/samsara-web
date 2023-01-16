@@ -42,9 +42,6 @@ jobs:
       - name: Load up banner data
         run: cd samsara-tools && poetry run python pull_banners.py --output-json ../public/data/banners.json --output-image-dir ../public/images/
 
-      - name: Load up banner summary data
-        run: cd samsara-tools && poetry run python pull_banners_summary.py --output-json ../public/data/bannersSummary.json
-
       - name: Load up artifact data
         run: cd samsara-tools && poetry run python pull_artifacts.py --output-json ../public/data/artifacts.json --output-image-dir ../public/images/
 

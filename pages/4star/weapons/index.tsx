@@ -3,12 +3,13 @@ import {BannerResource} from '@/banners/types'
 import React from "react";
 import BannerPage from "@/components/banners/BannerPage";
 import {Container, Header} from "semantic-ui-react";
+import _ from "lodash";
 
 
 export async function getStaticProps() {
     return {
         props: {
-            banners: require('@/data/banners.json').weapons['4']
+            banners: _.mapValues(require('@/data/banners.json').weapons['4'], (v) => v.versions)
         },
     };
 }

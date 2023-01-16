@@ -6,20 +6,20 @@ import {getRundowns} from "@/banners/rundown";
 describe('getVersionParts', () => {
     it('should get all version parts', async () => {
         const banners = require('@/data/banners.json')
-        const versionParts = getVersionParts(banners.characters["5"])
+        const versionParts = getVersionParts(_.mapValues(banners.characters["5"], (v) => v.versions))
         expect(versionParts.length).toBeGreaterThanOrEqual(15)
     });
 
     it('should end with 1.0', async () => {
         const banners = require('@/data/banners.json')
-        const versionParts = getVersionParts(banners.characters["5"])
+        const versionParts = getVersionParts(_.mapValues(banners.characters["5"], (v) => v.versions))
         expect(versionParts[versionParts.length - 1].version).toEqual("1.0")
         expect(versionParts[versionParts.length - 1].parts).toEqual(2)
     });
 
     it('should have 3 parts for 1.3', async () => {
         const banners = require('@/data/banners.json')
-        const versionParts = getVersionParts(banners.characters["5"])
+        const versionParts = getVersionParts(_.mapValues(banners.characters["5"], (v) => v.versions))
         expect(versionParts[versionParts.length - 4].parts).toEqual(3)
     });
 });
@@ -28,7 +28,7 @@ describe('getVersionParts', () => {
 describe('getRundown()', () => {
     it('should have last element as Venti', async () => {
         const banners = require('@/data/banners.json')
-        const rundown = _.chain(getRundowns(banners.characters["5"]))
+        const rundown = _.chain(getRundowns(_.mapValues(banners.characters["5"], (v) => v.versions)))
             .filter((r) => r.name == 'Venti')
             .first()
             .value()
@@ -48,7 +48,7 @@ describe('getRundown()', () => {
     });
     it('should have Keqing once', async () => {
         const banners = require('@/data/banners.json')
-        const rundown = _.chain(getRundowns(banners.characters["5"]))
+        const rundown = _.chain(getRundowns(_.mapValues(banners.characters["5"], (v) => v.versions)))
             .filter((r) => r.name == 'Keqing')
             .first()
             .value()
@@ -68,7 +68,7 @@ describe('getRundown()', () => {
 
     it('Ensure yanfei looks about right', async () => {
         const banners = require('@/data/banners.json')
-        const rundown = _.chain(getRundowns(banners.characters["4"]))
+        const rundown = _.chain(getRundowns(_.mapValues(banners.characters["4"], (v) => v.versions)))
             .filter((r) => r.name == 'Yanfei')
             .first()
             .value()
