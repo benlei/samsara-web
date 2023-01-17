@@ -15,7 +15,7 @@ export default function BannerSearch(
             <Input fluid
                    placeholder={'Filter name...'}
                    onChange={_.debounce(onChange, 250)}
-                   style={{minWidth: '16em'}} icon>
+                   style={{minWidth: '16em'}} icon data-html2canvas-ignore>
                 <input autoComplete={'off'} />
                 <Icon name='search'/>
             </Input>
