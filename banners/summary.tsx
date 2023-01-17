@@ -397,6 +397,11 @@ function isLastVersionLatest(versionParts: VersionParts[],
     return getBaseVersion(banner.versions[banner.versions.length - 1]) == versionParts[versionParts.length - 1].version
 }
 
+function isLastVersionLatestBanner(versionParts: VersionParts[],
+                                   banner: BannerSummary): boolean {
+    return banner.versions[banner.versions.length - 1] == versionParts[versionParts.length - 1].version + "." + versionParts[versionParts.length - 1].parts
+}
+
 export function getLongestBannersInBetween(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
@@ -407,7 +412,7 @@ export function getLongestBannersInBetween(
         (banner: BannerSummary): number => {
             const ongoingBanner = {
                 dates: banner.dates,
-                versions: isLastVersionLatest(versionParts, banner) ? banner.versions : [
+                versions: isLastVersionLatestBanner(versionParts, banner) ? banner.versions : [
                     ...banner.versions,
                     versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
                 ],
@@ -427,7 +432,7 @@ export function getShortestBannersInBetween(
         (banner: BannerSummary): number => {
             const ongoingBanner = {
                 dates: banner.dates,
-                versions: isLastVersionLatest(versionParts, banner) ? banner.versions : [
+                versions: isLastVersionLatestBanner(versionParts, banner) ? banner.versions : [
                     ...banner.versions,
                     versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
                 ],
