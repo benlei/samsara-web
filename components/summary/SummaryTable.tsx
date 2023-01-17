@@ -7,8 +7,11 @@ import {
     getAverageDaysInBetween,
     getAveragePatchesInBetween,
     getBannersSinceLastCountSummary,
+    getLongestBannersInBetween,
+    getLongestDaysInBetween, getLongestPatchesInBetween,
     getPatchesSinceLastCountSummary,
-    getRunsCountSummary
+    getRunsCountSummary, getShortestBannersInBetween,
+    getShortestDaysInBetween, getShortestPatchesInBetween
 } from "@/banners/summary";
 import DaysSinceLast from "@/components/summary/stat/DaysSinceLast";
 import BasicCounterSummary from "./stat/BasicCounterSummary";
@@ -60,7 +63,37 @@ export default function SummaryTable(
                                      singular={'patch ago'} plural={'patches ago'}
                                      counter={getPatchesSinceLastCountSummary}
                 />}
-            {sortBy === 'avg-days' &&
+            {sortBy === 'longest-day' &&
+                <BasicCounterSummary {...commonProps}
+                                     singular={'day'} plural={'days'}
+                                     counter={(vp, banners) => getLongestDaysInBetween(vp, banners, date)}
+                />}
+            {sortBy === 'shortest-day' &&
+                <BasicCounterSummary {...commonProps}
+                                     singular={'day'} plural={'days'}
+                                     counter={(vp, banners) => getShortestDaysInBetween(vp, banners, date)}
+                />}
+            {sortBy === 'longest-banner' &&
+                <BasicCounterSummary {...commonProps}
+                                     singular={'banner'} plural={'banners'}
+                                     counter={getLongestBannersInBetween}
+                />}
+            {sortBy === 'shortest-banner' &&
+                <BasicCounterSummary {...commonProps}
+                                     singular={'banner'} plural={'banners'}
+                                     counter={getShortestBannersInBetween}
+                />}
+            {sortBy === 'longest-patch' &&
+                <BasicCounterSummary {...commonProps}
+                                     singular={'patch'} plural={'patches'}
+                                     counter={getLongestPatchesInBetween}
+                />}
+            {sortBy === 'shortest-patch' &&
+                <BasicCounterSummary {...commonProps}
+                                     singular={'patch'} plural={'patches'}
+                                     counter={getShortestPatchesInBetween}
+                />}
+            {sortBy === 'avg-day' &&
                 <AverageCounterSummary {...commonProps}
                                        singular={'day'} plural={'days'}
                                        counter={getAverageDaysInBetween}

@@ -4,8 +4,7 @@ import {
     getColorClassName,
     getDaysSinceRunCountSummary,
     getFilterFunction,
-    getPercent,
-    UnknownFutureCount
+    getPercent
 } from "@/banners/summary";
 import _ from "lodash";
 import dayjs from "dayjs";
@@ -56,16 +55,12 @@ export default function DaysSinceLast(
                             size={'small'}/>
 
                         <Label basic className={getColorClassName(getPercent(s.count, maxVal))}>
-                            {s.count === UnknownFutureCount ? '?' : Math.abs(s.count)}
+                            {Math.abs(s.count)}
                             <Label.Detail>
-                                {s.count === UnknownFutureCount ? (
-                                    'near future'
-                                ) : (
-                                    (s.count < 0 ?
-                                            'more day' + (Math.abs(s.count) === 1 ? '' : 's')
-                                            : 'day' + (Math.abs(s.count) === 1 ? '' : 's') + ' ago'
-                                    )
-                                )}
+                                {s.count < 0 ?
+                                    'more day' + (Math.abs(s.count) === 1 ? '' : 's')
+                                    : 'day' + (Math.abs(s.count) === 1 ? '' : 's') + ' ago'
+                                }
                             </Label.Detail>
                         </Label>
                     </Table.Cell>

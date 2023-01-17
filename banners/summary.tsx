@@ -1,11 +1,11 @@
 import {getBaseVersion, getVersionPart} from "@/banners/version";
 import _ from "lodash";
-import dayjs from "dayjs";
+import dayjs, {Dayjs} from "dayjs";
 import {VersionParts} from "@/banners/types";
 import {getImageFromName} from "@/format/image";
 import utc from "dayjs/plugin/utc";
 
-export const UnknownFutureCount = -999999999
+const DefaultBannerDayDuration = 21
 
 export type CountSummary = {
     name: string
@@ -32,12 +32,75 @@ export type DateRange = {
     end: string
 }
 
+export type DayjsRange = {
+    start: Dayjs
+    end: Dayjs
+}
+
 export type CommonSummaryProperties = {
     versionParts: VersionParts[]
     banners: { [name: string]: BannerSummary }
     type: string
     order: 'asc' | 'desc' | boolean
     filterText: string
+}
+
+
+function getNormalizedDayjsBannerDates(currDayjs: Dayjs, banner: BannerSummary): DayjsRange[] {
+    function getEquivalentFutureDateFromCurrToRangeStart(range: DayjsRange): DayjsRange {
+        return {
+            start: range.end.subtract(range.start.diff(currDayjs, 'day'), 'day'),
+            end: currDayjs,
+        }
+    }
+
+    const result: DayjsRange[] = _.chain(banner.dates)
+        .filter((dateRange) => dateRange.start != '')
+        .map((dateRange) => {
+            if (!dateRange.end) {
+                return {
+                    start: dayjs.utc(dateRange.start),
+                    end: dayjs.utc(dateRange.start).add(DefaultBannerDayDuration, 'day'),
+                }
+            }
+
+            return {
+                start: dayjs.utc(dateRange.start),
+                end: dayjs.utc(dateRange.end),
+            }
+        })
+        .value()
+
+    if (!result.length) {
+        return []
+    }
+
+    if (result[result.length - 1].start.isAfter(currDayjs)) {
+        result.push(getEquivalentFutureDateFromCurrToRangeStart(result[result.length - 1]))
+    } else if (currDayjs.isAfter(result[result.length - 1].end)) {
+        result.push({
+            start: currDayjs,
+            end: currDayjs,
+        })
+    } else {
+        result.push({
+            start: result[result.length - 1].end,
+            end: result[result.length - 1].end,
+        })
+    }
+
+    return result
+}
+
+function getNormalizedBannerDateGaps(currDayjs: Dayjs, banner: BannerSummary): number[] {
+    const dateRanges = getNormalizedDayjsBannerDates(currDayjs, banner)
+
+    const result = []
+    for (let i = 0; i < dateRanges.length - 1; i++) {
+        result.push(dateRanges[i + 1].start.diff(dateRanges[i].end, 'day'))
+    }
+
+    return result
 }
 
 export function getPatchGap(versionParts: VersionParts[], oldVersion: string, newVersion: string): number {
@@ -142,33 +205,11 @@ export function getDaysSinceRunCountSummary(
 ): CountSummary[] {
     dayjs.extend(utc);
 
-    function getLastEnd(banner: BannerSummary): string {
-        return banner.dates[banner.dates.length - 1].end
-    }
-
-    function getLastStart(banner: BannerSummary): string {
-        return banner.dates[banner.dates.length - 1].start
-    }
-
     const currDayjs = dayjs.utc(currDate)
     return getCountSummary(
         versionParts,
         bannerSummaries,
-        (banner) => {
-            if (getLastEnd(banner) && getLastStart(banner)) {
-                if (currDayjs.isBefore(dayjs.utc(getLastStart(banner)))) {
-                    return currDayjs.diff(dayjs.utc(getLastStart(banner)), 'day')
-                }
-
-                return Math.max(0, currDayjs.diff(dayjs.utc(getLastEnd(banner)), 'day'))
-            }
-
-            if (getLastStart(banner) && currDayjs.isBefore(dayjs.utc(getLastStart(banner)))) {
-                return currDayjs.diff(dayjs.utc(getLastStart(banner)), 'day')
-            }
-
-            return UnknownFutureCount
-        },
+        (banner) => _.last(getNormalizedBannerDateGaps(currDayjs, banner)) as number,
     )
 }
 
@@ -244,23 +285,23 @@ function getAverageCountSummary(
     return result
 }
 
+function getDayGaps(ignore: any, banner: BannerSummary): number[] {
+    const result = []
+    for (let i = 0; i < banner.dates.length - 1; i++) {
+        if (banner.dates[i].end == '' || banner.dates[i + 1].start == '') {
+            continue
+        }
+        result.push(dayjs.utc(banner.dates[i + 1].start).diff(dayjs.utc(banner.dates[i].end), 'day'))
+    }
+
+    return result
+}
+
 export function getAverageDaysInBetween(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
 ): AverageCountSummary[] {
     dayjs.extend(utc);
-
-    function getDayGaps(ignore: any, banner: BannerSummary): number[] {
-        const result = []
-        for (let i = 0; i < banner.dates.length - 1; i++) {
-            if (banner.dates[i].end == '' || banner.dates[i + 1].start == '') {
-                continue
-            }
-            result.push(dayjs.utc(banner.dates[i + 1].start).diff(dayjs.utc(banner.dates[i].end), 'day'))
-        }
-
-        return result
-    }
 
     return getAverageCountSummary(
         versionParts,
@@ -269,42 +310,200 @@ export function getAverageDaysInBetween(
     )
 }
 
+function getBannerGaps(versionParts: VersionParts[], banner: BannerSummary): number[] {
+    const result = []
+    for (let i = 0; i < banner.versions.length - 1; i++) {
+        result.push(getBannerGap(versionParts, banner.versions[i], banner.versions[i + 1]))
+    }
+
+    return result
+}
+
 export function getAverageBannersInBetween(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
 ): AverageCountSummary[] {
-    function getAvgBannerGaps(versionParts: VersionParts[], banner: BannerSummary): number[] {
-        const result = []
-        for (let i = 0; i < banner.versions.length - 1; i++) {
-            result.push(getBannerGap(versionParts, banner.versions[i], banner.versions[i + 1]))
-        }
-
-        return result
-    }
-
     return getAverageCountSummary(
         versionParts,
         bannerSummaries,
-        getAvgBannerGaps,
+        getBannerGaps,
     )
+}
+
+function getPatchGaps(versionParts: VersionParts[], banner: BannerSummary): number[] {
+    const result = []
+    for (let i = 0; i < banner.versions.length - 1; i++) {
+        result.push(getPatchGap(versionParts, banner.versions[i], banner.versions[i + 1]))
+    }
+
+    return result
 }
 
 export function getAveragePatchesInBetween(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
 ): AverageCountSummary[] {
-    function getAvgPatchGaps(versionParts: VersionParts[], banner: BannerSummary): number[] {
-        const result = []
-        for (let i = 0; i < banner.versions.length - 1; i++) {
-            result.push(getPatchGap(versionParts, banner.versions[i], banner.versions[i + 1]))
-        }
-
-        return result
-    }
-
     return getAverageCountSummary(
         versionParts,
         bannerSummaries,
-        getAvgPatchGaps,
+        getPatchGaps,
+    )
+}
+
+export function getLongestDaysInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+    currDate: string,
+): CountSummary[] {
+    dayjs.extend(utc);
+
+    const currDayjs = dayjs.utc(currDate)
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner: BannerSummary): number => {
+            return Math.max(...getNormalizedBannerDateGaps(currDayjs, banner), 0)
+        },
+    )
+}
+
+
+export function getShortestDaysInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+    currDate: string,
+): CountSummary[] {
+    dayjs.extend(utc);
+
+    const currDayjs = dayjs.utc(currDate)
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner: BannerSummary): number => {
+            const existingDayGaps = getDayGaps(null, banner)
+            const ongoingDayGaps = getNormalizedBannerDateGaps(currDayjs, banner)
+
+            if (!existingDayGaps.length) {
+                return Math.max(0, Math.min(...ongoingDayGaps))
+            }
+
+            return Math.max(Math.min(...existingDayGaps), Math.min(...ongoingDayGaps))
+        },
+    )
+}
+
+function isLastVersionLatest(versionParts: VersionParts[],
+                             banner: BannerSummary): boolean {
+    return getBaseVersion(banner.versions[banner.versions.length - 1]) == versionParts[versionParts.length - 1].version
+}
+
+export function getLongestBannersInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+): CountSummary[] {
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner: BannerSummary): number => {
+            const ongoingBanner = {
+                dates: banner.dates,
+                versions: isLastVersionLatest(versionParts, banner) ? banner.versions : [
+                    ...banner.versions,
+                    versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
+                ],
+            }
+            return Math.max(...getBannerGaps(versionParts, ongoingBanner), 0)
+        },
+    )
+}
+
+export function getShortestBannersInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+): CountSummary[] {
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner: BannerSummary): number => {
+            const ongoingBanner = {
+                dates: banner.dates,
+                versions: isLastVersionLatest(versionParts, banner) ? banner.versions : [
+                    ...banner.versions,
+                    versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
+                ],
+            }
+
+            const ongoingGaps = getBannerGaps(versionParts, ongoingBanner)
+            if (!ongoingGaps.length) {
+                return 0
+            }
+
+            if (banner.versions.length == 1) {
+                return Math.min(...ongoingGaps)
+            }
+
+            return Math.max(Math.min(...getBannerGaps(versionParts, banner)), Math.min(...ongoingGaps))
+        },
+    )
+}
+
+export function getLongestPatchesInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+): CountSummary[] {
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner: BannerSummary): number => {
+            const ongoingBanner = {
+                dates: banner.dates,
+                versions: isLastVersionLatest(versionParts, banner) ? banner.versions : [
+                    ...banner.versions,
+                    versionParts[versionParts.length - 1].version + '.' + versionParts[versionParts.length - 1].parts,
+                ],
+            }
+
+            if (isLastVersionLatest(versionParts, banner)) {
+                return Math.max(...getPatchGaps(versionParts, ongoingBanner), 0)
+            }
+
+            const gaps = getPatchGaps(versionParts, ongoingBanner)
+            gaps[gaps.length - 1]++
+            return Math.max(...gaps, 0)
+        },
+    )
+}
+
+export function getShortestPatchesInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+): CountSummary[] {
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner: BannerSummary): number => {
+            const ongoingBanner = {
+                dates: banner.dates,
+                versions: isLastVersionLatest(versionParts, banner) ? banner.versions : [
+                    ...banner.versions,
+                    versionParts[versionParts.length - 1].version + '.' + versionParts[versionParts.length - 1].parts,
+                ],
+            }
+
+            const gaps = getPatchGaps(versionParts, ongoingBanner)
+            if (!gaps.length) {
+                return 0
+            }
+
+            if (!isLastVersionLatest(versionParts, banner)) {
+                gaps[gaps.length - 1]++
+            }
+
+            if (banner.versions.length == 1) {
+                return Math.min(...gaps)
+            }
+
+            return Math.max(Math.min(...getPatchGaps(versionParts, banner)), Math.min(...gaps))
+        },
     )
 }
