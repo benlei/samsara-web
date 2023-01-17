@@ -7,6 +7,7 @@ import {
     getAverageDaysInBetween,
     getAveragePatchesInBetween,
     getBannersSinceLastCountSummary,
+    getLongestBannersInBetween,
     getLongestDaysInBetween,
     getPatchesSinceLastCountSummary,
     getRunsCountSummary
@@ -65,6 +66,11 @@ export default function SummaryTable(
                 <BasicCounterSummary {...commonProps}
                                      singular={'day'} plural={'days'}
                                      counter={(vp, banners) => getLongestDaysInBetween(vp, banners, date)}
+                />}
+            {sortBy === 'longest-banner' &&
+                <BasicCounterSummary {...commonProps}
+                                     singular={'banner'} plural={'banners'}
+                                     counter={getLongestBannersInBetween}
                 />}
             {sortBy === 'avg-days' &&
                 <AverageCounterSummary {...commonProps}

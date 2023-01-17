@@ -6,7 +6,7 @@ import {
     getAveragePatchesInBetween,
     getBannerGap,
     getBannersSinceLastCountSummary,
-    getDaysSinceRunCountSummary,
+    getDaysSinceRunCountSummary, getLongestBannersInBetween,
     getLongestDaysInBetween,
     getPatchesSinceLastCountSummary,
     getPatchGap,
@@ -72,6 +72,12 @@ const BannerSummariesDummyData: { [name: string]: BannerSummary } = {
         ]
     },
 }
+
+const VersionPartsDummyDataWithFuture: VersionParts[] = [
+    ...VersionPartsDummyData,
+    {version: '3.9', parts: 2},
+    {version: '4.0', parts: 2},
+]
 
 const BannerSummariesDummyDataWithFuture: { [name: string]: BannerSummary } = {
     ...BannerSummariesDummyData,
@@ -483,6 +489,53 @@ describe('getLongestDaysInBetween()', () => {
                     "name": "Yoimiya",
                     "image": "Yoimiya",
                     "count": 336
+                },
+            ])
+    })
+})
+
+describe('getLongestBannersInBetween()', () => {
+    it('should provide longest banners in between', () => {
+        expect(_.orderBy(
+            getLongestBannersInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual([
+                {
+                    "name": "Fake",
+                    "image": "Fake",
+                    "count": 26
+                },
+                {
+                    "name": "Fake2",
+                    "image": "Fake2",
+                    "count": 1
+                },
+                {
+                    "name": "Fake3",
+                    "image": "Fake3",
+                    "count": 2
+                },
+                {
+                    "name": "Fake4",
+                    "image": "Fake4",
+                    "count": 2
+                },
+                {
+                    "name": "Hu Tao",
+                    "image": "Hu-Tao",
+                    "count": 22
+                },
+                {
+                    "name": "Venti",
+                    "image": "Venti",
+                    "count": 17
+                },
+                {
+                    "name": "Yoimiya",
+                    "image": "Yoimiya",
+                    "count": 15
                 },
             ])
     })
