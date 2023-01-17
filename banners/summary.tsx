@@ -417,6 +417,36 @@ export function getLongestBannersInBetween(
     )
 }
 
+export function getShortestBannersInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+): CountSummary[] {
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner: BannerSummary): number => {
+            const ongoingBanner = {
+                dates: banner.dates,
+                versions: isLastVersionLatest(versionParts, banner) ? banner.versions : [
+                    ...banner.versions,
+                    versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
+                ],
+            }
+
+            const ongoingGaps = getBannerGaps(versionParts, ongoingBanner)
+            if (!ongoingGaps.length) {
+                return 0
+            }
+
+            if (banner.versions.length == 1) {
+                return Math.min(...ongoingGaps)
+            }
+
+            return Math.max(Math.min(...getBannerGaps(versionParts, banner)), Math.min(...ongoingGaps))
+        },
+    )
+}
+
 export function getLongestPatchesInBetween(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
