@@ -55,13 +55,6 @@ export default function SummaryPage(
                     expand={expand} setExpand={setExpand}
                     latestVersionPart={versionParts[versionParts.length - 1]}
                 />
-                <MobileSummaryOptions
-                    sortBy={sortBy} order={order} limitedOnly={limitedOnly} showLimitedOnly={!!standard?.length}
-                    setOrder={setOrder} setSortBy={setSortBy} setLimitedOnly={setLimitedOnly}
-                    setFilterText={setFilterText}
-                    expand={expand} setExpand={setExpand}
-                    latestVersionPart={versionParts[versionParts.length - 1]}
-                />
             </Container>
 
             <Ref innerRef={ref}>
