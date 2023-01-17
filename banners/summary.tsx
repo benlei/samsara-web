@@ -349,3 +349,21 @@ export function getAveragePatchesInBetween(
         getAvgPatchGaps,
     )
 }
+
+
+export function getLongestDaysInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+    currDate: string,
+): CountSummary[] {
+    dayjs.extend(utc);
+
+    const currDayjs = dayjs.utc(currDate)
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner: BannerSummary): number => {
+            return Math.max(...getNormalizedBannerDateGaps(currDayjs, banner), 0)
+        },
+    )
+}
