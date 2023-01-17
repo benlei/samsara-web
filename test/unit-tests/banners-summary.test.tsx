@@ -1,16 +1,16 @@
 import {VersionParts} from "@/banners/types";
 import {
     BannerSummary,
+    getAverageBannersInBetween,
+    getAverageDaysInBetween,
+    getAveragePatchesInBetween,
     getBannerGap,
-    getPatchGap,
     getBannersSinceLastCountSummary,
     getDaysSinceRunCountSummary,
+    getLongestDaysInBetween,
     getPatchesSinceLastCountSummary,
-    getRunsCountSummary,
-    getAverageDaysInBetween,
-    getAverageBannersInBetween,
-    getAveragePatchesInBetween,
-    UnknownFutureCount
+    getPatchGap,
+    getRunsCountSummary
 } from "@/banners/summary";
 import dayjs from "dayjs";
 import _ from "lodash";
@@ -73,6 +73,32 @@ const BannerSummariesDummyData: { [name: string]: BannerSummary } = {
     },
 }
 
+const BannerSummariesDummyDataWithFuture: { [name: string]: BannerSummary } = {
+    ...BannerSummariesDummyData,
+    "Fake2": {
+        "versions": ['3.9.1', '4.0.1'],
+        "dates": [
+            {"start": "2022-06-01", "end": "2022-06-24"},
+            {"start": "2023-06-01", "end": ""}
+        ]
+    },
+    "Fake3": {
+        "versions": ['3.9.1', '4.0.2'],
+        "dates": [
+            {"start": "2022-06-01", "end": "2022-06-24"},
+            {"start": "", "end": ""}
+        ]
+    },
+    "Fake4": {
+        "versions": ['3.9.1', '4.0.2'],
+        "dates": [
+            {"start": "2022-12-01", "end": "2022-12-24"},
+            {"start": "2023-01-01", "end": "2023-01-24"}
+        ]
+    }
+}
+
+
 describe('getPatchGap', () => {
     it('should get the correct patch difference', async () => {
         expect(getPatchGap(VersionPartsDummyData, "1.0.1", "2.0.1"))
@@ -118,7 +144,7 @@ describe('getBannerGap', () => {
 describe('getDaysSinceRunCountSummary', () => {
     it('should return the number of days since last run', () => {
         expect(_.orderBy(
-            getDaysSinceRunCountSummary(VersionPartsDummyData, BannerSummariesDummyData, "2023-01-03"),
+            getDaysSinceRunCountSummary(VersionPartsDummyData, BannerSummariesDummyDataWithFuture, "2023-01-03"),
             (b) => b.name,
             'asc'
         ))
@@ -126,7 +152,22 @@ describe('getDaysSinceRunCountSummary', () => {
                     {
                         "name": "Fake",
                         "image": "Fake",
-                        "count": UnknownFutureCount,
+                        "count": 490,
+                    },
+                    {
+                        "name": "Fake2",
+                        "image": "Fake2",
+                        "count": -149,
+                    },
+                    {
+                        "name": "Fake3",
+                        "image": "Fake3",
+                        "count": 193,
+                    },
+                    {
+                        "name": "Fake4",
+                        "image": "Fake4",
+                        "count": 0,
                     },
                     {
                         "name": "Hu Tao",
@@ -396,5 +437,53 @@ describe('getAveragePatchesInBetween', () => {
                 (b) => b.name,
                 'asc',
             ))
+    })
+})
+
+
+describe('getLongestDaysInBetween()', () => {
+    it('should provide longest days in between', () => {
+        expect(_.orderBy(
+            getLongestDaysInBetween(VersionPartsDummyData, BannerSummariesDummyDataWithFuture, "2023-01-03"),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual([
+                {
+                    "name": "Fake",
+                    "image": "Fake",
+                    "count": 490
+                },
+                {
+                    "name": "Fake2",
+                    "image": "Fake2",
+                    "count": 342
+                },
+                {
+                    "name": "Fake3",
+                    "image": "Fake3",
+                    "count": 193
+                },
+                {
+                    "name": "Fake4",
+                    "image": "Fake4",
+                    "count": 8
+                },
+                {
+                    "name": "Hu Tao",
+                    "image": "Hu-Tao",
+                    "count": 406
+                },
+                {
+                    "name": "Venti",
+                    "image": "Venti",
+                    "count": 358
+                },
+                {
+                    "name": "Yoimiya",
+                    "image": "Yoimiya",
+                    "count": 336
+                },
+            ])
     })
 })

@@ -1,11 +1,11 @@
 import {getBaseVersion, getVersionPart} from "@/banners/version";
 import _ from "lodash";
-import dayjs from "dayjs";
+import dayjs, {Dayjs} from "dayjs";
 import {VersionParts} from "@/banners/types";
 import {getImageFromName} from "@/format/image";
 import utc from "dayjs/plugin/utc";
 
-export const UnknownFutureCount = -999999999
+const DefaultBannerDayDuration = 21
 
 export type CountSummary = {
     name: string
@@ -32,12 +32,75 @@ export type DateRange = {
     end: string
 }
 
+export type DayjsRange = {
+    start: Dayjs
+    end: Dayjs
+}
+
 export type CommonSummaryProperties = {
     versionParts: VersionParts[]
     banners: { [name: string]: BannerSummary }
     type: string
     order: 'asc' | 'desc' | boolean
     filterText: string
+}
+
+
+function getNormalizedDayjsBannerDates(currDayjs: Dayjs, banner: BannerSummary): DayjsRange[] {
+    function getEquivalentFutureDateFromCurrToRangeStart(range: DayjsRange): DayjsRange {
+        return {
+            start: range.end.subtract(range.start.diff(currDayjs, 'day'), 'day'),
+            end: currDayjs,
+        }
+    }
+
+    const result: DayjsRange[] = _.chain(banner.dates)
+        .filter((dateRange) => dateRange.start != '')
+        .map((dateRange) => {
+            if (!dateRange.end) {
+                return {
+                    start: dayjs.utc(dateRange.start),
+                    end: dayjs.utc(dateRange.start).add(DefaultBannerDayDuration, 'day'),
+                }
+            }
+
+            return {
+                start: dayjs.utc(dateRange.start),
+                end: dayjs.utc(dateRange.end),
+            }
+        })
+        .value()
+
+    if (!result.length) {
+        return []
+    }
+
+    if (result[result.length - 1].start.isAfter(currDayjs)) {
+        result.push(getEquivalentFutureDateFromCurrToRangeStart(result[result.length - 1]))
+    } else if (currDayjs.isAfter(result[result.length - 1].end)) {
+        result.push({
+            start: currDayjs,
+            end: currDayjs,
+        })
+    } else {
+        result.push({
+            start: result[result.length - 1].end,
+            end: result[result.length - 1].end,
+        })
+    }
+
+    return result
+}
+
+function getNormalizedBannerDateGaps(currDayjs: Dayjs, banner: BannerSummary): number[] {
+    const dateRanges = getNormalizedDayjsBannerDates(currDayjs, banner)
+
+    const result = []
+    for (let i = 0; i < dateRanges.length - 1; i++) {
+        result.push(dateRanges[i + 1].start.diff(dateRanges[i].end, 'day'))
+    }
+
+    return result
 }
 
 export function getPatchGap(versionParts: VersionParts[], oldVersion: string, newVersion: string): number {
@@ -142,33 +205,11 @@ export function getDaysSinceRunCountSummary(
 ): CountSummary[] {
     dayjs.extend(utc);
 
-    function getLastEnd(banner: BannerSummary): string {
-        return banner.dates[banner.dates.length - 1].end
-    }
-
-    function getLastStart(banner: BannerSummary): string {
-        return banner.dates[banner.dates.length - 1].start
-    }
-
     const currDayjs = dayjs.utc(currDate)
     return getCountSummary(
         versionParts,
         bannerSummaries,
-        (banner) => {
-            if (getLastEnd(banner) && getLastStart(banner)) {
-                if (currDayjs.isBefore(dayjs.utc(getLastStart(banner)))) {
-                    return currDayjs.diff(dayjs.utc(getLastStart(banner)), 'day')
-                }
-
-                return Math.max(0, currDayjs.diff(dayjs.utc(getLastEnd(banner)), 'day'))
-            }
-
-            if (getLastStart(banner) && currDayjs.isBefore(dayjs.utc(getLastStart(banner)))) {
-                return currDayjs.diff(dayjs.utc(getLastStart(banner)), 'day')
-            }
-
-            return UnknownFutureCount
-        },
+        (banner) => _.last(getNormalizedBannerDateGaps(currDayjs, banner)) as number,
     )
 }
 
