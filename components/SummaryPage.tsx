@@ -1,5 +1,5 @@
 import {Container, Header, Ref} from "semantic-ui-react";
-import SummaryOptions, { MobileSummaryOptions } from "@/components/summary/SummaryOptions";
+import SummaryOptions from "@/components/summary/SummaryOptions";
 import React, {useEffect, useState} from "react";
 import getVersionParts from "@/banners/version";
 import _ from "lodash";
@@ -70,7 +70,10 @@ export default function SummaryPage(
             </Ref>
 
             <Container text={!expand} style={{marginTop: '1em'}} textAlign={"center"}>
-                <PngDownloadButton node={ref} name={'summary'}/>
+                <PngDownloadButton node={ref} name={'summary'}
+                                   widthOffset={20}
+                                   scrollXOffset={10}
+                />
             </Container>
         </>
     )

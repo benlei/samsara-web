@@ -43,6 +43,11 @@ body {
     border: 1px solid #ddd;
 }
 
+/* oddly the first row's first col has no border top... */
+.history tr:first-of-type td:first-of-type {
+    border-top: 1px #ddd solid !important;
+}
+
 .history td:not(:first-of-type) {
     text-align: center !important;
 }

@@ -96,7 +96,7 @@ export function DesktopSummaryOptions(
 
                         <Form.Group widths='equal'>
                             <Form.Radio
-                                label='Historical Longest Wait'
+                                label='Longest Wait Leaderboard'
                                 value='longest'
                                 checked={metric === 'longest'}
                                 onChange={() => setMetric('longest')}
@@ -106,7 +106,7 @@ export function DesktopSummaryOptions(
 
                         <Form.Group widths='equal'>
                             <Form.Radio
-                                label='Historical Shortest Wait'
+                                label='Shortest Wait Leaderboard'
                                 value='shortest'
                                 checked={metric === 'shortest'}
                                 onChange={() => setMetric('shortest')}
@@ -246,7 +246,7 @@ export function MobileSummaryOptions(
                     </Form.Group>
                     <Form.Group widths='equal'>
                         <Form.Radio
-                            label='Historical Longest Wait'
+                            label='Longest Wait Leaderboard'
                             value='longest'
                             checked={metric === 'longest'}
                             onChange={() => setMetric('longest')}
@@ -255,7 +255,7 @@ export function MobileSummaryOptions(
                     </Form.Group>
                     <Form.Group widths='equal'>
                         <Form.Radio
-                            label='Historical Shortest Wait'
+                            label='Shortest Wait Leaderboard'
                             value='shortest'
                             checked={metric === 'shortest'}
                             onChange={() => setMetric('shortest')}

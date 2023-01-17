@@ -80,7 +80,7 @@ export default class BannerPage extends React.Component<Properties, States> {
                                    expand={expand} setExpand={setExpand}
                     />
                 </Container>
-                <Container style={{overflowX: 'scroll', marginTop: '1em',  ...getBannerContainerStyle(expand ?? false)}}
+                <Container style={{overflowX: 'scroll', marginTop: '1em', ...getBannerContainerStyle(expand ?? false)}}
                            fluid={expand ?? false}>
                     <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
                         <Ref innerRef={this.componentRef}>
@@ -98,7 +98,10 @@ export default class BannerPage extends React.Component<Properties, States> {
                     </ScrollContainer>
                 </Container>
                 <Container style={{marginTop: '2em'}} textAlign={'center'}>
-                    <PngDownloadButton node={this.componentRef} name={'banner-history'}/>
+                    <PngDownloadButton node={this.componentRef} name={'banner-history'}
+                                       scrollXOffset={15}
+                                       windowWidthOffset={20}
+                    />
                 </Container>
             </>
         )
