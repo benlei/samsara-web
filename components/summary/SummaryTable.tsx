@@ -93,7 +93,7 @@ export default function SummaryTable(
                                      singular={'patch'} plural={'patches'}
                                      counter={getShortestPatchesInBetween}
                 />}
-            {sortBy === 'avg-days' &&
+            {sortBy === 'avg-day' &&
                 <AverageCounterSummary {...commonProps}
                                        singular={'day'} plural={'days'}
                                        counter={getAverageDaysInBetween}

@@ -32,6 +32,26 @@ export default function SummaryOptions(
         latestVersionPart,
     }: Properties
 ) {
+    const [metric, setMetric] = useState(sortBy.split('-')[0])
+    const [unit, setUnit] = useState(sortBy.split('-')[1])
+
+    function updateMetric(newMetric: string) {
+        setMetric(newMetric)
+
+        if (newMetric === 'runs') {
+            setSortBy(newMetric)
+        } else {
+            setSortBy(newMetric + '-' + unit)
+        }
+    }
+
+    function updateUnit(newUnit: string) {
+        setUnit(newUnit)
+        if (metric !== 'runs') {
+            setSortBy(metric + '-' + newUnit)
+        }
+    }
+
     return (
         <>
             <Form className={'desktop'}>
@@ -39,102 +59,67 @@ export default function SummaryOptions(
                     <label>Sort By</label>
                     <Form.Group widths='equal'>
                         <Form.Radio
-                            label='# days since last run'
-                            value='last-day'
-                            checked={sortBy === 'last-day'}
-                            onChange={() => setSortBy('last-day')}
+                            label='Since Last Run'
+                            value='last'
+                            checked={metric === 'last'}
+                            onChange={() => updateMetric('last')}
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label={'# banners since last run (as of  ' + latestVersionPart.version + ')'}
-                            value='last-banner'
-                            checked={sortBy === 'last-banner'}
-                            onChange={() => setSortBy('last-banner')}
-                            autoComplete={'off'}
-                        />
-                        <Form.Radio
-                            label={'# patches since last run (as of ' + latestVersionPart.version + ')'}
-                            value='last-patch'
-                            checked={sortBy === 'last-patch'}
-                            onChange={() => setSortBy('last-patch')}
+                            label={'Days'}
+                            value='day'
+                            checked={unit === 'day'}
+                            onChange={() => updateUnit('day')}
                             autoComplete={'off'}
                         />
                     </Form.Group>
                     <Form.Group widths='equal'>
                         <Form.Radio
-                            label='Longest # days'
-                            value='longest-day'
-                            checked={sortBy === 'longest-day'}
-                            onChange={() => setSortBy('longest-day')}
+                            label='Historical Longest Wait'
+                            value='longest'
+                            checked={metric === 'longest'}
+                            onChange={() => updateMetric('longest')}
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label={'Longest # banners'}
-                            value='longest-banner'
-                            checked={sortBy === 'longest-banner'}
-                            onChange={() => setSortBy('longest-banner')}
-                            autoComplete={'off'}
-                        />
-                        <Form.Radio
-                            label={'Longest # patches'}
-                            value='longest-patch'
-                            checked={sortBy === 'longest-patch'}
-                            onChange={() => setSortBy('longest-patch')}
+                            label={'Banners'}
+                            value='banner'
+                            checked={unit === 'banner'}
+                            onChange={() => updateUnit('banner')}
                             autoComplete={'off'}
                         />
                     </Form.Group>
                     <Form.Group widths='equal'>
                         <Form.Radio
-                            label='Shortest # days'
-                            value='shortest-day'
-                            checked={sortBy === 'shortest-day'}
-                            onChange={() => setSortBy('shortest-day')}
+                            label='Historical Shortest Wait'
+                            value='shortest'
+                            checked={metric === 'shortest'}
+                            onChange={() => updateMetric('shortest')}
                             autoComplete={'off'}
                         />
                         <Form.Radio
-                            label={'Shortest # banners'}
-                            value='shortest-banner'
-                            checked={sortBy === 'shortest-banner'}
-                            onChange={() => setSortBy('shortest-banner')}
-                            autoComplete={'off'}
-                        />
-                        <Form.Radio
-                            label={'Shortest # patches'}
-                            value='shortest-patch'
-                            checked={sortBy === 'shortest-patch'}
-                            onChange={() => setSortBy('shortest-patch')}
+                            label={'Patches'}
+                            value='patch'
+                            checked={unit === 'patch'}
+                            onChange={() => updateUnit('patch')}
                             autoComplete={'off'}
                         />
                     </Form.Group>
                     <Form.Group widths='equal'>
                         <Form.Radio
-                            label='Avg. # days between runs'
-                            value='avg-days'
-                            checked={sortBy === 'avg-days'}
-                            onChange={() => setSortBy('avg-days')}
-                            autoComplete={'off'}
-                        />
-                        <Form.Radio
-                            label='Avg. # banners between runs'
-                            value='avg-banner'
-                            checked={sortBy === 'avg-banner'}
-                            onChange={() => setSortBy('avg-banner')}
-                            autoComplete={'off'}
-                        />
-                        <Form.Radio
-                            label='Avg. # patches between runs'
-                            value='avg-patch'
-                            checked={sortBy === 'avg-patch'}
-                            onChange={() => setSortBy('avg-patch')}
+                            label='Historical Average Wait'
+                            value='avg'
+                            checked={metric === 'avg'}
+                            onChange={() => updateMetric('avg')}
                             autoComplete={'off'}
                         />
                     </Form.Group>
                     <Form.Group widths='equal'>
                         <Form.Radio
-                            label={'Total runs (as of ' + latestVersionPart.version + ')'}
+                            label={'Total runs'}
                             value='runs'
-                            checked={sortBy === 'runs'}
-                            onChange={() => setSortBy('runs')}
+                            checked={metric === 'runs'}
+                            onChange={() => updateMetric('runs')}
                             autoComplete={'off'}
                         />
                     </Form.Group>
