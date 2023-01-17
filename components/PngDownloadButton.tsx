@@ -8,6 +8,7 @@ type Properties = {
     scrollYOffset?: number
     windowWidthOffset?: number
     windowHeightOffset?: number
+    widthOffset?: number
 }
 
 export default function PngDownloadButton(
@@ -18,6 +19,7 @@ export default function PngDownloadButton(
         scrollYOffset = 0,
         windowWidthOffset = 0,
         windowHeightOffset = 0,
+        widthOffset = 0,
     }: Properties
 ) {
     async function download() {
@@ -32,6 +34,11 @@ export default function PngDownloadButton(
                 scrollY: -window.scrollY + scrollYOffset,
                 windowWidth: document.documentElement.offsetWidth + windowWidthOffset,
                 windowHeight: document.documentElement.offsetHeight + windowHeightOffset,
+                width: Math.max(
+                    node.current.scrollWidth ?? 0,
+                    node.current.offsetWidth ?? 0,
+                    node.current.clientWidth ?? 0,
+                ) + widthOffset,
             },
         })
     }
