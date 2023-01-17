@@ -10,7 +10,8 @@ import {
     getLongestBannersInBetween,
     getLongestDaysInBetween, getLongestPatchesInBetween,
     getPatchesSinceLastCountSummary,
-    getRunsCountSummary
+    getRunsCountSummary,
+    getShortestDaysInBetween
 } from "@/banners/summary";
 import DaysSinceLast from "@/components/summary/stat/DaysSinceLast";
 import BasicCounterSummary from "./stat/BasicCounterSummary";
@@ -66,6 +67,11 @@ export default function SummaryTable(
                 <BasicCounterSummary {...commonProps}
                                      singular={'day'} plural={'days'}
                                      counter={(vp, banners) => getLongestDaysInBetween(vp, banners, date)}
+                />}
+            {sortBy === 'shortest-day' &&
+                <BasicCounterSummary {...commonProps}
+                                     singular={'day'} plural={'days'}
+                                     counter={(vp, banners) => getShortestDaysInBetween(vp, banners, date)}
                 />}
             {sortBy === 'longest-banner' &&
                 <BasicCounterSummary {...commonProps}

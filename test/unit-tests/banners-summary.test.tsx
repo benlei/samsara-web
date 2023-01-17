@@ -11,7 +11,8 @@ import {
     getLongestPatchesInBetween,
     getPatchesSinceLastCountSummary,
     getPatchGap,
-    getRunsCountSummary
+    getRunsCountSummary,
+    getShortestDaysInBetween
 } from "@/banners/summary";
 import dayjs from "dayjs";
 import _ from "lodash";
@@ -585,6 +586,53 @@ describe('getLongestPatchesInBetween()', () => {
                     "name": "Yoimiya",
                     "image": "Yoimiya",
                     "count": 8
+                },
+            ])
+    })
+})
+
+describe('getShortestDaysInBetween()', () => {
+    it('should provide shortest days in between', () => {
+        expect(_.orderBy(
+            getShortestDaysInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture, "2023-01-03"),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual([
+                {
+                    "name": "Fake",
+                    "image": "Fake",
+                    "count": 490
+                },
+                {
+                    "name": "Fake2",
+                    "image": "Fake2",
+                    "count": 342
+                },
+                {
+                    "name": "Fake3",
+                    "image": "Fake3",
+                    "count": 193
+                },
+                {
+                    "name": "Fake4",
+                    "image": "Fake4",
+                    "count": 8
+                },
+                {
+                    "name": "Hu Tao",
+                    "image": "Hu-Tao",
+                    "count": 231
+                },
+                {
+                    "name": "Venti",
+                    "image": "Venti",
+                    "count": 150
+                },
+                {
+                    "name": "Yoimiya",
+                    "image": "Yoimiya",
+                    "count": 71
                 },
             ])
     })

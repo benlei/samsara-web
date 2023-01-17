@@ -285,23 +285,23 @@ function getAverageCountSummary(
     return result
 }
 
+function getDayGaps(ignore: any, banner: BannerSummary): number[] {
+    const result = []
+    for (let i = 0; i < banner.dates.length - 1; i++) {
+        if (banner.dates[i].end == '' || banner.dates[i + 1].start == '') {
+            continue
+        }
+        result.push(dayjs.utc(banner.dates[i + 1].start).diff(dayjs.utc(banner.dates[i].end), 'day'))
+    }
+
+    return result
+}
+
 export function getAverageDaysInBetween(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
 ): AverageCountSummary[] {
     dayjs.extend(utc);
-
-    function getDayGaps(ignore: any, banner: BannerSummary): number[] {
-        const result = []
-        for (let i = 0; i < banner.dates.length - 1; i++) {
-            if (banner.dates[i].end == '' || banner.dates[i + 1].start == '') {
-                continue
-            }
-            result.push(dayjs.utc(banner.dates[i + 1].start).diff(dayjs.utc(banner.dates[i].end), 'day'))
-        }
-
-        return result
-    }
 
     return getAverageCountSummary(
         versionParts,
@@ -343,8 +343,6 @@ export function getAveragePatchesInBetween(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
 ): AverageCountSummary[] {
-
-
     return getAverageCountSummary(
         versionParts,
         bannerSummaries,
@@ -365,6 +363,31 @@ export function getLongestDaysInBetween(
         bannerSummaries,
         (banner: BannerSummary): number => {
             return Math.max(...getNormalizedBannerDateGaps(currDayjs, banner), 0)
+        },
+    )
+}
+
+
+export function getShortestDaysInBetween(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+    currDate: string,
+): CountSummary[] {
+    dayjs.extend(utc);
+
+    const currDayjs = dayjs.utc(currDate)
+    return getCountSummary(
+        versionParts,
+        bannerSummaries,
+        (banner: BannerSummary): number => {
+            const existingDayGaps = getDayGaps(null, banner)
+            const ongoingDayGaps = getNormalizedBannerDateGaps(currDayjs, banner)
+
+            if (!existingDayGaps.length) {
+                return Math.max(0, Math.min(...ongoingDayGaps))
+            }
+
+            return Math.max(Math.min(...existingDayGaps), Math.min(...ongoingDayGaps))
         },
     )
 }
