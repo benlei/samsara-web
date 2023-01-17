@@ -8,6 +8,7 @@ import {
     getBannersSinceLastCountSummary,
     getDaysSinceRunCountSummary, getLongestBannersInBetween,
     getLongestDaysInBetween,
+    getLongestPatchesInBetween,
     getPatchesSinceLastCountSummary,
     getPatchGap,
     getRunsCountSummary
@@ -536,6 +537,54 @@ describe('getLongestBannersInBetween()', () => {
                     "name": "Yoimiya",
                     "image": "Yoimiya",
                     "count": 15
+                },
+            ])
+    })
+})
+
+
+describe('getLongestPatchesInBetween()', () => {
+    it('should provide longest patches in between', () => {
+        expect(_.orderBy(
+            getLongestPatchesInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture),
+            (b) => b.name,
+            'asc'
+        ))
+            .toEqual([
+                {
+                    "name": "Fake",
+                    "image": "Fake",
+                    "count": 14
+                },
+                {
+                    "name": "Fake2",
+                    "image": "Fake2",
+                    "count": 1
+                },
+                {
+                    "name": "Fake3",
+                    "image": "Fake3",
+                    "count": 1
+                },
+                {
+                    "name": "Fake4",
+                    "image": "Fake4",
+                    "count": 1
+                },
+                {
+                    "name": "Hu Tao",
+                    "image": "Hu-Tao",
+                    "count": 12
+                },
+                {
+                    "name": "Venti",
+                    "image": "Venti",
+                    "count": 9
+                },
+                {
+                    "name": "Yoimiya",
+                    "image": "Yoimiya",
+                    "count": 8
                 },
             ])
     })
