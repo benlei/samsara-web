@@ -140,48 +140,48 @@ img.active {
 }
 
 .dark-9 .bar {
-    background-color: hsl(0, 0%, 40%) !important;
+    background-color: hsl(0, 5%, 40%) !important;
 }
 
 .dark-9.label {
-    color: hsl(0, 0%, 40%) !important;
+    color: hsl(0, 5%, 40%) !important;
 }
 
 .dark-8 .bar {
-    background-color: hsl(0, 0%, 45%) !important;
+    background-color: hsl(0, 5%, 45%) !important;
 }
 
 .dark-8.label {
-    color: hsl(0, 0%, 45%) !important;
+    color: hsl(0, 5%, 45%) !important;
 }
 .dark-7 .bar {
-    background-color: hsl(0, 0%, 50%) !important;
+    background-color: hsl(0, 5%, 50%) !important;
 }
 
 .dark-7.label {
-    color: hsl(0, 0%, 50%) !important;
+    color: hsl(0, 5%, 50%) !important;
 }
 
 .dark-6 .bar {
-    background-color: hsl(0, 0%, 55%) !important;
+    background-color: hsl(0, 5%, 55%) !important;
 }
 
 .dark-6.label {
-    color: hsl(0, 0%, 55%) !important;
+    color: hsl(0, 5%, 55%) !important;
 }
 .dark-5 .bar {
-    background-color: hsl(0, 0%, 60%) !important;
+    background-color: hsl(0, 5%, 60%) !important;
 }
 
 .dark-5.label {
-    color: hsl(0, 0%, 60%) !important;
+    color: hsl(0, 5%, 60%) !important;
 }
 .dark-4 .bar {
-     background-color: hsl(0, 0%, 65%) !important;
+     background-color: hsl(0, 5%, 65%) !important;
 }
 
 .dark-4.label {
-    color: hsl(0, 0%, 65%) !important;
+    color: hsl(0, 5%, 65%) !important;
 }
 .dropdown.active {
     border-color: #1b1c1d !important;
