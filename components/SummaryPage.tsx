@@ -1,5 +1,5 @@
 import {Container, Header, Ref} from "semantic-ui-react";
-import SummaryOptions, { MobileSummaryOptions } from "@/components/summary/SummaryOptions";
+import SummaryOptions from "@/components/summary/SummaryOptions";
 import React, {useEffect, useState} from "react";
 import getVersionParts from "@/banners/version";
 import _ from "lodash";
