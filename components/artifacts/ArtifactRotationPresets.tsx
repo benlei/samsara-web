@@ -4,6 +4,7 @@ import {ListManager, RotationPreset, RotationStorage} from "@/artifacts/types";
 import {AddEditPreset} from "@/components/artifacts/presets/AddEditPreset";
 import ClonedList from "@/artifacts/list";
 import _ from "lodash";
+import {calculateDateForRotation, DefaultFixedDays, getRotationIndexAndDay} from "@/artifacts/presets";
 
 type Property = {
     storage: RotationStorage
@@ -64,6 +65,16 @@ export default function ArtifactRotationPresets(
             setAccordianIndex(newActiveIndex ?? newIndex)
         },
         set(index: number, el: RotationPreset, newActiveIndex?: number) {
+            if (el.rotations.length) {
+                const pre = getRotationIndexAndDay(storage.presets[index], new Date())
+                el.date = calculateDateForRotation(
+                    el,
+                    pre.index,
+                    Math.min(pre.day, el.fixed ? el.fixedDays : el.rotations[index].days ?? DefaultFixedDays),
+                    new Date()
+                )
+            }
+
             setStorage({
                 active: storage.active,
                 cacheId: storage.cacheId,
