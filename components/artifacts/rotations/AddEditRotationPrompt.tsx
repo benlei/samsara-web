@@ -69,7 +69,7 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                                trigger={
                                    <Button icon labelPosition={'left'} color={'olive'}
                                            className={this.props.index == -1 ? 'hidden' : ''}>
-                                       <Icon name={'pin'}/> Start Here
+                                       <Icon name={'pin'}/> Set Active
                                    </Button>
                                } pinned position={'bottom left'}>
                             <Form>
@@ -97,7 +97,7 @@ export default class AddEditRotationPrompt extends React.Component<Properties, S
                                trigger={
                                    <Button icon labelPosition={'left'}
                                            className={this.props.index == -1 ? 'hidden' : ''}>
-                                       <Icon name={'arrows alternate vertical'}/> Set Position
+                                       <Icon name={'arrows alternate vertical'}/> Move
                                    </Button>
                                } pinned position={'bottom left'}>
                             <Form>
