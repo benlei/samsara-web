@@ -210,22 +210,22 @@ describe('getBannersSinceLastCountSummary', () => {
                     {
                         "name": "Fake",
                         "image": "Fake",
-                        "count": 22,
+                        "count": 21,
                     },
                     {
                         "name": "Hu Tao",
                         "image": "Hu-Tao",
-                        "count": 18,
+                        "count": 17,
                     },
                     {
                         "name": "Venti",
                         "image": "Venti",
-                        "count": 3,
+                        "count": 2,
                     },
                     {
                         "name": "Yoimiya",
                         "image": "Yoimiya",
-                        "count": 1,
+                        "count": 0,
                     },
                 ],
                 (b) => b.name,
