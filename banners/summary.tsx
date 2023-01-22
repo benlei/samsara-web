@@ -198,21 +198,26 @@ function getCountSummary(
     return result
 }
 
+function canShowNonFutureLastRun(currDayjs: Dayjs, banner: BannerSummary): boolean {
+    return banner.dates[banner.dates.length - 1].start != ''
+        && currDayjs.isBefore(dayjs.utc(banner.dates[banner.dates.length - 1].start))
+        && banner.dates.length > 1
+}
+
 export function getDaysSinceRunCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
     currDate: string,
 ): CountSummary[] {
-    dayjs.extend(utc);
-
-    const currDayjs = dayjs.utc(currDate)
-
     function canShowNonFutureLastRun(banner: BannerSummary): boolean {
         return banner.dates[banner.dates.length - 1].start != ''
             && currDayjs.isBefore(dayjs.utc(banner.dates[banner.dates.length - 1].start))
             && banner.dates.length > 1
     }
 
+    dayjs.extend(utc);
+
+    const currDayjs = dayjs.utc(currDate)
     return getCountSummary(
         versionParts,
         bannerSummaries,
@@ -227,18 +232,53 @@ export function getDaysSinceRunCountSummary(
 }
 
 
+export function getCurrentVersionPart(
+    versionParts: VersionParts[],
+    bannerSummaries: { [name: string]: BannerSummary },
+    currDajs: Dayjs,
+): VersionParts {
+    let end = versionParts.length - 1
+    let result: VersionParts
+    let latest: BannerSummary
+
+    do {
+        result = {...versionParts[end]}
+        latest = _.chain(bannerSummaries)
+            .values()
+            .filter((banner) => getBaseVersion(_.last(banner.versions) as string) == result.version)
+            .filter((banner) => banner.dates[banner.dates.length - 1].start != '')
+            .filter((banner) => currDajs.diff(
+                dayjs.utc(banner.dates[banner.dates.length - 1].start, 'day')) >= 0)
+            .first()
+            .value()
+        --end
+    } while (latest === undefined)
+
+    result.parts = getVersionPart(latest.versions[latest.versions.length - 1])
+
+    return result
+}
+
 export function getBannersSinceLastCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
 ): CountSummary[] {
+    dayjs.extend(utc);
+
     return getCountSummary(
         versionParts,
         bannerSummaries,
-        (banner) => getBannerGap(
-            versionParts,
-            banner.versions[banner.versions.length - 1],
-            `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
-        ) + 1,
+        (banner) => {
+            if (canShowNonFutureLastRun(dayjs.utc(), banner)) {
+
+            }
+
+            return getBannerGap(
+                versionParts,
+                banner.versions[banner.versions.length - 1],
+                `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
+            ) + 1
+        },
     )
 }
 

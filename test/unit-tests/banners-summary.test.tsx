@@ -5,7 +5,7 @@ import {
     getAverageDaysInBetween,
     getAveragePatchesInBetween,
     getBannerGap,
-    getBannersSinceLastCountSummary,
+    getBannersSinceLastCountSummary, getCurrentVersionPart,
     getDaysSinceRunCountSummary, getLongestBannersInBetween,
     getLongestDaysInBetween,
     getLongestPatchesInBetween,
@@ -731,5 +731,22 @@ describe('getShortestPatchesInBetween()', () => {
                     "count": 3
                 },
             ])
+    })
+})
+
+describe('getCurrentVersionPart', () => {
+    it('should determine latest patch on day of patch', () => {
+        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesDummyData, dayjs.utc("2022-11-02")))
+            .toEqual({version: "3.2", parts: 1})
+    })
+
+    it('should determine latest patch a few days after patch', () => {
+        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesDummyData, dayjs.utc("2022-11-05")))
+            .toEqual({version: "3.2", parts: 1})
+    })
+
+    it('should determine latest patch when there are future patches', () => {
+        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesDummyData, dayjs.utc("2021-11-02")))
+            .toEqual({version: "2.2", parts: 2})
     })
 })
