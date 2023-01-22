@@ -259,6 +259,28 @@ export function getCurrentVersionPart(
     return result
 }
 
+
+function isFutureNewRelease(currentVersion: VersionParts, banner: BannerSummary): boolean {
+    return banner.versions.length === 1 && (
+        currentVersion.version < getBaseVersion(banner.versions[0])
+        || (currentVersion.version == getBaseVersion(banner.versions[0])
+            && currentVersion.parts < getVersionPart(banner.versions[0]))
+    )
+}
+
+// for our intents and purposes, we really just need to look at either the last or 2nd last element
+function getNonFutureVersion(currentVersion: VersionParts, banner: BannerSummary): string {
+    if (banner.versions.length > 1) {
+        if (getBaseVersion(banner.versions[banner.versions.length - 1]) > currentVersion.version
+            || (getBaseVersion(banner.versions[banner.versions.length - 1]) == currentVersion.version
+                && getVersionPart(banner.versions[banner.versions.length - 1]) > currentVersion.parts)) {
+            return banner.versions[banner.versions.length - 2]
+        }
+    }
+
+    return banner.versions[banner.versions.length - 1]
+}
+
 export function getBannersSinceLastCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
@@ -271,40 +293,19 @@ export function getBannersSinceLastCountSummary(
         bannerSummaries,
         dayjs.utc(dayjs.utc().toISOString().substring(0, 10)))
 
-    function isFutureNewRelease(banner: BannerSummary): boolean {
-        return banner.versions.length === 1 && (
-            currentVersion.version < getBaseVersion(banner.versions[0])
-            || (currentVersion.version == getBaseVersion(banner.versions[0])
-                && currentVersion.parts < getVersionPart(banner.versions[0]))
-        )
-    }
-
-    // for our intents and purposes, we really just need to look at either the last or 2nd last element
-    function getNonFutureVersion(banner: BannerSummary): string {
-        if (banner.versions.length > 1) {
-            if (getBaseVersion(banner.versions[banner.versions.length - 1]) > currentVersion.version
-                || (getBaseVersion(banner.versions[banner.versions.length - 1]) == currentVersion.version
-                    && getVersionPart(banner.versions[banner.versions.length - 1]) > currentVersion.parts)) {
-                return banner.versions[banner.versions.length - 2]
-            }
-        }
-
-        return banner.versions[banner.versions.length - 1]
-    }
-
 
     return getCountSummary(
         versionParts,
         bannerSummaries,
         (banner) => {
             // TODO: calculate how many more banners (give negative value)
-            if (isFutureNewRelease(banner)) {
+            if (isFutureNewRelease(currentVersion, banner)) {
                 return 0
             }
 
             return getBannerGap(
                 versionParts,
-                getNonFutureVersion(banner),
+                getNonFutureVersion(currentVersion, banner),
                 `${currentVersion.version}.${currentVersion.parts}`
             ) + 1
         },
@@ -315,14 +316,29 @@ export function getPatchesSinceLastCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
 ): CountSummary[] {
+    dayjs.extend(utc);
+
+    // for now, can say 'today' is current (doesn't affect existing tests yet)
+    const currentVersion = getCurrentVersionPart(
+        versionParts,
+        bannerSummaries,
+        dayjs.utc(dayjs.utc().toISOString().substring(0, 10)))
+
     return getCountSummary(
         versionParts,
         bannerSummaries,
-        (banner) => getPatchGap(
-            versionParts,
-            banner.versions[banner.versions.length - 1],
-            `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
-        ),
+        (banner) => {
+            // TODO: calculate how many more banners (give negative value)
+            if (isFutureNewRelease(currentVersion, banner)) {
+                return 0
+            }
+
+            return getPatchGap(
+                versionParts,
+                getNonFutureVersion(currentVersion, banner),
+                `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
+            )
+        },
     )
 }
 
