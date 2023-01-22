@@ -10,6 +10,6 @@ test('should be able to sort in summary page', async ({page}) => {
     await expect(page.getByText('Keqing')).toBeVisible()
     await expect(page.locator('tr').first().locator('td').first()).toContainText('Keqing')
 
-    await page.getByText('Ascending').locator('visible=true').click()
+    await page.getByText('Descending').locator('visible=true').click()
     await expect(page.locator('tr').last().locator('td').first()).toContainText('Keqing')
 })
