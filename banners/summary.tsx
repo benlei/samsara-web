@@ -284,16 +284,14 @@ function getNonFutureVersion(currentVersion: VersionParts, banner: BannerSummary
 export function getBannersSinceLastCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
+    currDate: string,
 ): CountSummary[] {
     dayjs.extend(utc);
 
-    // for now, can say 'today' is current (doesn't affect existing tests yet)
     const currentVersion = getCurrentVersionPart(
         versionParts,
         bannerSummaries,
-        dayjs.utc(dayjs.utc().toISOString().substring(0, 10)))
-
-
+        dayjs.utc(currDate))
     return getCountSummary(
         versionParts,
         bannerSummaries,
@@ -318,6 +316,7 @@ export function getBannersSinceLastCountSummary(
 export function getPatchesSinceLastCountSummary(
     versionParts: VersionParts[],
     bannerSummaries: { [name: string]: BannerSummary },
+    currDate: string,
 ): CountSummary[] {
     dayjs.extend(utc);
 
@@ -325,7 +324,7 @@ export function getPatchesSinceLastCountSummary(
     const currentVersion = getCurrentVersionPart(
         versionParts,
         bannerSummaries,
-        dayjs.utc(dayjs.utc().toISOString().substring(0, 10)))
+        dayjs.utc(currDate))
 
     return getCountSummary(
         versionParts,

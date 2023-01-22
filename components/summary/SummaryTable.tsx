@@ -7,13 +7,14 @@ import {
     getAverageDaysInBetween,
     getAveragePatchesInBetween,
     getBannersSinceLastCountSummary,
+    getDaysSinceRunCountSummary,
     getLongestBannersInBetween,
     getLongestDaysInBetween, getLongestPatchesInBetween,
     getPatchesSinceLastCountSummary,
     getRunsCountSummary, getShortestBannersInBetween,
     getShortestDaysInBetween, getShortestPatchesInBetween
 } from "@/banners/summary";
-import DaysSinceLast from "@/components/summary/stat/DaysSinceLast";
+import RelativeBasicCounterSummary from "@/components/summary/stat/RelativeBasicCounterSummary";
 import BasicCounterSummary from "./stat/BasicCounterSummary";
 import AverageCounterSummary from "@/components/summary/stat/AverageCounterSummary";
 
@@ -52,15 +53,18 @@ export default function SummaryTable(
 
     return (
         <Table basic='very' celled collapsing unstackable className={'summary'}>
-            {sortBy === 'last-day' && <DaysSinceLast {...commonProps} date={date}/>}
+            {sortBy === 'last-day' && <RelativeBasicCounterSummary {...commonProps} date={date}
+                                                                   singular={'day'} plural={'days'}
+                                                                   counter={getDaysSinceRunCountSummary}
+            />}
             {sortBy === 'last-banner' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'banner ago'} plural={'banners ago'}
+                <RelativeBasicCounterSummary {...commonProps} date={date}
+                                     singular={'banner'} plural={'banners'}
                                      counter={getBannersSinceLastCountSummary}
                 />}
             {sortBy === 'last-patch' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'patch ago'} plural={'patches ago'}
+                <RelativeBasicCounterSummary {...commonProps} date={date}
+                                     singular={'patch'} plural={'patches'}
                                      counter={getPatchesSinceLastCountSummary}
                 />}
             {sortBy === 'longest-day' &&

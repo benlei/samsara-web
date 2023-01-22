@@ -202,7 +202,7 @@ describe('getDaysSinceRunCountSummary', () => {
 describe('getBannersSinceLastCountSummary', () => {
     it('should return the number of banners since last run', () => {
         expect(_.orderBy(
-            getBannersSinceLastCountSummary(VersionPartsDummyData, BannerSummariesDummyData),
+            getBannersSinceLastCountSummary(VersionPartsDummyData, BannerSummariesDummyData, "2024-01-01"),
             (b) => b.name,
             'asc'
         ))
@@ -237,7 +237,7 @@ describe('getBannersSinceLastCountSummary', () => {
 describe('getPatchesSinceLastCountSummary', () => {
     it('should return the number of patches since last run', () => {
         expect(_.orderBy(
-            getPatchesSinceLastCountSummary(VersionPartsDummyData, BannerSummariesDummyData),
+            getPatchesSinceLastCountSummary(VersionPartsDummyData, BannerSummariesDummyData, "2024-01-01"),
             (b) => b.name,
             'asc'
         ))

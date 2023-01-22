@@ -1,6 +1,8 @@
 import {Image, Label, Progress, Table} from "semantic-ui-react";
 import {
+    BannerSummary,
     CommonSummaryProperties,
+    CountSummary,
     getColorClassName,
     getDaysSinceRunCountSummary,
     getFilterFunction,
@@ -9,12 +11,16 @@ import {
 import _ from "lodash";
 import dayjs from "dayjs";
 import React, {useEffect, useState} from "react";
+import {VersionParts} from "@/banners/types";
 
 type Properties = {
     date: string
+    singular: string
+    plural: string
+    counter: (versionParts: VersionParts[], bannerSummaries: { [name: string]: BannerSummary }, currDate: string) => CountSummary[]
 } & CommonSummaryProperties
 
-export default function DaysSinceLast(
+export default function RelativeBasicCounterSummary(
     {
         versionParts,
         banners,
@@ -22,12 +28,15 @@ export default function DaysSinceLast(
         order,
         date,
         filterText,
+        counter,
+        singular,
+        plural,
     }: Properties
 ) {
     const [now, setNow] = useState(date)
     useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
 
-    const baseSummary = _.chain(getDaysSinceRunCountSummary(versionParts, banners, date))
+    const baseSummary = _.chain(counter(versionParts, banners, date))
         .orderBy([
             (b) => b.count,
             (b) => b.name,
@@ -64,8 +73,8 @@ export default function DaysSinceLast(
                                     {Math.abs(s.count)}
                                     <Label.Detail>
                                         {s.count < 0 ?
-                                            'more day' + (s.count === -1 ? '' : 's')
-                                            : 'day' + (s.count === 1 ? '' : 's') + ' ago'
+                                            'more ' + (s.count === -1 ? singular : plural)
+                                            : (s.count === 1 ? singular : plural) + ' ago'
                                         }
                                     </Label.Detail>
                                 </>

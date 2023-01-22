@@ -57,21 +57,10 @@ export default function BasicCounterSummary(
                             size={'small'}/>
 
                         <Label basic className={getColorClassName(getPercent(s.count, maxVal))}>
-                            {s.count === 0 ? (
-                                <Label.Detail>
-                                    now
-                                </Label.Detail>
-                            ) : (
-                                <>
-                                    {Math.abs(s.count)}
-                                    <Label.Detail>
-                                        {s.count < 0 ?
-                                            'more ' + (s.count === -1 ? singular : plural)
-                                            : (s.count === 1 ? singular : plural) + ' ago'
-                                        }
-                                    </Label.Detail>
-                                </>
-                            )}
+                            {s.count}
+                            <Label.Detail>
+                                {s.count === 1 ? singular : plural}
+                            </Label.Detail>
                         </Label>
                     </Table.Cell>
                 </Table.Row>
