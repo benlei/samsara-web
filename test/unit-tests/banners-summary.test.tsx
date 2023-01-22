@@ -165,7 +165,7 @@ describe('getDaysSinceRunCountSummary', () => {
                     {
                         "name": "Fake2",
                         "image": "Fake2",
-                        "count": -149,
+                        "count": 193,
                     },
                     {
                         "name": "Fake3",
