@@ -64,8 +64,8 @@ export default function DaysSinceLast(
                                     {Math.abs(s.count)}
                                     <Label.Detail>
                                         {s.count < 0 ?
-                                            'more day' + (Math.abs(s.count) === 1 ? '' : 's')
-                                            : 'day' + (Math.abs(s.count) === 1 ? '' : 's') + ' ago'
+                                            'more day' + (s.count === -1 ? '' : 's')
+                                            : 'day' + (s.count === 1 ? '' : 's') + ' ago'
                                         }
                                     </Label.Detail>
                                 </>

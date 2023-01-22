@@ -298,9 +298,12 @@ export function getBannersSinceLastCountSummary(
         versionParts,
         bannerSummaries,
         (banner) => {
-            // TODO: calculate how many more banners (give negative value)
             if (isFutureNewRelease(currentVersion, banner)) {
-                return 0
+                return -(getBannerGap(
+                    versionParts,
+                    `${currentVersion.version}.${currentVersion.parts}`,
+                    banner.versions[0],
+                ) + 1)
             }
 
             return getBannerGap(
@@ -328,15 +331,18 @@ export function getPatchesSinceLastCountSummary(
         versionParts,
         bannerSummaries,
         (banner) => {
-            // TODO: calculate how many more banners (give negative value)
             if (isFutureNewRelease(currentVersion, banner)) {
-                return 0
+                return -getPatchGap(
+                    versionParts,
+                    `${currentVersion.version}.${currentVersion.parts}`,
+                    banner.versions[0],
+                )
             }
 
             return getPatchGap(
                 versionParts,
                 getNonFutureVersion(currentVersion, banner),
-                `${versionParts[versionParts.length - 1].version}.${versionParts[versionParts.length - 1].parts}`
+                `${currentVersion.version}.${currentVersion.parts}`
             )
         },
     )
