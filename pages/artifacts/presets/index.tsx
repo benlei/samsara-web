@@ -18,7 +18,6 @@ export default function ManageArtifactRotationPresets({}) {
 
     const [stale, setStale] = useState(false)
 
-
     useEffect(() => {
         try {
             const rotationStorage: RotationStorage = JSON.parse(localStorage.getItem(V1StorageKey) || "{}")
