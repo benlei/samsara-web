@@ -4,9 +4,9 @@ import {
     CommonSummaryProperties,
     CountSummary,
     getColorClassName,
-    getDaysSinceRunCountSummary,
     getFilterFunction,
-    getPercent
+    getPercent,
+    UnknownFutureCounter
 } from "@/banners/summary";
 import _ from "lodash";
 import dayjs from "dayjs";
@@ -63,7 +63,9 @@ export default function RelativeBasicCounterSummary(
                             className={getColorClassName(getPercent(s.count, maxVal))}
                             size={'small'}/>
 
-                        <Label basic className={getColorClassName(getPercent(s.count, maxVal))}>
+
+                        <Label basic className={getColorClassName(getPercent(s.count, maxVal))}
+                               style={s.count === UnknownFutureCounter ? {display: 'none'} : {}}>
                             {s.count === 0 ? (
                                 <Label.Detail>
                                     now

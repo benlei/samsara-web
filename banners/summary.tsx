@@ -5,6 +5,7 @@ import {VersionParts} from "@/banners/types";
 import {getImageFromName} from "@/format/image";
 import utc from "dayjs/plugin/utc";
 
+export const UnknownFutureCounter = -999999999
 const DefaultBannerDayDuration = 21
 const Dark9Percent = 85
 const Dark8Percent = 70
@@ -222,6 +223,10 @@ export function getDaysSinceRunCountSummary(
         versionParts,
         bannerSummaries,
         (banner) => {
+            if (banner.dates.length === 1 && banner.dates[0].start === '') {
+                return UnknownFutureCounter
+            }
+
             if (canShowNonFutureLastRun(banner)) {
                 return currDayjs.diff(dayjs.utc(banner.dates[banner.dates.length - 2].end), 'day')
             }
