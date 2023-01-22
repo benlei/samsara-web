@@ -23,8 +23,8 @@ export default function Navbar({children}: React.PropsWithChildren) {
         return asPath == '/resin' ? 'active' : '';
     }
 
-    function getrtifactRotationActive() {
-        return asPath == '/artifacts' ? 'active' : ''
+    function getArtifactRotationActive() {
+        return asPath.includes('/artifacts') ? 'active' : ''
     }
 
     return (
@@ -56,10 +56,11 @@ export default function Navbar({children}: React.PropsWithChildren) {
                             <Dropdown.Divider/>
                             <Dropdown.Item as={'a'} href='/4star/weapons/summary'>4 <Icon
                                 name={'star'}/> Summary</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/> History</Dropdown.Item>
+                            <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon
+                                name={'star'}/> History</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Dropdown text='Artifact Rotations' pointing className={'link item ' + getrtifactRotationActive()}>
+                    <Dropdown text='Artifact Rotations' pointing className={'link item ' + getArtifactRotationActive()}>
                         <Dropdown.Menu>
                             <Dropdown.Item as={'a'} href='/artifacts'>Overview</Dropdown.Item>
                             <Dropdown.Item as={'a'} href='/artifacts/presets'>Manage Presets</Dropdown.Item>
@@ -75,13 +76,26 @@ export default function Navbar({children}: React.PropsWithChildren) {
 
 
 export function NavbarMobile() {
+    const {asPath} = useRouter();
+
+    function getBannerActive() {
+        if (asPath === '/' || asPath.includes('/characters') || asPath.includes('/weapons')) {
+            return 'active'
+        }
+        return ''
+    }
+
+    function getToolsActive() {
+        return getBannerActive() === '' ? 'active' : ''
+    }
+
     return (
         <Container style={{marginTop: '.5em', display: 'none'}} className={'mobile'}>
             <Menu secondary pointing>
                 <Menu.Item as={'a'} href='/'>
                     Samsara
                 </Menu.Item>
-                <Dropdown text='Banners' pointing className={'link item'}>
+                <Dropdown text='Banners' pointing className={'link item ' + getBannerActive()}>
                     <Dropdown.Menu>
                         <Dropdown.Header>Character Summary</Dropdown.Header>
                         <Dropdown.Item as={'a'} href='/5star/characters/summary'>5 <Icon name={'star'}/></Dropdown.Item>
@@ -109,7 +123,7 @@ export function NavbarMobile() {
                         <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/></Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown text='Tools' pointing className={'link item'}>
+                <Dropdown text='Tools' pointing className={'link item ' + getToolsActive()}>
                     <Dropdown.Menu>
                         <Dropdown.Header>Artifact Rotations</Dropdown.Header>
                         <Dropdown.Item as={'a'} href='/artifacts'>Overview</Dropdown.Item>
