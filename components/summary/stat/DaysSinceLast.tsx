@@ -55,13 +55,22 @@ export default function DaysSinceLast(
                             size={'small'}/>
 
                         <Label basic className={getColorClassName(getPercent(s.count, maxVal))}>
-                            {Math.abs(s.count)}
-                            <Label.Detail>
-                                {s.count < 0 ?
-                                    'more day' + (Math.abs(s.count) === 1 ? '' : 's')
-                                    : 'day' + (Math.abs(s.count) === 1 ? '' : 's') + ' ago'
-                                }
-                            </Label.Detail>
+                            {s.count === 0 ? (
+                                <Label.Detail>
+                                    now
+                                </Label.Detail>
+                            ) : (
+                                <>
+                                    {Math.abs(s.count)}
+                                    <Label.Detail>
+                                        {s.count < 0 ?
+                                            'more day' + (Math.abs(s.count) === 1 ? '' : 's')
+                                            : 'day' + (Math.abs(s.count) === 1 ? '' : 's') + ' ago'
+                                        }
+                                    </Label.Detail>
+                                </>
+                            )}
+
                         </Label>
                     </Table.Cell>
                 </Table.Row>

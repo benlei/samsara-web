@@ -6,6 +6,11 @@ import {getImageFromName} from "@/format/image";
 import utc from "dayjs/plugin/utc";
 
 const DefaultBannerDayDuration = 21
+const Dark9Percent = 85
+const Dark8Percent = 70
+const Dark7Percent = 55
+const Dark6Percent = 40
+const Dark5Percent = 25
 
 export type CountSummary = {
     name: string
@@ -134,11 +139,6 @@ export function getBannerGap(versionParts: VersionParts[], oldVersion: string, n
     return total
 }
 
-const Dark9Percent = 85
-const Dark8Percent = 70
-const Dark7Percent = 55
-const Dark6Percent = 40
-const Dark5Percent = 25
 
 export function getColorClassName(p: number): string {
     if (p >= Dark9Percent) {
@@ -206,10 +206,23 @@ export function getDaysSinceRunCountSummary(
     dayjs.extend(utc);
 
     const currDayjs = dayjs.utc(currDate)
+
+    function canShowNonFutureLastRun(banner: BannerSummary): boolean {
+        return banner.dates[banner.dates.length - 1].start != ''
+            && currDayjs.isBefore(dayjs.utc(banner.dates[banner.dates.length - 1].start))
+            && banner.dates.length > 1
+    }
+
     return getCountSummary(
         versionParts,
         bannerSummaries,
-        (banner) => _.last(getNormalizedBannerDateGaps(currDayjs, banner)) as number,
+        (banner) => {
+            if (canShowNonFutureLastRun(banner)) {
+                return currDayjs.diff(dayjs.utc(banner.dates[banner.dates.length - 2].end), 'day')
+            }
+
+            return _.last(getNormalizedBannerDateGaps(currDayjs, banner)) as number
+        },
     )
 }
 
