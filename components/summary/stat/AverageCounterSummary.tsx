@@ -1,4 +1,4 @@
-import {Image, Label, Progress, Table} from "semantic-ui-react";
+import {Icon, Image, Label, Progress, Table} from "semantic-ui-react";
 import {
     AverageCountSummary,
     BannerSummary,
@@ -64,12 +64,7 @@ export default function AverageCounterSummary(
                         </Label>
 
                         <Label basic className={getColorClassName(getPercent(s.average, maxVal))}>
-                            {s.standardDeviation}
-                            <Label.Detail>std dev</Label.Detail>
-                        </Label>
-
-                        <Label basic className={getColorClassName(getPercent(s.average, maxVal))}>
-                            {s.average}
+                            {s.average} ± {s.standardDeviation}
                             <Label.Detail>{s.average === 1 ? singular : plural}</Label.Detail>
                         </Label>
                     </Table.Cell>
