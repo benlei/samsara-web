@@ -189,13 +189,12 @@ export function DesktopSummaryOptions(
                     </Form.Field>
 
                     <Form.Field>
-                        {showLimitedOnly && (
-                            <Radio toggle label='Hide One-Offs'
-                                   onChange={() => setLimitedOnly(!limitedOnly)}
-                                   checked={limitedOnly}
-                                   autoComplete={'off'}
-                            />
-                        )}
+                        <Radio toggle label='Hide One-Offs'
+                               onChange={() => setLimitedOnly(!limitedOnly)}
+                               checked={limitedOnly}
+                               autoComplete={'off'}
+                               className={showLimitedOnly ? '' : 'disabled'}
+                        />
                     </Form.Field>
                 </Form.Group>
 
