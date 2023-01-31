@@ -177,7 +177,8 @@ export function DesktopSummaryOptions(
                             )}
                         </Label>
                     </Form.Field>
-
+                </Form.Group>
+                <Form.Group widths='equal'>
                     <Form.Field>
                         <Radio toggle label='Expand'
                                onChange={() => setExpand(!expand)}
@@ -188,13 +189,12 @@ export function DesktopSummaryOptions(
                     </Form.Field>
 
                     <Form.Field>
-                        {showLimitedOnly && (
-                            <Radio toggle label='Hide One-Offs'
-                                   onChange={() => setLimitedOnly(!limitedOnly)}
-                                   checked={limitedOnly}
-                                   autoComplete={'off'}
-                            />
-                        )}
+                        <Radio toggle label='Hide One-Offs'
+                               onChange={() => setLimitedOnly(!limitedOnly)}
+                               checked={showLimitedOnly && limitedOnly}
+                               autoComplete={'off'}
+                               className={showLimitedOnly ? '' : 'disabled'}
+                        />
                     </Form.Field>
                 </Form.Group>
 
@@ -326,7 +326,9 @@ export function MobileSummaryOptions(
                             )}
                         </Label>
                     </Form.Field>
+                </Form.Group>
 
+                <Form.Group widths='equal'>
                     <Form.Field>
                         <Radio toggle label='Expand'
                                onChange={() => setExpand(!expand)}
@@ -337,13 +339,12 @@ export function MobileSummaryOptions(
                     </Form.Field>
 
                     <Form.Field>
-                        {showLimitedOnly && (
                             <Radio toggle label='Hide One-Offs'
-                                   onChange={() => setLimitedOnly(!limitedOnly)}
-                                   checked={limitedOnly}
-                                   autoComplete={'off'}
-                            />
-                        )}
+                               onChange={() => setLimitedOnly(!limitedOnly)}
+                               checked={showLimitedOnly && limitedOnly}
+                               autoComplete={'off'}
+                               className={showLimitedOnly ? '' : 'disabled'}
+                        />
                     </Form.Field>
                 </Form.Group>
 
