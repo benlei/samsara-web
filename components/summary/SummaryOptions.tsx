@@ -177,7 +177,8 @@ export function DesktopSummaryOptions(
                             )}
                         </Label>
                     </Form.Field>
-
+                </Form.Group>
+                <Form.Group widths='equal'>
                     <Form.Field>
                         <Radio toggle label='Expand'
                                onChange={() => setExpand(!expand)}
