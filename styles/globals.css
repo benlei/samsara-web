@@ -96,6 +96,10 @@ body {
     padding-top: .5rem;
 }
 
+.artifact-rotations .tiny {
+    width: 50px !important;
+}
+
 .hidden {
     visibility: hidden
 }
