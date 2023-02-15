@@ -75,6 +75,33 @@ const BannerSummariesDummyData: { [name: string]: BannerSummary } = {
     },
 }
 
+const BannerSummariesWithOveralpDummyData: { [name: string]: BannerSummary } = {
+    "Venti": {
+        "versions": ["1.0.1", "1.4.1", "2.6.1", "3.1.1"],
+        "dates": [
+            {"start": "2020-09-28", "end": "2020-10-18"},
+            {"start": "2021-03-17", "end": "2021-04-06"},
+            {"start": "2022-03-30", "end": "2022-04-19"},
+            {"start": "2022-09-28", "end": "2022-10-14"}
+        ]
+    },
+    "Hu Tao": {
+        "versions": ["1.3.3", "2.2.2"],
+        "dates": [
+            {"start": "2021-03-02", "end": "2021-03-16"},
+            {"start": "2021-11-02", "end": "2021-11-23"},
+        ]
+    },
+    "Yoimiya": {
+        "versions": ["2.0.2", "2.8.2", "3.1.2"],
+        "dates": [
+            {"start": "2021-08-10", "end": "2021-08-31"},
+            {"start": "2022-08-02", "end": "2022-08-23"},
+            {"start": "2022-11-02", "end": "2022-11-18"}
+        ]
+    },
+}
+
 const VersionPartsDummyDataWithFuture: VersionParts[] = [
     ...VersionPartsDummyData,
     {version: '3.9', parts: 2},
@@ -738,6 +765,17 @@ describe('getCurrentVersionPart', () => {
     it('should determine latest patch on day of patch', () => {
         expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesDummyData, dayjs.utc("2022-11-02")))
             .toEqual({version: "3.2", parts: 1})
+    })
+
+    it('should determine latest patch as between old banner and new of same patch', () => {
+        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesWithOveralpDummyData, dayjs.utc("2022-11-01")))
+            .toEqual({version: "3.1", parts: 1})
+
+        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesWithOveralpDummyData, dayjs.utc("2022-11-02")))
+            .toEqual({version: "3.1", parts: 2})
+
+        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesWithOveralpDummyData, dayjs.utc("2022-11-05")))
+            .toEqual({version: "3.1", parts: 2})
     })
 
     it('should determine latest patch a few days after patch', () => {
