@@ -254,6 +254,7 @@ export function getCurrentVersionPart(
             .filter((banner) => banner.dates[banner.dates.length - 1].start != '')
             .filter((banner) => currDajs.diff(
                 dayjs.utc(banner.dates[banner.dates.length - 1].start, 'day')) >= 0)
+            .orderBy((banner) => banner.dates[banner.dates.length - 1].start, 'desc')
             .first()
             .value()
         --end
