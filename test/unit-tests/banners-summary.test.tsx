@@ -767,7 +767,7 @@ describe('getCurrentVersionPart', () => {
             .toEqual({version: "3.2", parts: 1})
     })
 
-    it('should determine latest patch as between old banner and new of same patch', () => {
+    it('should determine latest patch between old banner and new of same patch', () => {
         expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesWithOveralpDummyData, dayjs.utc("2022-11-01")))
             .toEqual({version: "3.1", parts: 1})
 
