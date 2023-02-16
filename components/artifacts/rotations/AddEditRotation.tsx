@@ -1,6 +1,6 @@
 import {Table} from "semantic-ui-react";
 import React from "react";
-import {AddEdit, AddEditSharedProperties, ArtifactRotationData, Rotation, ListManager} from "@/artifacts/types";
+import {AddEdit, AddEditSharedProperties, ArtifactRotationData, ListManager, Rotation} from "@/artifacts/types";
 import {AddEditRotationPhase} from "@/artifacts/enums";
 import AddEditRotationPrompt from "@/components/artifacts/rotations/AddEditRotationPrompt";
 import AddEditRotationDomain from "@/components/artifacts//rotations/AddEditRotationDomain";
@@ -101,7 +101,7 @@ export default class AddEditRotation extends React.Component<Properties, States>
         }
 
         return (
-            <Table.Row>
+            <Table.Row className={'selected'}>
                 <Table.Cell verticalAlign={'top'} colSpan={4} textAlign={'center'}>
                     {this.state.phase == AddEditRotationPhase.Prompt ? (
                         <AddEditRotationPrompt

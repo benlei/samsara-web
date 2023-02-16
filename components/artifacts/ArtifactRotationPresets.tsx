@@ -1,4 +1,4 @@
-import {Accordion, Container, Header, Icon, Table} from "semantic-ui-react";
+import {Container, Header, Icon, Table} from "semantic-ui-react";
 import React, {useState} from "react";
 import {ListManager, RotationPreset, RotationStorage} from "@/artifacts/types";
 import {AddEditPreset} from "@/components/artifacts/presets/AddEditPreset";
@@ -17,7 +17,7 @@ export default function ArtifactRotationPresets(
         setStorage,
     }: Property
 ) {
-    const [accordionIndex, setAccordianIndex] = useState(-1)
+    const [selectedIndex, setSelectedIndex] = useState(storage.active)
 
     const manager: ListManager<RotationPreset> = {
         delete(index: number, newActiveIndex?: number) {
@@ -27,7 +27,7 @@ export default function ArtifactRotationPresets(
                 presets: ClonedList.remove(storage.presets, index),
             })
 
-            setAccordianIndex(newActiveIndex ?? -1)
+            setSelectedIndex(newActiveIndex ?? -1)
         },
         insert(index: number, el: RotationPreset, newActiveIndex?: number) {
             let active = storage.active
@@ -43,7 +43,7 @@ export default function ArtifactRotationPresets(
                 presets: ClonedList.insert(storage.presets, index, el),
             })
 
-            setAccordianIndex(newActiveIndex ?? index)
+            setSelectedIndex(newActiveIndex ?? index)
         },
         move(oldIndex: number, newIndex: number, newActiveIndex?: number) {
             let active = storage.active
@@ -62,7 +62,7 @@ export default function ArtifactRotationPresets(
                 presets: ClonedList.move(storage.presets, oldIndex, newIndex),
             })
 
-            setAccordianIndex(newActiveIndex ?? newIndex)
+            setSelectedIndex(newActiveIndex ?? newIndex)
         },
         set(index: number, el: RotationPreset, newActiveIndex?: number) {
             if (el.rotations.length) {
@@ -81,7 +81,7 @@ export default function ArtifactRotationPresets(
                 presets: ClonedList.set(storage.presets, index, el),
             })
 
-            setAccordianIndex(newActiveIndex ?? index)
+            setSelectedIndex(newActiveIndex ?? index)
         }
     }
 
@@ -110,21 +110,18 @@ export default function ArtifactRotationPresets(
                 <Table.Body>
                     {storage.presets.map((preset, k) =>
                         <>
-                            <Table.Row key={k} positive={k === storage.active}>
+                            <Table.Row key={k} className={k === selectedIndex ? 'selected': ''}
+                                       onClick={
+                                           () => setSelectedIndex(k == selectedIndex ? -1 : k)
+                                       }
+                            >
                                 <Table.Cell verticalAlign={'top'}>{k + 1}</Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    {preset.name}
-
-                                    <Accordion>
-                                        <Accordion.Title active={accordionIndex === k}
-                                                         onClick={
-                                                             () => setAccordianIndex(k == accordionIndex ? -1 : k)
-                                                         }
-                                                         index={k}>
-                                            <Icon name='dropdown'/>
-                                            {accordionIndex === k ? 'Collapse' : 'Expand'} Options
-                                        </Accordion.Title>
-                                    </Accordion>
+                                    {k === storage.active ? (
+                                        <strong>{preset.name}</strong>
+                                    ) : (
+                                        preset.name
+                                    )}
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
                                     {preset.rotations.length}
@@ -140,12 +137,12 @@ export default function ArtifactRotationPresets(
                                     )}
                                 </Table.Cell>
                             </Table.Row>
-                            {accordionIndex === k &&
-                                <Table.Row key={k}>
+                            {selectedIndex === k &&
+                                <Table.Row key={k} className={'selected'}>
                                     <Table.Cell colSpan={4}>
                                         <AddEditPreset
                                             index={k}
-                                            closeAccordion={() => setAccordianIndex(-1)}
+                                            closeAccordion={() => setSelectedIndex(-1)}
                                             storage={storage}
                                             manager={manager}
                                             setActiveStorage={setActiveStorage}
@@ -160,7 +157,7 @@ export default function ArtifactRotationPresets(
                             <Table.Cell colSpan={4}>
                                 <AddEditPreset
                                     index={-1}
-                                    closeAccordion={() => setAccordianIndex(-1)}
+                                    closeAccordion={() => setSelectedIndex(-1)}
                                     storage={storage}
                                     manager={manager}
                                     setActiveStorage={setActiveStorage}

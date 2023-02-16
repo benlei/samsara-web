@@ -1,4 +1,4 @@
-import {Accordion, AccordionTitleProps, Container, Icon, Image, Table} from "semantic-ui-react";
+import {Container, Image, Table} from "semantic-ui-react";
 import ArtifactDomain from "@/components/artifacts/ArtifactDomain";
 import AddEditRotation from "@/components/artifacts/rotations/AddEditRotation";
 import React from "react";
@@ -26,14 +26,6 @@ export function ArtifactTable(
         rotationDay,
     }: Property
 ) {
-    const handleClick = (event: any, titleProps: AccordionTitleProps) => {
-        const {index} = titleProps
-        const newIndex = activeIndex === index ? -1 : index
-
-        setActiveIndex(newIndex as number)
-    }
-
-
     return (
         <Container style={{marginTop: '1em'}} className={'artifact-rotations'}>
             <Table unstackable>
@@ -49,7 +41,8 @@ export function ArtifactTable(
                 <Table.Body>
                     {data.preset.rotations.map((r, k) =>
                         <>
-                            <Table.Row key={k} positive={k === rotationIndex}>
+                            <Table.Row key={k} className={activeIndex === k ? 'selected': ''}
+                                       onClick={() => setActiveIndex(activeIndex == k ? -1 : k)}>
                                 <Table.Cell verticalAlign={'top'}>
                                     {k + 1}
                                 </Table.Cell>
@@ -69,8 +62,9 @@ export function ArtifactTable(
                                                className={'grey'}>
                                         {k === rotationIndex ? (
                                             <p>
-                                                Day <strong>{rotationDay}</strong> of <strong>{
-                                                getDays(data.preset, k)}</strong> (active)
+                                                <strong>
+                                                    Day {rotationDay} of {getDays(data.preset, k)} (active)
+                                                </strong>
                                             </p>
                                         ) : (
                                             <p>
@@ -83,15 +77,6 @@ export function ArtifactTable(
                                         {r.note.split("\n").map((note, k) =>
                                             <p key={k}>{note}</p>
                                         )}
-                                    </Container>
-                                    <Container fluid style={{marginTop: '.5rem'}}>
-                                        <Accordion>
-                                            <Accordion.Title active={activeIndex === k}
-                                                             onClick={handleClick} index={k}>
-                                                <Icon name='dropdown'/>
-                                                {activeIndex === k ? 'Collapse' : 'Expand'} Options
-                                            </Accordion.Title>
-                                        </Accordion>
                                     </Container>
                                 </Table.Cell>
                             </Table.Row>

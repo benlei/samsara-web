@@ -195,3 +195,7 @@ img.active {
 .dropdown.active {
     border-color: #1b1c1d !important;
 }
+
+tr.selected {
+    background-color: #fbfbfb;
+}
