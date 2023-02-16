@@ -19,7 +19,9 @@ export default function Footer({children}: React.PropsWithChildren) {
                             <Header as='h4' content='About'/>
                             <p>
                                 This hobby site currently does not directly store any data about its users. It is,
-                                however, hosted using <a href={'https://pages.cloudflare.com/'}>Cloudflare Pages</a>.
+                                however, hosted using <a href={'https://pages.cloudflare.com/'}>Cloudflare Pages</a>
+                                with Google Analytics.
+
                                 The data shown here is sourced from the <a
                                 href={
                                     'https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki'
