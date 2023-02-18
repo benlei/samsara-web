@@ -47,7 +47,7 @@ export function ArtifactTable(
                                     {k + 1}
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
-                                    <ArtifactDomain data={data} domain={r.domain} popover/>
+                                    <ArtifactDomain data={data} domain={r.domain}/>
                                 </Table.Cell>
                                 <Table.Cell verticalAlign={'top'}>
                                     {r.characters.map((c, j) =>
