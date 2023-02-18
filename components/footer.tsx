@@ -22,7 +22,9 @@ export default function Footer({children}: React.PropsWithChildren) {
                                 server. It does, however, store cookies/local storage on your browser - such as for
                                 Google Analytics, and for some sections of the site necessary for its core
                                 functionality (e.g. artifact rotations).
+                            </p>
 
+                            <p>
                                 The data shown here is sourced from the <a
                                 href={
                                     'https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki'
