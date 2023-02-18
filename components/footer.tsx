@@ -18,20 +18,15 @@ export default function Footer({children}: React.PropsWithChildren) {
                         <Grid.Column width={10} textAlign={'left'}>
                             <Header as='h4' content='About'/>
                             <p>
-                                This hobby site currently does not directly store any data about its users. It is,
-                                however, hosted using <a href={'https://pages.cloudflare.com/'}>Cloudflare Pages</a>
-                                with Google Analytics - which does store cookies.
+                                This hobby site currently does not directly store any data about its users on any
+                                server. It does, however, store cookies/local storage on your browser - such as for
+                                Google Analytics, and for some sections of the site necessary for its core
+                                functionality (e.g. artifact rotations).
 
                                 The data shown here is sourced from the <a
                                 href={
                                     'https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki'
                                 }>Genshin Fandom</a> site.
-                            </p>
-
-                            <p>
-                                This site currently does store data onto your browser&#39;s local storage if you
-                                use the Artifact Rotations feature - for persistence purposes. This is necessary for
-                                the functionality of that particular feature from this site.
                             </p>
 
                             <p>
