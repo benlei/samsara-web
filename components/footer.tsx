@@ -20,7 +20,7 @@ export default function Footer({children}: React.PropsWithChildren) {
                             <p>
                                 This hobby site currently does not directly store any data about its users. It is,
                                 however, hosted using <a href={'https://pages.cloudflare.com/'}>Cloudflare Pages</a>
-                                with Google Analytics.
+                                with Google Analytics - which does store cookies.
 
                                 The data shown here is sourced from the <a
                                 href={
