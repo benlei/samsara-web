@@ -552,10 +552,6 @@ export function getShortestBannersInBetween(
                 return 0
             }
 
-            if (banner.versions.length == 1) {
-                return Math.min(...ongoingGaps)
-            }
-
             return Math.max(Math.min(...getBannerGaps(versionParts, banner)), Math.min(...ongoingGaps))
         },
     )
@@ -611,10 +607,6 @@ export function getShortestPatchesInBetween(
 
             if (!isLastVersionLatest(versionParts, banner)) {
                 gaps[gaps.length - 1]++
-            }
-
-            if (banner.versions.length == 1) {
-                return Math.min(...gaps)
             }
 
             return Math.max(Math.min(...getPatchGaps(versionParts, banner)), Math.min(...gaps))
