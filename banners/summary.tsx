@@ -547,12 +547,7 @@ export function getShortestBannersInBetween(
                 ],
             }
 
-            const ongoingGaps = getBannerGaps(versionParts, ongoingBanner)
-            if (!ongoingGaps.length) {
-                return 0
-            }
-
-            return Math.max(Math.min(...getBannerGaps(versionParts, banner)), Math.min(...ongoingGaps))
+            return Math.max(Math.min(...getBannerGaps(versionParts, banner)), Math.min(...getBannerGaps(versionParts, ongoingBanner)))
         },
     )
 }
@@ -601,10 +596,6 @@ export function getShortestPatchesInBetween(
             }
 
             const gaps = getPatchGaps(versionParts, ongoingBanner)
-            if (!gaps.length) {
-                return 0
-            }
-
             if (!isLastVersionLatest(versionParts, banner)) {
                 gaps[gaps.length - 1]++
             }
