@@ -627,11 +627,6 @@ describe('getShortestDaysInBetween()', () => {
         ))
             .toEqual([
                 {
-                    "name": "Fake",
-                    "image": "Fake",
-                    "count": 490
-                },
-                {
                     "name": "Fake2",
                     "image": "Fake2",
                     "count": 342
@@ -675,11 +670,6 @@ describe('getShortestBannersInBetween()', () => {
         ))
             .toEqual([
                 {
-                    "name": "Fake",
-                    "image": "Fake",
-                    "count": 26
-                },
-                {
                     "name": "Fake2",
                     "image": "Fake2",
                     "count": 1
@@ -722,11 +712,6 @@ describe('getShortestPatchesInBetween()', () => {
             'asc'
         ))
             .toEqual([
-                {
-                    "name": "Fake",
-                    "image": "Fake",
-                    "count": 14
-                },
                 {
                     "name": "Fake2",
                     "image": "Fake2",

@@ -487,7 +487,7 @@ export function getShortestDaysInBetween(
     const currDayjs = dayjs.utc(currDate)
     return getCountSummary(
         versionParts,
-        bannerSummaries,
+        _.pickBy(bannerSummaries, (banner) => banner.versions.length > 1),
         (banner: BannerSummary): number => {
             const existingDayGaps = getDayGaps(null, banner)
             const ongoingDayGaps = getNormalizedBannerDateGaps(currDayjs, banner)
@@ -537,7 +537,7 @@ export function getShortestBannersInBetween(
 ): CountSummary[] {
     return getCountSummary(
         versionParts,
-        bannerSummaries,
+        _.pickBy(bannerSummaries, (banner) => banner.versions.length > 1),
         (banner: BannerSummary): number => {
             const ongoingBanner = {
                 dates: banner.dates,
@@ -547,16 +547,7 @@ export function getShortestBannersInBetween(
                 ],
             }
 
-            const ongoingGaps = getBannerGaps(versionParts, ongoingBanner)
-            if (!ongoingGaps.length) {
-                return 0
-            }
-
-            if (banner.versions.length == 1) {
-                return Math.min(...ongoingGaps)
-            }
-
-            return Math.max(Math.min(...getBannerGaps(versionParts, banner)), Math.min(...ongoingGaps))
+            return Math.max(Math.min(...getBannerGaps(versionParts, banner)), Math.min(...getBannerGaps(versionParts, ongoingBanner)))
         },
     )
 }
@@ -594,7 +585,7 @@ export function getShortestPatchesInBetween(
 ): CountSummary[] {
     return getCountSummary(
         versionParts,
-        bannerSummaries,
+        _.pickBy(bannerSummaries, (banner) => banner.versions.length > 1),
         (banner: BannerSummary): number => {
             const ongoingBanner = {
                 dates: banner.dates,
@@ -605,16 +596,8 @@ export function getShortestPatchesInBetween(
             }
 
             const gaps = getPatchGaps(versionParts, ongoingBanner)
-            if (!gaps.length) {
-                return 0
-            }
-
             if (!isLastVersionLatest(versionParts, banner)) {
                 gaps[gaps.length - 1]++
-            }
-
-            if (banner.versions.length == 1) {
-                return Math.min(...gaps)
             }
 
             return Math.max(Math.min(...getPatchGaps(versionParts, banner)), Math.min(...gaps))
