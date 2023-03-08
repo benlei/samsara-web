@@ -36,7 +36,7 @@ export default function RelativeBasicCounterSummary(
     const [now, setNow] = useState(date)
     useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
 
-    const baseSummary = _.chain(counter(versionParts, banners, date))
+    const baseSummary = _.chain(counter(versionParts, banners, now))
         .orderBy([
             (b) => b.count,
             (b) => b.name,
