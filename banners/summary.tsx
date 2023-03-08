@@ -487,7 +487,7 @@ export function getShortestDaysInBetween(
     const currDayjs = dayjs.utc(currDate)
     return getCountSummary(
         versionParts,
-        bannerSummaries,
+        _.pickBy(bannerSummaries, (banner) => banner.versions.length > 1),
         (banner: BannerSummary): number => {
             const existingDayGaps = getDayGaps(null, banner)
             const ongoingDayGaps = getNormalizedBannerDateGaps(currDayjs, banner)
@@ -537,7 +537,7 @@ export function getShortestBannersInBetween(
 ): CountSummary[] {
     return getCountSummary(
         versionParts,
-        bannerSummaries,
+        _.pickBy(bannerSummaries, (banner) => banner.versions.length > 1),
         (banner: BannerSummary): number => {
             const ongoingBanner = {
                 dates: banner.dates,
@@ -594,7 +594,7 @@ export function getShortestPatchesInBetween(
 ): CountSummary[] {
     return getCountSummary(
         versionParts,
-        bannerSummaries,
+        _.pickBy(bannerSummaries, (banner) => banner.versions.length > 1),
         (banner: BannerSummary): number => {
             const ongoingBanner = {
                 dates: banner.dates,

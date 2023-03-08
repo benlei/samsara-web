@@ -38,7 +38,7 @@
     "@playwright/test": "^1.29.2",
     "@types/jest": "^29.2.4",
     "ts-jest": "^29.0.3",
-    "vercel": "^28.16.2",
+    "vercel": "^28.16.15",
     "wrangler": "^2.10.0"
   }
 }
