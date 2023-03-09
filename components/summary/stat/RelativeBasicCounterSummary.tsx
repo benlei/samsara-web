@@ -33,10 +33,7 @@ export default function RelativeBasicCounterSummary(
         plural,
     }: Properties
 ) {
-    const [now, setNow] = useState(date)
-    useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
-
-    const baseSummary = _.chain(counter(versionParts, banners, now))
+    const baseSummary = _.chain(counter(versionParts, banners, date))
         .orderBy([
             (b) => b.count,
             (b) => b.name,
@@ -63,7 +60,6 @@ export default function RelativeBasicCounterSummary(
                             className={getColorClassName(getPercent(s.count, maxVal))}
                             size={'small'}/>
 
-
                         <Label basic className={getColorClassName(getPercent(s.count, maxVal))}
                                style={s.count === UnknownFutureCounter ? {display: 'none'} : {}}>
                             {s.count === 0 ? (
@@ -81,7 +77,6 @@ export default function RelativeBasicCounterSummary(
                                     </Label.Detail>
                                 </>
                             )}
-
                         </Label>
                     </Table.Cell>
                 </Table.Row>
