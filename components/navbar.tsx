@@ -19,14 +19,6 @@ export default function Navbar({children}: React.PropsWithChildren) {
         return ''
     }
 
-    function getResinActive() {
-        return asPath == '/resin' ? 'active' : '';
-    }
-
-    function getArtifactRotationActive() {
-        return asPath.includes('/artifacts') ? 'active' : ''
-    }
-
     return (
         <>
             <Container style={{marginTop: '.5em'}} className={'desktop'}>
@@ -60,14 +52,6 @@ export default function Navbar({children}: React.PropsWithChildren) {
                                 name={'star'}/> History</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Dropdown text='Artifact Rotations' pointing className={'link item ' + getArtifactRotationActive()}>
-                        <Dropdown.Menu>
-                            <Dropdown.Item as={'a'} href='/artifacts'>Overview</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/artifacts/presets'>Manage Presets</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/artifacts/manage'>Manage Rotations</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    <Menu.Item as={'a'} href={'/resin'} className={getResinActive()}>Resin Timer</Menu.Item>
                 </Menu>
             </Container>
         </>
@@ -83,10 +67,6 @@ export function NavbarMobile() {
             return 'active'
         }
         return ''
-    }
-
-    function getToolsActive() {
-        return getBannerActive() === '' ? 'active' : ''
     }
 
     return (
@@ -121,17 +101,6 @@ export function NavbarMobile() {
                         <Dropdown.Header>Weapon History</Dropdown.Header>
                         <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon name={'star'}/></Dropdown.Item>
                         <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/></Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Dropdown text='Tools' pointing className={'link item ' + getToolsActive()}>
-                    <Dropdown.Menu>
-                        <Dropdown.Header>Artifact Rotations</Dropdown.Header>
-                        <Dropdown.Item as={'a'} href='/artifacts'>Overview</Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/artifacts/presets'>Manage Presets</Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/artifacts/manage'>Manage Rotations</Dropdown.Item>
-                        <Dropdown.Divider/>
-                        <Dropdown.Header>Resin</Dropdown.Header>
-                        <Dropdown.Item as={'a'} href='/resin'>24H Resin Timer</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </Menu>
