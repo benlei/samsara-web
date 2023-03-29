@@ -11,6 +11,8 @@
   --checkbox-radio-checked-box: rgba(34, 36, 38, 0.35);
   --inverted-background: rgba(27, 28, 29, 1);
   --button-active-color: rgba(0, 0, 0, 0.9);
+  --gray-background: rgba(249, 250, 251, 1);
+  --table-border-color: rgba(34, 36, 38, 0.1);
   --checked-opacity: 1;
 }
 
@@ -27,6 +29,8 @@
   --checkbox-radio-checked-box: rgba(206, 204, 202, 0.35);
   --inverted-background: rgba(213, 212, 211, 1);
   --button-active-color: rgba(40, 40, 40, 0.9);
+  --gray-background: rgba(46, 45, 44, 1);
+  --table-border-color: rgba(206, 204, 202, 0.1);
   --checked-opacity: .2;
 }
 
@@ -1688,7 +1692,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 .ui.basic.inverted.buttons .button,
 .ui.basic.inverted.button {
   background-color: transparent !important;
-  color: #F9FAFB !important;
+  color: var(--gray-background) !important;
   -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
 }
@@ -18512,7 +18516,7 @@ ol.ui.horizontal.list li:before,
   overflow: visible;
   padding: 1em 1em;
   min-height: 18rem;
-  background: #F9FAFB;
+  background: var(--gray-background);
   border-color: var(--checkbox-circle-box);
   -webkit-box-shadow: 0px 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
   box-shadow: 0px 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
@@ -19711,7 +19715,7 @@ ol.ui.horizontal.list li:before,
 .ui.steps .link.step:hover,
 .ui.steps a.step:hover::after,
 .ui.steps a.step:hover {
-  background: #F9FAFB;
+  background: var(--gray-background);
   color: var(--links-focus);
 }
 
@@ -23765,7 +23769,7 @@ ol.ui.horizontal.list li:before,
   right: 0px;
   height: 100%;
   width: 1px;
-  background: rgba(34, 36, 38, 0.1);
+  background: var(--table-border-color);
 }
 
 /*--------------
@@ -24085,7 +24089,7 @@ ol.ui.horizontal.list li:before,
 
 @media only screen and (min-width: 768px) {
   .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .item:not(.right):not(.borderless):first-child {
-    border-left: 1px solid rgba(34, 36, 38, 0.1);
+    border-left: 1px solid var(--table-border-color);
   }
 }
 
@@ -24251,7 +24255,7 @@ Floated Menu / Item
   left: 0px;
   width: 100%;
   height: 1px;
-  background: rgba(34, 36, 38, 0.1);
+  background: var(--table-border-color);
 }
 
 .ui.vertical.menu .item:first-child:before {
@@ -25069,7 +25073,7 @@ Floated Menu / Item
     left: 0px;
     width: 100%;
     height: 1px;
-    background: rgba(34, 36, 38, 0.1);
+    background: var(--table-border-color);
   }
 
   .ui.stackable.menu .left.menu,
@@ -25310,7 +25314,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.red.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.red.menu .active.item {
@@ -25325,7 +25329,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.orange.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.orange.menu .active.item {
@@ -25340,7 +25344,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.yellow.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.yellow.menu .active.item {
@@ -25355,7 +25359,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.olive.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.olive.menu .active.item {
@@ -25370,7 +25374,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.green.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.green.menu .active.item {
@@ -25385,7 +25389,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.teal.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.teal.menu .active.item {
@@ -25400,7 +25404,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.blue.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.blue.menu .active.item {
@@ -25415,7 +25419,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.violet.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.violet.menu .active.item {
@@ -25430,7 +25434,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.purple.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.purple.menu .active.item {
@@ -25445,7 +25449,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.pink.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.pink.menu .active.item {
@@ -25460,7 +25464,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.brown.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.brown.menu .active.item {
@@ -25475,7 +25479,7 @@ Floated Menu / Item
 }
 
 .ui.inverted.grey.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: var(--table-border-color);
 }
 
 .ui.inverted.grey.menu .active.item {
@@ -26575,7 +26579,7 @@ Floated Menu / Item
 
 .ui.table thead th {
   cursor: auto;
-  background: #F9FAFB;
+  background: var(--gray-background);
   text-align: inherit;
   color: var(--black);
   padding: 0.92857143em 0.78571429em;
@@ -26583,8 +26587,8 @@ Floated Menu / Item
   font-style: none;
   font-weight: bold;
   text-transform: none;
-  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
-  border-left: none;
+  border-bottom: 1px solid var(--table-border-color);
+  /*border-left: none;*/
 }
 
 .ui.table thead tr > th:first-child {
@@ -26613,7 +26617,7 @@ Floated Menu / Item
 .ui.table tfoot th {
   cursor: auto;
   border-top: 1px solid var(--checkbox-circle-box);
-  background: #F9FAFB;
+  background: var(--gray-background);
   text-align: inherit;
   color: var(--black);
   padding: 0.78571429em 0.78571429em;
@@ -26642,7 +26646,7 @@ Floated Menu / Item
 /* Table Row */
 
 .ui.table tr td {
-  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  border-top: 1px solid var(--table-border-color);
 }
 
 .ui.table tr:first-child td {
@@ -26652,7 +26656,7 @@ Floated Menu / Item
 /* Repeated tbody */
 
 .ui.table tbody + tbody tr:first-child td {
-  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  border-top: 1px solid var(--table-border-color);
 }
 
 /* Table Cells */
@@ -26784,8 +26788,8 @@ Floated Menu / Item
 
 .ui.structured.celled.table tr th,
 .ui.structured.celled.table tr td {
-  border-left: 1px solid rgba(34, 36, 38, 0.1);
-  border-right: 1px solid rgba(34, 36, 38, 0.1);
+  border-left: 1px solid var(--table-border-color);
+  border-right: 1px solid var(--table-border-color);
 }
 
 /*--------------
@@ -26840,17 +26844,17 @@ Floated Menu / Item
 
 /* Fix 2nd Column */
 
-.ui.definition.table thead:not(.full-width) th:nth-child(2) {
-  border-left: 1px solid var(--checkbox-circle-box);
-}
+/*.ui.definition.table thead:not(.full-width) th:nth-child(2) {*/
+/*  border-left: 1px solid var(--checkbox-circle-box);*/
+/*}*/
 
-.ui.definition.table tfoot:not(.full-width) th:nth-child(2) {
-  border-left: 1px solid var(--checkbox-circle-box);
-}
+/*.ui.definition.table tfoot:not(.full-width) th:nth-child(2) {*/
+/*  border-left: 1px solid var(--checkbox-circle-box);*/
+/*}*/
 
-.ui.definition.table td:nth-child(2) {
-  border-left: 1px solid var(--checkbox-circle-box);
-}
+/*.ui.definition.table td:nth-child(2) {*/
+/*  border-left: 1px solid var(--checkbox-circle-box);*/
+/*}*/
 
 /*******************************
              States
@@ -27729,7 +27733,7 @@ Floated Menu / Item
 
 .ui.celled.table tr th,
 .ui.celled.table tr td {
-  border-left: 1px solid rgba(34, 36, 38, 0.1);
+  border-left: 1px solid var(--table-border-color);
 }
 
 .ui.celled.table tr th:first-child,
@@ -28258,7 +28262,7 @@ Floated Menu / Item
   -ms-flex-positive: 1;
   flex-grow: 1;
   border: none;
-  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  border-top: 1px solid var(--table-border-color);
   background: none;
   margin: 0em;
   padding: 1em 1em;
@@ -31365,7 +31369,7 @@ a.ui.card:hover,
 
 .ui.checkbox .box:active::before,
 .ui.checkbox label:active::before {
-  background: #F9FAFB;
+  background: var(--gray-background);
   border-color: var(--checkbox-radio-checked-box);
 }
 
@@ -32332,7 +32336,7 @@ body.dimmable > .dimmer {
 }
 
 .ui.dropdown .menu > .divider {
-  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  border-top: 1px solid var(--table-border-color);
   height: 0em;
   margin: 0.5em 0em;
 }
@@ -34167,7 +34171,7 @@ select.ui.dropdown {
 ---------------*/
 
 .ui.modal > .actions {
-  background: #F9FAFB;
+  background: var(--gray-background);
   padding: 1rem 1rem;
   border-top: 1px solid var(--checkbox-circle-box);
   text-align: right;
@@ -35970,7 +35974,7 @@ a.ui.nag {
 }
 
 .ui.inverted.progress .bar > .progress {
-  color: #F9FAFB;
+  color: var(--gray-background);
 }
 
 .ui.inverted.progress > .label {
@@ -36602,7 +36606,7 @@ a.ui.nag {
   padding: 0.85714286em 1.14285714em;
   color: var(--black);
   line-height: 1.33;
-  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+  border-bottom: 1px solid var(--table-border-color);
 }
 
 .ui.search > .results .result:last-child {
@@ -36742,7 +36746,7 @@ a.ui.nag {
 
 .ui.search > .results .result:hover,
 .ui.category.search > .results .category .result:hover {
-  background: #F9FAFB;
+  background: var(--gray-background);
 }
 
 .ui.search .action:hover {
@@ -36764,7 +36768,7 @@ a.ui.nag {
 .ui.search > .results .result.active,
 .ui.category.search > .results .category .result.active {
   position: relative;
-  border-left-color: rgba(34, 36, 38, 0.1);
+  border-left-color: var(--table-border-color);
   background: #F3F4F5;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -36884,7 +36888,7 @@ a.ui.nag {
   padding: 0.4em 1em;
   font-weight: bold;
   color: var(--links);
-  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+  border-bottom: 1px solid var(--table-border-color);
 }
 
 /* Category Result */
@@ -36893,11 +36897,11 @@ a.ui.nag {
   display: table-cell;
   background: var(--white);
   border-left: 1px solid var(--checkbox-circle-box);
-  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+  border-bottom: 1px solid var(--table-border-color);
 }
 
 .ui.category.search > .results .category .result {
-  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+  border-bottom: 1px solid var(--table-border-color);
   -webkit-transition: background 0.1s ease, border-color 0.1s ease;
   transition: background 0.1s ease, border-color 0.1s ease;
   padding: 0.85714286em 1.14285714em;
