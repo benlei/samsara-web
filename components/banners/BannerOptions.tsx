@@ -72,7 +72,7 @@ export default class BannerOptions extends React.Component<Properties, States> {
 
                 <Form.Group widths='equal'>
                     <Form.Field>
-                        <Label onClick={this.flipOrder} className={'button'}>
+                        <Label onClick={this.flipOrder} className={'button'} size={'large'}>
                             {this.props.order === 'asc' ? (
                                 <>
                                     <Icon name={'sort amount up'} size={'small'}/> Ascending
