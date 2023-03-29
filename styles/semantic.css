@@ -10,6 +10,7 @@
   --checkbox-circle-box: rgba(34, 36, 38, 0.15);
   --checkbox-radio-checked-box: rgba(34, 36, 38, 0.35);
   --inverted-background: rgba(27, 28, 29, 1);
+  --button-active-color: rgba(0, 0, 0, 0.9);
   --checked-opacity: 1;
 }
 
@@ -25,6 +26,7 @@
   --checkbox-circle-box: rgba(206, 204, 202, 0.15);
   --checkbox-radio-checked-box: rgba(206, 204, 202, 0.35);
   --inverted-background: rgba(213, 212, 211, 1);
+  --button-active-color: rgba(40, 40, 40, 0.9);
   --checked-opacity: .2;
 }
 
@@ -850,7 +852,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   background-image: none;
   -webkit-box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px var(--checkbox-circle-box) inset;
   box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px var(--checkbox-circle-box) inset;
-  color: var(--links-focus);
+  color: var(--button-active-color);
 }
 
 .ui.button:hover .icon {
@@ -881,7 +883,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 .ui.active.button:active {
   background-color: #BABBBC;
   background-image: '';
-  color: var(--blacker);
+  color: var(--button-active-color);
   -webkit-box-shadow: 0px 0px 0px 1px transparent inset, none;
   box-shadow: 0px 0px 0px 1px transparent inset, none;
 }
