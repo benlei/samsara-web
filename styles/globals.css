@@ -1,7 +1,3 @@
-body {
-    background-color: #FFFFFF;
-}
-
 @media (max-width: 992px) {
     .desktop {
         display: none !important;
@@ -193,7 +189,7 @@ img.active {
     color: hsl(0, 5%, 65%) !important;
 }
 .dropdown.active {
-    border-color: #1b1c1d !important;
+    border-color: var(--inverted-background) !important;
 }
 
 tr.selected {
