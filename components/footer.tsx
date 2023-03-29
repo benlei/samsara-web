@@ -1,7 +1,20 @@
-import React from "react";
-import {Container, Grid, Header, Icon, List, Segment} from "semantic-ui-react";
+import {useTheme} from "next-themes";
+import React, {useEffect, useState} from "react";
+import {Container, Grid, Header, Icon, List, Radio, Segment} from "semantic-ui-react";
 
 export default function Footer({children}: React.PropsWithChildren) {
+    const {theme, setTheme} = useTheme()
+    const [themeState, setThemeState] = useState('light')
+
+    useEffect(() => {
+        setThemeState(theme === 'dark' ? 'dark' : 'light')
+    }, [theme])
+
+    const toggleTheme = () => {
+        setTheme(themeState === 'dark' ? 'light' : 'dark')
+        setThemeState(themeState === 'dark' ? 'light' : 'dark')
+    }
+
     return (
         <>
             <Segment vertical style={{margin: '5em 0em 0em', padding: '5em 0em'}}>
@@ -14,6 +27,15 @@ export default function Footer({children}: React.PropsWithChildren) {
                                     <Icon name={'github'}/> GitHub
                                 </List.Item>
                             </List>
+
+
+                            <Container>
+                                <Radio toggle label={themeState !== 'dark' ? 'Light Mode' : 'Dark Mode'}
+                                       onChange={toggleTheme}
+                                       checked={themeState !== 'dark'}
+                                       autoComplete={'off'}
+                                />
+                            </Container>
                         </Grid.Column>
                         <Grid.Column width={10} textAlign={'left'}>
                             <Header as='h4' content='About'/>
@@ -37,7 +59,7 @@ export default function Footer({children}: React.PropsWithChildren) {
                                 developer), but if someone wants to set such a system up, feel free to create
                                 some (small, digestable) PRs!
                             </p>
-                            
+
                             <p>samsara.pages.dev is not affiliated with or endorsed by HoYoverse.</p>
                         </Grid.Column>
                     </Grid>

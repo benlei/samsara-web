@@ -15,11 +15,11 @@ class MyApp extends App<AppProps> {
         return (
             <>
                 {/* Add any global styles or other components here */}
-                <Layout>
-                    <ThemeProvider defaultTheme={'dark'} enableSystem={false}>
+                <ThemeProvider defaultTheme={'light'} enableSystem={false}>
+                    <Layout>
                         <Component {...pageProps} />
-                    </ThemeProvider>
-                </Layout>
+                    </Layout>
+                </ThemeProvider>
             </>
         );
     }
