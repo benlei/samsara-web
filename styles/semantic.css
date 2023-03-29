@@ -17,7 +17,7 @@
 }
 
 [data-theme='dark'] {
-  --white: #333333;
+  --white: #222222;
   --black: rgba(240, 240, 240, .87);
   --blacker: rgba(240, 240, 240, 0.9);
   --blackerer: rgba(240, 240, 240, 0.95);
