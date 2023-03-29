@@ -42,8 +42,7 @@ export default function Footer({children}: React.PropsWithChildren) {
                             <p>
                                 This hobby site currently does not directly store any data about its users on any
                                 server. It does, however, store cookies/local storage on your browser - such as for
-                                Google Analytics, and for some sections of the site necessary for its core
-                                functionality (e.g. artifact rotations).
+                                Google Analytics, light/dark mode, among other things.
                             </p>
 
                             <p>
