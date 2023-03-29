@@ -16,7 +16,7 @@ class MyApp extends App<AppProps> {
             <>
                 {/* Add any global styles or other components here */}
                 <Layout>
-                    <ThemeProvider defaultTheme={'light'} enableSystem={false}>
+                    <ThemeProvider defaultTheme={'dark'} enableSystem={false}>
                         <Component {...pageProps} />
                     </ThemeProvider>
                 </Layout>
