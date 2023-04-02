@@ -5,7 +5,7 @@ import React, {ChangeEvent, useEffect, useState} from "react";
 type Properties = {
     onChange: (event: ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => any
 }
-export default function BannerSearch(
+export default function HistorySearch(
     {
         onChange,
     }: Properties

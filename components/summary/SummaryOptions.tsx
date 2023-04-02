@@ -169,7 +169,7 @@ export function DesktopSummaryOptions(
                     <Form.Field>
                         <Label
                             onClick={() => setOrder(order == 'desc' ? 'asc' : 'desc')}
-                            className={'button'}>
+                            className={'button'} size={'large'}>
                             {order == 'asc' ? (
                                 <><Icon name={'sort amount up'} size={'small'}/> Ascending</>
                             ) : (

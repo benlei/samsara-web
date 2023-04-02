@@ -2,9 +2,9 @@ import React from "react";
 import {BannerFilterSortOptions, ResourceBanner, VersionParts} from "@/banners/types";
 import {Table} from "semantic-ui-react";
 import _ from "lodash";
-import BannerHeader from "@/components/banners/BannerHeader";
-import BannerFooter from "@/components/banners/BannerFooter";
-import BannerRow from "@/components/banners/BannerRow";
+import HistoryHeader from "@/components/history/HistoryHeader";
+import HistoryFooter from "@/components/history/HistoryFooter";
+import HistoryRow from "@/components/history/HistoryRow";
 import {getFilterFunction} from "@/banners/summary";
 
 
@@ -114,19 +114,19 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
         return (
             <>
                 <Table definition unstackable selectable compact className={'history'}>
-                    <BannerHeader
+                    <HistoryHeader
                         versionParts={versionParts}
                         onChange={this.handleFilterChange}
                     />
                     <Table.Body>
-                        {rundown.map((r, rI) => <BannerRow key={rI}
-                                                           bannerType={bannerType}
-                                                           rundown={r}
+                        {rundown.map((r, rI) => <HistoryRow key={rI}
+                                                            bannerType={bannerType}
+                                                            rundown={r}
                             />
                         )}
                     </Table.Body>
 
-                    <BannerFooter versionParts={versionParts}/>
+                    <HistoryFooter versionParts={versionParts}/>
                 </Table>
             </>
         );

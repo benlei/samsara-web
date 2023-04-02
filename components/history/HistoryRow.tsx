@@ -16,25 +16,14 @@ function getImageOrCounter(type: string, rc: ResourceBanner, counter: number): R
     }
 
     if (counter == -1) {
-        return <div className={'cell'}></div>
+        return <div></div>
 
     }
 
-    return <div className={'cell'}>{counter}</div>
+    return <div>{counter}</div>
 }
 
-function getCounterStyle(c: number) {
-    if (c == 0) {
-        return {backgroundColor: '#fff'}
-    }
-
-    const lightness = 100 - Math.min(36, Math.floor(c * 1.5));
-    return {
-        backgroundColor: `hsl(0, 5%, ${lightness}%)`
-    }
-}
-
-export default class BannerRow extends React.Component<Properties, States> {
+export default class HistoryRow extends React.Component<Properties, States> {
     render() {
         const {
             rundown,
@@ -51,11 +40,11 @@ export default class BannerRow extends React.Component<Properties, States> {
                                    alt={rundown.image}/>
 
                 </Table.Cell>
-                <Table.Cell style={getCounterStyle(0)}>
+                <Table.Cell className={'hc-0'}>
                     <Label>{rundown.runs}</Label>
                 </Table.Cell>
                 {rundown.counter.map((c, cI) => (
-                    <Table.Cell key={cI} style={getCounterStyle(c)}>
+                    <Table.Cell key={cI} className={'hc-' + Math.max(0, Math.min(25, c))}>
                         {getImageOrCounter(bannerType, rundown, c)}
                     </Table.Cell>
                 ))}

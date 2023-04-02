@@ -1,7 +1,7 @@
 import React from "react";
 import {Container, Ref} from "semantic-ui-react";
-import BannerOptions from "@/components/banners/BannerOptions";
-import BannerTable from "@/components/banners/BannerTable";
+import HistoryOptions from "@/components/history/HistoryOptions";
+import BannerTable from "@/components/history/BannerTable";
 import getVersionParts from "@/banners/version";
 import {getRundowns} from "@/banners/rundown";
 import {BannerResource} from "@/banners/types";
@@ -22,7 +22,7 @@ type States = {
     expand: boolean
 }
 
-export default class BannerPage extends React.Component<Properties, States> {
+export default class HistoryPage extends React.Component<Properties, States> {
     private componentRef: React.RefObject<any>
 
     constructor(props: Readonly<Properties> | Properties) {
@@ -73,11 +73,11 @@ export default class BannerPage extends React.Component<Properties, States> {
         return (
             <>
                 <Container style={{marginTop: '1em'}}>
-                    <BannerOptions showLimitedOnly={showLimitedOnly} limitedOnly={limitedOnly}
-                                   setLimitedOnly={setLimitedOnly}
-                                   order={order} setOrder={setOrder}
-                                   sortBy={sortBy} setSortBy={setSortBy}
-                                   expand={expand} setExpand={setExpand}
+                    <HistoryOptions showLimitedOnly={showLimitedOnly} limitedOnly={limitedOnly}
+                                    setLimitedOnly={setLimitedOnly}
+                                    order={order} setOrder={setOrder}
+                                    sortBy={sortBy} setSortBy={setSortBy}
+                                    expand={expand} setExpand={setExpand}
                     />
                 </Container>
                 <Container style={{marginTop: '1em', ...getBannerContainerStyle(expand ?? false)}}
@@ -99,8 +99,7 @@ export default class BannerPage extends React.Component<Properties, States> {
                 </Container>
                 <Container style={{marginTop: '2em'}} textAlign={'center'}>
                     <PngDownloadButton node={this.componentRef} name={'banner-history'}
-                                       scrollXOffset={15}
-                                       windowWidthOffset={20}
+                                       type={bannerType}
                     />
                 </Container>
             </>
