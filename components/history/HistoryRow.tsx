@@ -41,7 +41,7 @@ export default class HistoryRow extends React.Component<Properties, States> {
 
                 </Table.Cell>
                 <Table.Cell className={'hc-0'}>
-                    <Label>{rundown.runs}</Label>
+                    <div className={'runs'}>{rundown.runs}</div>
                 </Table.Cell>
                 {rundown.counter.map((c, cI) => (
                     <Table.Cell key={cI} className={'hc-' + Math.max(0, Math.min(25, c))}>

@@ -28,6 +28,7 @@
     --hc-25: hsl(0, 5%, 65.0%);
     --history-border-color: #ddd;
     --history-cell-color: var(--black);
+    --history-run-color: #999;
 }
 
 [data-theme='dark'] {
@@ -59,6 +60,7 @@
     --hc-25: hsl(0, 2%, 5.0%);
     --history-border-color: #444;
     --history-cell-color: #666;
+    --history-run-color: #999;
 }
 
 @media (max-width: 992px) {
@@ -134,6 +136,11 @@
     width: 2em;
     height: 2em;
     color: var(--history-cell-color);
+}
+
+.history .runs {
+    font-weight: 500;
+    color: var(--history-run-color) !important;
 }
 
 .menu .item {
