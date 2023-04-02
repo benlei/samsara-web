@@ -71,8 +71,7 @@ export default function SummaryPage(
 
             <Container text={!expand} style={{marginTop: '1em'}} textAlign={"center"}>
                 <PngDownloadButton node={ref} name={'summary'}
-                                   widthOffset={20}
-                                   scrollXOffset={10}
+                                   type={type}
                 />
             </Container>
         </>

@@ -21,10 +21,10 @@ export default function FourStarCharacterSummary(props: { banners: { [name: stri
     return (
         <>
             <Head>
-                <title>4★ Character Summary - Samsara</title>
+                <title>4 Star Character Summary - Samsara</title>
             </Head>
             <SummaryPage
-                title={'4★ Character Summary'}
+                title={'4 Star Character Summary'}
                 data={props}
                 type={'characters'}
             />
