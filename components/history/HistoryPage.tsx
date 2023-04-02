@@ -99,8 +99,7 @@ export default class HistoryPage extends React.Component<Properties, States> {
                 </Container>
                 <Container style={{marginTop: '2em'}} textAlign={'center'}>
                     <PngDownloadButton node={this.componentRef} name={'banner-history'}
-                                       scrollXOffset={15}
-                                       windowWidthOffset={20}
+                                       type={bannerType}
                     />
                 </Container>
             </>

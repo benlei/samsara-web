@@ -21,10 +21,10 @@ export default function FiveStarWeaponSummary(props: { banners: { [name: string]
     return (
         <>
             <Head>
-                <title>5★ Weapon Summary - Samsara</title>
+                <title>5 Star Weapon Summary - Samsara</title>
             </Head>
             <SummaryPage
-                title={'5★ Weapon Summary'}
+                title={'5 Star Weapon Summary'}
                 data={props}
                 type={'weapons'}
             />
