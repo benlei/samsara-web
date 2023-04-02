@@ -2,9 +2,9 @@ import React from "react";
 import {BannerFilterSortOptions, ResourceBanner, VersionParts} from "@/banners/types";
 import {Table} from "semantic-ui-react";
 import _ from "lodash";
-import BannerHeader from "@/components/banners/BannerHeader";
-import BannerFooter from "@/components/banners/BannerFooter";
-import BannerRow from "@/components/banners/BannerRow";
+import BannerHeader from "@/components/history/BannerHeader";
+import BannerFooter from "@/components/history/BannerFooter";
+import BannerRow from "@/components/history/BannerRow";
 import {getFilterFunction} from "@/banners/summary";
 
 

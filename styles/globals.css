@@ -1,3 +1,10 @@
+/* TODO: for history table, either make the white borders more gray, or remove them.
+         for the # of banners since run, should have text as BLACK
+
+         this kind of looks a lot nicer:
+
+ */
+
 /* for i in {0..25}; do printf "--hc-${i}: hsl(0, 5%%, %0.1f%%);\n" $((100-1.4*$i)); done */
 :root {
     --hc-0: hsl(0, 5%, 100.0%);
@@ -26,35 +33,39 @@
     --hc-23: hsl(0, 5%, 67.8%);
     --hc-24: hsl(0, 5%, 66.4%);
     --hc-25: hsl(0, 5%, 65.0%);
+    --history-border-color: #ddd;
+    --history-cell-color: var(--black);
 }
 
 [data-theme='dark'] {
     --hc-0: hsl(0, 2%, 20.0%);
-    --hc-1: hsl(0, 2%, 19.9%);
-    --hc-2: hsl(0, 2%, 19.7%);
-    --hc-3: hsl(0, 2%, 19.6%);
-    --hc-4: hsl(0, 2%, 19.4%);
-    --hc-5: hsl(0, 2%, 19.2%);
-    --hc-6: hsl(0, 2%, 19.1%);
-    --hc-7: hsl(0, 2%, 18.9%);
-    --hc-8: hsl(0, 2%, 18.8%);
-    --hc-9: hsl(0, 2%, 18.6%);
-    --hc-10: hsl(0, 2%, 18.5%);
-    --hc-11: hsl(0, 2%, 18.4%);
-    --hc-12: hsl(0, 2%, 18.2%);
-    --hc-13: hsl(0, 2%, 18.1%);
-    --hc-14: hsl(0, 2%, 17.9%);
-    --hc-15: hsl(0, 2%, 17.8%);
-    --hc-16: hsl(0, 2%, 17.6%);
-    --hc-17: hsl(0, 2%, 17.4%);
-    --hc-18: hsl(0, 2%, 17.3%);
-    --hc-19: hsl(0, 2%, 17.1%);
-    --hc-20: hsl(0, 2%, 17.0%);
-    --hc-21: hsl(0, 2%, 16.9%);
-    --hc-22: hsl(0, 2%, 16.7%);
-    --hc-23: hsl(0, 2%, 16.6%);
-    --hc-24: hsl(0, 2%, 16.4%);
-    --hc-25: hsl(0, 2%, 16.2%);
+    --hc-1: hsl(0, 2%, 19.4%);
+    --hc-2: hsl(0, 2%, 18.8%);
+    --hc-3: hsl(0, 2%, 18.2%);
+    --hc-4: hsl(0, 2%, 17.6%);
+    --hc-5: hsl(0, 2%, 17.0%);
+    --hc-6: hsl(0, 2%, 16.4%);
+    --hc-7: hsl(0, 2%, 15.8%);
+    --hc-8: hsl(0, 2%, 15.2%);
+    --hc-9: hsl(0, 2%, 14.6%);
+    --hc-10: hsl(0, 2%, 14.0%);
+    --hc-11: hsl(0, 2%, 13.4%);
+    --hc-12: hsl(0, 2%, 12.8%);
+    --hc-13: hsl(0, 2%, 12.2%);
+    --hc-14: hsl(0, 2%, 11.6%);
+    --hc-15: hsl(0, 2%, 11.0%);
+    --hc-16: hsl(0, 2%, 10.4%);
+    --hc-17: hsl(0, 2%, 9.8%);
+    --hc-18: hsl(0, 2%, 9.2%);
+    --hc-19: hsl(0, 2%, 8.6%);
+    --hc-20: hsl(0, 2%, 8.0%);
+    --hc-21: hsl(0, 2%, 7.4%);
+    --hc-22: hsl(0, 2%, 6.8%);
+    --hc-23: hsl(0, 2%, 6.2%);
+    --hc-24: hsl(0, 2%, 5.6%);
+    --hc-25: hsl(0, 2%, 5.0%);
+    --history-border-color: #444;
+    --history-cell-color: #666;
 }
 
 @media (max-width: 992px) {
@@ -95,12 +106,12 @@
 }
 
 .history td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--history-border-color);
 }
 
 /* oddly the first row's first col has no border top... */
 .history tr:first-of-type td:first-of-type {
-    border-top: 1px #ddd solid !important;
+    border-top: 1px var(--history-border-color) solid !important;
 }
 
 .history td:not(:first-of-type) {
@@ -108,7 +119,7 @@
 }
 
 .history th:not(:first-of-type) {
-    border: 1px solid #ddd
+    border: 1px solid var(--history-border-color)
 }
 
 .history th {
@@ -125,10 +136,11 @@
     text-align: right !important;
 }
 
-.history .cell {
+.history td div {
     line-height: 2em;
     width: 2em;
     height: 2em;
+    color: var(--history-cell-color);
 }
 
 .menu .item {

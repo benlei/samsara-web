@@ -1,7 +1,7 @@
 import React from "react";
 import {Container, Ref} from "semantic-ui-react";
-import BannerOptions from "@/components/banners/BannerOptions";
-import BannerTable from "@/components/banners/BannerTable";
+import BannerOptions from "@/components/history/BannerOptions";
+import BannerTable from "@/components/history/BannerTable";
 import getVersionParts from "@/banners/version";
 import {getRundowns} from "@/banners/rundown";
 import {BannerResource} from "@/banners/types";

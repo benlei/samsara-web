@@ -16,11 +16,11 @@ function getImageOrCounter(type: string, rc: ResourceBanner, counter: number): R
     }
 
     if (counter == -1) {
-        return <div className={'cell'}></div>
+        return <div></div>
 
     }
 
-    return <div className={'cell'}>{counter}</div>
+    return <div>{counter}</div>
 }
 
 export default class BannerRow extends React.Component<Properties, States> {

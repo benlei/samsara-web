@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {BannerResource} from '@/banners/types'
 import React from "react";
-import BannerPage from "@/components/banners/BannerPage";
+import BannerPage from "@/components/history/BannerPage";
 import {Container, Header} from "semantic-ui-react";
 import _ from 'lodash';
 
