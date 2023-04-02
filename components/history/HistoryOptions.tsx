@@ -10,7 +10,7 @@ type Properties = {
 
 type States = {}
 
-export default class BannerOptions extends React.Component<Properties, States> {
+export default class HistoryOptions extends React.Component<Properties, States> {
     handleSortByChange = (event: React.FormEvent<HTMLInputElement>, {value}: CheckboxProps) => this.props.setSortBy(String(value))
     flipOrder = () => this.props.setOrder(this.props.order == 'desc' ? 'asc' : 'desc')
 

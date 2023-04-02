@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {BannerResource} from '@/banners/types'
 import React from "react";
-import BannerPage from "@/components/history/BannerPage";
+import HistoryPage from "@/components/history/HistoryPage";
 import {Container, Header} from "semantic-ui-react";
 import _ from "lodash";
 
@@ -27,9 +27,9 @@ export default function FourStarWeaponsHome({banners}: Properties) {
             <Container style={{marginTop: '2em'}}>
                 <Header size={'large'}>4&#x2605; Weapon Banner History</Header>
             </Container>
-            <BannerPage bannerType={'weapons'}
-                        banners={banners}
-                        showLimitedOnly={false}
+            <HistoryPage bannerType={'weapons'}
+                         banners={banners}
+                         showLimitedOnly={false}
             />
         </>
     )

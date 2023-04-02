@@ -23,7 +23,7 @@ function getImageOrCounter(type: string, rc: ResourceBanner, counter: number): R
     return <div>{counter}</div>
 }
 
-export default class BannerRow extends React.Component<Properties, States> {
+export default class HistoryRow extends React.Component<Properties, States> {
     render() {
         const {
             rundown,

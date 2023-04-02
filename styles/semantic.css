@@ -10,6 +10,7 @@
   --checkbox-circle-box: rgba(34, 36, 38, 0.15);
   --checkbox-radio-checked-box: rgba(34, 36, 38, 0.35);
   --inverted-background: rgba(27, 28, 29, 1);
+  --button-active-bg-color: rgba(202, 203, 205, 1);
   --button-active-color: rgba(0, 0, 0, 0.9);
   --gray-background: rgba(249, 250, 251, 1);
   --table-border-color: rgba(34, 36, 38, 0.1);
@@ -28,7 +29,8 @@
   --checkbox-circle-box: rgba(206, 204, 202, 0.15);
   --checkbox-radio-checked-box: rgba(206, 204, 202, 0.35);
   --inverted-background: rgba(213, 212, 211, 1);
-  --button-active-color: rgba(40, 40, 40, 0.9);
+  --button-active-bg-color: rgba(202, 203, 205, 1);
+  --button-active-color: rgba(0, 0, 0, 0.9);
   --gray-background: rgba(46, 45, 44, 1);
   --table-border-color: rgba(206, 204, 202, 0.1);
   --checked-opacity: .2;
@@ -852,7 +854,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 ---------------*/
 
 .ui.button:hover {
-  background-color: #CACBCD;
+  background-color: var(--button-active-bg-color);
   background-image: none;
   -webkit-box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px var(--checkbox-circle-box) inset;
   box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px var(--checkbox-circle-box) inset;
@@ -868,8 +870,8 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 ---------------*/
 
 .ui.button:focus {
-  background-color: #CACBCD;
-  color: var(--links-focus);
+  background-color: var(--button-active-bg-color);
+  color: var(--button-active-color);
   background-image: '' !important;
   -webkit-box-shadow: '' !important;
   box-shadow: '' !important;

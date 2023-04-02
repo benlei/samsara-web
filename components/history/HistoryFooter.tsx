@@ -8,7 +8,7 @@ type Properties = {
 
 type States = {}
 
-export default class BannerFooter extends React.Component<Properties, States> {
+export default class HistoryFooter extends React.Component<Properties, States> {
     render() {
         const {
             versionParts,
