@@ -1,13 +1,15 @@
-import {devices, PlaywrightTestConfig} from '@playwright/test'
 import path from 'path'
 
+// requiring to prevent next prod build to fail because this file also gets scanned
+const {devices} = require('@playwright/test')
 const PORT = process.env.PORT || 3000
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
 const baseURL = `http://0.0.0.0:${PORT}`
 
 // Reference: https://playwright.dev/docs/test-configuration
-const config: PlaywrightTestConfig = {
+/** @type {import('@playwright/test').PlaywrightTestConfig} */
+const config = {
     // Concise 'dot' for CI, default 'list' when running locally
     reporter: 'list',
     // Timeout per test
