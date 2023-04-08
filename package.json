@@ -3,6 +3,7 @@
   "version": "1.2.0",
   "private": true,
   "scripts": {
+    "build:cloudflare": "next build && next export",
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
