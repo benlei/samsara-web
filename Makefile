@@ -1,13 +1,13 @@
 default: build
 
 build:
-	source "$(NVM_DIR)/nvm.sh" && nvm exec npx @cloudflare/next-on-pages
+	source "$(NVM_DIR)/nvm.sh" && nvm exec npm run build && nvm exec npm run export
 
-watch:
-	source "$(NVM_DIR)/nvm.sh" && nvm exec npx @cloudflare/next-on-pages --watch
+serve: build
+	source "$(NVM_DIR)/nvm.sh" && nvm exec npm run start
 
-web:
-	source "$(NVM_DIR)/nvm.sh" && nvm exec npx wrangler pages dev .vercel/output/static --compatibility-flags=streams_enable_constructors
+dev:
+	source "$(NVM_DIR)/nvm.sh" && nvm exec npm run dev
 
 test:
 	source "$(NVM_DIR)/nvm.sh" && nvm exec npm test
@@ -15,8 +15,9 @@ test:
 lint:
 	source "$(NVM_DIR)/nvm.sh" && nvm exec -- npm run lint
 
+
 e2e:
 	source "$(NVM_DIR)/nvm.sh" && nvm exec -- playwright install --with-deps
 	source "$(NVM_DIR)/nvm.sh" && nvm exec -- playwright test
 
-.PHONY: test
+.PHONY: test build
