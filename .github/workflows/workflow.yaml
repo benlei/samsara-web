@@ -55,7 +55,7 @@ jobs:
         run: npm test
 
       - name: build static pages
-        run: npx @cloudflare/next-on-pages
+        run: npm run build
 
       - name: install playwright deps
         run: npx playwright install --with-deps

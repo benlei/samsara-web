@@ -22,7 +22,7 @@ const config: PlaywrightTestConfig = {
     // Run your local dev server before starting the tests:
     // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
     webServer: {
-        command: 'npx wrangler pages dev .vercel/output/static --compatibility-flags=streams_enable_constructors',
+        command: 'npm run build && npm run start',
         url: baseURL,
         timeout: 120 * 1000,
         reuseExistingServer: !process.env.CI,

@@ -1,7 +1,7 @@
 default: build
 
 build:
-	source "$(NVM_DIR)/nvm.sh" && nvm exec npm run build && nvm exec npm run export
+	source "$(NVM_DIR)/nvm.sh" && nvm exec npm run build
 
 serve: build
 	source "$(NVM_DIR)/nvm.sh" && nvm exec npm run start
