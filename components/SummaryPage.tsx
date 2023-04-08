@@ -1,6 +1,6 @@
 import {Container, Header, Ref} from "semantic-ui-react";
 import SummaryOptions from "@/components/summary/SummaryOptions";
-import React, {useEffect, useState} from "react";
+import React, {ReactNode, useEffect, useState} from "react";
 import getVersionParts from "@/banners/version";
 import _ from "lodash";
 import {BannerSummary} from "@/banners/summary";
@@ -9,7 +9,7 @@ import SummaryTable from "@/components/summary/SummaryTable";
 
 type Properties = {
     data: { banners: { [name: string]: BannerSummary }, date: string }
-    title: string
+    title: ReactNode
     type: string
     standard?: string[]
 }
@@ -44,7 +44,7 @@ export default function SummaryPage(
     return (
         <>
             <Container text={!expand} style={{marginTop: '2em'}}>
-                <Header size={'medium'}>{title}</Header>
+                <Header size={'large'}>{title}</Header>
             </Container>
 
             <Container text={!expand} style={{marginTop: '1em'}}>
