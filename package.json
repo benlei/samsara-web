@@ -2,6 +2,12 @@
   "name": "samsara",
   "version": "1.2.0",
   "private": true,
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=3",
+    "npm": "use pnpm instead",
+    "yarn": "use pnpm instead"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,30 +15,32 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --detectOpenHandles",
-    "test:watch": "jest --watch"
+    "e2e": "playwright test",
+    "test:watch": "jest --watch",
+    "playwright": "playwright",
+    "playwright:install": "playwright install --with-deps"
   },
   "dependencies": {
-    "@next/font": "13.1.0",
+    "@next/font": "^13.1.0",
     "@types/lodash": "^4.14.191",
-    "@types/node": "18.11.17",
-    "@types/react": "18.0.26",
-    "@types/react-dom": "18.0.10",
+    "@types/node": "^18.11.17",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
     "cookies-next": "^2.1.1",
     "dayjs": "^1.11.7",
-    "eslint": "8.30.0",
-    "eslint-config-next": "13.1.0",
+    "eslint": "^8.30.0",
+    "eslint-config-next": "^13.1.0",
     "lodash": "^4.17.21",
-    "nanoid": "^4.0.0",
-    "next": "13.1.0",
-    "react": "18.2.0",
+    "next": "^13.1.0",
+    "next-themes": "^0.2.1",
+    "react": "^18.2.0",
     "react-component-export-image": "^1.0.6",
     "react-cookie-consent": "^8.0.1",
-    "react-dom": "18.2.0",
+    "react-dom": "^18.2.0",
     "react-ga4": "^2.0.0",
     "react-indiana-drag-scroll": "^2.2.0",
-    "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
-    "typescript": "4.9.4"
+    "typescript": "^4.9.4"
   },
   "devDependencies": {
     "@playwright/test": "^1.29.2",

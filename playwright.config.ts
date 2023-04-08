@@ -4,7 +4,7 @@ import path from 'path'
 const PORT = process.env.PORT || 3000
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
-const baseURL = `http://localhost:${PORT}`
+const baseURL = `http://0.0.0.0:${PORT}`
 
 // Reference: https://playwright.dev/docs/test-configuration
 const config: PlaywrightTestConfig = {
@@ -22,9 +22,9 @@ const config: PlaywrightTestConfig = {
     // Run your local dev server before starting the tests:
     // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
     webServer: {
-        command: 'npm run build && npm run start',
+        command: process.env.CI ? 'pnpm start' : 'pnpm dev',
         url: baseURL,
-        timeout: 120 * 1000,
+        timeout: 60 * 1000,
         reuseExistingServer: !process.env.CI,
     },
 
