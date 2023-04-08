@@ -9,6 +9,7 @@
     "yarn": "use pnpm instead"
   },
   "scripts": {
+    "build:cloudflare": "next build && next export",
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
