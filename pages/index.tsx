@@ -20,10 +20,10 @@ export default function FiveStarCharacterSummary(props: { banners: { [name: stri
     return (
         <>
             <Head>
-                <title>5 Star Character Summary - Samsara</title>
+                <title>5&#x2605; Character Summary - Samsara</title>
             </Head>
             <SummaryPage
-                title={'5 Star Character Summary'}
+                title={<>5&#x2605; Character Summary</>}
                 data={props}
                 type={'characters'}
                 standard={['Keqing', 'Tighnari']}
