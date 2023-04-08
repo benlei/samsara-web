@@ -12,6 +12,7 @@ on:
   push:
     branches:
       - 'main'
+      - 'v2-trunk'
     paths-ignore:
       - '**.md' # ignore docs, they don't contribute to the build process
 
