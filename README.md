@@ -1,14 +1,43 @@
 ## Getting Started
 
-In one terminal, run:
+To install everything in beginning, install `pnpm`. For OSX this can be as simple as:
 
-```
-make build
-```
-
-Wait for it to complete. Then in another terminal, run:
-```
-make web
+```shell
+brew install pnpm
 ```
 
-Whenever cloudflare figures a way to make it a 1-pass type of system + I learn about it, I'll update.
+Or:
+
+```shell
+npm i -G pnpm
+```
+
+Then install dependencies via:
+
+```shell
+pnpm i
+```
+
+To run in develop mode, run:
+
+```shell
+pnpm dev
+```
+
+
+## Unit tests
+
+Run:
+
+```shell
+pnpm test
+```
+
+
+## E2E tests
+
+Run:
+
+```shell
+pnpm e2e
+```
