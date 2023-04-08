@@ -18,7 +18,7 @@
     "e2e": "playwright test",
     "test:watch": "jest --watch",
     "playwright": "playwright",
-    "playwright:install": "playwright install-deps"
+    "playwright:install": "playwright install --with-deps"
   },
   "dependencies": {
     "@next/font": "^13.1.0",

@@ -60,10 +60,10 @@ jobs:
         run: pnpm test
 
       - name: build static pages
-        run: pnpm run build
+        run: pnpm build
 
       - name: e2e tests
-        run: xvfb-run -a pnpm run playwright test --headed
+        run: xvfb-run -a pnpm playwright test --headed
 
       - name: archive test results
         uses: actions/upload-artifact@v3
