@@ -64,8 +64,8 @@ dependencies:
 
 devDependencies:
   '@playwright/test':
-    specifier: ^1.29.2
-    version: 1.29.2
+    specifier: ^1.32.2
+    version: 1.32.2
   '@types/jest':
     specifier: ^29.2.4
     version: 29.2.4
@@ -888,13 +888,15 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@playwright/test@1.29.2:
-    resolution: {integrity: sha512-+3/GPwOgcoF0xLz/opTnahel1/y42PdcgZ4hs+BZGIUjtmEFSXGg+nFoaH3NSmuc7a6GSFwXDJ5L7VXpqzigNg==}
+  /@playwright/test@1.32.2:
+    resolution: {integrity: sha512-nhaTSDpEdTTttdkDE8Z6K3icuG1DVRxrl98Qq0Lfc63SS9a2sjc9+x8ezysh7MzCKz6Y+nArml3/mmt+gqRmQQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
       '@types/node': 18.11.17
-      playwright-core: 1.29.2
+      playwright-core: 1.32.2
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /@popperjs/core@2.11.7:
@@ -3623,12 +3625,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
-    dev: true
-
-  /playwright-core@1.29.2:
-    resolution: {integrity: sha512-94QXm4PMgFoHAhlCuoWyaBYKb92yOcGVHdQLoxQ7Wjlc7Flg4aC/jbFW7xMR52OfXMVkWicue4WXE7QEegbIRA==}
-    engines: {node: '>=14'}
-    hasBin: true
     dev: true
 
   /playwright-core@1.32.2:
