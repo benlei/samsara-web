@@ -71,11 +71,15 @@ export default function SummaryTable(
                                      singular={'patch'} plural={'patches'}
                                      counter={getPatchesSinceLastCountSummary}
                 />}
+
+            {/*TODO: for longest leaderboard, chunk by patch count, but add in info about between which two patches has that count */}
             {sortBy === 'longest-day' &&
                 <BasicCounterSummary {...commonProps}
                                      singular={'day'} plural={'days'}
                                      counter={(vp, banners) => getLongestDaysInBetween(vp, banners, now)}
                 />}
+
+            {/*TODO: for shortest leaderboard, chunk by patch count, but add in info about between which two patches has that count */}
             {sortBy === 'shortest-day' &&
                 <BasicCounterSummary {...commonProps}
                                      singular={'day'} plural={'days'}
@@ -101,6 +105,8 @@ export default function SummaryTable(
                                      singular={'patch'} plural={'patches'}
                                      counter={getShortestPatchesInBetween}
                 />}
+
+            {/*TODO: chunk by ROUND(patch) */}
             {sortBy === 'avg-day' &&
                 <AverageCounterSummary {...commonProps}
                                        singular={'day'} plural={'days'}
@@ -116,6 +122,8 @@ export default function SummaryTable(
                                        singular={'patch'} plural={'patches'}
                                        counter={getAveragePatchesInBetween}
                 />}
+
+            {/*TODO: chunk runs by run count */}
             {sortBy === 'runs' &&
                 <BasicCounterSummary {...commonProps}
                                      singular={'run'} plural={'runs'}
