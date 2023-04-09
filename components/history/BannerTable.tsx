@@ -1,5 +1,5 @@
 import React from "react";
-import {BannerFilterSortOptions, ResourceBanner, VersionParts} from "@/banners/types";
+import {BannerFilterSortOptions, DetailedFeaturedHistory, VersionParts} from "@/banners/types";
 import {Table} from "semantic-ui-react";
 import _ from "lodash";
 import HistoryHeader from "@/components/history/HistoryHeader";
@@ -11,7 +11,7 @@ import {getFilterFunction} from "@/banners/summary";
 type BannerRundownProps = {
     bannerType: string
     versionParts: VersionParts[]
-    rundown: ResourceBanner[]
+    rundown: DetailedFeaturedHistory[]
     standards?: string[]
 } & BannerFilterSortOptions
 
@@ -31,7 +31,7 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
         this.setState({filterText: event.target.value});
     }
 
-    isLimitedFilter = (r: ResourceBanner) => {
+    isLimitedFilter = (r: DetailedFeaturedHistory) => {
         if (!this.props.limitedOnly || typeof this.props.standards === 'undefined') {
             return true
         }
@@ -39,27 +39,27 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
         return !this.props.standards!.includes(r.name)
     }
 
-    sortByName = (r: ResourceBanner) => r.name
+    sortByName = (r: DetailedFeaturedHistory) => r.name
 
     sortByRunsLastPatch = [
-        (r: ResourceBanner) => String(r.banners.length),
-        (r: ResourceBanner) => r.banners[r.banners.length - 1],
+        (r: DetailedFeaturedHistory) => String(r.versions.length),
+        (r: DetailedFeaturedHistory) => r.versions[r.versions.length - 1],
         this.sortByName,
     ]
 
     sortByRunsFirstPatch = [
-        (r: ResourceBanner) => String(r.banners.length),
-        (r: ResourceBanner) => r.banners[0],
+        (r: DetailedFeaturedHistory) => String(r.versions.length),
+        (r: DetailedFeaturedHistory) => r.versions[0],
         this.sortByName,
     ]
 
     sortByFirst = [
-        (r: ResourceBanner) => r.banners[0],
+        (r: DetailedFeaturedHistory) => r.versions[0],
         this.sortByName,
     ]
 
     sortByLast = [
-        (r: ResourceBanner) => r.banners[r.banners.length - 1],
+        (r: DetailedFeaturedHistory) => r.versions[r.versions.length - 1],
         this.sortByName,
     ]
 

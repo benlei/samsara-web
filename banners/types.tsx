@@ -11,6 +11,10 @@ export type Featured = {
     name: string
 } & FeaturedVersions & FeaturedDates
 
+export type FeaturedHistory = {
+    name: string
+} & FeaturedVersions
+
 export type FeaturedVersions = {
     versions: string[]
 }
@@ -24,21 +28,16 @@ export type DateRange = {
     end: string
 }
 
-
-export type BannerResource = {
-    [name: string]: string[]
-}
-
 export type VersionParts = {
     version: string;
     parts: number;
 }
 
-export type ResourceBanner = {
+export type DetailedFeaturedHistory = {
     name: string;
     image: string;
     runs: number;
-    banners: string[];
+    versions: string[];
     counter: number[];
 }
 

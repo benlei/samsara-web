@@ -4,13 +4,13 @@ import HistoryOptions from "@/components/history/HistoryOptions";
 import BannerTable from "@/components/history/BannerTable";
 import getVersionParts from "@/banners/version";
 import {getRundowns} from "@/banners/rundown";
-import {BannerResource} from "@/banners/types";
+import {FeaturedHistory} from "@/banners/types";
 import ScrollContainer from "react-indiana-drag-scroll";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import _ from "lodash";
 
 type Properties = {
-    banners: BannerResource
+    featuredList: FeaturedHistory[]
     bannerType: string
     standards?: string[]
     showLimitedOnly: boolean
@@ -41,7 +41,7 @@ export default class HistoryPage extends React.Component<Properties, States> {
 
     render() {
         const {
-            banners,
+            featuredList,
             bannerType,
             standards,
             showLimitedOnly,
@@ -87,12 +87,12 @@ export default class HistoryPage extends React.Component<Properties, States> {
                         <Ref innerRef={this.componentRef}>
                             <BannerTable bannerType={bannerType}
                                          versionParts={getVersionParts(
-                                             _.chain(banners)
-                                                 .values()
+                                             _.chain(featuredList)
+                                                 .map((featured) => featured.versions)
                                                  .flatten()
                                                  .value()
                                          )}
-                                         rundown={getRundowns(banners)}
+                                         rundown={getRundowns(featuredList)}
                                          limitedOnly={limitedOnly}
                                          order={order}
                                          sortBy={sortBy}
