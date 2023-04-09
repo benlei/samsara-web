@@ -1,10 +1,10 @@
-import {BannerResource, ResourceBanner, VersionParts} from "@/banners/types";
+import {FeaturedHistory, DetailedFeaturedHistory, VersionParts} from "@/banners/types";
 import _ from "lodash";
 import getVersionParts, {getBaseVersion, getVersionPart} from "@/banners/version";
 import {getImageFromName} from "@/format/image";
 
 
-function fillPrereleaseCounter(versionParts: VersionParts[], resourceCounter: ResourceBanner, firstVersion: string): number {
+function fillPrereleaseCounter(versionParts: VersionParts[], resourceCounter: DetailedFeaturedHistory, firstVersion: string): number {
     let versionIndex = versionParts.length - 1
     let countParts = 0
 
@@ -18,7 +18,7 @@ function fillPrereleaseCounter(versionParts: VersionParts[], resourceCounter: Re
     return versionIndex;
 }
 
-function fillWaitCounter(versions: string[], versionIndex: number, versionParts: VersionParts[], resourceCounter: ResourceBanner) {
+function fillWaitCounter(versions: string[], versionIndex: number, versionParts: VersionParts[], resourceCounter: DetailedFeaturedHistory) {
     let waitParts = 0;
     let start = getVersionPart(versions[0]);
     let bannerVersionIndex = 0;
@@ -43,23 +43,28 @@ function fillWaitCounter(versions: string[], versionIndex: number, versionParts:
     }
 }
 
-export function getRundowns(banners: BannerResource): ResourceBanner[] {
-    const versionParts = getVersionParts(banners)
-    const result: ResourceBanner[] = []
+export function getRundowns(featuredList: FeaturedHistory[]): DetailedFeaturedHistory[] {
+    const versionParts = getVersionParts(
+        _.chain(featuredList)
+            .map((featured) => featured.versions)
+            .flatten()
+            .value()
+    )
+    const result: DetailedFeaturedHistory[] = []
 
-    for (const name of Object.keys(banners)) {
-        let resourceCounter: ResourceBanner = {
-            name,
-            image: getImageFromName(name),
-            runs: banners[name].length,
-            banners: banners[name],
+    for (const featured of featuredList) {
+        let resourceCounter: DetailedFeaturedHistory = {
+            name: featured.name,
+            image: getImageFromName(featured.name),
+            runs: featured.versions.length,
+            versions: featured.versions,
             counter: [],
         }
 
         // fill out versions before it was released
         fillWaitCounter(
-            banners[name],
-            fillPrereleaseCounter(versionParts, resourceCounter, banners[name][0]),
+            featured.versions,
+            fillPrereleaseCounter(versionParts, resourceCounter, featured.versions[0]),
             versionParts,
             resourceCounter
         );
@@ -69,6 +74,6 @@ export function getRundowns(banners: BannerResource): ResourceBanner[] {
     }
 
     return _.chain(result)
-        .orderBy((r) => `${r.banners[r.banners.length - 1]}-${r.image}`, 'desc')
+        .orderBy((r) => `${r.versions[r.versions.length - 1]}-${r.image}`, 'desc')
         .value()
 }

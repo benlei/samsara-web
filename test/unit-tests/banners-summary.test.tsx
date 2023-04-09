@@ -1,6 +1,5 @@
-import {VersionParts} from "@/banners/types";
+import {BannerSummary, Featured, VersionParts} from "@/banners/types";
 import {
-    BannerSummary,
     getAverageBannersInBetween,
     getAverageDaysInBetween,
     getAveragePatchesInBetween,
@@ -42,8 +41,9 @@ const VersionPartsDummyData: VersionParts[] = [
     {version: '3.2', parts: 2},
 ]
 
-const BannerSummariesDummyData: { [name: string]: BannerSummary } = {
-    "Venti": {
+const BannerSummariesDummyData: Featured[] = [
+    {
+        "name": "Venti",
         "versions": ["1.0.1", "1.4.1", "2.6.1", "3.1.1"],
         "dates": [
             {"start": "2020-09-28", "end": "2020-10-18"},
@@ -52,14 +52,16 @@ const BannerSummariesDummyData: { [name: string]: BannerSummary } = {
             {"start": "2022-09-28", "end": "2022-10-14"}
         ]
     },
-    "Hu Tao": {
+    {
+        "name": "Hu Tao",
         "versions": ["1.3.3", "2.2.2"],
         "dates": [
             {"start": "2021-03-02", "end": "2021-03-16"},
             {"start": "2021-11-02", "end": "2021-11-23"},
         ]
     },
-    "Yoimiya": {
+    {
+        "name": "Yoimiya",
         "versions": ["2.0.2", "2.8.2", "3.2.1"],
         "dates": [
             {"start": "2021-08-10", "end": "2021-08-31"},
@@ -67,16 +69,18 @@ const BannerSummariesDummyData: { [name: string]: BannerSummary } = {
             {"start": "2022-11-02", "end": "2022-11-18"}
         ]
     },
-    "Fake": {
+    {
+        "name": "Fake",
         "versions": ["2.0.2"],
         "dates": [
             {"start": "2021-08-10", "end": ""},
         ]
     },
-}
+]
 
-const BannerSummariesWithOveralpDummyData: { [name: string]: BannerSummary } = {
-    "Venti": {
+const BannerSummariesWithOverallDummyData: Featured[] = [
+    {
+        "name": "Venti",
         "versions": ["1.0.1", "1.4.1", "2.6.1", "3.1.1"],
         "dates": [
             {"start": "2020-09-28", "end": "2020-10-18"},
@@ -85,14 +89,16 @@ const BannerSummariesWithOveralpDummyData: { [name: string]: BannerSummary } = {
             {"start": "2022-09-28", "end": "2022-10-14"}
         ]
     },
-    "Hu Tao": {
+    {
+        "name": "Hu Tao",
         "versions": ["1.3.3", "2.2.2"],
         "dates": [
             {"start": "2021-03-02", "end": "2021-03-16"},
             {"start": "2021-11-02", "end": "2021-11-23"},
         ]
     },
-    "Yoimiya": {
+    {
+        "name": "Yoimiya",
         "versions": ["2.0.2", "2.8.2", "3.1.2"],
         "dates": [
             {"start": "2021-08-10", "end": "2021-08-31"},
@@ -100,7 +106,7 @@ const BannerSummariesWithOveralpDummyData: { [name: string]: BannerSummary } = {
             {"start": "2022-11-02", "end": "2022-11-18"}
         ]
     },
-}
+]
 
 const VersionPartsDummyDataWithFuture: VersionParts[] = [
     ...VersionPartsDummyData,
@@ -108,30 +114,33 @@ const VersionPartsDummyDataWithFuture: VersionParts[] = [
     {version: '4.0', parts: 2},
 ]
 
-const BannerSummariesDummyDataWithFuture: { [name: string]: BannerSummary } = {
+const BannerSummariesDummyDataWithFuture: Featured[] = [
     ...BannerSummariesDummyData,
-    "Fake2": {
+    {
+        "name": "Fake2",
         "versions": ['3.9.1', '4.0.1'],
         "dates": [
             {"start": "2022-06-01", "end": "2022-06-24"},
             {"start": "2023-06-01", "end": ""}
         ]
     },
-    "Fake3": {
+    {
+        "name": "Fake3",
         "versions": ['3.9.1', '4.0.2'],
         "dates": [
             {"start": "2022-06-01", "end": "2022-06-24"},
             {"start": "", "end": ""}
         ]
     },
-    "Fake4": {
+    {
+        "name": "Fake4",
         "versions": ['3.9.1', '4.0.2'],
         "dates": [
             {"start": "2022-12-01", "end": "2022-12-24"},
             {"start": "2023-01-01", "end": "2023-01-24"}
         ]
     }
-}
+]
 
 
 describe('getPatchGap', () => {
@@ -753,13 +762,13 @@ describe('getCurrentVersionPart', () => {
     })
 
     it('should determine latest patch between old banner and new of same patch', () => {
-        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesWithOveralpDummyData, dayjs.utc("2022-11-01")))
+        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesWithOverallDummyData, dayjs.utc("2022-11-01")))
             .toEqual({version: "3.1", parts: 1})
 
-        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesWithOveralpDummyData, dayjs.utc("2022-11-02")))
+        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesWithOverallDummyData, dayjs.utc("2022-11-02")))
             .toEqual({version: "3.1", parts: 2})
 
-        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesWithOveralpDummyData, dayjs.utc("2022-11-05")))
+        expect(getCurrentVersionPart(VersionPartsDummyData, BannerSummariesWithOverallDummyData, dayjs.utc("2022-11-05")))
             .toEqual({version: "3.1", parts: 2})
     })
 

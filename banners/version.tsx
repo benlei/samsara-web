@@ -1,4 +1,4 @@
-import {VersionParts} from "@/banners/types";
+import {Featured, FeaturedVersions, VersionParts} from "@/banners/types";
 import _ from "lodash";
 
 type VersionCount = {
@@ -14,15 +14,13 @@ export function getVersionPart(version: string): number {
     return parseInt(version.substring(version.lastIndexOf('.') + 1))
 }
 
-export default function getVersionParts(banners: { [name: string]: string[] }, orders: boolean | "asc" | "desc" = 'desc'): VersionParts[] {
+export default function getVersionParts(versions: string[], orders: boolean | "asc" | "desc" = 'desc'): VersionParts[] {
     const versionCounts: VersionCount = {}
-    for (const characterName of Object.keys(banners)) {
-        for (const version of banners[characterName]) {
-            versionCounts[getBaseVersion(version)] = Math.max(
-                versionCounts[getBaseVersion(version)] || 0,
-                getVersionPart(version),
-            )
-        }
+    for (const version of versions) {
+        versionCounts[getBaseVersion(version)] = Math.max(
+            versionCounts[getBaseVersion(version)] || 0,
+            getVersionPart(version),
+        )
     }
 
     return _.chain(versionCounts)

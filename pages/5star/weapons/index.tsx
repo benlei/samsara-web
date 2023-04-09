@@ -1,24 +1,29 @@
 import Head from 'next/head'
-import {BannerResource} from '@/banners/types'
+import {FeaturedHistory} from '@/banners/types'
 import React from "react";
 import HistoryPage from "@/components/history/HistoryPage";
 import {Container, Header} from "semantic-ui-react";
 import _ from 'lodash';
+import YAML from "yaml";
+import fs from "fs";
+import path from "path";
 
 
 export async function getStaticProps() {
     return {
         props: {
-            banners: _.mapValues(require('@/data/banners.json').weapons['5'], (v) => v.versions)
+            featuredList: _.chain(YAML.parse(fs.readFileSync(path.resolve('./public/data/banners.yaml'), 'utf8')).fiveStarWeapons)
+                .map((featured) => _.omit(featured, 'dates'))
+                .value(),
         },
     };
 }
 
 type Properties = {
-    banners: BannerResource
+    featuredList: FeaturedHistory[]
 }
 
-export default function FiveStarWeaponsHome({banners}: Properties) {
+export default function FiveStarWeaponsHome({featuredList}: Properties) {
     return (
         <>
             <Head>
@@ -31,7 +36,7 @@ export default function FiveStarWeaponsHome({banners}: Properties) {
                 <Header size={'large'}>5&#x2605; Weapon Banner History</Header>
             </Container>
             <HistoryPage bannerType={'weapons'}
-                         banners={banners}
+                         featuredList={featuredList}
                          showLimitedOnly={false}
             />
         </>

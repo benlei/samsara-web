@@ -1,15 +1,15 @@
-import {ResourceBanner} from "@/banners/types";
+import {DetailedFeaturedHistory} from "@/banners/types";
 import React from "react";
 import {Image, Label, Table} from "semantic-ui-react";
 
 type Properties = {
-    rundown: ResourceBanner
+    rundown: DetailedFeaturedHistory
     bannerType: string
 }
 
 type States = {}
 
-function getImageOrCounter(type: string, rc: ResourceBanner, counter: number): React.ReactElement {
+function getImageOrCounter(type: string, rc: DetailedFeaturedHistory, counter: number): React.ReactElement {
     if (counter == 0) {
         return <Image avatar src={`/images/${type}/${rc.image}.png`} alt={rc.image}/>
 
