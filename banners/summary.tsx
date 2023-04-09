@@ -1,7 +1,7 @@
 import {getBaseVersion, getVersionPart} from "@/banners/version";
 import _ from "lodash";
 import dayjs, {Dayjs} from "dayjs";
-import {VersionParts} from "@/banners/types";
+import {DateRange, FeaturedDates, Featured, FeaturedVersions, VersionParts} from "@/banners/types";
 import {getImageFromName} from "@/format/image";
 import utc from "dayjs/plugin/utc";
 
@@ -28,31 +28,12 @@ export type AverageCountSummary = {
     discrepancy: boolean
 }
 
-export type BannerSummary = {
-    versions: string[]
-    dates: DateRange[]
-}
-
-export type DateRange = {
-    start: string
-    end: string
-}
-
 export type DayjsRange = {
     start: Dayjs
     end: Dayjs
 }
 
-export type CommonSummaryProperties = {
-    versionParts: VersionParts[]
-    banners: { [name: string]: BannerSummary }
-    type: string
-    order: 'asc' | 'desc' | boolean
-    filterText: string
-}
-
-
-function getNormalizedDayjsBannerDates(currDayjs: Dayjs, banner: BannerSummary): DayjsRange[] {
+function getNormalizedDayjsBannerDates(currDayjs: Dayjs, featured: FeaturedDates): DayjsRange[] {
     function getEquivalentFutureDateFromCurrToRangeStart(range: DayjsRange): DayjsRange {
         return {
             start: range.end.subtract(range.start.diff(currDayjs, 'day'), 'day'),
@@ -60,7 +41,7 @@ function getNormalizedDayjsBannerDates(currDayjs: Dayjs, banner: BannerSummary):
         }
     }
 
-    const result: DayjsRange[] = _.chain(banner.dates)
+    const result: DayjsRange[] = _.chain(featured.dates)
         .filter((dateRange) => dateRange.start != '')
         .map((dateRange) => {
             if (!dateRange.end) {
@@ -98,8 +79,8 @@ function getNormalizedDayjsBannerDates(currDayjs: Dayjs, banner: BannerSummary):
     return result
 }
 
-function getNormalizedBannerDateGaps(currDayjs: Dayjs, banner: BannerSummary): number[] {
-    const dateRanges = getNormalizedDayjsBannerDates(currDayjs, banner)
+function getNormalizedBannerDateGaps(currDayjs: Dayjs, featured: FeaturedDates): number[] {
+    const dateRanges = getNormalizedDayjsBannerDates(currDayjs, featured)
 
     const result = []
     for (let i = 0; i < dateRanges.length - 1; i++) {
@@ -183,55 +164,45 @@ export function getFilterFunction(filterText: string): (s: { name: string }) => 
 
 function getCountSummary(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
-    calculate: (banner: BannerSummary) => number,
+    featuredList: Featured[],
+    calculate: (featured: Featured) => number,
 ): CountSummary[] {
-    const result: CountSummary[] = []
-
-    _.forIn(bannerSummaries, (banner, name) => {
-        result.push({
-            name,
-            image: getImageFromName(name),
-            count: calculate(banner),
-        })
+    return _.map(featuredList, (featured: Featured) => {
+        return {
+            name: featured.name,
+            image: getImageFromName(featured.name),
+            count: calculate(featured),
+        }
     })
-
-    return result
 }
 
-function canShowNonFutureLastRun(currDayjs: Dayjs, banner: BannerSummary): boolean {
-    return banner.dates[banner.dates.length - 1].start != ''
-        && currDayjs.isBefore(dayjs.utc(banner.dates[banner.dates.length - 1].start))
-        && banner.dates.length > 1
+function canShowNonFutureLastRun(currDayjs: Dayjs, featured: FeaturedDates): boolean {
+    return featured.dates[featured.dates.length - 1].start != ''
+        && currDayjs.isBefore(dayjs.utc(featured.dates[featured.dates.length - 1].start))
+        && featured.dates.length > 1
 }
 
 export function getDaysSinceRunCountSummary(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
     currDate: string,
 ): CountSummary[] {
-    function canShowNonFutureLastRun(banner: BannerSummary): boolean {
-        return banner.dates[banner.dates.length - 1].start != ''
-            && currDayjs.isBefore(dayjs.utc(banner.dates[banner.dates.length - 1].start))
-            && banner.dates.length > 1
-    }
-
     dayjs.extend(utc);
 
     const currDayjs = dayjs.utc(currDate)
     return getCountSummary(
         versionParts,
-        bannerSummaries,
-        (banner) => {
-            if (banner.dates.length === 1 && banner.dates[0].start === '') {
+        featuredList,
+        (featured) => {
+            if (featured.dates.length === 1 && featured.dates[0].start === '') {
                 return UnknownFutureCounter
             }
 
-            if (canShowNonFutureLastRun(banner)) {
-                return currDayjs.diff(dayjs.utc(banner.dates[banner.dates.length - 2].end), 'day')
+            if (canShowNonFutureLastRun(currDayjs, featured)) {
+                return currDayjs.diff(dayjs.utc(featured.dates[featured.dates.length - 2].end), 'day')
             }
 
-            return _.last(getNormalizedBannerDateGaps(currDayjs, banner)) as number
+            return _.last(getNormalizedBannerDateGaps(currDayjs, featured)) as number
         },
     )
 }
@@ -239,22 +210,21 @@ export function getDaysSinceRunCountSummary(
 
 export function getCurrentVersionPart(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
     currDajs: Dayjs,
 ): VersionParts {
     let end = versionParts.length - 1
     let result: VersionParts
-    let latest: BannerSummary
+    let latest: Featured
 
     do {
         result = {...versionParts[end]}
-        latest = _.chain(bannerSummaries)
-            .values()
-            .filter((banner) => getBaseVersion(_.last(banner.versions) as string) == result.version)
-            .filter((banner) => banner.dates[banner.dates.length - 1].start != '')
-            .filter((banner) => currDajs.diff(
-                dayjs.utc(banner.dates[banner.dates.length - 1].start, 'day')) >= 0)
-            .orderBy((banner) => banner.dates[banner.dates.length - 1].start, 'desc')
+        latest = _.chain(featuredList)
+            .filter((featured) => getBaseVersion(_.last(featured.versions) as string) == result.version)
+            .filter((featured) => featured.dates[featured.dates.length - 1].start != '')
+            .filter((featured) => currDajs.diff(
+                dayjs.utc(featured.dates[featured.dates.length - 1].start, 'day')) >= 0)
+            .orderBy((featured) => featured.dates[featured.dates.length - 1].start, 'desc')
             .first()
             .value()
         --end
@@ -266,53 +236,54 @@ export function getCurrentVersionPart(
 }
 
 
-function isFutureNewRelease(currentVersion: VersionParts, banner: BannerSummary): boolean {
-    return banner.versions.length === 1 && (
-        currentVersion.version < getBaseVersion(banner.versions[0])
-        || (currentVersion.version == getBaseVersion(banner.versions[0])
-            && currentVersion.parts < getVersionPart(banner.versions[0]))
+function isFutureNewRelease(currentVersion: VersionParts, featured: FeaturedVersions): boolean {
+    return featured.versions.length === 1 && (
+        currentVersion.version < getBaseVersion(featured.versions[0])
+        || (currentVersion.version == getBaseVersion(featured.versions[0])
+            && currentVersion.parts < getVersionPart(featured.versions[0]))
     )
 }
 
 // for our intents and purposes, we really just need to look at either the last or 2nd last element
-function getNonFutureVersion(currentVersion: VersionParts, banner: BannerSummary): string {
-    if (banner.versions.length > 1) {
-        if (getBaseVersion(banner.versions[banner.versions.length - 1]) > currentVersion.version
-            || (getBaseVersion(banner.versions[banner.versions.length - 1]) == currentVersion.version
-                && getVersionPart(banner.versions[banner.versions.length - 1]) > currentVersion.parts)) {
-            return banner.versions[banner.versions.length - 2]
+function getNonFutureVersion(currentVersion: VersionParts, featured: FeaturedVersions): string {
+    if (featured.versions.length > 1) {
+        if (getBaseVersion(featured.versions[featured.versions.length - 1]) > currentVersion.version
+            || (getBaseVersion(featured.versions[featured.versions.length - 1]) == currentVersion.version
+                && getVersionPart(featured.versions[featured.versions.length - 1]) > currentVersion.parts)) {
+            return featured.versions[featured.versions.length - 2]
         }
     }
 
-    return banner.versions[banner.versions.length - 1]
+    return featured.versions[featured.versions.length - 1]
 }
 
 export function getBannersSinceLastCountSummary(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
     currDate: string,
 ): CountSummary[] {
     dayjs.extend(utc);
 
     const currentVersion = getCurrentVersionPart(
         versionParts,
-        bannerSummaries,
+        featuredList,
         dayjs.utc(currDate))
+
     return getCountSummary(
         versionParts,
-        bannerSummaries,
-        (banner) => {
-            if (isFutureNewRelease(currentVersion, banner)) {
+        featuredList,
+        (featured) => {
+            if (isFutureNewRelease(currentVersion, featured)) {
                 return -(getBannerGap(
                     versionParts,
                     `${currentVersion.version}.${currentVersion.parts}`,
-                    banner.versions[0],
+                    featured.versions[0],
                 ) + 1)
             }
 
             return getBannerGap(
                 versionParts,
-                getNonFutureVersion(currentVersion, banner),
+                getNonFutureVersion(currentVersion, featured),
                 `${currentVersion.version}.${currentVersion.parts}`
             ) + 1
         },
@@ -321,7 +292,7 @@ export function getBannersSinceLastCountSummary(
 
 export function getPatchesSinceLastCountSummary(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
     currDate: string,
 ): CountSummary[] {
     dayjs.extend(utc);
@@ -329,24 +300,24 @@ export function getPatchesSinceLastCountSummary(
     // for now, can say 'today' is current (doesn't affect existing tests yet)
     const currentVersion = getCurrentVersionPart(
         versionParts,
-        bannerSummaries,
+        featuredList,
         dayjs.utc(currDate))
 
     return getCountSummary(
         versionParts,
-        bannerSummaries,
-        (banner) => {
-            if (isFutureNewRelease(currentVersion, banner)) {
+        featuredList,
+        (featured) => {
+            if (isFutureNewRelease(currentVersion, featured)) {
                 return -getPatchGap(
                     versionParts,
                     `${currentVersion.version}.${currentVersion.parts}`,
-                    banner.versions[0],
+                    featured.versions[0],
                 )
             }
 
             return getPatchGap(
                 versionParts,
-                getNonFutureVersion(currentVersion, banner),
+                getNonFutureVersion(currentVersion, featured),
                 `${currentVersion.version}.${currentVersion.parts}`
             )
         },
@@ -355,24 +326,24 @@ export function getPatchesSinceLastCountSummary(
 
 export function getRunsCountSummary(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
 ): CountSummary[] {
     return getCountSummary(
         versionParts,
-        bannerSummaries,
-        (banner) => banner.versions.length,
+        featuredList,
+        (featured) => featured.versions.length,
     )
 }
 
 function getAverageCountSummary(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
-    calculateAll: (versionParts: VersionParts[], banner: BannerSummary) => number[],
+    featuredList: Featured[],
+    calculateAll: (versionParts: VersionParts[], featured: Featured) => number[],
 ): AverageCountSummary[] {
     const result: AverageCountSummary[] = []
 
-    _.forIn(bannerSummaries, (banner, name) => {
-        const counters = calculateAll(versionParts, banner)
+    _.forEach(featuredList, (featured) => {
+        const counters = calculateAll(versionParts, featured)
         const average = counters.length ? _.sum(counters) / counters.length : 0
         const standardDeviation = counters.length ? Math.sqrt(
             _.sumBy(
@@ -382,25 +353,25 @@ function getAverageCountSummary(
         ) : 0
 
         result.push({
-            name,
-            image: getImageFromName(name),
+            name: featured.name,
+            image: getImageFromName(featured.name),
             count: counters.length + 1,
             average: _.round(average, 1),
             standardDeviation: _.round(standardDeviation, 1),
-            discrepancy: counters.length + 1 != banner.versions.length,
+            discrepancy: counters.length + 1 != featured.versions.length,
         })
     })
 
     return result
 }
 
-function getDayGaps(ignore: any, banner: BannerSummary): number[] {
+function getDayGaps(ignore: any, featured: FeaturedDates): number[] {
     const result = []
-    for (let i = 0; i < banner.dates.length - 1; i++) {
-        if (banner.dates[i].end == '' || banner.dates[i + 1].start == '') {
+    for (let i = 0; i < featured.dates.length - 1; i++) {
+        if (featured.dates[i].end == '' || featured.dates[i + 1].start == '') {
             continue
         }
-        result.push(dayjs.utc(banner.dates[i + 1].start).diff(dayjs.utc(banner.dates[i].end), 'day'))
+        result.push(dayjs.utc(featured.dates[i + 1].start).diff(dayjs.utc(featured.dates[i].end), 'day'))
     }
 
     return result
@@ -408,21 +379,21 @@ function getDayGaps(ignore: any, banner: BannerSummary): number[] {
 
 export function getAverageDaysInBetween(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
 ): AverageCountSummary[] {
     dayjs.extend(utc);
 
     return getAverageCountSummary(
         versionParts,
-        bannerSummaries,
+        featuredList,
         getDayGaps,
     )
 }
 
-function getBannerGaps(versionParts: VersionParts[], banner: BannerSummary): number[] {
+function getBannerGaps(versionParts: VersionParts[], featured: FeaturedVersions): number[] {
     const result = []
-    for (let i = 0; i < banner.versions.length - 1; i++) {
-        result.push(getBannerGap(versionParts, banner.versions[i], banner.versions[i + 1]))
+    for (let i = 0; i < featured.versions.length - 1; i++) {
+        result.push(getBannerGap(versionParts, featured.versions[i], featured.versions[i + 1]))
     }
 
     return result
@@ -430,19 +401,19 @@ function getBannerGaps(versionParts: VersionParts[], banner: BannerSummary): num
 
 export function getAverageBannersInBetween(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
 ): AverageCountSummary[] {
     return getAverageCountSummary(
         versionParts,
-        bannerSummaries,
+        featuredList,
         getBannerGaps,
     )
 }
 
-function getPatchGaps(versionParts: VersionParts[], banner: BannerSummary): number[] {
+function getPatchGaps(versionParts: VersionParts[], featured: FeaturedVersions): number[] {
     const result = []
-    for (let i = 0; i < banner.versions.length - 1; i++) {
-        result.push(getPatchGap(versionParts, banner.versions[i], banner.versions[i + 1]))
+    for (let i = 0; i < featured.versions.length - 1; i++) {
+        result.push(getPatchGap(versionParts, featured.versions[i], featured.versions[i + 1]))
     }
 
     return result
@@ -450,18 +421,18 @@ function getPatchGaps(versionParts: VersionParts[], banner: BannerSummary): numb
 
 export function getAveragePatchesInBetween(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
 ): AverageCountSummary[] {
     return getAverageCountSummary(
         versionParts,
-        bannerSummaries,
+        featuredList,
         getPatchGaps,
     )
 }
 
 export function getLongestDaysInBetween(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
     currDate: string,
 ): CountSummary[] {
     dayjs.extend(utc);
@@ -469,9 +440,9 @@ export function getLongestDaysInBetween(
     const currDayjs = dayjs.utc(currDate)
     return getCountSummary(
         versionParts,
-        bannerSummaries,
-        (banner: BannerSummary): number => {
-            return Math.max(...getNormalizedBannerDateGaps(currDayjs, banner), 0)
+        featuredList,
+        (featured: Featured): number => {
+            return Math.max(...getNormalizedBannerDateGaps(currDayjs, featured), 0)
         },
     )
 }
@@ -479,7 +450,7 @@ export function getLongestDaysInBetween(
 
 export function getShortestDaysInBetween(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
     currDate: string,
 ): CountSummary[] {
     dayjs.extend(utc);
@@ -487,10 +458,10 @@ export function getShortestDaysInBetween(
     const currDayjs = dayjs.utc(currDate)
     return getCountSummary(
         versionParts,
-        _.pickBy(bannerSummaries, (banner) => banner.versions.length > 1),
-        (banner: BannerSummary): number => {
-            const existingDayGaps = getDayGaps(null, banner)
-            const ongoingDayGaps = getNormalizedBannerDateGaps(currDayjs, banner)
+        _.filter(featuredList, (featured) => featured.versions.length > 1),
+        (featured: Featured): number => {
+            const existingDayGaps = getDayGaps(null, featured)
+            const ongoingDayGaps = getNormalizedBannerDateGaps(currDayjs, featured)
 
             if (!existingDayGaps.length) {
                 return Math.max(0, Math.min(...ongoingDayGaps))
@@ -502,27 +473,26 @@ export function getShortestDaysInBetween(
 }
 
 function isLastVersionLatest(versionParts: VersionParts[],
-                             banner: BannerSummary): boolean {
-    return getBaseVersion(banner.versions[banner.versions.length - 1]) == versionParts[versionParts.length - 1].version
+                             featured: Featured): boolean {
+    return getBaseVersion(featured.versions[featured.versions.length - 1]) == versionParts[versionParts.length - 1].version
 }
 
 function isLastVersionLatestBanner(versionParts: VersionParts[],
-                                   banner: BannerSummary): boolean {
-    return banner.versions[banner.versions.length - 1] == versionParts[versionParts.length - 1].version + "." + versionParts[versionParts.length - 1].parts
+                                   featured: Featured): boolean {
+    return featured.versions[featured.versions.length - 1] == versionParts[versionParts.length - 1].version + "." + versionParts[versionParts.length - 1].parts
 }
 
 export function getLongestBannersInBetween(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
 ): CountSummary[] {
     return getCountSummary(
         versionParts,
-        bannerSummaries,
-        (banner: BannerSummary): number => {
+        featuredList,
+        (featured: Featured): number => {
             const ongoingBanner = {
-                dates: banner.dates,
-                versions: isLastVersionLatestBanner(versionParts, banner) ? banner.versions : [
-                    ...banner.versions,
+                versions: isLastVersionLatestBanner(versionParts, featured) ? featured.versions : [
+                    ...featured.versions,
                     versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
                 ],
             }
@@ -533,42 +503,41 @@ export function getLongestBannersInBetween(
 
 export function getShortestBannersInBetween(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
 ): CountSummary[] {
     return getCountSummary(
         versionParts,
-        _.pickBy(bannerSummaries, (banner) => banner.versions.length > 1),
-        (banner: BannerSummary): number => {
+        _.filter(featuredList, (featured) => featured.versions.length > 1),
+        (featured: Featured): number => {
             const ongoingBanner = {
-                dates: banner.dates,
-                versions: isLastVersionLatestBanner(versionParts, banner) ? banner.versions : [
-                    ...banner.versions,
+                dates: featured.dates,
+                versions: isLastVersionLatestBanner(versionParts, featured) ? featured.versions : [
+                    ...featured.versions,
                     versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
                 ],
             }
 
-            return Math.max(Math.min(...getBannerGaps(versionParts, banner)), Math.min(...getBannerGaps(versionParts, ongoingBanner)))
+            return Math.max(Math.min(...getBannerGaps(versionParts, featured)), Math.min(...getBannerGaps(versionParts, ongoingBanner)))
         },
     )
 }
 
 export function getLongestPatchesInBetween(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
 ): CountSummary[] {
     return getCountSummary(
         versionParts,
-        bannerSummaries,
-        (banner: BannerSummary): number => {
+        featuredList,
+        (featured): number => {
             const ongoingBanner = {
-                dates: banner.dates,
-                versions: isLastVersionLatest(versionParts, banner) ? banner.versions : [
-                    ...banner.versions,
+                versions: isLastVersionLatest(versionParts, featured) ? featured.versions : [
+                    ...featured.versions,
                     versionParts[versionParts.length - 1].version + '.' + versionParts[versionParts.length - 1].parts,
                 ],
             }
 
-            if (isLastVersionLatest(versionParts, banner)) {
+            if (isLastVersionLatest(versionParts, featured)) {
                 return Math.max(...getPatchGaps(versionParts, ongoingBanner), 0)
             }
 
@@ -581,26 +550,26 @@ export function getLongestPatchesInBetween(
 
 export function getShortestPatchesInBetween(
     versionParts: VersionParts[],
-    bannerSummaries: { [name: string]: BannerSummary },
+    featuredList: Featured[],
 ): CountSummary[] {
     return getCountSummary(
         versionParts,
-        _.pickBy(bannerSummaries, (banner) => banner.versions.length > 1),
-        (banner: BannerSummary): number => {
+        _.filter(featuredList, (banner) => banner.versions.length > 1),
+        (featured: Featured): number => {
             const ongoingBanner = {
-                dates: banner.dates,
-                versions: isLastVersionLatest(versionParts, banner) ? banner.versions : [
-                    ...banner.versions,
+                dates: featured.dates,
+                versions: isLastVersionLatest(versionParts, featured) ? featured.versions : [
+                    ...featured.versions,
                     versionParts[versionParts.length - 1].version + '.' + versionParts[versionParts.length - 1].parts,
                 ],
             }
 
             const gaps = getPatchGaps(versionParts, ongoingBanner)
-            if (!isLastVersionLatest(versionParts, banner)) {
+            if (!isLastVersionLatest(versionParts, featured)) {
                 gaps[gaps.length - 1]++
             }
 
-            return Math.max(Math.min(...getPatchGaps(versionParts, banner)), Math.min(...gaps))
+            return Math.max(Math.min(...getPatchGaps(versionParts, featured)), Math.min(...gaps))
         },
     )
 }

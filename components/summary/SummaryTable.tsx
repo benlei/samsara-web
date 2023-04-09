@@ -2,7 +2,6 @@ import {Table} from "semantic-ui-react";
 import React, {useEffect, useState} from "react";
 import _ from "lodash";
 import {
-    CommonSummaryProperties,
     getAverageBannersInBetween,
     getAverageDaysInBetween,
     getAveragePatchesInBetween,
@@ -18,6 +17,7 @@ import RelativeBasicCounterSummary from "@/components/summary/stat/RelativeBasic
 import BasicCounterSummary from "./stat/BasicCounterSummary";
 import AverageCounterSummary from "@/components/summary/stat/AverageCounterSummary";
 import dayjs from "dayjs";
+import {CommonSummaryProperties} from "@/banners/types";
 
 type Properties = {
     filterText: string
@@ -30,7 +30,7 @@ type Properties = {
 export default function SummaryTable(
     {
         versionParts,
-        banners,
+        featuredList,
         type,
         sortBy,
         order,
@@ -43,8 +43,8 @@ export default function SummaryTable(
     const [now, setNow] = useState(date)
     useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
     
-    const baseBanners = _.chain(banners)
-        .pickBy((b, name) => !limitedOnly || !standard!.includes(name))
+    const baseFeaturedList = _.chain(featuredList)
+        .filter((featured) => !limitedOnly || !standard!.includes(featured.name))
         .value()
 
     const commonProps: CommonSummaryProperties = {
@@ -52,7 +52,7 @@ export default function SummaryTable(
         type,
         order,
         filterText,
-        banners: baseBanners,
+        featuredList: baseFeaturedList,
     }
 
     return (

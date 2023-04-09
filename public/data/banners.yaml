@@ -1,4 +1,4 @@
-five_star_characters:
+fiveStarCharacters:
   - name: Venti
     versions:
       - 1.0.1
@@ -287,7 +287,7 @@ five_star_characters:
     dates:
       - start: ''
         end: ''
-four_star_characters:
+fourStarCharacters:
   - name: Barbara
     versions:
       - 1.0.1
@@ -786,7 +786,7 @@ four_star_characters:
     dates:
       - start: ''
         end: ''
-five_star_weapons:
+fiveStarWeapons:
   - name: Amos' Bow
     versions:
       - 1.0.1
@@ -1159,7 +1159,7 @@ five_star_weapons:
     dates:
       - start: '2023-03-01'
         end: '2023-03-21'
-four_star_weapons:
+fourStarWeapons:
   - name: Favonius Lance
     versions:
       - 1.0.1

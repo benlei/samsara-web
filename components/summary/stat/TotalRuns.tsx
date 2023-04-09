@@ -1,5 +1,6 @@
 import {Table} from "semantic-ui-react";
-import {CommonSummaryProperties} from "@/banners/summary";
+
+import {CommonSummaryProperties} from "@/banners/types";
 
 export default function TotalRuns(
     {

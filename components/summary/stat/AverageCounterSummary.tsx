@@ -1,25 +1,23 @@
 import {Icon, Image, Label, Progress, Table} from "semantic-ui-react";
 import {
     AverageCountSummary,
-    BannerSummary,
-    CommonSummaryProperties,
     getColorClassName,
     getFilterFunction,
     getPercent
 } from "@/banners/summary";
-import {VersionParts} from "@/banners/types";
+import {BannerSummary, CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
 import _ from "lodash";
 import React from "react";
 
 type Properties = {
     singular: string
     plural: string
-    counter: (versionParts: VersionParts[], bannerSummaries: { [name: string]: BannerSummary }) => AverageCountSummary[]
+    counter: (versionParts: VersionParts[], featuredList: Featured[]) => AverageCountSummary[]
 } & CommonSummaryProperties
 export default function AverageCounterSummary(
     {
         versionParts,
-        banners,
+        featuredList,
         type,
         order,
         filterText,
@@ -28,7 +26,7 @@ export default function AverageCounterSummary(
         counter,
     }: Properties
 ) {
-    const baseSummary = _.chain(counter(versionParts, banners))
+    const baseSummary = _.chain(counter(versionParts, featuredList))
         .filter((b) => b.average > 0)
         .orderBy([
             (b) => b.average,

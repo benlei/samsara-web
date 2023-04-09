@@ -1,7 +1,5 @@
 import {Image, Label, Progress, Table} from "semantic-ui-react";
 import {
-    BannerSummary,
-    CommonSummaryProperties,
     CountSummary,
     getColorClassName,
     getFilterFunction,
@@ -11,19 +9,19 @@ import {
 import _ from "lodash";
 import dayjs from "dayjs";
 import React, {useEffect, useState} from "react";
-import {VersionParts} from "@/banners/types";
+import {BannerSummary, CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
 
 type Properties = {
     date: string
     singular: string
     plural: string
-    counter: (versionParts: VersionParts[], bannerSummaries: { [name: string]: BannerSummary }, currDate: string) => CountSummary[]
+    counter: (versionParts: VersionParts[], featuredList: Featured[], currDate: string) => CountSummary[]
 } & CommonSummaryProperties
 
 export default function RelativeBasicCounterSummary(
     {
         versionParts,
-        banners,
+        featuredList,
         type,
         order,
         date,
@@ -33,7 +31,7 @@ export default function RelativeBasicCounterSummary(
         plural,
     }: Properties
 ) {
-    const baseSummary = _.chain(counter(versionParts, banners, date))
+    const baseSummary = _.chain(counter(versionParts, featuredList, date))
         .orderBy([
             (b) => b.count,
             (b) => b.name,

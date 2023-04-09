@@ -44,7 +44,12 @@ function fillWaitCounter(versions: string[], versionIndex: number, versionParts:
 }
 
 export function getRundowns(banners: BannerResource): ResourceBanner[] {
-    const versionParts = getVersionParts(banners)
+    const versionParts = getVersionParts(
+        _.chain(banners)
+            .values()
+            .flatten()
+            .value()
+    )
     const result: ResourceBanner[] = []
 
     for (const name of Object.keys(banners)) {

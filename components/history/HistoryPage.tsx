@@ -7,6 +7,7 @@ import {getRundowns} from "@/banners/rundown";
 import {BannerResource} from "@/banners/types";
 import ScrollContainer from "react-indiana-drag-scroll";
 import PngDownloadButton from "@/components/PngDownloadButton";
+import _ from "lodash";
 
 type Properties = {
     banners: BannerResource
@@ -85,7 +86,12 @@ export default class HistoryPage extends React.Component<Properties, States> {
                     <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
                         <Ref innerRef={this.componentRef}>
                             <BannerTable bannerType={bannerType}
-                                         versionParts={getVersionParts(banners)}
+                                         versionParts={getVersionParts(
+                                             _.chain(banners)
+                                                 .values()
+                                                 .flatten()
+                                                 .value()
+                                         )}
                                          rundown={getRundowns(banners)}
                                          limitedOnly={limitedOnly}
                                          order={order}
