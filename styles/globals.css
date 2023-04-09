@@ -60,7 +60,7 @@
     --hc-25: hsl(0, 2%, 5.0%);
     --history-border-color: #444;
     --history-cell-color: #666;
-    --history-run-color: #999;
+    --history-run-color: #aaa;
 }
 
 @media (max-width: 992px) {
