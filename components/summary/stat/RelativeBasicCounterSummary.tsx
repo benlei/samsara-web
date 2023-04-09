@@ -89,9 +89,11 @@ export default function RelativeBasicCounterSummary(
                                     <Card.Meta>
                                         {s.name}
                                     </Card.Meta>
-                                    <Card.Meta>
-                                        last seen in 1.1
-                                    </Card.Meta>
+                                    {s.count > 0 &&
+                                        <Card.Meta>
+                                            last seen in {s.lastPatch}
+                                        </Card.Meta>
+                                    }
                                 </Card.Content>
                             </Card>
                         </Grid.Column>

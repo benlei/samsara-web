@@ -17,6 +17,7 @@ export type CountSummary = {
     name: string
     image: string
     count: number
+    lastPatch: string
 }
 
 export type AverageCountSummary = {
@@ -172,6 +173,7 @@ function getCountSummary(
             name: featured.name,
             image: getImageFromName(featured.name),
             count: calculate(featured),
+            lastPatch: getBaseVersion(featured.versions[featured.versions.length - 1]),
         }
     })
 }

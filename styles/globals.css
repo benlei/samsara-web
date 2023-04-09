@@ -75,8 +75,9 @@
     .summary td:first-of-type {
         white-space: pre-wrap !important;
     }
+}
 
-
+@media (max-width: 1200px) {
     .ui.grid > [class*="three column"].row > .column {
         width: 50% !important;
     }
