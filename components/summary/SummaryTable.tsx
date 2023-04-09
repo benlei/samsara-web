@@ -1,4 +1,4 @@
-import {Table} from "semantic-ui-react";
+import {Card, Grid, Table} from "semantic-ui-react";
 import React, {useEffect, useState} from "react";
 import _ from "lodash";
 import {
@@ -56,7 +56,7 @@ export default function SummaryTable(
     }
 
     return (
-        <Table basic='very' celled collapsing unstackable className={'summary'}>
+        <Grid className={'summary'} stackable>
             {sortBy === 'last-day' && <RelativeBasicCounterSummary {...commonProps} date={now}
                                                                    singular={'day'} plural={'days'}
                                                                    counter={getDaysSinceRunCountSummary}
@@ -121,6 +121,6 @@ export default function SummaryTable(
                                      singular={'run'} plural={'runs'}
                                      counter={getRunsCountSummary}
                 />}
-        </Table>
+        </Grid>
     )
 }

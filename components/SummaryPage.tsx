@@ -59,7 +59,7 @@ export default function SummaryPage(
             </Container>
 
             <Ref innerRef={ref}>
-                <Container text={!expand} style={{marginTop: '1em'}} textAlign={"center"}>
+                <Container text={!expand} style={{marginTop: '1em'}}>
                     <SummaryTable
                         sortBy={sortBy} order={order as 'desc' | 'asc'} limitedOnly={limitedOnly}
                         filterText={filterText}

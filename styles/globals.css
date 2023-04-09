@@ -75,6 +75,11 @@
     .summary td:first-of-type {
         white-space: pre-wrap !important;
     }
+
+
+    .ui.grid > [class*="three column"].row > .column {
+        width: 50% !important;
+    }
 }
 
 .ui.menu .item img.logo {
@@ -183,6 +188,17 @@ img.active {
     font-weight: 700;
 }
 
+.summary .meta {
+    font-weight: 500;
+}
+
+.summary .row {
+    /*padding-top: .5rem !important;*/
+}
+
+.summary .row > .column {
+    margin-top: 1rem !important;
+}
 .summary .label {
     border: 0 !important;
     /*margin-bottom: .5rem !important;*/

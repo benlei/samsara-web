@@ -1,15 +1,8 @@
-import {Image, Label, Progress, Table} from "semantic-ui-react";
-import {
-    CountSummary,
-    getColorClassName,
-    getFilterFunction,
-    getPercent,
-    UnknownFutureCounter
-} from "@/banners/summary";
+import {Card, Grid, Header, Image} from "semantic-ui-react";
+import {CountSummary, getFilterFunction, UnknownFutureCounter} from "@/banners/summary";
 import _ from "lodash";
-import dayjs from "dayjs";
-import React, {useEffect, useState} from "react";
-import {BannerSummary, CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
+import React from "react";
+import {CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
 
 type Properties = {
     date: string
@@ -17,6 +10,38 @@ type Properties = {
     plural: string
     counter: (versionParts: VersionParts[], featuredList: Featured[], currDate: string) => CountSummary[]
 } & CommonSummaryProperties
+
+function getRelativeTimeText(s: CountSummary, singular: string, plural: string): string {
+    if (s.count == UnknownFutureCounter) {
+        return 'coming soon'
+    }
+
+    if (!s.count) {
+        return 'in progress'
+    }
+
+    if (s.count < 0) {
+        return `${Math.abs(s.count)} more ` + (s.count === -1 ? singular : plural)
+    }
+
+    return `${s.count} ` + (s.count === 1 ? singular : plural) + ' ago'
+}
+
+function chunkSummary(summary: CountSummary[]): CountSummary[][] {
+    const result: CountSummary[][] = [[]]
+    let lastValue = summary[0].count
+
+    for (const s of summary) {
+        if (lastValue === s.count) {
+            result[result.length - 1].push(s)
+        } else {
+            result.push([s])
+            lastValue = s.count
+        }
+    }
+
+    return result
+}
 
 export default function RelativeBasicCounterSummary(
     {
@@ -40,45 +65,40 @@ export default function RelativeBasicCounterSummary(
 
     const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))
     const maxVal = baseSummary[order == 'desc' ? 0 : baseSummary.length - 1].count
-    const summary = filteredSummary.length ? filteredSummary : baseSummary
+    const chunkedSummary = chunkSummary(filteredSummary.length ? filteredSummary : baseSummary)
 
     return (
-        <Table.Body>
-            {summary.map((s, k) =>
-                <Table.Row key={k}>
-                    <Table.Cell verticalAlign={'top'}>
-                        <Image avatar
-                               src={`/images/${type}/${s.image}.png`}
-                               alt={s.image}/>
-                        <p>{s.name}</p>
-                    </Table.Cell>
-                    <Table.Cell verticalAlign={'top'}>
-                        <Progress
-                            percent={getPercent(s.count, maxVal)}
-                            className={getColorClassName(getPercent(s.count, maxVal))}
-                            size={'small'}/>
+        <>
+            {chunkedSummary.map((summary, j) =>
+                <Grid.Row key={j} columns={3}>
+                    <Grid.Column width={16}>
+                        <Header size='medium'>{getRelativeTimeText(summary[0], singular, plural)}</Header>
+                    </Grid.Column>
+                    {summary.map((s, k) =>
+                        <Grid.Column key={j}>
+                            <Card fluid>
+                                <Card.Content>
 
-                        <Label basic className={getColorClassName(getPercent(s.count, maxVal))}
-                               style={s.count === UnknownFutureCounter ? {display: 'none'} : {}}>
-                            {s.count === 0 ? (
-                                <Label.Detail>
-                                    now
-                                </Label.Detail>
-                            ) : (
-                                <>
-                                    {Math.abs(s.count)}
-                                    <Label.Detail>
-                                        {s.count < 0 ?
-                                            'more ' + (s.count === -1 ? singular : plural)
-                                            : (s.count === 1 ? singular : plural) + ' ago'
-                                        }
-                                    </Label.Detail>
-                                </>
-                            )}
-                        </Label>
-                    </Table.Cell>
-                </Table.Row>
+                                    <Image
+                                        floated={'left'}
+                                        src={`/images/${type}/${s.image}.png`}
+                                        circular
+                                        alt={s.image}
+                                        size={'tiny'}
+                                    />
+                                    <Card.Meta>
+                                        {s.name}
+                                    </Card.Meta>
+                                    <Card.Meta>
+                                        last seen in 1.1
+                                    </Card.Meta>
+                                </Card.Content>
+                            </Card>
+                        </Grid.Column>
+                    )}
+                </Grid.Row>
             )}
-        </Table.Body>
+
+        </>
     )
 }
