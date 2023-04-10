@@ -1,4 +1,3 @@
-import {Card, Grid, Table} from "semantic-ui-react";
 import React, {useEffect, useState} from "react";
 import _ from "lodash";
 import {
@@ -8,10 +7,13 @@ import {
     getBannersSinceLastCountSummary,
     getDaysSinceRunCountSummary,
     getLongestBannersInBetween,
-    getLongestDaysInBetween, getLongestPatchesInBetween,
+    getLongestDaysInBetween,
+    getLongestPatchesInBetween,
     getPatchesSinceLastCountSummary,
-    getRunsCountSummary, getShortestBannersInBetween,
-    getShortestDaysInBetween, getShortestPatchesInBetween
+    getRunsCountSummary,
+    getShortestBannersInBetween,
+    getShortestDaysInBetween,
+    getShortestPatchesInBetween
 } from "@/banners/summary";
 import RelativeBasicCounterSummary from "@/components/summary/stat/RelativeBasicCounterSummary";
 import BasicCounterSummary from "./stat/BasicCounterSummary";
@@ -42,7 +44,7 @@ export default function SummaryTable(
 ) {
     const [now, setNow] = useState(date)
     useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
-    
+
     const baseFeaturedList = _.chain(featuredList)
         .filter((featured) => !limitedOnly || !standard!.includes(featured.name))
         .value()
@@ -56,30 +58,28 @@ export default function SummaryTable(
     }
 
     return (
-        <Grid className={'summary'} stackable>
+        <>
             {sortBy === 'last-day' && <RelativeBasicCounterSummary {...commonProps} date={now}
                                                                    singular={'day'} plural={'days'}
                                                                    counter={getDaysSinceRunCountSummary}
             />}
             {sortBy === 'last-banner' &&
                 <RelativeBasicCounterSummary {...commonProps} date={now}
-                                     singular={'banner'} plural={'banners'}
-                                     counter={getBannersSinceLastCountSummary}
+                                             singular={'banner'} plural={'banners'}
+                                             counter={getBannersSinceLastCountSummary}
                 />}
             {sortBy === 'last-patch' &&
                 <RelativeBasicCounterSummary {...commonProps} date={now}
-                                     singular={'patch'} plural={'patches'}
-                                     counter={getPatchesSinceLastCountSummary}
+                                             singular={'patch'} plural={'patches'}
+                                             counter={getPatchesSinceLastCountSummary}
                 />}
 
-            {/*TODO: for longest leaderboard, chunk by patch count, but add in info about between which two patches has that count */}
             {sortBy === 'longest-day' &&
                 <BasicCounterSummary {...commonProps}
                                      singular={'day'} plural={'days'}
                                      counter={(vp, banners) => getLongestDaysInBetween(vp, banners, now)}
                 />}
 
-            {/*TODO: for shortest leaderboard, chunk by patch count, but add in info about between which two patches has that count */}
             {sortBy === 'shortest-day' &&
                 <BasicCounterSummary {...commonProps}
                                      singular={'day'} plural={'days'}
@@ -123,12 +123,11 @@ export default function SummaryTable(
                                        counter={getAveragePatchesInBetween}
                 />}
 
-            {/*TODO: chunk runs by run count */}
             {sortBy === 'runs' &&
                 <BasicCounterSummary {...commonProps}
                                      singular={'run'} plural={'runs'}
                                      counter={getRunsCountSummary}
                 />}
-        </Grid>
+        </>
     )
 }

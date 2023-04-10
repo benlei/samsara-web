@@ -1,7 +1,7 @@
 import {getBaseVersion, getVersionPart} from "@/banners/version";
 import _ from "lodash";
 import dayjs, {Dayjs} from "dayjs";
-import {DateRange, FeaturedDates, Featured, FeaturedVersions, VersionParts} from "@/banners/types";
+import {Featured, FeaturedDates, FeaturedVersions, VersionParts} from "@/banners/types";
 import {getImageFromName} from "@/format/image";
 import utc from "dayjs/plugin/utc";
 
@@ -17,7 +17,14 @@ export type CountSummary = {
     name: string
     image: string
     count: number
-    lastPatch: string
+}
+
+export type RangeCountSummary = {
+    name: string
+    image: string
+    count: number
+    startRange: string
+    endRange: string
 }
 
 export type AverageCountSummary = {
@@ -86,6 +93,28 @@ function getNormalizedBannerDateGaps(currDayjs: Dayjs, featured: FeaturedDates):
     const result = []
     for (let i = 0; i < dateRanges.length - 1; i++) {
         result.push(dateRanges[i + 1].start.diff(dateRanges[i].end, 'day'))
+    }
+
+    return result
+}
+
+
+type GapsWithRange = {
+    count: number
+    start: number
+    end: number
+}
+
+function getNormalizedBannerDateGapsWithRange(currDayjs: Dayjs, featured: FeaturedDates): GapsWithRange[] {
+    const dateRanges = getNormalizedDayjsBannerDates(currDayjs, featured)
+
+    const result: GapsWithRange[] = []
+    for (let i = 0; i < dateRanges.length - 1; i++) {
+        result.push({
+            count: dateRanges[i + 1].start.diff(dateRanges[i].end, 'day'),
+            start: i,
+            end: i + 1,
+        })
     }
 
     return result
@@ -173,7 +202,6 @@ function getCountSummary(
             name: featured.name,
             image: getImageFromName(featured.name),
             count: calculate(featured),
-            lastPatch: getBaseVersion(featured.versions[featured.versions.length - 1]),
         }
     })
 }
@@ -432,19 +460,41 @@ export function getAveragePatchesInBetween(
     )
 }
 
+function getRangeCountSummary(
+    versionParts: VersionParts[],
+    featuredList: Featured[],
+    calculate: (featured: Featured) => GapsWithRange,
+): RangeCountSummary[] {
+    return _.map(featuredList, (featured: Featured): RangeCountSummary => {
+        const summary = calculate(featured)
+        return {
+            name: featured.name,
+            image: getImageFromName(featured.name),
+            count: summary.count,
+            startRange: featured.versions[summary.start],
+            endRange: featured.versions[summary.end],
+        }
+    })
+}
+
 export function getLongestDaysInBetween(
     versionParts: VersionParts[],
     featuredList: Featured[],
     currDate: string,
-): CountSummary[] {
+): RangeCountSummary[] {
     dayjs.extend(utc);
 
     const currDayjs = dayjs.utc(currDate)
-    return getCountSummary(
+    return getRangeCountSummary(
         versionParts,
         featuredList,
-        (featured: Featured): number => {
-            return Math.max(...getNormalizedBannerDateGaps(currDayjs, featured), 0)
+        (featured: Featured): GapsWithRange => {
+            return _.chain([
+                ...getNormalizedBannerDateGapsWithRange(currDayjs, featured),
+                {count: 0, start: 0, end: 0} as GapsWithRange,
+            ])
+                .maxBy((gap) => gap.count)
+                .value()
         },
     )
 }
