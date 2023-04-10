@@ -218,82 +218,11 @@ img.active {
 .summary .row > .column {
     margin-top: 1rem !important;
 }
-.summary .label {
-    border: 0 !important;
-    /*margin-bottom: .5rem !important;*/
+
+.leaderboard th:not(.active) {
+    font-weight: 500 !important;
 }
 
-.summary .progress {
-    margin-top: .5rem !important;
-    margin-bottom: .6rem !important;
-}
-
-.summary td:first-of-type {
-    text-align: right !important;
-    white-space: nowrap;
-    font-weight: 600;
-    font-size: 1rem;
-    /*padding-left: 1em !important;*/
-}
-
-.summary td:first-of-type p {
-    margin-top: .5rem
-}
-
-.ui.progress .bar {
-    min-width: 0 !important;
-}
-
-.summary td:not(:first-of-type) {
-    text-align: right !important;
-    width: 100rem;
-    /*padding-right: 1em !important;*/
-}
-
-.dark-9 .bar {
-    background-color: hsl(0, 5%, 40%) !important;
-}
-
-.dark-9.label {
-    color: hsl(0, 5%, 40%) !important;
-}
-
-.dark-8 .bar {
-    background-color: hsl(0, 5%, 45%) !important;
-}
-
-.dark-8.label {
-    color: hsl(0, 5%, 45%) !important;
-}
-.dark-7 .bar {
-    background-color: hsl(0, 5%, 50%) !important;
-}
-
-.dark-7.label {
-    color: hsl(0, 5%, 50%) !important;
-}
-
-.dark-6 .bar {
-    background-color: hsl(0, 5%, 55%) !important;
-}
-
-.dark-6.label {
-    color: hsl(0, 5%, 55%) !important;
-}
-.dark-5 .bar {
-    background-color: hsl(0, 5%, 60%) !important;
-}
-
-.dark-5.label {
-    color: hsl(0, 5%, 60%) !important;
-}
-.dark-4 .bar {
-     background-color: hsl(0, 5%, 65%) !important;
-}
-
-.dark-4.label {
-    color: hsl(0, 5%, 65%) !important;
-}
 .dropdown.active {
     border-color: var(--inverted-background) !important;
 }

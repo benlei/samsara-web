@@ -19,6 +19,14 @@ export type CountSummary = {
     count: number
 }
 
+export type LeaderboardSummary = {
+    name: string
+    image: string
+    days: number
+    banners: number
+    patches: number
+}
+
 export type AverageCountSummary = {
     name: string
     image: string
@@ -429,6 +437,59 @@ export function getAveragePatchesInBetween(
         getPatchGaps,
     )
 }
+
+
+export function getLongestStatsInBetween(
+    versionParts: VersionParts[],
+    featuredList: Featured[],
+    currDate: string,
+): LeaderboardSummary[] {
+    dayjs.extend(utc);
+    const currDayjs = dayjs.utc(currDate)
+
+    function computerDays(featured: Featured): number {
+        return Math.max(...getNormalizedBannerDateGaps(currDayjs, featured), 0)
+    }
+
+    function computeBanners(featured: Featured): number {
+        const ongoingBanner = {
+            versions: isLastVersionLatestBanner(versionParts, featured) ? featured.versions : [
+                ...featured.versions,
+                versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
+            ],
+        }
+        return Math.max(...getBannerGaps(versionParts, ongoingBanner), 0)
+    }
+
+    function computerPatches(featured: Featured): number {
+        const ongoingBanner = {
+            versions: isLastVersionLatest(versionParts, featured) ? featured.versions : [
+                ...featured.versions,
+                versionParts[versionParts.length - 1].version + '.' + versionParts[versionParts.length - 1].parts,
+            ],
+        }
+
+        if (isLastVersionLatest(versionParts, featured)) {
+            return Math.max(...getPatchGaps(versionParts, ongoingBanner), 0)
+        }
+
+        const gaps = getPatchGaps(versionParts, ongoingBanner)
+        gaps[gaps.length - 1]++
+        return Math.max(...gaps, 0)
+    }
+
+    return _.map(featuredList, (featured: Featured): LeaderboardSummary => {
+        return {
+            name: featured.name,
+            image: getImageFromName(featured.name),
+            days: computerDays(featured),
+            banners: computeBanners(featured),
+            patches: computerPatches(featured),
+        }
+    })
+}
+
+
 
 export function getLongestDaysInBetween(
     versionParts: VersionParts[],

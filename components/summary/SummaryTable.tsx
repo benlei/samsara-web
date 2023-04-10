@@ -6,9 +6,7 @@ import {
     getAveragePatchesInBetween,
     getBannersSinceLastCountSummary,
     getDaysSinceRunCountSummary,
-    getLongestBannersInBetween,
-    getLongestDaysInBetween,
-    getLongestPatchesInBetween,
+    getLongestStatsInBetween,
     getPatchesSinceLastCountSummary,
     getRunsCountSummary,
     getShortestBannersInBetween,
@@ -20,6 +18,7 @@ import BasicCounterSummary from "./stat/BasicCounterSummary";
 import AverageCounterSummary from "@/components/summary/stat/AverageCounterSummary";
 import dayjs from "dayjs";
 import {CommonSummaryProperties} from "@/banners/types";
+import LeaderboardCounterSummary from "@/components/summary/stat/LeaderboardCounterSummary";
 
 type Properties = {
     filterText: string
@@ -74,32 +73,39 @@ export default function SummaryTable(
                                              counter={getPatchesSinceLastCountSummary}
                 />}
 
-            {sortBy === 'longest-day' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'day'} plural={'days'}
-                                     counter={(vp, banners) => getLongestDaysInBetween(vp, banners, now)}
-                />}
+            {sortBy.startsWith('longest') &&
+                <LeaderboardCounterSummary {...commonProps}
+                                           sortBy={sortBy}
+                                           counter={(vp, banners) => getLongestStatsInBetween(vp, banners, now)}
+                />
+            }
+
+            {/*{sortBy === 'longest-day' &&*/}
+            {/*    <BasicCounterSummary {...commonProps}*/}
+            {/*                         singular={'day'} plural={'days'}*/}
+            {/*                         counter={(vp, banners) => getLongestDaysInBetween(vp, banners, now)}*/}
+            {/*    />}*/}
 
             {sortBy === 'shortest-day' &&
                 <BasicCounterSummary {...commonProps}
                                      singular={'day'} plural={'days'}
                                      counter={(vp, banners) => getShortestDaysInBetween(vp, banners, now)}
                 />}
-            {sortBy === 'longest-banner' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'banner'} plural={'banners'}
-                                     counter={getLongestBannersInBetween}
-                />}
+            {/*{sortBy === 'longest-banner' &&*/}
+            {/*    <BasicCounterSummary {...commonProps}*/}
+            {/*                         singular={'banner'} plural={'banners'}*/}
+            {/*                         counter={getLongestBannersInBetween}*/}
+            {/*    />}*/}
             {sortBy === 'shortest-banner' &&
                 <BasicCounterSummary {...commonProps}
                                      singular={'banner'} plural={'banners'}
                                      counter={getShortestBannersInBetween}
                 />}
-            {sortBy === 'longest-patch' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'patch'} plural={'patches'}
-                                     counter={getLongestPatchesInBetween}
-                />}
+            {/*{sortBy === 'longest-patch' &&*/}
+            {/*    <BasicCounterSummary {...commonProps}*/}
+            {/*                         singular={'patch'} plural={'patches'}*/}
+            {/*                         counter={getLongestPatchesInBetween}*/}
+            {/*    />}*/}
             {sortBy === 'shortest-patch' &&
                 <BasicCounterSummary {...commonProps}
                                      singular={'patch'} plural={'patches'}
