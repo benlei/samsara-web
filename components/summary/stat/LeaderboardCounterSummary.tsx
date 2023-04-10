@@ -35,8 +35,7 @@ export default function LeaderboardCounterSummary(
         <Table unstackable className={'leaderboard'}>
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell><Icon name={'image'}/></Table.HeaderCell>
-                    <Table.HeaderCell>Featured</Table.HeaderCell>
+                    <Table.HeaderCell colSpan={2} className={'active'}>Featured</Table.HeaderCell>
                     <Table.HeaderCell className={sortBy.endsWith('day') ? 'active' : ''}>Days</Table.HeaderCell>
                     <Table.HeaderCell className={sortBy.endsWith('banner') ? 'active' : ''}>Banners</Table.HeaderCell>
                     <Table.HeaderCell className={sortBy.endsWith('patch') ? 'active' : ''}>Patches</Table.HeaderCell>
@@ -45,19 +44,22 @@ export default function LeaderboardCounterSummary(
             <Table.Body>
                 {summary.map((s, k) =>
                     <Table.Row key={k} verticalAlign={'top'}>
-                        <Table.Cell style={{width: '80px'}} className={'desktop'}>
+                        <Table.Cell style={{width: '35px'}}>
                             <Image size={'tiny'}
                                    circular
                                    verticalAlign='middle'
                                    src={`/images/${type}/${s.image}.png`}
-                                   alt={s.image}/>
-                        </Table.Cell>
-                        <Table.Cell style={{width: '35px', display: 'none'}} className={'mobile'}>
+                                   alt={s.image}
+                                   className={'desktop'}
+                            />
                             <Image size={'mini'}
                                    circular
                                    verticalAlign='middle'
                                    src={`/images/${type}/${s.image}.png`}
-                                   alt={s.image}/>
+                                   alt={s.image}
+                                   style={{display: 'none'}}
+                                   className={'mobile'}
+                            />
                         </Table.Cell>
                         <Table.Cell verticalAlign={'top'}>
                             <Header as={'span'} size={'small'}>{s.name}</Header>
