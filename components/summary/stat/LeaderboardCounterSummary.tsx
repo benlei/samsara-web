@@ -63,22 +63,16 @@ export default function LeaderboardCounterSummary(
                             <Header as={'span'} size={'small'}>{s.name}</Header>
                         </Table.Cell>
                         <Table.Cell verticalAlign={'top'}>
-                            <Header size={'small'}>
-                                <span className={'desktop'}>{s.days} {s.days === 1 ? 'day' : 'days'}</span>
-                                <span style={{display: 'none'}} className={'mobile'}>{s.days}d</span>
-                            </Header>
+                            <span className={'desktop'}>{s.days} {s.days === 1 ? 'day' : 'days'}</span>
+                            <span style={{display: 'none'}} className={'mobile'}>{s.days}d</span>
                         </Table.Cell>
                         <Table.Cell verticalAlign={'top'}>
-                            <Header size={'small'}>
-                                <span className={'desktop'}>{s.banners} {s.banners === 1 ? 'banner' : 'banners'}</span>
-                                <span style={{display: 'none'}} className={'mobile'}>{s.banners}b</span>
-                            </Header>
+                            <span className={'desktop'}>{s.banners} {s.banners === 1 ? 'banner' : 'banners'}</span>
+                            <span style={{display: 'none'}} className={'mobile'}>{s.banners}b</span>
                         </Table.Cell>
                         <Table.Cell verticalAlign={'top'}>
-                            <Header size={'small'}>
-                                <span className={'desktop'}>{s.patches} {s.days === 1 ? 'patch' : 'patches'}</span>
-                                <span style={{display: 'none'}} className={'mobile'}>{s.patches}p</span>
-                            </Header>
+                            <span className={'desktop'}>{s.patches} {s.days === 1 ? 'patch' : 'patches'}</span>
+                            <span style={{display: 'none'}} className={'mobile'}>{s.patches}p</span>
                         </Table.Cell>
                     </Table.Row>
                 )}

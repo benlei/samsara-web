@@ -489,26 +489,6 @@ export function getLongestStatsInBetween(
     })
 }
 
-
-
-export function getLongestDaysInBetween(
-    versionParts: VersionParts[],
-    featuredList: Featured[],
-    currDate: string,
-): CountSummary[] {
-    dayjs.extend(utc);
-
-    const currDayjs = dayjs.utc(currDate)
-    return getCountSummary(
-        versionParts,
-        featuredList,
-        (featured: Featured): number => {
-            return Math.max(...getNormalizedBannerDateGaps(currDayjs, featured), 0)
-        },
-    )
-}
-
-
 export function getShortestDaysInBetween(
     versionParts: VersionParts[],
     featuredList: Featured[],
@@ -543,25 +523,6 @@ function isLastVersionLatestBanner(versionParts: VersionParts[],
     return featured.versions[featured.versions.length - 1] == versionParts[versionParts.length - 1].version + "." + versionParts[versionParts.length - 1].parts
 }
 
-export function getLongestBannersInBetween(
-    versionParts: VersionParts[],
-    featuredList: Featured[],
-): CountSummary[] {
-    return getCountSummary(
-        versionParts,
-        featuredList,
-        (featured: Featured): number => {
-            const ongoingBanner = {
-                versions: isLastVersionLatestBanner(versionParts, featured) ? featured.versions : [
-                    ...featured.versions,
-                    versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
-                ],
-            }
-            return Math.max(...getBannerGaps(versionParts, ongoingBanner), 0)
-        },
-    )
-}
-
 export function getShortestBannersInBetween(
     versionParts: VersionParts[],
     featuredList: Featured[],
@@ -579,32 +540,6 @@ export function getShortestBannersInBetween(
             }
 
             return Math.max(Math.min(...getBannerGaps(versionParts, featured)), Math.min(...getBannerGaps(versionParts, ongoingBanner)))
-        },
-    )
-}
-
-export function getLongestPatchesInBetween(
-    versionParts: VersionParts[],
-    featuredList: Featured[],
-): CountSummary[] {
-    return getCountSummary(
-        versionParts,
-        featuredList,
-        (featured): number => {
-            const ongoingBanner = {
-                versions: isLastVersionLatest(versionParts, featured) ? featured.versions : [
-                    ...featured.versions,
-                    versionParts[versionParts.length - 1].version + '.' + versionParts[versionParts.length - 1].parts,
-                ],
-            }
-
-            if (isLastVersionLatest(versionParts, featured)) {
-                return Math.max(...getPatchGaps(versionParts, ongoingBanner), 0)
-            }
-
-            const gaps = getPatchGaps(versionParts, ongoingBanner)
-            gaps[gaps.length - 1]++
-            return Math.max(...gaps, 0)
         },
     )
 }
