@@ -19,14 +19,6 @@ export type CountSummary = {
     count: number
 }
 
-export type RangeCountSummary = {
-    name: string
-    image: string
-    count: number
-    startRange: string
-    endRange: string
-}
-
 export type AverageCountSummary = {
     name: string
     image: string
@@ -93,28 +85,6 @@ function getNormalizedBannerDateGaps(currDayjs: Dayjs, featured: FeaturedDates):
     const result = []
     for (let i = 0; i < dateRanges.length - 1; i++) {
         result.push(dateRanges[i + 1].start.diff(dateRanges[i].end, 'day'))
-    }
-
-    return result
-}
-
-
-type GapsWithRange = {
-    count: number
-    start: number
-    end: number
-}
-
-function getNormalizedBannerDateGapsWithRange(currDayjs: Dayjs, featured: FeaturedDates): GapsWithRange[] {
-    const dateRanges = getNormalizedDayjsBannerDates(currDayjs, featured)
-
-    const result: GapsWithRange[] = []
-    for (let i = 0; i < dateRanges.length - 1; i++) {
-        result.push({
-            count: dateRanges[i + 1].start.diff(dateRanges[i].end, 'day'),
-            start: i,
-            end: i + 1,
-        })
     }
 
     return result
@@ -460,41 +430,19 @@ export function getAveragePatchesInBetween(
     )
 }
 
-function getRangeCountSummary(
-    versionParts: VersionParts[],
-    featuredList: Featured[],
-    calculate: (featured: Featured) => GapsWithRange,
-): RangeCountSummary[] {
-    return _.map(featuredList, (featured: Featured): RangeCountSummary => {
-        const summary = calculate(featured)
-        return {
-            name: featured.name,
-            image: getImageFromName(featured.name),
-            count: summary.count,
-            startRange: featured.versions[summary.start],
-            endRange: featured.versions[summary.end],
-        }
-    })
-}
-
 export function getLongestDaysInBetween(
     versionParts: VersionParts[],
     featuredList: Featured[],
     currDate: string,
-): RangeCountSummary[] {
+): CountSummary[] {
     dayjs.extend(utc);
 
     const currDayjs = dayjs.utc(currDate)
-    return getRangeCountSummary(
+    return getCountSummary(
         versionParts,
         featuredList,
-        (featured: Featured): GapsWithRange => {
-            return _.chain([
-                ...getNormalizedBannerDateGapsWithRange(currDayjs, featured),
-                {count: 0, start: 0, end: 0} as GapsWithRange,
-            ])
-                .maxBy((gap) => gap.count)
-                .value()
+        (featured: Featured): number => {
+            return Math.max(...getNormalizedBannerDateGaps(currDayjs, featured), 0)
         },
     )
 }

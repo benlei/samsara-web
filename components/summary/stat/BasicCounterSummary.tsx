@@ -1,13 +1,8 @@
-import {Image, Label, Progress, Table} from "semantic-ui-react";
-import {
-    CountSummary,
-    getColorClassName,
-    getFilterFunction,
-    getPercent
-} from "@/banners/summary";
+import {Header, Icon, Image, Table} from "semantic-ui-react";
+import {CountSummary, getFilterFunction} from "@/banners/summary";
 import _ from "lodash";
 import React from "react";
-import {BannerSummary, CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
+import {CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
 
 type Properties = {
     singular: string
@@ -35,34 +30,36 @@ export default function BasicCounterSummary(
         .value()
 
     const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))
-    const maxVal = baseSummary[order == 'desc' ? 0 : baseSummary.length - 1].count
     const summary = filteredSummary.length ? filteredSummary : baseSummary
 
     return (
-        <Table.Body>
-            {summary.map((s, k) =>
-                <Table.Row key={k}>
-                    <Table.Cell verticalAlign={'top'}>
-                        <Image avatar
-                               src={`/images/${type}/${s.image}.png`}
-                               alt={s.image}/>
-                        <p>{s.name}</p>
-                    </Table.Cell>
-                    <Table.Cell verticalAlign={'top'}>
-                        <Progress
-                            percent={getPercent(s.count, maxVal)}
-                            className={getColorClassName(getPercent(s.count, maxVal))}
-                            size={'small'}/>
-
-                        <Label basic className={getColorClassName(getPercent(s.count, maxVal))}>
-                            {s.count}
-                            <Label.Detail>
-                                {s.count === 1 ? singular : plural}
-                            </Label.Detail>
-                        </Label>
-                    </Table.Cell>
+        <Table stackable>
+            <Table.Header>
+                <Table.Row>
+                    <Table.HeaderCell><Icon name={'image'} /></Table.HeaderCell>
+                    <Table.HeaderCell>Featured</Table.HeaderCell>
+                    <Table.HeaderCell>Count</Table.HeaderCell>
                 </Table.Row>
-            )}
-        </Table.Body>
+            </Table.Header>
+            <Table.Body>
+                {summary.map((s, k) =>
+                    <Table.Row key={k} verticalAlign={'top'}>
+                        <Table.Cell style={{width: '80px'}}>
+                            <Image size={'tiny'}
+                                   circular
+                                // floated={'left'}
+                                   verticalAlign='middle'
+                                   src={`/images/${type}/${s.image}.png`}
+                                   alt={s.image}/>                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'}>
+                            <Header as={'span'} size={'small'}>{s.name}</Header>
+                        </Table.Cell>
+                        <Table.Cell>
+                            <Header size={'small'}>{s.count} {s.count === 1 ? singular : plural}</Header>
+                        </Table.Cell>
+                    </Table.Row>
+                )}
+            </Table.Body>
+        </Table>
     )
 }

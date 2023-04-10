@@ -72,14 +72,6 @@ export default function RelativeBasicCounterSummary(
                                     <Card.Header>
                                         {s.name}
                                     </Card.Header>
-                                    {/*<Card.Meta>*/}
-                                    {/*    {getRelativeTimeText(summary[0], singular, plural)}*/}
-                                    {/*</Card.Meta>*/}
-                                    {/*{s.count > 0 &&*/}
-                                    {/*    <Card.Meta>*/}
-                                    {/*        last seen in {s.last}*/}
-                                    {/*    </Card.Meta>*/}
-                                    {/*}*/}
                                 </Card.Content>
                             </Card>
                         </Grid.Column>
