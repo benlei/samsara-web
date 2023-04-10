@@ -489,28 +489,66 @@ export function getLongestStatsInBetween(
     })
 }
 
-export function getShortestDaysInBetween(
+export function getShortestStatsInBetween(
     versionParts: VersionParts[],
     featuredList: Featured[],
     currDate: string,
-): CountSummary[] {
+): LeaderboardSummary[] {
     dayjs.extend(utc);
-
     const currDayjs = dayjs.utc(currDate)
-    return getCountSummary(
-        versionParts,
-        _.filter(featuredList, (featured) => featured.versions.length > 1),
-        (featured: Featured): number => {
-            const existingDayGaps = getDayGaps(null, featured)
-            const ongoingDayGaps = getNormalizedBannerDateGaps(currDayjs, featured)
 
-            if (!existingDayGaps.length) {
-                return Math.max(0, Math.min(...ongoingDayGaps))
+    function computerDays(featured: Featured): number {
+        const existingDayGaps = getDayGaps(null, featured)
+        const ongoingDayGaps = getNormalizedBannerDateGaps(currDayjs, featured)
+
+        if (!existingDayGaps.length) {
+            return Math.max(0, Math.min(...ongoingDayGaps))
+        }
+
+        return Math.max(Math.min(...existingDayGaps), Math.min(...ongoingDayGaps))
+
+    }
+
+    function computeBanners(featured: Featured): number {
+        const ongoingBanner = {
+            dates: featured.dates,
+            versions: isLastVersionLatestBanner(versionParts, featured) ? featured.versions : [
+                ...featured.versions,
+                versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
+            ],
+        }
+
+        return Math.max(Math.min(...getBannerGaps(versionParts, featured)), Math.min(...getBannerGaps(versionParts, ongoingBanner)))
+
+    }
+
+    function computerPatches(featured: Featured): number {
+        const ongoingBanner = {
+            dates: featured.dates,
+            versions: isLastVersionLatest(versionParts, featured) ? featured.versions : [
+                ...featured.versions,
+                versionParts[versionParts.length - 1].version + '.' + versionParts[versionParts.length - 1].parts,
+            ],
+        }
+
+        const gaps = getPatchGaps(versionParts, ongoingBanner)
+        if (!isLastVersionLatest(versionParts, featured)) {
+            gaps[gaps.length - 1]++
+        }
+
+        return Math.max(Math.min(...getPatchGaps(versionParts, featured)), Math.min(...gaps))
+    }
+
+    return _.map(_.filter(featuredList, (featured) => featured.versions.length > 1),
+        (featured: Featured): LeaderboardSummary => {
+            return {
+                name: featured.name,
+                image: getImageFromName(featured.name),
+                days: computerDays(featured),
+                banners: computeBanners(featured),
+                patches: computerPatches(featured),
             }
-
-            return Math.max(Math.min(...existingDayGaps), Math.min(...ongoingDayGaps))
-        },
-    )
+        })
 }
 
 function isLastVersionLatest(versionParts: VersionParts[],
@@ -521,51 +559,4 @@ function isLastVersionLatest(versionParts: VersionParts[],
 function isLastVersionLatestBanner(versionParts: VersionParts[],
                                    featured: Featured): boolean {
     return featured.versions[featured.versions.length - 1] == versionParts[versionParts.length - 1].version + "." + versionParts[versionParts.length - 1].parts
-}
-
-export function getShortestBannersInBetween(
-    versionParts: VersionParts[],
-    featuredList: Featured[],
-): CountSummary[] {
-    return getCountSummary(
-        versionParts,
-        _.filter(featuredList, (featured) => featured.versions.length > 1),
-        (featured: Featured): number => {
-            const ongoingBanner = {
-                dates: featured.dates,
-                versions: isLastVersionLatestBanner(versionParts, featured) ? featured.versions : [
-                    ...featured.versions,
-                    versionParts[versionParts.length - 1].version + '.' + (versionParts[versionParts.length - 1].parts + 1),
-                ],
-            }
-
-            return Math.max(Math.min(...getBannerGaps(versionParts, featured)), Math.min(...getBannerGaps(versionParts, ongoingBanner)))
-        },
-    )
-}
-
-export function getShortestPatchesInBetween(
-    versionParts: VersionParts[],
-    featuredList: Featured[],
-): CountSummary[] {
-    return getCountSummary(
-        versionParts,
-        _.filter(featuredList, (banner) => banner.versions.length > 1),
-        (featured: Featured): number => {
-            const ongoingBanner = {
-                dates: featured.dates,
-                versions: isLastVersionLatest(versionParts, featured) ? featured.versions : [
-                    ...featured.versions,
-                    versionParts[versionParts.length - 1].version + '.' + versionParts[versionParts.length - 1].parts,
-                ],
-            }
-
-            const gaps = getPatchGaps(versionParts, ongoingBanner)
-            if (!isLastVersionLatest(versionParts, featured)) {
-                gaps[gaps.length - 1]++
-            }
-
-            return Math.max(Math.min(...getPatchGaps(versionParts, featured)), Math.min(...gaps))
-        },
-    )
 }

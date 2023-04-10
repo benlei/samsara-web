@@ -9,9 +9,7 @@ import {
     getLongestStatsInBetween,
     getPatchesSinceLastCountSummary,
     getRunsCountSummary,
-    getShortestBannersInBetween,
-    getShortestDaysInBetween,
-    getShortestPatchesInBetween
+    getShortestStatsInBetween
 } from "@/banners/summary";
 import RelativeBasicCounterSummary from "@/components/summary/stat/RelativeBasicCounterSummary";
 import BasicCounterSummary from "./stat/BasicCounterSummary";
@@ -80,37 +78,44 @@ export default function SummaryTable(
                 />
             }
 
+            {sortBy.startsWith('shortest') &&
+                <LeaderboardCounterSummary {...commonProps}
+                                           sortBy={sortBy}
+                                           counter={(vp, banners) => getShortestStatsInBetween(vp, banners, now)}
+                />
+            }
+
             {/*{sortBy === 'longest-day' &&*/}
             {/*    <BasicCounterSummary {...commonProps}*/}
             {/*                         singular={'day'} plural={'days'}*/}
             {/*                         counter={(vp, banners) => getLongestDaysInBetween(vp, banners, now)}*/}
             {/*    />}*/}
 
-            {sortBy === 'shortest-day' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'day'} plural={'days'}
-                                     counter={(vp, banners) => getShortestDaysInBetween(vp, banners, now)}
-                />}
+            {/*{sortBy === 'shortest-day' &&*/}
+            {/*    <BasicCounterSummary {...commonProps}*/}
+            {/*                         singular={'day'} plural={'days'}*/}
+            {/*                         counter={(vp, banners) => getShortestDaysInBetween(vp, banners, now)}*/}
+            {/*    />}*/}
             {/*{sortBy === 'longest-banner' &&*/}
             {/*    <BasicCounterSummary {...commonProps}*/}
             {/*                         singular={'banner'} plural={'banners'}*/}
             {/*                         counter={getLongestBannersInBetween}*/}
             {/*    />}*/}
-            {sortBy === 'shortest-banner' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'banner'} plural={'banners'}
-                                     counter={getShortestBannersInBetween}
-                />}
+            {/*{sortBy === 'shortest-banner' &&*/}
+            {/*    <BasicCounterSummary {...commonProps}*/}
+            {/*                         singular={'banner'} plural={'banners'}*/}
+            {/*                         counter={getShortestBannersInBetween}*/}
+            {/*    />}*/}
             {/*{sortBy === 'longest-patch' &&*/}
             {/*    <BasicCounterSummary {...commonProps}*/}
             {/*                         singular={'patch'} plural={'patches'}*/}
             {/*                         counter={getLongestPatchesInBetween}*/}
             {/*    />}*/}
-            {sortBy === 'shortest-patch' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'patch'} plural={'patches'}
-                                     counter={getShortestPatchesInBetween}
-                />}
+            {/*{sortBy === 'shortest-patch' &&*/}
+            {/*    <BasicCounterSummary {...commonProps}*/}
+            {/*                         singular={'patch'} plural={'patches'}*/}
+            {/*                         counter={getShortestPatchesInBetween}*/}
+            {/*    />}*/}
 
             {/*TODO: chunk by ROUND(patch) */}
             {sortBy === 'avg-day' &&

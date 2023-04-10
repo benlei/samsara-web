@@ -11,9 +11,7 @@ import {
     getPatchesSinceLastCountSummary,
     getPatchGap,
     getRunsCountSummary,
-    getShortestBannersInBetween,
-    getShortestDaysInBetween,
-    getShortestPatchesInBetween
+    getShortestStatsInBetween
 } from "@/banners/summary";
 import dayjs from "dayjs";
 import _ from "lodash";
@@ -547,130 +545,33 @@ describe('getLongestStatsInBetween()', () => {
     })
 })
 
-describe('getShortestDaysInBetween()', () => {
-    it('should provide shortest days in between', () => {
+
+describe('getShortestStatsInBetween()', () => {
+    it('should provide shortest stats in between', () => {
         expect(_.orderBy(
-            getShortestDaysInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture, "2023-01-03"),
+            getShortestStatsInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture, "2023-01-03"),
             (b) => b.name,
             'asc'
         ))
             .toEqual([
+                {name: 'Fake2', image: 'Fake2', days: 342, banners: 1, patches: 1},
+                {name: 'Fake3', image: 'Fake3', days: 193, banners: 2, patches: 1},
+                {name: 'Fake4', image: 'Fake4', days: 8, banners: 2, patches: 1},
                 {
-                    "name": "Fake2",
-                    "image": "Fake2",
-                    "count": 342
+                    name: 'Hu Tao',
+                    image: 'Hu-Tao',
+                    days: 231,
+                    banners: 11,
+                    patches: 6
                 },
+                {name: 'Venti', image: 'Venti', days: 150, banners: 7, patches: 4},
                 {
-                    "name": "Fake3",
-                    "image": "Fake3",
-                    "count": 193
-                },
-                {
-                    "name": "Fake4",
-                    "image": "Fake4",
-                    "count": 8
-                },
-                {
-                    "name": "Hu Tao",
-                    "image": "Hu-Tao",
-                    "count": 231
-                },
-                {
-                    "name": "Venti",
-                    "image": "Venti",
-                    "count": 150
-                },
-                {
-                    "name": "Yoimiya",
-                    "image": "Yoimiya",
-                    "count": 71
-                },
-            ])
-    })
-})
-
-
-describe('getShortestBannersInBetween()', () => {
-    it('should provide shortest banners in between', () => {
-        expect(_.orderBy(
-            getShortestBannersInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture),
-            (b) => b.name,
-            'asc'
-        ))
-            .toEqual([
-                {
-                    "name": "Fake2",
-                    "image": "Fake2",
-                    "count": 1
-                },
-                {
-                    "name": "Fake3",
-                    "image": "Fake3",
-                    "count": 2
-                },
-                {
-                    "name": "Fake4",
-                    "image": "Fake4",
-                    "count": 2
-                },
-                {
-                    "name": "Hu Tao",
-                    "image": "Hu-Tao",
-                    "count": 11
-                },
-                {
-                    "name": "Venti",
-                    "image": "Venti",
-                    "count": 7
-                },
-                {
-                    "name": "Yoimiya",
-                    "image": "Yoimiya",
-                    "count": 4
-                },
-            ])
-    })
-})
-
-
-describe('getShortestPatchesInBetween()', () => {
-    it('should provide shortest patches in between', () => {
-        expect(_.orderBy(
-            getShortestPatchesInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture),
-            (b) => b.name,
-            'asc'
-        ))
-            .toEqual([
-                {
-                    "name": "Fake2",
-                    "image": "Fake2",
-                    "count": 1
-                },
-                {
-                    "name": "Fake3",
-                    "image": "Fake3",
-                    "count": 1
-                },
-                {
-                    "name": "Fake4",
-                    "image": "Fake4",
-                    "count": 1
-                },
-                {
-                    "name": "Hu Tao",
-                    "image": "Hu-Tao",
-                    "count": 6
-                },
-                {
-                    "name": "Venti",
-                    "image": "Venti",
-                    "count": 4
-                },
-                {
-                    "name": "Yoimiya",
-                    "image": "Yoimiya",
-                    "count": 3
-                },
+                    name: 'Yoimiya',
+                    image: 'Yoimiya',
+                    days: 71,
+                    banners: 4,
+                    patches: 3
+                }
             ])
     })
 })
