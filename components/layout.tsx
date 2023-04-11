@@ -1,7 +1,7 @@
 import React from "react";
 import Head from 'next/head'
-import Navbar, {NavbarMobile} from './navbar'
-import Footer from './footer'
+import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 import CookieConsent from "react-cookie-consent";
 
 export default function Layout({children}: React.PropsWithChildren) {
@@ -22,7 +22,6 @@ export default function Layout({children}: React.PropsWithChildren) {
             </Head>
             <main>
                 <Navbar/>
-                <NavbarMobile/>
                 {children}
                 <Footer></Footer>
                 <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>

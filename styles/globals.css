@@ -103,6 +103,24 @@
     }
 }
 
+.sidebar .item {
+    text-align: left !important;
+}
+
+.sidebar .logo.header {
+    font-size: 1.3rem !important;
+    color: var(--black);
+}
+.sidebar.ui.menu {
+    border-top: 0 !important;;
+}
+
+.sidebar .ui.vertical.menu {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 0 !important;;
+}
+
 .ui.menu .item img.logo {
     margin-right: 1.5em;
 }
@@ -173,6 +191,9 @@
     font-weight: 700 !important;
 }
 
+.ui.secondary.pointing.menu .item {
+    border-bottom-style: none !important;
+}
 .grey {
     color: #666;
 }

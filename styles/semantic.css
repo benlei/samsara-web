@@ -17,6 +17,7 @@
   --header-color: rgba(0, 0, 0, 0.85);
   --card-border-color: rgba(212, 212, 213, 1);
   --card-box-shadow: 0px 1px 3px 0px;
+  --vertical-menu-item-color: rgba(0, 0, 0, 0.5);
   --checked-opacity: 1;
 }
 
@@ -39,6 +40,7 @@
   --header-color: rgba(240, 240, 240, 0.85);
   --card-border-color: rgba(98, 98, 97, .25);
   --card-box-shadow: 0px 3px 5px 0px;
+  --vertical-menu-item-color: rgba(240, 240, 240, 0.5);
   --checked-opacity: .2;
 }
 
@@ -24280,7 +24282,7 @@ Floated Menu / Item
   background: none;
   padding: 0.5em 1.33333333em;
   font-size: 0.85714286em;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--vertical-menu-item-color);
 }
 
 .ui.vertical.menu .item .menu a.item:hover,
@@ -29784,7 +29786,7 @@ a.ui.card:hover,
 .ui.feed > .event > .content .meta > .icon {
   cursor: pointer;
   opacity: 1;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--vertical-menu-item-color);
   -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
 }
