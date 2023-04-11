@@ -1,42 +1,31 @@
 import {Header, Image, Table} from "semantic-ui-react";
-import {AverageCountSummary, getFilterFunction} from "@/banners/summary";
-import {CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
+import {getFilterFunction, LeaderboardSummary} from "@/banners/summary";
 import _ from "lodash";
 import React from "react";
+import {CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
 
 type Properties = {
-    singular: string
-    plural: string
-    counter: (versionParts: VersionParts[], featuredList: Featured[]) => AverageCountSummary[]
+    sortBy: string
+    counter: (versionParts: VersionParts[], featuredList: Featured[]) => LeaderboardSummary[]
 } & CommonSummaryProperties
-export default function AverageCounterSummary(
+
+export default function LeaderboardCounterSummary(
     {
         versionParts,
         featuredList,
         type,
         order,
         filterText,
-        singular,
-        plural,
         counter,
+        sortBy,
     }: Properties
 ) {
-    function getRange(stat: AverageCountSummary): string {
-        if (stat.standardDeviation > 0) {
-            return `${_.round(stat.average - stat.standardDeviation, 1)} ~ ${_.round(stat.average + stat.standardDeviation, 1)}`
-        }
-
-        return `n/a`
-    }
-
     const baseSummary = _.chain(counter(versionParts, featuredList))
-        .filter((b) => b.average > 0)
         .orderBy([
-            (b) => b.average,
-            (b) => b.standardDeviation,
-            (b) => b.count,
+            (b) => sortBy.endsWith('patch') ? b.patches : (sortBy.endsWith('banner') ? b.banners : b.days),
+            (b) => b.days,
             (b) => b.name,
-        ], [order, order, order, order])
+        ], [order, order, order])
         .value()
 
     const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))
@@ -47,9 +36,9 @@ export default function AverageCounterSummary(
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell colSpan={2} className={'active'}>Featured</Table.HeaderCell>
-                    <Table.HeaderCell>Runs</Table.HeaderCell>
-                    <Table.HeaderCell>{plural}</Table.HeaderCell>
-                    <Table.HeaderCell>{singular} Range</Table.HeaderCell>
+                    <Table.HeaderCell className={sortBy.endsWith('day') ? 'active' : ''}>Days</Table.HeaderCell>
+                    <Table.HeaderCell className={sortBy.endsWith('banner') ? 'active' : ''}>Banners</Table.HeaderCell>
+                    <Table.HeaderCell className={sortBy.endsWith('patch') ? 'active' : ''}>Patches</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -75,16 +64,15 @@ export default function AverageCounterSummary(
                         <Table.Cell verticalAlign={'top'}>
                             <Header as={'div'} size={'small'}>{s.name}</Header>
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'}>
-                            {s.discrepancy ? s.count + 1 : s.count}
+                        <Table.Cell verticalAlign={'top'} className={sortBy.endsWith('day') ? 'highlight' : ''}>
+                            {s.days}
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'}>
-                            {s.average}
+                        <Table.Cell verticalAlign={'top'} className={sortBy.endsWith('banner') ? 'highlight' : ''}>
+                            {s.banners}
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'}>
-                            {getRange(s)}
+                        <Table.Cell verticalAlign={'top'} className={sortBy.endsWith('patch') ? 'highlight' : ''}>
+                            {s.patches}
                         </Table.Cell>
-
                     </Table.Row>
                 )}
             </Table.Body>

@@ -1,4 +1,3 @@
-import {Table} from "semantic-ui-react";
 import React, {useEffect, useState} from "react";
 import _ from "lodash";
 import {
@@ -7,17 +6,17 @@ import {
     getAveragePatchesInBetween,
     getBannersSinceLastCountSummary,
     getDaysSinceRunCountSummary,
-    getLongestBannersInBetween,
-    getLongestDaysInBetween, getLongestPatchesInBetween,
+    getLongestStatsInBetween,
     getPatchesSinceLastCountSummary,
-    getRunsCountSummary, getShortestBannersInBetween,
-    getShortestDaysInBetween, getShortestPatchesInBetween
+    getRunsCountSummary,
+    getShortestStatsInBetween
 } from "@/banners/summary";
 import RelativeBasicCounterSummary from "@/components/summary/stat/RelativeBasicCounterSummary";
 import BasicCounterSummary from "./stat/BasicCounterSummary";
 import AverageCounterSummary from "@/components/summary/stat/AverageCounterSummary";
 import dayjs from "dayjs";
 import {CommonSummaryProperties} from "@/banners/types";
+import LeaderboardCounterSummary from "@/components/summary/stat/LeaderboardCounterSummary";
 
 type Properties = {
     filterText: string
@@ -42,7 +41,7 @@ export default function SummaryTable(
 ) {
     const [now, setNow] = useState(date)
     useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
-    
+
     const baseFeaturedList = _.chain(featuredList)
         .filter((featured) => !limitedOnly || !standard!.includes(featured.name))
         .value()
@@ -56,71 +55,61 @@ export default function SummaryTable(
     }
 
     return (
-        <Table basic='very' celled collapsing unstackable className={'summary'}>
+        <>
             {sortBy === 'last-day' && <RelativeBasicCounterSummary {...commonProps} date={now}
                                                                    singular={'day'} plural={'days'}
                                                                    counter={getDaysSinceRunCountSummary}
             />}
             {sortBy === 'last-banner' &&
                 <RelativeBasicCounterSummary {...commonProps} date={now}
-                                     singular={'banner'} plural={'banners'}
-                                     counter={getBannersSinceLastCountSummary}
+                                             singular={'banner'} plural={'banners'}
+                                             counter={getBannersSinceLastCountSummary}
                 />}
             {sortBy === 'last-patch' &&
                 <RelativeBasicCounterSummary {...commonProps} date={now}
-                                     singular={'patch'} plural={'patches'}
-                                     counter={getPatchesSinceLastCountSummary}
+                                             singular={'patch'} plural={'patches'}
+                                             counter={getPatchesSinceLastCountSummary}
                 />}
-            {sortBy === 'longest-day' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'day'} plural={'days'}
-                                     counter={(vp, banners) => getLongestDaysInBetween(vp, banners, now)}
-                />}
-            {sortBy === 'shortest-day' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'day'} plural={'days'}
-                                     counter={(vp, banners) => getShortestDaysInBetween(vp, banners, now)}
-                />}
-            {sortBy === 'longest-banner' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'banner'} plural={'banners'}
-                                     counter={getLongestBannersInBetween}
-                />}
-            {sortBy === 'shortest-banner' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'banner'} plural={'banners'}
-                                     counter={getShortestBannersInBetween}
-                />}
-            {sortBy === 'longest-patch' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'patch'} plural={'patches'}
-                                     counter={getLongestPatchesInBetween}
-                />}
-            {sortBy === 'shortest-patch' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'patch'} plural={'patches'}
-                                     counter={getShortestPatchesInBetween}
-                />}
+
+            {sortBy.startsWith('longest') &&
+                <LeaderboardCounterSummary {...commonProps}
+                                           sortBy={sortBy}
+                                           counter={(vp, banners) => getLongestStatsInBetween(vp, banners, now)}
+                />
+            }
+
+            {sortBy.startsWith('shortest') &&
+                <LeaderboardCounterSummary {...commonProps}
+                                           sortBy={sortBy}
+                                           counter={(vp, banners) => getShortestStatsInBetween(vp, banners, now)}
+                />
+            }
+
             {sortBy === 'avg-day' &&
                 <AverageCounterSummary {...commonProps}
-                                       singular={'day'} plural={'days'}
+                                       singular={'Day'}
+                                       plural={'Days'}
                                        counter={getAverageDaysInBetween}
                 />}
             {sortBy === 'avg-banner' &&
                 <AverageCounterSummary {...commonProps}
-                                       singular={'banner'} plural={'banners'}
+                                       singular={'Banner'}
+                                       plural={'Banners'}
                                        counter={getAverageBannersInBetween}
                 />}
             {sortBy === 'avg-patch' &&
                 <AverageCounterSummary {...commonProps}
-                                       singular={'patch'} plural={'patches'}
+                                       singular={'Patch'}
+                                       plural={'Patches'}
                                        counter={getAveragePatchesInBetween}
                 />}
+
+
             {sortBy === 'runs' &&
                 <BasicCounterSummary {...commonProps}
                                      singular={'run'} plural={'runs'}
                                      counter={getRunsCountSummary}
                 />}
-        </Table>
+        </>
     )
 }

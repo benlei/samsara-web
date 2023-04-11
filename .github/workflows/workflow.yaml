@@ -9,6 +9,7 @@ on:
       - synchronize
     branches:
       - 'main'
+      - 'v2-trunk'
   push:
     branches:
       - 'main'

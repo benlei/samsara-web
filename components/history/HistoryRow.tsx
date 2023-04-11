@@ -1,6 +1,6 @@
 import {DetailedFeaturedHistory} from "@/banners/types";
 import React from "react";
-import {Image, Label, Table} from "semantic-ui-react";
+import {Image, Table} from "semantic-ui-react";
 
 type Properties = {
     rundown: DetailedFeaturedHistory

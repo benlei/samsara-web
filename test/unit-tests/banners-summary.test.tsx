@@ -1,17 +1,17 @@
-import {BannerSummary, Featured, VersionParts} from "@/banners/types";
+import {Featured, VersionParts} from "@/banners/types";
 import {
     getAverageBannersInBetween,
     getAverageDaysInBetween,
     getAveragePatchesInBetween,
     getBannerGap,
-    getBannersSinceLastCountSummary, getCurrentVersionPart,
-    getDaysSinceRunCountSummary, getLongestBannersInBetween,
-    getLongestDaysInBetween,
-    getLongestPatchesInBetween,
+    getBannersSinceLastCountSummary,
+    getCurrentVersionPart,
+    getDaysSinceRunCountSummary,
+    getLongestStatsInBetween,
     getPatchesSinceLastCountSummary,
     getPatchGap,
-    getRunsCountSummary, getShortestBannersInBetween,
-    getShortestDaysInBetween, getShortestPatchesInBetween
+    getRunsCountSummary,
+    getShortestStatsInBetween
 } from "@/banners/summary";
 import dayjs from "dayjs";
 import _ from "lodash";
@@ -484,11 +484,10 @@ describe('getAveragePatchesInBetween', () => {
     })
 })
 
-
-describe('getLongestDaysInBetween()', () => {
-    it('should provide longest days in between', () => {
+describe('getLongestStatsInBetween()', () => {
+    it('should provide longest stats in between', () => {
         expect(_.orderBy(
-            getLongestDaysInBetween(VersionPartsDummyData, BannerSummariesDummyDataWithFuture, "2023-01-03"),
+            getLongestStatsInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture, "2023-01-03"),
             (b) => b.name,
             'asc'
         ))
@@ -496,261 +495,83 @@ describe('getLongestDaysInBetween()', () => {
                 {
                     "name": "Fake",
                     "image": "Fake",
-                    "count": 490
+                    "days": 490,
+                    "banners": 26,
+                    "patches": 14
                 },
                 {
                     "name": "Fake2",
                     "image": "Fake2",
-                    "count": 342
+                    "days": 342,
+                    "banners": 1,
+                    "patches": 1
                 },
                 {
                     "name": "Fake3",
                     "image": "Fake3",
-                    "count": 193
+                    "days": 193,
+                    "banners": 2,
+                    "patches": 1
                 },
                 {
                     "name": "Fake4",
                     "image": "Fake4",
-                    "count": 8
+                    "days": 8,
+                    "banners": 2,
+                    "patches": 1
                 },
                 {
                     "name": "Hu Tao",
                     "image": "Hu-Tao",
-                    "count": 406
+                    "days": 406,
+                    "banners": 22,
+                    "patches": 12
                 },
                 {
                     "name": "Venti",
                     "image": "Venti",
-                    "count": 358
+                    "days": 358,
+                    "banners": 17,
+                    "patches": 9
                 },
                 {
                     "name": "Yoimiya",
                     "image": "Yoimiya",
-                    "count": 336
-                },
-            ])
-    })
-})
-
-describe('getLongestBannersInBetween()', () => {
-    it('should provide longest banners in between', () => {
-        expect(_.orderBy(
-            getLongestBannersInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture),
-            (b) => b.name,
-            'asc'
-        ))
-            .toEqual([
-                {
-                    "name": "Fake",
-                    "image": "Fake",
-                    "count": 26
-                },
-                {
-                    "name": "Fake2",
-                    "image": "Fake2",
-                    "count": 1
-                },
-                {
-                    "name": "Fake3",
-                    "image": "Fake3",
-                    "count": 2
-                },
-                {
-                    "name": "Fake4",
-                    "image": "Fake4",
-                    "count": 2
-                },
-                {
-                    "name": "Hu Tao",
-                    "image": "Hu-Tao",
-                    "count": 22
-                },
-                {
-                    "name": "Venti",
-                    "image": "Venti",
-                    "count": 17
-                },
-                {
-                    "name": "Yoimiya",
-                    "image": "Yoimiya",
-                    "count": 15
+                    "days": 336,
+                    "banners": 15,
+                    "patches": 8
                 },
             ])
     })
 })
 
 
-describe('getLongestPatchesInBetween()', () => {
-    it('should provide longest patches in between', () => {
+describe('getShortestStatsInBetween()', () => {
+    it('should provide shortest stats in between', () => {
         expect(_.orderBy(
-            getLongestPatchesInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture),
+            getShortestStatsInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture, "2023-01-03"),
             (b) => b.name,
             'asc'
         ))
             .toEqual([
+                {name: 'Fake2', image: 'Fake2', days: 342, banners: 1, patches: 1},
+                {name: 'Fake3', image: 'Fake3', days: 193, banners: 2, patches: 1},
+                {name: 'Fake4', image: 'Fake4', days: 8, banners: 2, patches: 1},
                 {
-                    "name": "Fake",
-                    "image": "Fake",
-                    "count": 14
+                    name: 'Hu Tao',
+                    image: 'Hu-Tao',
+                    days: 231,
+                    banners: 11,
+                    patches: 6
                 },
+                {name: 'Venti', image: 'Venti', days: 150, banners: 7, patches: 4},
                 {
-                    "name": "Fake2",
-                    "image": "Fake2",
-                    "count": 1
-                },
-                {
-                    "name": "Fake3",
-                    "image": "Fake3",
-                    "count": 1
-                },
-                {
-                    "name": "Fake4",
-                    "image": "Fake4",
-                    "count": 1
-                },
-                {
-                    "name": "Hu Tao",
-                    "image": "Hu-Tao",
-                    "count": 12
-                },
-                {
-                    "name": "Venti",
-                    "image": "Venti",
-                    "count": 9
-                },
-                {
-                    "name": "Yoimiya",
-                    "image": "Yoimiya",
-                    "count": 8
-                },
-            ])
-    })
-})
-
-describe('getShortestDaysInBetween()', () => {
-    it('should provide shortest days in between', () => {
-        expect(_.orderBy(
-            getShortestDaysInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture, "2023-01-03"),
-            (b) => b.name,
-            'asc'
-        ))
-            .toEqual([
-                {
-                    "name": "Fake2",
-                    "image": "Fake2",
-                    "count": 342
-                },
-                {
-                    "name": "Fake3",
-                    "image": "Fake3",
-                    "count": 193
-                },
-                {
-                    "name": "Fake4",
-                    "image": "Fake4",
-                    "count": 8
-                },
-                {
-                    "name": "Hu Tao",
-                    "image": "Hu-Tao",
-                    "count": 231
-                },
-                {
-                    "name": "Venti",
-                    "image": "Venti",
-                    "count": 150
-                },
-                {
-                    "name": "Yoimiya",
-                    "image": "Yoimiya",
-                    "count": 71
-                },
-            ])
-    })
-})
-
-
-describe('getShortestBannersInBetween()', () => {
-    it('should provide shortest banners in between', () => {
-        expect(_.orderBy(
-            getShortestBannersInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture),
-            (b) => b.name,
-            'asc'
-        ))
-            .toEqual([
-                {
-                    "name": "Fake2",
-                    "image": "Fake2",
-                    "count": 1
-                },
-                {
-                    "name": "Fake3",
-                    "image": "Fake3",
-                    "count": 2
-                },
-                {
-                    "name": "Fake4",
-                    "image": "Fake4",
-                    "count": 2
-                },
-                {
-                    "name": "Hu Tao",
-                    "image": "Hu-Tao",
-                    "count": 11
-                },
-                {
-                    "name": "Venti",
-                    "image": "Venti",
-                    "count": 7
-                },
-                {
-                    "name": "Yoimiya",
-                    "image": "Yoimiya",
-                    "count": 4
-                },
-            ])
-    })
-})
-
-
-describe('getShortestPatchesInBetween()', () => {
-    it('should provide shortest patches in between', () => {
-        expect(_.orderBy(
-            getShortestPatchesInBetween(VersionPartsDummyDataWithFuture, BannerSummariesDummyDataWithFuture),
-            (b) => b.name,
-            'asc'
-        ))
-            .toEqual([
-                {
-                    "name": "Fake2",
-                    "image": "Fake2",
-                    "count": 1
-                },
-                {
-                    "name": "Fake3",
-                    "image": "Fake3",
-                    "count": 1
-                },
-                {
-                    "name": "Fake4",
-                    "image": "Fake4",
-                    "count": 1
-                },
-                {
-                    "name": "Hu Tao",
-                    "image": "Hu-Tao",
-                    "count": 6
-                },
-                {
-                    "name": "Venti",
-                    "image": "Venti",
-                    "count": 4
-                },
-                {
-                    "name": "Yoimiya",
-                    "image": "Yoimiya",
-                    "count": 3
-                },
+                    name: 'Yoimiya',
+                    image: 'Yoimiya',
+                    days: 71,
+                    banners: 4,
+                    patches: 3
+                }
             ])
     })
 })

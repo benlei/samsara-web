@@ -1,13 +1,9 @@
-import {Image, Label, Progress, Table} from "semantic-ui-react";
-import {
-    CountSummary,
-    getColorClassName,
-    getFilterFunction,
-    getPercent
-} from "@/banners/summary";
+import {Card, Feed, Grid, Image} from "semantic-ui-react";
+import {CountSummary, getFilterFunction} from "@/banners/summary";
 import _ from "lodash";
 import React from "react";
-import {BannerSummary, CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
+import {CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
+import {chunk} from "@/banners/summaryUtils";
 
 type Properties = {
     singular: string
@@ -35,34 +31,44 @@ export default function BasicCounterSummary(
         .value()
 
     const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))
-    const maxVal = baseSummary[order == 'desc' ? 0 : baseSummary.length - 1].count
     const summary = filteredSummary.length ? filteredSummary : baseSummary
+    const chunkedSummary = chunk(filteredSummary.length ? filteredSummary : baseSummary, (s) => s.count)
 
     return (
-        <Table.Body>
-            {summary.map((s, k) =>
-                <Table.Row key={k}>
-                    <Table.Cell verticalAlign={'top'}>
-                        <Image avatar
-                               src={`/images/${type}/${s.image}.png`}
-                               alt={s.image}/>
-                        <p>{s.name}</p>
-                    </Table.Cell>
-                    <Table.Cell verticalAlign={'top'}>
-                        <Progress
-                            percent={getPercent(s.count, maxVal)}
-                            className={getColorClassName(getPercent(s.count, maxVal))}
-                            size={'small'}/>
-
-                        <Label basic className={getColorClassName(getPercent(s.count, maxVal))}>
-                            {s.count}
-                            <Label.Detail>
-                                {s.count === 1 ? singular : plural}
-                            </Label.Detail>
-                        </Label>
-                    </Table.Cell>
-                </Table.Row>
+        <Grid className={'summary relative-row'} stackable>
+            {chunkedSummary.map((summary, j) =>
+                    // <Grid.Row key={j} className={'relative-row'}>
+                    <Grid.Column key={j}>
+                        <Card fluid>
+                            <Card.Content>
+                                <Card.Header>{summary[0].count} {summary[0].count === 1 ? singular : plural}</Card.Header>
+                            </Card.Content>
+                            <Card.Content>
+                                <Feed>
+                                    {summary.map((s, k) =>
+                                        <Feed.Event key={k}>
+                                            <Feed.Label>
+                                                <Image
+                                                    // floated={'left'}
+                                                    src={`/images/${type}/${s.image}.png`}
+                                                    circular
+                                                    alt={s.image}
+                                                    // size={'tiny'}
+                                                />
+                                            </Feed.Label>
+                                            <Feed.Content>
+                                                <Feed.Date>
+                                                    {s.name}
+                                                </Feed.Date>
+                                            </Feed.Content>
+                                        </Feed.Event>
+                                    )}
+                                </Feed>
+                            </Card.Content>
+                        </Card>
+                    </Grid.Column>
+                // </Grid.Row>
             )}
-        </Table.Body>
+        </Grid>
     )
 }
