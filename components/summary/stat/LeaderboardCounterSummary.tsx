@@ -32,7 +32,7 @@ export default function LeaderboardCounterSummary(
     const summary = filteredSummary.length ? filteredSummary : baseSummary
 
     return (
-        <Table unstackable className={'leaderboard'}>
+        <Table unstackable className={'summary-table'}>
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell colSpan={2} className={'active'}>Featured</Table.HeaderCell>
@@ -64,17 +64,14 @@ export default function LeaderboardCounterSummary(
                         <Table.Cell verticalAlign={'top'}>
                             <Header as={'div'} size={'small'}>{s.name}</Header>
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'}>
-                            <span className={'desktop'}>{s.days} {s.days === 1 ? 'day' : 'days'}</span>
-                            <span style={{display: 'none'}} className={'mobile'}>{s.days}d</span>
+                        <Table.Cell verticalAlign={'top'} className={sortBy.endsWith('day') ? 'highlight' : ''}>
+                            {s.days}
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'}>
-                            <span className={'desktop'}>{s.banners} {s.banners === 1 ? 'banner' : 'banners'}</span>
-                            <span style={{display: 'none'}} className={'mobile'}>{s.banners}b</span>
+                        <Table.Cell verticalAlign={'top'} className={sortBy.endsWith('banner') ? 'highlight' : ''}>
+                            {s.banners}
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'}>
-                            <span className={'desktop'}>{s.patches} {s.days === 1 ? 'patch' : 'patches'}</span>
-                            <span style={{display: 'none'}} className={'mobile'}>{s.patches}p</span>
+                        <Table.Cell verticalAlign={'top'} className={sortBy.endsWith('patch') ? 'highlight' : ''}>
+                            {s.patches}
                         </Table.Cell>
                     </Table.Row>
                 )}

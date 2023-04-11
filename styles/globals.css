@@ -85,7 +85,7 @@
     }
 
     .summary > .column {
-        width: 50% !important;
+        width: 100% !important;
     }
 }
 
@@ -202,12 +202,16 @@ button {
     flex-grow: initial;
 }
 
+.summary-table .highlight {
+    font-weight: 800;
+}
+
 /*.summary .header {*/
 /*    font-weight: 600 !important;*/
 /*    font-size: 1.1em !important;*/
 /*}*/
 
-.summary .card .date, .leaderboard .header {
+.summary .card .date, .summary-table .header {
     color: var(--light-header-color) !important;
     font-weight: 500 !important;
     /*font-size: 1.15em !important;*/
@@ -227,7 +231,7 @@ button {
     margin-top: 1rem !important;
 }
 
-.leaderboard th:not(.active) {
+.summary-table th:not(.active) {
     font-weight: 500 !important;
 }
 

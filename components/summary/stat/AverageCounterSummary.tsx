@@ -1,11 +1,6 @@
-import {Icon, Image, Label, Progress, Table} from "semantic-ui-react";
-import {
-    AverageCountSummary,
-    getColorClassName,
-    getFilterFunction,
-    getPercent
-} from "@/banners/summary";
-import {BannerSummary, CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
+import {Header, Image, Table} from "semantic-ui-react";
+import {AverageCountSummary, getFilterFunction} from "@/banners/summary";
+import {CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
 import _ from "lodash";
 import React from "react";
 
@@ -26,6 +21,14 @@ export default function AverageCounterSummary(
         counter,
     }: Properties
 ) {
+    function getRange(stat: AverageCountSummary): string {
+        if (stat.standardDeviation > 0) {
+            return `${_.round(stat.average - stat.standardDeviation, 1)} ~ ${_.round(stat.average + stat.standardDeviation, 1)}`
+        }
+
+        return `n/a`
+    }
+
     const baseSummary = _.chain(counter(versionParts, featuredList))
         .filter((b) => b.average > 0)
         .orderBy([
@@ -37,37 +40,54 @@ export default function AverageCounterSummary(
         .value()
 
     const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))
-    const maxVal = baseSummary[order == 'desc' ? 0 : baseSummary.length - 1].average
     const summary = filteredSummary.length ? filteredSummary : baseSummary
 
     return (
-        <Table.Body>
-            {summary.map((s, k) =>
-                <Table.Row key={k}>
-                    <Table.Cell verticalAlign={'top'}>
-                        <Image avatar
-                               src={`/images/${type}/${s.image}.png`}
-                               alt={s.image}/>
-                        <p>{s.name}</p>
-                    </Table.Cell>
-                    <Table.Cell verticalAlign={'top'}>
-                        <Progress
-                            percent={getPercent(s.average, maxVal)}
-                            className={getColorClassName(getPercent(s.average, maxVal))}
-                            size={'small'}/>
-
-                        <Label basic className={getColorClassName(getPercent(s.average, maxVal))}>
-                            {s.count}{s.discrepancy && '+1'}
-                            <Label.Detail>run{s.count === 1 ? '' : 's'}</Label.Detail>
-                        </Label>
-
-                        <Label basic className={getColorClassName(getPercent(s.average, maxVal))}>
-                            {s.average} ± {s.standardDeviation}
-                            <Label.Detail>{s.average === 1 ? singular : plural}</Label.Detail>
-                        </Label>
-                    </Table.Cell>
+        <Table unstackable className={'summary-table'}>
+            <Table.Header>
+                <Table.Row>
+                    <Table.HeaderCell colSpan={2} className={'active'}>Featured</Table.HeaderCell>
+                    <Table.HeaderCell>Runs</Table.HeaderCell>
+                    <Table.HeaderCell>{plural}</Table.HeaderCell>
+                    <Table.HeaderCell>{singular} Range</Table.HeaderCell>
                 </Table.Row>
-            )}
-        </Table.Body>
+            </Table.Header>
+            <Table.Body>
+                {summary.map((s, k) =>
+                    <Table.Row key={k} verticalAlign={'top'}>
+                        <Table.Cell style={{width: '35px'}}>
+                            <Image size={'tiny'}
+                                   circular
+                                   verticalAlign='middle'
+                                   src={`/images/${type}/${s.image}.png`}
+                                   alt={s.image}
+                                   className={'desktop'}
+                            />
+                            <Image size={'mini'}
+                                   circular
+                                   verticalAlign='middle'
+                                   src={`/images/${type}/${s.image}.png`}
+                                   alt={s.image}
+                                   style={{display: 'none'}}
+                                   className={'mobile'}
+                            />
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'}>
+                            <Header as={'div'} size={'small'}>{s.name}</Header>
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'}>
+                            {s.discrepancy ? s.count + 1 : s.count}
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'}>
+                            {s.average}
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'} >
+                            {getRange(s)}
+                        </Table.Cell>
+
+                    </Table.Row>
+                )}
+            </Table.Body>
+        </Table>
     )
 }

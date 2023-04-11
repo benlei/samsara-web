@@ -2,8 +2,7 @@ import React, {useEffect, useState} from "react";
 import _ from "lodash";
 import {
     getAverageBannersInBetween,
-    getAverageDaysInBetween,
-    getAveragePatchesInBetween,
+    getAverageDaysInBetween, getAveragePatchesInBetween,
     getBannersSinceLastCountSummary,
     getDaysSinceRunCountSummary,
     getLongestStatsInBetween,
@@ -85,54 +84,26 @@ export default function SummaryTable(
                 />
             }
 
-            {/*{sortBy === 'longest-day' &&*/}
-            {/*    <BasicCounterSummary {...commonProps}*/}
-            {/*                         singular={'day'} plural={'days'}*/}
-            {/*                         counter={(vp, banners) => getLongestDaysInBetween(vp, banners, now)}*/}
-            {/*    />}*/}
-
-            {/*{sortBy === 'shortest-day' &&*/}
-            {/*    <BasicCounterSummary {...commonProps}*/}
-            {/*                         singular={'day'} plural={'days'}*/}
-            {/*                         counter={(vp, banners) => getShortestDaysInBetween(vp, banners, now)}*/}
-            {/*    />}*/}
-            {/*{sortBy === 'longest-banner' &&*/}
-            {/*    <BasicCounterSummary {...commonProps}*/}
-            {/*                         singular={'banner'} plural={'banners'}*/}
-            {/*                         counter={getLongestBannersInBetween}*/}
-            {/*    />}*/}
-            {/*{sortBy === 'shortest-banner' &&*/}
-            {/*    <BasicCounterSummary {...commonProps}*/}
-            {/*                         singular={'banner'} plural={'banners'}*/}
-            {/*                         counter={getShortestBannersInBetween}*/}
-            {/*    />}*/}
-            {/*{sortBy === 'longest-patch' &&*/}
-            {/*    <BasicCounterSummary {...commonProps}*/}
-            {/*                         singular={'patch'} plural={'patches'}*/}
-            {/*                         counter={getLongestPatchesInBetween}*/}
-            {/*    />}*/}
-            {/*{sortBy === 'shortest-patch' &&*/}
-            {/*    <BasicCounterSummary {...commonProps}*/}
-            {/*                         singular={'patch'} plural={'patches'}*/}
-            {/*                         counter={getShortestPatchesInBetween}*/}
-            {/*    />}*/}
-
-            {/*TODO: chunk by ROUND(patch) */}
             {sortBy === 'avg-day' &&
                 <AverageCounterSummary {...commonProps}
-                                       singular={'day'} plural={'days'}
+                                       singular={'Day'}
+                                       plural={'Days'}
                                        counter={getAverageDaysInBetween}
                 />}
             {sortBy === 'avg-banner' &&
                 <AverageCounterSummary {...commonProps}
-                                       singular={'banner'} plural={'banners'}
+                                       singular={'Banner'}
+                                       plural={'Banners'}
                                        counter={getAverageBannersInBetween}
                 />}
             {sortBy === 'avg-patch' &&
                 <AverageCounterSummary {...commonProps}
-                                       singular={'patch'} plural={'patches'}
+                                       singular={'Patch'}
+                                       plural={'Patches'}
                                        counter={getAveragePatchesInBetween}
                 />}
+
+
 
             {sortBy === 'runs' &&
                 <BasicCounterSummary {...commonProps}
