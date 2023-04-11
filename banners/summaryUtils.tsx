@@ -1,6 +1,6 @@
-import {AverageCountSummary, CountSummary, RangeCountSummary} from "@/banners/summary";
+import {AverageCountSummary, CountSummary, LeaderboardSummary} from "@/banners/summary";
 
-type Summary = CountSummary | RangeCountSummary | AverageCountSummary
+type Summary = CountSummary | LeaderboardSummary | AverageCountSummary
 type ByFnResult = number | string
 
 export function chunk<T extends Summary>(
@@ -15,7 +15,7 @@ export function chunk<T extends Summary>(
             result[result.length - 1].push(s)
         } else {
             result.push([s])
-            lastValue = s.count
+            lastValue = byFn(s)
         }
     }
 
