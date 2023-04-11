@@ -1,4 +1,4 @@
-import {Card, Feed, Grid, Header, Icon, Image, Table} from "semantic-ui-react";
+import {Card, Feed, Grid, Image} from "semantic-ui-react";
 import {CountSummary, getFilterFunction} from "@/banners/summary";
 import _ from "lodash";
 import React from "react";

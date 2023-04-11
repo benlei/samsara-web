@@ -5,7 +5,7 @@ import getVersionParts from "@/banners/version";
 import _ from "lodash";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import SummaryTable from "@/components/summary/SummaryTable";
-import {BannerSummary, Featured} from "@/banners/types";
+import {Featured} from "@/banners/types";
 
 type Properties = {
     data: { featuredList: Featured[], date: string }

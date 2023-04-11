@@ -4,7 +4,7 @@ export default function Stale() {
     return (
         <Container text style={{marginTop: '2em'}}>
             <Card centered fluid>
-                <Image src='/images/PaimonDizzy.png' wrapped ui={false} alt={'dizzy'} />
+                <Image src='/images/PaimonDizzy.png' wrapped ui={false} alt={'dizzy'}/>
                 <Card.Content>
                     <Card.Header>You broke the site!</Card.Header>
                     <Card.Meta>

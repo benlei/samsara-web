@@ -54,7 +54,7 @@ export default function RelativeBasicCounterSummary(
     return (
         <Grid className={'summary relative-row'} stackable>
             {chunkedSummary.map((summary, j) =>
-                // <Grid.Row key={j} className={'relative-row'}>
+                    // <Grid.Row key={j} className={'relative-row'}>
                     <Grid.Column key={j}>
                         <Card fluid>
                             <Card.Content>

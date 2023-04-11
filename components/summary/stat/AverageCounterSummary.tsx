@@ -81,7 +81,7 @@ export default function AverageCounterSummary(
                         <Table.Cell verticalAlign={'top'}>
                             {s.average}
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'} >
+                        <Table.Cell verticalAlign={'top'}>
                             {getRange(s)}
                         </Table.Cell>
 

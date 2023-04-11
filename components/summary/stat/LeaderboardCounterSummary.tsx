@@ -1,4 +1,4 @@
-import {Header, Icon, Image, Table} from "semantic-ui-react";
+import {Header, Image, Table} from "semantic-ui-react";
 import {getFilterFunction, LeaderboardSummary} from "@/banners/summary";
 import _ from "lodash";
 import React from "react";

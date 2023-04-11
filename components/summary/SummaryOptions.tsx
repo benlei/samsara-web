@@ -339,7 +339,7 @@ export function MobileSummaryOptions(
                     </Form.Field>
 
                     <Form.Field>
-                            <Radio toggle label='Hide One-Offs'
+                        <Radio toggle label='Hide One-Offs'
                                onChange={() => setLimitedOnly(!limitedOnly)}
                                checked={showLimitedOnly && limitedOnly}
                                autoComplete={'off'}

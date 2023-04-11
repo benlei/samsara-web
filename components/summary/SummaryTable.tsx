@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import _ from "lodash";
 import {
     getAverageBannersInBetween,
-    getAverageDaysInBetween, getAveragePatchesInBetween,
+    getAverageDaysInBetween,
+    getAveragePatchesInBetween,
     getBannersSinceLastCountSummary,
     getDaysSinceRunCountSummary,
     getLongestStatsInBetween,
@@ -102,7 +103,6 @@ export default function SummaryTable(
                                        plural={'Patches'}
                                        counter={getAveragePatchesInBetween}
                 />}
-
 
 
             {sortBy === 'runs' &&
