@@ -1,109 +1,76 @@
 import React from "react";
-import {Container, Dropdown, Icon, Menu} from "semantic-ui-react";
-import {useRouter} from 'next/router';
+import {Container, Icon, Menu, Sidebar} from "semantic-ui-react";
 
-export default function Navbar({children}: React.PropsWithChildren) {
-    const {asPath} = useRouter();
+type SidebarItemsProps = {
+    stars: 5 | 4
+    type: "characters" | "weapons"
+}
 
-    function getCharacterBannerActive() {
-        if (asPath === '/' || asPath.includes('/characters')) {
-            return 'active'
-        }
-        return ''
-    }
-
-    function getWeaponBannerActive() {
-        if (asPath.includes('/weapons')) {
-            return 'active'
-        }
-        return ''
-    }
+export default function Navbar(): JSX.Element {
+    const [visible, setVisible] = React.useState(false)
 
     return (
         <>
-            <Container style={{marginTop: '.5em'}} className={'desktop'}>
+            <Container style={{marginTop: '.5em'}}>
                 <Menu secondary pointing>
                     <Menu.Item as={'a'} href='/'>
                         Samsara
                     </Menu.Item>
-                    <Dropdown text='Character Banners' pointing className={'link item ' + getCharacterBannerActive()}>
-                        <Dropdown.Menu>
-                            <Dropdown.Item as={'a'} href='/5star/characters/summary'>5 <Icon
-                                name={'star'}/> Summary</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/5star/characters'>5 <Icon
-                                name={'star'}/> History</Dropdown.Item>
-                            <Dropdown.Divider/>
-                            <Dropdown.Item as={'a'} href='/4star/characters/summary'>4 <Icon
-                                name={'star'}/> Summary</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon
-                                name={'star'}/> History</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    <Dropdown text='Weapon Banners' pointing className={'link item ' + getWeaponBannerActive()}>
-                        <Dropdown.Menu>
-                            <Dropdown.Item as={'a'} href='/5star/weapons/summary'>5 <Icon
-                                name={'star'}/> Summary</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon
-                                name={'star'}/> History</Dropdown.Item>
-                            <Dropdown.Divider/>
-                            <Dropdown.Item as={'a'} href='/4star/weapons/summary'>4 <Icon
-                                name={'star'}/> Summary</Dropdown.Item>
-                            <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon
-                                name={'star'}/> History</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    <Menu.Item as={'a'} onClick={() => setVisible(!visible)}>
+                        <Icon name={'bars'}/> Menu
+                    </Menu.Item>
                 </Menu>
             </Container>
+            <Sidebar.Pusher>
+                <Sidebar
+                    as={Menu}
+                    animation='overlay'
+                    icon='labeled'
+                    onHide={() => setVisible(false)}
+                    vertical
+                    visible={visible}
+                >
+                    <Menu.Item>
+                        <Menu.Header className={'logo'} as={'a'} href={'/'}>Samsara</Menu.Header>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>5&#x2605; Characters</Menu.Header>
+                        <SidebarMenuItems stars={5} type={'characters'}/>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>4&#x2605; Characters</Menu.Header>
+                        <SidebarMenuItems stars={4} type={'characters'}/>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>5&#x2605; Weapons</Menu.Header>
+                        <SidebarMenuItems stars={5} type={'weapons'}/>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>4&#x2605; Weapons</Menu.Header>
+                        <SidebarMenuItems stars={4} type={'weapons'}/>
+                    </Menu.Item>
+                </Sidebar>
+            </Sidebar.Pusher>
         </>
     )
 }
 
-
-export function NavbarMobile() {
-    const {asPath} = useRouter();
-
-    function getBannerActive() {
-        if (asPath === '/' || asPath.includes('/characters') || asPath.includes('/weapons')) {
-            return 'active'
-        }
-        return ''
-    }
-
+function SidebarMenuItems(
+    {
+        stars,
+        type
+    }: SidebarItemsProps
+): JSX.Element {
     return (
-        <Container style={{marginTop: '.5em', display: 'none'}} className={'mobile'}>
-            <Menu secondary pointing>
-                <Menu.Item as={'a'} href='/'>
-                    Samsara
-                </Menu.Item>
-                <Dropdown text='Banners' pointing className={'link item ' + getBannerActive()}>
-                    <Dropdown.Menu>
-                        <Dropdown.Header>Character Summary</Dropdown.Header>
-                        <Dropdown.Item as={'a'} href='/5star/characters/summary'>5 <Icon name={'star'}/></Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/4star/characters/summary'>4 <Icon
-                            name={'star'}/></Dropdown.Item>
-
-                        <Dropdown.Divider/>
-
-                        <Dropdown.Header>Weapon Summary</Dropdown.Header>
-                        <Dropdown.Item as={'a'} href='/5star/weapons/summary'>5 <Icon
-                            name={'star'}/></Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/4star/weapons/summary'>4 <Icon
-                            name={'star'}/></Dropdown.Item>
-
-                        <Dropdown.Divider/>
-
-                        <Dropdown.Header>Character History</Dropdown.Header>
-                        <Dropdown.Item as={'a'} href='/5star/characters'>5 <Icon name={'star'}/></Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/4star/characters'>4 <Icon name={'star'}/></Dropdown.Item>
-
-                        <Dropdown.Divider/>
-
-                        <Dropdown.Header>Weapon History</Dropdown.Header>
-                        <Dropdown.Item as={'a'} href='/5star/weapons'>5 <Icon name={'star'}/></Dropdown.Item>
-                        <Dropdown.Item as={'a'} href='/4star/weapons'>4 <Icon name={'star'}/></Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            </Menu>
-        </Container>
+        <Menu vertical>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}/summary`}>Summary</Menu.Item>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}/summary-avg`}>Summary (Avg)</Menu.Item>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}/run-summary`}>Run Count</Menu.Item>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}/longest-leaderboard`}>Leaderboard: Longest
+                Rerun</Menu.Item>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}/shortest-leaderboard`}>Leaderboard: Shortest
+                Rerun</Menu.Item>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}`}>Banner History</Menu.Item>
+        </Menu>
     )
 }
