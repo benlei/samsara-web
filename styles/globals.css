@@ -111,6 +111,9 @@
     font-size: 1.3rem !important;
     color: var(--black);
 }
+.sidebar.ui.menu {
+    border-top: 0 !important;;
+}
 
 .sidebar .ui.vertical.menu {
     -webkit-box-shadow: none !important;
