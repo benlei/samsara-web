@@ -218,6 +218,10 @@ button {
     padding-top: 5px !important;
 }
 
+.summary .card .content:first-of-type {
+    background-color: var(--gray-background);
+}
+
 .summary .feed .label {
     width: 50px !important;
     height: 50px !important;
