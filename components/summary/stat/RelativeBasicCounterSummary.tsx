@@ -1,4 +1,4 @@
-import {Card, Grid, Header, Image} from "semantic-ui-react";
+import {Card, Feed, Grid, Image} from "semantic-ui-react";
 import {CountSummary, getFilterFunction, UnknownFutureCounter} from "@/banners/summary";
 import _ from "lodash";
 import React from "react";
@@ -52,31 +52,39 @@ export default function RelativeBasicCounterSummary(
     const chunkedSummary = chunk(filteredSummary.length ? filteredSummary : baseSummary, (s) => s.count)
 
     return (
-        <Grid className={'summary'} stackable>
+        <Grid className={'summary relative-row'} stackable>
             {chunkedSummary.map((summary, j) =>
-                <Grid.Row key={j} className={'relative-row'}>
-                    <Grid.Column width={16}>
-                        <Header size={'medium'}>{getRelativeTimeText(summary[0], singular, plural)}</Header>
+                // <Grid.Row key={j} className={'relative-row'}>
+                    <Grid.Column key={j}>
+                        <Card fluid>
+                            <Card.Content>
+                                <Card.Header>{getRelativeTimeText(summary[0], singular, plural)}</Card.Header>
+                            </Card.Content>
+                            <Card.Content>
+                                <Feed>
+                                    {summary.map((s, k) =>
+                                        <Feed.Event key={k}>
+                                            <Feed.Label>
+                                                <Image
+                                                    // floated={'left'}
+                                                    src={`/images/${type}/${s.image}.png`}
+                                                    circular
+                                                    alt={s.image}
+                                                    // size={'tiny'}
+                                                />
+                                            </Feed.Label>
+                                            <Feed.Content>
+                                                <Feed.Date>
+                                                    {s.name}
+                                                </Feed.Date>
+                                            </Feed.Content>
+                                        </Feed.Event>
+                                    )}
+                                </Feed>
+                            </Card.Content>
+                        </Card>
                     </Grid.Column>
-                    {summary.map((s, k) =>
-                        <Grid.Column key={j}>
-                            <Card fluid>
-                                <Card.Content>
-                                    <Image
-                                        floated={'left'}
-                                        src={`/images/${type}/${s.image}.png`}
-                                        circular
-                                        alt={s.image}
-                                        size={'tiny'}
-                                    />
-                                    <Card.Header>
-                                        {s.name}
-                                    </Card.Header>
-                                </Card.Content>
-                            </Card>
-                        </Grid.Column>
-                    )}
-                </Grid.Row>
+                // </Grid.Row>
             )}
         </Grid>
     )
