@@ -62,7 +62,7 @@ export default function LeaderboardCounterSummary(
                             />
                         </Table.Cell>
                         <Table.Cell verticalAlign={'top'}>
-                            <Header as={'span'} size={'small'}>{s.name}</Header>
+                            <Header as={'div'} size={'small'}>{s.name}</Header>
                         </Table.Cell>
                         <Table.Cell verticalAlign={'top'}>
                             <span className={'desktop'}>{s.days} {s.days === 1 ? 'day' : 'days'}</span>

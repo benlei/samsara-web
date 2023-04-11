@@ -207,7 +207,7 @@ button {
 /*    font-size: 1.1em !important;*/
 /*}*/
 
-.summary .card .date {
+.summary .card .date, .leaderboard .header {
     color: var(--light-header-color) !important;
     font-weight: 500 !important;
     /*font-size: 1.15em !important;*/
