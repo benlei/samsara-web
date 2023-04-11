@@ -191,6 +191,9 @@
     font-weight: 700 !important;
 }
 
+.ui.secondary.pointing.menu .item {
+    border-bottom-style: none !important;
+}
 .grey {
     color: #666;
 }
