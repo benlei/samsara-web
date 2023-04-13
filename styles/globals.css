@@ -103,9 +103,6 @@
     }
 }
 
-.navmenu {
-    border-color: var(--primary-color) !important;
-}
 .navtitle {
     background-color: var(--primary-color) !important;
     color: #fff !important;

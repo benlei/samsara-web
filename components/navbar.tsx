@@ -12,7 +12,7 @@ export default function Navbar(): JSX.Element {
     return (
         <>
             <Container style={{marginTop: '.5em'}}>
-                <Menu secondary pointing className={'navmenu'}>
+                <Menu secondary className={'navmenu'}>
                     <Menu.Item as={'a'} href='/' className={'navtitle'}>
                         Samsara
                     </Menu.Item>
