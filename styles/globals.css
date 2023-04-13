@@ -103,6 +103,11 @@
     }
 }
 
+.logo {
+    background-color: var(--primary-color) !important;
+    color: #fff !important;
+}
+
 .sidebar .item {
     text-align: left !important;
 }
