@@ -103,7 +103,10 @@
     }
 }
 
-.logo {
+.navmenu {
+    border-color: var(--primary-color) !important;
+}
+.navtitle {
     background-color: var(--primary-color) !important;
     color: #fff !important;
 }
@@ -115,6 +118,7 @@
 .sidebar .logo.header {
     font-size: 1.3rem !important;
     color: var(--black);
+    line-height: 2.5rem !important;
 }
 .sidebar.ui.menu {
     border-top: 0 !important;;

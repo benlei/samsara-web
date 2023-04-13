@@ -12,8 +12,8 @@ export default function Navbar(): JSX.Element {
     return (
         <>
             <Container style={{marginTop: '.5em'}}>
-                <Menu secondary pointing style={{borderColor: 'var(--primary-color)'}}>
-                    <Menu.Item as={'a'} href='/' className={'logo'}>
+                <Menu secondary pointing className={'navmenu'}>
+                    <Menu.Item as={'a'} href='/' className={'navtitle'}>
                         Samsara
                     </Menu.Item>
                     <Menu.Item as={'a'} onClick={() => setVisible(!visible)}>
@@ -30,8 +30,10 @@ export default function Navbar(): JSX.Element {
                     vertical
                     visible={visible}
                 >
-                    <Menu.Item className={'logo'}>
-                        <Menu.Header className={'logo'} as={'a'} href={'/'}>Samsara</Menu.Header>
+                    <Menu.Item>
+                        <Menu.Header className={'logo'} as={'a'} href={'/'}>
+                            <Image src={'images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara
+                        </Menu.Header>
                     </Menu.Item>
                     <Menu.Item>
                         <Menu.Header>5&#x2605; Characters</Menu.Header>
