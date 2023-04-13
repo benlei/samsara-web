@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Icon, Menu, Sidebar} from "semantic-ui-react";
+import {Container, Icon, Menu, Sidebar, Image} from "semantic-ui-react";
 
 type SidebarItemsProps = {
     stars: 5 | 4
@@ -12,8 +12,8 @@ export default function Navbar(): JSX.Element {
     return (
         <>
             <Container style={{marginTop: '.5em'}}>
-                <Menu secondary pointing>
-                    <Menu.Item as={'a'} href='/'>
+                <Menu secondary pointing style={{borderColor: '#822'}}>
+                    <Menu.Item as={'a'} href='/' style={{backgroundColor: '#822', color: '#fff'}}>
                         Samsara
                     </Menu.Item>
                     <Menu.Item as={'a'} onClick={() => setVisible(!visible)}>
@@ -30,7 +30,7 @@ export default function Navbar(): JSX.Element {
                     vertical
                     visible={visible}
                 >
-                    <Menu.Item>
+                    <Menu.Item style={{backgroundColor: '#822', color: '#fff'}}>
                         <Menu.Header className={'logo'} as={'a'} href={'/'}>Samsara</Menu.Header>
                     </Menu.Item>
                     <Menu.Item>
