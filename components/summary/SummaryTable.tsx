@@ -38,7 +38,7 @@ export default function SummaryTable(
         filterText,
         date,
     }: Properties
-) {
+): JSX.Element {
     const [now, setNow] = useState(date)
     useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
 

@@ -377,3 +377,8 @@ tr.selected {
 .hc-25 {
     background-color: var(--hc-25);
 }
+
+.buttons .active {
+    background-color: var(--primary-color) !important;
+    color: #fff !important;
+}

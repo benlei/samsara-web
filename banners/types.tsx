@@ -62,6 +62,6 @@ export type CommonSummaryProperties = {
     versionParts: VersionParts[]
     featuredList: Featured[]
     type: string
-    order: 'asc' | 'desc' | boolean
+    order: string
     filterText: string
 }

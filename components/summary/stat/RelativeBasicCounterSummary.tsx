@@ -4,6 +4,7 @@ import _ from "lodash";
 import React from "react";
 import {CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
 import {chunk} from "@/banners/summaryUtils";
+import {Order} from "../../../lotypes";
 
 type Properties = {
     date: string
@@ -45,7 +46,7 @@ export default function RelativeBasicCounterSummary(
         .orderBy([
             (b) => b.count,
             (b) => b.name,
-        ], [order, order])
+        ], [order, order] as Order[])
         .value()
 
     const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))
@@ -54,37 +55,33 @@ export default function RelativeBasicCounterSummary(
     return (
         <Grid className={'summary relative-row'} stackable>
             {chunkedSummary.map((summary, j) =>
-                    // <Grid.Row key={j} className={'relative-row'}>
-                    <Grid.Column key={j}>
-                        <Card fluid>
-                            <Card.Content>
-                                <Card.Header>{getRelativeTimeText(summary[0], singular, plural)}</Card.Header>
-                            </Card.Content>
-                            <Card.Content>
-                                <Feed>
-                                    {summary.map((s, k) =>
-                                        <Feed.Event key={k}>
-                                            <Feed.Label>
-                                                <Image
-                                                    // floated={'left'}
-                                                    src={`/images/${type}/${s.image}.png`}
-                                                    circular
-                                                    alt={s.image}
-                                                    // size={'tiny'}
-                                                />
-                                            </Feed.Label>
-                                            <Feed.Content>
-                                                <Feed.Date>
-                                                    {s.name}
-                                                </Feed.Date>
-                                            </Feed.Content>
-                                        </Feed.Event>
-                                    )}
-                                </Feed>
-                            </Card.Content>
-                        </Card>
-                    </Grid.Column>
-                // </Grid.Row>
+                <Grid.Column key={j}>
+                    <Card fluid>
+                        <Card.Content>
+                            <Card.Header>{getRelativeTimeText(summary[0], singular, plural)}</Card.Header>
+                        </Card.Content>
+                        <Card.Content>
+                            <Feed>
+                                {summary.map((s, k) =>
+                                    <Feed.Event key={k}>
+                                        <Feed.Label>
+                                            <Image
+                                                src={`/images/${type}/${s.image}.png`}
+                                                circular
+                                                alt={s.image}
+                                            />
+                                        </Feed.Label>
+                                        <Feed.Content>
+                                            <Feed.Date>
+                                                {s.name}
+                                            </Feed.Date>
+                                        </Feed.Content>
+                                    </Feed.Event>
+                                )}
+                            </Feed>
+                        </Card.Content>
+                    </Card>
+                </Grid.Column>
             )}
         </Grid>
     )
