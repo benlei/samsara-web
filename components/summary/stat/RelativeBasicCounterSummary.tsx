@@ -1,8 +1,8 @@
 import {Card, Feed, Grid, Image} from "semantic-ui-react";
-import {CountSummary, getFilterFunction, UnknownFutureCounter} from "@/banners/summary";
+import {CountSummary, UnknownFutureCounter} from "@/banners/summary";
 import _ from "lodash";
 import React from "react";
-import {CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
+import {Featured, VersionParts} from "@/banners/types";
 import {chunk} from "@/banners/summaryUtils";
 import {Order} from "../../../lotypes";
 
@@ -10,8 +10,12 @@ type Properties = {
     date: string
     singular: string
     plural: string
+    versionParts: VersionParts[]
+    featuredList: Featured[]
+    type: string
+    order: string
     counter: (versionParts: VersionParts[], featuredList: Featured[], currDate: string) => CountSummary[]
-} & CommonSummaryProperties
+}
 
 function getRelativeTimeText(s: CountSummary, singular: string, plural: string): string {
     if (s.count == UnknownFutureCounter) {
@@ -36,21 +40,20 @@ export default function RelativeBasicCounterSummary(
         type,
         order,
         date,
-        filterText,
         counter,
         singular,
         plural,
     }: Properties
 ) {
-    const baseSummary = _.chain(counter(versionParts, featuredList, date))
-        .orderBy([
-            (b) => b.count,
-            (b) => b.name,
-        ], [order, order] as Order[])
-        .value()
-
-    const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))
-    const chunkedSummary = chunk(filteredSummary.length ? filteredSummary : baseSummary, (s) => s.count)
+    const chunkedSummary = chunk(
+        _.chain(counter(versionParts, featuredList, date))
+            .orderBy([
+                (b) => b.count,
+                (b) => b.name,
+            ], [order, order] as Order[])
+            .value(),
+        (s) => s.count,
+    )
 
     return (
         <Grid className={'summary relative-row'} stackable>

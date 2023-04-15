@@ -29,7 +29,6 @@ export default function FiveStarCharacterSummary(props: { featuredList: Featured
                 title={<>5&#x2605; Character Summary</>}
                 data={props}
                 type={'characters'}
-                standard={['Keqing', 'Tighnari']}
             />
         </>
     )

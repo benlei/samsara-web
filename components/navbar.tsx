@@ -66,7 +66,7 @@ function SidebarMenuItems(
     return (
         <Menu vertical>
             <Menu.Item as={'a'} href={`/${stars}star/${type}/summary`}>Summary</Menu.Item>
-            <Menu.Item as={'a'} href={`/${stars}star/${type}/summary-avg`}>Summary (Avg)</Menu.Item>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}/summary-avg`}>Summary (avg)</Menu.Item>
             <Menu.Item as={'a'} href={`/${stars}star/${type}/run-summary`}>Run Count</Menu.Item>
             <Menu.Item as={'a'} href={`/${stars}star/${type}/longest-leaderboard`}>Leaderboard: Longest
                 Rerun</Menu.Item>
