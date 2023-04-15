@@ -1,4 +1,4 @@
-import {Button, Container, Header, Icon, Ref, Search} from "semantic-ui-react";
+import {Button, Container, Header, Icon, Ref} from "semantic-ui-react";
 import React, {ReactNode, useEffect, useState} from "react";
 import getVersionParts from "@/banners/version";
 import _ from "lodash";
@@ -106,18 +106,6 @@ export default function LastRunSummaryPage(
                         Patches <Icon name={'sort'} className={clsx({hidden: sortBy != 'patches'})}/>
                     </Button>
                 </Button.Group>
-
-
-                <Search
-                    // loading={loading}
-                    placeholder='Search...'
-
-                    // onResultSelect={(e, data) =>
-                    //     dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title })
-                    // onSearchChange={handleSearchChange}
-                    // results={results}
-                    // value={value}
-                />
             </Container>
 
             <Ref innerRef={ref}>
