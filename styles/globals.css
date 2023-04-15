@@ -382,3 +382,12 @@ tr.selected {
     background-color: var(--primary-color) !important;
     color: #fff !important;
 }
+
+.search .input {
+    width: 100% !important;
+    margin-top: 1.5rem;
+}
+.search .prompt {
+    width: 100% !important;
+    border-radius: 5px !important;
+}
