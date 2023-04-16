@@ -25,17 +25,16 @@ export default function AverageCounterSummary(
         sortBy,
     }: Properties
 ) {
-    let plural: string
     let counter: (versionParts: VersionParts[], featuredList: Featured[]) => AverageCountSummary[]
     const [order, setOrder] = useState('desc' as Order)
     const [runsOrder, setRunsOrder] = useState('desc' as Order | null)
 
     if (sortBy === 'patches') {
-        [plural, counter] = ['Patches', getAveragePatchesInBetween]
+        counter = getAveragePatchesInBetween
     } else if (sortBy === 'banners') {
-        [plural, counter] = ['Banners', getAverageBannersInBetween]
+        counter = getAverageBannersInBetween
     } else {
-        [plural, counter] = ['Days', getAverageDaysInBetween]
+        counter = getAverageDaysInBetween
     }
 
     function getRange(stat: AverageCountSummary): string {
@@ -111,7 +110,6 @@ export default function AverageCounterSummary(
                         <Table.Cell verticalAlign={'top'}>
                             {getRange(s)}
                         </Table.Cell>
-
                     </Table.Row>
                 )}
             </Table.Body>
