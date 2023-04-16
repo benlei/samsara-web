@@ -181,6 +181,7 @@
 .history td:first-of-type {
     white-space: nowrap;
     text-align: right !important;
+    border-left-style: solid !important;
 }
 
 .history td div {
