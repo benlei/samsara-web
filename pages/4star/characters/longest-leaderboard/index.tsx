@@ -7,6 +7,7 @@ import {BannerSummary, Featured} from "@/banners/types";
 import YAML from "yaml";
 import fs from "fs";
 import path from "path";
+import LongestLeaderboardPage from "@/components/summary/LongestLeaderboardPage";
 
 export async function getStaticProps() {
     dayjs.extend(utc);
@@ -24,10 +25,10 @@ export default function FourStarCharacterSummary(props: { featuredList: Featured
     return (
         <>
             <Head>
-                <title>4&#x2605; Character Summary - Samsara</title>
+                <title>4&#x2605; Character Longest Rerun Leaderboard - Samsara</title>
             </Head>
-            <SummaryPage
-                title={<>4&#x2605; Character Summary</>}
+            <LongestLeaderboardPage
+                title={<>4&#x2605; Character Longest Rerun Leaderboard</>}
                 data={props}
                 type={'characters'}
             />

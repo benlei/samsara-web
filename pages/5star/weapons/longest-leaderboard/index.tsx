@@ -7,6 +7,7 @@ import {BannerSummary, Featured} from "@/banners/types";
 import YAML from "yaml";
 import fs from "fs";
 import path from "path";
+import LongestLeaderboardPage from "@/components/summary/LongestLeaderboardPage";
 
 export async function getStaticProps() {
     dayjs.extend(utc);
@@ -23,10 +24,10 @@ export default function FiveStarWeaponSummary(props: { featuredList: Featured[],
     return (
         <>
             <Head>
-                <title>5&#x2605; Weapon Summary - Samsara</title>
+                <title>5&#x2605; Weapon Longest Rerun Leaderboard - Samsara</title>
             </Head>
-            <SummaryPage
-                title={<>5&#x2605; Weapon Summary</>}
+            <LongestLeaderboardPage
+                title={<>5&#x2605; Weapon Longest Rerun Leaderboard</>}
                 data={props}
                 type={'weapons'}
             />

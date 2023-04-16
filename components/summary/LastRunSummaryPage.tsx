@@ -1,9 +1,7 @@
 import {Button, Container, Header, Icon, Ref} from "semantic-ui-react";
-import React, {ReactNode, useEffect, useState} from "react";
-import {getVersionPartsFromFeaturedList} from "@/banners/version";
+import React, {ReactNode, useState} from "react";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
-import dayjs from "dayjs";
 import RelativeBasicCounterSummary from "@/components/summary/stat/RelativeBasicCounterSummary";
 import clsx from "clsx";
 
