@@ -1,9 +1,8 @@
 import React from "react";
-import SummaryPage from "@/components/SummaryPage";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import Head from "next/head";
-import {BannerSummary, Featured} from "@/banners/types";
+import {Featured} from "@/banners/types";
 import YAML from "yaml";
 import fs from "fs";
 import path from "path";

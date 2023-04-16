@@ -31,10 +31,10 @@ export default function AverageRunSummaryPage(
                 <Header size={'large'} as={'h1'}>{title}</Header>
 
                 <p>
-                    This page shows the average wait time between a featured character or weapon's banner runs.
+                    This page shows the average wait time between a featured character or weapon{"'"}s banner runs.
                     It first sorts by the run count, then the day/banner/patch. The fewer number of runs the
                     character/weapon has, the less reliable the day/banner/patch rerun average range will be. That
-                    being said, miHoYo's methodology for reruns might really just be random.
+                    being said, miHoYo{"'"}s methodology for reruns might really just be random.
                 </p>
 
                 <Button.Group widths='3'>
