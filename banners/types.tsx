@@ -1,4 +1,5 @@
 import {Dispatch, SetStateAction} from "react";
+import {Order} from "@/lotypes/sort";
 
 export type BannerDataset = {
     fiveStarCharacters: Featured[]
@@ -62,6 +63,6 @@ export type CommonSummaryProperties = {
     versionParts: VersionParts[]
     featuredList: Featured[]
     type: string
-    order: 'asc' | 'desc' | boolean
+    order: Order
     filterText: string
 }

@@ -1,32 +1,31 @@
 import React from "react";
-import LastRunSummaryPage from "@/components/summary/LastRunSummaryPage";
 import dayjs from "dayjs";
-import utc from 'dayjs/plugin/utc'
+import utc from "dayjs/plugin/utc";
 import Head from "next/head";
-import * as fs from "fs";
-import YAML from 'yaml'
-import path from "path";
 import {Featured} from "@/banners/types";
+import YAML from "yaml";
+import fs from "fs";
+import path from "path";
+import RunsSummaryPage from "@/components/summary/RunsSummaryPage";
 
 export async function getStaticProps() {
     dayjs.extend(utc);
     return {
         props: {
             featuredList: YAML.parse(fs.readFileSync(path.resolve('./public/data/banners.yaml'), 'utf8')).fiveStarCharacters,
-            date: dayjs.utc().toISOString().substring(0, 10)
         },
     };
 }
 
 
-export default function FiveStarCharacterSummary(props: { featuredList: Featured[], date: string }) {
+export default function FiveStarCharacterSummary(props: { featuredList: Featured[] }) {
     return (
         <>
             <Head>
-                <title>5&#x2605; Character Summary - Samsara</title>
+                <title>5&#x2605; Character Runs Summary - Samsara</title>
             </Head>
-            <LastRunSummaryPage
-                title={<>5&#x2605; Character Summary</>}
+            <RunsSummaryPage
+                title={<>5&#x2605; Character Runs Summary</>}
                 data={props}
                 type={'characters'}
             />

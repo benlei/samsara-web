@@ -6,27 +6,28 @@ import {Featured} from "@/banners/types";
 import YAML from "yaml";
 import fs from "fs";
 import path from "path";
-import LastRunSummaryPage from "@/components/summary/LastRunSummaryPage";
+import LongestLeaderboardPage from "@/components/summary/LongestLeaderboardPage";
 
 export async function getStaticProps() {
     dayjs.extend(utc);
+
     return {
         props: {
-            featuredList: YAML.parse(fs.readFileSync(path.resolve('./public/data/banners.yaml'), 'utf8')).fiveStarCharacters,
+            featuredList: YAML.parse(fs.readFileSync(path.resolve('./public/data/banners.yaml'), 'utf8')).fourStarCharacters,
             date: dayjs.utc().toISOString().substring(0, 10)
         },
     };
 }
 
 
-export default function FiveStarCharacterSummary(props: { featuredList: Featured[], date: string }) {
+export default function FourStarCharacterSummary(props: { featuredList: Featured[], date: string }) {
     return (
         <>
             <Head>
-                <title>5&#x2605; Character Summary - Samsara</title>
+                <title>4&#x2605; Character Longest Rerun Leaderboard - Samsara</title>
             </Head>
-            <LastRunSummaryPage
-                title={<>5&#x2605; Character Summary</>}
+            <LongestLeaderboardPage
+                title={<>4&#x2605; Character Longest Rerun Leaderboard</>}
                 data={props}
                 type={'characters'}
             />

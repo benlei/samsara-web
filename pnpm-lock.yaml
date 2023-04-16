@@ -16,6 +16,9 @@ dependencies:
   '@types/react-dom':
     specifier: ^18.0.10
     version: 18.0.10
+  clsx:
+    specifier: ^1.2.1
+    version: 1.2.1
   cookies-next:
     specifier: ^2.1.1
     version: 2.1.1

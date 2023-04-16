@@ -1,12 +1,12 @@
 import React from "react";
-import SummaryPage from "@/components/SummaryPage";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import Head from "next/head";
-import {BannerSummary, Featured} from "@/banners/types";
+import {Featured} from "@/banners/types";
 import YAML from "yaml";
 import fs from "fs";
 import path from "path";
+import LastRunSummaryPage from "@/components/summary/LastRunSummaryPage";
 
 export async function getStaticProps() {
     dayjs.extend(utc);
@@ -25,7 +25,7 @@ export default function FiveStarWeaponSummary(props: { featuredList: Featured[],
             <Head>
                 <title>5&#x2605; Weapon Summary - Samsara</title>
             </Head>
-            <SummaryPage
+            <LastRunSummaryPage
                 title={<>5&#x2605; Weapon Summary</>}
                 data={props}
                 type={'weapons'}

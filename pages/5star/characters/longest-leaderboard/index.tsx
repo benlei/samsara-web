@@ -1,12 +1,12 @@
 import React from "react";
-import LastRunSummaryPage from "@/components/summary/LastRunSummaryPage";
 import dayjs from "dayjs";
-import utc from 'dayjs/plugin/utc'
+import utc from "dayjs/plugin/utc";
 import Head from "next/head";
-import * as fs from "fs";
-import YAML from 'yaml'
-import path from "path";
 import {Featured} from "@/banners/types";
+import YAML from "yaml";
+import fs from "fs";
+import path from "path";
+import LongestLeaderboardPage from "@/components/summary/LongestLeaderboardPage";
 
 export async function getStaticProps() {
     dayjs.extend(utc);
@@ -23,10 +23,10 @@ export default function FiveStarCharacterSummary(props: { featuredList: Featured
     return (
         <>
             <Head>
-                <title>5&#x2605; Character Summary - Samsara</title>
+                <title>5&#x2605; Character Longest Rerun Leaderboard - Samsara</title>
             </Head>
-            <LastRunSummaryPage
-                title={<>5&#x2605; Character Summary</>}
+            <LongestLeaderboardPage
+                title={<>5&#x2605; Character Longest Rerun Leaderboard</>}
                 data={props}
                 type={'characters'}
             />

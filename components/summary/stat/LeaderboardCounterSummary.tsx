@@ -1,44 +1,83 @@
-import {Header, Image, Table} from "semantic-ui-react";
-import {getFilterFunction, LeaderboardSummary} from "@/banners/summary";
+import {Header, Icon, Image, Table} from "semantic-ui-react";
+import {LeaderboardSummary} from "@/banners/summary";
 import _ from "lodash";
-import React from "react";
-import {CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
+import React, {useEffect, useState} from "react";
+import {Featured, VersionParts} from "@/banners/types";
+import {getVersionPartsFromFeaturedList} from "@/banners/version";
+import {Order} from "@/lotypes/sort";
+import clsx from "clsx";
+import dayjs from "dayjs";
 
 type Properties = {
-    sortBy: string
-    counter: (versionParts: VersionParts[], featuredList: Featured[]) => LeaderboardSummary[]
-} & CommonSummaryProperties
+    featuredList: Featured[]
+    type: string
+    date: string
+    defaultOrder: Order
+    counter: (versionParts: VersionParts[], featuredList: Featured[], date: string) => LeaderboardSummary[]
+}
 
 export default function LeaderboardCounterSummary(
     {
-        versionParts,
         featuredList,
         type,
-        order,
-        filterText,
         counter,
-        sortBy,
+        date,
+        defaultOrder,
     }: Properties
 ) {
-    const baseSummary = _.chain(counter(versionParts, featuredList))
+    function triggerSort(newSort: string) {
+        if (sortBy != newSort) {
+            setSortBy(newSort)
+        } else {
+            setOrder(order == 'asc' ? 'desc' : 'asc')
+        }
+    }
+
+    const [now, setNow] = useState(date as string)
+    const [sortBy, setSortBy] = useState('days')
+    const [order, setOrder] = useState(defaultOrder)
+    const summary = _.chain(counter(getVersionPartsFromFeaturedList(featuredList, 'asc'), featuredList, now))
         .orderBy([
-            (b) => sortBy.endsWith('patch') ? b.patches : (sortBy.endsWith('banner') ? b.banners : b.days),
+            (b) => sortBy === 'patches' ? b.patches : (sortBy === 'banners' ? b.banners : b.days),
             (b) => b.days,
             (b) => b.name,
         ], [order, order, order])
         .value()
 
-    const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))
-    const summary = filteredSummary.length ? filteredSummary : baseSummary
+    useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
 
     return (
         <Table unstackable className={'summary-table'}>
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell colSpan={2} className={'active'}>Featured</Table.HeaderCell>
-                    <Table.HeaderCell className={sortBy.endsWith('day') ? 'active' : ''}>Days</Table.HeaderCell>
-                    <Table.HeaderCell className={sortBy.endsWith('banner') ? 'active' : ''}>Banners</Table.HeaderCell>
-                    <Table.HeaderCell className={sortBy.endsWith('patch') ? 'active' : ''}>Patches</Table.HeaderCell>
+                    <Table.HeaderCell
+                        className={'clickable sortable-column'}
+                        onClick={() => triggerSort('days')}
+                    >
+                        <span className={'desktop'}>Days <Icon name={'sort'}
+                                                               className={clsx({hidden: sortBy !== 'days'})}/></span>
+                        <span className={'mobile'} style={{display: 'none'}}>D <Icon name={'sort'}
+                                                                                     className={clsx({hidden: sortBy !== 'days'})}/></span>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell
+                        className={'clickable sortable-column'}
+                        onClick={() => triggerSort('banners')}
+                    >
+                        <span className={'desktop'}>Banners <Icon name={'sort'}
+                                                                  className={clsx({hidden: sortBy !== 'banners'})}/></span>
+                        <span className={'mobile'} style={{display: 'none'}}>B <Icon name={'sort'}
+                                                                                     className={clsx({hidden: sortBy !== 'banners'})}/></span>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell
+                        className={'clickable sortable-column'}
+                        onClick={() => triggerSort('patches')}
+                    >
+                        <span className={'desktop'}>Patches <Icon name={'sort'}
+                                                                  className={clsx({hidden: sortBy !== 'patches'})}/></span>
+                        <span className={'mobile'} style={{display: 'none'}}>P <Icon name={'sort'}
+                                                                                     className={clsx({hidden: sortBy !== 'patches'})}/></span>
+                    </Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -64,13 +103,13 @@ export default function LeaderboardCounterSummary(
                         <Table.Cell verticalAlign={'top'}>
                             <Header as={'div'} size={'small'}>{s.name}</Header>
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'} className={sortBy.endsWith('day') ? 'highlight' : ''}>
+                        <Table.Cell verticalAlign={'top'}>
                             {s.days}
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'} className={sortBy.endsWith('banner') ? 'highlight' : ''}>
+                        <Table.Cell verticalAlign={'top'}>
                             {s.banners}
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'} className={sortBy.endsWith('patch') ? 'highlight' : ''}>
+                        <Table.Cell verticalAlign={'top'}>
                             {s.patches}
                         </Table.Cell>
                     </Table.Row>

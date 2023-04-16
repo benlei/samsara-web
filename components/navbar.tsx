@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Icon, Menu, Sidebar} from "semantic-ui-react";
+import {Container, Icon, Menu, Sidebar, Image} from "semantic-ui-react";
 
 type SidebarItemsProps = {
     stars: 5 | 4
@@ -12,8 +12,8 @@ export default function Navbar(): JSX.Element {
     return (
         <>
             <Container style={{marginTop: '.5em'}}>
-                <Menu secondary pointing>
-                    <Menu.Item as={'a'} href='/'>
+                <Menu secondary className={'navmenu'}>
+                    <Menu.Item as={'a'} href='/' className={'navtitle'}>
                         Samsara
                     </Menu.Item>
                     <Menu.Item as={'a'} onClick={() => setVisible(!visible)}>
@@ -31,19 +31,21 @@ export default function Navbar(): JSX.Element {
                     visible={visible}
                 >
                     <Menu.Item>
-                        <Menu.Header className={'logo'} as={'a'} href={'/'}>Samsara</Menu.Header>
+                        <Menu.Header className={'logo'} as={'a'} href={'/'}>
+                            <Image src={'images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara
+                        </Menu.Header>
                     </Menu.Item>
                     <Menu.Item>
                         <Menu.Header>5&#x2605; Characters</Menu.Header>
                         <SidebarMenuItems stars={5} type={'characters'}/>
                     </Menu.Item>
                     <Menu.Item>
-                        <Menu.Header>4&#x2605; Characters</Menu.Header>
-                        <SidebarMenuItems stars={4} type={'characters'}/>
-                    </Menu.Item>
-                    <Menu.Item>
                         <Menu.Header>5&#x2605; Weapons</Menu.Header>
                         <SidebarMenuItems stars={5} type={'weapons'}/>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>4&#x2605; Characters</Menu.Header>
+                        <SidebarMenuItems stars={4} type={'characters'}/>
                     </Menu.Item>
                     <Menu.Item>
                         <Menu.Header>4&#x2605; Weapons</Menu.Header>
@@ -64,8 +66,8 @@ function SidebarMenuItems(
     return (
         <Menu vertical>
             <Menu.Item as={'a'} href={`/${stars}star/${type}/summary`}>Summary</Menu.Item>
-            <Menu.Item as={'a'} href={`/${stars}star/${type}/summary-avg`}>Summary (Avg)</Menu.Item>
-            <Menu.Item as={'a'} href={`/${stars}star/${type}/run-summary`}>Run Count</Menu.Item>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}/summary-avg`}>Summary (avg)</Menu.Item>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}/runs`}>Total Runs</Menu.Item>
             <Menu.Item as={'a'} href={`/${stars}star/${type}/longest-leaderboard`}>Leaderboard: Longest
                 Rerun</Menu.Item>
             <Menu.Item as={'a'} href={`/${stars}star/${type}/shortest-leaderboard`}>Leaderboard: Shortest
