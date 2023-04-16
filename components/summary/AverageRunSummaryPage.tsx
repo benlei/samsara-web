@@ -1,14 +1,11 @@
-import {Button, Container, Header, Icon, Ref} from "semantic-ui-react";
+import {Button, Container, Header, Ref} from "semantic-ui-react";
 import React, {ReactNode, useState} from "react";
-import {getVersionPartsFromFeaturedList} from "@/banners/version";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
-import clsx from "clsx";
 import AverageCounterSummary from "@/components/summary/stat/AverageCounterSummary";
-import {Order} from "@/lotypes/sort";
 
 type Properties = {
-    data: { featuredList: Featured[], date: string }
+    data: { featuredList: Featured[] }
     title: ReactNode
     type: string
 }
@@ -20,7 +17,6 @@ export default function AverageRunSummaryPage(
     }: Properties
 ) {
     const ref = React.useRef<any>()
-    const versionParts = getVersionPartsFromFeaturedList(data.featuredList, 'asc')
     const [sortBy, setSortBy] = useState('days')
 
     function triggerSort(newSort: string) {
@@ -57,7 +53,6 @@ export default function AverageRunSummaryPage(
             <Ref innerRef={ref}>
                 <Container style={{marginTop: '2em'}}>
                     <AverageCounterSummary
-                        versionParts={versionParts}
                         type={type}
                         featuredList={data.featuredList}
                         sortBy={sortBy}

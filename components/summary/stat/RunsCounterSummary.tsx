@@ -1,73 +1,31 @@
 import {Card, Feed, Grid, Image} from "semantic-ui-react";
-import {
-    CountSummary,
-    getBannersSinceLastCountSummary,
-    getDaysSinceRunCountSummary,
-    getPatchesSinceLastCountSummary,
-    UnknownFutureCounter
-} from "@/banners/summary";
+import {getRunsCountSummary} from "@/banners/summary";
 import _ from "lodash";
-import React, {useEffect, useState} from "react";
-import {Featured, VersionParts} from "@/banners/types";
+import React from "react";
+import {Featured} from "@/banners/types";
 import {chunk} from "@/banners/summaryUtils";
 import {Order} from "@/lotypes/sort";
 import {getVersionPartsFromFeaturedList} from "@/banners/version";
-import dayjs from "dayjs";
 
 type Properties = {
-    date: string
     featuredList: Featured[]
     type: string
-    sortBy: string
-    order: string
+    order: Order
 }
 
-function getRelativeTimeText(s: CountSummary, singular: string, plural: string): string {
-    if (s.count == UnknownFutureCounter) {
-        return 'coming soon'
-    }
-
-    if (!s.count) {
-        return 'in progress'
-    }
-
-    if (s.count < 0) {
-        return `${Math.abs(s.count)} more ` + (s.count === -1 ? singular : plural)
-    }
-
-    return `${s.count} ` + (s.count === 1 ? singular : plural) + ' ago'
-}
-
-export default function RelativeBasicCounterSummary(
+export default function RunsCounterSummary(
     {
         featuredList,
         type,
-        sortBy,
         order,
-        date,
     }: Properties
 ) {
-    const [now, setNow] = useState(date)
-    useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
-
-    let singular: string
-    let plural: string
-    let counter: (versionParts: VersionParts[], featuredList: Featured[], currDate: string) => CountSummary[]
-
-    if (sortBy === 'patches') {
-        [singular, plural, counter] = ['patch', 'patches', getPatchesSinceLastCountSummary]
-    } else if (sortBy === 'banners') {
-        [singular, plural, counter] = ['banner', 'banners', getBannersSinceLastCountSummary]
-    } else {
-        [singular, plural, counter] = ['day', 'days', getDaysSinceRunCountSummary]
-    }
-
     const chunkedSummary = chunk(
-        _.chain(counter(getVersionPartsFromFeaturedList(featuredList, 'asc'), featuredList, date))
+        _.chain(getRunsCountSummary(getVersionPartsFromFeaturedList(featuredList, 'asc'), featuredList))
             .orderBy([
                 (b) => b.count,
                 (b) => b.name,
-            ], [order, order] as Order[])
+            ], [order, order])
             .value(),
         (s) => s.count,
     )
@@ -78,7 +36,7 @@ export default function RelativeBasicCounterSummary(
                 <Grid.Column key={j}>
                     <Card fluid>
                         <Card.Content>
-                            <Card.Header>{getRelativeTimeText(summary[0], singular, plural)}</Card.Header>
+                            <Card.Header>{summary[0].count} Run{summary[0].count !== 1 && 's'}</Card.Header>
                         </Card.Content>
                         <Card.Content>
                             <Feed>

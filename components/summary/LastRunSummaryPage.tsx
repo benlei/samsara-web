@@ -22,11 +22,6 @@ export default function LastRunSummaryPage(
     const ref = React.useRef<any>()
     const [sortBy, setSortBy] = useState('days')
     const [order, setOrder] = useState('asc')
-    const [now, setNow] = useState(data.date)
-
-    useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
-
-    const versionParts = getVersionPartsFromFeaturedList(data.featuredList, 'asc')
 
     function triggerSort(newSort: string) {
         if (sortBy != newSort) {
@@ -59,8 +54,7 @@ export default function LastRunSummaryPage(
             <Ref innerRef={ref}>
                 <Container style={{marginTop: '2em'}}>
                     <RelativeBasicCounterSummary
-                        date={now}
-                        versionParts={versionParts}
+                        date={data.date}
                         type={type}
                         sortBy={sortBy}
                         order={order}

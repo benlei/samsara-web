@@ -14,13 +14,12 @@ export async function getStaticProps() {
     return {
         props: {
             featuredList: YAML.parse(fs.readFileSync(path.resolve('./public/data/banners.yaml'), 'utf8')).fourStarWeapons,
-            date: dayjs.utc().toISOString().substring(0, 10)
         },
     };
 }
 
 
-export default function FourStarWeaponSummary(props: { featuredList: Featured[], date: string }) {
+export default function FourStarWeaponSummary(props: { featuredList: Featured[] }) {
     return (
         <>
             <Head>

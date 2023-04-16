@@ -14,13 +14,12 @@ export async function getStaticProps() {
     return {
         props: {
             featuredList: YAML.parse(fs.readFileSync(path.resolve('./public/data/banners.yaml'), 'utf8')).fiveStarCharacters,
-            date: dayjs.utc().toISOString().substring(0, 10)
         },
     };
 }
 
 
-export default function FiveStarCharacterSummary(props: { featuredList: Featured[], date: string }) {
+export default function FiveStarCharacterSummary(props: { featuredList: Featured[] }) {
     return (
         <>
             <Head>

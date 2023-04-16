@@ -12,7 +12,7 @@ import {
     getShortestStatsInBetween
 } from "@/banners/summary";
 import RelativeBasicCounterSummary from "@/components/summary/stat/RelativeBasicCounterSummary";
-import BasicCounterSummary from "./stat/BasicCounterSummary";
+import RunsCounterSummary from "./stat/RunsCounterSummary";
 import AverageCounterSummary from "@/components/summary/stat/AverageCounterSummary";
 import dayjs from "dayjs";
 import {CommonSummaryProperties} from "@/banners/types";
@@ -106,9 +106,9 @@ export default function SummaryTable(
 
 
             {sortBy === 'runs' &&
-                <BasicCounterSummary {...commonProps}
-                                     singular={'run'} plural={'runs'}
-                                     counter={getRunsCountSummary}
+                <RunsCounterSummary {...commonProps}
+                                    singular={'run'} plural={'runs'}
+                                    counter={getRunsCountSummary}
                 />}
         </>
     )

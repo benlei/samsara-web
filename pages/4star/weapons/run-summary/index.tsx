@@ -1,32 +1,31 @@
 import React from "react";
-import SummaryPage from "@/components/SummaryPage";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import Head from "next/head";
-import {BannerSummary, Featured} from "@/banners/types";
+import {Featured} from "@/banners/types";
 import YAML from "yaml";
 import fs from "fs";
 import path from "path";
+import RunsSummaryPage from "@/components/summary/RunsSummaryPage";
 
 export async function getStaticProps() {
     dayjs.extend(utc);
     return {
         props: {
             featuredList: YAML.parse(fs.readFileSync(path.resolve('./public/data/banners.yaml'), 'utf8')).fourStarWeapons,
-            date: dayjs.utc().toISOString().substring(0, 10)
         },
     };
 }
 
 
-export default function FourStarWeaponSummary(props: { featuredList: Featured[], date: string }) {
+export default function FourStarWeaponSummary(props: { featuredList: Featured[] }) {
     return (
         <>
             <Head>
-                <title>4&#x2605; Weapon Summary - Samsara</title>
+                <title>4&#x2605; Weapon Runs Summary - Samsara</title>
             </Head>
-            <SummaryPage
-                title={<>4&#x2605; Weapon Summary</>}
+            <RunsSummaryPage
+                title={<>4&#x2605; Weapon Runs Summary</>}
                 data={props}
                 type={'weapons'}
             />

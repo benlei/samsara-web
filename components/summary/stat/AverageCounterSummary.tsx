@@ -10,21 +10,22 @@ import _ from "lodash";
 import React, {useState} from "react";
 import {Order} from "@/lotypes/sort";
 import clsx from "clsx";
+import {getVersionPartsFromFeaturedList} from "@/banners/version";
 
 type Properties = {
-    versionParts: VersionParts[]
     featuredList: Featured[]
     type: string
     sortBy: string
 }
 export default function AverageCounterSummary(
     {
-        versionParts,
         featuredList,
         type,
         sortBy,
     }: Properties
 ) {
+    const versionParts = getVersionPartsFromFeaturedList(featuredList, 'asc')
+
     let counter: (versionParts: VersionParts[], featuredList: Featured[]) => AverageCountSummary[]
     const [order, setOrder] = useState('desc' as Order)
     const [runsOrder, setRunsOrder] = useState('desc' as Order | null)
