@@ -68,13 +68,13 @@ export default function AverageCounterSummary(
                         <Icon name={'redo'}
                               className={clsx({grey: runsOrder === null})}
                         /><Icon name={'sort'}
-                                className={clsx({grey: runsOrder === null})}/>
+                                className={clsx('desktop', {grey: runsOrder === null})}/>
                     </Table.HeaderCell>
                     <Table.HeaderCell
                         className={'sortable-column clickable'}
                         onClick={() => setOrder(order === 'desc' ? 'asc' : 'desc')}
                     >
-                        {sortBy} <Icon name={'sort'}/>
+                        {sortBy} <Icon name={'sort'} className={'desktop'}/>
                     </Table.HeaderCell>
                     <Table.HeaderCell className={'desktop'}>
                         Range
