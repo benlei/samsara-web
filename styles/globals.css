@@ -394,3 +394,7 @@ tr.selected {
 .icon .grey {
     color: var(--gray-background)
 }
+
+.summary-table th {
+    text-transform: capitalize !important;
+}

@@ -1,4 +1,4 @@
-import {Button, Container, Header, Ref} from "semantic-ui-react";
+import {Button, Container, Header, List, Ref} from "semantic-ui-react";
 import React, {ReactNode, useState} from "react";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
@@ -36,6 +36,16 @@ export default function AverageRunSummaryPage(
                     character/weapon has, the less reliable the day/banner/patch rerun average range will be. That
                     being said, miHoYo{"'"}s methodology for reruns might really just be random.
                 </p>
+
+                <p className={'mobile'} style={{display: 'none'}}>
+                    The column titled {`"D", "B", "P", "DR", "BR", or "PR"`} means the following:
+                </p>
+                <List className={'mobile'} style={{display: 'none'}} bulleted>
+                    <List.Item>{`"D" stands for "Days"`}.</List.Item>
+                    <List.Item>{`"B" stands for "Banners"`}.</List.Item>
+                    <List.Item>{`"P" stands for "Patches"`}.</List.Item>
+                    <List.Item>{`The "R" in front of "D", "B", or "P" means "Range", for example: "Day Range", "Banner Range", "Patch Range".`}</List.Item>
+                </List>
 
                 <Button.Group widths='3'>
                     <Button active={sortBy == 'days'} onClick={() => triggerSort('days')}>
