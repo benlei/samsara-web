@@ -35,7 +35,6 @@ export default function FourStarCharactersHome({featuredList}: Properties) {
             </Container>
             <HistoryPage bannerType={'characters'}
                          featuredList={featuredList}
-                         showLimitedOnly={false}
             />
         </>
     )

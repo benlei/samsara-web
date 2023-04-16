@@ -44,7 +44,6 @@ export type DetailedFeaturedHistory = {
 
 
 export type BannerFilterSortOptions = {
-    limitedOnly: boolean
     sortBy: string
     order: string
 }
@@ -52,7 +51,6 @@ export type BannerFilterSortOptions = {
 export type BannerOptionSetters = {
     setOrder: Dispatch<SetStateAction<any>>
     setSortBy: Dispatch<SetStateAction<any>>
-    setLimitedOnly: Dispatch<SetStateAction<any>>
 }
 
 export type BannerSummary = {

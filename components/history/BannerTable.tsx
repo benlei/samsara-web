@@ -12,7 +12,6 @@ type BannerRundownProps = {
     bannerType: string
     versionParts: VersionParts[]
     rundown: DetailedFeaturedHistory[]
-    standards?: string[]
 } & BannerFilterSortOptions
 
 type BannerRundownState = {
@@ -29,14 +28,6 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
 
     handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({filterText: event.target.value});
-    }
-
-    isLimitedFilter = (r: DetailedFeaturedHistory) => {
-        if (!this.props.limitedOnly || typeof this.props.standards === 'undefined') {
-            return true
-        }
-
-        return !this.props.standards!.includes(r.name)
     }
 
     sortByName = (r: DetailedFeaturedHistory) => r.name
@@ -99,7 +90,6 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
         let {versionParts, bannerType, rundown} = this.props
 
         rundown = _.chain(rundown)
-            .filter(this.isLimitedFilter)
             .orderBy(this.getSortFunction(), this.getOrderByOrders())
             .value()
 

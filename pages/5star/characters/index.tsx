@@ -34,9 +34,6 @@ export default function FiveStarCharactersHome({featuredList}: Properties) {
             </Container>
             <HistoryPage bannerType={'characters'}
                          featuredList={featuredList}
-                         standards={['Keqing', 'Tighnari']}
-                         showLimitedOnly={true}
-
             />
         </>
     )

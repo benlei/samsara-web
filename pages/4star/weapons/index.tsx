@@ -34,7 +34,6 @@ export default function FourStarWeaponsHome({featuredList}: Properties) {
             </Container>
             <HistoryPage bannerType={'weapons'}
                          featuredList={featuredList}
-                         showLimitedOnly={false}
             />
         </>
     )

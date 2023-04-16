@@ -2,11 +2,7 @@ import React, {Dispatch, SetStateAction} from "react";
 import {Button, CheckboxProps, Form, Icon, Label, Radio} from "semantic-ui-react";
 import {BannerFilterSortOptions, BannerOptionSetters} from "@/banners/types";
 
-type Properties = {
-    showLimitedOnly: boolean
-    expand: boolean
-    setExpand: Dispatch<SetStateAction<any>>
-} & BannerFilterSortOptions & BannerOptionSetters
+type Properties = BannerFilterSortOptions & BannerOptionSetters
 
 type States = {}
 
@@ -14,11 +10,8 @@ export default class HistoryOptions extends React.Component<Properties, States> 
     handleSortByChange = (event: React.FormEvent<HTMLInputElement>, {value}: CheckboxProps) => this.props.setSortBy(String(value))
     flipOrder = () => this.props.setOrder(this.props.order == 'desc' ? 'asc' : 'desc')
 
-    handleChangeLimitedOnly = () => this.props.setLimitedOnly(!this.props.limitedOnly)
-    handleExpand = () => this.props.setExpand(!this.props.expand)
-
     componentDidMount = () => {
-        this.setState({ssrClientResetter: ""})
+        // this.setState({ssrClientResetter: ""})
     }
 
     render() {

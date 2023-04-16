@@ -37,7 +37,6 @@ export default function FiveStarWeaponsHome({featuredList}: Properties) {
             </Container>
             <HistoryPage bannerType={'weapons'}
                          featuredList={featuredList}
-                         showLimitedOnly={false}
             />
         </>
     )

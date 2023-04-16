@@ -12,15 +12,11 @@ import _ from "lodash";
 type Properties = {
     featuredList: FeaturedHistory[]
     bannerType: string
-    standards?: string[]
-    showLimitedOnly: boolean
 }
 
 type States = {
-    limitedOnly: boolean
     sortBy: string
     order: string
-    expand: boolean
 }
 
 export default class HistoryPage extends React.Component<Properties, States> {
@@ -30,10 +26,8 @@ export default class HistoryPage extends React.Component<Properties, States> {
         super(props);
 
         this.state = {
-            limitedOnly: true,
             sortBy: 'last',
             order: 'desc',
-            expand: false,
         }
 
         this.componentRef = React.createRef()
@@ -43,46 +37,26 @@ export default class HistoryPage extends React.Component<Properties, States> {
         const {
             featuredList,
             bannerType,
-            standards,
-            showLimitedOnly,
         } = this.props
 
         const {
-            limitedOnly,
             sortBy,
             order,
-            expand,
         } = this.state
 
 
-        const setLimitedOnly = (v: boolean) => this.setState({limitedOnly: v})
         const setSortBy = (v: string) => this.setState({sortBy: v})
         const setOrder = (v: string) => this.setState({order: v})
-        const setExpand = (v: boolean) => this.setState({expand: v})
-
-        const getBannerContainerStyle = (expand: boolean) => {
-            if (expand) {
-                return {
-                    paddingLeft: '1em',
-                    paddingRight: '1em',
-                }
-            }
-
-            return {}
-        }
 
         return (
             <>
                 <Container style={{marginTop: '1em'}}>
-                    <HistoryOptions showLimitedOnly={showLimitedOnly} limitedOnly={limitedOnly}
-                                    setLimitedOnly={setLimitedOnly}
+                    <HistoryOptions
                                     order={order} setOrder={setOrder}
                                     sortBy={sortBy} setSortBy={setSortBy}
-                                    expand={expand} setExpand={setExpand}
                     />
                 </Container>
-                <Container style={{marginTop: '1em', ...getBannerContainerStyle(expand ?? false)}}
-                           fluid={expand ?? false}>
+                <Container style={{marginTop: '1em'}}>
                     <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
                         <Ref innerRef={this.componentRef}>
                             <BannerTable bannerType={bannerType}
@@ -93,10 +67,8 @@ export default class HistoryPage extends React.Component<Properties, States> {
                                                  .value()
                                          )}
                                          rundown={getRundowns(featuredList)}
-                                         limitedOnly={limitedOnly}
                                          order={order}
                                          sortBy={sortBy}
-                                         standards={standards}
                                          ref={this.componentRef}
 
                             />
