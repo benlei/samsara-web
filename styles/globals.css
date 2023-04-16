@@ -401,3 +401,7 @@ tr.selected {
 .summary-table th {
     text-transform: capitalize !important;
 }
+
+input:focus {
+    border-color: var(--primary-color) !important;
+}

@@ -1,17 +1,19 @@
 import React from "react";
-import {BannerFilterSortOptions, DetailedFeaturedHistory, VersionParts} from "@/banners/types";
+import {BannerFilterSortOptions, FeaturedHistory} from "@/banners/types";
 import {Table} from "semantic-ui-react";
 import _ from "lodash";
 import HistoryHeader from "@/components/history/HistoryHeader";
 import HistoryFooter from "@/components/history/HistoryFooter";
 import HistoryRow from "@/components/history/HistoryRow";
 import {getFilterFunction} from "@/banners/summary";
+import getVersionParts from "@/banners/version";
+import {getRundowns} from "@/banners/rundown";
 
 
 type BannerRundownProps = {
     bannerType: string
-    versionParts: VersionParts[]
-    rundown: DetailedFeaturedHistory[]
+    featuredList: FeaturedHistory[]
+    // rundown: DetailedFeaturedHistory[]
 } & BannerFilterSortOptions
 
 type BannerRundownState = {
@@ -30,21 +32,21 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
         this.setState({filterText: event.target.value});
     }
 
-    sortByName = (r: DetailedFeaturedHistory) => r.name
+    sortByName = (r: FeaturedHistory) => r.name
 
     sortByRunsLastPatch = [
-        (r: DetailedFeaturedHistory) => String(r.versions.length),
-        (r: DetailedFeaturedHistory) => r.versions[r.versions.length - 1],
+        (r: FeaturedHistory) => String(r.versions.length),
+        (r: FeaturedHistory) => r.versions[r.versions.length - 1],
         this.sortByName,
     ]
 
     sortByFirst = [
-        (r: DetailedFeaturedHistory) => r.versions[0],
+        (r: FeaturedHistory) => r.versions[0],
         this.sortByName,
     ]
 
     sortByLast = [
-        (r: DetailedFeaturedHistory) => r.versions[r.versions.length - 1],
+        (r: FeaturedHistory) => r.versions[r.versions.length - 1],
         this.sortByName,
     ]
 
@@ -73,20 +75,23 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
     }
 
     render() {
-        let {versionParts, bannerType, rundown} = this.props
+        let {bannerType, featuredList} = this.props
+        const versionParts = getVersionParts(
+            _.chain(featuredList)
+                .map((featured) => featured.versions)
+                .flatten()
+                .value()
+        )
 
-        rundown = _.chain(rundown)
+        const baseFeaturedList = _.chain(getRundowns(featuredList))
             .orderBy(this.getSortFunction(), this.getOrderByOrders())
             .value()
 
-        const filteredRundown = _.chain(rundown)
+        const filteredFeaturedList = _.chain(baseFeaturedList)
             .filter(getFilterFunction(this.state.filterText))
             .value()
 
-        if (filteredRundown.length) {
-            rundown = filteredRundown;
-        }
-
+        const rundown = filteredFeaturedList.length ? filteredFeaturedList : baseFeaturedList
         return (
             <>
                 <Table definition unstackable selectable compact className={'history'}>

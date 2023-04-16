@@ -153,21 +153,45 @@ export function getPercent(nom: number, denom: number): number {
     return Math.max(.5, 100 * Math.max(0, nom) / Math.max(1, denom))
 }
 
-export function getFilterFunction(filterText: string): (s: { name: string }) => boolean {
+export function getFilterFunction(filterText: string): (s: { name: string, versions: string[] }) => boolean {
     if (!filterText.trim().length) {
         return () => true
     }
 
-    if (filterText.startsWith('/') && filterText.endsWith('/')) {
-        try {
-            const re = new RegExp(filterText.substring(1, filterText.length - 1), 'i')
-            return (s) => re.test(s.name)
-        } catch (ignore) {
-
+    function versionCheck(filterVersion: string, s: { name: string, versions: string[] }): boolean {
+        if (!filterVersion.trim().match(/^[0-9.]+$/)) {
+            return false
         }
+
+        function isFullVersion(fv: string): boolean {
+            return fv.split('.').length >= 2
+        }
+
+        const version = _.trim(filterVersion.trim(), '.')
+        let prefix: string
+        if (isFullVersion(version)) {
+            prefix = version
+        } else {
+            prefix = version + '.'
+        }
+
+        console.log(`prefix: ${prefix}`)
+        return _.chain(s.versions)
+            .map((v) => v.startsWith(prefix))
+            .includes(true)
+            .value()
     }
 
-    return (s) => s.name.toLowerCase().includes(filterText!.toLowerCase())
+    const contains = _.chain(filterText.split(','))
+        .map((t) => t.trim())
+        .map((t) => t.toLowerCase())
+        .filter((t) => t.length > 0)
+        .value()
+
+    return (s) => _.chain(contains)
+        .map((c) => s.name.toLowerCase().indexOf(c) !== -1 || versionCheck(c, s))
+        .includes(true)
+        .value()
 }
 
 function getCountSummary(

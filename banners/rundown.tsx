@@ -73,7 +73,5 @@ export function getRundowns(featuredList: FeaturedHistory[]): DetailedFeaturedHi
         result.push(resourceCounter)
     }
 
-    return _.chain(result)
-        .orderBy((r) => `${r.versions[r.versions.length - 1]}-${r.image}`, 'desc')
-        .value()
+    return result
 }
