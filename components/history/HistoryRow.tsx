@@ -33,7 +33,7 @@ export default class HistoryRow extends React.Component<Properties, States> {
         return (
             <Table.Row>
                 <Table.Cell>
-                    <span>
+                    <span className={'desktop'}>
                         {rundown.name}
                     </span> <Image avatar
                                    src={`/images/${bannerType}/${rundown.image}.png`}
