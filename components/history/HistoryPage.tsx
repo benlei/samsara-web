@@ -51,6 +51,10 @@ export default class HistoryPage extends React.Component<Properties, States> {
         return (
             <>
                 <Container style={{marginTop: '1em'}}>
+                    <p>
+                        This page shows the banner history of featured characters/weapons. By default it sorts by
+                        when the featured character/weapon was run, but you can also
+                    </p>
                     <HistoryOptions
                                     order={order} setOrder={setOrder}
                                     sortBy={sortBy} setSortBy={setSortBy}

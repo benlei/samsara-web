@@ -38,12 +38,6 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
         this.sortByName,
     ]
 
-    sortByRunsFirstPatch = [
-        (r: DetailedFeaturedHistory) => String(r.versions.length),
-        (r: DetailedFeaturedHistory) => r.versions[0],
-        this.sortByName,
-    ]
-
     sortByFirst = [
         (r: DetailedFeaturedHistory) => r.versions[0],
         this.sortByName,
@@ -61,12 +55,8 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
                 return this.sortByLast
             case 'first':
                 return this.sortByFirst
-            case 'runs-first':
-                return this.sortByRunsFirstPatch
             case 'runs-last':
                 return this.sortByRunsLastPatch
-            case 'name':
-                return [this.sortByName]
         }
     }
 
@@ -77,10 +67,6 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
                     ...Array(this.getSortFunction().length - 1).fill(this.props.order === 'asc' ? 'asc' : 'desc'),
                     this.props.order === 'asc' ? 'desc' : 'asc',
                 ]
-            case 'name':
-                return [this.props.order === 'asc' ? 'asc' : 'desc']
-            case 'runs-first':
-                return this.props.order === 'asc' ? ['asc', 'asc', 'desc'] : ['desc', 'asc', 'asc']
             case 'runs-last':
                 return this.props.order === 'asc' ? ['asc', 'desc', 'desc'] : ['desc', 'desc', 'asc']
         }
