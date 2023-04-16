@@ -1,20 +1,24 @@
 import {Card, Feed, Grid, Image} from "semantic-ui-react";
-import {CountSummary, UnknownFutureCounter} from "@/banners/summary";
+import {
+    CountSummary,
+    getBannersSinceLastCountSummary,
+    getDaysSinceRunCountSummary,
+    getPatchesSinceLastCountSummary,
+    UnknownFutureCounter
+} from "@/banners/summary";
 import _ from "lodash";
 import React from "react";
 import {Featured, VersionParts} from "@/banners/types";
 import {chunk} from "@/banners/summaryUtils";
-import {Order} from "../../../lotypes";
+import {Order} from "@/lotypes/sort";
 
 type Properties = {
     date: string
-    singular: string
-    plural: string
     versionParts: VersionParts[]
     featuredList: Featured[]
     type: string
+    sortBy: string
     order: string
-    counter: (versionParts: VersionParts[], featuredList: Featured[], currDate: string) => CountSummary[]
 }
 
 function getRelativeTimeText(s: CountSummary, singular: string, plural: string): string {
@@ -38,13 +42,23 @@ export default function RelativeBasicCounterSummary(
         versionParts,
         featuredList,
         type,
+        sortBy,
         order,
         date,
-        counter,
-        singular,
-        plural,
     }: Properties
 ) {
+    let singular: string
+    let plural: string
+    let counter: (versionParts: VersionParts[], featuredList: Featured[], currDate: string) => CountSummary[]
+
+    if (sortBy === 'patches') {
+        [singular, plural, counter] = ['patch', 'patches', getPatchesSinceLastCountSummary]
+    } else if (sortBy === 'banners') {
+        [singular, plural, counter] = ['banner', 'banners', getBannersSinceLastCountSummary]
+    } else {
+        [singular, plural, counter] = ['day', 'days', getDaysSinceRunCountSummary]
+    }
+
     const chunkedSummary = chunk(
         _.chain(counter(versionParts, featuredList, date))
             .orderBy([

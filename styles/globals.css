@@ -382,3 +382,15 @@ tr.selected {
     background-color: var(--primary-color) !important;
     color: #fff !important;
 }
+
+.sortable-column {
+    white-space: nowrap;
+}
+
+.clickable {
+    cursor: pointer !important;
+}
+
+.icon .grey {
+    color: var(--gray-background)
+}

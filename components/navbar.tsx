@@ -40,12 +40,12 @@ export default function Navbar(): JSX.Element {
                         <SidebarMenuItems stars={5} type={'characters'}/>
                     </Menu.Item>
                     <Menu.Item>
-                        <Menu.Header>4&#x2605; Characters</Menu.Header>
-                        <SidebarMenuItems stars={4} type={'characters'}/>
-                    </Menu.Item>
-                    <Menu.Item>
                         <Menu.Header>5&#x2605; Weapons</Menu.Header>
                         <SidebarMenuItems stars={5} type={'weapons'}/>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>4&#x2605; Characters</Menu.Header>
+                        <SidebarMenuItems stars={4} type={'characters'}/>
                     </Menu.Item>
                     <Menu.Item>
                         <Menu.Header>4&#x2605; Weapons</Menu.Header>

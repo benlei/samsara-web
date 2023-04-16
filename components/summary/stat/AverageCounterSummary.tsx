@@ -1,55 +1,82 @@
-import {Header, Image, Table} from "semantic-ui-react";
-import {AverageCountSummary, getFilterFunction} from "@/banners/summary";
-import {CommonSummaryProperties, Featured, VersionParts} from "@/banners/types";
+import {Header, Icon, Image, Table} from "semantic-ui-react";
+import {
+    AverageCountSummary,
+    getAverageBannersInBetween,
+    getAverageDaysInBetween,
+    getAveragePatchesInBetween
+} from "@/banners/summary";
+import {Featured, VersionParts} from "@/banners/types";
 import _ from "lodash";
-import React from "react";
+import React, {useState} from "react";
+import {Order} from "@/lotypes/sort";
+import clsx from "clsx";
 
 type Properties = {
-    singular: string
-    plural: string
-    counter: (versionParts: VersionParts[], featuredList: Featured[]) => AverageCountSummary[]
-} & CommonSummaryProperties
+    versionParts: VersionParts[]
+    featuredList: Featured[]
+    type: string
+    sortBy: string
+}
 export default function AverageCounterSummary(
     {
         versionParts,
         featuredList,
         type,
-        order,
-        filterText,
-        singular,
-        plural,
-        counter,
+        sortBy,
     }: Properties
 ) {
+    let plural: string
+    let counter: (versionParts: VersionParts[], featuredList: Featured[]) => AverageCountSummary[]
+    const [order, setOrder] = useState('desc' as Order)
+    const [runsOrder, setRunsOrder] = useState('desc' as Order | null)
+
+    if (sortBy === 'patches') {
+        [plural, counter] = ['Patches', getAveragePatchesInBetween]
+    } else if (sortBy === 'banners') {
+        [plural, counter] = ['Banners', getAverageBannersInBetween]
+    } else {
+        [plural, counter] = ['Days', getAverageDaysInBetween]
+    }
+
     function getRange(stat: AverageCountSummary): string {
         if (stat.standardDeviation > 0) {
-            return `${_.round(stat.average - stat.standardDeviation, 1)} ~ ${_.round(stat.average + stat.standardDeviation, 1)}`
+            return `${_.round(stat.average - stat.standardDeviation, 1)} to ${_.round(stat.average + stat.standardDeviation, 1)}`
         }
 
         return `n/a`
     }
 
-    const baseSummary = _.chain(counter(versionParts, featuredList))
+    const summary = _.chain(counter(versionParts, featuredList))
         .filter((b) => b.average > 0)
         .orderBy([
+            (b) => runsOrder !== null ? b.count : 0,
             (b) => b.average,
             (b) => b.standardDeviation,
-            (b) => b.count,
             (b) => b.name,
-        ], [order, order, order, order])
+        ], [runsOrder === null ? 'desc' : runsOrder as Order, order, order, order])
         .value()
-
-    const filteredSummary = _.filter(baseSummary, getFilterFunction(filterText))
-    const summary = filteredSummary.length ? filteredSummary : baseSummary
 
     return (
         <Table unstackable className={'summary-table'}>
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell colSpan={2} className={'active'}>Featured</Table.HeaderCell>
-                    <Table.HeaderCell>Runs</Table.HeaderCell>
-                    <Table.HeaderCell>{plural}</Table.HeaderCell>
-                    <Table.HeaderCell>{singular} Range</Table.HeaderCell>
+                    <Table.HeaderCell
+                        className={'sortable-column clickable'}
+                        onClick={() => setRunsOrder(runsOrder === 'desc' ? 'asc' : (runsOrder === 'asc' ? null : 'desc'))}
+                    >
+                        <Icon name={'redo'}
+                              className={clsx({grey: runsOrder === null})}
+                        /><Icon name={'sort'}
+                                className={clsx({grey: runsOrder === null})}/>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell
+                        className={'sortable-column clickable'}
+                        onClick={() => setOrder(order === 'desc' ? 'asc' : 'desc')}
+                    >
+                        <Icon name={'hashtag'}/><Icon name={'sort'}/>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell>Range</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>

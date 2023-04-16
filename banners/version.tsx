@@ -1,6 +1,6 @@
-import {Featured, FeaturedVersions, VersionParts} from "@/banners/types";
+import {Featured, VersionParts} from "@/banners/types";
 import _ from "lodash";
-import {Feature} from "next/dist/build/webpack/plugins/telemetry-plugin";
+import {Order} from "@/lotypes/sort";
 
 type VersionCount = {
     [version: string]: number
@@ -15,7 +15,7 @@ export function getVersionPart(version: string): number {
     return parseInt(version.substring(version.lastIndexOf('.') + 1))
 }
 
-export default function getVersionParts(versions: string[], order: boolean | "asc" | "desc" = 'desc'): VersionParts[] {
+export default function getVersionParts(versions: string[], order: Order = 'desc'): VersionParts[] {
     const versionCounts: VersionCount = {}
     for (const version of versions) {
         versionCounts[getBaseVersion(version)] = Math.max(
@@ -31,7 +31,7 @@ export default function getVersionParts(versions: string[], order: boolean | "as
 }
 
 
-export function getVersionPartsFromFeaturedList(featuredList: Featured[], order: boolean | "asc" | "desc" = 'desc'): VersionParts[] {
+export function getVersionPartsFromFeaturedList(featuredList: Featured[], order: Order): VersionParts[] {
     return getVersionParts(
         _.chain(featuredList)
             .map((featured) => featured.versions)

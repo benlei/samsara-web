@@ -23,7 +23,8 @@
       "@/format/*": ["format/*"],
       "@/components/*": ["components/*"],
       "@/pages/*": ["pages/*"],
-      "@/data/*": ["public/data/*"]
+      "@/data/*": ["public/data/*"],
+      "@/lotypes/*": ["lotypes/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
