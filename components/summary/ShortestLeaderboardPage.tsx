@@ -3,14 +3,14 @@ import React, {ReactNode} from "react";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
 import LeaderboardCounterSummary from "@/components/summary/stat/LeaderboardCounterSummary";
-import {getLongestStatsInBetween} from "@/banners/summary";
+import {getShortestStatsInBetween} from "@/banners/summary";
 
 type Properties = {
     data: { featuredList: Featured[], date: string }
     title: ReactNode
     type: string
 }
-export default function LongestLeaderboardPage(
+export default function ShortestLeaderboardPage(
     {
         data,
         title,
@@ -45,7 +45,7 @@ export default function LongestLeaderboardPage(
                         featuredList={data.featuredList}
                         type={type}
                         date={data.date}
-                        counter={getLongestStatsInBetween}
+                        counter={getShortestStatsInBetween}
                     />
                 </Container>
             </Ref>
