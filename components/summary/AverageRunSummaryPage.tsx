@@ -4,6 +4,7 @@ import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
 import AverageCounterSummary from "@/components/summary/stat/AverageCounterSummary";
 import clsx from "clsx";
+import {Order} from "@/lotypes/sort";
 
 type Properties = {
     data: { featuredList: Featured[] }
@@ -19,11 +20,15 @@ export default function AverageRunSummaryPage(
 ) {
     const ref = React.useRef<any>()
     const [sortBy, setSortBy] = useState('days')
+    const [order, setOrder] = useState('desc' as Order)
 
     function triggerSort(newSort: string) {
         if (sortBy != newSort) {
             setSortBy(newSort)
+        } else {
+            setOrder(order === 'desc' ? 'asc' : 'desc')
         }
+
     }
 
     return (
@@ -56,7 +61,9 @@ export default function AverageRunSummaryPage(
                     <AverageCounterSummary
                         type={type}
                         featuredList={data.featuredList}
+                        triggerSort={triggerSort}
                         sortBy={sortBy}
+                        order={order}
                     />
                 </Container>
             </Ref>

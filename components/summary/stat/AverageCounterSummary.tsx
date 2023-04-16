@@ -16,18 +16,21 @@ type Properties = {
     featuredList: Featured[]
     type: string
     sortBy: string
+    order: Order
+    triggerSort: (newSort: string) => void
 }
 export default function AverageCounterSummary(
     {
         featuredList,
         type,
         sortBy,
+        order,
+        triggerSort
     }: Properties
 ) {
     const versionParts = getVersionPartsFromFeaturedList(featuredList, 'asc')
 
     let counter: (versionParts: VersionParts[], featuredList: Featured[]) => AverageCountSummary[]
-    const [order, setOrder] = useState('desc' as Order)
     const [runsOrder, setRunsOrder] = useState('desc' as Order | null)
 
     if (sortBy === 'patches') {
@@ -72,7 +75,7 @@ export default function AverageCounterSummary(
                     </Table.HeaderCell>
                     <Table.HeaderCell
                         className={'sortable-column clickable'}
-                        onClick={() => setOrder(order === 'desc' ? 'asc' : 'desc')}
+                        onClick={() => triggerSort(sortBy)}
                     >
                         {sortBy} <Icon name={'sort'} className={'desktop'}/>
                     </Table.HeaderCell>
