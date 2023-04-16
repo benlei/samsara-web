@@ -45,6 +45,7 @@ export default function LongestLeaderboardPage(
                         featuredList={data.featuredList}
                         type={type}
                         date={data.date}
+                        defaultOrder={'desc'}
                         counter={getLongestStatsInBetween}
                     />
                 </Container>

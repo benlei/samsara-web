@@ -12,6 +12,7 @@ type Properties = {
     featuredList: Featured[]
     type: string
     date: string
+    defaultOrder: Order
     counter: (versionParts: VersionParts[], featuredList: Featured[], date: string) => LeaderboardSummary[]
 }
 
@@ -21,6 +22,7 @@ export default function LeaderboardCounterSummary(
         type,
         counter,
         date,
+        defaultOrder,
     }: Properties
 ) {
     function triggerSort(newSort: string) {
@@ -33,7 +35,7 @@ export default function LeaderboardCounterSummary(
 
     const [now, setNow] = useState(date as string)
     const [sortBy, setSortBy] = useState('days')
-    const [order, setOrder] = useState('desc' as Order)
+    const [order, setOrder] = useState(defaultOrder)
     const summary = _.chain(counter(getVersionPartsFromFeaturedList(featuredList, 'asc'), featuredList, now))
         .orderBy([
             (b) => sortBy === 'patches' ? b.patches : (sortBy === 'banners' ? b.banners : b.days),

@@ -45,6 +45,7 @@ export default function ShortestLeaderboardPage(
                         featuredList={data.featuredList}
                         type={type}
                         date={data.date}
+                        defaultOrder={'asc'}
                         counter={getShortestStatsInBetween}
                     />
                 </Container>
