@@ -2,7 +2,6 @@ import Head from 'next/head'
 import {FeaturedHistory} from '@/banners/types'
 import React from "react";
 import HistoryPage from "@/components/history/HistoryPage";
-import {Container, Header} from "semantic-ui-react";
 import _ from 'lodash';
 import YAML from "yaml";
 import fs from "fs";
@@ -32,10 +31,8 @@ export default function FiveStarWeaponsHome({featuredList}: Properties) {
                 {/*<meta name="viewport" content="width=device-width, initial-scale=1" />*/}
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
-            <Container style={{marginTop: '2em'}}>
-                <Header size={'large'}>5&#x2605; Weapon Banner History</Header>
-            </Container>
             <HistoryPage bannerType={'weapons'}
+                         title={<>5&#x2605; Weapon Banner History</>}
                          featuredList={featuredList}
             />
         </>

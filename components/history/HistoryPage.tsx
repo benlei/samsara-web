@@ -1,5 +1,5 @@
-import React from "react";
-import {Container, Ref} from "semantic-ui-react";
+import React, {ReactNode} from "react";
+import {Container, Header, Ref} from "semantic-ui-react";
 import HistoryOptions from "@/components/history/HistoryOptions";
 import BannerTable from "@/components/history/BannerTable";
 import {FeaturedHistory} from "@/banners/types";
@@ -9,6 +9,7 @@ import PngDownloadButton from "@/components/PngDownloadButton";
 type Properties = {
     featuredList: FeaturedHistory[]
     bannerType: string
+    title: ReactNode
 }
 
 type States = {
@@ -48,6 +49,8 @@ export default class HistoryPage extends React.Component<Properties, States> {
         return (
             <>
                 <Container style={{marginTop: '1em'}}>
+                    <Header size={'large'} as={'h1'}>{this.props.title}</Header>
+
                     <p>
                         This page shows the banner history of featured characters/weapons. By default it sorts by
                         when the featured character/weapon was last run, but you can also sort it by when the

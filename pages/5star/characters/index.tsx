@@ -2,7 +2,6 @@ import Head from 'next/head'
 import {FeaturedHistory} from '@/banners/types'
 import React from "react";
 import HistoryPage from "@/components/history/HistoryPage";
-import {Container, Header} from "semantic-ui-react";
 import _ from "lodash";
 import YAML from "yaml";
 import fs from "fs";
@@ -29,10 +28,8 @@ export default function FiveStarCharactersHome({featuredList}: Properties) {
             <Head>
                 <title>5&#x2605; Character Banner History - Samsara</title>
             </Head>
-            <Container style={{marginTop: '2em'}}>
-                <Header size={'large'}>5&#x2605; Character Banner History</Header>
-            </Container>
             <HistoryPage bannerType={'characters'}
+                         title={<>5&#x2605; Character Banner History</>}
                          featuredList={featuredList}
             />
         </>
