@@ -32,6 +32,7 @@
     --light-header-color: #666;
 }
 
+/* for i in {0..25}; do printf "--hc-${i}: hsl(0, 2%%, %0.1f%%);\n" $((20-.6*$i)); done */
 [data-theme='dark'] {
     --hc-0: hsl(0, 2%, 20.0%);
     --hc-1: hsl(0, 2%, 19.4%);
@@ -59,6 +60,7 @@
     --hc-23: hsl(0, 2%, 6.2%);
     --hc-24: hsl(0, 2%, 5.6%);
     --hc-25: hsl(0, 2%, 5.0%);
+
     --history-border-color: #444;
     --history-cell-color: #666;
     --history-run-color: #aaa;

@@ -74,12 +74,10 @@ export default function AverageCounterSummary(
                         className={'sortable-column clickable'}
                         onClick={() => setOrder(order === 'desc' ? 'asc' : 'desc')}
                     >
-                        <span className={'desktop'}>{sortBy} <Icon name={'sort'}/></span>
-                        <span className={'mobile'} style={{display: 'none'}}>{sortBy.charAt(0)} <Icon name={'sort'}/></span>
+                        {sortBy} <Icon name={'sort'}/>
                     </Table.HeaderCell>
-                    <Table.HeaderCell>
-                        <span className={'desktop'}>Range</span>
-                        <span className={'mobile'} style={{display: 'none'}}>{sortBy.charAt(0)}R</span>
+                    <Table.HeaderCell className={'desktop'}>
+                        Range
                     </Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
@@ -112,7 +110,7 @@ export default function AverageCounterSummary(
                         <Table.Cell verticalAlign={'top'}>
                             {s.average}
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'}>
+                        <Table.Cell verticalAlign={'top'} className={'desktop'}>
                             {getRange(s)}
                         </Table.Cell>
                     </Table.Row>
