@@ -1,7 +1,7 @@
 import {BannerHistoryDataset, DetailedFeaturedHistory, FeaturedHistory, PopoverFeaturedHistory} from "@/banners/types";
 import React, {useState} from "react";
 import {Container, Grid, Header, Image, Popup} from "semantic-ui-react";
-import {getBaseVersion} from "@/banners/version";
+import {getBaseVersion, getVersionPart} from "@/banners/version";
 import _ from "lodash";
 import {getImageFromName} from "@/format/image";
 import {chunk} from "@/banners/summaryUtils";
@@ -128,7 +128,7 @@ function VersionPopover(
                 <Grid.Column width={8}>
                     {featuredCharacters.map((fc, k) =>
                         <div className={'banners'} key={k}>
-                            <Header size={'small'}>Characters / {fc[0].version}</Header>
+                            <Header size={'small'}>{getBaseVersion(fc[0].version)} Characters ({getVersionPart(fc[0].version)})</Header>
 
                             {fc.map((f, l) =>
                                 <div key={l}>
@@ -145,7 +145,7 @@ function VersionPopover(
                 <Grid.Column width={8}>
                     {featuredWeapons.map((fc, k) =>
                         <div className={'banners'} key={k}>
-                            <Header size={'small'}>Weapons / {fc[0].version}</Header>
+                            <Header size={'small'}>{getBaseVersion(fc[0].version)} Weapons ({getVersionPart(fc[0].version)})</Header>
 
                             {fc.map((f, l) =>
                                 <div key={l}>
