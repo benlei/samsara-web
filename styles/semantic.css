@@ -20,6 +20,7 @@
   --vertical-menu-item-color: rgba(0, 0, 0, 0.5);
   --checked-opacity: 1;
   --primary-color: #822;
+  --primary-color-light: #c52121;
   --button-background: rgba(224, 225, 226, 1) none;
   --button-color: var(--label-bg-color);
   --popover-border-color: rgba(186, 186, 188, 1);
@@ -55,6 +56,8 @@
   --card-color: rgba(240, 240, 240, 0.68);
   --label-color: rgba(52, 52, 52, 1);
   --label-bg-color: rgba(240, 240, 240, 0.6);
+  --primary-color: #822;
+  --primary-color-light: #c52121;
 }
 
 /*
@@ -710,12 +713,12 @@ p:last-child {
 --------------------*/
 
 a {
-  color: #4183C4;
+  color: var(--primary-color-light);
   text-decoration: none;
 }
 
 a:hover {
-  color: #1e70bf;
+  color: var(--primary-color);
   text-decoration: none;
 }
 
@@ -15920,7 +15923,7 @@ a.ui.basic.black.label:hover {
 a.ui.basic.label:hover {
   text-decoration: none;
   background: none var(--white);
-  color: #1e70bf;
+  color: var(--primary-color);
   -webkit-box-shadow: 1px solid var(--checkbox-circle-box);
   box-shadow: 1px solid var(--checkbox-circle-box);
   -webkit-box-shadow: none;
@@ -16392,12 +16395,12 @@ ol.ui.list ol li,
 .ui.list .list > a.item,
 .ui.list > a.item {
   cursor: pointer;
-  color: #4183C4;
+  color: var(--primary-color-light);
 }
 
 .ui.list .list > a.item:hover,
 .ui.list > a.item:hover {
-  color: #1e70bf;
+  color: var(--primary-color);
 }
 
 /* Linked Item Icons */
@@ -16412,12 +16415,12 @@ ol.ui.list ol li,
 .ui.list .list > .item a.header,
 .ui.list > .item a.header {
   cursor: pointer;
-  color: #4183C4 !important;
+  color: var(--primary-color-light) !important;
 }
 
 .ui.list .list > .item a.header:hover,
 .ui.list > .item a.header:hover {
-  color: #1e70bf !important;
+  color: var(--primary-color) !important;
 }
 
 /* Floated Content */
@@ -16593,7 +16596,7 @@ ol.ui.list ol li,
 
 .ui.inverted.list .list > a.item:hover,
 .ui.inverted.list > a.item:hover {
-  color: #1e70bf;
+  color: var(--primary-color);
 }
 
 /* Linking Content */
@@ -16603,7 +16606,7 @@ ol.ui.list ol li,
 }
 
 .ui.inverted.list .item a:not(.ui):hover {
-  color: #1e70bf !important;
+  color: var(--primary-color) !important;
 }
 
 /*-------------------
@@ -19764,7 +19767,7 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.steps .step.active .title {
-  color: #4183C4;
+  color: var(--primary-color-light);
 }
 
 .ui.ordered.steps .step.active:before,
@@ -20106,11 +20109,11 @@ ol.ui.horizontal.list li:before,
 /* Link */
 
 .ui.breadcrumb a {
-  color: #4183C4;
+  color: var(--primary-color-light);
 }
 
 .ui.breadcrumb a:hover {
-  color: #1e70bf;
+  color: var(--primary-color);
 }
 
 /* Icon Divider */
@@ -28460,7 +28463,7 @@ Floated Menu / Item
 
 .ui.cards > .card > .content > a.header:hover,
 .ui.card > .content > a.header:hover {
-  color: #1e70bf;
+  color: var(--primary-color);
 }
 
 /* Meta */
@@ -28580,7 +28583,7 @@ Floated Menu / Item
 
 .ui.cards > .card > .extra a:not(.ui):hover,
 .ui.card > .extra a:not(.ui):hover {
-  color: #1e70bf;
+  color: var(--primary-color);
 }
 
 /*******************************
@@ -29355,7 +29358,7 @@ a.ui.card:hover,
 }
 
 .ui.comments .comment a.author:hover {
-  color: #1e70bf;
+  color: var(--primary-color);
 }
 
 /*--------------
@@ -30094,7 +30097,7 @@ a.ui.card:hover,
 }
 
 .ui.items > .item > .content > a.header:hover {
-  color: #1e70bf;
+  color: var(--primary-color);
 }
 
 /* Meta */
@@ -30325,7 +30328,7 @@ a.ui.card:hover,
 
 .ui.items a.item:hover .content .header,
 .ui.link.items > .item:hover .content .header {
-  color: #1e70bf;
+  color: var(--primary-color);
 }
 
 /*--------------
