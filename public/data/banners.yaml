@@ -721,11 +721,14 @@ fourStarCharacters:
     versions:
       - 2.7.2
       - 3.1.1
+      - 3.6.1
     dates:
       - start: '2022-06-21'
         end: '2022-07-13'
       - start: '2022-09-28'
         end: '2022-10-14'
+      - start: '2023-04-12'
+        end: ''
   - name: Shikanoin Heizou
     versions:
       - 2.8.1
@@ -747,9 +750,12 @@ fourStarCharacters:
   - name: Dori
     versions:
       - 3.0.2
+      - 3.6.1
     dates:
       - start: '2022-09-09'
         end: '2022-09-28'
+      - start: '2023-04-12'
+        end: ''
   - name: Candace
     versions:
       - 3.1.1
@@ -759,9 +765,12 @@ fourStarCharacters:
   - name: Layla
     versions:
       - 3.2.2
+      - 3.6.1
     dates:
       - start: '2022-11-18'
         end: '2022-12-07'
+      - start: '2023-04-12'
+        end: ''
   - name: Faruzan
     versions:
       - 3.3.1
@@ -1014,7 +1023,7 @@ fiveStarWeapons:
       - start: '2022-04-19'
         end: '2022-05-31'
       - start: '2023-03-21'
-        end: ''
+        end: '2023-04-12'
   - name: Skyward Spine
     versions:
       - 2.0.1
@@ -1086,7 +1095,7 @@ fiveStarWeapons:
       - start: '2022-01-05'
         end: '2022-01-25'
       - start: '2023-03-21'
-        end: ''
+        end: '2023-04-12'
   - name: Kagura's Verity
     versions:
       - 2.5.1
@@ -1132,15 +1141,21 @@ fiveStarWeapons:
   - name: Key of Khaj-Nisut
     versions:
       - 3.1.2
+      - 3.6.1
     dates:
       - start: '2022-10-14'
         end: '2022-11-02'
+      - start: '2023-04-12'
+        end: ''
   - name: A Thousand Floating Dreams
     versions:
       - 3.2.1
+      - 3.6.1
     dates:
       - start: '2022-11-02'
         end: '2022-11-18'
+      - start: '2023-04-12'
+        end: ''
   - name: Tulaytullah's Remembrance
     versions:
       - 3.3.1
@@ -1216,7 +1231,7 @@ fourStarWeapons:
       - start: '2022-12-27'
         end: '2023-01-18'
       - start: '2023-03-21'
-        end: ''
+        end: '2023-04-12'
   - name: The Bell
     versions:
       - 1.0.1
@@ -1249,7 +1264,7 @@ fourStarWeapons:
       - start: '2022-11-18'
         end: '2022-12-07'
       - start: '2023-03-21'
-        end: ''
+        end: '2023-04-12'
   - name: The Flute
     versions:
       - 1.0.1
@@ -1293,6 +1308,7 @@ fourStarWeapons:
       - 2.7.2
       - 3.0.1
       - 3.2.2
+      - 3.6.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -1310,6 +1326,8 @@ fourStarWeapons:
         end: '2022-09-09'
       - start: '2022-11-18'
         end: '2022-12-07'
+      - start: '2023-04-12'
+        end: ''
   - name: The Widsith
     versions:
       - 1.0.1
@@ -1363,6 +1381,7 @@ fourStarWeapons:
       - 3.2.2
       - 3.4.2
       - 3.5.1
+      - 3.6.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -1400,6 +1419,8 @@ fourStarWeapons:
         end: '2023-03-01'
       - start: '2023-03-01'
         end: '2023-03-21'
+      - start: '2023-04-12'
+        end: ''
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -1438,6 +1459,7 @@ fourStarWeapons:
       - 2.7.2
       - 3.1.1
       - 3.3.2
+      - 3.6.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -1457,6 +1479,8 @@ fourStarWeapons:
         end: '2022-10-14'
       - start: '2022-12-27'
         end: '2023-01-18'
+      - start: '2023-04-12'
+        end: ''
   - name: Sacrificial Greatsword
     versions:
       - 1.0.2
@@ -1519,7 +1543,7 @@ fourStarWeapons:
       - start: '2022-12-07'
         end: '2022-12-27'
       - start: '2023-03-21'
-        end: ''
+        end: '2023-04-12'
   - name: Eye of Perception
     versions:
       - 1.1.1
@@ -1666,7 +1690,7 @@ fourStarWeapons:
       - start: '2022-12-07'
         end: '2022-12-27'
       - start: '2023-03-21'
-        end: ''
+        end: '2023-04-12'
   - name: Lion's Roar
     versions:
       - 1.1.2
@@ -1707,6 +1731,7 @@ fourStarWeapons:
       - 2.7.1
       - 3.0.2
       - 3.3.1
+      - 3.6.1
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -1724,6 +1749,8 @@ fourStarWeapons:
         end: '2022-09-28'
       - start: '2022-12-07'
         end: '2022-12-27'
+      - start: '2023-04-12'
+        end: ''
   - name: Favonius Sword
     versions:
       - 1.2.1
@@ -1825,7 +1852,7 @@ fourStarWeapons:
       - start: '2022-08-02'
         end: '2022-08-24'
       - start: '2023-03-21'
-        end: ''
+        end: '2023-04-12'
   - name: Alley Hunter
     versions:
       - 1.4.2
@@ -1907,6 +1934,9 @@ fourStarWeapons:
   - name: Xiphos' Moonlight
     versions:
       - 3.1.2
+      - 3.6.1
     dates:
       - start: '2022-10-14'
         end: '2022-11-02'
+      - start: '2023-04-12'
+        end: ''
