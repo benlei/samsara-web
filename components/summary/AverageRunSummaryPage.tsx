@@ -1,8 +1,10 @@
-import {Button, Container, Header, List, Ref} from "semantic-ui-react";
+import {Button, Container, Header, Icon, List, Ref} from "semantic-ui-react";
 import React, {ReactNode, useState} from "react";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
 import AverageCounterSummary from "@/components/summary/stat/AverageCounterSummary";
+import clsx from "clsx";
+import {Order} from "@/lotypes/sort";
 
 type Properties = {
     data: { featuredList: Featured[] }
@@ -18,11 +20,15 @@ export default function AverageRunSummaryPage(
 ) {
     const ref = React.useRef<any>()
     const [sortBy, setSortBy] = useState('days')
+    const [order, setOrder] = useState('desc' as Order)
 
     function triggerSort(newSort: string) {
         if (sortBy != newSort) {
             setSortBy(newSort)
+        } else {
+            setOrder(order === 'desc' ? 'asc' : 'desc')
         }
+
     }
 
     return (
@@ -37,25 +43,15 @@ export default function AverageRunSummaryPage(
                     being said, miHoYo{"'"}s methodology for reruns might really just be random.
                 </p>
 
-                <p className={'mobile'} style={{display: 'none'}}>
-                    The column titled {`"D", "B", "P", "DR", "BR", or "PR"`} means the following:
-                </p>
-                <List className={'mobile'} style={{display: 'none'}} bulleted>
-                    <List.Item>{`"D" stands for "Days"`}.</List.Item>
-                    <List.Item>{`"B" stands for "Banners"`}.</List.Item>
-                    <List.Item>{`"P" stands for "Patches"`}.</List.Item>
-                    <List.Item>{`The "R" in front of "D", "B", or "P" means "Range", for example: "Day Range", "Banner Range", "Patch Range".`}</List.Item>
-                </List>
-
                 <Button.Group widths='3'>
                     <Button active={sortBy == 'days'} onClick={() => triggerSort('days')}>
-                        Days
+                        Days <Icon name={'sort'} className={clsx({hidden: sortBy != 'days'})}/>
                     </Button>
                     <Button active={sortBy == 'banners'} onClick={() => triggerSort('banners')}>
-                        Banners
+                        Banners <Icon name={'sort'} className={clsx({hidden: sortBy != 'banners'})}/>
                     </Button>
                     <Button active={sortBy == 'patches'} onClick={() => triggerSort('patches')}>
-                        Patches
+                        Patches <Icon name={'sort'} className={clsx({hidden: sortBy != 'patches'})}/>
                     </Button>
                 </Button.Group>
             </Container>
@@ -65,7 +61,9 @@ export default function AverageRunSummaryPage(
                     <AverageCounterSummary
                         type={type}
                         featuredList={data.featuredList}
+                        triggerSort={triggerSort}
                         sortBy={sortBy}
+                        order={order}
                     />
                 </Container>
             </Ref>

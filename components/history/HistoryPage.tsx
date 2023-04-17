@@ -1,26 +1,21 @@
-import React from "react";
-import {Container, Ref} from "semantic-ui-react";
+import React, {ReactNode} from "react";
+import {Container, Header, Ref} from "semantic-ui-react";
 import HistoryOptions from "@/components/history/HistoryOptions";
 import BannerTable from "@/components/history/BannerTable";
-import getVersionParts from "@/banners/version";
-import {getRundowns} from "@/banners/rundown";
-import {FeaturedHistory} from "@/banners/types";
+import {BannerHistoryDataset, FeaturedHistory} from "@/banners/types";
 import ScrollContainer from "react-indiana-drag-scroll";
 import PngDownloadButton from "@/components/PngDownloadButton";
-import _ from "lodash";
 
 type Properties = {
+    dataset: BannerHistoryDataset
     featuredList: FeaturedHistory[]
     bannerType: string
-    standards?: string[]
-    showLimitedOnly: boolean
+    title: ReactNode
 }
 
 type States = {
-    limitedOnly: boolean
     sortBy: string
     order: string
-    expand: boolean
 }
 
 export default class HistoryPage extends React.Component<Properties, States> {
@@ -30,10 +25,8 @@ export default class HistoryPage extends React.Component<Properties, States> {
         super(props);
 
         this.state = {
-            limitedOnly: true,
             sortBy: 'last',
             order: 'desc',
-            expand: false,
         }
 
         this.componentRef = React.createRef()
@@ -43,60 +36,50 @@ export default class HistoryPage extends React.Component<Properties, States> {
         const {
             featuredList,
             bannerType,
-            standards,
-            showLimitedOnly,
+            dataset,
         } = this.props
 
         const {
-            limitedOnly,
             sortBy,
             order,
-            expand,
         } = this.state
 
 
-        const setLimitedOnly = (v: boolean) => this.setState({limitedOnly: v})
         const setSortBy = (v: string) => this.setState({sortBy: v})
         const setOrder = (v: string) => this.setState({order: v})
-        const setExpand = (v: boolean) => this.setState({expand: v})
-
-        const getBannerContainerStyle = (expand: boolean) => {
-            if (expand) {
-                return {
-                    paddingLeft: '1em',
-                    paddingRight: '1em',
-                }
-            }
-
-            return {}
-        }
 
         return (
             <>
                 <Container style={{marginTop: '1em'}}>
-                    <HistoryOptions showLimitedOnly={showLimitedOnly} limitedOnly={limitedOnly}
-                                    setLimitedOnly={setLimitedOnly}
-                                    order={order} setOrder={setOrder}
-                                    sortBy={sortBy} setSortBy={setSortBy}
-                                    expand={expand} setExpand={setExpand}
+                    <Header size={'large'} as={'h1'}>{this.props.title}</Header>
+
+                    <p>
+                        This page shows the banner history of featured characters/weapons. By default it sorts by
+                        when the featured character/weapon was last run, but you can also sort it by when the
+                        character/weapon was first run (in order), or by the total number of times it was run.
+                    </p>
+
+                    <p>
+                        For search/filtering you can input a comma separated list of names, and/or versions that
+                        you are interested in. For example you can search {'"'}<code>aya</code>{'"'} in the 5 star character
+                        history page to show the history of characters with {'"aya"'} in their name, such as Ayato and
+                        Ayaka. More over you can search {'"'}<code>3.6, 3.2, 2.1, 2.5</code>{'"'} to show all
+                        characters/weapons that were run in versions 2.1, 2.5, 3.2, and 3.6.
+                    </p>
+
+                    <HistoryOptions
+                        order={order} setOrder={setOrder}
+                        sortBy={sortBy} setSortBy={setSortBy}
                     />
                 </Container>
-                <Container style={{marginTop: '1em', ...getBannerContainerStyle(expand ?? false)}}
-                           fluid={expand ?? false}>
+                <Container style={{marginTop: '1em'}}>
                     <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
                         <Ref innerRef={this.componentRef}>
                             <BannerTable bannerType={bannerType}
-                                         versionParts={getVersionParts(
-                                             _.chain(featuredList)
-                                                 .map((featured) => featured.versions)
-                                                 .flatten()
-                                                 .value()
-                                         )}
-                                         rundown={getRundowns(featuredList)}
-                                         limitedOnly={limitedOnly}
+                                         dataset={dataset}
+                                         featuredList={featuredList}
                                          order={order}
                                          sortBy={sortBy}
-                                         standards={standards}
                                          ref={this.componentRef}
 
                             />

@@ -1,11 +1,17 @@
-import {Dispatch, SetStateAction} from "react";
-import {Order} from "@/lotypes/sort";
+import {Dispatch, SetStateAction} from "react"
 
 export type BannerDataset = {
     fiveStarCharacters: Featured[]
     fourStarCharacters: Featured[]
     fiveStarWeapons: Featured[]
     fourStarWeapons: Featured[]
+}
+
+export type BannerHistoryDataset = {
+    fiveStarCharacters: FeaturedHistory[]
+    fourStarCharacters: FeaturedHistory[]
+    fiveStarWeapons: FeaturedHistory[]
+    fourStarWeapons: FeaturedHistory[]
 }
 
 export type Featured = {
@@ -30,21 +36,26 @@ export type DateRange = {
 }
 
 export type VersionParts = {
-    version: string;
-    parts: number;
+    version: string
+    parts: number
 }
 
 export type DetailedFeaturedHistory = {
-    name: string;
-    image: string;
-    runs: number;
-    versions: string[];
-    counter: number[];
+    name: string
+    image: string
+    runs: number
+    versions: string[]
+    counter: number[]
 }
 
+export type PopoverFeaturedHistory = {
+    name: string
+    image: string
+    stars: number
+    version: string
+}
 
 export type BannerFilterSortOptions = {
-    limitedOnly: boolean
     sortBy: string
     order: string
 }
@@ -52,17 +63,4 @@ export type BannerFilterSortOptions = {
 export type BannerOptionSetters = {
     setOrder: Dispatch<SetStateAction<any>>
     setSortBy: Dispatch<SetStateAction<any>>
-    setLimitedOnly: Dispatch<SetStateAction<any>>
-}
-
-export type BannerSummary = {
-    versions: string[]
-    dates: DateRange[]
-}
-export type CommonSummaryProperties = {
-    versionParts: VersionParts[]
-    featuredList: Featured[]
-    type: string
-    order: Order
-    filterText: string
 }

@@ -16,18 +16,21 @@ type Properties = {
     featuredList: Featured[]
     type: string
     sortBy: string
+    order: Order
+    triggerSort: (newSort: string) => void
 }
 export default function AverageCounterSummary(
     {
         featuredList,
         type,
         sortBy,
+        order,
+        triggerSort
     }: Properties
 ) {
     const versionParts = getVersionPartsFromFeaturedList(featuredList, 'asc')
 
     let counter: (versionParts: VersionParts[], featuredList: Featured[]) => AverageCountSummary[]
-    const [order, setOrder] = useState('desc' as Order)
     const [runsOrder, setRunsOrder] = useState('desc' as Order | null)
 
     if (sortBy === 'patches') {
@@ -68,18 +71,16 @@ export default function AverageCounterSummary(
                         <Icon name={'redo'}
                               className={clsx({grey: runsOrder === null})}
                         /><Icon name={'sort'}
-                                className={clsx({grey: runsOrder === null})}/>
+                                className={clsx('desktop', {grey: runsOrder === null})}/>
                     </Table.HeaderCell>
                     <Table.HeaderCell
                         className={'sortable-column clickable'}
-                        onClick={() => setOrder(order === 'desc' ? 'asc' : 'desc')}
+                        onClick={() => triggerSort(sortBy)}
                     >
-                        <span className={'desktop'}>{sortBy} <Icon name={'sort'}/></span>
-                        <span className={'mobile'} style={{display: 'none'}}>{sortBy.charAt(0)} <Icon name={'sort'}/></span>
+                        {sortBy} <Icon name={'sort'} className={'desktop'}/>
                     </Table.HeaderCell>
-                    <Table.HeaderCell>
-                        <span className={'desktop'}>Range</span>
-                        <span className={'mobile'} style={{display: 'none'}}>{sortBy.charAt(0)}R</span>
+                    <Table.HeaderCell className={'desktop'}>
+                        Range
                     </Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
@@ -112,7 +113,7 @@ export default function AverageCounterSummary(
                         <Table.Cell verticalAlign={'top'}>
                             {s.average}
                         </Table.Cell>
-                        <Table.Cell verticalAlign={'top'}>
+                        <Table.Cell verticalAlign={'top'} className={'desktop'}>
                             {getRange(s)}
                         </Table.Cell>
                     </Table.Row>

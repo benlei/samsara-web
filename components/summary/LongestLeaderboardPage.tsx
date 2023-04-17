@@ -1,9 +1,11 @@
-import {Container, Header, List, Ref} from "semantic-ui-react";
-import React, {ReactNode} from "react";
+import {Button, Container, Header, Icon, Ref} from "semantic-ui-react";
+import React, {ReactNode, useState} from "react";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
 import LeaderboardCounterSummary from "@/components/summary/stat/LeaderboardCounterSummary";
 import {getLongestStatsInBetween} from "@/banners/summary";
+import clsx from "clsx";
+import {Order} from "@/lotypes/sort";
 
 type Properties = {
     data: { featuredList: Featured[], date: string }
@@ -17,7 +19,17 @@ export default function LongestLeaderboardPage(
         type,
     }: Properties
 ) {
+    function triggerSort(newSort: string) {
+        if (sortBy != newSort) {
+            setSortBy(newSort)
+        } else {
+            setOrder(order == 'asc' ? 'desc' : 'asc')
+        }
+    }
+
     const ref = React.useRef<any>()
+    const [sortBy, setSortBy] = useState('days')
+    const [order, setOrder] = useState('desc' as Order)
 
     return (
         <>
@@ -29,14 +41,17 @@ export default function LongestLeaderboardPage(
                     a rerun, including from when they last run until now.
                 </p>
 
-                <p className={'mobile'} style={{display: 'none'}}>
-                    The columns titled {`"D", "B", and "P"`} means the following:
-                </p>
-                <List className={'mobile'} style={{display: 'none'}} bulleted>
-                    <List.Item>{`"D" stands for "Days"`}.</List.Item>
-                    <List.Item>{`"B" stands for "Banners"`}.</List.Item>
-                    <List.Item>{`"P" stands for "Patches"`}.</List.Item>
-                </List>
+                <Button.Group widths='3' className={'mobile'} style={{display: 'none'}}>
+                    <Button active={sortBy == 'days'} onClick={() => triggerSort('days')}>
+                        Days <Icon name={'sort'} className={clsx({hidden: sortBy != 'days'})}/>
+                    </Button>
+                    <Button active={sortBy == 'banners'} onClick={() => triggerSort('banners')}>
+                        Banners <Icon name={'sort'} className={clsx({hidden: sortBy != 'banners'})}/>
+                    </Button>
+                    <Button active={sortBy == 'patches'} onClick={() => triggerSort('patches')}>
+                        Patches <Icon name={'sort'} className={clsx({hidden: sortBy != 'patches'})}/>
+                    </Button>
+                </Button.Group>
             </Container>
 
             <Ref innerRef={ref}>
@@ -45,7 +60,9 @@ export default function LongestLeaderboardPage(
                         featuredList={data.featuredList}
                         type={type}
                         date={data.date}
-                        defaultOrder={'desc'}
+                        triggerSort={triggerSort}
+                        sortBy={sortBy}
+                        order={order}
                         counter={getLongestStatsInBetween}
                     />
                 </Container>
