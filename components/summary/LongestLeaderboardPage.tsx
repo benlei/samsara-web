@@ -1,5 +1,5 @@
 import {Button, Container, Header, Icon, Ref} from "semantic-ui-react";
-import React, {ReactNode, useState} from "react";
+import React, {ReactNode, useEffect, useState} from "react";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
 import LeaderboardCounterSummary from "@/components/summary/stat/LeaderboardCounterSummary";
@@ -19,17 +19,32 @@ export default function LongestLeaderboardPage(
         type,
     }: Properties
 ) {
-    function triggerSort(newSort: string) {
-        if (sortBy != newSort) {
-            setSortBy(newSort)
-        } else {
-            setOrder(order == 'asc' ? 'desc' : 'asc')
-        }
-    }
-
     const ref = React.useRef<any>()
     const [sortBy, setSortBy] = useState('days')
     const [order, setOrder] = useState('desc' as Order)
+
+    useEffect(() => {
+        const sSortBy = localStorage.getItem('long_sort')
+        const sOrder = localStorage.getItem('long_order')
+
+        if (sSortBy == 'days' || sSortBy == 'banners' || sSortBy == 'patches') {
+            setSortBy(sSortBy)
+        }
+
+        if (sOrder == 'asc' || sOrder == 'desc') {
+            setOrder(sOrder)
+        }
+    }, [sortBy, order])
+
+    function triggerSort(newSort: string) {
+        if (sortBy != newSort) {
+            setSortBy(newSort)
+            localStorage.setItem('long_sort', newSort)
+        } else {
+            setOrder(order === 'desc' ? 'asc' : 'desc')
+            localStorage.setItem('long_order', order === 'desc' ? 'asc' : 'desc')
+        }
+    }
 
     return (
         <>

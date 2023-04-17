@@ -5,6 +5,7 @@ import BannerTable from "@/components/history/BannerTable";
 import {BannerHistoryDataset, FeaturedHistory} from "@/banners/types";
 import ScrollContainer from "react-indiana-drag-scroll";
 import PngDownloadButton from "@/components/PngDownloadButton";
+import _ from "lodash";
 
 type Properties = {
     dataset: BannerHistoryDataset
@@ -32,6 +33,24 @@ export default class HistoryPage extends React.Component<Properties, States> {
         this.componentRef = React.createRef()
     }
 
+
+    componentDidMount = () => {
+        const sortBy = localStorage.getItem('history_sort')
+        const order = localStorage.getItem('history_order')
+
+        if (sortBy == 'last' || sortBy == 'first' || sortBy == 'runs-last') {
+            this.setState({
+                sortBy,
+            })
+        }
+
+        if (order == 'asc' || order == 'desc') {
+            this.setState({
+                order,
+            })
+        }
+    }
+
     render() {
         const {
             featuredList,
@@ -45,8 +64,14 @@ export default class HistoryPage extends React.Component<Properties, States> {
         } = this.state
 
 
-        const setSortBy = (v: string) => this.setState({sortBy: v})
-        const setOrder = (v: string) => this.setState({order: v})
+        const setSortBy = (v: string) => {
+            this.setState({sortBy: v})
+            localStorage.setItem('history_sort', v)
+        }
+        const setOrder = (v: string) => {
+            this.setState({order: v})
+            localStorage.setItem('history_order', v)
+        }
 
         return (
             <>
@@ -61,7 +86,8 @@ export default class HistoryPage extends React.Component<Properties, States> {
 
                     <p>
                         For search/filtering you can input a comma separated list of names, and/or versions that
-                        you are interested in. For example you can search {'"'}<code>aya</code>{'"'} in the 5 star character
+                        you are interested in. For example you can search {'"'}<code>aya</code>{'"'} in the 5 star
+                        character
                         history page to show the history of characters with {'"aya"'} in their name, such as Ayato and
                         Ayaka. More over you can search {'"'}<code>3.6, 3.2, 2.1, 2.5</code>{'"'} to show all
                         characters/weapons that were run in versions 2.1, 2.5, 3.2, and 3.6.

@@ -1,5 +1,5 @@
 import {Button, Container, Header, Icon, Ref} from "semantic-ui-react";
-import React, {ReactNode, useState} from "react";
+import React, {ReactNode, useEffect, useState} from "react";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
 import RelativeBasicCounterSummary from "@/components/summary/stat/RelativeBasicCounterSummary";
@@ -21,11 +21,26 @@ export default function LastRunSummaryPage(
     const [sortBy, setSortBy] = useState('days')
     const [order, setOrder] = useState('asc')
 
+    useEffect(() => {
+        const sSortBy = localStorage.getItem('last_runs_sort')
+        const sOrder = localStorage.getItem('last_runs_order')
+
+        if (sSortBy == 'days' || sSortBy == 'banners' || sSortBy == 'patches') {
+            setSortBy(sSortBy)
+        }
+
+        if (sOrder == 'asc' || sOrder == 'desc') {
+            setOrder(sOrder)
+        }
+    }, [sortBy, order])
+
     function triggerSort(newSort: string) {
         if (sortBy != newSort) {
             setSortBy(newSort)
+            localStorage.setItem('last_runs_sort', newSort)
         } else {
-            setOrder(order == 'asc' ? 'desc' : 'asc')
+            setOrder(order === 'desc' ? 'asc' : 'desc')
+            localStorage.setItem('last_runs_order', order === 'desc' ? 'asc' : 'desc')
         }
     }
 
