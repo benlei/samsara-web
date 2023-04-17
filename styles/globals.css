@@ -432,7 +432,7 @@ input:focus {
 }
 
 .history-featured-popover {
-    width: 300px !important;
+    width: 250px !important;
 }
 .history-featured-popover .label {
     margin: .3em !important;
