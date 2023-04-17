@@ -7,6 +7,7 @@ import {getVersionPartsFromFeaturedList} from "@/banners/version";
 import {Order} from "@/lotypes/sort";
 import clsx from "clsx";
 import dayjs from "dayjs";
+import {getImageFromName} from "@/format/image";
 
 type Properties = {
     featuredList: Featured[]
@@ -40,6 +41,15 @@ export default function LeaderboardCounterSummary(
         .value()
 
     useEffect(() => setNow(dayjs.utc().toISOString().substring(0, 10)), [now])
+
+    const shown = _.chain(summary)
+        .map((s) => s.name)
+        .value()
+
+    const naList = _.chain(featuredList)
+        .filter((f) => !_.includes(shown, f.name))
+        .orderBy((b) => b.name, 'asc')
+        .value()
 
     return (
         <Table unstackable className={'summary-table'}>
@@ -97,6 +107,40 @@ export default function LeaderboardCounterSummary(
                         </Table.Cell>
                         <Table.Cell verticalAlign={'top'} className={clsx({desktop: sortBy !== 'patches'})}>
                             {s.patches}
+                        </Table.Cell>
+                    </Table.Row>
+                )}
+
+                {naList.map((f, k) =>
+                    <Table.Row key={k} verticalAlign={'top'} className={'not-applicable'}>
+                        <Table.Cell style={{width: '35px'}}>
+                            <Image size={'tiny'}
+                                   circular
+                                   verticalAlign='middle'
+                                   src={`/images/${type}/${getImageFromName(f.name)}.png`}
+                                   alt={getImageFromName(f.name)}
+                                   className={'desktop'}
+                            />
+                            <Image size={'mini'}
+                                   circular
+                                   verticalAlign='middle'
+                                   src={`/images/${type}/${getImageFromName(f.name)}.png`}
+                                   alt={getImageFromName(f.name)}
+                                   style={{display: 'none'}}
+                                   className={'mobile'}
+                            />
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'}>
+                            <Header as={'div'} size={'small'}>{f.name}</Header>
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'} className={clsx({desktop: sortBy !== 'days'})}>
+                            n/a
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'} className={clsx({desktop: sortBy !== 'banners'})}>
+                            n/a
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'} className={clsx({desktop: sortBy !== 'patches'})}>
+                            n/a
                         </Table.Cell>
                     </Table.Row>
                 )}

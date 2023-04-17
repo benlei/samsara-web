@@ -11,6 +11,7 @@ import React, {useState} from "react";
 import {Order} from "@/lotypes/sort";
 import clsx from "clsx";
 import {getVersionPartsFromFeaturedList} from "@/banners/version";
+import {getImageFromName} from "@/format/image";
 
 type Properties = {
     featuredList: Featured[]
@@ -57,6 +58,11 @@ export default function AverageCounterSummary(
             (b) => b.standardDeviation,
             (b) => b.name,
         ], [runsOrder === null ? 'desc' : runsOrder as Order, order, order, order])
+        .value()
+
+    const naFeatured = _.chain(featuredList)
+        .filter((f) => f.versions.length <= 1)
+        .orderBy((b) => b.name, 'asc')
         .value()
 
     return (
@@ -115,6 +121,40 @@ export default function AverageCounterSummary(
                         </Table.Cell>
                         <Table.Cell verticalAlign={'top'} className={'desktop'}>
                             {getRange(s)}
+                        </Table.Cell>
+                    </Table.Row>
+                )}
+
+                {naFeatured.map((f, k) =>
+                    <Table.Row key={k} verticalAlign={'top'} className={'not-applicable'}>
+                        <Table.Cell style={{width: '35px'}}>
+                            <Image size={'tiny'}
+                                   circular
+                                   verticalAlign='middle'
+                                   src={`/images/${type}/${getImageFromName(f.name)}.png`}
+                                   alt={getImageFromName(f.name)}
+                                   className={'desktop'}
+                            />
+                            <Image size={'mini'}
+                                   circular
+                                   verticalAlign='middle'
+                                   src={`/images/${type}/${getImageFromName(f.name)}.png`}
+                                   alt={getImageFromName(f.name)}
+                                   style={{display: 'none'}}
+                                   className={'mobile'}
+                            />
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'}>
+                            <Header as={'div'} size={'small'}>{f.name}</Header>
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'}>
+                            1
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'}>
+                            n/a
+                        </Table.Cell>
+                        <Table.Cell verticalAlign={'top'} className={'desktop'}>
+                            n/a
                         </Table.Cell>
                     </Table.Row>
                 )}
