@@ -32,7 +32,7 @@ export default function Navbar(): JSX.Element {
                 >
                     <Menu.Item>
                         <Menu.Header className={'logo'} as={'a'} href={'/'}>
-                            <Image src={'images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara
+                            <Image src={'/images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara
                         </Menu.Header>
                     </Menu.Item>
                     <Menu.Item>
