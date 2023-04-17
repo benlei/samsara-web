@@ -1,16 +1,13 @@
-import {AverageCountSummary, CountSummary, LeaderboardSummary} from "@/banners/summary";
-
-type Summary = CountSummary | LeaderboardSummary | AverageCountSummary
 type ByFnResult = number | string
 
-export function chunk<T extends Summary>(
-    summary: T[],
-    byFn: (s: T) => ByFnResult
+export function chunk<T>(
+    list: T[],
+    byFn: (el: T) => ByFnResult
 ): T[][] {
     const result: T[][] = [[]]
-    let lastValue = byFn(summary[0])
+    let lastValue = byFn(list[0])
 
-    for (const s of summary) {
+    for (const s of list) {
         if (lastValue === byFn(s)) {
             result[result.length - 1].push(s)
         } else {

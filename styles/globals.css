@@ -405,3 +405,11 @@ tr.selected {
 input:focus {
     border-color: var(--primary-color) !important;
 }
+
+.history-popover {
+    /*width: 200px !important;*/
+}
+
+.history-popover .label {
+    margin: .3em !important;
+}

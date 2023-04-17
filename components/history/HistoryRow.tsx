@@ -1,13 +1,16 @@
 import {DetailedFeaturedHistory} from "@/banners/types";
 import React from "react";
-import {Image, Table} from "semantic-ui-react";
+import {Image, Popup, Table} from "semantic-ui-react";
+import HistoryFeaturedPopover from "@/components/history/HistoryFeaturedPopover";
 
 type Properties = {
     rundown: DetailedFeaturedHistory
     bannerType: string
 }
 
-type States = {}
+type States = {
+    open: boolean
+}
 
 function getImageOrCounter(type: string, rc: DetailedFeaturedHistory, counter: number): React.ReactElement {
     if (counter == 0) {
@@ -24,6 +27,20 @@ function getImageOrCounter(type: string, rc: DetailedFeaturedHistory, counter: n
 }
 
 export default class HistoryRow extends React.Component<Properties, States> {
+
+    constructor(props: Readonly<Properties> | Properties) {
+        super(props);
+
+
+        this.state = {
+            open: false,
+        }
+    }
+
+    setOpen = (open: boolean) => {
+        this.setState({open})
+    }
+
     render() {
         const {
             rundown,
@@ -33,12 +50,22 @@ export default class HistoryRow extends React.Component<Properties, States> {
         return (
             <Table.Row>
                 <Table.Cell>
-                    <span className={'desktop'}>
-                        {rundown.name}
-                    </span> <Image avatar
-                                   src={`/images/${bannerType}/${rundown.image}.png`}
-                                   alt={rundown.image}/>
-
+                    <Popup
+                        content={<HistoryFeaturedPopover type={bannerType} rundown={rundown} />}
+                        on='click'
+                        onClose={() => this.setOpen(false)}
+                        onOpen={() => this.setOpen(true)}
+                        open={this.state.open}
+                        position={'right center'}
+                        trigger={
+                            <span>
+                                <span className={'desktop'}>
+                                    {rundown.name}
+                                </span> <Image avatar
+                                               src={`/images/${bannerType}/${rundown.image}.png`}
+                                               alt={rundown.image}/>
+                            </span>}
+                    />
                 </Table.Cell>
                 <Table.Cell className={'hc-0'}>
                     <div className={'runs'}>{rundown.runs}</div>
