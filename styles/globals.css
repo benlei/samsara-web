@@ -182,6 +182,7 @@
     white-space: nowrap;
     text-align: right !important;
     border-left-style: solid !important;
+    border-left-width: initial;
 }
 
 .history td div {
