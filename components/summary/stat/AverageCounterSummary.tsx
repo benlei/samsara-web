@@ -7,7 +7,7 @@ import {
 } from "@/banners/summary";
 import {Featured, VersionParts} from "@/banners/types";
 import _ from "lodash";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Order} from "@/lotypes/sort";
 import clsx from "clsx";
 import {getVersionPartsFromFeaturedList} from "@/banners/version";
@@ -32,7 +32,7 @@ export default function AverageCounterSummary(
     const versionParts = getVersionPartsFromFeaturedList(featuredList, 'asc')
 
     let counter: (versionParts: VersionParts[], featuredList: Featured[]) => AverageCountSummary[]
-    const [runsOrder, setRunsOrder] = useState('desc' as Order | null)
+    const [runsOrder, setRunsOrder] = useState('desc' as Order | 'none')
 
     if (sortBy === 'patches') {
         counter = getAveragePatchesInBetween
@@ -41,6 +41,26 @@ export default function AverageCounterSummary(
     } else {
         counter = getAverageDaysInBetween
     }
+
+    function triggerRunsOrder() {
+        if (runsOrder == 'desc') {
+            setRunsOrder('asc')
+            localStorage.setItem('avg_runs_order', 'asc')
+        } else if (runsOrder == 'asc') {
+            setRunsOrder('none')
+            localStorage.setItem('avg_runs_order', 'none')
+        } else {
+            setRunsOrder('desc')
+            localStorage.setItem('avg_runs_order', 'desc')
+        }
+    }
+
+    useEffect(() => {
+        const sRunsOrder = localStorage.getItem('avg_runs_order')
+        if (sRunsOrder == 'asc' || sRunsOrder == 'desc' || sRunsOrder == 'none') {
+            setRunsOrder(sRunsOrder)
+        }
+    }, [runsOrder])
 
     function getRange(stat: AverageCountSummary): string {
         if (stat.standardDeviation > 0) {
@@ -53,11 +73,11 @@ export default function AverageCounterSummary(
     const summary = _.chain(counter(versionParts, featuredList))
         .filter((b) => b.average > 0)
         .orderBy([
-            (b) => runsOrder !== null ? b.count : 0,
+            (b) => runsOrder !== 'none' ? b.count : 0,
             (b) => b.average,
             (b) => b.standardDeviation,
             (b) => b.name,
-        ], [runsOrder === null ? 'desc' : runsOrder as Order, order, order, order])
+        ], [runsOrder === 'none' ? 'desc' : runsOrder as Order, order, order, order])
         .value()
 
     const naFeatured = _.chain(featuredList)
@@ -72,12 +92,12 @@ export default function AverageCounterSummary(
                     <Table.HeaderCell colSpan={2} className={'active'}>Featured</Table.HeaderCell>
                     <Table.HeaderCell
                         className={'sortable-column clickable'}
-                        onClick={() => setRunsOrder(runsOrder === 'desc' ? 'asc' : (runsOrder === 'asc' ? null : 'desc'))}
+                        onClick={() => triggerRunsOrder()}
                     >
                         <Icon name={'redo'}
-                              className={clsx({grey: runsOrder === null})}
+                              className={clsx({grey: runsOrder === 'none'})}
                         /><Icon name={'sort'}
-                                className={clsx('desktop', {grey: runsOrder === null})}/>
+                                className={clsx('desktop', {grey: runsOrder === 'none'})}/>
                     </Table.HeaderCell>
                     <Table.HeaderCell
                         className={'sortable-column clickable'}

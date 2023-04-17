@@ -1,5 +1,5 @@
 import {Button, Container, Header, Icon, List, Ref} from "semantic-ui-react";
-import React, {ReactNode, useState} from "react";
+import React, {ReactNode, useEffect, useState} from "react";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
 import AverageCounterSummary from "@/components/summary/stat/AverageCounterSummary";
@@ -22,11 +22,26 @@ export default function AverageRunSummaryPage(
     const [sortBy, setSortBy] = useState('days')
     const [order, setOrder] = useState('desc' as Order)
 
+    useEffect(() => {
+        const sSortBy = localStorage.getItem('avg_sort')
+        const sOrder = localStorage.getItem('avg_order')
+
+        if (sSortBy == 'days' || sSortBy == 'banners' || sSortBy == 'patches') {
+            setSortBy(sSortBy)
+        }
+
+        if (sOrder == 'asc' || sOrder == 'desc') {
+            setOrder(sOrder)
+        }
+    }, [sortBy, order])
+
     function triggerSort(newSort: string) {
         if (sortBy != newSort) {
             setSortBy(newSort)
+            localStorage.setItem('avg_sort', newSort)
         } else {
             setOrder(order === 'desc' ? 'asc' : 'desc')
+            localStorage.setItem('avg_order', order === 'desc' ? 'asc' : 'desc')
         }
 
     }

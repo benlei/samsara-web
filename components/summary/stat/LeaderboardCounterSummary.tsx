@@ -30,7 +30,6 @@ export default function LeaderboardCounterSummary(
         triggerSort,
     }: Properties
 ) {
-
     const [now, setNow] = useState(date as string)
     const summary = _.chain(counter(getVersionPartsFromFeaturedList(featuredList, 'asc'), featuredList, now))
         .orderBy([
