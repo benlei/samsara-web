@@ -1,5 +1,5 @@
 import React from "react";
-import {BannerFilterSortOptions, FeaturedHistory} from "@/banners/types";
+import {BannerFilterSortOptions, BannerHistoryDataset, FeaturedHistory} from "@/banners/types";
 import {Table} from "semantic-ui-react";
 import _ from "lodash";
 import HistoryHeader from "@/components/history/HistoryHeader";
@@ -13,7 +13,7 @@ import {getRundowns} from "@/banners/rundown";
 type BannerRundownProps = {
     bannerType: string
     featuredList: FeaturedHistory[]
-    // rundown: DetailedFeaturedHistory[]
+    dataset: BannerHistoryDataset
 } & BannerFilterSortOptions
 
 type BannerRundownState = {
@@ -75,7 +75,7 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
     }
 
     render() {
-        let {bannerType, featuredList} = this.props
+        let {bannerType, featuredList, dataset} = this.props
         const versionParts = getVersionParts(
             _.chain(featuredList)
                 .map((featured) => featured.versions)
@@ -102,7 +102,9 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
                     <Table.Body>
                         {rundown.map((r, rI) => <HistoryRow key={rI}
                                                             bannerType={bannerType}
+                                                            featuredList={featuredList}
                                                             rundown={r}
+                                                            dataset={dataset}
                             />
                         )}
                     </Table.Body>

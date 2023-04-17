@@ -2,11 +2,12 @@ import React, {ReactNode} from "react";
 import {Container, Header, Ref} from "semantic-ui-react";
 import HistoryOptions from "@/components/history/HistoryOptions";
 import BannerTable from "@/components/history/BannerTable";
-import {FeaturedHistory} from "@/banners/types";
+import {BannerHistoryDataset, FeaturedHistory} from "@/banners/types";
 import ScrollContainer from "react-indiana-drag-scroll";
 import PngDownloadButton from "@/components/PngDownloadButton";
 
 type Properties = {
+    dataset: BannerHistoryDataset
     featuredList: FeaturedHistory[]
     bannerType: string
     title: ReactNode
@@ -35,6 +36,7 @@ export default class HistoryPage extends React.Component<Properties, States> {
         const {
             featuredList,
             bannerType,
+            dataset,
         } = this.props
 
         const {
@@ -59,9 +61,9 @@ export default class HistoryPage extends React.Component<Properties, States> {
 
                     <p>
                         For search/filtering you can input a comma separated list of names, and/or versions that
-                        you are interested in. For example you can search "<code>aya</code>" in the 5 star character
-                        history page to show the history of characters with "aya" in their name, such as Ayato and
-                        Ayaka. More over you can search "<code>3.6, 3.2, 2.1, 2.5</code>" to show all
+                        you are interested in. For example you can search {'"'}<code>aya</code>{'"'} in the 5 star character
+                        history page to show the history of characters with {'"aya"'} in their name, such as Ayato and
+                        Ayaka. More over you can search {'"'}<code>3.6, 3.2, 2.1, 2.5</code>{'"'} to show all
                         characters/weapons that were run in versions 2.1, 2.5, 3.2, and 3.6.
                     </p>
 
@@ -74,6 +76,7 @@ export default class HistoryPage extends React.Component<Properties, States> {
                     <ScrollContainer className="scroll-container" hideScrollbars={false} ignoreElements={'input'}>
                         <Ref innerRef={this.componentRef}>
                             <BannerTable bannerType={bannerType}
+                                         dataset={dataset}
                                          featuredList={featuredList}
                                          order={order}
                                          sortBy={sortBy}

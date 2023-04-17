@@ -13,7 +13,7 @@ export default function HistoryFeaturedPopover(
         type
     }: Property
 ) {
-    return <Card className={'history-popover'}>
+    return <Card className={'history-featured-popover'}>
         <Card.Content>
             <Image
                 floated='right'

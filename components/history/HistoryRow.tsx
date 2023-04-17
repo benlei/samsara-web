@@ -1,33 +1,21 @@
-import {DetailedFeaturedHistory} from "@/banners/types";
+import {BannerHistoryDataset, DetailedFeaturedHistory, FeaturedHistory} from "@/banners/types";
 import React from "react";
 import {Image, Popup, Table} from "semantic-ui-react";
 import HistoryFeaturedPopover from "@/components/history/HistoryFeaturedPopover";
+import HistoryImageCounter from "@/components/history/HistoryImageCounter";
 
 type Properties = {
     rundown: DetailedFeaturedHistory
     bannerType: string
+    featuredList: FeaturedHistory[]
+    dataset: BannerHistoryDataset
 }
 
 type States = {
     open: boolean
 }
 
-function getImageOrCounter(type: string, rc: DetailedFeaturedHistory, counter: number): React.ReactElement {
-    if (counter == 0) {
-        return <Image avatar src={`/images/${type}/${rc.image}.png`} alt={rc.image}/>
-
-    }
-
-    if (counter == -1) {
-        return <div></div>
-
-    }
-
-    return <div>{counter}</div>
-}
-
 export default class HistoryRow extends React.Component<Properties, States> {
-
     constructor(props: Readonly<Properties> | Properties) {
         super(props);
 
@@ -44,14 +32,17 @@ export default class HistoryRow extends React.Component<Properties, States> {
     render() {
         const {
             rundown,
-            bannerType
+            bannerType,
+            featuredList,
+            dataset,
         } = this.props
 
+        let versionIndex = 0;
         return (
             <Table.Row>
                 <Table.Cell>
                     <Popup
-                        content={<HistoryFeaturedPopover type={bannerType} rundown={rundown} />}
+                        content={<HistoryFeaturedPopover type={bannerType} rundown={rundown}/>}
                         on='click'
                         onClose={() => this.setOpen(false)}
                         onOpen={() => this.setOpen(true)}
@@ -72,7 +63,13 @@ export default class HistoryRow extends React.Component<Properties, States> {
                 </Table.Cell>
                 {rundown.counter.map((c, cI) => (
                     <Table.Cell key={cI} className={'hc-' + Math.max(0, Math.min(25, c))}>
-                        {getImageOrCounter(bannerType, rundown, c)}
+                        <HistoryImageCounter
+                            type={bannerType}
+                            dataset={dataset}
+                            rundown={rundown}
+                            counter={c}
+                            versionIndex={c === 0 ? versionIndex++ : versionIndex}
+                        />
                     </Table.Cell>
                 ))}
             </Table.Row>

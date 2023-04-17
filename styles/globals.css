@@ -407,9 +407,33 @@ input:focus {
 }
 
 .history-popover {
-    /*width: 200px !important;*/
+    width: 420px !important;
 }
 
-.history-popover .label {
+.history-popover .grid {
+    max-width: 400px !important;
+    max-height: 400px !important;
+}
+
+.history-popover .banners {
+    margin-bottom: 2rem !important;
+}
+
+.history-popover .banners div {
+    margin-bottom: .5rem !important;
+}
+
+.history-popover img.five {
+    border: 1px solid #dabe0c;
+}
+
+.history-popover img.four {
+    border: 1px solid #733aab;
+}
+
+.history-featured-popover {
+    width: 300px !important;
+}
+.history-featured-popover .label {
     margin: .3em !important;
 }

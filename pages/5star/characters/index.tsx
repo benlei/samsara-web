@@ -1,28 +1,23 @@
 import Head from 'next/head'
-import {FeaturedHistory} from '@/banners/types'
+import {BannerHistoryDataset} from '@/banners/types'
 import React from "react";
 import HistoryPage from "@/components/history/HistoryPage";
-import _ from "lodash";
-import YAML from "yaml";
-import fs from "fs";
-import path from "path";
+import LoadDataset from "@/banners/history";
 
 
 export async function getStaticProps() {
     return {
         props: {
-            featuredList: _.chain(YAML.parse(fs.readFileSync(path.resolve('./public/data/banners.yaml'), 'utf8')).fiveStarCharacters)
-                .map((featured) => _.omit(featured, 'dates'))
-                .value(),
+            dataset: LoadDataset(),
         },
     };
 }
 
 type Properties = {
-    featuredList: FeaturedHistory[]
+    dataset: BannerHistoryDataset
 }
 
-export default function FiveStarCharactersHome({featuredList}: Properties) {
+export default function FiveStarCharactersHome({dataset}: Properties) {
     return (
         <>
             <Head>
@@ -30,7 +25,8 @@ export default function FiveStarCharactersHome({featuredList}: Properties) {
             </Head>
             <HistoryPage bannerType={'characters'}
                          title={<>5&#x2605; Character Banner History</>}
-                         featuredList={featuredList}
+                         dataset={dataset}
+                         featuredList={dataset.fiveStarCharacters}
             />
         </>
     )
