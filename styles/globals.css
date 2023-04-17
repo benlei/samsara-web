@@ -437,3 +437,9 @@ input:focus {
 .history-featured-popover .label {
     margin: .3em !important;
 }
+
+tr.not-applicable {
+    opacity: .5;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
