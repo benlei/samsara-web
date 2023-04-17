@@ -1,24 +1,27 @@
 import Head from 'next/head'
-import {BannerResource} from '@/banners/types'
+import {BannerHistoryDataset, FeaturedHistory} from '@/banners/types'
 import React from "react";
-import BannerPage from "@/components/banners/BannerPage";
-import {Container, Header} from "semantic-ui-react";
+import HistoryPage from "@/components/history/HistoryPage";
 import _ from 'lodash';
+import YAML from "yaml";
+import fs from "fs";
+import path from "path";
+import LoadDataset from "@/banners/history";
 
 
 export async function getStaticProps() {
     return {
         props: {
-            banners: _.mapValues(require('@/data/banners.json').weapons['5'], (v) => v.versions)
+            dataset: LoadDataset(),
         },
     };
 }
 
 type Properties = {
-    banners: BannerResource
+    dataset: BannerHistoryDataset
 }
 
-export default function FiveStarWeaponsHome({banners}: Properties) {
+export default function FiveStarWeaponsHome({dataset}: Properties) {
     return (
         <>
             <Head>
@@ -27,12 +30,10 @@ export default function FiveStarWeaponsHome({banners}: Properties) {
                 {/*<meta name="viewport" content="width=device-width, initial-scale=1" />*/}
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
-            <Container style={{marginTop: '2em'}}>
-                <Header size={'large'}>5&#x2605; Weapon Banner History</Header>
-            </Container>
-            <BannerPage bannerType={'weapons'}
-                        banners={banners}
-                        showLimitedOnly={false}
+            <HistoryPage bannerType={'weapons'}
+                         title={<>5&#x2605; Weapon Banner History</>}
+                         dataset={dataset}
+                         featuredList={dataset.fiveStarWeapons}
             />
         </>
     )

@@ -26,9 +26,11 @@ export default function PngDownloadButton(
             label: `Download PNG used for ${name} ${type}.`,
         });
 
-        // seems similar to https://github.com/niklasvh/html2canvas/issues/1438
         await exportComponentAsPNG(node, {
             fileName: name + '.png',
+            html2CanvasOptions: {
+                backgroundColor: 'transparent',
+            },
         })
     }
 

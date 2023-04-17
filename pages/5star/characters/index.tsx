@@ -1,37 +1,32 @@
 import Head from 'next/head'
-import {BannerResource} from '@/banners/types'
+import {BannerHistoryDataset} from '@/banners/types'
 import React from "react";
-import BannerPage from "@/components/banners/BannerPage";
-import {Container, Header} from "semantic-ui-react";
-import _ from "lodash";
+import HistoryPage from "@/components/history/HistoryPage";
+import LoadDataset from "@/banners/history";
 
 
 export async function getStaticProps() {
     return {
         props: {
-            banners: _.mapValues(require('@/data/banners.json').characters['5'], (v) => v.versions)
+            dataset: LoadDataset(),
         },
     };
 }
 
 type Properties = {
-    banners: BannerResource
+    dataset: BannerHistoryDataset
 }
 
-export default function FiveStarCharactersHome({banners}: Properties) {
+export default function FiveStarCharactersHome({dataset}: Properties) {
     return (
         <>
             <Head>
                 <title>5&#x2605; Character Banner History - Samsara</title>
             </Head>
-            <Container style={{marginTop: '2em'}}>
-                <Header size={'large'}>5&#x2605; Character Banner History</Header>
-            </Container>
-            <BannerPage bannerType={'characters'}
-                        banners={banners}
-                        standards={['Keqing', 'Tighnari']}
-                        showLimitedOnly={true}
-
+            <HistoryPage bannerType={'characters'}
+                         title={<>5&#x2605; Character Banner History</>}
+                         dataset={dataset}
+                         featuredList={dataset.fiveStarCharacters}
             />
         </>
     )
