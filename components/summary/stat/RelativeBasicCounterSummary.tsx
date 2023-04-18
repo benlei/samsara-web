@@ -63,7 +63,7 @@ export default function RelativeBasicCounterSummary(
     }
 
     const chunkedSummary = chunk(
-        _.chain(counter(getVersionPartsFromFeaturedList(featuredList, 'asc'), featuredList, date))
+        _.chain(counter(getVersionPartsFromFeaturedList(featuredList, 'asc'), featuredList, now))
             .orderBy([
                 (b) => b.count,
                 (b) => b.name,
