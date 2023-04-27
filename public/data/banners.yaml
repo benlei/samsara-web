@@ -81,7 +81,7 @@ fiveStarCharacters:
         end: '2022-02-16'
       - start: '2022-09-09'
         end: '2022-09-28'
-      - start: ''
+      - start: '2023-05-02'
         end: ''
   - name: Xiao
     versions:
@@ -253,7 +253,7 @@ fiveStarCharacters:
       - start: '2022-10-14'
         end: '2022-11-02'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: Nahida
     versions:
       - 3.2.1
@@ -262,7 +262,7 @@ fiveStarCharacters:
       - start: '2022-11-02'
         end: '2022-11-18'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: Wanderer
     versions:
       - 3.3.1
@@ -285,7 +285,7 @@ fiveStarCharacters:
     versions:
       - 3.6.2
     dates:
-      - start: ''
+      - start: '2023-05-02'
         end: ''
 fourStarCharacters:
   - name: Barbara
@@ -323,6 +323,7 @@ fourStarCharacters:
       - 1.6.1
       - 2.5.1
       - 3.0.1
+      - 3.6.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -336,6 +337,8 @@ fourStarCharacters:
         end: '2022-03-08'
       - start: '2022-08-24'
         end: '2022-09-09'
+      - start: '2023-05-02'
+        end: ''
   - name: Xiangling
     versions:
       - 1.0.1
@@ -728,7 +731,7 @@ fourStarCharacters:
       - start: '2022-09-28'
         end: '2022-10-14'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: Shikanoin Heizou
     versions:
       - 2.8.1
@@ -755,13 +758,16 @@ fourStarCharacters:
       - start: '2022-09-09'
         end: '2022-09-28'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: Candace
     versions:
       - 3.1.1
+      - 3.6.2
     dates:
       - start: '2022-09-28'
         end: '2022-10-14'
+      - start: '2023-05-02'
+        end: ''
   - name: Layla
     versions:
       - 3.2.2
@@ -770,7 +776,7 @@ fourStarCharacters:
       - start: '2022-11-18'
         end: '2022-12-07'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: Faruzan
     versions:
       - 3.3.1
@@ -793,7 +799,7 @@ fourStarCharacters:
     versions:
       - 3.6.2
     dates:
-      - start: ''
+      - start: '2023-05-02'
         end: ''
 fiveStarWeapons:
   - name: Amos' Bow
@@ -802,6 +808,7 @@ fiveStarWeapons:
       - 1.2.2
       - 2.4.2
       - 3.0.2
+      - 3.6.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -811,6 +818,8 @@ fiveStarWeapons:
         end: '2022-02-16'
       - start: '2022-09-09'
         end: '2022-09-28'
+      - start: '2023-05-02'
+        end: ''
   - name: Aquila Favonia
     versions:
       - 1.0.1
@@ -1146,7 +1155,7 @@ fiveStarWeapons:
       - start: '2022-10-14'
         end: '2022-11-02'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: A Thousand Floating Dreams
     versions:
       - 3.2.1
@@ -1155,7 +1164,7 @@ fiveStarWeapons:
       - start: '2022-11-02'
         end: '2022-11-18'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: Tulaytullah's Remembrance
     versions:
       - 3.3.1
@@ -1174,6 +1183,12 @@ fiveStarWeapons:
     dates:
       - start: '2023-03-01'
         end: '2023-03-21'
+  - name: Jadefall's Splendor
+    versions:
+      - 3.6.2
+    dates:
+      - start: '2023-05-02'
+        end: ''
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -1195,6 +1210,7 @@ fourStarWeapons:
       - 3.2.1
       - 3.3.2
       - 3.5.2
+      - 3.6.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -1232,6 +1248,8 @@ fourStarWeapons:
         end: '2023-01-18'
       - start: '2023-03-21'
         end: '2023-04-12'
+      - start: '2023-05-02'
+        end: ''
   - name: The Bell
     versions:
       - 1.0.1
@@ -1327,7 +1345,7 @@ fourStarWeapons:
       - start: '2022-11-18'
         end: '2022-12-07'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: The Widsith
     versions:
       - 1.0.1
@@ -1420,7 +1438,7 @@ fourStarWeapons:
       - start: '2023-03-01'
         end: '2023-03-21'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -1431,6 +1449,7 @@ fourStarWeapons:
       - 2.7.1
       - 3.1.2
       - 3.4.1
+      - 3.6.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -1448,6 +1467,8 @@ fourStarWeapons:
         end: '2022-11-02'
       - start: '2023-01-18'
         end: '2023-02-07'
+      - start: '2023-05-02'
+        end: ''
   - name: Sacrificial Fragments
     versions:
       - 1.0.2
@@ -1480,7 +1501,7 @@ fourStarWeapons:
       - start: '2022-12-27'
         end: '2023-01-18'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: Sacrificial Greatsword
     versions:
       - 1.0.2
@@ -1702,6 +1723,7 @@ fourStarWeapons:
       - 2.7.2
       - 3.1.1
       - 3.3.2
+      - 3.6.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -1721,6 +1743,8 @@ fourStarWeapons:
         end: '2022-10-14'
       - start: '2022-12-27'
         end: '2023-01-18'
+      - start: '2023-05-02'
+        end: ''
   - name: Favonius Greatsword
     versions:
       - 1.2.1
@@ -1750,7 +1774,7 @@ fourStarWeapons:
       - start: '2022-12-07'
         end: '2022-12-27'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
   - name: Favonius Sword
     versions:
       - 1.2.1
@@ -1922,15 +1946,21 @@ fourStarWeapons:
   - name: Makhaira Aquamarine
     versions:
       - 3.1.1
+      - 3.6.2
     dates:
       - start: '2022-09-28'
         end: '2022-10-14'
+      - start: '2023-05-02'
+        end: ''
   - name: Wandering Evenstar
     versions:
       - 3.1.2
+      - 3.6.2
     dates:
       - start: '2022-10-14'
         end: '2022-11-02'
+      - start: '2023-05-02'
+        end: ''
   - name: Xiphos' Moonlight
     versions:
       - 3.1.2
@@ -1939,4 +1969,4 @@ fourStarWeapons:
       - start: '2022-10-14'
         end: '2022-11-02'
       - start: '2023-04-12'
-        end: ''
+        end: '2023-05-02'
