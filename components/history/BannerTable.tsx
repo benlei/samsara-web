@@ -6,7 +6,7 @@ import HistoryHeader from "@/components/history/HistoryHeader";
 import HistoryFooter from "@/components/history/HistoryFooter";
 import HistoryRow from "@/components/history/HistoryRow";
 import {getFilterFunction} from "@/banners/summary";
-import getVersionParts from "@/banners/version";
+import getVersionParts, {versionToNumber} from "@/banners/version";
 import {getRundowns} from "@/banners/rundown";
 
 
@@ -36,17 +36,17 @@ export default class BannerTable extends React.Component<BannerRundownProps, Ban
 
     sortByRunsLastPatch = [
         (r: FeaturedHistory) => String(r.versions.length),
-        (r: FeaturedHistory) => r.versions[r.versions.length - 1],
+        (r: FeaturedHistory) => versionToNumber(r.versions[r.versions.length - 1]),
         this.sortByName,
     ]
 
     sortByFirst = [
-        (r: FeaturedHistory) => r.versions[0],
+        (r: FeaturedHistory) => versionToNumber(r.versions[0]),
         this.sortByName,
     ]
 
     sortByLast = [
-        (r: FeaturedHistory) => r.versions[r.versions.length - 1],
+        (r: FeaturedHistory) => versionToNumber(r.versions[r.versions.length - 1]),
         this.sortByName,
     ]
 

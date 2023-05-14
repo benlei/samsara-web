@@ -15,18 +15,19 @@ export function getVersionPart(version: string): number {
     return parseInt(version.substring(version.lastIndexOf('.') + 1))
 }
 
-export default function getVersionParts(versions: string[], order: Order = 'desc'): VersionParts[] {
-    function orderByFunction(vp: VersionParts): number {
-        const splits = vp.version.split(".")
-        let result = 0;
-        let scale = 10000;
-        for (const v of vp.version.split(".")) {
-            result += parseInt(v) * scale
-            scale /= 100;
-        }
-
-        return result;
+export function versionToNumber(version: string): number {
+    let result = 0;
+    let scale = 10000;
+    for (const v of version.split(".")) {
+        result += parseInt(v) * scale
+        scale /= 100;
     }
+
+    return result;
+}
+
+export default function getVersionParts(versions: string[], order: Order = 'desc'): VersionParts[] {
+
 
     const versionCounts: VersionCount = {}
     for (const version of versions) {
@@ -38,7 +39,7 @@ export default function getVersionParts(versions: string[], order: Order = 'desc
 
     return _.chain(versionCounts)
         .transform((res: VersionParts[], parts: number, version: string) => res.push({version, parts}), [])
-        .orderBy(orderByFunction, order)
+        .orderBy((v: VersionParts) => versionToNumber(v.version), order)
         .value()
 }
 
