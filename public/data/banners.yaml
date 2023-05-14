@@ -82,7 +82,7 @@ fiveStarCharacters:
       - start: '2022-09-09'
         end: '2022-09-28'
       - start: '2023-05-02'
-        end: '2023-05-24'
+        end: ''
   - name: Xiao
     versions:
       - 1.3.1
@@ -154,7 +154,6 @@ fiveStarCharacters:
       - 2.0.2
       - 2.8.2
       - 3.2.1
-      - '2023.1'
     dates:
       - start: '2021-08-10'
         end: '2021-09-01'
@@ -162,8 +161,6 @@ fiveStarCharacters:
         end: '2022-08-24'
       - start: '2022-11-02'
         end: '2022-11-18'
-      - start: '2023-05-24'
-        end: ''
   - name: Raiden Shogun
     versions:
       - 2.1.1
@@ -213,14 +210,11 @@ fiveStarCharacters:
     versions:
       - 2.5.1
       - 3.2.2
-      - '2023.1'
     dates:
       - start: '2022-02-16'
         end: '2022-03-08'
       - start: '2022-11-18'
         end: '2022-12-07'
-      - start: '2023-05-24'
-        end: ''
   - name: Kamisato Ayato
     versions:
       - 2.6.1
@@ -298,7 +292,7 @@ fiveStarCharacters:
       - 3.6.2
     dates:
       - start: '2023-05-02'
-        end: '2023-05-24'
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -350,7 +344,7 @@ fourStarCharacters:
       - start: '2022-08-24'
         end: '2022-09-09'
       - start: '2023-05-02'
-        end: '2023-05-24'
+        end: ''
   - name: Xiangling
     versions:
       - 1.0.1
@@ -753,12 +747,6 @@ fourStarCharacters:
         end: '2022-08-02'
       - start: '2022-11-18'
         end: '2022-12-07'
-  - name: Kirara
-    versions:
-      - '2023.1'
-    dates:
-      - start: '2023-05-24'
-        end: ''
   - name: Collei
     versions:
       - 3.0.1
@@ -785,7 +773,7 @@ fourStarCharacters:
       - start: '2022-09-28'
         end: '2022-10-14'
       - start: '2023-05-02'
-        end: '2023-05-24'
+        end: ''
   - name: Layla
     versions:
       - 3.2.2
@@ -818,7 +806,7 @@ fourStarCharacters:
       - 3.6.2
     dates:
       - start: '2023-05-02'
-        end: '2023-05-24'
+        end: ''
 fiveStarWeapons:
   - name: Amos' Bow
     versions:

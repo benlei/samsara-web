@@ -16,6 +16,18 @@ export function getVersionPart(version: string): number {
 }
 
 export default function getVersionParts(versions: string[], order: Order = 'desc'): VersionParts[] {
+    function orderByFunction(vp: VersionParts): number {
+        const splits = vp.version.split(".")
+        let result = 0;
+        let scale = 10000;
+        for (const v of vp.version.split(".")) {
+            result += parseInt(v) * scale
+            scale /= 100;
+        }
+
+        return result;
+    }
+
     const versionCounts: VersionCount = {}
     for (const version of versions) {
         versionCounts[getBaseVersion(version)] = Math.max(
@@ -26,7 +38,7 @@ export default function getVersionParts(versions: string[], order: Order = 'desc
 
     return _.chain(versionCounts)
         .transform((res: VersionParts[], parts: number, version: string) => res.push({version, parts}), [])
-        .orderBy((vp: VersionParts) => vp.version, order)
+        .orderBy(orderByFunction, order)
         .value()
 }
 
