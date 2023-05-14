@@ -27,8 +27,6 @@ export function versionToNumber(version: string): number {
 }
 
 export default function getVersionParts(versions: string[], order: Order = 'desc'): VersionParts[] {
-
-
     const versionCounts: VersionCount = {}
     for (const version of versions) {
         versionCounts[getBaseVersion(version)] = Math.max(
