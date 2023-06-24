@@ -2,7 +2,7 @@ name: Samsara Workflow
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '30 7 * * 3'
+    - cron:  '30 7 * * MON,WED,FRI'
   pull_request:
     types:
       - opened
