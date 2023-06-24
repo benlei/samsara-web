@@ -2,7 +2,7 @@ name: Data Updater
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '45 6 * * 3'
+    - cron:  '45 6 * * MON,WED,FRI'
 
 jobs:
   update:
