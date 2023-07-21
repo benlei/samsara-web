@@ -28,7 +28,7 @@ fiveStarCharacters:
       - start: '2022-07-13'
         end: '2022-08-02'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Tartaglia
     versions:
       - 1.1.1
@@ -130,7 +130,7 @@ fiveStarCharacters:
       - start: '2021-11-24'
         end: '2021-12-14'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Kaedehara Kazuha
     versions:
       - 1.6.2
@@ -195,7 +195,7 @@ fiveStarCharacters:
         end: '2022-03-30'
       - start: '2022-09-09'
         end: '2022-09-28'
-      - start: ''
+      - start: '2023-07-25'
         end: ''
   - name: Arataki Itto
     versions:
@@ -288,7 +288,7 @@ fiveStarCharacters:
     dates:
       - start: '2022-12-07'
         end: '2022-12-27'
-      - start: ''
+      - start: '2023-07-25'
         end: ''
   - name: Alhaitham
     versions:
@@ -587,7 +587,7 @@ fourStarCharacters:
       - start: '2022-11-02'
         end: '2022-11-18'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Xinyan
     versions:
       - 1.1.2
@@ -647,6 +647,7 @@ fourStarCharacters:
       - 2.3.1
       - 2.6.2
       - 3.3.2
+      - 3.8.2
     dates:
       - start: '2021-04-06'
         end: '2021-04-28'
@@ -660,6 +661,8 @@ fourStarCharacters:
         end: '2022-05-31'
       - start: '2022-12-27'
         end: '2023-01-18'
+      - start: '2023-07-25'
+        end: ''
   - name: Yanfei
     versions:
       - 1.5.1
@@ -668,6 +671,7 @@ fourStarCharacters:
       - 2.4.2
       - 2.7.1
       - 3.3.1
+      - 3.8.2
     dates:
       - start: '2021-04-28'
         end: '2021-05-18'
@@ -681,6 +685,8 @@ fourStarCharacters:
         end: '2022-06-21'
       - start: '2022-12-07'
         end: '2022-12-27'
+      - start: '2023-07-25'
+        end: ''
   - name: Sayu
     versions:
       - 2.0.2
@@ -728,7 +734,7 @@ fourStarCharacters:
       - start: '2022-11-18'
         end: '2022-12-07'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Gorou
     versions:
       - 2.3.2
@@ -822,9 +828,12 @@ fourStarCharacters:
   - name: Faruzan
     versions:
       - 3.3.1
+      - 3.8.2
     dates:
       - start: '2022-12-07'
         end: '2022-12-27'
+      - start: '2023-07-25'
+        end: ''
   - name: Yaoyao
     versions:
       - 3.4.1
@@ -842,7 +851,7 @@ fourStarCharacters:
       - start: '2023-03-21'
         end: '2023-04-12'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Kaveh
     versions:
       - 3.6.2
@@ -900,7 +909,7 @@ fiveStarWeapons:
       - start: '2022-07-13'
         end: '2022-08-02'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Wolf's Gravestone
     versions:
       - 1.0.2
@@ -1068,7 +1077,7 @@ fiveStarWeapons:
       - start: '2021-11-24'
         end: '2021-12-14'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Freedom-Sworn
     versions:
       - 1.6.2
@@ -1134,6 +1143,7 @@ fiveStarWeapons:
       - 2.1.2
       - 2.5.2
       - 3.0.2
+      - 3.8.2
     dates:
       - start: '2021-09-21'
         end: '2021-10-13'
@@ -1141,6 +1151,8 @@ fiveStarWeapons:
         end: '2022-03-30'
       - start: '2022-09-09'
         end: '2022-09-28'
+      - start: '2023-07-25'
+        end: ''
   - name: Polar Star
     versions:
       - 2.2.1
@@ -1237,9 +1249,12 @@ fiveStarWeapons:
   - name: Tulaytullah's Remembrance
     versions:
       - 3.3.1
+      - 3.8.2
     dates:
       - start: '2022-12-07'
         end: '2022-12-27'
+      - start: '2023-07-25'
+        end: ''
   - name: Light of Foliar Incision
     versions:
       - 3.4.1
@@ -1324,7 +1339,7 @@ fourStarWeapons:
       - start: '2023-05-02'
         end: '2023-05-24'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: The Bell
     versions:
       - 1.0.1
@@ -1337,6 +1352,7 @@ fourStarWeapons:
       - 3.0.1
       - 3.2.2
       - 3.5.2
+      - 3.8.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -1358,6 +1374,8 @@ fourStarWeapons:
         end: '2022-12-07'
       - start: '2023-03-21'
         end: '2023-04-12'
+      - start: '2023-07-25'
+        end: ''
   - name: The Flute
     versions:
       - 1.0.1
@@ -1482,6 +1500,7 @@ fourStarWeapons:
       - 3.5.1
       - 3.6.1
       - 3.7.1
+      - 3.8.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -1523,6 +1542,8 @@ fourStarWeapons:
         end: '2023-05-02'
       - start: '2023-05-24'
         end: '2023-06-13'
+      - start: '2023-07-25'
+        end: ''
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -1687,7 +1708,7 @@ fourStarWeapons:
       - start: '2023-03-01'
         end: '2023-03-21'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Rainslasher
     versions:
       - 1.1.1
@@ -1717,7 +1738,7 @@ fourStarWeapons:
       - start: '2023-01-18'
         end: '2023-02-07'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Rust
     versions:
       - 1.1.1
@@ -1792,6 +1813,7 @@ fourStarWeapons:
       - 3.1.1
       - 3.3.1
       - 3.5.2
+      - 3.8.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -1811,6 +1833,8 @@ fourStarWeapons:
         end: '2022-12-27'
       - start: '2023-03-21'
         end: '2023-04-12'
+      - start: '2023-07-25'
+        end: ''
   - name: Lion's Roar
     versions:
       - 1.1.2
@@ -1823,6 +1847,7 @@ fourStarWeapons:
       - 3.1.1
       - 3.3.2
       - 3.6.2
+      - 3.8.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -1844,6 +1869,8 @@ fourStarWeapons:
         end: '2023-01-18'
       - start: '2023-05-02'
         end: '2023-05-24'
+      - start: '2023-07-25'
+        end: ''
   - name: Favonius Greatsword
     versions:
       - 1.2.1
@@ -1963,7 +1990,7 @@ fourStarWeapons:
       - start: '2023-03-01'
         end: '2023-03-21'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Wine and Song
     versions:
       - 1.4.1
@@ -1971,6 +1998,7 @@ fourStarWeapons:
       - 2.3.1
       - 2.8.2
       - 3.5.2
+      - 3.8.2
     dates:
       - start: '2021-03-17'
         end: '2021-04-06'
@@ -1982,6 +2010,8 @@ fourStarWeapons:
         end: '2022-08-24'
       - start: '2023-03-21'
         end: '2023-04-12'
+      - start: '2023-07-25'
+        end: ''
   - name: Alley Hunter
     versions:
       - 1.4.2
@@ -2002,7 +2032,7 @@ fourStarWeapons:
       - start: '2023-03-01'
         end: '2023-03-21'
       - start: '2023-07-05'
-        end: ''
+        end: '2023-07-25'
   - name: Mitternachts Waltz
     versions:
       - 1.6.1
