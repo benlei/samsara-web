@@ -5,6 +5,7 @@ fiveStarCharacters:
       - 1.4.1
       - 2.6.1
       - 3.1.1
+      - 4.1.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -14,6 +15,8 @@ fiveStarCharacters:
         end: '2022-04-19'
       - start: '2022-09-28'
         end: '2022-10-14'
+      - start: ''
+        end: ''
   - name: Klee
     versions:
       - 1.0.2
@@ -46,7 +49,7 @@ fiveStarCharacters:
       - start: '2022-11-18'
         end: '2022-12-07'
       - start: '2023-09-05'
-        end: ''
+        end: '2023-09-27'
   - name: Zhongli
     versions:
       - 1.1.2
@@ -64,7 +67,7 @@ fiveStarCharacters:
       - start: '2022-08-24'
         end: '2022-09-09'
       - start: '2023-09-05'
-        end: ''
+        end: '2023-09-27'
   - name: Albedo
     versions:
       - 1.2.1
@@ -118,6 +121,7 @@ fiveStarCharacters:
       - 1.3.3
       - 2.2.2
       - 3.4.2
+      - 4.1.1
     dates:
       - start: '2021-03-02'
         end: '2021-03-17'
@@ -125,6 +129,8 @@ fiveStarCharacters:
         end: '2021-11-24'
       - start: '2023-02-07'
         end: '2023-03-01'
+      - start: '2023-09-27'
+        end: ''
   - name: Eula
     versions:
       - 1.5.2
@@ -326,6 +332,18 @@ fiveStarCharacters:
     dates:
       - start: '2023-08-16'
         end: '2023-09-05'
+  - name: Neuvillette
+    versions:
+      - 4.1.1
+    dates:
+      - start: '2023-09-27'
+        end: ''
+  - name: Wriothesley
+    versions:
+      - 4.1.2
+    dates:
+      - start: ''
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -434,7 +452,7 @@ fourStarCharacters:
       - start: '2022-11-02'
         end: '2022-11-18'
       - start: '2023-09-05'
-        end: ''
+        end: '2023-09-27'
   - name: Sucrose
     versions:
       - 1.0.2
@@ -731,7 +749,7 @@ fourStarCharacters:
       - start: '2022-12-27'
         end: '2023-01-18'
       - start: '2023-09-05'
-        end: ''
+        end: '2023-09-27'
   - name: Kujou Sara
     versions:
       - 2.1.1
@@ -902,7 +920,7 @@ fourStarCharacters:
       - 4.0.2
     dates:
       - start: '2023-09-05'
-        end: ''
+        end: '2023-09-27'
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
