@@ -79,7 +79,7 @@ export default function Navbar(): JSX.Element {
                     </Menu.Item>
                     <Menu.Item>
                         <Menu.Header>
-                            Honkai Star Rail
+                            Honkai: Star Rail
                         </Menu.Header>
                     </Menu.Item>
                     <Menu.Item>
