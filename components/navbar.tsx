@@ -3,11 +3,12 @@ import {Container, Icon, Menu, Sidebar, Image} from "semantic-ui-react";
 
 type SidebarItemsProps = {
     stars: 5 | 4
-    type: "characters" | "weapons"
+    type: "characters" | "weapons" | "hsr-characters" | "lightcones"
 }
 
 export default function Navbar(): JSX.Element {
     const [visible, setVisible] = React.useState(false)
+    const [hsrVisible, setHsrVisible] = React.useState(false)
 
     return (
         <>
@@ -17,7 +18,10 @@ export default function Navbar(): JSX.Element {
                         Samsara
                     </Menu.Item>
                     <Menu.Item as={'a'} onClick={() => setVisible(!visible)}>
-                        <Icon name={'bars'}/> Menu
+                        <Icon name={'bars'}/> Genshin Menu
+                    </Menu.Item>
+                    <Menu.Item as={'a'} onClick={() => setHsrVisible(!hsrVisible)}>
+                        <Icon name={'bars'}/> HSR Menu
                     </Menu.Item>
                 </Menu>
             </Container>
@@ -32,7 +36,7 @@ export default function Navbar(): JSX.Element {
                 >
                     <Menu.Item>
                         <Menu.Header className={'logo'} as={'a'} href={'/'}>
-                            <Image src={'/images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara
+                            <Image src={'/images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara - Genshin Impact
                         </Menu.Header>
                     </Menu.Item>
                     <Menu.Item>
@@ -53,6 +57,40 @@ export default function Navbar(): JSX.Element {
                     </Menu.Item>
                 </Sidebar>
             </Sidebar.Pusher>
+            <Sidebar.Pusher>
+                <Sidebar
+                    as={Menu}
+                    animation='overlay'
+                    icon='labeled'
+                    onHide={() => setHsrVisible(false)}
+                    vertical
+                    visible={hsrVisible}
+                    direction="right"
+                >
+                    <Menu.Item>
+                        <Menu.Header className={'logo'} as={'a'} href={'/'}>
+                            <Image src={'/images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara - Honkai: Star Rail
+                        </Menu.Header>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>5&#x2605; Characters</Menu.Header>
+                        <SidebarMenuItems stars={5} type={'hsr-characters'}/>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>5&#x2605; Lightcones</Menu.Header>
+                        <SidebarMenuItems stars={5} type={'lightcones'}/>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>4&#x2605; Characters</Menu.Header>
+                        <SidebarMenuItems stars={4} type={'hsr-characters'}/>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>4&#x2605; Lightcones</Menu.Header>
+                        <SidebarMenuItems stars={4} type={'lightcones'}/>
+                    </Menu.Item>
+                </Sidebar>
+            </Sidebar.Pusher>
+
         </>
     )
 }
