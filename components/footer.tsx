@@ -49,7 +49,9 @@ export default function Footer({children}: React.PropsWithChildren) {
                                 The data shown here is sourced from the <a
                                 href={
                                     'https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki'
-                                }>Genshin Fandom</a> site.
+                                }>Genshin Fandom</a> and <a href={
+                                    'https://honkai-star-rail.fandom.com/wiki/Honkai:_Star_Rail_Wiki'
+                                }>HSR Fandom</a> site.
                             </p>
 
                             <p>
