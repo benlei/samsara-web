@@ -1,5 +1,5 @@
 import {BannerHistoryDataset, DetailedFeaturedHistory, FeaturedHistory, PopoverFeaturedHistory} from "@/banners/types";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Container, Grid, Header, Image, Popup} from "semantic-ui-react";
 import {getBaseVersion, getVersionPart} from "@/banners/version";
 import _ from "lodash";
@@ -7,6 +7,7 @@ import {getImageFromName} from "@/format/image";
 import {chunk} from "@/banners/summaryUtils";
 import ScrollContainer from "react-indiana-drag-scroll";
 import clsx from "clsx";
+import { TypeContext } from "../context";
 
 type Properties = {
     type: string
@@ -120,7 +121,12 @@ function VersionPopover(
         (f) => f.version,
     )
 
-    console.log(featuredWeapons)
+    const {
+        charactersText,
+        characterType,
+        weaponsText,
+        weaponType
+    } = useContext(TypeContext)
 
     return <Container className={'history-popover'}>
         <ScrollContainer className="scroll-container" hideScrollbars={false}>
@@ -128,13 +134,13 @@ function VersionPopover(
                 <Grid.Column width={8}>
                     {featuredCharacters.map((fc, k) =>
                         <div className={'banners'} key={k}>
-                            <Header size={'small'}>{getBaseVersion(fc[0].version)} Characters ({getVersionPart(fc[0].version)})</Header>
+                            <Header size={'small'}>{getBaseVersion(fc[0].version)} {charactersText} ({getVersionPart(fc[0].version)})</Header>
 
                             {fc.map((f, l) =>
                                 <div key={l}>
                                     <Image avatar
                                            className={clsx({five: f.stars === 5, four: f.stars === 4})}
-                                           src={`/images/characters/${f.image}.png`}
+                                           src={`/images/${characterType}/${f.image}.png`}
                                            alt={f.image}/> {f.name}
                                 </div>
                             )}
@@ -145,13 +151,13 @@ function VersionPopover(
                 <Grid.Column width={8}>
                     {featuredWeapons.map((fc, k) =>
                         <div className={'banners'} key={k}>
-                            <Header size={'small'}>{getBaseVersion(fc[0].version)} Weapons ({getVersionPart(fc[0].version)})</Header>
+                            <Header size={'small'}>{getBaseVersion(fc[0].version)} {weaponsText} ({getVersionPart(fc[0].version)})</Header>
 
                             {fc.map((f, l) =>
                                 <div key={l}>
                                     <Image avatar
                                            className={clsx({five: f.stars === 5, four: f.stars === 4})}
-                                           src={`/images/weapons/${f.image}.png`}
+                                           src={`/images/${weaponType}/${f.image}.png`}
                                            alt={f.image}/> {f.name}
                                 </div>
                             )}
