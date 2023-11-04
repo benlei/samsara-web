@@ -36,7 +36,12 @@ export default function Navbar(): JSX.Element {
                 >
                     <Menu.Item>
                         <Menu.Header className={'logo'} as={'a'} href={'/'}>
-                            <Image src={'/images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara - Genshin Impact
+                            <Image src={'/images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara
+                        </Menu.Header>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>
+                            Genshin Impact
                         </Menu.Header>
                     </Menu.Item>
                     <Menu.Item>
@@ -69,7 +74,12 @@ export default function Navbar(): JSX.Element {
                 >
                     <Menu.Item>
                         <Menu.Header className={'logo'} as={'a'} href={'/'}>
-                            <Image src={'/images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara - Honkai: Star Rail
+                            <Image src={'/images/logo.png'} alt={'logo'} floated={'left'} size={'mini'} /> Samsara
+                        </Menu.Header>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Menu.Header>
+                            Honkai Star Rail
                         </Menu.Header>
                     </Menu.Item>
                     <Menu.Item>
