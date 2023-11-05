@@ -18,10 +18,10 @@ export default function Navbar(): JSX.Element {
                         Samsara
                     </Menu.Item>
                     <Menu.Item as={'a'} onClick={() => setVisible(!visible)}>
-                        <Icon name={'bars'}/> Genshin Menu
+                        <Icon name={'bars'}/> Genshin
                     </Menu.Item>
                     <Menu.Item as={'a'} onClick={() => setHsrVisible(!hsrVisible)}>
-                        <Icon name={'bars'}/> HSR Menu
+                        <Icon name={'bars'}/> HSR
                     </Menu.Item>
                 </Menu>
             </Container>
