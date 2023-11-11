@@ -244,19 +244,6 @@ function getCountSummary(
   });
 }
 
-function canShowNonFutureLastRun(
-  currDayjs: Dayjs,
-  featured: FeaturedDates
-): boolean {
-  return (
-    featured.dates[featured.dates.length - 1].start != "" &&
-    currDayjs.isBefore(
-      dayjs.utc(featured.dates[featured.dates.length - 1].start)
-    ) &&
-    featured.dates.length > 1
-  );
-}
-
 export function getDaysSinceRunCountSummary(
   versionParts: VersionParts[],
   featuredList: Featured[],
@@ -266,15 +253,11 @@ export function getDaysSinceRunCountSummary(
 
   const currDayjs = dayjs.utc(currDate);
   return getCountSummary(versionParts, featuredList, (featured) => {
-    if (featured.dates.length === 1 && featured.dates[0].start === "") {
+    if (
+      featured.dates.length &&
+      featured.dates[featured.dates.length - 1].start === ""
+    ) {
       return UnknownFutureCounter;
-    }
-
-    if (canShowNonFutureLastRun(currDayjs, featured)) {
-      return currDayjs.diff(
-        dayjs.utc(featured.dates[featured.dates.length - 2].end),
-        "day"
-      );
     }
 
     return _.last(getNormalizedBannerDateGaps(currDayjs, featured)) as number;
