@@ -41,7 +41,7 @@ type SidebarPusherProperties = {
 
 function SidebarPusher({
   title,
-  direction = "left",
+  direction,
   characterName,
   characterType,
   weaponName,
