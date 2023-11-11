@@ -23,10 +23,10 @@ export default function FourStarCharacterSummary(props: { featuredList: Featured
     return (
         <>
             <Head>
-                <title>4&#x2605; HSR Character Runs Summary - Samsara</title>
+                <title>4&#x2605; HSR Character Reruns Summary - Samsara</title>
             </Head>
             <RunsSummaryPage
-                title={<>4&#x2605; HSR Character Runs Summary</>}
+                title={<>4&#x2605; HSR Character Reruns Summary</>}
                 data={props}
                 type={'hsr-characters'}
             />

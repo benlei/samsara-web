@@ -22,10 +22,10 @@ export default function FourStarWeaponSummary(props: { featuredList: Featured[] 
     return (
         <>
             <Head>
-                <title>4&#x2605; Lightcone Average Summary - Samsara</title>
+                <title>4&#x2605; Lightcone Average Reruns - Samsara</title>
             </Head>
             <AverageRunSummaryPage
-                title={<>4&#x2605; Lightcone Average Summary</>}
+                title={<>4&#x2605; Lightcone Average Reruns</>}
                 data={props}
                 type={'lightcones'}
             />

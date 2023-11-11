@@ -1,19 +1,15 @@
 name: Samsara Workflow
 on:
   workflow_dispatch:
-  schedule:
-    - cron:  '30 7 * * MON,WED,FRI'
   pull_request:
     types:
       - opened
       - synchronize
     branches:
       - 'main'
-      - 'v2-trunk'
   push:
     branches:
       - 'main'
-      - 'v2-trunk'
     paths-ignore:
       - '**.md' # ignore docs, they don't contribute to the build process
 
@@ -75,7 +71,11 @@ jobs:
             test-results/**/*.png
             test-results/**/*.webm
   deploy:
-    if: ${{ github.ref_name == 'main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
+    if: |
+      github.ref_name == 'main' && (
+        (github.event_name == 'push' && github.actor == 'github-actions' && github.event.head_commit.message == 'generated: automatic data updating') ||
+        github.event_name == 'workflow_dispatch'
+      )
     needs: 'build'
     runs-on: ubuntu-latest
     name: Deploy
