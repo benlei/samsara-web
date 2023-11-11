@@ -316,23 +316,7 @@ function isFutureNewRelease(
 }
 
 // for our intents and purposes, we really just need to look at either the last or 2nd last element
-function getNonFutureVersion(
-  currentVersion: VersionParts,
-  featured: FeaturedVersions
-): string {
-  if (featured.versions.length > 1) {
-    if (
-      getBaseVersion(featured.versions[featured.versions.length - 1]) >
-        currentVersion.version ||
-      (getBaseVersion(featured.versions[featured.versions.length - 1]) ==
-        currentVersion.version &&
-        getVersionPart(featured.versions[featured.versions.length - 1]) >
-          currentVersion.parts)
-    ) {
-      return featured.versions[featured.versions.length - 2];
-    }
-  }
-
+function getLastVersion(featured: FeaturedVersions): string {
   return featured.versions[featured.versions.length - 1];
 }
 
@@ -363,7 +347,7 @@ export function getBannersSinceLastCountSummary(
     return (
       getBannerGap(
         versionParts,
-        getNonFutureVersion(currentVersion, featured),
+        getLastVersion(featured),
         `${currentVersion.version}.${currentVersion.parts}`
       ) + 1
     );
@@ -395,7 +379,7 @@ export function getPatchesSinceLastCountSummary(
 
     return getPatchGap(
       versionParts,
-      getNonFutureVersion(currentVersion, featured),
+      getLastVersion(featured),
       `${currentVersion.version}.${currentVersion.parts}`
     );
   });
