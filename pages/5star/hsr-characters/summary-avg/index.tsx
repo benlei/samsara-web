@@ -22,10 +22,10 @@ export default function FiveStarCharacterSummary(props: { featuredList: Featured
     return (
         <>
             <Head>
-                <title>5&#x2605; HSR Character Average Summary - Samsara</title>
+                <title>5&#x2605; HSR Character Average Reruns - Samsara</title>
             </Head>
             <AverageRunSummaryPage
-                title={<>5&#x2605; HSR Character Average Summary</>}
+                title={<>5&#x2605; HSR Character Average Reruns</>}
                 data={props}
                 type={'hsr-characters'}
             />

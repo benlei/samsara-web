@@ -113,14 +113,14 @@ function SidebarMenuItems(
 ): JSX.Element {
     return (
         <Menu vertical>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}`}>Banner History</Menu.Item>
             <Menu.Item as={'a'} href={`/${stars}star/${type}/summary`}>Summary</Menu.Item>
-            <Menu.Item as={'a'} href={`/${stars}star/${type}/summary-avg`}>Summary (avg)</Menu.Item>
-            <Menu.Item as={'a'} href={`/${stars}star/${type}/runs`}>Total Runs</Menu.Item>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}/runs`}>Total Reruns</Menu.Item>
+            <Menu.Item as={'a'} href={`/${stars}star/${type}/summary-avg`}>Average Reruns</Menu.Item>
             <Menu.Item as={'a'} href={`/${stars}star/${type}/longest-leaderboard`}>Leaderboard: Longest
                 Rerun</Menu.Item>
             <Menu.Item as={'a'} href={`/${stars}star/${type}/shortest-leaderboard`}>Leaderboard: Shortest
                 Rerun</Menu.Item>
-            <Menu.Item as={'a'} href={`/${stars}star/${type}`}>Banner History</Menu.Item>
         </Menu>
     )
 }

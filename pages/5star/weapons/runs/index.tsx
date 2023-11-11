@@ -22,10 +22,10 @@ export default function FiveStarWeaponSummary(props: { featuredList: Featured[] 
     return (
         <>
             <Head>
-                <title>5&#x2605; Weapon Runs Summary - Samsara</title>
+                <title>5&#x2605; Weapon Reruns Summary - Samsara</title>
             </Head>
             <RunsSummaryPage
-                title={<>5&#x2605; Weapon Runs Summary</>}
+                title={<>5&#x2605; Weapon Reruns Summary</>}
                 data={props}
                 type={'weapons'}
             />
