@@ -1,34 +1,32 @@
+import Head from 'next/head'
+import {BannerHistoryDataset} from '@/banners/types'
 import React from "react";
-import LastRunSummaryPage from "@/components/summary/LastRunSummaryPage";
-import dayjs from "dayjs";
-import utc from 'dayjs/plugin/utc'
-import Head from "next/head";
-import * as fs from "fs";
-import YAML from 'yaml'
-import path from "path";
-import {Featured} from "@/banners/types";
+import HistoryPage from "@/components/history/HistoryPage";
+import LoadDataset from "@/banners/history";
+
 
 export async function getStaticProps() {
-    dayjs.extend(utc);
     return {
         props: {
-            featuredList: YAML.parse(fs.readFileSync(path.resolve('./public/data/banners.yaml'), 'utf8')).fiveStarCharacters,
-            date: dayjs.utc().toISOString().substring(0, 10)
+            dataset: LoadDataset(),
         },
     };
 }
 
+type Properties = {
+    dataset: BannerHistoryDataset
+}
 
-export default function FiveStarCharacterSummary(props: { featuredList: Featured[], date: string }) {
+export default function FiveStarCharactersHome({dataset}: Properties) {
     return (
         <>
             <Head>
-                <title>5&#x2605; Character Summary - Samsara</title>
+                <title>5&#x2605; Character Banner History - Samsara</title>
             </Head>
-            <LastRunSummaryPage
-                title={<>5&#x2605; Character Summary</>}
-                data={props}
-                type={'characters'}
+            <HistoryPage bannerType={'characters'}
+                         title={<>5&#x2605; Character Banner History</>}
+                         dataset={dataset}
+                         featuredList={dataset.fiveStarCharacters}
             />
         </>
     )
