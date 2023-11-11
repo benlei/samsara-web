@@ -1,14 +1,46 @@
+import { useRouter } from "next/router";
 import React from "react";
-import {Container, Icon, Menu, Sidebar, Image} from "semantic-ui-react";
+import {Container, Icon, Menu, Sidebar, Image, Accordion} from "semantic-ui-react";
 
 type SidebarItemsProps = {
     stars: 5 | 4
     type: "characters" | "weapons" | "hsr-characters" | "lightcones"
 }
 
+const FiveStarChar = '/5star/c'
+const FiveStarWeap = '/5star/w'
+const FourStarChar = '/4star/c'
+const FourStarWeap = '/4star/w'
+
 export default function Navbar(): JSX.Element {
+    const router = useRouter()
+    console.log("router:", router)
     const [visible, setVisible] = React.useState(false)
     const [hsrVisible, setHsrVisible] = React.useState(false)
+    const [activeMenu, setActiveMenu] = React.useState(router.pathname)
+
+    function handleActiveMenu(newActiveMenu: string) {
+        if (activeMenu === newActiveMenu) {
+            return
+        }
+        setActiveMenu(newActiveMenu)
+    }
+
+    function in5StarChar() {
+        return activeMenu === '/' || activeMenu.startsWith(FiveStarChar)
+    }
+
+    function in4StarChar() {
+        return activeMenu.startsWith(FourStarChar)
+    }
+
+    function in5StarWeap() {
+        return activeMenu.startsWith(FiveStarWeap)
+    }
+
+    function in4StarWeap() {
+        return activeMenu.startsWith(FourStarWeap)
+    }
 
     return (
         <>
@@ -44,22 +76,51 @@ export default function Navbar(): JSX.Element {
                             Genshin Impact
                         </Menu.Header>
                     </Menu.Item>
-                    <Menu.Item>
-                        <Menu.Header>5&#x2605; Characters</Menu.Header>
-                        <SidebarMenuItems stars={5} type={'characters'}/>
-                    </Menu.Item>
-                    <Menu.Item>
-                        <Menu.Header>5&#x2605; Weapons</Menu.Header>
-                        <SidebarMenuItems stars={5} type={'weapons'}/>
-                    </Menu.Item>
-                    <Menu.Item>
-                        <Menu.Header>4&#x2605; Characters</Menu.Header>
-                        <SidebarMenuItems stars={4} type={'characters'}/>
-                    </Menu.Item>
-                    <Menu.Item>
-                        <Menu.Header>4&#x2605; Weapons</Menu.Header>
-                        <SidebarMenuItems stars={4} type={'weapons'}/>
-                    </Menu.Item>
+                    <Accordion>
+                        <Accordion.Title
+                            active={in5StarChar()}
+                            onClick={() => handleActiveMenu(FiveStarChar)}
+                            as={Menu.Item}
+                        >
+                            <Menu.Header><Icon name='dropdown' /> 5&#x2605; Characters</Menu.Header>
+                        </Accordion.Title>
+                        <Accordion.Content active={in5StarChar()}>
+                            <SidebarMenuItems stars={5} type={'characters'}/>
+                        </Accordion.Content>
+
+                        <Accordion.Title
+                            active={in5StarWeap()}
+                            onClick={() => handleActiveMenu(FiveStarWeap)}
+                            as={Menu.Item}
+                        >
+                            <Menu.Header><Icon name='dropdown' /> 5&#x2605; Weapons</Menu.Header>
+                        </Accordion.Title>
+                        <Accordion.Content active={in5StarWeap()}>
+                            <SidebarMenuItems stars={5} type={'weapons'}/>
+                        </Accordion.Content>
+
+                        <Accordion.Title
+                            active={in4StarChar()}
+                            onClick={() => handleActiveMenu(FourStarChar)}
+                            as={Menu.Item}
+                        >
+                            <Menu.Header><Icon name='dropdown' /> 4&#x2605; Characters</Menu.Header>
+                        </Accordion.Title>
+                        <Accordion.Content active={in4StarChar()}>
+                            <SidebarMenuItems stars={4} type={'characters'}/>
+                        </Accordion.Content>
+
+                        <Accordion.Title
+                            active={in4StarWeap()}
+                            onClick={() => handleActiveMenu(FourStarWeap)}
+                            as={Menu.Item}
+                        >
+                            <Menu.Header><Icon name='dropdown' /> 4&#x2605; Weapons</Menu.Header>
+                        </Accordion.Title>
+                        <Accordion.Content active={in4StarWeap()}>
+                            <SidebarMenuItems stars={4} type={'weapons'}/>
+                        </Accordion.Content>
+                    </Accordion>
                 </Sidebar>
             </Sidebar.Pusher>
             <Sidebar.Pusher>
@@ -100,7 +161,6 @@ export default function Navbar(): JSX.Element {
                     </Menu.Item>
                 </Sidebar>
             </Sidebar.Pusher>
-
         </>
     )
 }
