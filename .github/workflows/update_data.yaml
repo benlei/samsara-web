@@ -50,10 +50,19 @@ jobs:
           echo "diff_lines=$(git diff --stat HEAD  -- public/ | wc -l | awk '{$1=$1};1')" >> $GITHUB_ENV
 
       - name: Push new data
-        if: ${{ env.diff_lines != '0' }}
+        if: env.diff_lines != '0'
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add public/
           git commit -m "generated: automatic data updating"
           git push
+
+    outputs:
+      diff_lines: ${{ env.diff_lines }}
+
+  deploy:
+    needs: update
+    if: needs.update.diff_lines != '0'
+    uses: benlei/samsara-web/.github/workflows/workflow.yaml@main
+    secrets: inherit
