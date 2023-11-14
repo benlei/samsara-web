@@ -2,9 +2,12 @@ fiveStarCharacters:
   - name: Seele
     versions:
       - 1.0.1
+      - 1.4.2
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
+      - start: '2023-10-27'
+        end: ''
   - name: Jing Yuan
     versions:
       - 1.0.2
