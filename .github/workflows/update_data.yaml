@@ -64,5 +64,5 @@ jobs:
   deploy:
     needs: update
     if: needs.update.outputs.diff_lines != '0'
-    uses: benlei/samsara-web/.github/workflows/workflow.yaml@main
+    uses: ./.github/workflows/workflow.yaml
     secrets: inherit
