@@ -24,6 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+        
           # workflow_call inherits parent event name - either way, should only occur on main branch
           ref: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'schedule') && 'main' || '' }}
 
