@@ -1,5 +1,6 @@
 name: Samsara Workflow
 on:
+  workflow_call:
   workflow_dispatch:
   pull_request:
     types:
@@ -73,8 +74,8 @@ jobs:
   deploy:
     if: |
       github.ref_name == 'main' && (
-        (github.event_name == 'push' && github.actor == 'github-actions' && github.event.head_commit.message == 'generated: automatic data updating') ||
-        github.event_name == 'workflow_dispatch'
+        github.event_name == 'workflow_dispatch' ||
+        github.event_name == 'workflow_call'
       )
     needs: 'build'
     runs-on: ubuntu-latest
