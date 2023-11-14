@@ -24,8 +24,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          # dispatch/reusable workflows use event name 'workflow_dispatch' - either way, should only occur on main branch
-          ref: ${{ github.event_name == 'workflow_dispatch' && 'main' || '' }}
+          # workflow_call inherits parent event name - either way, should only occur on main branch
+          ref: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'schedule') && 'main' || '' }}
 
       - uses: pnpm/action-setup@v2
         with:
@@ -76,7 +76,7 @@ jobs:
             test-results/**/*.webm
 
   deploy:
-    if: github.ref_name == 'main' && github.event_name == 'workflow_dispatch'
+    if: github.ref_name == 'main' && (github.event_name == 'workflow_dispatch' || github.event_name == 'schedule')
     needs: 'build'
     runs-on: ubuntu-latest
     name: Deploy
