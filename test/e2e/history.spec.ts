@@ -8,5 +8,5 @@ test("should be able to see history page", async ({ page }) => {
 
 test("should be able to see homepage", async ({ page }) => {
   await page.goto("/");
-  expect(page.getByText("Latestx")).toBeVisible();
+  expect(page.getByText("Latest")).toBeVisible();
 });
