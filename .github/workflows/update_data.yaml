@@ -57,6 +57,7 @@ jobs:
           git add public/
           git commit -m "generated: automatic data updating"
           git push
+          sleep 5
 
     outputs:
       diff_lines: ${{ env.diff_lines }}
