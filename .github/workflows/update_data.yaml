@@ -63,6 +63,6 @@ jobs:
 
   deploy:
     needs: update
-    if: needs.update.diff_lines != '0'
+    if: needs.update.outputs.diff_lines != '0'
     uses: benlei/samsara-web/.github/workflows/workflow.yaml@main
     secrets: inherit
