@@ -1,5 +1,6 @@
 name: Samsara Workflow
 on:
+  workflow_call:
   workflow_dispatch:
   pull_request:
     types:
@@ -72,7 +73,10 @@ jobs:
             test-results/**/*.webm
   deploy:
     if: |
-      github.ref_name == 'main' && github.event_name == 'workflow_dispatch'
+      github.ref_name == 'main' && (
+        github.event_name == 'workflow_dispatch' ||
+        github.event_name == 'workflow_call'
+      )
     needs: 'build'
     runs-on: ubuntu-latest
     name: Deploy
