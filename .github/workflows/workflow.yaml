@@ -22,7 +22,10 @@ jobs:
       matrix:
         node-version: [ 17.x ]
     steps:
+      - run: echo "${{ github.event_name == 'workflow_call' && 'refs/heads/main' || '' }}"
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event_name == 'workflow_call' && 'refs/heads/main' || '' }}
 
       - uses: pnpm/action-setup@v2
         with:
