@@ -22,11 +22,10 @@ jobs:
       matrix:
         node-version: [ 17.x ]
     steps:
-      - run: echo "${{ github.event_name }}"
-      - run: echo "${{ github.event_name == 'workflow_call' && 'refs/heads/main' || '' }}"
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event_name == 'workflow_call' && 'refs/heads/main' || '' }}
+          # dispatch/reusable workflows use event name 'workflow_dispatch' - either way, should only occur on main branch
+          ref: ${{ github.event_name == 'workflow_dispatch' && 'main' || '' }}
 
       - uses: pnpm/action-setup@v2
         with:
@@ -75,12 +74,9 @@ jobs:
           path: |
             test-results/**/*.png
             test-results/**/*.webm
+
   deploy:
-    if: |
-      github.ref_name == 'main' && (
-        github.event_name == 'workflow_dispatch' ||
-        github.event_name == 'workflow_call'
-      )
+    if: github.ref_name == 'main' && github.event_name == 'workflow_dispatch'
     needs: 'build'
     runs-on: ubuntu-latest
     name: Deploy
