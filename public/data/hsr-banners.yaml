@@ -17,12 +17,12 @@ fiveStarCharacters:
   - name: Silver Wolf
     versions:
       - 1.1.1
-      - 1.5.1
+      - 1.5.2
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
       - start: ''
-        end: '2023-04-26'
+        end: ''
   - name: Luocha
     versions:
       - 1.1.2
@@ -65,17 +65,17 @@ fiveStarCharacters:
     dates:
       - start: '2023-10-27'
         end: '2023-11-15'
-  - name: Argenti
+  - name: Huohuo
     versions:
       - 1.5.1
     dates:
-      - start: ''
-        end: '2023-04-26'
-  - name: Huohuo
+      - start: '2023-11-15'
+        end: ''
+  - name: Argenti
     versions:
       - 1.5.2
     dates:
-      - start: '2023-11-15'
+      - start: ''
         end: ''
 fourStarCharacters:
   - name: Hook
@@ -142,18 +142,18 @@ fourStarCharacters:
     versions:
       - 1.1.1
       - 1.3.1
-      - 1.5.1
+      - 1.5.2
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
       - start: '2023-08-30'
         end: '2023-09-20'
       - start: ''
-        end: '2023-04-26'
+        end: ''
   - name: Dan Heng
     versions:
       - 1.1.1
-      - 1.5.2
+      - 1.5.1
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -163,7 +163,7 @@ fourStarCharacters:
     versions:
       - 1.1.1
       - 1.2.2
-      - 1.5.2
+      - 1.5.1
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -192,7 +192,7 @@ fourStarCharacters:
   - name: Arlan
     versions:
       - 1.2.1
-      - 1.5.2
+      - 1.5.1
     dates:
       - start: '2023-07-19'
         end: '2023-08-09'
@@ -219,12 +219,12 @@ fourStarCharacters:
   - name: Lynx
     versions:
       - 1.3.2
-      - 1.5.1
+      - 1.5.2
     dates:
       - start: '2023-09-20'
         end: '2023-10-11'
       - start: ''
-        end: '2023-04-26'
+        end: ''
   - name: Guinaifen
     versions:
       - 1.4.2
@@ -233,10 +233,10 @@ fourStarCharacters:
         end: '2023-11-15'
   - name: Hanya
     versions:
-      - 1.5.1
+      - 1.5.2
     dates:
       - start: ''
-        end: '2023-04-26'
+        end: ''
 fiveStarWeapons:
   - name: In the Night
     versions:
@@ -303,7 +303,7 @@ fiveStarWeapons:
         end: '2023-11-15'
   - name: Night of Fright
     versions:
-      - 1.5.2
+      - 1.5.1
     dates:
       - start: '2023-11-15'
         end: ''
@@ -377,7 +377,7 @@ fourStarWeapons:
   - name: Subscribe for More!
     versions:
       - 1.1.1
-      - 1.5.2
+      - 1.5.1
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -407,7 +407,7 @@ fourStarWeapons:
   - name: Shared Feeling
     versions:
       - 1.2.1
-      - 1.5.2
+      - 1.5.1
     dates:
       - start: '2023-07-19'
         end: '2023-08-09'
@@ -458,7 +458,7 @@ fourStarWeapons:
   - name: Trend of the Universal Market
     versions:
       - 1.3.2
-      - 1.5.2
+      - 1.5.1
     dates:
       - start: '2023-09-20'
         end: '2023-10-11'
