@@ -15,19 +15,6 @@ type Properties = {
   dataset: BannerHistoryDataset;
 };
 
-// thanks ChatGPT
-const findLastSegment = (counter: number[]): number => {
-  let startIndex = counter.length;
-  for (let i = counter.length - 1; i >= 0; i--) {
-    if (counter[i] !== -1) {
-      startIndex = i + 1;
-      break;
-    }
-  }
-
-  return startIndex;
-};
-
 export default function HistoryRow({
   rundown,
   bannerType,
@@ -36,7 +23,6 @@ export default function HistoryRow({
   const [open, setOpen] = useState(false);
 
   let versionIndex = 0;
-  let lastSegment = findLastSegment(rundown.counter);
 
   return (
     <Table.Row>
@@ -65,7 +51,7 @@ export default function HistoryRow({
       <Table.Cell className={"hc-0"}>
         <div className={"runs"}>{rundown.runs}</div>
       </Table.Cell>
-      {rundown.counter.slice(0, lastSegment).map((c, cI) => (
+      {rundown.counter.map((c, cI) => (
         <Table.Cell key={cI} className={"hc-" + Math.max(0, Math.min(25, c))}>
           <HistoryImageCounter
             type={bannerType}
@@ -76,12 +62,6 @@ export default function HistoryRow({
           />
         </Table.Cell>
       ))}
-      {lastSegment != rundown.counter.length ? (
-        <Table.Cell
-          colSpan={rundown.counter.length - lastSegment}
-          className={"hc-0"}
-        ></Table.Cell>
-      ) : null}
     </Table.Row>
   );
 }
