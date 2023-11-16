@@ -13,8 +13,8 @@ import { getFilterFunction } from "@/banners/summary";
 import getVersionParts, { versionToNumber } from "@/banners/version";
 import { getRundowns } from "@/banners/rundown";
 
-const InitialNumberOfColumns = 24;
-const InitialNumberOfRows = 24;
+const InitialNumberOfColumns = 130;
+const InitialNumberOfRows = 80;
 
 type BannerRundownProps = {
   bannerType: string;
