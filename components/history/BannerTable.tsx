@@ -48,9 +48,6 @@ export default function BannerTable({
   order,
 }: BannerRundownProps) {
   const [filterText, setFilterText] = useState("");
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => setLoaded(true));
 
   const getSortFunction = () => {
     switch (sortBy) {
@@ -111,24 +108,15 @@ export default function BannerTable({
           onChange={handleFilterChange}
         />
         <Table.Body>
-          {rundown
-            .slice(0, loaded ? rundown.length : InitialNumberOfRows)
-            .map((r, rI) => (
-              <HistoryRow
-                key={rI}
-                bannerType={bannerType}
-                featuredList={featuredList}
-                rundown={
-                  loaded
-                    ? r
-                    : {
-                        ...r,
-                        counter: r.counter.slice(0, InitialNumberOfColumns),
-                      }
-                }
-                dataset={dataset}
-              />
-            ))}
+          {rundown.map((r, rI) => (
+            <HistoryRow
+              key={rI}
+              bannerType={bannerType}
+              featuredList={featuredList}
+              rundown={r}
+              dataset={dataset}
+            />
+          ))}
         </Table.Body>
 
         <HistoryFooter versionParts={versionParts} />
