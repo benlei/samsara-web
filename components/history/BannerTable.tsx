@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BannerFilterSortOptions,
   BannerHistoryDataset,
@@ -12,6 +12,9 @@ import HistoryRow from "@/components/history/HistoryRow";
 import { getFilterFunction } from "@/banners/summary";
 import getVersionParts, { versionToNumber } from "@/banners/version";
 import { getRundowns } from "@/banners/rundown";
+
+const InitialNumberOfColumns = 30;
+const InitialNumberOfRows = 30;
 
 type BannerRundownProps = {
   bannerType: string;
@@ -36,6 +39,7 @@ const sortByLast = [
   (r: FeaturedHistory) => versionToNumber(r.versions[r.versions.length - 1]),
   sortByName,
 ];
+
 export default function BannerTable({
   bannerType,
   featuredList,
@@ -44,6 +48,9 @@ export default function BannerTable({
   order,
 }: BannerRundownProps) {
   const [filterText, setFilterText] = useState("");
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => setLoaded(true));
 
   const getSortFunction = () => {
     switch (sortBy) {
@@ -95,6 +102,7 @@ export default function BannerTable({
   const rundown = filteredFeaturedList.length
     ? filteredFeaturedList
     : baseFeaturedList;
+
   return (
     <>
       <Table definition unstackable selectable compact className={"history"}>
@@ -103,15 +111,24 @@ export default function BannerTable({
           onChange={handleFilterChange}
         />
         <Table.Body>
-          {rundown.map((r, rI) => (
-            <HistoryRow
-              key={rI}
-              bannerType={bannerType}
-              featuredList={featuredList}
-              rundown={r}
-              dataset={dataset}
-            />
-          ))}
+          {rundown
+            .slice(0, loaded ? rundown.length : InitialNumberOfRows)
+            .map((r, rI) => (
+              <HistoryRow
+                key={rI}
+                bannerType={bannerType}
+                featuredList={featuredList}
+                rundown={
+                  loaded
+                    ? r
+                    : {
+                        ...r,
+                        counter: r.counter.slice(0, InitialNumberOfColumns),
+                      }
+                }
+                dataset={dataset}
+              />
+            ))}
         </Table.Body>
 
         <HistoryFooter versionParts={versionParts} />
