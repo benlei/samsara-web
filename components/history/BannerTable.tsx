@@ -19,6 +19,23 @@ type BannerRundownProps = {
   dataset: BannerHistoryDataset;
 } & BannerFilterSortOptions;
 
+const sortByName = (r: FeaturedHistory) => r.name;
+
+const sortByRunsLastPatch = [
+  (r: FeaturedHistory) => String(r.versions.length),
+  (r: FeaturedHistory) => versionToNumber(r.versions[r.versions.length - 1]),
+  sortByName,
+];
+
+const sortByFirst = [
+  (r: FeaturedHistory) => versionToNumber(r.versions[0]),
+  sortByName,
+];
+
+const sortByLast = [
+  (r: FeaturedHistory) => versionToNumber(r.versions[r.versions.length - 1]),
+  sortByName,
+];
 export default function BannerTable({
   bannerType,
   featuredList,
@@ -27,28 +44,6 @@ export default function BannerTable({
   order,
 }: BannerRundownProps) {
   const [filterText, setFilterText] = useState("");
-
-  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterText(event.target.value);
-  };
-
-  const sortByName = (r: FeaturedHistory) => r.name;
-
-  const sortByRunsLastPatch = [
-    (r: FeaturedHistory) => String(r.versions.length),
-    (r: FeaturedHistory) => versionToNumber(r.versions[r.versions.length - 1]),
-    sortByName,
-  ];
-
-  const sortByFirst = [
-    (r: FeaturedHistory) => versionToNumber(r.versions[0]),
-    sortByName,
-  ];
-
-  const sortByLast = [
-    (r: FeaturedHistory) => versionToNumber(r.versions[r.versions.length - 1]),
-    sortByName,
-  ];
 
   const getSortFunction = () => {
     switch (sortBy) {
@@ -76,6 +71,10 @@ export default function BannerTable({
           ? ["asc", "desc", "desc"]
           : ["desc", "desc", "asc"];
     }
+  };
+
+  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilterText(event.target.value);
   };
 
   const versionParts = getVersionParts(
