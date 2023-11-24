@@ -9,7 +9,8 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-    groups:
-      dependencies:
-        patterns:
-          - "*"
+# note to self: makes it much more harder to identify what dep update broke changes
+#    groups:
+#      dependencies:
+#        patterns:
+#          - "*"
