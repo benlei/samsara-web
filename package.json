@@ -22,7 +22,7 @@
     "playwright:install": "playwright install --with-deps"
   },
   "dependencies": {
-    "@next/font": "^13.1.0",
+    "@next/font": "^14.0.3",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.17",
     "@types/react": "^18.0.26",
