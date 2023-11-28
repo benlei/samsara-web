@@ -51,8 +51,8 @@ dependencies:
     specifier: ^1.0.6
     version: 1.0.6
   react-cookie-consent:
-    specifier: ^8.0.1
-    version: 8.0.1(react@18.2.0)
+    specifier: ^9.0.0
+    version: 9.0.0(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -4036,8 +4036,8 @@ packages:
       jspdf: 2.5.1
     dev: false
 
-  /react-cookie-consent@8.0.1(react@18.2.0):
-    resolution: {integrity: sha512-4A2jzPQDFfBhtxIz4hYX+vJ0QnOknGdOXpEoetXzgwUrMtxVJVow8YgBsGerNt5rJI7WhKkHwr8LmxekxgVejg==}
+  /react-cookie-consent@9.0.0(react@18.2.0):
+    resolution: {integrity: sha512-Blyj+m+Zz7SFHYqT18p16EANgnSg2sIyU6Yp3vk83AnOnSW7qnehPkUe4+8+qxztJrNmCH5GP+VHsWzAKVOoZA==}
     engines: {node: '>=10'}
     peerDependencies:
       react: '>=16'
