@@ -16,6 +16,9 @@ updates:
       jest:
         patterns:
           - "*jest*"
+      lodash:
+        patterns:
+          - "*lodash*"
       react:
         patterns:
           - "react"
