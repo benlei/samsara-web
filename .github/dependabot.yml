@@ -9,6 +9,19 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    groups:
+      playwright:
+        patterns:
+          - "*playwright*"
+      jest:
+        patterns:
+          - "*jest*"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
 # note to self: makes it much more harder to identify what dep update broke changes
 #    groups:
 #      dependencies:
