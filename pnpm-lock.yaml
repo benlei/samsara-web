@@ -24,8 +24,8 @@ dependencies:
     specifier: ^2.0.0
     version: 2.0.0
   cookies-next:
-    specifier: ^2.1.1
-    version: 2.1.1
+    specifier: ^4.1.0
+    version: 4.1.0
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
@@ -1668,8 +1668,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /cookies-next@2.1.1:
-    resolution: {integrity: sha512-AZGZPdL1hU3jCjN2UMJTGhLOYzNUN9Gm+v8BdptYIHUdwz397Et1p+sZRfvAl8pKnnmMdX2Pk9xDRKCGBum6GA==}
+  /cookies-next@4.1.0:
+    resolution: {integrity: sha512-BREVc4TJT4NwXfyKjdjnYFXM6iRns+MYpCd34ClXuYqeisXnkPkbq7Ok9xaqi9mHmV6H2rwPE+p3EpMz4pF/kQ==}
     dependencies:
       '@types/cookie': 0.4.1
       '@types/node': 16.18.23
