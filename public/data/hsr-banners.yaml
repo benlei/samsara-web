@@ -21,7 +21,7 @@ fiveStarCharacters:
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
-      - start: ''
+      - start: '2023-12-06'
         end: ''
   - name: Luocha
     versions:
@@ -70,12 +70,12 @@ fiveStarCharacters:
       - 1.5.1
     dates:
       - start: '2023-11-15'
-        end: ''
+        end: '2023-12-06'
   - name: Argenti
     versions:
       - 1.5.2
     dates:
-      - start: ''
+      - start: '2023-12-06'
         end: ''
 fourStarCharacters:
   - name: Hook
@@ -148,7 +148,7 @@ fourStarCharacters:
         end: '2023-06-28'
       - start: '2023-08-30'
         end: '2023-09-20'
-      - start: ''
+      - start: '2023-12-06'
         end: ''
   - name: Dan Heng
     versions:
@@ -158,7 +158,7 @@ fourStarCharacters:
       - start: '2023-06-07'
         end: '2023-06-28'
       - start: '2023-11-15'
-        end: ''
+        end: '2023-12-06'
   - name: Serval
     versions:
       - 1.1.1
@@ -170,7 +170,7 @@ fourStarCharacters:
       - start: '2023-08-09'
         end: '2023-08-30'
       - start: '2023-11-15'
-        end: ''
+        end: '2023-12-06'
   - name: Qingque
     versions:
       - 1.1.2
@@ -197,7 +197,7 @@ fourStarCharacters:
       - start: '2023-07-19'
         end: '2023-08-09'
       - start: '2023-11-15'
-        end: ''
+        end: '2023-12-06'
   - name: Luka
     versions:
       - 1.2.2
@@ -223,7 +223,7 @@ fourStarCharacters:
     dates:
       - start: '2023-09-20'
         end: '2023-10-11'
-      - start: ''
+      - start: '2023-12-06'
         end: ''
   - name: Guinaifen
     versions:
@@ -235,7 +235,7 @@ fourStarCharacters:
     versions:
       - 1.5.2
     dates:
-      - start: ''
+      - start: '2023-12-06'
         end: ''
 fiveStarWeapons:
   - name: In the Night
@@ -306,7 +306,7 @@ fiveStarWeapons:
       - 1.5.1
     dates:
       - start: '2023-11-15'
-        end: ''
+        end: '2023-12-06'
 fourStarWeapons:
   - name: Good Night and Sleep Well
     versions:
@@ -382,7 +382,7 @@ fourStarWeapons:
       - start: '2023-06-07'
         end: '2023-06-28'
       - start: '2023-11-15'
-        end: ''
+        end: '2023-12-06'
   - name: Dance! Dance! Dance!
     versions:
       - 1.1.2
@@ -412,7 +412,7 @@ fourStarWeapons:
       - start: '2023-07-19'
         end: '2023-08-09'
       - start: '2023-11-15'
-        end: ''
+        end: '2023-12-06'
   - name: Swordplay
     versions:
       - 1.2.1
@@ -463,7 +463,7 @@ fourStarWeapons:
       - start: '2023-09-20'
         end: '2023-10-11'
       - start: '2023-11-15'
-        end: ''
+        end: '2023-12-06'
   - name: Under the Blue Sky
     versions:
       - 1.3.2
