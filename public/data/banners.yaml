@@ -160,6 +160,7 @@ fiveStarCharacters:
       - 2.0.1
       - 2.6.2
       - 3.5.2
+      - 4.3.1
     dates:
       - start: '2021-07-21'
         end: '2021-08-10'
@@ -167,12 +168,15 @@ fiveStarCharacters:
         end: '2022-05-31'
       - start: '2023-03-21'
         end: '2023-04-12'
+      - start: '2023-12-20'
+        end: ''
   - name: Yoimiya
     versions:
       - 2.0.2
       - 2.8.2
       - 3.2.1
       - 3.7.1
+      - 4.3.2
     dates:
       - start: '2021-08-10'
         end: '2021-09-01'
@@ -182,11 +186,14 @@ fiveStarCharacters:
         end: '2022-11-18'
       - start: '2023-05-24'
         end: '2023-06-13'
+      - start: ''
+        end: ''
   - name: Raiden Shogun
     versions:
       - 2.1.1
       - 2.5.2
       - 3.3.2
+      - 4.3.2
     dates:
       - start: '2021-09-01'
         end: '2021-09-21'
@@ -194,6 +201,8 @@ fiveStarCharacters:
         end: '2022-03-30'
       - start: '2022-12-27'
         end: '2023-01-18'
+      - start: ''
+        end: ''
   - name: Sangonomiya Kokomi
     versions:
       - 2.1.2
@@ -253,7 +262,7 @@ fiveStarCharacters:
       - start: '2022-12-27'
         end: '2023-01-18'
       - start: '2023-11-28'
-        end: ''
+        end: '2023-12-20'
   - name: Yelan
     versions:
       - 2.7.1
@@ -283,7 +292,7 @@ fiveStarCharacters:
       - start: '2023-03-01'
         end: '2023-03-21'
       - start: '2023-11-28'
-        end: ''
+        end: '2023-12-20'
   - name: Nilou
     versions:
       - 3.1.2
@@ -359,6 +368,12 @@ fiveStarCharacters:
     dates:
       - start: '2023-11-08'
         end: '2023-11-28'
+  - name: Navia
+    versions:
+      - 4.3.1
+    dates:
+      - start: '2023-12-20'
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -446,7 +461,7 @@ fourStarCharacters:
       - start: '2023-06-13'
         end: '2023-07-05'
       - start: '2023-11-28'
-        end: ''
+        end: '2023-12-20'
   - name: Noelle
     versions:
       - 1.0.2
@@ -860,7 +875,7 @@ fourStarCharacters:
       - start: '2023-04-12'
         end: '2023-05-02'
       - start: '2023-11-28'
-        end: ''
+        end: '2023-12-20'
   - name: Shikanoin Heizou
     versions:
       - 2.8.1
@@ -956,7 +971,7 @@ fourStarCharacters:
       - start: '2023-05-24'
         end: '2023-06-13'
       - start: '2023-11-28'
-        end: ''
+        end: '2023-12-20'
   - name: Lynette
     versions:
       - 4.0.1
@@ -975,6 +990,12 @@ fourStarCharacters:
     dates:
       - start: '2023-11-08'
         end: '2023-11-28'
+  - name: Chevreuse
+    versions:
+      - 4.3.2
+    dates:
+      - start: ''
+        end: ''
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
