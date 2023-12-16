@@ -32,15 +32,21 @@ fiveStarCharacters:
   - name: Blade
     versions:
       - 1.2.1
+      - 1.6.1
     dates:
       - start: '2023-07-19'
         end: '2023-08-09'
+      - start: ''
+        end: ''
   - name: Kafka
     versions:
       - 1.2.2
+      - 1.6.1
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
+      - start: ''
+        end: ''
   - name: "Dan Heng \u2022 Imbibitor Lunae"
     versions:
       - 1.3.1
@@ -77,25 +83,43 @@ fiveStarCharacters:
     dates:
       - start: '2023-12-06'
         end: ''
+  - name: Dr. Ratio
+    versions:
+      - 1.6.1
+    dates:
+      - start: ''
+        end: ''
+  - name: Ruan Mei
+    versions:
+      - 1.6.1
+    dates:
+      - start: ''
+        end: ''
 fourStarCharacters:
   - name: Hook
     versions:
       - 1.0.1
       - 1.3.2
+      - 1.6.1
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
       - start: '2023-09-20'
         end: '2023-10-11'
+      - start: ''
+        end: ''
   - name: Natasha
     versions:
       - 1.0.1
       - 1.2.1
+      - 1.6.1
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
       - start: '2023-07-19'
         end: '2023-08-09'
+      - start: ''
+        end: ''
   - name: Pela
     versions:
       - 1.0.1
@@ -112,16 +136,20 @@ fourStarCharacters:
     versions:
       - 1.0.2
       - 1.3.1
+      - 1.6.1
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
       - start: '2023-08-30'
         end: '2023-09-20'
+      - start: ''
+        end: ''
   - name: Sushang
     versions:
       - 1.0.2
       - 1.2.1
       - 1.4.2
+      - 1.6.1
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -129,15 +157,20 @@ fourStarCharacters:
         end: '2023-08-09'
       - start: '2023-10-27'
         end: '2023-11-15'
+      - start: ''
+        end: ''
   - name: Tingyun
     versions:
       - 1.0.2
       - 1.4.1
+      - 1.6.1
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
       - start: '2023-10-11'
         end: '2023-10-27'
+      - start: ''
+        end: ''
   - name: Asta
     versions:
       - 1.1.1
@@ -236,6 +269,12 @@ fourStarCharacters:
       - 1.5.2
     dates:
       - start: '2023-12-06'
+        end: ''
+  - name: Xueyi
+    versions:
+      - 1.6.1
+    dates:
+      - start: ''
         end: ''
 fiveStarWeapons:
   - name: In the Night
