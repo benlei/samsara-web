@@ -42,7 +42,7 @@
     "react-ga4": "^2.1.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "semantic-ui-react": "^2.1.4",
-    "typescript": "^5.3.2",
+    "typescript": "^5.3.3",
     "yaml": "^2.3.4"
   },
   "devDependencies": {
