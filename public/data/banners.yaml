@@ -169,7 +169,7 @@ fiveStarCharacters:
       - start: '2023-03-21'
         end: '2023-04-12'
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
   - name: Yoimiya
     versions:
       - 2.0.2
@@ -186,7 +186,7 @@ fiveStarCharacters:
         end: '2022-11-18'
       - start: '2023-05-24'
         end: '2023-06-13'
-      - start: ''
+      - start: '2024-01-09'
         end: ''
   - name: Raiden Shogun
     versions:
@@ -201,7 +201,7 @@ fiveStarCharacters:
         end: '2022-03-30'
       - start: '2022-12-27'
         end: '2023-01-18'
-      - start: ''
+      - start: '2024-01-09'
         end: ''
   - name: Sangonomiya Kokomi
     versions:
@@ -373,7 +373,7 @@ fiveStarCharacters:
       - 4.3.1
     dates:
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -518,7 +518,7 @@ fourStarCharacters:
       - start: '2023-03-21'
         end: '2023-04-12'
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
   - name: Xingqiu
     versions:
       - 1.0.2
@@ -713,6 +713,7 @@ fourStarCharacters:
       - 3.2.1
       - 3.5.1
       - 4.0.1
+      - 4.3.2
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -732,6 +733,8 @@ fourStarCharacters:
         end: '2023-03-21'
       - start: '2023-08-16'
         end: '2023-09-05'
+      - start: '2024-01-09'
+        end: ''
   - name: Rosaria
     versions:
       - 1.4.2
@@ -758,7 +761,7 @@ fourStarCharacters:
       - start: '2023-07-25'
         end: '2023-08-16'
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
   - name: Yanfei
     versions:
       - 1.5.1
@@ -809,6 +812,7 @@ fourStarCharacters:
       - 2.1.1
       - 2.5.2
       - 3.3.2
+      - 4.3.2
     dates:
       - start: '2021-09-01'
         end: '2021-09-21'
@@ -816,6 +820,8 @@ fourStarCharacters:
         end: '2022-03-30'
       - start: '2022-12-27'
         end: '2023-01-18'
+      - start: '2024-01-09'
+        end: ''
   - name: Thoma
     versions:
       - 2.2.2
@@ -929,7 +935,7 @@ fourStarCharacters:
       - start: '2023-05-02'
         end: '2023-05-24'
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
   - name: Layla
     versions:
       - 3.2.2
@@ -1003,7 +1009,7 @@ fourStarCharacters:
     versions:
       - 4.3.2
     dates:
-      - start: ''
+      - start: '2024-01-09'
         end: ''
 fiveStarWeapons:
   - name: Amos' Bow
@@ -1257,7 +1263,7 @@ fiveStarWeapons:
       - start: '2023-03-21'
         end: '2023-04-12'
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
   - name: Skyward Spine
     versions:
       - 2.0.1
@@ -1270,6 +1276,7 @@ fiveStarWeapons:
       - 2.8.2
       - 3.2.1
       - 3.7.1
+      - 4.3.2
     dates:
       - start: '2021-08-10'
         end: '2021-09-01'
@@ -1279,11 +1286,14 @@ fiveStarWeapons:
         end: '2022-11-18'
       - start: '2023-05-24'
         end: '2023-06-13'
+      - start: '2024-01-09'
+        end: ''
   - name: Engulfing Lightning
     versions:
       - 2.1.1
       - 2.5.2
       - 3.3.2
+      - 4.3.2
     dates:
       - start: '2021-09-01'
         end: '2021-09-21'
@@ -1291,6 +1301,8 @@ fiveStarWeapons:
         end: '2022-03-30'
       - start: '2022-12-27'
         end: '2023-01-18'
+      - start: '2024-01-09'
+        end: ''
   - name: Everlasting Moonglow
     versions:
       - 2.1.2
@@ -1473,7 +1485,7 @@ fiveStarWeapons:
       - 4.3.1
     dates:
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -1627,7 +1639,7 @@ fourStarWeapons:
       - start: '2023-09-05'
         end: '2023-09-27'
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
   - name: The Stringless
     versions:
       - 1.0.1
@@ -1777,7 +1789,7 @@ fourStarWeapons:
       - start: '2023-11-08'
         end: '2023-11-28'
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -1939,6 +1951,7 @@ fourStarWeapons:
       - 3.5.1
       - 3.8.1
       - 4.1.2
+      - 4.3.2
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -1964,6 +1977,8 @@ fourStarWeapons:
         end: '2023-07-25'
       - start: '2023-10-17'
         end: '2023-11-08'
+      - start: '2024-01-09'
+        end: ''
   - name: Rainslasher
     versions:
       - 1.1.1
@@ -1976,6 +1991,7 @@ fourStarWeapons:
       - 3.4.1
       - 3.8.1
       - 4.1.2
+      - 4.3.2
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -1997,6 +2013,8 @@ fourStarWeapons:
         end: '2023-07-25'
       - start: '2023-10-17'
         end: '2023-11-08'
+      - start: '2024-01-09'
+        end: ''
   - name: Rust
     versions:
       - 1.1.1
@@ -2009,6 +2027,7 @@ fourStarWeapons:
       - 3.4.2
       - 3.7.1
       - 4.0.2
+      - 4.3.2
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -2030,6 +2049,8 @@ fourStarWeapons:
         end: '2023-06-13'
       - start: '2023-09-05'
         end: '2023-09-27'
+      - start: '2024-01-09'
+        end: ''
   - name: Favonius Codex
     versions:
       - 1.1.2
@@ -2068,7 +2089,7 @@ fourStarWeapons:
       - start: '2023-09-27'
         end: '2023-10-17'
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
   - name: Favonius Warbow
     versions:
       - 1.1.2
@@ -2193,6 +2214,7 @@ fourStarWeapons:
       - 3.4.2
       - 3.7.2
       - 4.1.2
+      - 4.3.2
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -2216,6 +2238,8 @@ fourStarWeapons:
         end: '2023-07-05'
       - start: '2023-10-17'
         end: '2023-11-08'
+      - start: '2024-01-09'
+        end: ''
   - name: Lithic Blade
     versions:
       - 1.3.2
@@ -2347,7 +2371,7 @@ fourStarWeapons:
       - start: '2023-05-24'
         end: '2023-06-13'
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
   - name: Mouun's Moon
     versions:
       - 2.2.2
@@ -2365,13 +2389,14 @@ fourStarWeapons:
       - start: '2023-06-13'
         end: '2023-07-05'
       - start: '2023-12-20'
-        end: ''
+        end: '2024-01-09'
   - name: Wavebreaker's Fin
     versions:
       - 2.2.2
       - 2.5.1
       - 3.3.1
       - 3.7.2
+      - 4.3.2
     dates:
       - start: '2021-11-02'
         end: '2021-11-24'
@@ -2381,6 +2406,8 @@ fourStarWeapons:
         end: '2022-12-27'
       - start: '2023-06-13'
         end: '2023-07-05'
+      - start: '2024-01-09'
+        end: ''
   - name: Makhaira Aquamarine
     versions:
       - 3.1.1
