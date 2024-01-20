@@ -101,6 +101,7 @@ fiveStarCharacters:
       - 2.4.1
       - 2.7.1
       - 3.4.1
+      - 4.4.2
     dates:
       - start: '2021-02-03'
         end: '2021-02-17'
@@ -110,6 +111,8 @@ fiveStarCharacters:
         end: '2022-06-21'
       - start: '2023-01-18'
         end: '2023-02-07'
+      - start: ''
+        end: ''
   - name: Keqing
     versions:
       - 1.3.2
@@ -187,7 +190,7 @@ fiveStarCharacters:
       - start: '2023-05-24'
         end: '2023-06-13'
       - start: '2024-01-09'
-        end: ''
+        end: '2024-01-31'
   - name: Raiden Shogun
     versions:
       - 2.1.1
@@ -202,7 +205,7 @@ fiveStarCharacters:
       - start: '2022-12-27'
         end: '2023-01-18'
       - start: '2024-01-09'
-        end: ''
+        end: '2024-01-31'
   - name: Sangonomiya Kokomi
     versions:
       - 2.1.2
@@ -244,6 +247,7 @@ fiveStarCharacters:
       - 2.5.1
       - 3.2.2
       - 3.7.1
+      - 4.4.2
     dates:
       - start: '2022-02-16'
         end: '2022-03-08'
@@ -251,6 +255,8 @@ fiveStarCharacters:
         end: '2022-12-07'
       - start: '2023-05-24'
         end: '2023-06-13'
+      - start: ''
+        end: ''
   - name: Kamisato Ayato
     versions:
       - 2.6.1
@@ -306,11 +312,14 @@ fiveStarCharacters:
     versions:
       - 3.2.1
       - 3.6.1
+      - 4.4.1
     dates:
       - start: '2022-11-02'
         end: '2022-11-18'
       - start: '2023-04-12'
         end: '2023-05-02'
+      - start: '2024-01-31'
+        end: ''
   - name: Wanderer
     versions:
       - 3.3.1
@@ -374,6 +383,12 @@ fiveStarCharacters:
     dates:
       - start: '2023-12-20'
         end: '2024-01-09'
+  - name: Xianyun
+    versions:
+      - 4.4.1
+    dates:
+      - start: '2024-01-31'
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -734,7 +749,7 @@ fourStarCharacters:
       - start: '2023-08-16'
         end: '2023-09-05'
       - start: '2024-01-09'
-        end: ''
+        end: '2024-01-31'
   - name: Rosaria
     versions:
       - 1.4.2
@@ -821,7 +836,7 @@ fourStarCharacters:
       - start: '2022-12-27'
         end: '2023-01-18'
       - start: '2024-01-09'
-        end: ''
+        end: '2024-01-31'
   - name: Thoma
     versions:
       - 2.2.2
@@ -1010,6 +1025,12 @@ fourStarCharacters:
       - 4.3.2
     dates:
       - start: '2024-01-09'
+        end: '2024-01-31'
+  - name: Gaming
+    versions:
+      - 4.4.1
+    dates:
+      - start: '2024-01-31'
         end: ''
 fiveStarWeapons:
   - name: Amos' Bow
