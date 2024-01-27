@@ -11,9 +11,12 @@ fiveStarCharacters:
   - name: Jing Yuan
     versions:
       - 1.0.2
+      - 2.0.2
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
+      - start: ''
+        end: ''
   - name: Silver Wolf
     versions:
       - 1.1.1
@@ -46,13 +49,16 @@ fiveStarCharacters:
       - start: '2023-08-09'
         end: '2023-08-30'
       - start: '2024-01-17'
-        end: ''
+        end: '2024-02-07'
   - name: "Dan Heng \u2022 Imbibitor Lunae"
     versions:
       - 1.3.1
+      - 2.0.1
     dates:
       - start: '2023-08-30'
         end: '2023-09-20'
+      - start: '2024-02-07'
+        end: ''
   - name: Fu Xuan
     versions:
       - 1.3.2
@@ -94,6 +100,12 @@ fiveStarCharacters:
       - 1.6.2
     dates:
       - start: '2024-01-17'
+        end: '2024-02-07'
+  - name: Sparkle
+    versions:
+      - 2.0.2
+    dates:
+      - start: ''
         end: ''
 fourStarCharacters:
   - name: Hook
@@ -107,7 +119,7 @@ fourStarCharacters:
       - start: '2023-09-20'
         end: '2023-10-11'
       - start: '2024-01-17'
-        end: ''
+        end: '2024-02-07'
   - name: Natasha
     versions:
       - 1.0.1
@@ -119,7 +131,7 @@ fourStarCharacters:
       - start: '2023-07-19'
         end: '2023-08-09'
       - start: '2024-01-17'
-        end: ''
+        end: '2024-02-07'
   - name: Pela
     versions:
       - 1.0.1
@@ -158,12 +170,13 @@ fourStarCharacters:
       - start: '2023-10-27'
         end: '2023-11-15'
       - start: '2024-01-17'
-        end: ''
+        end: '2024-02-07'
   - name: Tingyun
     versions:
       - 1.0.2
       - 1.4.1
       - 1.6.1
+      - 2.0.1
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -171,6 +184,8 @@ fourStarCharacters:
         end: '2023-10-27'
       - start: '2023-12-27'
         end: '2024-01-17'
+      - start: '2024-02-07'
+        end: ''
   - name: Asta
     versions:
       - 1.1.1
@@ -208,11 +223,14 @@ fourStarCharacters:
     versions:
       - 1.1.2
       - 1.4.1
+      - 2.0.2
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
       - start: '2023-10-11'
         end: '2023-10-27'
+      - start: ''
+        end: ''
   - name: Yukong
     versions:
       - 1.1.2
@@ -244,11 +262,14 @@ fourStarCharacters:
     versions:
       - 1.2.2
       - 1.4.1
+      - 2.0.2
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
       - start: '2023-10-11'
         end: '2023-10-27'
+      - start: ''
+        end: ''
   - name: Lynx
     versions:
       - 1.3.2
@@ -261,21 +282,33 @@ fourStarCharacters:
   - name: Guinaifen
     versions:
       - 1.4.2
+      - 2.0.1
     dates:
       - start: '2023-10-27'
         end: '2023-11-15'
+      - start: '2024-02-07'
+        end: ''
   - name: Hanya
     versions:
       - 1.5.2
+      - 2.0.2
     dates:
       - start: '2023-12-06'
         end: '2023-12-27'
+      - start: ''
+        end: ''
   - name: Xueyi
     versions:
       - 1.6.1
     dates:
       - start: '2023-12-27'
         end: '2024-01-17'
+  - name: Misha
+    versions:
+      - 2.0.1
+    dates:
+      - start: '2024-02-07'
+        end: ''
 fiveStarWeapons:
   - name: In the Night
     versions:
@@ -289,9 +322,12 @@ fiveStarWeapons:
   - name: Before Dawn
     versions:
       - 1.0.2
+      - 2.0.2
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
+      - start: ''
+        end: ''
   - name: Incessant Rain
     versions:
       - 1.1.1
@@ -324,13 +360,16 @@ fiveStarWeapons:
       - start: '2023-08-09'
         end: '2023-08-30'
       - start: '2024-01-17'
-        end: ''
+        end: '2024-02-07'
   - name: Brighter Than the Sun
     versions:
       - 1.3.1
+      - 2.0.1
     dates:
       - start: '2023-08-30'
         end: '2023-09-20'
+      - start: '2024-02-07'
+        end: ''
   - name: She Already Shut Her Eyes
     versions:
       - 1.3.2
@@ -372,6 +411,18 @@ fiveStarWeapons:
       - 1.6.2
     dates:
       - start: '2024-01-17'
+        end: '2024-02-07'
+  - name: Reforged Remembrance
+    versions:
+      - 2.0.1
+    dates:
+      - start: '2024-02-07'
+        end: ''
+  - name: Earthly Escapade
+    versions:
+      - 2.0.2
+    dates:
+      - start: ''
         end: ''
 fourStarWeapons:
   - name: Good Night and Sleep Well
@@ -421,12 +472,13 @@ fourStarWeapons:
       - start: '2023-10-27'
         end: '2023-11-15'
       - start: '2024-01-17'
-        end: ''
+        end: '2024-02-07'
   - name: Planetary Rendezvous
     versions:
       - 1.0.2
       - 1.3.1
       - 1.6.1
+      - 2.0.2
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -434,6 +486,8 @@ fourStarWeapons:
         end: '2023-09-20'
       - start: '2023-12-27'
         end: '2024-01-17'
+      - start: ''
+        end: ''
   - name: Make the World Clamor
     versions:
       - 1.1.1
@@ -465,17 +519,23 @@ fourStarWeapons:
     versions:
       - 1.1.2
       - 1.3.1
+      - 2.0.1
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
       - start: '2023-08-30'
         end: '2023-09-20'
+      - start: '2024-02-07'
+        end: ''
   - name: Geniuses' Repose
     versions:
       - 1.1.2
+      - 2.0.2
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
+      - start: ''
+        end: ''
   - name: A Secret Vow
     versions:
       - 1.2.1
@@ -513,11 +573,14 @@ fourStarWeapons:
     versions:
       - 1.2.2
       - 1.4.2
+      - 2.0.1
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
       - start: '2023-10-27'
         end: '2023-11-15'
+      - start: '2024-02-07'
+        end: ''
   - name: The Birth of the Self
     versions:
       - 1.2.2
@@ -535,7 +598,7 @@ fourStarWeapons:
       - start: '2023-08-30'
         end: '2023-09-20'
       - start: '2024-01-17'
-        end: ''
+        end: '2024-02-07'
   - name: Perfect Timing
     versions:
       - 1.3.2
@@ -544,7 +607,7 @@ fourStarWeapons:
       - start: '2023-09-20'
         end: '2023-10-11'
       - start: '2024-01-17'
-        end: ''
+        end: '2024-02-07'
   - name: Trend of the Universal Market
     versions:
       - 1.3.2
@@ -558,8 +621,17 @@ fourStarWeapons:
     versions:
       - 1.3.2
       - 1.5.2
+      - 2.0.2
     dates:
       - start: '2023-09-20'
         end: '2023-10-11'
       - start: '2023-12-06'
         end: '2023-12-27'
+      - start: ''
+        end: ''
+  - name: Indelible Promise
+    versions:
+      - 2.0.1
+    dates:
+      - start: '2024-02-07'
+        end: ''
