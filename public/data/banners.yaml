@@ -159,7 +159,7 @@ fiveStarCharacters:
         end: '2022-08-02'
       - start: '2023-06-13'
         end: '2023-07-05'
-      - start: ''
+      - start: '2024-04-02'
         end: ''
   - name: Kamisato Ayaka
     versions:
@@ -238,7 +238,7 @@ fiveStarCharacters:
       - start: '2022-12-07'
         end: '2022-12-27'
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
   - name: Shenhe
     versions:
       - 2.4.1
@@ -372,7 +372,7 @@ fiveStarCharacters:
     dates:
       - start: '2023-09-27'
         end: '2023-10-17'
-      - start: ''
+      - start: '2024-04-02'
         end: ''
   - name: Wriothesley
     versions:
@@ -403,7 +403,7 @@ fiveStarCharacters:
       - 4.5.1
     dates:
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -416,6 +416,7 @@ fourStarCharacters:
       - 3.1.2
       - 3.5.1
       - 4.0.1
+      - 4.5.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -435,6 +436,8 @@ fourStarCharacters:
         end: '2023-03-21'
       - start: '2023-08-16'
         end: '2023-09-05'
+      - start: '2024-04-02'
+        end: ''
   - name: Fischl
     versions:
       - 1.0.1
@@ -563,6 +566,7 @@ fourStarCharacters:
       - 3.0.2
       - 3.4.2
       - 4.1.1
+      - 4.5.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -582,6 +586,8 @@ fourStarCharacters:
         end: '2023-03-01'
       - start: '2023-09-27'
         end: '2023-10-17'
+      - start: '2024-04-02'
+        end: ''
   - name: Beidou
     versions:
       - 1.1.1
@@ -810,6 +816,7 @@ fourStarCharacters:
       - 2.7.1
       - 3.3.1
       - 3.8.2
+      - 4.5.2
     dates:
       - start: '2021-04-28'
         end: '2021-05-18'
@@ -825,6 +832,8 @@ fourStarCharacters:
         end: '2022-12-27'
       - start: '2023-07-25'
         end: '2023-08-16'
+      - start: '2024-04-02'
+        end: ''
   - name: Sayu
     versions:
       - 2.0.2
@@ -896,7 +905,7 @@ fourStarCharacters:
       - start: '2022-12-07'
         end: '2022-12-27'
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
   - name: Yun Jin
     versions:
       - 2.4.1
@@ -917,7 +926,7 @@ fourStarCharacters:
       - start: '2023-05-24'
         end: '2023-06-13'
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
   - name: Kuki Shinobu
     versions:
       - 2.7.2
@@ -971,7 +980,7 @@ fourStarCharacters:
       - start: '2023-10-17'
         end: '2023-11-08'
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
   - name: Candace
     versions:
       - 3.1.1
@@ -1303,6 +1312,7 @@ fiveStarWeapons:
       - 2.3.1
       - 2.8.1
       - 3.7.2
+      - 4.5.2
     dates:
       - start: '2021-06-29'
         end: '2021-07-21'
@@ -1312,6 +1322,8 @@ fiveStarWeapons:
         end: '2022-08-02'
       - start: '2023-06-13'
         end: '2023-07-05'
+      - start: '2024-04-02'
+        end: ''
   - name: Mistsplitter Reforged
     versions:
       - 2.0.1
@@ -1407,7 +1419,7 @@ fiveStarWeapons:
       - start: '2022-12-07'
         end: '2022-12-27'
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
   - name: Calamity Queller
     versions:
       - 2.4.1
@@ -1537,9 +1549,12 @@ fiveStarWeapons:
   - name: Tome of the Eternal Flow
     versions:
       - 4.1.1
+      - 4.5.2
     dates:
       - start: '2023-09-27'
         end: '2023-10-17'
+      - start: '2024-04-02'
+        end: ''
   - name: Cashflow Supervision
     versions:
       - 4.1.2
@@ -1569,7 +1584,7 @@ fiveStarWeapons:
       - 4.5.1
     dates:
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -1597,6 +1612,7 @@ fourStarWeapons:
       - 4.1.1
       - 4.2.2
       - 4.4.2
+      - 4.5.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -1646,6 +1662,8 @@ fourStarWeapons:
         end: '2023-12-20'
       - start: '2024-02-20'
         end: '2024-03-13'
+      - start: '2024-04-02'
+        end: ''
   - name: The Bell
     versions:
       - 1.0.1
@@ -1687,7 +1705,7 @@ fourStarWeapons:
       - start: '2023-11-08'
         end: '2023-11-28'
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
   - name: The Flute
     versions:
       - 1.0.1
@@ -1703,6 +1721,7 @@ fourStarWeapons:
       - 3.7.1
       - 4.0.2
       - 4.3.1
+      - 4.5.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -1730,6 +1749,8 @@ fourStarWeapons:
         end: '2023-09-27'
       - start: '2023-12-20'
         end: '2024-01-09'
+      - start: '2024-04-02'
+        end: ''
   - name: The Stringless
     versions:
       - 1.0.1
@@ -1888,7 +1909,7 @@ fourStarWeapons:
       - start: '2023-12-20'
         end: '2024-01-09'
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2203,7 +2224,7 @@ fourStarWeapons:
       - start: '2023-12-20'
         end: '2024-01-09'
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
   - name: Favonius Warbow
     versions:
       - 1.1.2
@@ -2295,6 +2316,7 @@ fourStarWeapons:
       - 3.6.1
       - 4.0.1
       - 4.2.2
+      - 4.5.2
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -2318,6 +2340,8 @@ fourStarWeapons:
         end: '2023-09-05'
       - start: '2023-11-28'
         end: '2023-12-20'
+      - start: '2024-04-02'
+        end: ''
   - name: Favonius Sword
     versions:
       - 1.2.1
@@ -2422,7 +2446,7 @@ fourStarWeapons:
       - start: '2023-07-05'
         end: '2023-07-25'
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
   - name: Wine and Song
     versions:
       - 1.4.1
@@ -2431,6 +2455,7 @@ fourStarWeapons:
       - 2.8.2
       - 3.5.2
       - 3.8.2
+      - 4.5.2
     dates:
       - start: '2021-03-17'
         end: '2021-04-06'
@@ -2444,6 +2469,8 @@ fourStarWeapons:
         end: '2023-04-12'
       - start: '2023-07-25'
         end: '2023-08-16'
+      - start: '2024-04-02'
+        end: ''
   - name: Alley Hunter
     versions:
       - 1.4.2
@@ -2467,13 +2494,14 @@ fourStarWeapons:
       - start: '2023-07-05'
         end: '2023-07-25'
       - start: '2024-03-13'
-        end: ''
+        end: '2024-04-02'
   - name: Mitternachts Waltz
     versions:
       - 1.6.1
       - 2.3.2
       - 2.8.1
       - 4.1.1
+      - 4.5.2
     dates:
       - start: '2021-06-09'
         end: '2021-06-29'
@@ -2483,6 +2511,8 @@ fourStarWeapons:
         end: '2022-08-02'
       - start: '2023-09-27'
         end: '2023-10-17'
+      - start: '2024-04-02'
+        end: ''
   - name: Akuoumaru
     versions:
       - 2.2.1
