@@ -34,7 +34,7 @@ fiveStarCharacters:
       - start: '2023-06-28'
         end: '2023-07-19'
       - start: '2024-03-27'
-        end: '2024-04-10'
+        end: '2024-04-17'
   - name: Blade
     versions:
       - 1.2.1
@@ -75,7 +75,7 @@ fiveStarCharacters:
     dates:
       - start: '2023-10-11'
         end: '2023-10-27'
-      - start: '2024-04-10'
+      - start: '2024-04-17'
         end: ''
   - name: Topaz and Numby
     versions:
@@ -124,12 +124,12 @@ fiveStarCharacters:
       - 2.1.1
     dates:
       - start: '2024-03-27'
-        end: '2024-04-10'
+        end: '2024-04-17'
   - name: Aventurine
     versions:
       - 2.1.2
     dates:
-      - start: '2024-04-10'
+      - start: '2024-04-17'
         end: ''
 fourStarCharacters:
   - name: Hook
@@ -170,7 +170,7 @@ fourStarCharacters:
       - start: '2023-09-20'
         end: '2023-10-11'
       - start: '2024-03-27'
-        end: '2024-04-10'
+        end: '2024-04-17'
   - name: March 7th
     versions:
       - 1.0.2
@@ -236,7 +236,7 @@ fourStarCharacters:
       - start: '2023-11-15'
         end: '2023-12-06'
       - start: '2024-03-27'
-        end: '2024-04-10'
+        end: '2024-04-17'
   - name: Serval
     versions:
       - 1.1.1
@@ -250,7 +250,7 @@ fourStarCharacters:
         end: '2023-08-30'
       - start: '2023-11-15'
         end: '2023-12-06'
-      - start: '2024-04-10'
+      - start: '2024-04-17'
         end: ''
   - name: Qingque
     versions:
@@ -292,7 +292,7 @@ fourStarCharacters:
         end: '2023-08-30'
       - start: '2023-10-27'
         end: '2023-11-15'
-      - start: '2024-04-10'
+      - start: '2024-04-17'
         end: ''
   - name: Sampo
     versions:
@@ -316,7 +316,7 @@ fourStarCharacters:
         end: '2023-10-11'
       - start: '2023-12-06'
         end: '2023-12-27'
-      - start: '2024-04-10'
+      - start: '2024-04-17'
         end: ''
   - name: Guinaifen
     versions:
@@ -353,7 +353,7 @@ fourStarCharacters:
       - 2.1.1
     dates:
       - start: '2024-03-27'
-        end: '2024-04-10'
+        end: '2024-04-17'
 fiveStarWeapons:
   - name: In the Night
     versions:
@@ -390,7 +390,7 @@ fiveStarWeapons:
       - start: '2023-06-28'
         end: '2023-07-19'
       - start: '2024-03-27'
-        end: '2024-04-10'
+        end: '2024-04-17'
   - name: The Unreachable Side
     versions:
       - 1.2.1
@@ -431,7 +431,7 @@ fiveStarWeapons:
     dates:
       - start: '2023-10-11'
         end: '2023-10-27'
-      - start: '2024-04-10'
+      - start: '2024-04-17'
         end: ''
   - name: Worrisome, Blissful
     versions:
@@ -480,12 +480,12 @@ fiveStarWeapons:
       - 2.1.1
     dates:
       - start: '2024-03-27'
-        end: '2024-04-10'
+        end: '2024-04-17'
   - name: Inherently Unjust Destiny
     versions:
       - 2.1.2
     dates:
-      - start: '2024-04-10'
+      - start: '2024-04-17'
         end: ''
 fourStarWeapons:
   - name: Good Night and Sleep Well
@@ -499,7 +499,7 @@ fourStarWeapons:
       - start: '2023-06-28'
         end: '2023-07-19'
       - start: '2024-03-27'
-        end: '2024-04-10'
+        end: '2024-04-17'
   - name: Post-Op Conversation
     versions:
       - 1.0.1
@@ -511,7 +511,7 @@ fourStarWeapons:
       - start: '2023-12-06'
         end: '2023-12-27'
       - start: '2024-03-27'
-        end: '2024-04-10'
+        end: '2024-04-17'
   - name: The Moles Welcome You
     versions:
       - 1.0.1
@@ -567,7 +567,7 @@ fourStarWeapons:
         end: '2023-06-28'
       - start: '2023-10-11'
         end: '2023-10-27'
-      - start: '2024-04-10'
+      - start: '2024-04-17'
         end: ''
   - name: Memories of the Past
     versions:
@@ -589,7 +589,7 @@ fourStarWeapons:
       - start: '2023-11-15'
         end: '2023-12-06'
       - start: '2024-03-27'
-        end: '2024-04-10'
+        end: '2024-04-17'
   - name: Dance! Dance! Dance!
     versions:
       - 1.1.2
@@ -630,7 +630,7 @@ fourStarWeapons:
         end: '2023-08-09'
       - start: '2023-11-15'
         end: '2023-12-06'
-      - start: '2024-04-10'
+      - start: '2024-04-17'
         end: ''
   - name: Swordplay
     versions:
@@ -717,5 +717,5 @@ fourStarWeapons:
     versions:
       - 2.1.2
     dates:
-      - start: '2024-04-10'
+      - start: '2024-04-17'
         end: ''
