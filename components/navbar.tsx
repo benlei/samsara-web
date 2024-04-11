@@ -110,8 +110,6 @@ function SidebarPusher({
         <Menu.Item>
           <Menu.Header>
             <Image
-              width={240}
-              height={92}
               src={`/images/${getImageFromName(title.toLowerCase())}-logo.webp`}
               alt={title}
             />
