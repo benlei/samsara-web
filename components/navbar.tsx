@@ -107,7 +107,7 @@ function SidebarPusher({
             Samsara
           </Menu.Header>
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item className="active">
           <Menu.Header>
             <Image
               size="small"
