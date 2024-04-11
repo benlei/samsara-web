@@ -1,13 +1,14 @@
 import { useRouter } from "next/router";
 import React from "react";
 import {
+  Accordion,
   Container,
   Icon,
+  Image,
   Menu,
   Sidebar,
-  Image,
-  Accordion,
 } from "semantic-ui-react";
+import { getImageFromName } from "../format/image";
 
 type SidebarItemsProps = {
   stars: 5 | 4;
@@ -107,7 +108,12 @@ function SidebarPusher({
           </Menu.Header>
         </Menu.Item>
         <Menu.Item>
-          <Menu.Header>{title}</Menu.Header>
+          <Menu.Header>
+            <Image
+              src={`/images/${getImageFromName(title.toLowerCase())}-logo.webp`}
+              alt={title}
+            />
+          </Menu.Header>
         </Menu.Item>
         <Accordion>
           <Accordion.Title

@@ -1,0 +1,69 @@
+name: Reload All Data
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 10 * */6 *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/checkout@v3
+        with:
+          repository: benlei/samsara-tools
+          ssh-key: ${{ secrets.TOOLS_PRIVATE_KEY }}
+          path: samsara-tools
+          ref: v1.4
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.2.2
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: ./samsara-tools/.venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install dependencies
+        run: cd samsara-tools && poetry install --no-interaction --no-root
+
+      - name: Load up banner data
+        run: cd samsara-tools && poetry run python pull_banners.py --force --output ../public/data/banners.yaml --output-image-dir ../public/images/
+
+      - name: Load up hsr banner data
+        run: cd samsara-tools && poetry run python pull_hsr_banners.py --force --output ../public/data/hsr-banners.yaml --output-image-dir ../public/images/
+
+      - name: Get the file diff in public
+        run: |
+          echo "diff_lines=$(git diff --stat HEAD  -- public/ | wc -l | awk '{$1=$1};1')" >> $GITHUB_ENV
+
+      - name: Push new data
+        if: env.diff_lines != '0'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add public/
+          git commit -m "generated: full data reload"
+          git push
+          sleep 5
+
+    outputs:
+      diff_lines: ${{ env.diff_lines }}
+
+  deploy:
+    needs: update
+    if: needs.update.outputs.diff_lines != '0'
+    uses: ./.github/workflows/workflow.yaml
+    secrets: inherit
