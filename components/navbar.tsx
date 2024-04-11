@@ -107,10 +107,10 @@ function SidebarPusher({
             Samsara
           </Menu.Header>
         </Menu.Item>
-        <Menu.Item className="active">
+        <Menu.Item>
           <Menu.Header>
             <Image
-              size="small"
+              size="medium"
               src={`/images/${getImageFromName(title.toLowerCase())}-logo.webp`}
               alt={title}
             />
