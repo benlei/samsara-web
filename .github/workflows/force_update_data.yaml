@@ -1,4 +1,4 @@
-name: Forced Data Updater
+name: Reload All Data
 on:
   workflow_dispatch:
   schedule:
