@@ -160,7 +160,7 @@ fiveStarCharacters:
       - start: '2023-06-13'
         end: '2023-07-05'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: Kamisato Ayaka
     versions:
       - 2.0.1
@@ -330,11 +330,14 @@ fiveStarCharacters:
     versions:
       - 3.3.1
       - 3.8.2
+      - 4.6.2
     dates:
       - start: '2022-12-07'
         end: '2022-12-27'
       - start: '2023-07-25'
         end: '2023-08-16'
+      - start: ''
+        end: ''
   - name: Alhaitham
     versions:
       - 3.4.1
@@ -354,17 +357,23 @@ fiveStarCharacters:
     versions:
       - 3.6.2
       - 4.2.1
+      - 4.6.2
     dates:
       - start: '2023-05-02'
         end: '2023-05-24'
       - start: '2023-11-08'
         end: '2023-11-28'
+      - start: ''
+        end: ''
   - name: Lyney
     versions:
       - 4.0.1
+      - 4.6.1
     dates:
       - start: '2023-08-16'
         end: '2023-09-05'
+      - start: '2024-04-24'
+        end: ''
   - name: Neuvillette
     versions:
       - 4.1.1
@@ -373,7 +382,7 @@ fiveStarCharacters:
       - start: '2023-09-27'
         end: '2023-10-17'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: Wriothesley
     versions:
       - 4.1.2
@@ -404,6 +413,12 @@ fiveStarCharacters:
     dates:
       - start: '2024-03-13'
         end: '2024-04-02'
+  - name: Arlecchino
+    versions:
+      - 4.6.1
+    dates:
+      - start: '2024-04-24'
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -437,7 +452,7 @@ fourStarCharacters:
       - start: '2023-08-16'
         end: '2023-09-05'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: Fischl
     versions:
       - 1.0.1
@@ -587,7 +602,7 @@ fourStarCharacters:
       - start: '2023-09-27'
         end: '2023-10-17'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: Beidou
     versions:
       - 1.1.1
@@ -833,7 +848,7 @@ fourStarCharacters:
       - start: '2023-07-25'
         end: '2023-08-16'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: Sayu
     versions:
       - 2.0.2
