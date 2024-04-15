@@ -31,7 +31,7 @@
     "cookies-next": "^4.1.0",
     "dayjs": "^1.11.10",
     "eslint": "^8.55.0",
-    "eslint-config-next": "^14.1.4",
+    "eslint-config-next": "^14.2.1",
     "lodash": "^4.17.21",
     "next": "^13.1.0",
     "next-themes": "^0.2.1",
