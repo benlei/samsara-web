@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@next/font':
-    specifier: ^14.1.4
-    version: 14.1.4(next@13.1.0)
+    specifier: ^14.2.1
+    version: 14.2.1(next@13.1.0)
   '@types/lodash':
     specifier: ^4.14.202
     version: 4.14.202
@@ -847,8 +847,8 @@ packages:
       glob: 10.3.10
     dev: false
 
-  /@next/font@14.1.4(next@13.1.0):
-    resolution: {integrity: sha512-a7CnpjEA3zXsKpCB7JX92mNiDYvjDImLfRjK+szi/q64vwbNrrs54up2xgFE1T4K1OE8GaI/eQ3zrZFWIbOJ1Q==}
+  /@next/font@14.2.1(next@13.1.0):
+    resolution: {integrity: sha512-Ycpo+xb8cGUHhoXaz1+ODE2b278ZoeB5BbPzoHRPpQcm7zwBc/vdBanEQIbCzWIbCmnSWc60g17moJWeWAtfNw==}
     peerDependencies:
       next: '*'
     dependencies:
