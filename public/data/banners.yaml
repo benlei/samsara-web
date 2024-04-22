@@ -491,6 +491,7 @@ fourStarCharacters:
       - 3.1.2
       - 3.7.2
       - 4.2.2
+      - 4.6.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -510,6 +511,8 @@ fourStarCharacters:
         end: '2023-07-05'
       - start: '2023-11-28'
         end: '2023-12-20'
+      - start: '2024-04-24'
+        end: ''
   - name: Noelle
     versions:
       - 1.0.2
@@ -1068,15 +1071,21 @@ fourStarCharacters:
   - name: Lynette
     versions:
       - 4.0.1
+      - 4.6.1
     dates:
       - start: '2023-08-16'
         end: '2023-09-05'
+      - start: '2024-04-24'
+        end: ''
   - name: Freminet
     versions:
       - 4.0.2
+      - 4.6.1
     dates:
       - start: '2023-09-05'
         end: '2023-09-27'
+      - start: '2024-04-24'
+        end: ''
   - name: Charlotte
     versions:
       - 4.2.1
@@ -1338,7 +1347,7 @@ fiveStarWeapons:
       - start: '2023-06-13'
         end: '2023-07-05'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: Mistsplitter Reforged
     versions:
       - 2.0.1
@@ -1558,9 +1567,12 @@ fiveStarWeapons:
   - name: The First Great Magic
     versions:
       - 4.0.1
+      - 4.6.1
     dates:
       - start: '2023-08-16'
         end: '2023-09-05'
+      - start: '2024-04-24'
+        end: ''
   - name: Tome of the Eternal Flow
     versions:
       - 4.1.1
@@ -1569,7 +1581,7 @@ fiveStarWeapons:
       - start: '2023-09-27'
         end: '2023-10-17'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: Cashflow Supervision
     versions:
       - 4.1.2
@@ -1600,6 +1612,12 @@ fiveStarWeapons:
     dates:
       - start: '2024-03-13'
         end: '2024-04-02'
+  - name: Crimson Moon's Semblance
+    versions:
+      - 4.6.1
+    dates:
+      - start: '2024-04-24'
+        end: ''
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -1678,7 +1696,7 @@ fourStarWeapons:
       - start: '2024-02-20'
         end: '2024-03-13'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: The Bell
     versions:
       - 1.0.1
@@ -1765,7 +1783,7 @@ fourStarWeapons:
       - start: '2023-12-20'
         end: '2024-01-09'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: The Stringless
     versions:
       - 1.0.1
@@ -1874,6 +1892,7 @@ fourStarWeapons:
       - 4.2.1
       - 4.3.1
       - 4.5.1
+      - 4.6.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -1925,6 +1944,8 @@ fourStarWeapons:
         end: '2024-01-09'
       - start: '2024-03-13'
         end: '2024-04-02'
+      - start: '2024-04-24'
+        end: ''
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2099,6 +2120,7 @@ fourStarWeapons:
       - 3.8.1
       - 4.1.2
       - 4.3.2
+      - 4.6.1
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -2126,6 +2148,8 @@ fourStarWeapons:
         end: '2023-11-08'
       - start: '2024-01-09'
         end: '2024-01-31'
+      - start: '2024-04-24'
+        end: ''
   - name: Rainslasher
     versions:
       - 1.1.1
@@ -2253,6 +2277,7 @@ fourStarWeapons:
       - 3.5.2
       - 3.8.2
       - 4.2.2
+      - 4.6.1
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -2276,6 +2301,8 @@ fourStarWeapons:
         end: '2023-08-16'
       - start: '2023-11-28'
         end: '2023-12-20'
+      - start: '2024-04-24'
+        end: ''
   - name: Lion's Roar
     versions:
       - 1.1.2
@@ -2356,7 +2383,7 @@ fourStarWeapons:
       - start: '2023-11-28'
         end: '2023-12-20'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: Favonius Sword
     versions:
       - 1.2.1
@@ -2485,7 +2512,7 @@ fourStarWeapons:
       - start: '2023-07-25'
         end: '2023-08-16'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: Alley Hunter
     versions:
       - 1.4.2
@@ -2527,7 +2554,7 @@ fourStarWeapons:
       - start: '2023-09-27'
         end: '2023-10-17'
       - start: '2024-04-02'
-        end: ''
+        end: '2024-04-24'
   - name: Akuoumaru
     versions:
       - 2.2.1
@@ -2612,15 +2639,21 @@ fourStarWeapons:
   - name: Portable Power Saw
     versions:
       - 4.1.1
+      - 4.6.1
     dates:
       - start: '2023-09-27'
         end: '2023-10-17'
+      - start: '2024-04-24'
+        end: ''
   - name: The Dockhand's Assistant
     versions:
       - 4.1.1
+      - 4.6.1
     dates:
       - start: '2023-09-27'
         end: '2023-10-17'
+      - start: '2024-04-24'
+        end: ''
   - name: Prospector's Drill
     versions:
       - 4.1.2
