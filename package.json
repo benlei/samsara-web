@@ -3,13 +3,13 @@
   "version": "2.3.0",
   "private": true,
   "engines": {
-    "node": ">=17",
-    "pnpm": ">=8",
+    "node": ">=20",
+    "pnpm": ">=9",
     "npm": "use pnpm instead",
     "yarn": "use pnpm instead"
   },
   "scripts": {
-    "build:cloudflare": "npm install -g pnpm@8.15.7 && pnpm install -P && next build && next export",
+    "build:cloudflare": "npm install -g pnpm@9 && pnpm install -P && next build && next export",
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
