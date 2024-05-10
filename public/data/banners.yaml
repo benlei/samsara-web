@@ -1544,11 +1544,14 @@ fiveStarWeapons:
     versions:
       - 3.3.1
       - 3.8.2
+      - 4.6.2
     dates:
       - start: '2022-12-07'
         end: '2022-12-27'
       - start: '2023-07-25'
         end: '2023-08-16'
+      - start: '2024-05-14'
+        end: ''
   - name: Light of Foliar Incision
     versions:
       - 3.4.1
@@ -1568,11 +1571,14 @@ fiveStarWeapons:
     versions:
       - 3.6.2
       - 4.2.1
+      - 4.6.2
     dates:
       - start: '2023-05-02'
         end: '2023-05-24'
       - start: '2023-11-08'
         end: '2023-11-28'
+      - start: '2024-05-14'
+        end: ''
   - name: The First Great Magic
     versions:
       - 4.0.1
@@ -1581,7 +1587,7 @@ fiveStarWeapons:
       - start: '2023-08-16'
         end: '2023-09-05'
       - start: '2024-04-24'
-        end: ''
+        end: '2024-05-14'
   - name: Tome of the Eternal Flow
     versions:
       - 4.1.1
@@ -1626,7 +1632,7 @@ fiveStarWeapons:
       - 4.6.1
     dates:
       - start: '2024-04-24'
-        end: ''
+        end: '2024-05-14'
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -1954,7 +1960,7 @@ fourStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2024-04-24'
-        end: ''
+        end: '2024-05-14'
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2006,6 +2012,7 @@ fourStarWeapons:
       - 4.0.1
       - 4.2.1
       - 4.4.1
+      - 4.6.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2033,6 +2040,8 @@ fourStarWeapons:
         end: '2023-11-28'
       - start: '2024-01-31'
         end: '2024-02-20'
+      - start: '2024-05-14'
+        end: ''
   - name: Sacrificial Greatsword
     versions:
       - 1.0.2
@@ -2158,7 +2167,7 @@ fourStarWeapons:
       - start: '2024-01-09'
         end: '2024-01-31'
       - start: '2024-04-24'
-        end: ''
+        end: '2024-05-14'
   - name: Rainslasher
     versions:
       - 1.1.1
@@ -2172,6 +2181,7 @@ fourStarWeapons:
       - 3.8.1
       - 4.1.2
       - 4.3.2
+      - 4.6.2
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -2195,6 +2205,8 @@ fourStarWeapons:
         end: '2023-11-08'
       - start: '2024-01-09'
         end: '2024-01-31'
+      - start: '2024-05-14'
+        end: ''
   - name: Rust
     versions:
       - 1.1.1
@@ -2311,7 +2323,7 @@ fourStarWeapons:
       - start: '2023-11-28'
         end: '2023-12-20'
       - start: '2024-04-24'
-        end: ''
+        end: '2024-05-14'
   - name: Lion's Roar
     versions:
       - 1.1.2
@@ -2407,6 +2419,7 @@ fourStarWeapons:
       - 3.7.2
       - 4.1.2
       - 4.3.2
+      - 4.6.2
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -2432,6 +2445,8 @@ fourStarWeapons:
         end: '2023-11-08'
       - start: '2024-01-09'
         end: '2024-01-31'
+      - start: '2024-05-14'
+        end: ''
   - name: Lithic Blade
     versions:
       - 1.3.2
@@ -2653,7 +2668,7 @@ fourStarWeapons:
       - start: '2023-09-27'
         end: '2023-10-17'
       - start: '2024-04-24'
-        end: ''
+        end: '2024-05-14'
   - name: The Dockhand's Assistant
     versions:
       - 4.1.1
@@ -2662,16 +2677,22 @@ fourStarWeapons:
       - start: '2023-09-27'
         end: '2023-10-17'
       - start: '2024-04-24'
-        end: ''
+        end: '2024-05-14'
   - name: Prospector's Drill
     versions:
       - 4.1.2
+      - 4.6.2
     dates:
       - start: '2023-10-17'
         end: '2023-11-08'
+      - start: '2024-05-14'
+        end: ''
   - name: Range Gauge
     versions:
       - 4.1.2
+      - 4.6.2
     dates:
       - start: '2023-10-17'
         end: '2023-11-08'
+      - start: '2024-05-14'
+        end: ''
