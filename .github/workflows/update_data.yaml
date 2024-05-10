@@ -15,7 +15,7 @@ jobs:
           repository: benlei/samsara-tools
           ssh-key: ${{ secrets.TOOLS_PRIVATE_KEY }}
           path: samsara-tools
-          ref: v1.4
+          ref: v1.5
 
       - uses: actions/setup-python@v4
         with:
