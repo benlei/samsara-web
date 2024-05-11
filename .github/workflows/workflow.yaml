@@ -13,6 +13,8 @@ on:
       - 'main'
     paths-ignore:
       - '**.md' # ignore docs, they don't contribute to the build process
+      - '.github/workflows/force_update_data.yaml' # ignore the force update workflow
+      - '.github/workflows/update_data.yaml' # ignore the update workflow
 
 jobs:
   build:
