@@ -23,6 +23,7 @@ fiveStarCharacters:
       - 1.6.1
       - 2.8.1
       - 3.8.1
+      - 4.5.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -32,6 +33,8 @@ fiveStarCharacters:
         end: '2022-08-02'
       - start: '2023-07-05'
         end: '2023-07-25'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Tartaglia
     versions:
       - 1.1.1
@@ -73,6 +76,7 @@ fiveStarCharacters:
       - 1.2.1
       - 2.3.1
       - 3.1.2
+      - 4.5.1
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -80,6 +84,8 @@ fiveStarCharacters:
         end: '2021-12-14'
       - start: '2022-10-14'
         end: '2022-11-02'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Ganyu
     versions:
       - 1.2.2
@@ -139,6 +145,7 @@ fiveStarCharacters:
       - 1.5.2
       - 2.3.1
       - 3.8.1
+      - 4.5.1
     dates:
       - start: '2021-05-18'
         end: '2021-06-09'
@@ -146,6 +153,8 @@ fiveStarCharacters:
         end: '2021-12-14'
       - start: '2023-07-05'
         end: '2023-07-25'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Kaedehara Kazuha
     versions:
       - 1.6.2
@@ -408,6 +417,24 @@ fiveStarCharacters:
       - start: '2024-01-31'
         end: '2024-02-20'
   - name: Chiori
+    versions:
+      - 4.5.1
+    dates:
+      - start: '2024-03-13'
+        end: '2024-04-02'
+  - name: Diluc
+    versions:
+      - 4.5.1
+    dates:
+      - start: '2024-03-13'
+        end: '2024-04-02'
+  - name: Jean
+    versions:
+      - 4.5.1
+    dates:
+      - start: '2024-03-13'
+        end: '2024-04-02'
+  - name: Mona
     versions:
       - 4.5.1
     dates:
@@ -1136,11 +1163,14 @@ fiveStarWeapons:
     versions:
       - 1.0.1
       - 1.5.2
+      - 4.5.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
       - start: '2021-05-18'
         end: '2021-06-09'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Lost Prayer to the Sacred Winds
     versions:
       - 1.0.2
@@ -1148,6 +1178,7 @@ fiveStarWeapons:
       - 1.6.1
       - 2.8.1
       - 3.8.1
+      - 4.5.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -1159,15 +1190,20 @@ fiveStarWeapons:
         end: '2022-08-02'
       - start: '2023-07-05'
         end: '2023-07-25'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Wolf's Gravestone
     versions:
       - 1.0.2
       - 1.3.2
+      - 4.5.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
       - start: '2021-02-23'
         end: '2021-03-17'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Memory of Dust
     versions:
       - 1.1.1
@@ -1188,6 +1224,7 @@ fiveStarWeapons:
       - 1.1.1
       - 1.4.2
       - 2.3.2
+      - 4.5.1
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -1195,6 +1232,8 @@ fiveStarWeapons:
         end: '2021-04-28'
       - start: '2021-12-14'
         end: '2022-01-05'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: The Unforged
     versions:
       - 1.1.2
@@ -1226,11 +1265,14 @@ fiveStarWeapons:
     versions:
       - 1.2.1
       - 1.6.2
+      - 4.5.1
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
       - start: '2021-06-29'
         end: '2021-07-21'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Summit Shaper
     versions:
       - 1.2.1
@@ -1247,11 +1289,14 @@ fiveStarWeapons:
     versions:
       - 1.2.2
       - 1.6.1
+      - 4.5.1
     dates:
       - start: '2021-01-12'
         end: '2021-02-03'
       - start: '2021-06-09'
         end: '2021-06-29'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Primordial Jade Cutter
     versions:
       - 1.3.1
@@ -1322,16 +1367,20 @@ fiveStarWeapons:
     versions:
       - 1.4.1
       - 2.0.2
+      - 4.5.1
     dates:
       - start: '2021-03-17'
         end: '2021-04-06'
       - start: '2021-08-10'
         end: '2021-09-01'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Song of Broken Pines
     versions:
       - 1.5.2
       - 2.3.1
       - 3.8.1
+      - 4.5.1
     dates:
       - start: '2021-05-18'
         end: '2021-06-09'
@@ -1339,6 +1388,8 @@ fiveStarWeapons:
         end: '2021-12-14'
       - start: '2023-07-05'
         end: '2023-07-25'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Freedom-Sworn
     versions:
       - 1.6.2
@@ -1375,9 +1426,12 @@ fiveStarWeapons:
   - name: Skyward Spine
     versions:
       - 2.0.1
+      - 4.5.1
     dates:
       - start: '2021-07-21'
         end: '2021-08-10'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Thundering Pulse
     versions:
       - 2.0.2
@@ -1504,9 +1558,12 @@ fiveStarWeapons:
   - name: Hunter's Path
     versions:
       - 3.0.1
+      - 4.5.1
     dates:
       - start: '2022-08-24'
         end: '2022-09-09'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Staff of the Scarlet Sands
     versions:
       - 3.1.1
@@ -1564,9 +1621,12 @@ fiveStarWeapons:
   - name: Beacon of the Reed Sea
     versions:
       - 3.5.1
+      - 4.5.1
     dates:
       - start: '2023-03-01'
         end: '2023-03-21'
+      - start: '2024-03-13'
+        end: '2024-04-02'
   - name: Jadefall's Splendor
     versions:
       - 3.6.2
