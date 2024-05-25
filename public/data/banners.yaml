@@ -346,16 +346,19 @@ fiveStarCharacters:
       - start: '2023-07-25'
         end: '2023-08-16'
       - start: '2024-05-14'
-        end: ''
+        end: '2024-06-05'
   - name: Alhaitham
     versions:
       - 3.4.1
       - 3.7.2
+      - 4.7.1
     dates:
       - start: '2023-01-18'
         end: '2023-02-07'
       - start: '2023-06-13'
         end: '2023-07-05'
+      - start: '2024-06-05'
+        end: ''
   - name: Dehya
     versions:
       - 3.5.1
@@ -373,7 +376,7 @@ fiveStarCharacters:
       - start: '2023-11-08'
         end: '2023-11-28'
       - start: '2024-05-14'
-        end: ''
+        end: '2024-06-05'
   - name: Lyney
     versions:
       - 4.0.1
@@ -401,9 +404,12 @@ fiveStarCharacters:
   - name: Furina
     versions:
       - 4.2.1
+      - 4.7.2
     dates:
       - start: '2023-11-08'
         end: '2023-11-28'
+      - start: ''
+        end: ''
   - name: Navia
     versions:
       - 4.3.1
@@ -446,6 +452,18 @@ fiveStarCharacters:
     dates:
       - start: '2024-04-24'
         end: '2024-05-14'
+  - name: Clorinde
+    versions:
+      - 4.7.1
+    dates:
+      - start: '2024-06-05'
+        end: ''
+  - name: Sigewinne
+    versions:
+      - 4.7.2
+    dates:
+      - start: ''
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -662,7 +680,7 @@ fourStarCharacters:
       - start: '2023-11-08'
         end: '2023-11-28'
       - start: '2024-05-14'
-        end: ''
+        end: '2024-06-05'
   - name: Diona
     versions:
       - 1.1.1
@@ -1052,7 +1070,7 @@ fourStarCharacters:
       - start: '2023-04-12'
         end: '2023-05-02'
       - start: '2024-05-14'
-        end: ''
+        end: '2024-06-05'
   - name: Faruzan
     versions:
       - 3.3.1
@@ -1067,7 +1085,7 @@ fourStarCharacters:
       - start: '2024-01-31'
         end: '2024-02-20'
       - start: '2024-05-14'
-        end: ''
+        end: '2024-06-05'
   - name: Yaoyao
     versions:
       - 3.4.1
@@ -1140,6 +1158,12 @@ fourStarCharacters:
     dates:
       - start: '2024-01-31'
         end: '2024-02-20'
+  - name: Sethos
+    versions:
+      - 4.7.1
+    dates:
+      - start: '2024-06-05'
+        end: ''
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
