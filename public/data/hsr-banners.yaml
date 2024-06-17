@@ -526,9 +526,12 @@ fiveStarWeapons:
   - name: An Instant Before A Gaze
     versions:
       - 1.5.2
+      - 2.3.2
     dates:
       - start: '2023-12-06'
         end: '2023-12-27'
+      - start: '2024-07-10'
+        end: ''
   - name: Past Self in Mirror
     versions:
       - 1.6.1
