@@ -358,7 +358,7 @@ fiveStarCharacters:
       - start: '2023-06-13'
         end: '2023-07-05'
       - start: '2024-06-05'
-        end: ''
+        end: '2024-06-25'
   - name: Dehya
     versions:
       - 3.5.1
@@ -408,7 +408,7 @@ fiveStarCharacters:
     dates:
       - start: '2023-11-08'
         end: '2023-11-28'
-      - start: ''
+      - start: '2024-06-25'
         end: ''
   - name: Navia
     versions:
@@ -457,12 +457,12 @@ fiveStarCharacters:
       - 4.7.1
     dates:
       - start: '2024-06-05'
-        end: ''
+        end: '2024-06-25'
   - name: Sigewinne
     versions:
       - 4.7.2
     dates:
-      - start: ''
+      - start: '2024-06-25'
         end: ''
 fourStarCharacters:
   - name: Barbara
@@ -569,6 +569,7 @@ fourStarCharacters:
       - 3.2.1
       - 4.0.2
       - 4.4.1
+      - 4.7.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -588,6 +589,8 @@ fourStarCharacters:
         end: '2023-09-27'
       - start: '2024-01-31'
         end: '2024-02-20'
+      - start: '2024-06-25'
+        end: ''
   - name: Sucrose
     versions:
       - 1.0.2
@@ -848,7 +851,7 @@ fourStarCharacters:
       - start: '2024-01-09'
         end: '2024-01-31'
       - start: '2024-06-05'
-        end: ''
+        end: '2024-06-25'
   - name: Rosaria
     versions:
       - 1.4.2
@@ -859,6 +862,7 @@ fourStarCharacters:
       - 3.3.2
       - 3.8.2
       - 4.3.1
+      - 4.7.2
     dates:
       - start: '2021-04-06'
         end: '2021-04-28'
@@ -876,6 +880,8 @@ fourStarCharacters:
         end: '2023-08-16'
       - start: '2023-12-20'
         end: '2024-01-09'
+      - start: '2024-06-25'
+        end: ''
   - name: Yanfei
     versions:
       - 1.5.1
@@ -962,7 +968,7 @@ fourStarCharacters:
       - start: '2023-10-17'
         end: '2023-11-08'
       - start: '2024-06-05'
-        end: ''
+        end: '2024-06-25'
   - name: Gorou
     versions:
       - 2.3.2
@@ -1161,15 +1167,18 @@ fourStarCharacters:
   - name: Gaming
     versions:
       - 4.4.1
+      - 4.7.2
     dates:
       - start: '2024-01-31'
         end: '2024-02-20'
+      - start: '2024-06-25'
+        end: ''
   - name: Sethos
     versions:
       - 4.7.1
     dates:
       - start: '2024-06-05'
-        end: ''
+        end: '2024-06-25'
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
