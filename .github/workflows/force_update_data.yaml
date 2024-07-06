@@ -2,7 +2,7 @@ name: Reload All Data
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 10 * */6 *'
+    - cron:  '0 16 * */6 15'
 
 jobs:
   update:
