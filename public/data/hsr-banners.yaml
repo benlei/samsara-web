@@ -234,6 +234,21 @@ fourStarCharacters:
         end: '2024-04-17'
       - start: '2024-05-29'
         end: '2024-06-19'
+  - name: March 7th (Preservation)
+    versions:
+      - 1.0.2
+      - 1.3.1
+      - 1.6.1
+      - 2.2.1
+    dates:
+      - start: '2023-05-17'
+        end: '2023-06-07'
+      - start: '2023-08-30'
+        end: '2023-09-20'
+      - start: '2023-12-27'
+        end: '2024-01-17'
+      - start: '2024-05-08'
+        end: '2024-05-29'
   - name: Sushang
     versions:
       - 1.0.2
