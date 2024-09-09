@@ -83,18 +83,6 @@ fiveStarCharacters:
         end: '2023-10-27'
       - start: '2024-04-17'
         end: '2024-05-08'
-  - name: Topaz and Numby
-    versions:
-      - 1.4.2
-      - 2.2.1
-      - 2.5.2
-    dates:
-      - start: '2023-10-27'
-        end: '2023-11-15'
-      - start: '2024-05-08'
-        end: '2024-05-29'
-      - start: '2024-10-02'
-        end: ''
   - name: Huohuo
     versions:
       - 1.5.1
