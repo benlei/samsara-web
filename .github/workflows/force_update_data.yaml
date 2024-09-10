@@ -15,7 +15,7 @@ jobs:
           repository: benlei/samsara-tools
           ssh-key: ${{ secrets.TOOLS_PRIVATE_KEY }}
           path: samsara-tools
-          ref: v1.7
+          ref: v1.8
 
       - uses: actions/setup-python@v4
         with:
@@ -40,10 +40,10 @@ jobs:
         run: cd samsara-tools && poetry install --no-interaction --no-root
 
       - name: Load up banner data
-        run: cd samsara-tools && poetry run python pull_banners.py --force --output ../public/data/banners.yaml --output-image-dir ../public/images/
+        run: cd samsara-tools && poetry run python pull_banners.py --force --output ../public/data/banners.yaml --output-image-dir ../public/images/ --min-data-size $(( $(stat -f%z ./public/data/banners.yaml) - 100 ))
 
       - name: Load up hsr banner data
-        run: cd samsara-tools && poetry run python pull_hsr_banners.py --force --output ../public/data/hsr-banners.yaml --output-image-dir ../public/images/
+        run: cd samsara-tools && poetry run python pull_hsr_banners.py --force --output ../public/data/hsr-banners.yaml --output-image-dir ../public/images/ --min-data-size $(( $(stat -f%z ./public/data/hsr-banners.yaml) - 100 ))
 
       - name: Get the file diff in public
         run: |
