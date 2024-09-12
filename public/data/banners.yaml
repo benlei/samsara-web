@@ -987,6 +987,7 @@ fourStarCharacters:
       - 2.5.2
       - 3.3.2
       - 4.3.2
+      - 5.0.2
     dates:
       - start: '2021-09-01'
         end: '2021-09-21'
@@ -996,6 +997,8 @@ fourStarCharacters:
         end: '2023-01-18'
       - start: '2024-01-09'
         end: '2024-01-31'
+      - start: ''
+        end: ''
   - name: Thoma
     versions:
       - 2.2.2
@@ -1005,6 +1008,7 @@ fourStarCharacters:
       - 3.8.1
       - 4.1.2
       - 4.7.1
+      - 5.0.2
     dates:
       - start: '2021-11-02'
         end: '2021-11-24'
@@ -1020,6 +1024,8 @@ fourStarCharacters:
         end: '2023-11-08'
       - start: '2024-06-05'
         end: '2024-06-25'
+      - start: ''
+        end: ''
   - name: Gorou
     versions:
       - 2.3.2
@@ -1218,9 +1224,12 @@ fourStarCharacters:
   - name: Chevreuse
     versions:
       - 4.3.2
+      - 5.0.2
     dates:
       - start: '2024-01-09'
         end: '2024-01-31'
+      - start: ''
+        end: ''
   - name: Gaming
     versions:
       - 4.4.1
