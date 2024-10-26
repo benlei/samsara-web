@@ -494,6 +494,12 @@ fiveStarCharacters:
     dates:
       - start: '2024-08-06'
         end: '2024-08-28'
+  - name: Mualani
+    versions:
+      - 5.0.1
+    dates:
+      - start: '2024-08-28'
+        end: '2024-09-17'
   - name: Kinich
     versions:
       - 5.0.2
