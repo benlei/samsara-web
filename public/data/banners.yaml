@@ -540,6 +540,7 @@ fourStarCharacters:
       - 3.5.1
       - 4.0.1
       - 4.5.2
+      - 5.2.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -561,6 +562,8 @@ fourStarCharacters:
         end: '2023-09-05'
       - start: '2024-04-02'
         end: '2024-04-24'
+      - start: '2024-11-20'
+        end: ''
   - name: Fischl
     versions:
       - 1.0.1
@@ -668,6 +671,7 @@ fourStarCharacters:
       - 3.0.2
       - 3.5.2
       - 4.3.1
+      - 5.2.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -687,6 +691,8 @@ fourStarCharacters:
         end: '2023-04-12'
       - start: '2023-12-20'
         end: '2024-01-09'
+      - start: '2024-11-20'
+        end: ''
   - name: Xingqiu
     versions:
       - 1.0.2
@@ -1512,7 +1518,7 @@ fiveStarWeapons:
       - start: '2023-09-27'
         end: '2023-10-17'
       - start: '2024-10-29'
-        end: ''
+        end: '2024-11-20'
   - name: Elegy for the End
     versions:
       - 1.4.1
@@ -1779,7 +1785,7 @@ fiveStarWeapons:
       - start: '2024-01-31'
         end: '2024-02-20'
       - start: '2024-10-29'
-        end: ''
+        end: '2024-11-20'
   - name: Tulaytullah's Remembrance
     versions:
       - 3.3.1
@@ -1829,11 +1835,14 @@ fiveStarWeapons:
     versions:
       - 4.0.1
       - 4.6.1
+      - 5.2.1
     dates:
       - start: '2023-08-16'
         end: '2023-09-05'
       - start: '2024-04-24'
         end: '2024-05-14'
+      - start: '2024-11-20'
+        end: ''
   - name: Tome of the Eternal Flow
     versions:
       - 4.1.1
@@ -1924,6 +1933,12 @@ fiveStarWeapons:
     dates:
       - start: '2024-10-09'
         end: '2024-10-29'
+  - name: Astral Vulture's Crimson Plumage
+    versions:
+      - 5.2.1
+    dates:
+      - start: '2024-11-20'
+        end: ''
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -1955,6 +1970,7 @@ fourStarWeapons:
       - 4.7.2
       - 4.8.2
       - 5.0.2
+      - 5.2.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2012,6 +2028,8 @@ fourStarWeapons:
         end: '2024-08-28'
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: '2024-11-20'
+        end: ''
   - name: The Bell
     versions:
       - 1.0.1
@@ -2028,6 +2046,7 @@ fourStarWeapons:
       - 4.2.1
       - 4.5.1
       - 4.8.1
+      - 5.2.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2057,6 +2076,8 @@ fourStarWeapons:
         end: '2024-04-02'
       - start: '2024-07-17'
         end: '2024-08-06'
+      - start: '2024-11-20'
+        end: ''
   - name: The Flute
     versions:
       - 1.0.1
@@ -2074,6 +2095,7 @@ fourStarWeapons:
       - 4.3.1
       - 4.5.2
       - 4.8.2
+      - 5.2.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2105,6 +2127,8 @@ fourStarWeapons:
         end: '2024-04-24'
       - start: '2024-08-06'
         end: '2024-08-28'
+      - start: '2024-11-20'
+        end: ''
   - name: The Stringless
     versions:
       - 1.0.1
@@ -2287,7 +2311,7 @@ fourStarWeapons:
       - start: '2024-08-28'
         end: '2024-09-17'
       - start: '2024-10-29'
-        end: ''
+        end: '2024-11-20'
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2521,7 +2545,7 @@ fourStarWeapons:
       - start: '2024-07-17'
         end: '2024-08-06'
       - start: '2024-10-29'
-        end: ''
+        end: '2024-11-20'
   - name: Rainslasher
     versions:
       - 1.1.1
@@ -2698,7 +2722,7 @@ fourStarWeapons:
       - start: '2024-08-06'
         end: '2024-08-28'
       - start: '2024-10-29'
-        end: ''
+        end: '2024-11-20'
   - name: Lion's Roar
     versions:
       - 1.1.2
@@ -2746,7 +2770,7 @@ fourStarWeapons:
       - start: '2024-06-25'
         end: '2024-07-17'
       - start: '2024-10-29'
-        end: ''
+        end: '2024-11-20'
   - name: Favonius Greatsword
     versions:
       - 1.2.1
@@ -3115,4 +3139,16 @@ fourStarWeapons:
       - 5.1.2
     dates:
       - start: '2024-10-29'
+        end: '2024-11-20'
+  - name: Flower-Wreathed Feathers
+    versions:
+      - 5.2.1
+    dates:
+      - start: '2024-11-20'
+        end: ''
+  - name: Waveriding Whirl
+    versions:
+      - 5.2.1
+    dates:
+      - start: '2024-11-20'
         end: ''
