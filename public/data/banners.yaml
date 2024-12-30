@@ -54,7 +54,7 @@ fiveStarCharacters:
         end: '2022-12-07'
       - start: '2023-09-05'
         end: '2023-09-27'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Zhongli
     versions:
@@ -108,7 +108,7 @@ fiveStarCharacters:
         end: '2022-09-28'
       - start: '2023-05-02'
         end: '2023-05-24'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Xiao
     versions:
@@ -129,7 +129,7 @@ fiveStarCharacters:
         end: '2023-02-07'
       - start: '2024-02-20'
         end: '2024-03-13'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Keqing
     versions:
@@ -138,7 +138,7 @@ fiveStarCharacters:
     dates:
       - start: '2021-02-17'
         end: '2021-03-02'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Hu Tao
     versions:
@@ -282,7 +282,7 @@ fiveStarCharacters:
         end: '2022-01-25'
       - start: '2023-03-21'
         end: '2023-04-12'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Yae Miko
     versions:
@@ -414,7 +414,7 @@ fiveStarCharacters:
         end: '2023-11-28'
       - start: '2024-05-14'
         end: '2024-06-05'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Lyney
     versions:
@@ -504,7 +504,7 @@ fiveStarCharacters:
     dates:
       - start: '2024-04-24'
         end: '2024-05-14'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Clorinde
     versions:
@@ -513,7 +513,7 @@ fiveStarCharacters:
     dates:
       - start: '2024-06-05'
         end: '2024-06-25'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Sigewinne
     versions:
@@ -556,18 +556,18 @@ fiveStarCharacters:
       - 5.3.1
     dates:
       - start: '2025-01-01'
-        end: ''
+        end: '2025-01-21'
   - name: Mavuika
     versions:
       - 5.3.1
     dates:
       - start: '2025-01-01'
-        end: ''
+        end: '2025-01-21'
   - name: Qiqi
     versions:
       - 5.3.2
     dates:
-      - start: ''
+      - start: '2025-01-21'
         end: ''
 fourStarCharacters:
   - name: Barbara
@@ -815,6 +815,7 @@ fourStarCharacters:
       - 3.0.1
       - 3.5.2
       - 4.1.1
+      - 5.3.1
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -834,6 +835,8 @@ fourStarCharacters:
         end: '2023-04-12'
       - start: '2023-09-27'
         end: '2023-10-17'
+      - start: '2025-01-01'
+        end: '2025-01-21'
   - name: Ningguang
     versions:
       - 1.1.1
@@ -959,6 +962,7 @@ fourStarCharacters:
       - 4.3.2
       - 4.7.1
       - 5.0.1
+      - 5.3.1
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -984,6 +988,8 @@ fourStarCharacters:
         end: '2024-06-25'
       - start: '2024-08-28'
         end: '2024-09-17'
+      - start: '2025-01-01'
+        end: '2025-01-21'
   - name: Rosaria
     versions:
       - 1.4.2
@@ -995,6 +1001,7 @@ fourStarCharacters:
       - 3.8.2
       - 4.3.1
       - 4.7.2
+      - 5.3.2
     dates:
       - start: '2021-04-06'
         end: '2021-04-28'
@@ -1014,6 +1021,8 @@ fourStarCharacters:
         end: '2024-01-09'
       - start: '2024-06-25'
         end: '2024-07-17'
+      - start: '2025-01-21'
+        end: ''
   - name: Yanfei
     versions:
       - 1.5.1
@@ -1327,11 +1336,14 @@ fourStarCharacters:
     versions:
       - 4.3.2
       - 5.0.2
+      - 5.3.2
     dates:
       - start: '2024-01-09'
         end: '2024-01-31'
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: '2025-01-21'
+        end: ''
   - name: Gaming
     versions:
       - 4.4.1
@@ -1353,9 +1365,12 @@ fourStarCharacters:
   - name: Kachina
     versions:
       - 5.0.1
+      - 5.3.1
     dates:
       - start: '2024-08-28'
         end: '2024-09-17'
+      - start: '2025-01-01'
+        end: '2025-01-21'
   - name: Ororon
     versions:
       - 5.2.1
@@ -1366,7 +1381,7 @@ fourStarCharacters:
     versions:
       - 5.3.2
     dates:
-      - start: ''
+      - start: '2025-01-21'
         end: ''
 fiveStarWeapons:
   - name: Amos' Bow
@@ -1376,7 +1391,7 @@ fiveStarWeapons:
       - 2.4.2
       - 3.0.2
       - 3.6.2
-      - 5.3.1
+      - 5.3.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -1388,7 +1403,7 @@ fiveStarWeapons:
         end: '2022-09-28'
       - start: '2023-05-02'
         end: '2023-05-24'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Aquila Favonia
     versions:
@@ -1441,7 +1456,7 @@ fiveStarWeapons:
       - 1.5.1
       - 2.2.1
       - 2.7.2
-      - 5.3.1
+      - 5.3.2
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -1451,7 +1466,7 @@ fiveStarWeapons:
         end: '2021-11-02'
       - start: '2022-06-21'
         end: '2022-07-13'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Skyward Harp
     versions:
@@ -1473,7 +1488,7 @@ fiveStarWeapons:
       - 1.1.2
       - 2.1.1
       - 2.6.2
-      - 5.3.1
+      - 5.3.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -1481,7 +1496,7 @@ fiveStarWeapons:
         end: '2021-09-21'
       - start: '2022-04-19'
         end: '2022-05-31'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Vortex Vanquisher
     versions:
@@ -1500,7 +1515,7 @@ fiveStarWeapons:
       - start: '2023-09-05'
         end: '2023-09-27'
       - start: '2024-12-10'
-        end: ''
+        end: '2025-01-01'
   - name: Skyward Atlas
     versions:
       - 1.2.1
@@ -1518,7 +1533,7 @@ fiveStarWeapons:
       - 1.2.1
       - 1.5.1
       - 2.8.2
-      - 5.3.1
+      - 5.3.2
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -1526,7 +1541,7 @@ fiveStarWeapons:
         end: '2021-05-18'
       - start: '2022-08-02'
         end: '2022-08-24'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Skyward Pride
     versions:
@@ -1546,7 +1561,7 @@ fiveStarWeapons:
       - 2.1.2
       - 2.5.1
       - 3.1.2
-      - 5.3.1
+      - 5.3.2
     dates:
       - start: '2021-02-03'
         end: '2021-02-23'
@@ -1556,7 +1571,7 @@ fiveStarWeapons:
         end: '2022-03-08'
       - start: '2022-10-14'
         end: '2022-11-02'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Primordial Jade Winged-Spear
     versions:
@@ -1565,7 +1580,7 @@ fiveStarWeapons:
       - 2.7.1
       - 3.4.1
       - 4.4.2
-      - 5.3.1
+      - 5.3.2
     dates:
       - start: '2021-02-03'
         end: '2021-02-23'
@@ -1577,7 +1592,7 @@ fiveStarWeapons:
         end: '2023-02-07'
       - start: '2024-02-20'
         end: '2024-03-13'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Staff of Homa
     versions:
@@ -1743,7 +1758,7 @@ fiveStarWeapons:
       - 2.2.1
       - 3.2.2
       - 4.0.2
-      - 5.3.1
+      - 5.3.2
     dates:
       - start: '2021-10-13'
         end: '2021-11-02'
@@ -1751,7 +1766,7 @@ fiveStarWeapons:
         end: '2022-12-07'
       - start: '2023-09-05'
         end: '2023-09-27'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Redhorn Stonethresher
     versions:
@@ -1772,13 +1787,13 @@ fiveStarWeapons:
     versions:
       - 2.4.1
       - 3.5.2
-      - 5.3.1
+      - 5.3.2
     dates:
       - start: '2022-01-05'
         end: '2022-01-25'
       - start: '2023-03-21'
         end: '2023-04-12'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: Kagura's Verity
     versions:
@@ -1908,7 +1923,7 @@ fiveStarWeapons:
       - 3.6.2
       - 4.2.1
       - 4.6.2
-      - 5.3.1
+      - 5.3.2
     dates:
       - start: '2023-05-02'
         end: '2023-05-24'
@@ -1916,7 +1931,7 @@ fiveStarWeapons:
         end: '2023-11-28'
       - start: '2024-05-14'
         end: '2024-06-05'
-      - start: ''
+      - start: '2025-01-21'
         end: ''
   - name: The First Great Magic
     versions:
@@ -1941,7 +1956,7 @@ fiveStarWeapons:
       - start: '2024-04-02'
         end: '2024-04-24'
       - start: '2024-12-10'
-        end: ''
+        end: '2025-01-01'
   - name: Cashflow Supervision
     versions:
       - 4.1.2
@@ -1984,15 +1999,21 @@ fiveStarWeapons:
   - name: Crimson Moon's Semblance
     versions:
       - 4.6.1
+      - 5.3.2
     dates:
       - start: '2024-04-24'
         end: '2024-05-14'
+      - start: '2025-01-21'
+        end: ''
   - name: Absolution
     versions:
       - 4.7.1
+      - 5.3.2
     dates:
       - start: '2024-06-05'
         end: '2024-06-25'
+      - start: '2025-01-21'
+        end: ''
   - name: Silvershower Heartstrings
     versions:
       - 4.7.2
@@ -2029,6 +2050,18 @@ fiveStarWeapons:
     dates:
       - start: '2024-11-20'
         end: '2024-12-10'
+  - name: A Thousand Blazing Suns
+    versions:
+      - 5.3.1
+    dates:
+      - start: '2025-01-01'
+        end: '2025-01-21'
+  - name: Starcaller's Watch
+    versions:
+      - 5.3.1
+    dates:
+      - start: '2025-01-01'
+        end: '2025-01-21'
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -2061,6 +2094,7 @@ fourStarWeapons:
       - 4.8.2
       - 5.0.2
       - 5.2.1
+      - 5.3.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2120,6 +2154,8 @@ fourStarWeapons:
         end: '2024-10-09'
       - start: '2024-11-20'
         end: '2024-12-10'
+      - start: '2025-01-01'
+        end: '2025-01-21'
   - name: The Bell
     versions:
       - 1.0.1
@@ -2234,6 +2270,7 @@ fourStarWeapons:
       - 4.4.2
       - 4.7.1
       - 5.0.1
+      - 5.3.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2261,6 +2298,8 @@ fourStarWeapons:
         end: '2024-06-25'
       - start: '2024-08-28'
         end: '2024-09-17'
+      - start: '2025-01-01'
+        end: '2025-01-21'
   - name: The Widsith
     versions:
       - 1.0.1
@@ -2279,6 +2318,7 @@ fourStarWeapons:
       - 4.4.2
       - 4.7.1
       - 5.0.2
+      - 5.3.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2312,6 +2352,8 @@ fourStarWeapons:
         end: '2024-06-25'
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: '2025-01-21'
+        end: ''
   - name: Dragon's Bane
     versions:
       - 1.0.2
@@ -2404,7 +2446,7 @@ fourStarWeapons:
       - start: '2024-10-29'
         end: '2024-11-20'
       - start: '2024-12-10'
-        end: ''
+        end: '2025-01-01'
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2420,6 +2462,7 @@ fourStarWeapons:
       - 4.4.1
       - 4.7.2
       - 5.0.2
+      - 5.3.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2447,6 +2490,8 @@ fourStarWeapons:
         end: '2024-07-17'
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: '2025-01-21'
+        end: ''
   - name: Sacrificial Fragments
     versions:
       - 1.0.2
@@ -2497,7 +2542,7 @@ fourStarWeapons:
       - start: '2024-08-28'
         end: '2024-09-17'
       - start: '2024-12-10'
-        end: ''
+        end: '2025-01-01'
   - name: Sacrificial Greatsword
     versions:
       - 1.0.2
@@ -2560,6 +2605,7 @@ fourStarWeapons:
       - 4.4.1
       - 4.7.1
       - 5.0.2
+      - 5.3.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2591,6 +2637,8 @@ fourStarWeapons:
         end: '2024-06-25'
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: '2025-01-01'
+        end: '2025-01-21'
   - name: Eye of Perception
     versions:
       - 1.1.1
@@ -2657,6 +2705,7 @@ fourStarWeapons:
       - 4.3.2
       - 4.6.2
       - 5.0.2
+      - 5.3.2
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -2684,6 +2733,8 @@ fourStarWeapons:
         end: '2024-06-05'
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: '2025-01-21'
+        end: ''
   - name: Rust
     versions:
       - 1.1.1
@@ -2743,6 +2794,7 @@ fourStarWeapons:
       - 4.5.1
       - 4.7.2
       - 5.1.1
+      - 5.3.1
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -2774,6 +2826,8 @@ fourStarWeapons:
         end: '2024-07-17'
       - start: '2024-10-09'
         end: '2024-10-29'
+      - start: '2025-01-01'
+        end: '2025-01-21'
   - name: Favonius Warbow
     versions:
       - 1.1.2
@@ -2836,6 +2890,7 @@ fourStarWeapons:
       - 4.4.2
       - 4.7.2
       - 5.1.2
+      - 5.3.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -2867,6 +2922,8 @@ fourStarWeapons:
         end: '2024-07-17'
       - start: '2024-10-29'
         end: '2024-11-20'
+      - start: '2025-01-21'
+        end: ''
   - name: Favonius Greatsword
     versions:
       - 1.2.1
@@ -2911,7 +2968,7 @@ fourStarWeapons:
       - start: '2024-08-28'
         end: '2024-09-17'
       - start: '2024-12-10'
-        end: ''
+        end: '2025-01-01'
   - name: Favonius Sword
     versions:
       - 1.2.1
@@ -2959,7 +3016,7 @@ fourStarWeapons:
       - start: '2024-08-28'
         end: '2024-09-17'
       - start: '2024-12-10'
-        end: ''
+        end: '2025-01-01'
   - name: Lithic Blade
     versions:
       - 1.3.2
@@ -2969,6 +3026,7 @@ fourStarWeapons:
       - 3.4.2
       - 4.4.2
       - 4.7.2
+      - 5.3.1
     dates:
       - start: '2021-02-23'
         end: '2021-03-17'
@@ -2984,6 +3042,8 @@ fourStarWeapons:
         end: '2024-03-13'
       - start: '2024-06-25'
         end: '2024-07-17'
+      - start: '2025-01-01'
+        end: '2025-01-21'
   - name: Lithic Spear
     versions:
       - 1.3.2
@@ -3100,7 +3160,7 @@ fourStarWeapons:
       - start: '2024-04-02'
         end: '2024-04-24'
       - start: '2024-12-10'
-        end: ''
+        end: '2025-01-01'
   - name: Akuoumaru
     versions:
       - 2.2.1
