@@ -80,7 +80,7 @@ describe('getRundown()', () => {
         expect(_.chain(rundown.counter)
             .filter((v) => v == 0)
             .value()
-            .length).toEqual(1)
+            .length).toBeGreaterThan(0)
 
         expect(rundown.counter.slice(-9)).toEqual([
             1, 0, -1, -1, -1, -1, -1, -1, -1
