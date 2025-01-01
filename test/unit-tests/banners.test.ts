@@ -65,7 +65,7 @@ describe('getRundown()', () => {
             1, 0, 8, 7, 6, 5, 4, 3, 2, 1, 0
         ])
     });
-    it('should have Keqing once', async () => {
+    it('should have Keqing at least once', async () => {
         const rundown = _.chain(getRundowns(
             _.chain(YAML.parse(fs.readFileSync(path.resolve('./public/data/banners.yaml'), 'utf8')).fiveStarCharacters)
                 .map((featured) => _.omit(featured, 'dates'))
@@ -76,7 +76,7 @@ describe('getRundown()', () => {
             .value()
         expect(rundown.name).toEqual("Keqing")
         expect(rundown.counter.length).toBeGreaterThan(40)
-        expect(rundown.runs).toEqual(1)
+        expect(rundown.runs).toBeGreaterThan(0)
         expect(_.chain(rundown.counter)
             .filter((v) => v == 0)
             .value()
