@@ -3053,6 +3053,7 @@ fourStarWeapons:
       - 3.4.1
       - 4.4.1
       - 4.7.1
+      - 5.3.2
     dates:
       - start: '2021-02-23'
         end: '2021-03-17'
@@ -3068,6 +3069,8 @@ fourStarWeapons:
         end: '2024-02-20'
       - start: '2024-06-05'
         end: '2024-06-25'
+      - start: '2025-01-21'
+        end: ''
   - name: The Alley Flash
     versions:
       - 1.4.1
