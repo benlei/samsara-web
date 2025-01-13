@@ -24,11 +24,14 @@ fiveStarCharacters:
     versions:
       - 1.1.1
       - 1.5.2
+      - 3.0.2
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
       - start: '2023-12-06'
         end: '2023-12-27'
+      - start: '2025-02-05'
+        end: ''
   - name: Luocha
     versions:
       - 1.1.2
@@ -174,17 +177,23 @@ fiveStarCharacters:
     versions:
       - 2.2.1
       - 2.5.1
+      - 3.0.2
     dates:
       - start: '2024-05-08'
         end: '2024-05-29'
       - start: '2024-09-10'
         end: '2024-10-02'
+      - start: '2025-02-05'
+        end: ''
   - name: Boothill
     versions:
       - 2.2.2
+      - 3.0.2
     dates:
       - start: '2024-05-29'
         end: '2024-06-19'
+      - start: '2025-02-05'
+        end: ''
   - name: Firefly
     versions:
       - 2.3.1
@@ -193,13 +202,16 @@ fiveStarCharacters:
       - start: '2024-06-19'
         end: '2024-07-10'
       - start: '2024-12-25'
-        end: ''
+        end: '2025-01-15'
   - name: Jade
     versions:
       - 2.3.2
+      - 3.0.1
     dates:
       - start: '2024-07-10'
         end: '2024-07-31'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: Yunli
     versions:
       - 2.4.1
@@ -215,15 +227,21 @@ fiveStarCharacters:
   - name: Feixiao
     versions:
       - 2.5.1
+      - 3.0.1
     dates:
       - start: '2024-09-10'
         end: '2024-10-02'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: Lingsha
     versions:
       - 2.5.2
+      - 3.0.1
     dates:
       - start: '2024-10-02'
         end: '2024-10-23'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: Rappa
     versions:
       - 2.6.1
@@ -241,6 +259,18 @@ fiveStarCharacters:
       - 2.7.2
     dates:
       - start: '2024-12-25'
+        end: '2025-01-15'
+  - name: The Herta
+    versions:
+      - 3.0.1
+    dates:
+      - start: '2025-01-15'
+        end: '2025-02-05'
+  - name: Aglaea
+    versions:
+      - 3.0.2
+    dates:
+      - start: '2025-02-05'
         end: ''
 fourStarCharacters:
   - name: Hook
@@ -268,6 +298,7 @@ fourStarCharacters:
       - 1.6.2
       - 2.3.2
       - 2.5.2
+      - 3.0.1
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
@@ -279,6 +310,8 @@ fourStarCharacters:
         end: '2024-07-31'
       - start: '2024-10-02'
         end: '2024-10-23'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: Pela
     versions:
       - 1.0.1
@@ -306,6 +339,7 @@ fourStarCharacters:
       - 1.2.1
       - 1.4.2
       - 1.6.2
+      - 3.0.2
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -315,6 +349,8 @@ fourStarCharacters:
         end: '2023-11-15'
       - start: '2024-01-17'
         end: '2024-02-06'
+      - start: '2025-02-05'
+        end: ''
   - name: Tingyun
     versions:
       - 1.0.2
@@ -322,6 +358,7 @@ fourStarCharacters:
       - 1.6.1
       - 2.0.1
       - 2.7.1
+      - 3.0.2
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -333,6 +370,8 @@ fourStarCharacters:
         end: '2024-02-29'
       - start: '2024-12-04'
         end: '2024-12-25'
+      - start: '2025-02-05'
+        end: ''
   - name: Asta
     versions:
       - 1.1.1
@@ -340,6 +379,7 @@ fourStarCharacters:
       - 1.5.2
       - 2.3.2
       - 2.5.1
+      - 3.0.1
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -351,6 +391,8 @@ fourStarCharacters:
         end: '2024-07-31'
       - start: '2024-09-10'
         end: '2024-10-02'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: Dan Heng
     versions:
       - 1.1.1
@@ -413,7 +455,7 @@ fourStarCharacters:
       - start: '2024-10-23'
         end: '2024-11-13'
       - start: '2024-12-25'
-        end: ''
+        end: '2025-01-15'
   - name: Arlan
     versions:
       - 1.2.1
@@ -501,6 +543,7 @@ fourStarCharacters:
       - 2.0.2
       - 2.2.1
       - 2.4.1
+      - 3.0.2
     dates:
       - start: '2023-12-06'
         end: '2023-12-27'
@@ -510,6 +553,8 @@ fourStarCharacters:
         end: '2024-05-29'
       - start: '2024-07-31'
         end: '2024-08-21'
+      - start: '2025-02-05'
+        end: ''
   - name: Xueyi
     versions:
       - 1.6.1
@@ -539,7 +584,7 @@ fourStarCharacters:
       - start: '2024-10-02'
         end: '2024-10-23'
       - start: '2024-12-25'
-        end: ''
+        end: '2025-01-15'
   - name: Gallagher
     versions:
       - 2.1.1
@@ -551,13 +596,16 @@ fourStarCharacters:
       - start: '2024-06-19'
         end: '2024-07-10'
       - start: '2024-12-25'
-        end: ''
+        end: '2025-01-15'
   - name: Moze
     versions:
       - 2.5.1
+      - 3.0.1
     dates:
       - start: '2024-09-10'
         end: '2024-10-02'
+      - start: '2025-01-15'
+        end: '2025-02-05'
 fiveStarWeapons:
   - name: In the Night
     versions:
@@ -584,11 +632,14 @@ fiveStarWeapons:
     versions:
       - 1.1.1
       - 1.5.2
+      - 3.0.2
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
       - start: '2023-12-06'
         end: '2023-12-27'
+      - start: '2025-02-05'
+        end: ''
   - name: Echoes of the Coffin
     versions:
       - 1.1.2
@@ -734,17 +785,23 @@ fiveStarWeapons:
     versions:
       - 2.2.1
       - 2.5.1
+      - 3.0.2
     dates:
       - start: '2024-05-08'
         end: '2024-05-29'
       - start: '2024-09-10'
         end: '2024-10-02'
+      - start: '2025-02-05'
+        end: ''
   - name: Sailing Towards a Second Life
     versions:
       - 2.2.2
+      - 3.0.2
     dates:
       - start: '2024-05-29'
         end: '2024-06-19'
+      - start: '2025-02-05'
+        end: ''
   - name: Whereabouts Should Dreams Rest
     versions:
       - 2.3.1
@@ -753,13 +810,16 @@ fiveStarWeapons:
       - start: '2024-06-19'
         end: '2024-07-10'
       - start: '2024-12-25'
-        end: ''
+        end: '2025-01-15'
   - name: Yet Hope Is Priceless
     versions:
       - 2.3.2
+      - 3.0.1
     dates:
       - start: '2024-07-10'
         end: '2024-07-31'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: Dance at Sunset
     versions:
       - 2.4.1
@@ -775,15 +835,21 @@ fiveStarWeapons:
   - name: I Venture Forth to Hunt
     versions:
       - 2.5.1
+      - 3.0.1
     dates:
       - start: '2024-09-10'
         end: '2024-10-02'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: Scent Alone Stays True
     versions:
       - 2.5.2
+      - 3.0.1
     dates:
       - start: '2024-10-02'
         end: '2024-10-23'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: 'Ninjutsu Inscription: Dazzling Evilbreaker'
     versions:
       - 2.6.1
@@ -801,6 +867,18 @@ fiveStarWeapons:
       - 2.7.2
     dates:
       - start: '2024-12-25'
+        end: '2025-01-15'
+  - name: Into the Unreachable Veil
+    versions:
+      - 3.0.1
+    dates:
+      - start: '2025-01-15'
+        end: '2025-02-05'
+  - name: Time Woven Into Gold
+    versions:
+      - 3.0.2
+    dates:
+      - start: '2025-02-05'
         end: ''
 fourStarWeapons:
   - name: Good Night and Sleep Well
@@ -859,6 +937,7 @@ fourStarWeapons:
       - 1.0.2
       - 1.4.2
       - 1.6.2
+      - 3.0.1
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -866,6 +945,8 @@ fourStarWeapons:
         end: '2023-11-15'
       - start: '2024-01-17'
         end: '2024-02-06'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: Planetary Rendezvous
     versions:
       - 1.0.2
@@ -916,6 +997,7 @@ fourStarWeapons:
       - 1.1.1
       - 1.5.1
       - 2.1.1
+      - 3.0.2
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -923,11 +1005,14 @@ fourStarWeapons:
         end: '2023-12-06'
       - start: '2024-03-27'
         end: '2024-04-17'
+      - start: '2025-02-05'
+        end: ''
   - name: Dance! Dance! Dance!
     versions:
       - 1.1.2
       - 1.3.1
       - 2.0.1
+      - 3.0.2
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
@@ -935,11 +1020,14 @@ fourStarWeapons:
         end: '2023-09-20'
       - start: '2024-02-06'
         end: '2024-02-29'
+      - start: '2025-02-05'
+        end: ''
   - name: Geniuses' Repose
     versions:
       - 1.1.2
       - 2.0.2
       - 2.2.2
+      - 3.0.1
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
@@ -947,6 +1035,8 @@ fourStarWeapons:
         end: '2024-03-27'
       - start: '2024-05-29'
         end: '2024-06-19'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: A Secret Vow
     versions:
       - 1.2.1
@@ -1027,7 +1117,7 @@ fourStarWeapons:
       - start: '2024-09-10'
         end: '2024-10-02'
       - start: '2024-12-25'
-        end: ''
+        end: '2025-01-15'
   - name: The Birth of the Self
     versions:
       - 1.2.2
@@ -1051,6 +1141,7 @@ fourStarWeapons:
       - 1.3.1
       - 1.6.2
       - 2.2.2
+      - 3.0.1
     dates:
       - start: '2023-08-30'
         end: '2023-09-20'
@@ -1058,6 +1149,8 @@ fourStarWeapons:
         end: '2024-02-06'
       - start: '2024-05-29'
         end: '2024-06-19'
+      - start: '2025-01-15'
+        end: '2025-02-05'
   - name: Perfect Timing
     versions:
       - 1.3.2
@@ -1108,7 +1201,7 @@ fourStarWeapons:
       - start: '2024-02-06'
         end: '2024-02-29'
       - start: '2024-12-25'
-        end: ''
+        end: '2025-01-15'
   - name: Concert for Two
     versions:
       - 2.1.2
@@ -1117,7 +1210,7 @@ fourStarWeapons:
       - start: '2024-04-17'
         end: '2024-05-08'
       - start: '2024-12-25'
-        end: ''
+        end: '2025-01-15'
   - name: Boundless Choreo
     versions:
       - 2.2.1
@@ -1157,3 +1250,9 @@ fourStarWeapons:
     dates:
       - start: '2024-10-23'
         end: '2024-11-13'
+  - name: Geniuses' Greetings
+    versions:
+      - 3.0.2
+    dates:
+      - start: '2025-02-05'
+        end: ''
