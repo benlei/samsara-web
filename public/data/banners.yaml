@@ -55,7 +55,7 @@ fiveStarCharacters:
       - start: '2023-09-05'
         end: '2023-09-27'
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
   - name: Zhongli
     versions:
       - 1.1.2
@@ -109,7 +109,7 @@ fiveStarCharacters:
       - start: '2023-05-02'
         end: '2023-05-24'
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
   - name: Xiao
     versions:
       - 1.3.1
@@ -130,7 +130,7 @@ fiveStarCharacters:
       - start: '2024-02-20'
         end: '2024-03-13'
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
   - name: Keqing
     versions:
       - 1.3.2
@@ -139,7 +139,7 @@ fiveStarCharacters:
       - start: '2021-02-17'
         end: '2021-03-02'
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
   - name: Hu Tao
     versions:
       - 1.3.3
@@ -283,7 +283,7 @@ fiveStarCharacters:
       - start: '2023-03-21'
         end: '2023-04-12'
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
   - name: Yae Miko
     versions:
       - 2.5.1
@@ -415,7 +415,7 @@ fiveStarCharacters:
       - start: '2024-05-14'
         end: '2024-06-05'
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
   - name: Lyney
     versions:
       - 4.0.1
@@ -443,18 +443,24 @@ fiveStarCharacters:
   - name: Wriothesley
     versions:
       - 4.1.2
+      - 5.4.2
     dates:
       - start: '2023-10-17'
         end: '2023-11-08'
+      - start: ''
+        end: ''
   - name: Furina
     versions:
       - 4.2.1
       - 4.7.2
+      - 5.4.2
     dates:
       - start: '2023-11-08'
         end: '2023-11-28'
       - start: '2024-06-25'
         end: '2024-07-17'
+      - start: ''
+        end: ''
   - name: Navia
     versions:
       - 4.3.1
@@ -505,7 +511,7 @@ fiveStarCharacters:
       - start: '2024-04-24'
         end: '2024-05-14'
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
   - name: Clorinde
     versions:
       - 4.7.1
@@ -514,13 +520,16 @@ fiveStarCharacters:
       - start: '2024-06-05'
         end: '2024-06-25'
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
   - name: Sigewinne
     versions:
       - 4.7.2
+      - 5.4.1
     dates:
       - start: '2024-06-25'
         end: '2024-07-17'
+      - start: '2025-02-12'
+        end: ''
   - name: Emilie
     versions:
       - 4.8.2
@@ -568,6 +577,12 @@ fiveStarCharacters:
       - 5.3.2
     dates:
       - start: '2025-01-21'
+        end: '2025-02-12'
+  - name: Yumemizuki Mizuki
+    versions:
+      - 5.4.1
+    dates:
+      - start: '2025-02-12'
         end: ''
 fourStarCharacters:
   - name: Barbara
@@ -1022,7 +1037,7 @@ fourStarCharacters:
       - start: '2024-06-25'
         end: '2024-07-17'
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
   - name: Yanfei
     versions:
       - 1.5.1
@@ -1343,7 +1358,7 @@ fourStarCharacters:
       - start: '2024-09-17'
         end: '2024-10-09'
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
   - name: Gaming
     versions:
       - 4.4.1
@@ -1382,7 +1397,7 @@ fourStarCharacters:
       - 5.3.2
     dates:
       - start: '2025-01-21'
-        end: ''
+        end: '2025-02-12'
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
