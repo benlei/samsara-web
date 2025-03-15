@@ -6,6 +6,7 @@ fiveStarCharacters:
       - 2.6.1
       - 3.1.1
       - 4.1.2
+      - 5.5.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -17,6 +18,8 @@ fiveStarCharacters:
         end: '2022-10-14'
       - start: '2023-10-17'
         end: '2023-11-08'
+      - start: ''
+        end: ''
   - name: Klee
     versions:
       - 1.0.2
@@ -448,7 +451,7 @@ fiveStarCharacters:
       - start: '2023-10-17'
         end: '2023-11-08'
       - start: '2025-03-04'
-        end: ''
+        end: '2025-03-26'
   - name: Furina
     versions:
       - 4.2.1
@@ -460,7 +463,7 @@ fiveStarCharacters:
       - start: '2024-06-25'
         end: '2024-07-17'
       - start: '2025-03-04'
-        end: ''
+        end: '2025-03-26'
   - name: Navia
     versions:
       - 4.3.1
@@ -473,9 +476,12 @@ fiveStarCharacters:
   - name: Xianyun
     versions:
       - 4.4.1
+      - 5.5.1
     dates:
       - start: '2024-01-31'
         end: '2024-02-20'
+      - start: '2025-03-26'
+        end: ''
   - name: Chiori
     versions:
       - 4.5.1
@@ -551,9 +557,12 @@ fiveStarCharacters:
   - name: Xilonen
     versions:
       - 5.1.1
+      - 5.5.2
     dates:
       - start: '2024-10-09'
         end: '2024-10-29'
+      - start: ''
+        end: ''
   - name: Chasca
     versions:
       - 5.2.1
@@ -584,6 +593,12 @@ fiveStarCharacters:
     dates:
       - start: '2025-02-12'
         end: '2025-03-04'
+  - name: Varesa
+    versions:
+      - 5.5.1
+    dates:
+      - start: '2025-03-26'
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -914,7 +929,7 @@ fourStarCharacters:
       - start: '2023-10-17'
         end: '2023-11-08'
       - start: '2025-03-04'
-        end: ''
+        end: '2025-03-26'
   - name: Razor
     versions:
       - 1.1.2
@@ -1316,7 +1331,7 @@ fourStarCharacters:
       - start: '2023-07-05'
         end: '2023-07-25'
       - start: '2025-03-04'
-        end: ''
+        end: '2025-03-26'
   - name: Kaveh
     versions:
       - 3.6.2
@@ -1364,7 +1379,7 @@ fourStarCharacters:
       - start: '2023-11-08'
         end: '2023-11-28'
       - start: '2025-03-04'
-        end: ''
+        end: '2025-03-26'
   - name: Chevreuse
     versions:
       - 4.3.2
@@ -1416,6 +1431,12 @@ fourStarCharacters:
     dates:
       - start: '2025-01-21'
         end: '2025-02-12'
+  - name: Iansan
+    versions:
+      - 5.5.1
+    dates:
+      - start: '2025-03-26'
+        end: ''
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
