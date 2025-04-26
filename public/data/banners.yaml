@@ -19,7 +19,7 @@ fiveStarCharacters:
       - start: '2023-10-17'
         end: '2023-11-08'
       - start: '2025-04-15'
-        end: ''
+        end: '2025-05-07'
   - name: Klee
     versions:
       - 1.0.2
@@ -183,6 +183,7 @@ fiveStarCharacters:
       - 3.7.2
       - 4.5.2
       - 5.0.1
+      - 5.6.2
     dates:
       - start: '2021-06-29'
         end: '2021-07-21'
@@ -194,12 +195,15 @@ fiveStarCharacters:
         end: '2024-04-24'
       - start: '2024-08-28'
         end: '2024-09-17'
+      - start: ''
+        end: ''
   - name: Kamisato Ayaka
     versions:
       - 2.0.1
       - 2.6.2
       - 3.5.2
       - 4.3.1
+      - 5.6.2
     dates:
       - start: '2021-07-21'
         end: '2021-08-10'
@@ -209,6 +213,8 @@ fiveStarCharacters:
         end: '2023-04-12'
       - start: '2023-12-20'
         end: '2024-01-09'
+      - start: ''
+        end: ''
   - name: Yoimiya
     versions:
       - 2.0.2
@@ -216,6 +222,7 @@ fiveStarCharacters:
       - 3.2.1
       - 3.7.1
       - 4.3.2
+      - 5.6.2
     dates:
       - start: '2021-08-10'
         end: '2021-09-01'
@@ -227,6 +234,8 @@ fiveStarCharacters:
         end: '2023-06-13'
       - start: '2024-01-09'
         end: '2024-01-31'
+      - start: ''
+        end: ''
   - name: Raiden Shogun
     versions:
       - 2.1.1
@@ -234,6 +243,7 @@ fiveStarCharacters:
       - 3.3.2
       - 4.3.2
       - 5.0.2
+      - 5.6.2
     dates:
       - start: '2021-09-01'
         end: '2021-09-21'
@@ -245,12 +255,15 @@ fiveStarCharacters:
         end: '2024-01-31'
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: ''
+        end: ''
   - name: Sangonomiya Kokomi
     versions:
       - 2.1.2
       - 2.5.2
       - 3.0.2
       - 3.8.2
+      - 5.6.2
     dates:
       - start: '2021-09-21'
         end: '2021-10-13'
@@ -260,12 +273,15 @@ fiveStarCharacters:
         end: '2022-09-28'
       - start: '2023-07-25'
         end: '2023-08-16'
+      - start: ''
+        end: ''
   - name: Arataki Itto
     versions:
       - 2.3.2
       - 2.7.2
       - 3.3.1
       - 4.5.1
+      - 5.6.2
     dates:
       - start: '2021-12-14'
         end: '2022-01-05'
@@ -275,6 +291,8 @@ fiveStarCharacters:
         end: '2022-12-27'
       - start: '2024-03-13'
         end: '2024-04-02'
+      - start: ''
+        end: ''
   - name: Shenhe
     versions:
       - 2.4.1
@@ -293,6 +311,7 @@ fiveStarCharacters:
       - 3.2.2
       - 3.7.1
       - 4.4.2
+      - 5.6.2
     dates:
       - start: '2022-02-16'
         end: '2022-03-08'
@@ -302,11 +321,14 @@ fiveStarCharacters:
         end: '2023-06-13'
       - start: '2024-02-20'
         end: '2024-03-13'
+      - start: ''
+        end: ''
   - name: Kamisato Ayato
     versions:
       - 2.6.1
       - 3.3.2
       - 4.2.2
+      - 5.6.2
     dates:
       - start: '2022-03-30'
         end: '2022-04-19'
@@ -314,6 +336,8 @@ fiveStarCharacters:
         end: '2023-01-18'
       - start: '2023-11-28'
         end: '2023-12-20'
+      - start: ''
+        end: ''
   - name: Yelan
     versions:
       - 2.7.1
@@ -468,11 +492,14 @@ fiveStarCharacters:
     versions:
       - 4.3.1
       - 4.8.1
+      - 5.6.1
     dates:
       - start: '2023-12-20'
         end: '2024-01-09'
       - start: '2024-07-17'
         end: '2024-08-06'
+      - start: '2025-05-07'
+        end: ''
   - name: Xianyun
     versions:
       - 4.4.1
@@ -486,11 +513,14 @@ fiveStarCharacters:
     versions:
       - 4.5.1
       - 5.1.1
+      - 5.6.2
     dates:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2024-10-09'
         end: '2024-10-29'
+      - start: ''
+        end: ''
   - name: Diluc
     versions:
       - 4.5.1
@@ -551,9 +581,12 @@ fiveStarCharacters:
   - name: Kinich
     versions:
       - 5.0.2
+      - 5.6.2
     dates:
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: ''
+        end: ''
   - name: Xilonen
     versions:
       - 5.1.1
@@ -562,7 +595,7 @@ fiveStarCharacters:
       - start: '2024-10-09'
         end: '2024-10-29'
       - start: '2025-04-15'
-        end: ''
+        end: '2025-05-07'
   - name: Chasca
     versions:
       - 5.2.1
@@ -599,6 +632,12 @@ fiveStarCharacters:
     dates:
       - start: '2025-03-26'
         end: '2025-04-15'
+  - name: Escoffier
+    versions:
+      - 5.6.1
+    dates:
+      - start: '2025-05-07'
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -839,7 +878,7 @@ fourStarCharacters:
       - start: '2024-05-14'
         end: '2024-06-05'
       - start: '2025-04-15'
-        end: ''
+        end: '2025-05-07'
   - name: Diona
     versions:
       - 1.1.1
@@ -1094,7 +1133,7 @@ fourStarCharacters:
       - start: '2024-08-06'
         end: '2024-08-28'
       - start: '2025-04-15'
-        end: ''
+        end: '2025-05-07'
   - name: Sayu
     versions:
       - 2.0.2
@@ -1313,7 +1352,7 @@ fourStarCharacters:
       - start: '2024-05-14'
         end: '2024-06-05'
       - start: '2025-04-15'
-        end: ''
+        end: '2025-05-07'
   - name: Yaoyao
     versions:
       - 3.4.1
@@ -1452,6 +1491,12 @@ fourStarCharacters:
     dates:
       - start: '2025-03-26'
         end: '2025-04-15'
+  - name: Ifa
+    versions:
+      - 5.6.1
+    dates:
+      - start: '2025-05-07'
+        end: ''
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
@@ -1737,6 +1782,7 @@ fiveStarWeapons:
       - 3.7.2
       - 4.5.2
       - 5.0.1
+      - 5.6.1
     dates:
       - start: '2021-06-29'
         end: '2021-07-21'
@@ -1750,12 +1796,15 @@ fiveStarWeapons:
         end: '2024-04-24'
       - start: '2024-08-28'
         end: '2024-09-17'
+      - start: ''
+        end: ''
   - name: Mistsplitter Reforged
     versions:
       - 2.0.1
       - 2.6.2
       - 3.5.2
       - 4.3.1
+      - 5.6.1
     dates:
       - start: '2021-07-21'
         end: '2021-08-10'
@@ -1765,6 +1814,8 @@ fiveStarWeapons:
         end: '2023-04-12'
       - start: '2023-12-20'
         end: '2024-01-09'
+      - start: ''
+        end: ''
   - name: Skyward Spine
     versions:
       - 2.0.1
@@ -1781,6 +1832,7 @@ fiveStarWeapons:
       - 3.2.1
       - 3.7.1
       - 4.3.2
+      - 5.6.1
     dates:
       - start: '2021-08-10'
         end: '2021-09-01'
@@ -1792,6 +1844,8 @@ fiveStarWeapons:
         end: '2023-06-13'
       - start: '2024-01-09'
         end: '2024-01-31'
+      - start: ''
+        end: ''
   - name: Engulfing Lightning
     versions:
       - 2.1.1
@@ -1816,6 +1870,7 @@ fiveStarWeapons:
       - 2.5.2
       - 3.0.2
       - 3.8.2
+      - 5.6.1
     dates:
       - start: '2021-09-21'
         end: '2021-10-13'
@@ -1825,6 +1880,8 @@ fiveStarWeapons:
         end: '2022-09-28'
       - start: '2023-07-25'
         end: '2023-08-16'
+      - start: ''
+        end: ''
   - name: Polar Star
     versions:
       - 2.2.1
@@ -1846,6 +1903,7 @@ fiveStarWeapons:
       - 2.7.2
       - 3.3.1
       - 4.5.1
+      - 5.6.1
     dates:
       - start: '2021-12-14'
         end: '2022-01-05'
@@ -1855,6 +1913,8 @@ fiveStarWeapons:
         end: '2022-12-27'
       - start: '2024-03-13'
         end: '2024-04-02'
+      - start: ''
+        end: ''
   - name: Calamity Queller
     versions:
       - 2.4.1
@@ -1873,6 +1933,7 @@ fiveStarWeapons:
       - 3.2.2
       - 3.7.1
       - 4.4.2
+      - 5.6.1
     dates:
       - start: '2022-02-16'
         end: '2022-03-08'
@@ -1882,11 +1943,14 @@ fiveStarWeapons:
         end: '2023-06-13'
       - start: '2024-02-20'
         end: '2024-03-13'
+      - start: ''
+        end: ''
   - name: Haran Geppaku Futsu
     versions:
       - 2.6.1
       - 3.3.2
       - 4.2.2
+      - 5.6.1
     dates:
       - start: '2022-03-30'
         end: '2022-04-19'
@@ -1894,6 +1958,8 @@ fiveStarWeapons:
         end: '2023-01-18'
       - start: '2023-11-28'
         end: '2023-12-20'
+      - start: ''
+        end: ''
   - name: Aqua Simulacra
     versions:
       - 2.7.1
@@ -2072,11 +2138,14 @@ fiveStarWeapons:
     versions:
       - 4.5.1
       - 5.1.1
+      - 5.6.1
     dates:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2024-10-09'
         end: '2024-10-29'
+      - start: ''
+        end: ''
   - name: Crimson Moon's Semblance
     versions:
       - 4.6.1
