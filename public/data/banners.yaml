@@ -195,7 +195,7 @@ fiveStarCharacters:
         end: '2024-04-24'
       - start: '2024-08-28'
         end: '2024-09-17'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Kamisato Ayaka
     versions:
@@ -213,7 +213,7 @@ fiveStarCharacters:
         end: '2023-04-12'
       - start: '2023-12-20'
         end: '2024-01-09'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Yoimiya
     versions:
@@ -234,7 +234,7 @@ fiveStarCharacters:
         end: '2023-06-13'
       - start: '2024-01-09'
         end: '2024-01-31'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Raiden Shogun
     versions:
@@ -255,7 +255,7 @@ fiveStarCharacters:
         end: '2024-01-31'
       - start: '2024-09-17'
         end: '2024-10-09'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Sangonomiya Kokomi
     versions:
@@ -273,7 +273,7 @@ fiveStarCharacters:
         end: '2022-09-28'
       - start: '2023-07-25'
         end: '2023-08-16'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Arataki Itto
     versions:
@@ -291,7 +291,7 @@ fiveStarCharacters:
         end: '2022-12-27'
       - start: '2024-03-13'
         end: '2024-04-02'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Shenhe
     versions:
@@ -321,7 +321,7 @@ fiveStarCharacters:
         end: '2023-06-13'
       - start: '2024-02-20'
         end: '2024-03-13'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Kamisato Ayato
     versions:
@@ -336,7 +336,7 @@ fiveStarCharacters:
         end: '2023-01-18'
       - start: '2023-11-28'
         end: '2023-12-20'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Yelan
     versions:
@@ -499,7 +499,7 @@ fiveStarCharacters:
       - start: '2024-07-17'
         end: '2024-08-06'
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
   - name: Xianyun
     versions:
       - 4.4.1
@@ -519,7 +519,7 @@ fiveStarCharacters:
         end: '2024-04-02'
       - start: '2024-10-09'
         end: '2024-10-29'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Diluc
     versions:
@@ -585,7 +585,7 @@ fiveStarCharacters:
     dates:
       - start: '2024-09-17'
         end: '2024-10-09'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Xilonen
     versions:
@@ -637,7 +637,7 @@ fiveStarCharacters:
       - 5.6.1
     dates:
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -1165,6 +1165,7 @@ fourStarCharacters:
       - 3.3.2
       - 4.3.2
       - 5.0.2
+      - 5.6.2
     dates:
       - start: '2021-09-01'
         end: '2021-09-21'
@@ -1176,6 +1177,8 @@ fourStarCharacters:
         end: '2024-01-31'
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: '2025-05-27'
+        end: ''
   - name: Thoma
     versions:
       - 2.2.2
@@ -1186,6 +1189,7 @@ fourStarCharacters:
       - 4.1.2
       - 4.7.1
       - 5.0.2
+      - 5.6.2
     dates:
       - start: '2021-11-02'
         end: '2021-11-24'
@@ -1203,6 +1207,8 @@ fourStarCharacters:
         end: '2024-06-25'
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: '2025-05-27'
+        end: ''
   - name: Gorou
     versions:
       - 2.3.2
@@ -1337,7 +1343,7 @@ fourStarCharacters:
       - start: '2024-05-14'
         end: '2024-06-05'
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
   - name: Faruzan
     versions:
       - 3.3.1
@@ -1408,11 +1414,14 @@ fourStarCharacters:
     versions:
       - 4.0.1
       - 4.6.1
+      - 5.6.2
     dates:
       - start: '2023-08-16'
         end: '2023-09-05'
       - start: '2024-04-24'
         end: '2024-05-14'
+      - start: '2025-05-27'
+        end: ''
   - name: Freminet
     versions:
       - 4.0.2
@@ -1484,7 +1493,7 @@ fourStarCharacters:
       - start: '2024-11-20'
         end: '2024-12-10'
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
   - name: Lan Yan
     versions:
       - 5.3.2
@@ -1502,7 +1511,7 @@ fourStarCharacters:
       - 5.6.1
     dates:
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
@@ -1802,7 +1811,7 @@ fiveStarWeapons:
         end: '2024-04-24'
       - start: '2024-08-28'
         end: '2024-09-17'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Mistsplitter Reforged
     versions:
@@ -1820,7 +1829,7 @@ fiveStarWeapons:
         end: '2023-04-12'
       - start: '2023-12-20'
         end: '2024-01-09'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Skyward Spine
     versions:
@@ -1850,7 +1859,7 @@ fiveStarWeapons:
         end: '2023-06-13'
       - start: '2024-01-09'
         end: '2024-01-31'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Engulfing Lightning
     versions:
@@ -1859,6 +1868,7 @@ fiveStarWeapons:
       - 3.3.2
       - 4.3.2
       - 5.0.2
+      - 5.6.2
     dates:
       - start: '2021-09-01'
         end: '2021-09-21'
@@ -1870,6 +1880,8 @@ fiveStarWeapons:
         end: '2024-01-31'
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: '2025-05-27'
+        end: ''
   - name: Everlasting Moonglow
     versions:
       - 2.1.2
@@ -1886,7 +1898,7 @@ fiveStarWeapons:
         end: '2022-09-28'
       - start: '2023-07-25'
         end: '2023-08-16'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Polar Star
     versions:
@@ -1919,7 +1931,7 @@ fiveStarWeapons:
         end: '2022-12-27'
       - start: '2024-03-13'
         end: '2024-04-02'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Calamity Queller
     versions:
@@ -1949,7 +1961,7 @@ fiveStarWeapons:
         end: '2023-06-13'
       - start: '2024-02-20'
         end: '2024-03-13'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Haran Geppaku Futsu
     versions:
@@ -1964,7 +1976,7 @@ fiveStarWeapons:
         end: '2023-01-18'
       - start: '2023-11-28'
         end: '2023-12-20'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Aqua Simulacra
     versions:
@@ -2133,7 +2145,7 @@ fiveStarWeapons:
       - start: '2024-07-17'
         end: '2024-08-06'
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
   - name: Crane's Echoing Call
     versions:
       - 4.4.1
@@ -2153,7 +2165,7 @@ fiveStarWeapons:
         end: '2024-04-02'
       - start: '2024-10-09'
         end: '2024-10-29'
-      - start: ''
+      - start: '2025-05-27'
         end: ''
   - name: Crimson Moon's Semblance
     versions:
@@ -2197,9 +2209,12 @@ fiveStarWeapons:
   - name: Fang of the Mountain King
     versions:
       - 5.0.2
+      - 5.6.2
     dates:
       - start: '2024-09-17'
         end: '2024-10-09'
+      - start: '2025-05-27'
+        end: ''
   - name: Peak Patrol Song
     versions:
       - 5.1.1
@@ -2244,7 +2259,7 @@ fiveStarWeapons:
       - 5.6.1
     dates:
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -2463,6 +2478,7 @@ fourStarWeapons:
       - 4.7.1
       - 5.0.1
       - 5.3.1
+      - 5.6.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2492,6 +2508,8 @@ fourStarWeapons:
         end: '2024-09-17'
       - start: '2025-01-01'
         end: '2025-01-21'
+      - start: '2025-05-27'
+        end: ''
   - name: The Widsith
     versions:
       - 1.0.1
@@ -2548,7 +2566,7 @@ fourStarWeapons:
       - start: '2025-01-21'
         end: '2025-02-12'
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
   - name: Dragon's Bane
     versions:
       - 1.0.2
@@ -2582,6 +2600,7 @@ fourStarWeapons:
       - 5.1.2
       - 5.2.2
       - 5.4.2
+      - 5.6.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2645,6 +2664,8 @@ fourStarWeapons:
         end: '2025-01-01'
       - start: '2025-03-04'
         end: '2025-03-26'
+      - start: '2025-05-27'
+        end: ''
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2865,6 +2886,7 @@ fourStarWeapons:
       - 4.8.1
       - 5.1.2
       - 5.4.1
+      - 5.6.2
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -2900,6 +2922,8 @@ fourStarWeapons:
         end: '2024-11-20'
       - start: '2025-02-12'
         end: '2025-03-04'
+      - start: '2025-05-27'
+        end: ''
   - name: Rainslasher
     versions:
       - 1.1.1
@@ -3110,6 +3134,7 @@ fourStarWeapons:
       - 4.7.2
       - 5.1.2
       - 5.3.2
+      - 5.6.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -3143,6 +3168,8 @@ fourStarWeapons:
         end: '2024-11-20'
       - start: '2025-01-21'
         end: '2025-02-12'
+      - start: '2025-05-27'
+        end: ''
   - name: Favonius Greatsword
     versions:
       - 1.2.1
@@ -3159,6 +3186,7 @@ fourStarWeapons:
       - 4.5.2
       - 5.0.1
       - 5.2.2
+      - 5.6.2
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -3188,6 +3216,8 @@ fourStarWeapons:
         end: '2024-09-17'
       - start: '2024-12-10'
         end: '2025-01-01'
+      - start: '2025-05-27'
+        end: ''
   - name: Favonius Sword
     versions:
       - 1.2.1
@@ -3496,7 +3526,7 @@ fourStarWeapons:
       - start: '2024-04-24'
         end: '2024-05-14'
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
   - name: The Dockhand's Assistant
     versions:
       - 4.1.1
@@ -3508,7 +3538,7 @@ fourStarWeapons:
       - start: '2024-04-24'
         end: '2024-05-14'
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
   - name: Prospector's Drill
     versions:
       - 4.1.2
@@ -3520,7 +3550,7 @@ fourStarWeapons:
       - start: '2024-05-14'
         end: '2024-06-05'
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
   - name: Range Gauge
     versions:
       - 4.1.2
@@ -3532,7 +3562,7 @@ fourStarWeapons:
       - start: '2024-05-14'
         end: '2024-06-05'
       - start: '2025-05-07'
-        end: ''
+        end: '2025-05-27'
   - name: Mountain-Bracing Bolt
     versions:
       - 5.1.1
