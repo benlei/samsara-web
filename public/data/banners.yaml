@@ -196,7 +196,7 @@ fiveStarCharacters:
       - start: '2024-08-28'
         end: '2024-09-17'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Kamisato Ayaka
     versions:
       - 2.0.1
@@ -214,7 +214,7 @@ fiveStarCharacters:
       - start: '2023-12-20'
         end: '2024-01-09'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Yoimiya
     versions:
       - 2.0.2
@@ -235,7 +235,7 @@ fiveStarCharacters:
       - start: '2024-01-09'
         end: '2024-01-31'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Raiden Shogun
     versions:
       - 2.1.1
@@ -256,7 +256,7 @@ fiveStarCharacters:
       - start: '2024-09-17'
         end: '2024-10-09'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Sangonomiya Kokomi
     versions:
       - 2.1.2
@@ -274,7 +274,7 @@ fiveStarCharacters:
       - start: '2023-07-25'
         end: '2023-08-16'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Arataki Itto
     versions:
       - 2.3.2
@@ -292,12 +292,13 @@ fiveStarCharacters:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Shenhe
     versions:
       - 2.4.1
       - 3.5.2
       - 5.3.2
+      - 5.7.1
     dates:
       - start: '2022-01-05'
         end: '2022-01-25'
@@ -305,6 +306,8 @@ fiveStarCharacters:
         end: '2023-04-12'
       - start: '2025-01-21'
         end: '2025-02-12'
+      - start: '2025-06-18'
+        end: ''
   - name: Yae Miko
     versions:
       - 2.5.1
@@ -322,7 +325,7 @@ fiveStarCharacters:
       - start: '2024-02-20'
         end: '2024-03-13'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Kamisato Ayato
     versions:
       - 2.6.1
@@ -337,7 +340,7 @@ fiveStarCharacters:
       - start: '2023-11-28'
         end: '2023-12-20'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Yelan
     versions:
       - 2.7.1
@@ -520,7 +523,7 @@ fiveStarCharacters:
       - start: '2024-10-09'
         end: '2024-10-29'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Diluc
     versions:
       - 4.5.1
@@ -569,9 +572,12 @@ fiveStarCharacters:
   - name: Emilie
     versions:
       - 4.8.2
+      - 5.7.2
     dates:
       - start: '2024-08-06'
         end: '2024-08-28'
+      - start: ''
+        end: ''
   - name: Mualani
     versions:
       - 5.0.1
@@ -586,7 +592,7 @@ fiveStarCharacters:
       - start: '2024-09-17'
         end: '2024-10-09'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Xilonen
     versions:
       - 5.1.1
@@ -611,9 +617,12 @@ fiveStarCharacters:
   - name: Mavuika
     versions:
       - 5.3.1
+      - 5.7.2
     dates:
       - start: '2025-01-01'
         end: '2025-01-21'
+      - start: ''
+        end: ''
   - name: Qiqi
     versions:
       - 5.3.2
@@ -638,6 +647,12 @@ fiveStarCharacters:
     dates:
       - start: '2025-05-07'
         end: '2025-05-27'
+  - name: Skirk
+    versions:
+      - 5.7.1
+    dates:
+      - start: '2025-06-18'
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -1178,7 +1193,7 @@ fourStarCharacters:
       - start: '2024-09-17'
         end: '2024-10-09'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Thoma
     versions:
       - 2.2.2
@@ -1208,7 +1223,7 @@ fourStarCharacters:
       - start: '2024-09-17'
         end: '2024-10-09'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Gorou
     versions:
       - 2.3.2
@@ -1421,7 +1436,7 @@ fourStarCharacters:
       - start: '2024-04-24'
         end: '2024-05-14'
       - start: '2025-05-27'
-        end: ''
+        end: '2025-06-18'
   - name: Freminet
     versions:
       - 4.0.2
@@ -1512,6 +1527,12 @@ fourStarCharacters:
     dates:
       - start: '2025-05-07'
         end: '2025-05-27'
+  - name: Dahlia
+    versions:
+      - 5.7.1
+    dates:
+      - start: '2025-06-18'
+        end: ''
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
