@@ -307,7 +307,7 @@ fiveStarCharacters:
       - start: '2025-01-21'
         end: '2025-02-12'
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
   - name: Yae Miko
     versions:
       - 2.5.1
@@ -576,7 +576,7 @@ fiveStarCharacters:
     dates:
       - start: '2024-08-06'
         end: '2024-08-28'
-      - start: ''
+      - start: '2025-07-08'
         end: ''
   - name: Mualani
     versions:
@@ -621,7 +621,7 @@ fiveStarCharacters:
     dates:
       - start: '2025-01-01'
         end: '2025-01-21'
-      - start: ''
+      - start: '2025-07-08'
         end: ''
   - name: Qiqi
     versions:
@@ -652,7 +652,7 @@ fiveStarCharacters:
       - 5.7.1
     dates:
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -734,6 +734,7 @@ fourStarCharacters:
       - 4.6.1
       - 4.8.2
       - 5.4.1
+      - 5.7.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -759,6 +760,8 @@ fourStarCharacters:
         end: '2024-08-28'
       - start: '2025-02-12'
         end: '2025-03-04'
+      - start: '2025-07-08'
+        end: ''
   - name: Noelle
     versions:
       - 1.0.2
@@ -929,7 +932,7 @@ fourStarCharacters:
       - start: '2025-01-01'
         end: '2025-01-21'
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
   - name: Ningguang
     versions:
       - 1.1.1
@@ -1349,7 +1352,7 @@ fourStarCharacters:
       - start: '2024-10-09'
         end: '2024-10-29'
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
   - name: Layla
     versions:
       - 3.2.2
@@ -1389,6 +1392,7 @@ fourStarCharacters:
       - 3.7.2
       - 4.4.2
       - 5.2.2
+      - 5.7.2
     dates:
       - start: '2023-01-18'
         end: '2023-02-07'
@@ -1398,6 +1402,8 @@ fourStarCharacters:
         end: '2024-03-13'
       - start: '2024-12-10'
         end: '2025-01-01'
+      - start: '2025-07-08'
+        end: ''
   - name: Mika
     versions:
       - 3.5.2
@@ -1524,9 +1530,12 @@ fourStarCharacters:
   - name: Iansan
     versions:
       - 5.5.1
+      - 5.7.2
     dates:
       - start: '2025-03-26'
         end: '2025-04-15'
+      - start: '2025-07-08'
+        end: ''
   - name: Ifa
     versions:
       - 5.6.1
@@ -1538,7 +1547,7 @@ fourStarCharacters:
       - 5.7.1
     dates:
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
@@ -1974,7 +1983,7 @@ fiveStarWeapons:
       - start: '2025-01-21'
         end: '2025-02-12'
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
   - name: Kagura's Verity
     versions:
       - 2.5.1
@@ -2227,9 +2236,12 @@ fiveStarWeapons:
   - name: Lumidouce Elegy
     versions:
       - 4.8.2
+      - 5.7.2
     dates:
       - start: '2024-08-06'
         end: '2024-08-28'
+      - start: '2025-07-08'
+        end: ''
   - name: Surf's Up
     versions:
       - 5.0.1
@@ -2263,9 +2275,12 @@ fiveStarWeapons:
   - name: A Thousand Blazing Suns
     versions:
       - 5.3.1
+      - 5.7.2
     dates:
       - start: '2025-01-01'
         end: '2025-01-21'
+      - start: '2025-07-08'
+        end: ''
   - name: Starcaller's Watch
     versions:
       - 5.3.1
@@ -2295,7 +2310,7 @@ fiveStarWeapons:
       - 5.7.1
     dates:
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -2395,7 +2410,7 @@ fourStarWeapons:
       - start: '2025-04-15'
         end: '2025-05-07'
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
   - name: The Bell
     versions:
       - 1.0.1
@@ -2466,6 +2481,7 @@ fourStarWeapons:
       - 4.8.2
       - 5.2.1
       - 5.4.1
+      - 5.7.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2501,6 +2517,8 @@ fourStarWeapons:
         end: '2024-12-10'
       - start: '2025-02-12'
         end: '2025-03-04'
+      - start: '2025-07-08'
+        end: ''
   - name: The Stringless
     versions:
       - 1.0.1
@@ -2640,6 +2658,7 @@ fourStarWeapons:
       - 5.2.2
       - 5.4.2
       - 5.6.2
+      - 5.7.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2705,6 +2724,8 @@ fourStarWeapons:
         end: '2025-03-26'
       - start: '2025-05-27'
         end: '2025-06-18'
+      - start: '2025-07-08'
+        end: ''
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2752,7 +2773,7 @@ fourStarWeapons:
       - start: '2025-01-21'
         end: '2025-02-12'
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
   - name: Sacrificial Fragments
     versions:
       - 1.0.2
@@ -2772,6 +2793,7 @@ fourStarWeapons:
       - 5.0.1
       - 5.2.2
       - 5.4.2
+      - 5.7.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2807,6 +2829,8 @@ fourStarWeapons:
         end: '2025-01-01'
       - start: '2025-03-04'
         end: '2025-03-26'
+      - start: '2025-07-08'
+        end: ''
   - name: Sacrificial Greatsword
     versions:
       - 1.0.2
@@ -2982,6 +3006,7 @@ fourStarWeapons:
       - 4.6.2
       - 5.0.2
       - 5.3.2
+      - 5.7.2
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -3011,6 +3036,8 @@ fourStarWeapons:
         end: '2024-10-09'
       - start: '2025-01-21'
         end: '2025-02-12'
+      - start: '2025-07-08'
+        end: ''
   - name: Rust
     versions:
       - 1.1.1
@@ -3027,6 +3054,7 @@ fourStarWeapons:
       - 4.8.1
       - 5.1.1
       - 5.4.2
+      - 5.7.2
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -3056,6 +3084,8 @@ fourStarWeapons:
         end: '2024-10-29'
       - start: '2025-03-04'
         end: '2025-03-26'
+      - start: '2025-07-08'
+        end: ''
   - name: Favonius Codex
     versions:
       - 1.1.2
@@ -3535,7 +3565,7 @@ fourStarWeapons:
       - start: '2024-08-06'
         end: '2024-08-28'
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
   - name: Wandering Evenstar
     versions:
       - 3.1.2
@@ -3550,7 +3580,7 @@ fourStarWeapons:
       - start: '2024-08-06'
         end: '2024-08-28'
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
   - name: Xiphos' Moonlight
     versions:
       - 3.1.2
@@ -3565,7 +3595,7 @@ fourStarWeapons:
       - start: '2024-07-17'
         end: '2024-08-06'
       - start: '2025-06-18'
-        end: ''
+        end: '2025-07-08'
   - name: Portable Power Saw
     versions:
       - 4.1.1
