@@ -577,13 +577,16 @@ fiveStarCharacters:
       - start: '2024-08-06'
         end: '2024-08-28'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Mualani
     versions:
       - 5.0.1
+      - 5.8.2
     dates:
       - start: '2024-08-28'
         end: '2024-09-17'
+      - start: ''
+        end: ''
   - name: Kinich
     versions:
       - 5.0.2
@@ -605,15 +608,21 @@ fiveStarCharacters:
   - name: Chasca
     versions:
       - 5.2.1
+      - 5.8.2
     dates:
       - start: '2024-11-20'
         end: '2024-12-10'
+      - start: ''
+        end: ''
   - name: Citlali
     versions:
       - 5.3.1
+      - 5.8.1
     dates:
       - start: '2025-01-01'
         end: '2025-01-21'
+      - start: '2025-07-30'
+        end: ''
   - name: Mavuika
     versions:
       - 5.3.1
@@ -622,7 +631,7 @@ fiveStarCharacters:
       - start: '2025-01-01'
         end: '2025-01-21'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Qiqi
     versions:
       - 5.3.2
@@ -653,6 +662,12 @@ fiveStarCharacters:
     dates:
       - start: '2025-06-18'
         end: '2025-07-08'
+  - name: Ineffa
+    versions:
+      - 5.8.1
+    dates:
+      - start: '2025-07-30'
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -761,7 +776,7 @@ fourStarCharacters:
       - start: '2025-02-12'
         end: '2025-03-04'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Noelle
     versions:
       - 1.0.2
@@ -1403,7 +1418,7 @@ fourStarCharacters:
       - start: '2024-12-10'
         end: '2025-01-01'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Mika
     versions:
       - 3.5.2
@@ -1535,7 +1550,7 @@ fourStarCharacters:
       - start: '2025-03-26'
         end: '2025-04-15'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Ifa
     versions:
       - 5.6.1
@@ -2241,7 +2256,7 @@ fiveStarWeapons:
       - start: '2024-08-06'
         end: '2024-08-28'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Surf's Up
     versions:
       - 5.0.1
@@ -2280,7 +2295,7 @@ fiveStarWeapons:
       - start: '2025-01-01'
         end: '2025-01-21'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Starcaller's Watch
     versions:
       - 5.3.1
@@ -2311,6 +2326,12 @@ fiveStarWeapons:
     dates:
       - start: '2025-06-18'
         end: '2025-07-08'
+  - name: Fractured Halo
+    versions:
+      - 5.8.1
+    dates:
+      - start: '2025-07-30'
+        end: ''
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -2518,7 +2539,7 @@ fourStarWeapons:
       - start: '2025-02-12'
         end: '2025-03-04'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: The Stringless
     versions:
       - 1.0.1
@@ -2725,7 +2746,7 @@ fourStarWeapons:
       - start: '2025-05-27'
         end: '2025-06-18'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2830,7 +2851,7 @@ fourStarWeapons:
       - start: '2025-03-04'
         end: '2025-03-26'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Sacrificial Greatsword
     versions:
       - 1.0.2
@@ -3037,7 +3058,7 @@ fourStarWeapons:
       - start: '2025-01-21'
         end: '2025-02-12'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Rust
     versions:
       - 1.1.1
@@ -3085,7 +3106,7 @@ fourStarWeapons:
       - start: '2025-03-04'
         end: '2025-03-26'
       - start: '2025-07-08'
-        end: ''
+        end: '2025-07-30'
   - name: Favonius Codex
     versions:
       - 1.1.2
