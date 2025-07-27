@@ -716,6 +716,7 @@ fourStarCharacters:
       - 3.6.2
       - 4.1.1
       - 5.2.2
+      - 5.8.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -735,6 +736,8 @@ fourStarCharacters:
         end: '2023-10-17'
       - start: '2024-12-10'
         end: '2025-01-01'
+      - start: '2025-07-30'
+        end: ''
   - name: Xiangling
     versions:
       - 1.0.1
@@ -856,6 +859,7 @@ fourStarCharacters:
       - 4.1.1
       - 4.5.2
       - 5.1.2
+      - 5.8.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -879,6 +883,8 @@ fourStarCharacters:
         end: '2024-04-24'
       - start: '2024-10-29'
         end: '2024-11-20'
+      - start: '2025-07-30'
+        end: ''
   - name: Beidou
     versions:
       - 1.1.1
@@ -1513,11 +1519,14 @@ fourStarCharacters:
     versions:
       - 4.7.1
       - 5.1.2
+      - 5.8.1
     dates:
       - start: '2024-06-05'
         end: '2024-06-25'
       - start: '2024-10-29'
         end: '2024-11-20'
+      - start: '2025-07-30'
+        end: ''
   - name: Kachina
     versions:
       - 5.0.1
@@ -2299,9 +2308,12 @@ fiveStarWeapons:
   - name: Starcaller's Watch
     versions:
       - 5.3.1
+      - 5.8.1
     dates:
       - start: '2025-01-01'
         end: '2025-01-21'
+      - start: '2025-07-30'
+        end: ''
   - name: Sunny Morning Sleep-In
     versions:
       - 5.4.1
@@ -2869,6 +2881,7 @@ fourStarWeapons:
       - 4.7.1
       - 5.1.1
       - 5.4.2
+      - 5.8.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2900,6 +2913,8 @@ fourStarWeapons:
         end: '2024-10-29'
       - start: '2025-03-04'
         end: '2025-03-26'
+      - start: '2025-07-30'
+        end: ''
   - name: Sacrificial Sword
     versions:
       - 1.0.2
@@ -3126,6 +3141,7 @@ fourStarWeapons:
       - 5.1.1
       - 5.3.1
       - 5.5.2
+      - 5.8.1
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -3161,6 +3177,8 @@ fourStarWeapons:
         end: '2025-01-21'
       - start: '2025-04-15'
         end: '2025-05-07'
+      - start: '2025-07-30'
+        end: ''
   - name: Favonius Warbow
     versions:
       - 1.1.2
@@ -3178,6 +3196,7 @@ fourStarWeapons:
       - 4.8.2
       - 5.1.2
       - 5.5.2
+      - 5.8.1
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -3209,6 +3228,8 @@ fourStarWeapons:
         end: '2024-11-20'
       - start: '2025-04-15'
         end: '2025-05-07'
+      - start: '2025-07-30'
+        end: ''
   - name: Lion's Roar
     versions:
       - 1.1.2
@@ -3669,20 +3690,26 @@ fourStarWeapons:
     versions:
       - 5.1.1
       - 5.5.1
+      - 5.8.1
     dates:
       - start: '2024-10-09'
         end: '2024-10-29'
       - start: '2025-03-26'
         end: '2025-04-15'
+      - start: '2025-07-30'
+        end: ''
   - name: Sturdy Bone
     versions:
       - 5.1.1
       - 5.5.1
+      - 5.8.1
     dates:
       - start: '2024-10-09'
         end: '2024-10-29'
       - start: '2025-03-26'
         end: '2025-04-15'
+      - start: '2025-07-30'
+        end: ''
   - name: Fruitful Hook
     versions:
       - 5.1.2
