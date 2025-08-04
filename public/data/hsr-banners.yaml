@@ -25,6 +25,7 @@ fiveStarCharacters:
       - 1.1.1
       - 1.5.2
       - 3.0.2
+      - 3.5.2
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -32,6 +33,8 @@ fiveStarCharacters:
         end: '2023-12-27'
       - start: '2025-02-05'
         end: '2025-02-26'
+      - start: '2025-09-02'
+        end: ''
   - name: Luocha
     versions:
       - 1.1.2
@@ -52,12 +55,13 @@ fiveStarCharacters:
       - start: '2023-12-27'
         end: '2024-01-17'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Kafka
     versions:
       - 1.2.2
       - 1.6.2
       - 2.5.1
+      - 3.5.1
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
@@ -65,6 +69,8 @@ fiveStarCharacters:
         end: '2024-02-06'
       - start: '2024-09-10'
         end: '2024-10-02'
+      - start: '2025-08-13'
+        end: '2025-09-02'
   - name: "Dan Heng \u2022 Imbibitor Lunae"
     versions:
       - 1.3.1
@@ -97,7 +103,7 @@ fiveStarCharacters:
       - start: '2024-04-17'
         end: '2024-05-08'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Topaz and Numby
     versions:
       - 1.4.2
@@ -223,7 +229,7 @@ fiveStarCharacters:
       - start: '2024-12-25'
         end: '2025-01-15'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Jade
     versions:
       - 2.3.2
@@ -368,6 +374,18 @@ fiveStarCharacters:
     dates:
       - start: '2025-07-11'
         end: '2025-07-23'
+  - name: Hysilens
+    versions:
+      - 3.5.1
+    dates:
+      - start: '2025-08-13'
+        end: '2025-09-02'
+  - name: Cerydra
+    versions:
+      - 3.5.2
+    dates:
+      - start: '2025-09-02'
+        end: ''
 fourStarCharacters:
   - name: Hook
     versions:
@@ -377,6 +395,7 @@ fourStarCharacters:
       - 2.2.2
       - 2.4.2
       - 3.1.1
+      - 3.5.1
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
@@ -390,6 +409,8 @@ fourStarCharacters:
         end: '2024-09-10'
       - start: '2025-02-26'
         end: '2025-03-19'
+      - start: '2025-08-13'
+        end: '2025-09-02'
   - name: Natasha
     versions:
       - 1.0.1
@@ -494,6 +515,7 @@ fourStarCharacters:
       - 2.3.2
       - 2.5.1
       - 3.0.1
+      - 3.5.1
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -507,12 +529,15 @@ fourStarCharacters:
         end: '2024-10-02'
       - start: '2025-01-15'
         end: '2025-02-05'
+      - start: '2025-08-13'
+        end: '2025-09-02'
   - name: Dan Heng
     versions:
       - 1.1.1
       - 1.5.1
       - 2.1.1
       - 3.2.2
+      - 3.5.2
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -522,6 +547,8 @@ fourStarCharacters:
         end: '2024-04-17'
       - start: '2025-04-30'
         end: '2025-05-21'
+      - start: '2025-09-02'
+        end: ''
   - name: Serval
     versions:
       - 1.1.1
@@ -553,6 +580,7 @@ fourStarCharacters:
       - 2.0.2
       - 2.7.1
       - 3.3.2
+      - 3.5.2
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
@@ -564,6 +592,8 @@ fourStarCharacters:
         end: '2024-12-25'
       - start: '2025-06-11'
         end: '2025-07-02'
+      - start: '2025-09-02'
+        end: ''
   - name: Yukong
     versions:
       - 1.1.2
@@ -592,6 +622,7 @@ fourStarCharacters:
       - 2.4.2
       - 2.7.1
       - 3.1.2
+      - 3.5.1
     dates:
       - start: '2023-07-19'
         end: '2023-08-09'
@@ -603,6 +634,8 @@ fourStarCharacters:
         end: '2024-12-25'
       - start: '2025-03-19'
         end: '2025-04-09'
+      - start: '2025-08-13'
+        end: '2025-09-02'
   - name: Luka
     versions:
       - 1.2.2
@@ -623,13 +656,14 @@ fourStarCharacters:
       - start: '2024-09-10'
         end: '2024-10-02'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Sampo
     versions:
       - 1.2.2
       - 1.4.1
       - 2.0.2
       - 2.6.2
+      - 3.5.2
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
@@ -638,6 +672,8 @@ fourStarCharacters:
       - start: '2024-02-29'
         end: '2024-03-27'
       - start: '2024-11-13'
+        end: ''
+      - start: '2025-09-02'
         end: ''
   - name: Lynx
     versions:
@@ -665,7 +701,7 @@ fourStarCharacters:
       - start: '2025-04-09'
         end: '2025-04-30'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Guinaifen
     versions:
       - 1.4.2
@@ -704,7 +740,7 @@ fourStarCharacters:
       - start: '2025-02-05'
         end: '2025-02-26'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Xueyi
     versions:
       - 1.6.1
@@ -798,6 +834,7 @@ fiveStarWeapons:
       - 1.1.1
       - 1.5.2
       - 3.0.2
+      - 3.5.2
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -805,6 +842,8 @@ fiveStarWeapons:
         end: '2023-12-27'
       - start: '2025-02-05'
         end: '2025-02-26'
+      - start: '2025-09-02'
+        end: ''
   - name: Echoes of the Coffin
     versions:
       - 1.1.2
@@ -825,12 +864,13 @@ fiveStarWeapons:
       - start: '2023-12-27'
         end: '2024-01-17'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Patience Is All You Need
     versions:
       - 1.2.2
       - 1.6.2
       - 2.5.1
+      - 3.5.1
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
@@ -838,6 +878,8 @@ fiveStarWeapons:
         end: '2024-02-06'
       - start: '2024-09-10'
         end: '2024-10-02'
+      - start: '2025-08-13'
+        end: '2025-09-02'
   - name: Brighter Than the Sun
     versions:
       - 1.3.1
@@ -870,7 +912,7 @@ fiveStarWeapons:
       - start: '2024-04-17'
         end: '2024-05-08'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Worrisome, Blissful
     versions:
       - 1.4.2
@@ -996,7 +1038,7 @@ fiveStarWeapons:
       - start: '2024-12-25'
         end: '2025-01-15'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Yet Hope Is Priceless
     versions:
       - 2.3.2
@@ -1141,6 +1183,18 @@ fiveStarWeapons:
     dates:
       - start: '2025-07-11'
         end: '2025-07-23'
+  - name: Why Does the Ocean Sing
+    versions:
+      - 3.5.1
+    dates:
+      - start: '2025-08-13'
+        end: '2025-09-02'
+  - name: Epoch Etched in Golden Blood
+    versions:
+      - 3.5.2
+    dates:
+      - start: '2025-09-02'
+        end: ''
 fourStarWeapons:
   - name: Good Night and Sleep Well
     versions:
@@ -1148,6 +1202,7 @@ fourStarWeapons:
       - 1.1.2
       - 2.1.1
       - 3.2.1
+      - 3.5.2
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
@@ -1157,6 +1212,8 @@ fourStarWeapons:
         end: '2024-04-17'
       - start: '2025-04-09'
         end: '2025-04-30'
+      - start: '2025-09-02'
+        end: ''
   - name: Post-Op Conversation
     versions:
       - 1.0.1
@@ -1297,7 +1354,7 @@ fourStarWeapons:
       - start: '2025-02-05'
         end: '2025-02-26'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Dance! Dance! Dance!
     versions:
       - 1.1.2
@@ -1348,7 +1405,7 @@ fourStarWeapons:
       - start: '2025-03-19'
         end: '2025-04-09'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: Shared Feeling
     versions:
       - 1.2.1
@@ -1376,6 +1433,7 @@ fourStarWeapons:
       - 2.2.1
       - 2.5.1
       - 2.7.1
+      - 3.5.2
     dates:
       - start: '2023-07-19'
         end: '2023-08-09'
@@ -1385,6 +1443,8 @@ fourStarWeapons:
         end: '2024-10-02'
       - start: '2024-12-04'
         end: '2024-12-25'
+      - start: '2025-09-02'
+        end: ''
   - name: Eyes of the Prey
     versions:
       - 1.2.2
@@ -1392,6 +1452,7 @@ fourStarWeapons:
       - 2.3.1
       - 2.4.2
       - 3.3.2
+      - 3.5.1
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
@@ -1403,6 +1464,8 @@ fourStarWeapons:
         end: '2024-09-10'
       - start: '2025-06-11'
         end: '2025-07-02'
+      - start: '2025-08-13'
+        end: '2025-09-02'
   - name: Resolution Shines As Pearls of Sweat
     versions:
       - 1.2.2
@@ -1423,7 +1486,7 @@ fourStarWeapons:
       - start: '2024-12-25'
         end: '2025-01-15'
       - start: '2025-07-23'
-        end: ''
+        end: '2025-08-13'
   - name: The Birth of the Self
     versions:
       - 1.2.2
@@ -1431,6 +1494,7 @@ fourStarWeapons:
       - 2.4.1
       - 2.5.1
       - 2.7.1
+      - 3.5.2
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
@@ -1442,6 +1506,8 @@ fourStarWeapons:
         end: '2024-10-02'
       - start: '2024-12-04'
         end: '2024-12-25'
+      - start: '2025-09-02'
+        end: ''
   - name: Landau's Choice
     versions:
       - 1.3.1
@@ -1515,11 +1581,14 @@ fourStarWeapons:
     versions:
       - 2.0.1
       - 2.7.2
+      - 3.5.1
     dates:
       - start: '2024-02-06'
         end: '2024-02-29'
       - start: '2024-12-25'
         end: '2025-01-15'
+      - start: '2025-08-13'
+        end: '2025-09-02'
   - name: Concert for Two
     versions:
       - 2.1.2
@@ -1557,11 +1626,14 @@ fourStarWeapons:
     versions:
       - 2.4.2
       - 2.7.1
+      - 3.5.1
     dates:
       - start: '2024-08-21'
         end: '2024-09-10'
       - start: '2024-12-04'
         end: '2024-12-25'
+      - start: '2025-08-13'
+        end: '2025-09-02'
   - name: Shadowed by Night
     versions:
       - 2.5.2
