@@ -585,7 +585,7 @@ fiveStarCharacters:
     dates:
       - start: '2024-08-28'
         end: '2024-09-17'
-      - start: ''
+      - start: '2025-08-19'
         end: ''
   - name: Kinich
     versions:
@@ -612,7 +612,7 @@ fiveStarCharacters:
     dates:
       - start: '2024-11-20'
         end: '2024-12-10'
-      - start: ''
+      - start: '2025-08-19'
         end: ''
   - name: Citlali
     versions:
@@ -622,7 +622,7 @@ fiveStarCharacters:
       - start: '2025-01-01'
         end: '2025-01-21'
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
   - name: Mavuika
     versions:
       - 5.3.1
@@ -667,7 +667,7 @@ fiveStarCharacters:
       - 5.8.1
     dates:
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -737,7 +737,7 @@ fourStarCharacters:
       - start: '2024-12-10'
         end: '2025-01-01'
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
   - name: Xiangling
     versions:
       - 1.0.1
@@ -884,7 +884,7 @@ fourStarCharacters:
       - start: '2024-10-29'
         end: '2024-11-20'
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
   - name: Beidou
     versions:
       - 1.1.1
@@ -1083,6 +1083,7 @@ fourStarCharacters:
       - 4.7.1
       - 5.0.1
       - 5.3.1
+      - 5.8.2
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -1110,6 +1111,8 @@ fourStarCharacters:
         end: '2024-09-17'
       - start: '2025-01-01'
         end: '2025-01-21'
+      - start: '2025-08-19'
+        end: ''
   - name: Rosaria
     versions:
       - 1.4.2
@@ -1526,7 +1529,7 @@ fourStarCharacters:
       - start: '2024-10-29'
         end: '2024-11-20'
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
   - name: Kachina
     versions:
       - 5.0.1
@@ -1540,11 +1543,14 @@ fourStarCharacters:
     versions:
       - 5.2.1
       - 5.6.1
+      - 5.8.2
     dates:
       - start: '2024-11-20'
         end: '2024-12-10'
       - start: '2025-05-07'
         end: '2025-05-27'
+      - start: '2025-08-19'
+        end: ''
   - name: Lan Yan
     versions:
       - 5.3.2
@@ -1563,9 +1569,12 @@ fourStarCharacters:
   - name: Ifa
     versions:
       - 5.6.1
+      - 5.8.2
     dates:
       - start: '2025-05-07'
         end: '2025-05-27'
+      - start: '2025-08-19'
+        end: ''
   - name: Dahlia
     versions:
       - 5.7.1
@@ -2269,9 +2278,12 @@ fiveStarWeapons:
   - name: Surf's Up
     versions:
       - 5.0.1
+      - 5.8.2
     dates:
       - start: '2024-08-28'
         end: '2024-09-17'
+      - start: '2025-08-19'
+        end: ''
   - name: Fang of the Mountain King
     versions:
       - 5.0.2
@@ -2293,9 +2305,12 @@ fiveStarWeapons:
   - name: Astral Vulture's Crimson Plumage
     versions:
       - 5.2.1
+      - 5.8.2
     dates:
       - start: '2024-11-20'
         end: '2024-12-10'
+      - start: '2025-08-19'
+        end: ''
   - name: A Thousand Blazing Suns
     versions:
       - 5.3.1
@@ -2313,7 +2328,7 @@ fiveStarWeapons:
       - start: '2025-01-01'
         end: '2025-01-21'
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
   - name: Sunny Morning Sleep-In
     versions:
       - 5.4.1
@@ -2343,7 +2358,7 @@ fiveStarWeapons:
       - 5.8.1
     dates:
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -2379,6 +2394,7 @@ fourStarWeapons:
       - 5.3.1
       - 5.5.2
       - 5.7.1
+      - 5.8.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2444,6 +2460,8 @@ fourStarWeapons:
         end: '2025-05-07'
       - start: '2025-06-18'
         end: '2025-07-08'
+      - start: '2025-08-19'
+        end: ''
   - name: The Bell
     versions:
       - 1.0.1
@@ -2914,7 +2932,7 @@ fourStarWeapons:
       - start: '2025-03-04'
         end: '2025-03-26'
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
   - name: Sacrificial Sword
     versions:
       - 1.0.2
@@ -3178,7 +3196,7 @@ fourStarWeapons:
       - start: '2025-04-15'
         end: '2025-05-07'
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
   - name: Favonius Warbow
     versions:
       - 1.1.2
@@ -3229,7 +3247,7 @@ fourStarWeapons:
       - start: '2025-04-15'
         end: '2025-05-07'
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
   - name: Lion's Roar
     versions:
       - 1.1.2
@@ -3350,6 +3368,7 @@ fourStarWeapons:
       - 5.0.1
       - 5.2.2
       - 5.4.2
+      - 5.8.2
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -3383,6 +3402,8 @@ fourStarWeapons:
         end: '2025-01-01'
       - start: '2025-03-04'
         end: '2025-03-26'
+      - start: '2025-08-19'
+        end: ''
   - name: Lithic Blade
     versions:
       - 1.3.2
@@ -3697,7 +3718,7 @@ fourStarWeapons:
       - start: '2025-03-26'
         end: '2025-04-15'
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
   - name: Sturdy Bone
     versions:
       - 5.1.1
@@ -3709,31 +3730,40 @@ fourStarWeapons:
       - start: '2025-03-26'
         end: '2025-04-15'
       - start: '2025-07-30'
-        end: ''
+        end: '2025-08-19'
   - name: Fruitful Hook
     versions:
       - 5.1.2
       - 5.5.1
+      - 5.8.2
     dates:
       - start: '2024-10-29'
         end: '2024-11-20'
       - start: '2025-03-26'
         end: '2025-04-15'
+      - start: '2025-08-19'
+        end: ''
   - name: Flower-Wreathed Feathers
     versions:
       - 5.2.1
       - 5.5.1
+      - 5.8.2
     dates:
       - start: '2024-11-20'
         end: '2024-12-10'
       - start: '2025-03-26'
         end: '2025-04-15'
+      - start: '2025-08-19'
+        end: ''
   - name: Waveriding Whirl
     versions:
       - 5.2.1
       - 5.5.1
+      - 5.8.2
     dates:
       - start: '2024-11-20'
         end: '2024-12-10'
       - start: '2025-03-26'
         end: '2025-04-15'
+      - start: '2025-08-19'
+        end: ''
