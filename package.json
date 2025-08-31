@@ -12,7 +12,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:cloudflare": "corepack prepare pnpm@10.13.1 --activate && pnpm install -P && pnpm build",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "build:cloudflare": "corepack prepare pnpm@10.13.1 --activate && pnpm install -P && pnpm pages:build",
     "start": "serve out",
     "lint": "next lint",
     "test": "jest --detectOpenHandles",
