@@ -47,7 +47,7 @@ export const getPageTitle = (star: string, type: string, page?: string) => {
     case "longest-leaderboard":
       return `${starSymbol} ${itemText} Longest Rerun Leaderboard - Samsara`;
     case "shortest-leaderboard":
-      return `${starSymbol} ${itemText} Shortest Readerboard - Samsara`;
+      return `${starSymbol} ${itemText} Shortest Rerun Leaderboard - Samsara`;
     default:
       return `${starSymbol} ${itemText} Banner History - Samsara`;
   }
