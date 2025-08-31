@@ -31,7 +31,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10.13.1
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -82,7 +82,10 @@ jobs:
     needs: 'build'
     runs-on: ubuntu-latest
     name: Deploy
+    environment: production
     steps:
-      - name: Trigger Deploy Hook
-        run: |
-          curl -X POST "${{ secrets.CLOUDFLARE_HOOK }}" | grep success | grep true
+      - uses: actions/checkout@v4
+      - name: Deploy app
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

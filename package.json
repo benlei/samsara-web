@@ -2,6 +2,7 @@
   "name": "samsara",
   "version": "2.3.0",
   "private": true,
+  "packageManager": "pnpm@10.13.1",
   "engines": {
     "node": ">=20",
     "pnpm": ">=9",
@@ -9,22 +10,19 @@
     "yarn": "use pnpm instead"
   },
   "scripts": {
-    "build:cloudflare": "npm install -g pnpm@9 && pnpm install -P && next build",
     "dev": "next dev",
     "build": "next build",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "build:cloudflare": "corepack prepare pnpm@10.13.1 --activate && pnpm install -P && pnpm pages:build",
     "start": "serve out",
     "lint": "next lint",
     "test": "jest --detectOpenHandles",
-    "e2e": "playwright test",
     "test:watch": "jest --watch",
+    "e2e": "playwright test",
     "playwright": "playwright",
     "playwright:install": "playwright install --with-deps"
   },
   "dependencies": {
-    "@types/lodash": "4.17.20",
-    "@types/node": "24.3.0",
-    "@types/react": "18.3.24",
-    "@types/react-dom": "18.3.7",
     "clsx": "2.1.1",
     "cookies-next": "6.1.0",
     "dayjs": "1.11.18",
@@ -40,16 +38,22 @@
     "react-ga4": "2.1.0",
     "react-indiana-drag-scroll": "2.2.1",
     "semantic-ui-react": "2.1.5",
-    "typescript": "5.9.2",
-    "yaml": "2.8.1"
+    "yaml": "2.8.1",
+    "serve": "14.2.4"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "1.13.15",
     "@eslint/eslintrc": "3.3.1",
     "@playwright/test": "1.55.0",
     "@types/jest": "30.0.0",
+    "@types/lodash": "4.17.20",
+    "@types/node": "24.3.0",
+    "@types/react": "18.3.24",
+    "@types/react-dom": "18.3.7",
     "jest": "30.1.1",
     "playwright": "1.55.0",
-    "serve": "14.2.4",
-    "ts-jest": "29.4.1"
+    "ts-jest": "29.4.1",
+    "typescript": "5.9.2",
+    "wrangler": "3.28.2"
   }
 }
