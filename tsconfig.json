@@ -24,7 +24,8 @@
       "@/components/*": ["components/*"],
       "@/pages/*": ["pages/*"],
       "@/data/*": ["public/data/*"],
-      "@/lotypes/*": ["lotypes/*"]
+      "@/lotypes/*": ["lotypes/*"],
+      "@/lib/*": ["lib/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
