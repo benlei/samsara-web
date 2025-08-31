@@ -1,0 +1,6 @@
+name = "samsara"
+main = "./.vercel/output/static/_worker.js/index.js"
+compatibility_date = "2025-08-31"
+
+[vars]
+# Add any runtime vars here if needed
