@@ -71,7 +71,7 @@ fiveStarCharacters:
         end: '2024-10-02'
       - start: '2025-08-13'
         end: '2025-09-02'
-  - name: "Dan Heng \u2022 Imbibitor Lunae"
+  - name: Dan Heng • Imbibitor Lunae
     versions:
       - 1.3.1
       - 2.0.1
