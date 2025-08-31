@@ -84,6 +84,8 @@ jobs:
     name: Deploy
     environment: production
     steps:
-      - name: Trigger Deploy Hook
-        run: |
-          curl -X POST "${{ secrets.CLOUDFLARE_HOOK }}" | grep success | grep true
+      - uses: actions/checkout@v4
+      - name: Deploy app
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
