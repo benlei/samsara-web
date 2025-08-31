@@ -15,10 +15,6 @@ export default function Layout({children}: React.PropsWithChildren) {
                 <meta name="keywords"
                       content="Genshin, Genshin Impact, Honkai Star Rail, star rail, hsr, banners, characters, weapons, lightcones, samsara, repeat, loop, history, summary, rundown"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <script>
-                    {/*to prevent Firefox FOUC, this must be here*/}
-                    0
-                </script>
             </Head>
             <main>
                 <Navbar/>
