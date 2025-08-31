@@ -347,6 +347,7 @@ fiveStarCharacters:
       - 3.4.2
       - 4.0.1
       - 4.8.2
+      - Luna I.2
     dates:
       - start: '2022-05-31'
         end: '2022-06-21'
@@ -356,17 +357,23 @@ fiveStarCharacters:
         end: '2023-09-05'
       - start: '2024-08-06'
         end: '2024-08-28'
+      - start: '2025-09-30'
+        end: ''
   - name: Tighnari
     versions:
       - 3.0.1
+      - Luna I.1
     dates:
       - start: '2022-08-24'
         end: '2022-09-09'
+      - start: '2025-09-10'
+        end: '2025-09-30'
   - name: Cyno
     versions:
       - 3.1.1
       - 3.5.1
       - 4.2.2
+      - Luna I.1
     dates:
       - start: '2022-09-28'
         end: '2022-10-14'
@@ -374,11 +381,14 @@ fiveStarCharacters:
         end: '2023-03-21'
       - start: '2023-11-28'
         end: '2023-12-20'
+      - start: '2025-09-10'
+        end: '2025-09-30'
   - name: Nilou
     versions:
       - 3.1.2
       - 3.6.1
       - 4.8.1
+      - Luna I.1
     dates:
       - start: '2022-10-14'
         end: '2022-11-02'
@@ -386,12 +396,15 @@ fiveStarCharacters:
         end: '2023-05-02'
       - start: '2024-07-17'
         end: '2024-08-06'
+      - start: '2025-09-10'
+        end: '2025-09-30'
   - name: Nahida
     versions:
       - 3.2.1
       - 3.6.1
       - 4.4.1
       - 5.1.2
+      - Luna I.1
     dates:
       - start: '2022-11-02'
         end: '2022-11-18'
@@ -401,11 +414,14 @@ fiveStarCharacters:
         end: '2024-02-20'
       - start: '2024-10-29'
         end: '2024-11-20'
+      - start: '2025-09-10'
+        end: '2025-09-30'
   - name: Wanderer
     versions:
       - 3.3.1
       - 3.8.2
       - 4.6.2
+      - Luna I.1
     dates:
       - start: '2022-12-07'
         end: '2022-12-27'
@@ -413,11 +429,14 @@ fiveStarCharacters:
         end: '2023-08-16'
       - start: '2024-05-14'
         end: '2024-06-05'
+      - start: '2025-09-10'
+        end: '2025-09-30'
   - name: Alhaitham
     versions:
       - 3.4.1
       - 3.7.2
       - 4.7.1
+      - Luna I.1
     dates:
       - start: '2023-01-18'
         end: '2023-02-07'
@@ -425,12 +444,17 @@ fiveStarCharacters:
         end: '2023-07-05'
       - start: '2024-06-05'
         end: '2024-06-25'
+      - start: '2025-09-10'
+        end: '2025-09-30'
   - name: Dehya
     versions:
       - 3.5.1
+      - Luna I.1
     dates:
       - start: '2023-03-01'
         end: '2023-03-21'
+      - start: '2025-09-10'
+        end: '2025-09-30'
   - name: Baizhu
     versions:
       - 3.6.2
@@ -586,7 +610,7 @@ fiveStarCharacters:
       - start: '2024-08-28'
         end: '2024-09-17'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: Kinich
     versions:
       - 5.0.2
@@ -613,7 +637,7 @@ fiveStarCharacters:
       - start: '2024-11-20'
         end: '2024-12-10'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: Citlali
     versions:
       - 5.3.1
@@ -668,6 +692,18 @@ fiveStarCharacters:
     dates:
       - start: '2025-07-30'
         end: '2025-08-19'
+  - name: Flins
+    versions:
+      - Luna I.2
+    dates:
+      - start: '2025-09-30'
+        end: ''
+  - name: Lauma
+    versions:
+      - Luna I.1
+    dates:
+      - start: '2025-09-10'
+        end: '2025-09-30'
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -682,6 +718,7 @@ fourStarCharacters:
       - 4.0.1
       - 4.5.2
       - 5.2.1
+      - Luna I.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -705,6 +742,8 @@ fourStarCharacters:
         end: '2024-04-24'
       - start: '2024-11-20'
         end: '2024-12-10'
+      - start: '2025-09-10'
+        end: '2025-09-30'
   - name: Fischl
     versions:
       - 1.0.1
@@ -825,6 +864,7 @@ fourStarCharacters:
       - 3.5.2
       - 4.3.1
       - 5.2.1
+      - Luna I.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -846,6 +886,8 @@ fourStarCharacters:
         end: '2024-01-09'
       - start: '2024-11-20'
         end: '2024-12-10'
+      - start: '2025-09-30'
+        end: ''
   - name: Xingqiu
     versions:
       - 1.0.2
@@ -1112,7 +1154,7 @@ fourStarCharacters:
       - start: '2025-01-01'
         end: '2025-01-21'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: Rosaria
     versions:
       - 1.4.2
@@ -1300,6 +1342,7 @@ fourStarCharacters:
       - 3.6.1
       - 4.2.2
       - 5.1.2
+      - Luna I.1
     dates:
       - start: '2022-06-21'
         end: '2022-07-13'
@@ -1311,6 +1354,8 @@ fourStarCharacters:
         end: '2023-12-20'
       - start: '2024-10-29'
         end: '2024-11-20'
+      - start: '2025-09-10'
+        end: '2025-09-30'
   - name: Shikanoin Heizou
     versions:
       - 2.8.1
@@ -1348,6 +1393,7 @@ fourStarCharacters:
       - 4.1.2
       - 4.5.1
       - 5.1.1
+      - Luna I.2
     dates:
       - start: '2022-09-09'
         end: '2022-09-28'
@@ -1359,6 +1405,8 @@ fourStarCharacters:
         end: '2024-04-02'
       - start: '2024-10-09'
         end: '2024-10-29'
+      - start: '2025-09-30'
+        end: ''
   - name: Candace
     versions:
       - 3.1.1
@@ -1444,11 +1492,14 @@ fourStarCharacters:
     versions:
       - 3.6.2
       - 4.8.1
+      - Luna I.1
     dates:
       - start: '2023-05-02'
         end: '2023-05-24'
       - start: '2024-07-17'
         end: '2024-08-06'
+      - start: '2025-09-10'
+        end: '2025-09-30'
   - name: Kirara
     versions:
       - 3.7.1
@@ -1550,7 +1601,7 @@ fourStarCharacters:
       - start: '2025-05-07'
         end: '2025-05-27'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: Lan Yan
     versions:
       - 5.3.2
@@ -1574,13 +1625,19 @@ fourStarCharacters:
       - start: '2025-05-07'
         end: '2025-05-27'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: Dahlia
     versions:
       - 5.7.1
     dates:
       - start: '2025-06-18'
         end: '2025-07-08'
+  - name: Aino
+    versions:
+      - Luna I.2
+    dates:
+      - start: '2025-09-30'
+        end: ''
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
@@ -2069,16 +2126,20 @@ fiveStarWeapons:
     versions:
       - 3.0.1
       - 4.5.1
+      - Luna I.1
     dates:
       - start: '2022-08-24'
         end: '2022-09-09'
       - start: '2024-03-13'
         end: '2024-04-02'
+      - start: '2025-09-10'
+        end: ''
   - name: Staff of the Scarlet Sands
     versions:
       - 3.1.1
       - 3.5.1
       - 4.2.2
+      - Luna I.1
     dates:
       - start: '2022-09-28'
         end: '2022-10-14'
@@ -2086,11 +2147,14 @@ fiveStarWeapons:
         end: '2023-03-21'
       - start: '2023-11-28'
         end: '2023-12-20'
+      - start: '2025-09-10'
+        end: ''
   - name: Key of Khaj-Nisut
     versions:
       - 3.1.2
       - 3.6.1
       - 4.8.1
+      - Luna I.1
     dates:
       - start: '2022-10-14'
         end: '2022-11-02'
@@ -2098,6 +2162,8 @@ fiveStarWeapons:
         end: '2023-05-02'
       - start: '2024-07-17'
         end: '2024-08-06'
+      - start: '2025-09-10'
+        end: ''
   - name: A Thousand Floating Dreams
     versions:
       - 3.2.1
@@ -2118,6 +2184,7 @@ fiveStarWeapons:
       - 3.3.1
       - 3.8.2
       - 4.6.2
+      - Luna I.1
     dates:
       - start: '2022-12-07'
         end: '2022-12-27'
@@ -2125,11 +2192,14 @@ fiveStarWeapons:
         end: '2023-08-16'
       - start: '2024-05-14'
         end: '2024-06-05'
+      - start: '2025-09-10'
+        end: ''
   - name: Light of Foliar Incision
     versions:
       - 3.4.1
       - 3.7.2
       - 4.7.1
+      - Luna I.1
     dates:
       - start: '2023-01-18'
         end: '2023-02-07'
@@ -2137,15 +2207,20 @@ fiveStarWeapons:
         end: '2023-07-05'
       - start: '2024-06-05'
         end: '2024-06-25'
+      - start: '2025-09-10'
+        end: ''
   - name: Beacon of the Reed Sea
     versions:
       - 3.5.1
       - 4.5.1
+      - Luna I.1
     dates:
       - start: '2023-03-01'
         end: '2023-03-21'
       - start: '2024-03-13'
         end: '2024-04-02'
+      - start: '2025-09-10'
+        end: ''
   - name: Jadefall's Splendor
     versions:
       - 3.6.2
@@ -2283,7 +2358,7 @@ fiveStarWeapons:
       - start: '2024-08-28'
         end: '2024-09-17'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: Fang of the Mountain King
     versions:
       - 5.0.2
@@ -2310,7 +2385,7 @@ fiveStarWeapons:
       - start: '2024-11-20'
         end: '2024-12-10'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: A Thousand Blazing Suns
     versions:
       - 5.3.1
@@ -2461,7 +2536,7 @@ fourStarWeapons:
       - start: '2025-06-18'
         end: '2025-07-08'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: The Bell
     versions:
       - 1.0.1
@@ -3403,7 +3478,7 @@ fourStarWeapons:
       - start: '2025-03-04'
         end: '2025-03-26'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: Lithic Blade
     versions:
       - 1.3.2
@@ -3742,7 +3817,7 @@ fourStarWeapons:
       - start: '2025-03-26'
         end: '2025-04-15'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: Flower-Wreathed Feathers
     versions:
       - 5.2.1
@@ -3754,7 +3829,7 @@ fourStarWeapons:
       - start: '2025-03-26'
         end: '2025-04-15'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
   - name: Waveriding Whirl
     versions:
       - 5.2.1
@@ -3766,4 +3841,4 @@ fourStarWeapons:
       - start: '2025-03-26'
         end: '2025-04-15'
       - start: '2025-08-19'
-        end: ''
+        end: '2025-09-10'
