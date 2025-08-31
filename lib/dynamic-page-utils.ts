@@ -34,7 +34,7 @@ export const getDisplayText = (type: string) => {
 
 export const getPageTitle = (star: string, type: string, page?: string) => {
   const { itemText } = getDisplayText(type);
-  const starSymbol = star === "4star" ? "4&#x2605;" : "5&#x2605;";
+  const starSymbol = star === "4star" ? "4★" : "5★";
   
   switch (page) {
     case "summary":
@@ -47,7 +47,7 @@ export const getPageTitle = (star: string, type: string, page?: string) => {
     case "longest-leaderboard":
       return `${starSymbol} ${itemText} Longest Rerun Leaderboard - Samsara`;
     case "shortest-leaderboard":
-      return `${starSymbol} ${itemText} Shortest Rerun Leaderboard - Samsara`;
+      return `${starSymbol} ${itemText} Shortest Readerboard - Samsara`;
     default:
       return `${starSymbol} ${itemText} Banner History - Samsara`;
   }
