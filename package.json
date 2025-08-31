@@ -9,7 +9,7 @@
     "yarn": "use pnpm instead"
   },
   "scripts": {
-    "build:cloudflare": "npm install -g pnpm@9 && pnpm install -P && next build",
+    "build:cloudflare": "pnpm install -P && next build",
     "dev": "next dev",
     "build": "next build",
     "start": "serve out",
