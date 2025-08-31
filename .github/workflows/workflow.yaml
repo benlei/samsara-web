@@ -82,6 +82,7 @@ jobs:
     needs: 'build'
     runs-on: ubuntu-latest
     name: Deploy
+    environment: production
     steps:
       - name: Trigger Deploy Hook
         run: |
