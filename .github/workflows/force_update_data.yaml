@@ -14,8 +14,8 @@ jobs:
         uses: benlei/samsara-tools@v2.0
         with:
           game: gi
-          output: ../public/data/banners.yaml
-          output-image-dir: ../public/images/
+          output: ./public/data/banners.yaml
+          output-image-dir: ./public/images/
           force: true
           min-data-size: 70000
 
@@ -23,8 +23,8 @@ jobs:
         uses: benlei/samsara-tools@v2.0
         with:
           game: hsr
-          output: ../public/data/hsr-banners.yaml
-          output-image-dir: ../public/images/
+          output: ./public/data/hsr-banners.yaml
+          output-image-dir: ./public/images/
           force: true
           min-data-size: 25000
 
