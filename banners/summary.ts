@@ -1,4 +1,4 @@
-import { getBaseVersion, getVersionPart, isLunaVersion, getDisplayVersion } from "@/banners/version";
+import { getBaseVersion, getVersionPart } from "@/banners/version";
 import _ from "lodash";
 import dayjs, { Dayjs } from "dayjs";
 import {
@@ -194,23 +194,7 @@ export function getFilterFunction(
     filterVersion: string,
     s: { name: string; versions: string[] }
   ): boolean {
-    const trimmedFilter = filterVersion.trim();
-    
-    // Check for Luna version matching (e.g., "Luna I", "Luna II")
-    if (trimmedFilter.toLowerCase().startsWith('luna ')) {
-      return _.chain(s.versions)
-        .map((v) => {
-          const lowerV = v.toLowerCase();
-          const lowerFilter = trimmedFilter.toLowerCase();
-          // Exact match or match followed by a dot (e.g., "Luna I" matches "Luna I.1")
-          return lowerV === lowerFilter || lowerV.startsWith(lowerFilter + '.');
-        })
-        .includes(true)
-        .value();
-    }
-    
-    // Check for numeric version matching
-    if (!trimmedFilter.match(/^[0-9.]+$/)) {
+    if (!filterVersion.trim().match(/^[0-9.]+$/)) {
       return false;
     }
 
@@ -218,7 +202,7 @@ export function getFilterFunction(
       return fv.split(".").length >= 2;
     }
 
-    const version = _.trim(trimmedFilter, ".");
+    const version = _.trim(filterVersion.trim(), ".");
     let prefix: string;
     if (isFullVersion(version)) {
       prefix = version;
@@ -226,6 +210,7 @@ export function getFilterFunction(
       prefix = version + ".";
     }
 
+    console.log(`prefix: ${prefix}`);
     return _.chain(s.versions)
       .map((v) => v.startsWith(prefix))
       .includes(true)
