@@ -53,7 +53,7 @@ function SidebarPusher({
   fourStarWeapBase,
   visible,
   setVisible,
-}: SidebarPusherProperties): JSX.Element {
+}: SidebarPusherProperties): React.ReactElement {
   const router = useRouter();
   const [activeMenu, setActiveMenu] = React.useState(router.pathname);
 
@@ -173,7 +173,7 @@ function SidebarPusher({
   );
 }
 
-export default function Navbar(): JSX.Element {
+export default function Navbar(): React.ReactElement {
   const [visible, setVisible] = React.useState(false);
   const [hsrVisible, setHsrVisible] = React.useState(false);
 
@@ -226,7 +226,7 @@ export default function Navbar(): JSX.Element {
   );
 }
 
-function SidebarMenuItems({ stars, type }: SidebarItemsProps): JSX.Element {
+function SidebarMenuItems({ stars, type }: SidebarItemsProps): React.ReactElement {
   return (
     <Menu vertical>
       <Menu.Item as={"a"} href={`/${stars}star/${type}`}>

@@ -19,7 +19,7 @@ export default function HistoryRow({
   rundown,
   bannerType,
   dataset,
-}: Properties): JSX.Element {
+}: Properties): React.ReactElement {
   const [open, setOpen] = useState(false);
 
   let versionIndex = 0;
