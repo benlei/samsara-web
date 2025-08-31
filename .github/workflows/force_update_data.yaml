@@ -10,40 +10,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/checkout@v4
+      - name: Pull Genshin Impact Banner Data
+        uses: benlei/samsara-tools@v2.0
         with:
-          repository: benlei/samsara-tools
-          ssh-key: ${{ secrets.TOOLS_PRIVATE_KEY }}
-          path: samsara-tools
-          ref: v1.9
+          game: gi
+          output: ../public/data/banners.yaml
+          output-image-dir: ../public/images/
+          force: true
+          min-data-size: 70000
 
-      - uses: actions/setup-python@v5
+      - name: Pull HSR Banner Data
+        uses: benlei/samsara-tools@v2.0
         with:
-          python-version: '3.11'
-
-      - name: Install and configure Poetry
-        uses: snok/install-poetry@v1
-        with:
-          version: 1.2.2
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
-
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v4
-        with:
-          path: ./samsara-tools/.venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
-
-      - name: Install dependencies
-        run: cd samsara-tools && poetry install --no-interaction --no-root
-
-      - name: Load up banner data
-        run: cd samsara-tools && poetry run python pull_banners.py --force --output ../public/data/banners.yaml --output-image-dir ../public/images/ --min-data-size $(( $(stat -f%z ./public/data/banners.yaml) - 100 ))
-
-      - name: Load up hsr banner data
-        run: cd samsara-tools && poetry run python pull_hsr_banners.py --force --output ../public/data/hsr-banners.yaml --output-image-dir ../public/images/ --min-data-size $(( $(stat -f%z ./public/data/hsr-banners.yaml) - 100 ))
+          game: hsr
+          output: ../public/data/hsr-banners.yaml
+          output-image-dir: ../public/images/
+          force: true
+          min-data-size: 25000
 
       - name: Get the file diff in public
         run: |
