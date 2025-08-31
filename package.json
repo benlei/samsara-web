@@ -9,10 +9,9 @@
     "yarn": "use pnpm instead"
   },
   "scripts": {
-    "build:cloudflare": "npm install -g pnpm@9 && pnpm install -P && next build && next export",
+    "build:cloudflare": "npm install -g pnpm@9 && pnpm install -P && next build",
     "dev": "next dev",
     "build": "next build",
-    "export": "next export",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --detectOpenHandles",
