@@ -194,7 +194,18 @@ export function getFilterFunction(
     filterVersion: string,
     s: { name: string; versions: string[] }
   ): boolean {
-    if (!filterVersion.trim().match(/^[0-9.]+$/)) {
+    const trimmedFilter = filterVersion.trim();
+    
+    // Handle Luna versions specially
+    if (trimmedFilter.toLowerCase().startsWith('luna')) {
+      return _.chain(s.versions)
+        .map((v) => v.toLowerCase().startsWith('luna'))
+        .includes(true)
+        .value();
+    }
+    
+    // Handle numeric versions
+    if (!trimmedFilter.match(/^[0-9.]+$/)) {
       return false;
     }
 
@@ -202,7 +213,7 @@ export function getFilterFunction(
       return fv.split(".").length >= 2;
     }
 
-    const version = _.trim(filterVersion.trim(), ".");
+    const version = _.trim(trimmedFilter, ".");
     let prefix: string;
     if (isFullVersion(version)) {
       prefix = version;
@@ -210,7 +221,6 @@ export function getFilterFunction(
       prefix = version + ".";
     }
 
-    console.log(`prefix: ${prefix}`);
     return _.chain(s.versions)
       .map((v) => v.startsWith(prefix))
       .includes(true)

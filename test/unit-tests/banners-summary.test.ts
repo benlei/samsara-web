@@ -7,6 +7,7 @@ import {
   getBannersSinceLastCountSummary,
   getCurrentVersionPart,
   getDaysSinceRunCountSummary,
+  getFilterFunction,
   getLongestStatsInBetween,
   getPatchesSinceLastCountSummary,
   getPatchGap,
@@ -673,5 +674,96 @@ describe("getCurrentVersionPart", () => {
         dayjs.utc("2021-11-02")
       )
     ).toEqual({ version: "2.2", parts: 2 });
+  });
+});
+
+describe("getFilterFunction", () => {
+  const testFeatured: Featured[] = [
+    {
+      name: "Venti",
+      versions: ["1.0.1", "1.4.1", "2.6.1"],
+      dates: [
+        { start: "2020-09-28", end: "2020-10-18" },
+        { start: "2021-03-17", end: "2021-04-06" },
+        { start: "2022-03-30", end: "2022-04-19" },
+      ],
+    },
+    {
+      name: "Albedo",
+      versions: ["Luna I.1", "Luna II.2"],
+      dates: [
+        { start: "2021-12-23", end: "2022-01-12" },
+        { start: "2022-05-31", end: "2022-06-21" },
+      ],
+    },
+    {
+      name: "Zhongli",
+      versions: ["6.0.1", "6.1.1"],
+      dates: [
+        { start: "2023-01-01", end: "2023-01-21" },
+        { start: "2023-04-01", end: "2023-04-21" },
+      ],
+    },
+  ];
+
+  it("should filter by character name (case insensitive)", () => {
+    const filter = getFilterFunction("venti");
+    const result = testFeatured.filter(filter);
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe("Venti");
+  });
+
+  it("should filter by numeric version", () => {
+    const filter = getFilterFunction("1.0");
+    const result = testFeatured.filter(filter);
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe("Venti");
+  });
+
+  it("should filter by Luna version (case insensitive)", () => {
+    const filter = getFilterFunction("luna");
+    const result = testFeatured.filter(filter);
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe("Albedo");
+  });
+
+  it("should filter by Luna version (proper case)", () => {
+    const filter = getFilterFunction("Luna");
+    const result = testFeatured.filter(filter);
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe("Albedo");
+  });
+
+  it("should filter by specific Luna version", () => {
+    const filter = getFilterFunction("Luna I");
+    const result = testFeatured.filter(filter);
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe("Albedo");
+  });
+
+  it("should filter by Luna version with mixed case", () => {
+    const filter = getFilterFunction("LUNA");
+    const result = testFeatured.filter(filter);
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe("Albedo");
+  });
+
+  it("should filter by version 6.0", () => {
+    const filter = getFilterFunction("6.0");
+    const result = testFeatured.filter(filter);
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe("Zhongli");
+  });
+
+  it("should return all when filter is empty", () => {
+    const filter = getFilterFunction("");
+    const result = testFeatured.filter(filter);
+    expect(result).toHaveLength(3);
+  });
+
+  it("should return all when filter is whitespace", () => {
+    const filter = getFilterFunction("   ");
+    const result = testFeatured.filter(filter);
+    expect(result).toHaveLength(3);
   });
 });
