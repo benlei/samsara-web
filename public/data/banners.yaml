@@ -2170,6 +2170,7 @@ fiveStarWeapons:
       - 3.6.1
       - 4.4.1
       - 5.1.2
+      - Luna I.1
     dates:
       - start: '2022-11-02'
         end: '2022-11-18'
@@ -2179,6 +2180,8 @@ fiveStarWeapons:
         end: '2024-02-20'
       - start: '2024-10-29'
         end: '2024-11-20'
+      - start: '2025-09-10'
+        end: ''
   - name: Tulaytullah's Remembrance
     versions:
       - 3.3.1
@@ -2434,6 +2437,12 @@ fiveStarWeapons:
     dates:
       - start: '2025-07-30'
         end: '2025-08-19'
+  - name: Nightweaver's Looking Glass
+    versions:
+      - Luna I.1
+    dates:
+      - start: '2025-09-10'
+        end: ''
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -2608,6 +2617,7 @@ fourStarWeapons:
       - 5.2.1
       - 5.4.1
       - 5.7.2
+      - Luna I.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2645,6 +2655,8 @@ fourStarWeapons:
         end: '2025-03-04'
       - start: '2025-07-08'
         end: '2025-07-30'
+      - start: '2025-09-10'
+        end: ''
   - name: The Stringless
     versions:
       - 1.0.1
@@ -2662,6 +2674,7 @@ fourStarWeapons:
       - 5.0.1
       - 5.3.1
       - 5.6.2
+      - Luna I.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2693,6 +2706,8 @@ fourStarWeapons:
         end: '2025-01-21'
       - start: '2025-05-27'
         end: '2025-06-18'
+      - start: '2025-09-10'
+        end: ''
   - name: The Widsith
     versions:
       - 1.0.1
@@ -2785,6 +2800,7 @@ fourStarWeapons:
       - 5.4.2
       - 5.6.2
       - 5.7.2
+      - Luna I.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2852,6 +2868,8 @@ fourStarWeapons:
         end: '2025-06-18'
       - start: '2025-07-08'
         end: '2025-07-30'
+      - start: '2025-09-10'
+        end: ''
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2920,6 +2938,7 @@ fourStarWeapons:
       - 5.2.2
       - 5.4.2
       - 5.7.2
+      - Luna I.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2957,6 +2976,8 @@ fourStarWeapons:
         end: '2025-03-26'
       - start: '2025-07-08'
         end: '2025-07-30'
+      - start: '2025-09-10'
+        end: ''
   - name: Sacrificial Greatsword
     versions:
       - 1.0.2
@@ -2975,6 +2996,7 @@ fourStarWeapons:
       - 5.1.1
       - 5.4.2
       - 5.8.1
+      - Luna I.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -3008,6 +3030,8 @@ fourStarWeapons:
         end: '2025-03-26'
       - start: '2025-07-30'
         end: '2025-08-19'
+      - start: '2025-09-10'
+        end: ''
   - name: Sacrificial Sword
     versions:
       - 1.0.2
