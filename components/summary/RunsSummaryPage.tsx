@@ -21,16 +21,27 @@ export default function RunsSummaryPage(
     const [order, setOrder] = useState('desc' as Order)
 
     useEffect(() => {
-        const sOrder = localStorage.getItem('runs_order')
+        try {
+            const sOrder = localStorage.getItem('runs_order')
 
-        if (sOrder == 'asc' || sOrder == 'desc') {
-            setOrder(sOrder)
+            if (sOrder == 'asc' || sOrder == 'desc') {
+                setOrder(sOrder)
+            }
+        } catch (error) {
+            // Gracefully handle localStorage errors by continuing with default values
+            console.warn('Failed to load runs order preference from localStorage:', error);
         }
     }, [order])
 
     function triggerSort() {
-        setOrder(order === 'desc' ? 'asc' : 'desc')
-        localStorage.setItem('runs_order', order === 'desc' ? 'asc' : 'desc')
+        const newOrder = order === 'desc' ? 'asc' : 'desc';
+        setOrder(newOrder);
+        try {
+            localStorage.setItem('runs_order', newOrder);
+        } catch (error) {
+            // Gracefully handle localStorage errors - state is still updated
+            console.warn('Failed to save runs order preference to localStorage:', error);
+        }
     }
 
     return (
