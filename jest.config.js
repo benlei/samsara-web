@@ -6,8 +6,29 @@ const { compilerOptions } = require('./tsconfig')
 
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   roots: ['<rootDir>/test/unit-tests'],
-  modulePaths: [compilerOptions.baseUrl], // <-- This will be set to 'baseUrl' value
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths /*, { prefix: '<rootDir>/' } */),
+  modulePaths: [compilerOptions.baseUrl],
+  moduleNameMapper: {
+    ...pathsToModuleNameMapper(compilerOptions.paths),
+    '^@/(.*)$': '<rootDir>/$1',
+  },
+  setupFilesAfterEnv: ['<rootDir>/test/setup.ts'],
+  transform: {
+    '^.+\\.(ts|tsx)$': ['ts-jest', {
+      tsconfig: {
+        jsx: 'react-jsx',
+      },
+    }],
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  collectCoverageFrom: [
+    'components/**/*.{ts,tsx}',
+    'pages/**/*.{ts,tsx}',
+    '!**/*.d.ts',
+    '!**/node_modules/**',
+  ],
+  testMatch: [
+    '<rootDir>/test/unit-tests/**/*.(test|spec).(ts|tsx|js|jsx)',
+  ],
 };

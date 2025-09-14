@@ -34,19 +34,24 @@ export default class HistoryPage extends React.Component<Properties, States> {
   }
 
   componentDidMount = () => {
-    const sortBy = localStorage.getItem("history_sort");
-    const order = localStorage.getItem("history_order");
+    try {
+      const sortBy = localStorage.getItem("history_sort");
+      const order = localStorage.getItem("history_order");
 
-    if (sortBy == "last" || sortBy == "first" || sortBy == "runs-last") {
-      this.setState({
-        sortBy,
-      });
-    }
+      if (sortBy == "last" || sortBy == "first" || sortBy == "runs-last") {
+        this.setState({
+          sortBy,
+        });
+      }
 
-    if (order == "asc" || order == "desc") {
-      this.setState({
-        order,
-      });
+      if (order == "asc" || order == "desc") {
+        this.setState({
+          order,
+        });
+      }
+    } catch (error) {
+      // Gracefully handle localStorage errors by continuing with default values
+      console.warn('Failed to load preferences from localStorage:', error);
     }
   };
 
@@ -57,11 +62,21 @@ export default class HistoryPage extends React.Component<Properties, States> {
 
     const setSortBy = (v: string) => {
       this.setState({ sortBy: v });
-      localStorage.setItem("history_sort", v);
+      try {
+        localStorage.setItem("history_sort", v);
+      } catch (error) {
+        // Gracefully handle localStorage errors - state is still updated
+        console.warn('Failed to save sort preference to localStorage:', error);
+      }
     };
     const setOrder = (v: string) => {
       this.setState({ order: v });
-      localStorage.setItem("history_order", v);
+      try {
+        localStorage.setItem("history_order", v);
+      } catch (error) {
+        // Gracefully handle localStorage errors - state is still updated
+        console.warn('Failed to save order preference to localStorage:', error);
+      }
     };
 
     return (
