@@ -1,6 +1,6 @@
 try {
   const { FlatCompat } = require('@eslint/eslintrc');
-  
+
   const compat = new FlatCompat({
     baseDirectory: __dirname,
     resolvePluginsRelativeTo: __dirname,
@@ -10,8 +10,7 @@ try {
     ...compat.extends('next/core-web-vitals'),
   ];
 } catch (error) {
-  // Fallback configuration if @eslint/eslintrc is not available
-  module.exports = {
-    extends: ['next/core-web-vitals'],
-  };
+  // Fallback for production builds where @eslint/eslintrc might not be available
+  console.warn('ESLint: Using fallback configuration due to missing @eslint/eslintrc');
+  module.exports = [];
 }
