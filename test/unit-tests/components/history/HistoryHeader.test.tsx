@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Table } from 'semantic-ui-react';
 import HistoryHeader from '@/components/history/HistoryHeader';
 import { VersionParts } from '@/banners/types';
 
@@ -17,6 +18,13 @@ jest.mock('@/components/history/HistorySearch', () => {
   };
 });
 
+// Wrapper component to fix DOM nesting for testing
+const TableWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Table>
+    {children}
+  </Table>
+);
+
 describe('HistoryHeader Component', () => {
   const mockOnChange = jest.fn();
   
@@ -32,7 +40,11 @@ describe('HistoryHeader Component', () => {
   });
 
   it('renders table header structure', () => {
-    render(<HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />
+      </TableWrapper>
+    );
 
     // Check that we have a table header
     const tableHeader = screen.getByRole('rowgroup');
@@ -44,14 +56,22 @@ describe('HistoryHeader Component', () => {
   });
 
   it('renders search component', () => {
-    render(<HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />
+      </TableWrapper>
+    );
 
     const searchInput = screen.getByTestId('mock-history-search');
     expect(searchInput).toBeInTheDocument();
   });
 
   it('renders redo icon in header', () => {
-    render(<HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />
+      </TableWrapper>
+    );
 
     // Check for redo icon
     const redoIcon = document.querySelector('i.redo.icon');
@@ -59,7 +79,11 @@ describe('HistoryHeader Component', () => {
   });
 
   it('renders version parts as header cells', () => {
-    render(<HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />
+      </TableWrapper>
+    );
 
     // Check that each version appears in the header
     expect(screen.getByText('5.0')).toBeInTheDocument();
@@ -69,7 +93,11 @@ describe('HistoryHeader Component', () => {
   });
 
   it('applies correct colSpan to version headers', () => {
-    render(<HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />
+      </TableWrapper>
+    );
 
     const version5Header = screen.getByText('5.0').closest('th');
     const version48Header = screen.getByText('4.8').closest('th');
@@ -81,7 +109,11 @@ describe('HistoryHeader Component', () => {
   });
 
   it('has correct styling for search cell', () => {
-    render(<HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />
+      </TableWrapper>
+    );
 
     const searchCell = screen.getByTestId('mock-history-search').closest('th');
     expect(searchCell).toHaveClass('borderless');
@@ -91,7 +123,11 @@ describe('HistoryHeader Component', () => {
 
   it('forwards onChange to HistorySearch', async () => {
     const user = userEvent.setup();
-    render(<HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />
+      </TableWrapper>
+    );
 
     const searchInput = screen.getByTestId('mock-history-search');
     await user.type(searchInput, 'test');
@@ -109,7 +145,11 @@ describe('HistoryHeader Component', () => {
   });
 
   it('handles empty version parts array', () => {
-    render(<HistoryHeader onChange={mockOnChange} versionParts={[]} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={[]} />
+      </TableWrapper>
+    );
 
     // Should still render search and redo icon
     expect(screen.getByTestId('mock-history-search')).toBeInTheDocument();
@@ -123,7 +163,11 @@ describe('HistoryHeader Component', () => {
 
   it('handles single version part', () => {
     const singleVersion: VersionParts[] = [{ version: '5.1', parts: 4 }];
-    render(<HistoryHeader onChange={mockOnChange} versionParts={singleVersion} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={singleVersion} />
+      </TableWrapper>
+    );
 
     expect(screen.getByText('5.1')).toBeInTheDocument();
     const versionHeader = screen.getByText('5.1').closest('th');
@@ -137,7 +181,11 @@ describe('HistoryHeader Component', () => {
       { version: '5.8', parts: 1 },
     ];
     
-    render(<HistoryHeader onChange={mockOnChange} versionParts={complexVersions} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={complexVersions} />
+      </TableWrapper>
+    );
 
     const version60Header = screen.getByText('6.0').closest('th');
     const version59Header = screen.getByText('5.9').closest('th');
@@ -154,7 +202,11 @@ describe('HistoryHeader Component', () => {
       parts: (i % 3) + 1,
     }));
 
-    render(<HistoryHeader onChange={mockOnChange} versionParts={manyVersions} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={manyVersions} />
+      </TableWrapper>
+    );
 
     // Should render all versions
     manyVersions.forEach(vp => {
@@ -168,7 +220,11 @@ describe('HistoryHeader Component', () => {
   });
 
   it('maintains key prop for version parts', () => {
-    render(<HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={mockVersionParts} />
+      </TableWrapper>
+    );
 
     // Check that each version part is properly keyed (no React warnings in console)
     mockVersionParts.forEach(vp => {
@@ -182,7 +238,11 @@ describe('HistoryHeader Component', () => {
       { version: '4.9', parts: 2 },
     ];
 
-    render(<HistoryHeader onChange={mockOnChange} versionParts={versionWithZeroParts} />);
+    render(
+      <TableWrapper>
+        <HistoryHeader onChange={mockOnChange} versionParts={versionWithZeroParts} />
+      </TableWrapper>
+    );
 
     const version50Header = screen.getByText('5.0').closest('th');
     const version49Header = screen.getByText('4.9').closest('th');

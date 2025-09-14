@@ -43,8 +43,19 @@ jest.mock('@/components/PngDownloadButton', () => {
 });
 
 jest.mock('react-indiana-drag-scroll', () => {
-  return function MockScrollContainer({ children, ...props }: any) {
-    return <div data-testid="scroll-container" {...props}>{children}</div>;
+  return function MockScrollContainer({ children, hideScrollbars, ignoreElements, ...domProps }: any) {
+    // Filter out non-DOM props to avoid React warnings
+    const { className, style, ...otherDomProps } = domProps;
+    return (
+      <div 
+        data-testid="scroll-container" 
+        className={`scroll-container ${className || ''}`}
+        style={style}
+        {...otherDomProps}
+      >
+        {children}
+      </div>
+    );
   };
 });
 
