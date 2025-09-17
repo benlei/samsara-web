@@ -86,26 +86,72 @@ function SidebarDrawer({
   const router = useRouter();
   const [activeMenu, setActiveMenu] = React.useState(router.pathname);
   
+  // Function to determine which section should be expanded based on current path
+  const getExpansionState = React.useCallback(() => {
+    // Use asPath to get the actual URL instead of the dynamic route template
+    const currentPath = router.asPath;
+    
+    // Determine if this is for Genshin or HSR based on the sidebar type
+    const isGenshin = characterType === 'characters' && weaponType === 'weapons';
+    const isHSR = characterType === 'hsr-characters' && weaponType === 'lightcones';
+    
+    if (isGenshin) {
+      const isFiveStarChar = currentPath.startsWith('/5star/characters');
+      const isFourStarChar = currentPath.startsWith('/4star/characters');
+      const isFiveStarWeap = currentPath.startsWith('/5star/weapons');
+      const isFourStarWeap = currentPath.startsWith('/4star/weapons');
+      
+      // If none match, default to 5★ Characters
+      const hasMatch = isFiveStarChar || isFourStarChar || isFiveStarWeap || isFourStarWeap;
+      
+      return {
+        openFiveStar: isFiveStarChar || (!hasMatch),
+        openFourStar: isFourStarChar,
+        openFiveStarWeap: isFiveStarWeap,
+        openFourStarWeap: isFourStarWeap
+      };
+    } else if (isHSR) {
+      const isFiveStarChar = currentPath.startsWith('/5star/hsr-characters');
+      const isFourStarChar = currentPath.startsWith('/4star/hsr-characters');
+      const isFiveStarWeap = currentPath.startsWith('/5star/lightcones');
+      const isFourStarWeap = currentPath.startsWith('/4star/lightcones');
+      
+      // If none match, default to 5★ Characters
+      const hasMatch = isFiveStarChar || isFourStarChar || isFiveStarWeap || isFourStarWeap;
+      
+      return {
+        openFiveStar: isFiveStarChar || (!hasMatch),
+        openFourStar: isFourStarChar,
+        openFiveStarWeap: isFiveStarWeap,
+        openFourStarWeap: isFourStarWeap
+      };
+    }
+    
+    // Default fallback
+    return {
+      openFiveStar: true,
+      openFourStar: false,
+      openFiveStarWeap: false,
+      openFourStarWeap: false
+    };
+  }, [router.asPath, characterType, weaponType]);
+  
   // Initialize expansion state based on current route
-  const [openFiveStar, setOpenFiveStar] = React.useState(() => {
-    // Default to 5★ Characters if no specific weapon type matches
-    return router.pathname.startsWith(fiveStarCharBase) || 
-           (!router.pathname.startsWith(fiveStarWeapBase) && 
-            !router.pathname.startsWith(fourStarWeapBase) && 
-            !router.pathname.startsWith(fourStarCharBase));
-  });
-  
-  const [openFourStar, setOpenFourStar] = React.useState(() => {
-    return router.pathname.startsWith(fourStarCharBase);
-  });
-  
-  const [openFiveStarWeap, setOpenFiveStarWeap] = React.useState(() => {
-    return router.pathname.startsWith(fiveStarWeapBase);
-  });
-  
-  const [openFourStarWeap, setOpenFourStarWeap] = React.useState(() => {
-    return router.pathname.startsWith(fourStarWeapBase);
-  });
+  const [openFiveStar, setOpenFiveStar] = React.useState(() => getExpansionState().openFiveStar);
+  const [openFourStar, setOpenFourStar] = React.useState(() => getExpansionState().openFourStar);
+  const [openFiveStarWeap, setOpenFiveStarWeap] = React.useState(() => getExpansionState().openFiveStarWeap);
+  const [openFourStarWeap, setOpenFourStarWeap] = React.useState(() => getExpansionState().openFourStarWeap);
+
+  // Update expansion state when sidebar becomes visible or route changes
+  React.useEffect(() => {
+    if (visible) {
+      const expansionState = getExpansionState();
+      setOpenFiveStar(expansionState.openFiveStar);
+      setOpenFourStar(expansionState.openFourStar);
+      setOpenFiveStarWeap(expansionState.openFiveStarWeap);
+      setOpenFourStarWeap(expansionState.openFourStarWeap);
+    }
+  }, [visible, getExpansionState]);
 
   function handleActiveMenu(newActiveMenu: string) {
     if (activeMenu === newActiveMenu) {
