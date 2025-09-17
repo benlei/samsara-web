@@ -4,7 +4,7 @@ import {
   BannerHistoryDataset,
   FeaturedHistory,
 } from "@/banners/types";
-import { Table, TableContainer, Paper, TableBody } from "@mui/material";
+import { Table, TableBody, TableContainer, Paper } from "@mui/material";
 import _ from "lodash";
 import HistoryHeader from "@/components/history/HistoryHeader";
 import HistoryFooter from "@/components/history/HistoryFooter";
@@ -101,25 +101,53 @@ export default function BannerTable({
     : baseFeaturedList;
 
   return (
-    <TableContainer component={Paper} className="history">
-      <Table size="small" stickyHeader>
-        <HistoryHeader
-          versionParts={versionParts}
-          onChange={handleFilterChange}
-        />
-        <TableBody>
-          {rundown.map((r, rI) => (
-            <HistoryRow
-              key={rI}
-              bannerType={bannerType}
-              featuredList={featuredList}
-              rundown={r}
-              dataset={dataset}
-            />
-          ))}
-        </TableBody>
-        <HistoryFooter versionParts={versionParts} />
-      </Table>
+    <TableContainer 
+      component={Paper} 
+      className="history"
+      sx={{
+        boxShadow: 'none',
+        border: 'none',
+        backgroundColor: 'transparent',
+        overflow: 'visible',
+        '& .MuiPaper-root': {
+          boxShadow: 'none',
+          backgroundColor: 'transparent',
+        }
+      }}
+    >
+      <Table 
+        size="small" 
+        stickyHeader
+        sx={{
+          minWidth: 'max-content',
+          '& .MuiTableCell-root': {
+            userSelect: 'none',
+          },
+          '& .MuiTableHead-root .MuiTableCell-root': {
+            backgroundColor: 'background.paper',
+            position: 'sticky',
+            top: 0,
+            zIndex: 1,
+          },
+        }}
+      >
+      <HistoryHeader
+        versionParts={versionParts}
+        onChange={handleFilterChange}
+      />
+      <TableBody>
+        {rundown.map((r, rI) => (
+          <HistoryRow
+            key={rI}
+            bannerType={bannerType}
+            featuredList={featuredList}
+            rundown={r}
+            dataset={dataset}
+          />
+        ))}
+      </TableBody>
+      <HistoryFooter versionParts={versionParts} />
+    </Table>
     </TableContainer>
   );
 }

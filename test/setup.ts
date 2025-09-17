@@ -49,13 +49,6 @@ jest.mock('react-component-export-image', () => ({
   exportComponentAsPNG: jest.fn().mockResolvedValue(undefined),
 }));
 
-// Mock react-indiana-drag-scroll
-jest.mock('react-indiana-drag-scroll', () => {
-  return function ScrollContainer({ children, ...props }: any) {
-    return React.createElement('div', props, children);
-  };
-});
-
 // Mock react-cookie-consent
 jest.mock('react-cookie-consent', () => {
   return function CookieConsent({ children }: { children: React.ReactNode }) {

@@ -3,7 +3,6 @@ import { Container, Typography, Box } from "@mui/material";
 import HistoryOptions from "@/components/history/HistoryOptions";
 import BannerTable from "@/components/history/BannerTable";
 import { BannerHistoryDataset, FeaturedHistory } from "@/banners/types";
-import ScrollContainer from "react-indiana-drag-scroll";
 import PngDownloadButton from "@/components/PngDownloadButton";
 
 type Properties = {
@@ -93,21 +92,75 @@ export default function HistoryPage({
       </Container>
 
       <Container sx={{ mt: 2 }}>
-        <ScrollContainer
-          className="scroll-container"
-          hideScrollbars={false}
-          ignoreElements="input"
+        <Box
+          ref={componentRef}
+          sx={{
+            overflow: 'auto',
+            cursor: 'grab',
+            userSelect: 'none',
+            '&:active': {
+              cursor: 'grabbing',
+            },
+            '&::-webkit-scrollbar': {
+              height: '8px',
+              width: '8px',
+            },
+            '&::-webkit-scrollbar-track': {
+              backgroundColor: 'grey.100',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: 'grey.400',
+              borderRadius: '4px',
+              '&:hover': {
+                backgroundColor: 'grey.600',
+              },
+            },
+          }}
+          onMouseDown={(e) => {
+            // Don't start drag if clicking on input elements or buttons
+            const target = e.target as HTMLElement;
+            if (target.tagName === 'INPUT' || 
+                target.tagName === 'BUTTON' || 
+                target.tagName === 'TEXTAREA' ||
+                target.closest('input') ||
+                target.closest('button') ||
+                target.closest('textarea')) {
+              return;
+            }
+
+            const box = e.currentTarget;
+            const startX = e.pageX - box.offsetLeft;
+            const startY = e.pageY - box.offsetTop;
+            const scrollLeft = box.scrollLeft;
+            const scrollTop = box.scrollTop;
+
+            const handleMouseMove = (e: MouseEvent) => {
+              e.preventDefault();
+              const x = e.pageX - box.offsetLeft;
+              const y = e.pageY - box.offsetTop;
+              const walkX = (x - startX) * 2; // Scroll speed multiplier
+              const walkY = (y - startY) * 2;
+              box.scrollLeft = scrollLeft - walkX;
+              box.scrollTop = scrollTop - walkY;
+            };
+
+            const handleMouseUp = () => {
+              document.removeEventListener('mousemove', handleMouseMove);
+              document.removeEventListener('mouseup', handleMouseUp);
+            };
+
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+          }}
         >
-          <Box ref={componentRef}>
-            <BannerTable
-              bannerType={bannerType}
-              dataset={dataset}
-              featuredList={featuredList}
-              order={order}
-              sortBy={sortBy}
-            />
-          </Box>
-        </ScrollContainer>
+          <BannerTable
+            bannerType={bannerType}
+            dataset={dataset}
+            featuredList={featuredList}
+            order={order}
+            sortBy={sortBy}
+          />
+        </Box>
       </Container>
 
       <Container sx={{ mt: 4, textAlign: "center" }}>

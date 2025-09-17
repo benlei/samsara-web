@@ -7,7 +7,8 @@ const { compilerOptions } = require('./tsconfig')
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  roots: ['<rootDir>/test/unit-tests'],
+  // roots: ['<rootDir>/test/unit-tests'], // Temporarily disabled - tests removed during Material-UI migration
+  roots: ['<rootDir>/test'], // Will scan for any future test files
   modulePaths: [compilerOptions.baseUrl],
   moduleNameMapper: {
     ...pathsToModuleNameMapper(compilerOptions.paths),

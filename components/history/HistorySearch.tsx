@@ -29,6 +29,8 @@ export default function HistorySearch({ onChange }: Properties) {
           },
           '& input': {
             color: 'text.primary',
+            userSelect: 'text !important',
+            pointerEvents: 'auto',
           },
           '& input::placeholder': {
             color: 'rgba(255, 255, 255, 0.5)',

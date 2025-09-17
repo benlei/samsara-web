@@ -15,7 +15,14 @@ export default function HistoryHeader({ onChange, versionParts }: Properties) {
       <TableRow>
         <TableCell
           className="borderless"
-          sx={{ pointerEvents: "auto", padding: "0 .5em" }}
+          sx={{ 
+            pointerEvents: "auto", 
+            padding: "0 .5em",
+            '& input': {
+              userSelect: 'text !important',
+              pointerEvents: 'auto',
+            }
+          }}
         >
           <HistorySearch onChange={onChange} />
         </TableCell>
