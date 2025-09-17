@@ -1,14 +1,28 @@
 import { useRouter } from "next/router";
 import React from "react";
 import {
-  Accordion,
+  AppBar,
+  Toolbar,
+  Button,
   Container,
-  Icon,
-  Image,
-  Menu,
-  Sidebar,
-} from "semantic-ui-react";
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Collapse,
+  Box,
+  Typography,
+  Divider,
+} from "@mui/material";
+import {
+  Menu as MenuIcon,
+  ExpandLess,
+  ExpandMore,
+  StarBorder,
+} from "@mui/icons-material";
 import { getImageFromName } from "../format/image";
+import Image from "next/image";
 
 type SidebarItemsProps = {
   stars: 5 | 4;
@@ -40,9 +54,8 @@ type SidebarPusherProperties = {
   title: string;
 };
 
-function SidebarPusher({
+function SidebarDrawer({
   title,
-  direction,
   characterName,
   characterType,
   weaponName,
@@ -56,12 +69,32 @@ function SidebarPusher({
 }: SidebarPusherProperties): React.ReactElement {
   const router = useRouter();
   const [activeMenu, setActiveMenu] = React.useState(router.pathname);
+  
+  // Initialize expansion state based on current route
+  const [openFiveStar, setOpenFiveStar] = React.useState(() => {
+    // Default to 5★ Characters if no specific weapon type matches
+    return router.pathname.startsWith(fiveStarCharBase) || 
+           (!router.pathname.startsWith(fiveStarWeapBase) && 
+            !router.pathname.startsWith(fourStarWeapBase) && 
+            !router.pathname.startsWith(fourStarCharBase));
+  });
+  
+  const [openFourStar, setOpenFourStar] = React.useState(() => {
+    return router.pathname.startsWith(fourStarCharBase);
+  });
+  
+  const [openFiveStarWeap, setOpenFiveStarWeap] = React.useState(() => {
+    return router.pathname.startsWith(fiveStarWeapBase);
+  });
+  
+  const [openFourStarWeap, setOpenFourStarWeap] = React.useState(() => {
+    return router.pathname.startsWith(fourStarWeapBase);
+  });
 
   function handleActiveMenu(newActiveMenu: string) {
     if (activeMenu === newActiveMenu) {
       return;
     }
-
     setActiveMenu(newActiveMenu);
   }
 
@@ -86,90 +119,78 @@ function SidebarPusher({
   }
 
   return (
-    <Sidebar.Pusher>
-      <Sidebar
-        as={Menu}
-        animation="overlay"
-        icon="labeled"
-        onHide={() => setVisible(false)}
-        vertical
-        direction={direction}
-        visible={visible}
-      >
-        <Menu.Item>
-          <Menu.Header className={"logo"} as={"a"} href={"/"}>
-            <Image
-              src={"/images/logo.png"}
-              alt={"logo"}
-              floated={"left"}
-              size={"mini"}
-            />{" "}
-            Samsara
-          </Menu.Header>
-        </Menu.Item>
-        <Menu.Item>
-          <Menu.Header>
-            <Image
-              src={`/images/${getImageFromName(title.toLowerCase())}-logo.webp`}
-              alt={title}
-            />
-          </Menu.Header>
-        </Menu.Item>
-        <Accordion>
-          <Accordion.Title
-            active={in5StarChar()}
-            onClick={() => handleActiveMenu(fiveStarCharBase)}
-            as={Menu.Item}
+    <Drawer
+      anchor="left"
+      open={visible}
+      onClose={() => setVisible(false)}
+      sx={{
+        "& .MuiDrawer-paper": {
+          width: 260,
+          boxSizing: "border-box",
+        },
+      }}
+    >
+      <Box sx={{ p: 2 }}>
+        <Box sx={{ display: "flex", alignItems: "center", mb: 2, pl: 2 }}>
+          <Typography 
+            variant="h6"
+            sx={{
+              backgroundColor: 'primary.main',
+              color: 'white',
+              px: 2,
+              py: 0.5,
+              borderRadius: 1,
+              fontWeight: 'bold',
+            }}
           >
-            <Menu.Header>
-              <Icon name="dropdown" /> 5&#x2605; {characterName}
-            </Menu.Header>
-          </Accordion.Title>
-          <Accordion.Content active={in5StarChar()}>
-            <SidebarMenuItems stars={5} type={characterType} />
-          </Accordion.Content>
+            SAMSARA
+          </Typography>
+        </Box>
+        <ListItem>
+          <Image
+            src={`/images/${getImageFromName(title.toLowerCase())}-logo.webp`}
+            alt={title}
+            width={120}
+            height={40}
+          />
+        </ListItem>
+        <Divider />
+      </Box>
 
-          <Accordion.Title
-            active={in5StarWeap()}
-            onClick={() => handleActiveMenu(fiveStarWeapBase)}
-            as={Menu.Item}
-          >
-            <Menu.Header>
-              <Icon name="dropdown" /> 5&#x2605; {weaponName}
-            </Menu.Header>
-          </Accordion.Title>
-          <Accordion.Content active={in5StarWeap()}>
-            <SidebarMenuItems stars={5} type={weaponType} />
-          </Accordion.Content>
+      <List>
+        <ListItemButton onClick={() => setOpenFiveStar(!openFiveStar)}>
+          <ListItemText primary={`5★ ${characterName}`} />
+          {openFiveStar ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openFiveStar} timeout="auto" unmountOnExit>
+          <SidebarMenuItems stars={5} type={characterType} />
+        </Collapse>
 
-          <Accordion.Title
-            active={in4StarChar()}
-            onClick={() => handleActiveMenu(fourStarCharBase)}
-            as={Menu.Item}
-          >
-            <Menu.Header>
-              <Icon name="dropdown" /> 4&#x2605; {characterName}
-            </Menu.Header>
-          </Accordion.Title>
-          <Accordion.Content active={in4StarChar()}>
-            <SidebarMenuItems stars={4} type={characterType} />
-          </Accordion.Content>
+        <ListItemButton onClick={() => setOpenFiveStarWeap(!openFiveStarWeap)}>
+          <ListItemText primary={`5★ ${weaponName}`} />
+          {openFiveStarWeap ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openFiveStarWeap} timeout="auto" unmountOnExit>
+          <SidebarMenuItems stars={5} type={weaponType} />
+        </Collapse>
 
-          <Accordion.Title
-            active={in4StarWeap()}
-            onClick={() => handleActiveMenu(fourStarWeapBase)}
-            as={Menu.Item}
-          >
-            <Menu.Header>
-              <Icon name="dropdown" /> 4&#x2605; {weaponName}
-            </Menu.Header>
-          </Accordion.Title>
-          <Accordion.Content active={in4StarWeap()}>
-            <SidebarMenuItems stars={4} type={weaponType} />
-          </Accordion.Content>
-        </Accordion>
-      </Sidebar>
-    </Sidebar.Pusher>
+        <ListItemButton onClick={() => setOpenFourStar(!openFourStar)}>
+          <ListItemText primary={`4★ ${characterName}`} />
+          {openFourStar ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openFourStar} timeout="auto" unmountOnExit>
+          <SidebarMenuItems stars={4} type={characterType} />
+        </Collapse>
+
+        <ListItemButton onClick={() => setOpenFourStarWeap(!openFourStarWeap)}>
+          <ListItemText primary={`4★ ${weaponName}`} />
+          {openFourStarWeap ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openFourStarWeap} timeout="auto" unmountOnExit>
+          <SidebarMenuItems stars={4} type={weaponType} />
+        </Collapse>
+      </List>
+    </Drawer>
   );
 }
 
@@ -179,21 +200,49 @@ export default function Navbar(): React.ReactElement {
 
   return (
     <>
-      <Container style={{ marginTop: ".5em" }}>
-        <Menu secondary className={"navmenu"}>
-          <Menu.Item as={"a"} href="/" className={"navtitle"}>
-            Samsara
-          </Menu.Item>
-          <Menu.Item as={"a"} onClick={() => setVisible(!visible)}>
-            <Icon name={"bars"} /> Genshin
-          </Menu.Item>
-          <Menu.Item as={"a"} onClick={() => setHsrVisible(!hsrVisible)}>
-            <Icon name={"bars"} /> HSR
-          </Menu.Item>
-        </Menu>
-      </Container>
+      <AppBar position="static" color="transparent" elevation={0}>
+        <Container maxWidth="lg" disableGutters>
+          <Toolbar sx={{ justifyContent: "space-between", minHeight: "48px", px: 2 }}>
+            <Button 
+              href="/" 
+              sx={{ 
+                fontSize: "1.2rem", 
+                fontWeight: "bold",
+                backgroundColor: 'primary.main',
+                color: 'white',
+                px: 2,
+                py: 1,
+                borderRadius: 1,
+                '&:hover': {
+                  backgroundColor: 'primary.dark',
+                },
+                textTransform: 'none',
+                ml: 0, // Ensure no left margin
+              }}
+            >
+              SAMSARA
+            </Button>
+            <Box sx={{ display: "flex", gap: 2 }}>
+              <Button
+                color="inherit"
+                startIcon={<MenuIcon />}
+                onClick={() => setVisible(!visible)}
+              >
+                Genshin
+              </Button>
+              <Button
+                color="inherit"
+                startIcon={<MenuIcon />}
+                onClick={() => setHsrVisible(!hsrVisible)}
+              >
+                HSR
+              </Button>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
 
-      <SidebarPusher
+      <SidebarDrawer
         title={"Genshin Impact"}
         direction={"left"}
         characterName={"Characters"}
@@ -208,7 +257,7 @@ export default function Navbar(): React.ReactElement {
         setVisible={setVisible}
       />
 
-      <SidebarPusher
+      <SidebarDrawer
         title={"Honkai: Star Rail"}
         direction={"left"}
         characterName={"Characters"}
@@ -228,25 +277,25 @@ export default function Navbar(): React.ReactElement {
 
 function SidebarMenuItems({ stars, type }: SidebarItemsProps): React.ReactElement {
   return (
-    <Menu vertical>
-      <Menu.Item as={"a"} href={`/${stars}star/${type}`}>
-        Banner History
-      </Menu.Item>
-      <Menu.Item as={"a"} href={`/${stars}star/${type}/summary`}>
-        Summary
-      </Menu.Item>
-      <Menu.Item as={"a"} href={`/${stars}star/${type}/runs`}>
-        Total Reruns
-      </Menu.Item>
-      <Menu.Item as={"a"} href={`/${stars}star/${type}/summary-avg`}>
-        Average Reruns
-      </Menu.Item>
-      <Menu.Item as={"a"} href={`/${stars}star/${type}/longest-leaderboard`}>
-        Leaderboard: Longest Rerun
-      </Menu.Item>
-      <Menu.Item as={"a"} href={`/${stars}star/${type}/shortest-leaderboard`}>
-        Leaderboard: Shortest Rerun
-      </Menu.Item>
-    </Menu>
+    <List sx={{ pl: 4 }}>
+      <ListItemButton component="a" href={`/${stars}star/${type}`}>
+        <ListItemText primary="Banner History" />
+      </ListItemButton>
+      <ListItemButton component="a" href={`/${stars}star/${type}/summary`}>
+        <ListItemText primary="Summary" />
+      </ListItemButton>
+      <ListItemButton component="a" href={`/${stars}star/${type}/runs`}>
+        <ListItemText primary="Total Reruns" />
+      </ListItemButton>
+      <ListItemButton component="a" href={`/${stars}star/${type}/summary-avg`}>
+        <ListItemText primary="Average Reruns" />
+      </ListItemButton>
+      <ListItemButton component="a" href={`/${stars}star/${type}/longest-leaderboard`}>
+        <ListItemText primary="Leaderboard: Longest Rerun" />
+      </ListItemButton>
+      <ListItemButton component="a" href={`/${stars}star/${type}/shortest-leaderboard`}>
+        <ListItemText primary="Leaderboard: Shortest Rerun" />
+      </ListItemButton>
+    </List>
   );
 }

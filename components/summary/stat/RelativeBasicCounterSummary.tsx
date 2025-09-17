@@ -1,4 +1,5 @@
-import { Card, Feed, Grid, Image } from "semantic-ui-react";
+import { Card, CardContent, Typography, Box, Avatar } from "@mui/material";
+import Image from "next/image";
 import {
   CountSummary,
   getBannersSinceLastCountSummary,
@@ -90,36 +91,38 @@ export default function RelativeBasicCounterSummary({
   );
 
   return (
-    <Grid className={"summary relative-row"} stackable>
+    <Box className={"summary relative-row"} sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
       {chunkedSummary.map((summary, j) => (
-        <Grid.Column key={j}>
-          <Card fluid>
-            <Card.Content>
-              <Card.Header>
+        <Box key={j} sx={{ minWidth: 300, flex: '1 1 300px' }}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" component="h3">
                 {getRelativeTimeText(summary[0], singular, plural)}
-              </Card.Header>
-            </Card.Content>
-            <Card.Content>
-              <Feed>
+              </Typography>
+            </CardContent>
+            <CardContent>
+              <Box>
                 {summary.map((s, k) => (
-                  <Feed.Event key={k}>
-                    <Feed.Label>
+                  <Box key={k} sx={{ display: 'flex', alignItems: 'center', mb: 1, minHeight: 40 }}>
+                    <Avatar sx={{ mr: 2, width: 32, height: 32, flexShrink: 0 }}>
                       <Image
                         src={`/images/${type}/${s.image}.png`}
-                        circular
+                        width={32}
+                        height={32}
                         alt={s.image}
+                        style={{ objectFit: 'cover' }}
                       />
-                    </Feed.Label>
-                    <Feed.Content>
-                      <Feed.Date>{s.name}</Feed.Date>
-                    </Feed.Content>
-                  </Feed.Event>
+                    </Avatar>
+                    <Typography variant="body2" sx={{ flexGrow: 1, wordBreak: 'break-word' }}>
+                      {s.name}
+                    </Typography>
+                  </Box>
                 ))}
-              </Feed>
-            </Card.Content>
+              </Box>
+            </CardContent>
           </Card>
-        </Grid.Column>
+        </Box>
       ))}
-    </Grid>
+    </Box>
   );
 }

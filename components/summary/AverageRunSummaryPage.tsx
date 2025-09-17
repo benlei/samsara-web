@@ -1,4 +1,5 @@
-import {Button, Container, Header, Icon, List, Ref} from "semantic-ui-react";
+import { Button, Container, Typography, ButtonGroup, Box } from "@mui/material";
+import { Sort as SortIcon } from "@mui/icons-material";
 import React, {ReactNode, useEffect, useState} from "react";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
@@ -48,31 +49,42 @@ export default function AverageRunSummaryPage(
 
     return (
         <>
-            <Container style={{marginTop: '2em'}}>
-                <Header size={'large'} as={'h1'}>{title}</Header>
+            <Container sx={{ mt: 4 }}>
+                <Typography variant="h3" component="h1" gutterBottom>
+                    {title}
+                </Typography>
 
-                <p>
+                <Typography variant="body1" paragraph>
                     This page shows the average wait time between a featured character or weapon{"'"}s banner runs.
                     It first sorts by the run count, then the day/banner/patch. The fewer number of runs the
                     character/weapon has, the less reliable the day/banner/patch rerun average range will be. That
                     being said, miHoYo{"'"}s methodology for reruns might really just be random.
-                </p>
+                </Typography>
 
-                <Button.Group widths='3'>
-                    <Button active={sortBy == 'days'} onClick={() => triggerSort('days')}>
-                        Days <Icon name={'sort'} className={clsx({hidden: sortBy != 'days'})}/>
+                <ButtonGroup variant="contained" fullWidth>
+                    <Button 
+                        variant={sortBy === 'days' ? 'contained' : 'outlined'}
+                        onClick={() => triggerSort('days')}
+                    >
+                        Days {sortBy === 'days' && <SortIcon sx={{ ml: 1 }} />}
                     </Button>
-                    <Button active={sortBy == 'banners'} onClick={() => triggerSort('banners')}>
-                        Banners <Icon name={'sort'} className={clsx({hidden: sortBy != 'banners'})}/>
+                    <Button 
+                        variant={sortBy === 'banners' ? 'contained' : 'outlined'}
+                        onClick={() => triggerSort('banners')}
+                    >
+                        Banners {sortBy === 'banners' && <SortIcon sx={{ ml: 1 }} />}
                     </Button>
-                    <Button active={sortBy == 'patches'} onClick={() => triggerSort('patches')}>
-                        Patches <Icon name={'sort'} className={clsx({hidden: sortBy != 'patches'})}/>
+                    <Button 
+                        variant={sortBy === 'patches' ? 'contained' : 'outlined'}
+                        onClick={() => triggerSort('patches')}
+                    >
+                        Patches {sortBy === 'patches' && <SortIcon sx={{ ml: 1 }} />}
                     </Button>
-                </Button.Group>
+                </ButtonGroup>
             </Container>
 
-            <Ref innerRef={ref}>
-                <Container style={{marginTop: '2em'}}>
+            <Box ref={ref}>
+                <Container sx={{ mt: 4 }}>
                     <AverageCounterSummary
                         type={type}
                         featuredList={data.featuredList}
@@ -81,9 +93,9 @@ export default function AverageRunSummaryPage(
                         order={order}
                     />
                 </Container>
-            </Ref>
+            </Box>
 
-            <Container style={{marginTop: '1em'}} textAlign={"center"}>
+            <Container sx={{ mt: 2, textAlign: 'center' }}>
                 <PngDownloadButton node={ref} name={'summary'}
                                    type={type}
                 />

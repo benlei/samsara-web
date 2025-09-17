@@ -1,47 +1,44 @@
 import React from "react";
-import {Button, Icon} from "semantic-ui-react";
-import {BannerFilterSortOptions, BannerOptionSetters} from "@/banners/types";
-import clsx from "clsx";
+import { ButtonGroup, Button, Box } from "@mui/material";
+import { Sort } from "@mui/icons-material";
+import { BannerFilterSortOptions, BannerOptionSetters } from "@/banners/types";
 
-type Properties = BannerFilterSortOptions & BannerOptionSetters
+type Properties = BannerFilterSortOptions & BannerOptionSetters;
 
-type States = {}
-
-export default class HistoryOptions extends React.Component<Properties, States> {
-    triggerSort = (newSort: string) => {
-        if (newSort !== this.props.sortBy) {
-            this.props.setSortBy(newSort)
-        } else {
-            this.props.setOrder(this.props.order === 'desc' ? 'asc' : 'desc')
-        }
-    };
-
-    // componentDidMount = () => {
-    //     // this.setState({ssrClientResetter: ""})
-    // }
-
-    render() {
-        return <>
-            <Button.Group widths={3}>
-                <Button
-                    onClick={() => this.triggerSort('last')}
-                    className={clsx({active: this.props.sortBy === 'last'})}
-                >
-                    Latest <Icon name={'sort'} className={clsx({hidden: this.props.sortBy !== 'last'})}/>
-                </Button>
-                <Button
-                    onClick={() => this.triggerSort('first')}
-                    className={clsx({active: this.props.sortBy === 'first'})}
-                >
-                    Oldest <Icon name={'sort'} className={clsx({hidden: this.props.sortBy !== 'first'})}/>
-                </Button>
-                <Button
-                    onClick={() => this.triggerSort('runs-last')}
-                    className={clsx({active: this.props.sortBy === 'runs-last'})}
-                >
-                    Total Runs <Icon name={'sort'} className={clsx({hidden: this.props.sortBy !== 'runs-last'})}/>
-                </Button>
-            </Button.Group>
-        </>;
+export default function HistoryOptions(props: Properties) {
+  const triggerSort = (newSort: string) => {
+    if (newSort !== props.sortBy) {
+      props.setSortBy(newSort);
+    } else {
+      props.setOrder(props.order === "desc" ? "asc" : "desc");
     }
+  };
+
+  return (
+    <Box sx={{ mb: 2 }}>
+      <ButtonGroup variant="outlined" fullWidth>
+        <Button
+          onClick={() => triggerSort("last")}
+          variant={props.sortBy === "last" ? "contained" : "outlined"}
+          startIcon={props.sortBy === "last" ? <Sort /> : undefined}
+        >
+          Latest
+        </Button>
+        <Button
+          onClick={() => triggerSort("first")}
+          variant={props.sortBy === "first" ? "contained" : "outlined"}
+          startIcon={props.sortBy === "first" ? <Sort /> : undefined}
+        >
+          Oldest
+        </Button>
+        <Button
+          onClick={() => triggerSort("runs-last")}
+          variant={props.sortBy === "runs-last" ? "contained" : "outlined"}
+          startIcon={props.sortBy === "runs-last" ? <Sort /> : undefined}
+        >
+          Total Runs
+        </Button>
+      </ButtonGroup>
+    </Box>
+  );
 }

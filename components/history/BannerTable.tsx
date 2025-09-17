@@ -4,7 +4,7 @@ import {
   BannerHistoryDataset,
   FeaturedHistory,
 } from "@/banners/types";
-import { Table } from "semantic-ui-react";
+import { Table, TableContainer, Paper, TableBody } from "@mui/material";
 import _ from "lodash";
 import HistoryHeader from "@/components/history/HistoryHeader";
 import HistoryFooter from "@/components/history/HistoryFooter";
@@ -101,13 +101,13 @@ export default function BannerTable({
     : baseFeaturedList;
 
   return (
-    <>
-      <Table definition unstackable selectable compact className={"history"}>
+    <TableContainer component={Paper} className="history">
+      <Table size="small" stickyHeader>
         <HistoryHeader
           versionParts={versionParts}
           onChange={handleFilterChange}
         />
-        <Table.Body>
+        <TableBody>
           {rundown.map((r, rI) => (
             <HistoryRow
               key={rI}
@@ -117,10 +117,9 @@ export default function BannerTable({
               dataset={dataset}
             />
           ))}
-        </Table.Body>
-
+        </TableBody>
         <HistoryFooter versionParts={versionParts} />
       </Table>
-    </>
+    </TableContainer>
   );
 }

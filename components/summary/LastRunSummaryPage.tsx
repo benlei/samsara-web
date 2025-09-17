@@ -1,4 +1,5 @@
-import {Button, Container, Header, Icon, Ref} from "semantic-ui-react";
+import { Button, Container, Typography, ButtonGroup, Box } from "@mui/material";
+import { Sort as SortIcon } from "@mui/icons-material";
 import React, {ReactNode, useEffect, useState} from "react";
 import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
@@ -46,26 +47,39 @@ export default function LastRunSummaryPage(
 
     return (
         <>
-            <Container style={{marginTop: '2em'}}>
-                <Header size={'large'} as={'h1'}>{title}</Header>
+            <Container sx={{ mt: 4 }}>
+                <Typography variant="h3" component="h1" gutterBottom>
+                    {title}
+                </Typography>
 
-                <p>This page lists out when the featured character or weapon was last run.</p>
+                <Typography variant="body1" paragraph>
+                    This page lists out when the featured character or weapon was last run.
+                </Typography>
 
-                <Button.Group widths='3'>
-                    <Button active={sortBy == 'days'} onClick={() => triggerSort('days')}>
-                        Days <Icon name={'sort'} className={clsx({hidden: sortBy != 'days'})}/>
+                <ButtonGroup variant="contained" fullWidth>
+                    <Button 
+                        variant={sortBy === 'days' ? 'contained' : 'outlined'}
+                        onClick={() => triggerSort('days')}
+                    >
+                        Days {sortBy === 'days' && <SortIcon sx={{ ml: 1 }} />}
                     </Button>
-                    <Button active={sortBy == 'banners'} onClick={() => triggerSort('banners')}>
-                        Banners <Icon name={'sort'} className={clsx({hidden: sortBy != 'banners'})}/>
+                    <Button 
+                        variant={sortBy === 'banners' ? 'contained' : 'outlined'}
+                        onClick={() => triggerSort('banners')}
+                    >
+                        Banners {sortBy === 'banners' && <SortIcon sx={{ ml: 1 }} />}
                     </Button>
-                    <Button active={sortBy == 'patches'} onClick={() => triggerSort('patches')}>
-                        Patches <Icon name={'sort'} className={clsx({hidden: sortBy != 'patches'})}/>
+                    <Button 
+                        variant={sortBy === 'patches' ? 'contained' : 'outlined'}
+                        onClick={() => triggerSort('patches')}
+                    >
+                        Patches {sortBy === 'patches' && <SortIcon sx={{ ml: 1 }} />}
                     </Button>
-                </Button.Group>
+                </ButtonGroup>
             </Container>
 
-            <Ref innerRef={ref}>
-                <Container style={{marginTop: '2em'}}>
+            <Box ref={ref}>
+                <Container sx={{ mt: 4 }}>
                     <RelativeBasicCounterSummary
                         date={data.date}
                         type={type}
@@ -74,9 +88,9 @@ export default function LastRunSummaryPage(
                         featuredList={data.featuredList}
                     />
                 </Container>
-            </Ref>
+            </Box>
 
-            <Container style={{marginTop: '1em'}} textAlign={"center"}>
+            <Container sx={{ mt: 2, textAlign: 'center' }}>
                 <PngDownloadButton node={ref} name={'summary'}
                                    type={type}
                 />

@@ -1,11 +1,12 @@
-import {Card, Feed, Grid, Image} from "semantic-ui-react";
-import {getRunsCountSummary} from "@/banners/summary";
+import { Card, CardContent, Typography, Box, Avatar } from "@mui/material";
+import { getRunsCountSummary } from "@/banners/summary";
 import _ from "lodash";
 import React from "react";
-import {Featured} from "@/banners/types";
-import {chunk} from "@/banners/summaryUtils";
-import {Order} from "@/lotypes/sort";
-import {getVersionPartsFromFeaturedList} from "@/banners/version";
+import { Featured } from "@/banners/types";
+import { chunk } from "@/banners/summaryUtils";
+import { Order } from "@/lotypes/sort";
+import { getVersionPartsFromFeaturedList } from "@/banners/version";
+import Image from "next/image";
 
 type Properties = {
     featuredList: Featured[]
@@ -31,36 +32,38 @@ export default function RunsCounterSummary(
     )
 
     return (
-        <Grid className={'summary relative-row'} stackable>
+        <Box className={'summary relative-row'} sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
             {chunkedSummary.map((summary, j) =>
-                <Grid.Column key={j}>
-                    <Card fluid>
-                        <Card.Content>
-                            <Card.Header>{summary[0].count} Run{summary[0].count !== 1 && 's'}</Card.Header>
-                        </Card.Content>
-                        <Card.Content>
-                            <Feed>
+                <Box key={j} sx={{ minWidth: 300, flex: '1 1 300px' }}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h6" component="h3">
+                                {summary[0].count} Run{summary[0].count !== 1 && 's'}
+                            </Typography>
+                        </CardContent>
+                        <CardContent>
+                            <Box>
                                 {summary.map((s, k) =>
-                                    <Feed.Event key={k}>
-                                        <Feed.Label>
+                                    <Box key={k} sx={{ display: 'flex', alignItems: 'center', mb: 1, minHeight: 40 }}>
+                                        <Avatar sx={{ mr: 2, width: 32, height: 32, flexShrink: 0 }}>
                                             <Image
                                                 src={`/images/${type}/${s.image}.png`}
-                                                circular
+                                                width={32}
+                                                height={32}
                                                 alt={s.image}
+                                                style={{ objectFit: 'cover' }}
                                             />
-                                        </Feed.Label>
-                                        <Feed.Content>
-                                            <Feed.Date>
-                                                {s.name}
-                                            </Feed.Date>
-                                        </Feed.Content>
-                                    </Feed.Event>
+                                        </Avatar>
+                                        <Typography variant="body2" sx={{ flexGrow: 1, wordBreak: 'break-word' }}>
+                                            {s.name}
+                                        </Typography>
+                                    </Box>
                                 )}
-                            </Feed>
-                        </Card.Content>
+                            </Box>
+                        </CardContent>
                     </Card>
-                </Grid.Column>
+                </Box>
             )}
-        </Grid>
+        </Box>
     )
 }

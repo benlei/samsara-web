@@ -32,6 +32,109 @@
     --light-header-color: #666;
 }
 
+/* Default light mode */
+html, body {
+    background-color: #ffffff;
+    color: rgba(0, 0, 0, 0.87);
+    transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+/* System dark mode preference */
+@media (prefers-color-scheme: dark) {
+    html, body {
+        background-color: hsl(0, 2%, 20.0%);
+        color: rgba(255, 255, 255, 0.87);
+    }
+}
+
+/* Manual theme overrides (when user explicitly chooses) */
+[data-theme='light'] html,
+[data-theme='light'] body {
+    background-color: #ffffff !important;
+    color: rgba(0, 0, 0, 0.87) !important;
+}
+
+[data-theme='dark'] html,
+[data-theme='dark'] body {
+    background-color: hsl(0, 2%, 20.0%) !important;
+    color: rgba(255, 255, 255, 0.87) !important;
+}
+
+/* System dark mode MUI component overrides - only apply when dark mode is preferred AND no explicit theme is set */
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) footer,
+    html:not([data-theme="light"]) .MuiBox-root[component="footer"],
+    html:not([data-theme="light"]) .MuiBox-root:has(> .MuiContainer-root) {
+        background-color: hsl(0, 2%, 18.0%) !important;
+        border-color: rgba(255, 255, 255, 0.12) !important;
+    }
+    
+    html:not([data-theme="light"]) .MuiContainer-root,
+    html:not([data-theme="light"]) .MuiContainer-maxWidthLg {
+        color: rgba(255, 255, 255, 0.87) !important;
+    }
+    
+    html:not([data-theme="light"]) .MuiTypography-root,
+    html:not([data-theme="light"]) .MuiTypography-h6,
+    html:not([data-theme="light"]) .MuiTypography-body2,
+    html:not([data-theme="light"]) .MuiTypography-caption {
+        color: rgba(255, 255, 255, 0.87) !important;
+    }
+    
+    html:not([data-theme="light"]) .MuiFormControlLabel-root,
+    html:not([data-theme="light"]) .MuiFormControlLabel-root .MuiTypography-root {
+        color: rgba(255, 255, 255, 0.87) !important;
+    }
+    
+    html:not([data-theme="light"]) .MuiLink-root {
+        color: #ef5350 !important;
+    }
+    
+    html:not([data-theme="light"]) .MuiListItem-root,
+    html:not([data-theme="light"]) .MuiListItemText-root,
+    html:not([data-theme="light"]) .MuiListItemText-primary {
+        color: rgba(255, 255, 255, 0.87) !important;
+    }
+}
+
+/* Manual dark theme overrides - only when explicitly set to dark */
+[data-theme='dark'] footer,
+[data-theme='dark'] .MuiBox-root[component="footer"],
+[data-theme='dark'] .MuiBox-root:has(> .MuiContainer-root) {
+    background-color: hsl(0, 2%, 18.0%) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme='dark'] .MuiContainer-root,
+[data-theme='dark'] .MuiContainer-maxWidthLg,
+[data-theme='dark'] .MuiTypography-root,
+[data-theme='dark'] .MuiFormControlLabel-root,
+[data-theme='dark'] .MuiListItem-root,
+[data-theme='dark'] .MuiListItemText-root {
+    color: rgba(255, 255, 255, 0.87) !important;
+}
+
+/* Light theme overrides - ensure light colors when explicitly set to light */
+[data-theme='light'] footer,
+[data-theme='light'] .MuiBox-root[component="footer"],
+[data-theme='light'] .MuiBox-root:has(> .MuiContainer-root) {
+    background-color: #f5f5f5 !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-theme='light'] .MuiContainer-root,
+[data-theme='light'] .MuiContainer-maxWidthLg,
+[data-theme='light'] .MuiTypography-root,
+[data-theme='light'] .MuiFormControlLabel-root,
+[data-theme='light'] .MuiListItem-root,
+[data-theme='light'] .MuiListItemText-root {
+    color: rgba(0, 0, 0, 0.87) !important;
+}
+
+[data-theme='light'] .MuiLink-root {
+    color: #c62828 !important;
+}
+
 /* for i in {0..25}; do printf "--hc-${i}: hsl(0, 2%%, %0.1f%%);\n" $((20-.6*$i)); done */
 [data-theme='dark'] {
     --hc-0: hsl(0, 2%, 20.0%);
@@ -65,6 +168,30 @@
     --history-cell-color: #666;
     --history-run-color: #aaa;
     --light-header-color: #bbb;
+}
+
+/* Dark mode specific fixes for MUI components */
+[data-theme='dark'] .MuiCard-root {
+    background-color: hsl(0, 2%, 18.0%) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme='dark'] .MuiTypography-root {
+    color: rgba(255, 255, 255, 0.87) !important;
+}
+
+[data-theme='dark'] .MuiTableContainer-root {
+    background-color: hsl(0, 2%, 18.0%) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme='dark'] .MuiTableCell-root {
+    color: rgba(255, 255, 255, 0.87) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme='dark'] .MuiTableCell-head {
+    background-color: hsl(0, 2%, 16.0%) !important;
 }
 
 @media (max-width: 768px) {
@@ -167,12 +294,14 @@
 }
 
 .history th:not(:first-of-type) {
-    border: 1px solid var(--history-border-color)
+    border: 1px solid var(--history-border-color);
 }
 
 .history th {
     font-weight: bold !important;
     text-align: center !important;
+    vertical-align: middle !important;
+    padding: 8px !important;
 }
 
 .history * {
@@ -180,7 +309,7 @@
 }
 
 .history td:first-of-type {
-    white-space: nowrap;
+    white-space: nowrap !important;
     text-align: right !important;
     border-left-style: solid !important;
     border-left-width: initial;
@@ -193,9 +322,17 @@
     color: var(--history-cell-color);
 }
 
-.history .runs {
-    font-weight: 500;
+/* Specific styling for runs column */
+.history td .runs {
+    line-height: 2em;
+    width: 2em;
+    height: 2em;
     color: var(--history-run-color) !important;
+    font-weight: 500;
+}
+
+.history td:not(:first-of-type) {
+    text-align: center !important;
 }
 
 .menu .item {
@@ -257,10 +394,6 @@ button {
 .summary .feed .label {
     width: 50px !important;
     height: 50px !important;
-}
-
-.summary .row {
-    /*padding-top: .5rem !important;*/
 }
 
 .summary .row > .column {

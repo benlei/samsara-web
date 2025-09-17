@@ -1,33 +1,26 @@
 import React from "react";
-import {Icon, Table} from "semantic-ui-react";
-import {VersionParts} from "@/banners/types";
+import { TableFooter, TableRow, TableCell } from "@mui/material";
+import { Refresh } from "@mui/icons-material";
+import { VersionParts } from "@/banners/types";
 
 type Properties = {
-    versionParts: VersionParts[]
-}
+  versionParts: VersionParts[];
+};
 
-type States = {}
-
-export default class HistoryFooter extends React.Component<Properties, States> {
-    render() {
-        const {
-            versionParts,
-        } = this.props
-
-        return (
-            <Table.Footer>
-                <Table.Row>
-                    <Table.HeaderCell className={'borderless'}/>
-                    <Table.HeaderCell>
-                        <Icon name='redo'/>
-                    </Table.HeaderCell>
-                    {versionParts.map((vp, idx) => (
-                        <Table.HeaderCell colSpan={vp.parts} key={idx}>
-                            {vp.version}
-                        </Table.HeaderCell>
-                    ))}
-                </Table.Row>
-            </Table.Footer>
-        )
-    }
+export default function HistoryFooter({ versionParts }: Properties) {
+  return (
+    <TableFooter>
+      <TableRow>
+        <TableCell className="borderless" />
+        <TableCell>
+          <Refresh />
+        </TableCell>
+        {versionParts.map((vp, idx) => (
+          <TableCell colSpan={vp.parts} key={idx}>
+            {vp.version}
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableFooter>
+  );
 }

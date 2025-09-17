@@ -21,6 +21,10 @@
     "playwright:install": "playwright install --with-deps"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.2",
+    "@mui/material": "^7.3.2",
     "@types/lodash": "4.17.20",
     "@types/node": "24.3.0",
     "@types/react": "18.3.24",
@@ -39,7 +43,6 @@
     "react-dom": "18.3.1",
     "react-ga4": "2.1.0",
     "react-indiana-drag-scroll": "2.2.1",
-    "semantic-ui-react": "2.1.5",
     "typescript": "5.9.2",
     "yaml": "2.8.1"
   },

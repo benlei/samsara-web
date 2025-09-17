@@ -4,7 +4,7 @@ import {
   FeaturedHistory,
 } from "@/banners/types";
 import React, { useEffect, useState } from "react";
-import { Image, Popup, Table } from "semantic-ui-react";
+import { TableRow, TableCell, Popover, Avatar } from "@mui/material";
 import HistoryFeaturedPopover from "@/components/history/HistoryFeaturedPopover";
 import HistoryImageCounter from "@/components/history/HistoryImageCounter";
 
@@ -21,38 +21,57 @@ export default function HistoryRow({
   dataset,
 }: Properties): React.ReactElement {
   const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
   let versionIndex = 0;
 
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setOpen(false);
+  };
+
   return (
-    <Table.Row>
-      <Table.Cell>
-        <Popup
-          content={
-            <HistoryFeaturedPopover type={bannerType} rundown={rundown} />
-          }
-          on="click"
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
+    <TableRow>
+      <TableCell>
+        <span onClick={handleClick} style={{ cursor: 'pointer' }}>
+          <span className={"desktop"}>{rundown.name}</span>{" "}
+          <Avatar
+            src={`/images/${bannerType}/${rundown.image}.png`}
+            alt={rundown.image}
+            sx={{ 
+              width: 32, 
+              height: 32,
+              display: 'inline-block',
+              verticalAlign: 'middle'
+            }}
+          />
+        </span>
+        <Popover
           open={open}
-          position={"right center"}
-          trigger={
-            <span>
-              <span className={"desktop"}>{rundown.name}</span>{" "}
-              <Image
-                avatar
-                src={`/images/${bannerType}/${rundown.image}.png`}
-                alt={rundown.image}
-              />
-            </span>
-          }
-        />
-      </Table.Cell>
-      <Table.Cell className={"hc-0"}>
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'center',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'center',
+            horizontal: 'left',
+          }}
+        >
+          <HistoryFeaturedPopover type={bannerType} rundown={rundown} />
+        </Popover>
+      </TableCell>
+      <TableCell className={"hc-0"}>
         <div className={"runs"}>{rundown.runs}</div>
-      </Table.Cell>
+      </TableCell>
       {rundown.counter.map((c, cI) => (
-        <Table.Cell key={cI} className={"hc-" + Math.max(0, Math.min(25, c))}>
+        <TableCell key={cI} className={"hc-" + Math.max(0, Math.min(25, c))}>
           <HistoryImageCounter
             type={bannerType}
             dataset={dataset}
@@ -60,8 +79,8 @@ export default function HistoryRow({
             counter={c}
             versionIndex={c === 0 ? versionIndex++ : versionIndex}
           />
-        </Table.Cell>
+        </TableCell>
       ))}
-    </Table.Row>
+    </TableRow>
   );
 }

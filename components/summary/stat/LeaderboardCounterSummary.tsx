@@ -1,4 +1,17 @@
-import {Header, Icon, Image, Table} from "semantic-ui-react";
+import { 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableContainer, 
+  TableHead, 
+  TableRow, 
+  Paper, 
+  Avatar, 
+  IconButton, 
+  Typography 
+} from "@mui/material";
+import { Sort as SortIcon } from "@mui/icons-material";
+import Image from "next/image";
 import {LeaderboardSummary} from "@/banners/summary";
 import _ from "lodash";
 import React, {useEffect, useState} from "react";
@@ -51,99 +64,112 @@ export default function LeaderboardCounterSummary(
         .value()
 
     return (
-        <Table unstackable className={'summary-table'}>
-            <Table.Header>
-                <Table.Row>
-                    <Table.HeaderCell colSpan={2} className={'active'}>Featured</Table.HeaderCell>
-                    <Table.HeaderCell
-                        className={clsx('clickable sortable-column', {desktop: sortBy !== 'days'})}
-                        onClick={() => triggerSort('days')}
-                    >
-                        Days <Icon name={'sort'} className={clsx({hidden: sortBy !== 'days'}, 'desktop')}/>
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                        className={clsx('clickable sortable-column', {desktop: sortBy !== 'banners'})}
-                        onClick={() => triggerSort('banners')}
-                    >
-                        Banners <Icon name={'sort'} className={clsx({hidden: sortBy !== 'banners'}, 'desktop')}/>
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                        className={clsx('clickable sortable-column', {desktop: sortBy !== 'patches'})}
-                        onClick={() => triggerSort('patches')}
-                    >
-                        Patches <Icon name={'sort'} className={clsx({hidden: sortBy !== 'patches'}, 'desktop')}/>
-                    </Table.HeaderCell>
-                </Table.Row>
-            </Table.Header>
-            <Table.Body>
-                {summary.map((s, k) =>
-                    <Table.Row key={k} verticalAlign={'top'}>
-                        <Table.Cell style={{width: '35px'}}>
-                            <Image size={'tiny'}
-                                   circular
-                                   verticalAlign='middle'
-                                   src={`/images/${type}/${s.image}.png`}
-                                   alt={s.image}
-                                   className={'desktop'}
-                            />
-                            <Image size={'mini'}
-                                   circular
-                                   verticalAlign='middle'
-                                   src={`/images/${type}/${s.image}.png`}
-                                   alt={s.image}
-                                   style={{display: 'none'}}
-                                   className={'mobile'}
-                            />
-                        </Table.Cell>
-                        <Table.Cell verticalAlign={'top'}>
-                            <Header as={'div'} size={'small'}>{s.name}</Header>
-                        </Table.Cell>
-                        <Table.Cell verticalAlign={'top'} className={clsx({desktop: sortBy !== 'days'})}>
-                            {s.days}
-                        </Table.Cell>
-                        <Table.Cell verticalAlign={'top'} className={clsx({desktop: sortBy !== 'banners'})}>
-                            {s.banners}
-                        </Table.Cell>
-                        <Table.Cell verticalAlign={'top'} className={clsx({desktop: sortBy !== 'patches'})}>
-                            {s.patches}
-                        </Table.Cell>
-                    </Table.Row>
-                )}
+        <TableContainer component={Paper} className={'summary-table'}>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell colSpan={2} sx={{ fontWeight: 'bold' }}>Featured</TableCell>
+                        <TableCell
+                            sx={{ 
+                                cursor: 'pointer',
+                                display: sortBy !== 'days' ? { xs: 'none', sm: 'table-cell' } : 'table-cell'
+                            }}
+                            onClick={() => triggerSort('days')}
+                        >
+                            Days {sortBy === 'days' && <SortIcon sx={{ ml: 1, display: { xs: 'none', sm: 'inline' } }} />}
+                        </TableCell>
+                        <TableCell
+                            sx={{ 
+                                cursor: 'pointer',
+                                display: sortBy !== 'banners' ? { xs: 'none', sm: 'table-cell' } : 'table-cell'
+                            }}
+                            onClick={() => triggerSort('banners')}
+                        >
+                            Banners {sortBy === 'banners' && <SortIcon sx={{ ml: 1, display: { xs: 'none', sm: 'inline' } }} />}
+                        </TableCell>
+                        <TableCell
+                            sx={{ 
+                                cursor: 'pointer',
+                                display: sortBy !== 'patches' ? { xs: 'none', sm: 'table-cell' } : 'table-cell'
+                            }}
+                            onClick={() => triggerSort('patches')}
+                        >
+                            Patches {sortBy === 'patches' && <SortIcon sx={{ ml: 1, display: { xs: 'none', sm: 'inline' } }} />}
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {summary.map((s, k) =>
+                        <TableRow key={k}>
+                            <TableCell sx={{ width: '35px' }}>
+                                <Avatar sx={{ width: 32, height: 32, display: { xs: 'none', sm: 'block' } }}>
+                                    <Image
+                                        src={`/images/${type}/${s.image}.png`}
+                                        width={32}
+                                        height={32}
+                                        alt={s.image}
+                                    />
+                                </Avatar>
+                                <Avatar sx={{ width: 24, height: 24, display: { xs: 'block', sm: 'none' } }}>
+                                    <Image
+                                        src={`/images/${type}/${s.image}.png`}
+                                        width={24}
+                                        height={24}
+                                        alt={s.image}
+                                    />
+                                </Avatar>
+                            </TableCell>
+                            <TableCell>
+                                <Typography variant="body2" fontWeight="medium">{s.name}</Typography>
+                            </TableCell>
+                            <TableCell sx={{ display: sortBy !== 'days' ? { xs: 'none', sm: 'table-cell' } : 'table-cell' }}>
+                                {s.days}
+                            </TableCell>
+                            <TableCell sx={{ display: sortBy !== 'banners' ? { xs: 'none', sm: 'table-cell' } : 'table-cell' }}>
+                                {s.banners}
+                            </TableCell>
+                            <TableCell sx={{ display: sortBy !== 'patches' ? { xs: 'none', sm: 'table-cell' } : 'table-cell' }}>
+                                {s.patches}
+                            </TableCell>
+                        </TableRow>
+                    )}
 
-                {naList.map((f, k) =>
-                    <Table.Row key={k} verticalAlign={'top'} className={'not-applicable'}>
-                        <Table.Cell style={{width: '35px'}}>
-                            <Image size={'tiny'}
-                                   circular
-                                   verticalAlign='middle'
-                                   src={`/images/${type}/${getImageFromName(f.name)}.png`}
-                                   alt={getImageFromName(f.name)}
-                                   className={'desktop'}
-                            />
-                            <Image size={'mini'}
-                                   circular
-                                   verticalAlign='middle'
-                                   src={`/images/${type}/${getImageFromName(f.name)}.png`}
-                                   alt={getImageFromName(f.name)}
-                                   style={{display: 'none'}}
-                                   className={'mobile'}
-                            />
-                        </Table.Cell>
-                        <Table.Cell verticalAlign={'top'}>
-                            <Header as={'div'} size={'small'}>{f.name}</Header>
-                        </Table.Cell>
-                        <Table.Cell verticalAlign={'top'} className={clsx({desktop: sortBy !== 'days'})}>
-                            n/a
-                        </Table.Cell>
-                        <Table.Cell verticalAlign={'top'} className={clsx({desktop: sortBy !== 'banners'})}>
-                            n/a
-                        </Table.Cell>
-                        <Table.Cell verticalAlign={'top'} className={clsx({desktop: sortBy !== 'patches'})}>
-                            n/a
-                        </Table.Cell>
-                    </Table.Row>
-                )}
-            </Table.Body>
-        </Table>
+                    {naList.map((f, k) =>
+                        <TableRow key={k} sx={{ opacity: 0.6 }}>
+                            <TableCell sx={{ width: '35px' }}>
+                                <Avatar sx={{ width: 32, height: 32, display: { xs: 'none', sm: 'block' } }}>
+                                    <Image
+                                        src={`/images/${type}/${getImageFromName(f.name)}.png`}
+                                        width={32}
+                                        height={32}
+                                        alt={getImageFromName(f.name)}
+                                    />
+                                </Avatar>
+                                <Avatar sx={{ width: 24, height: 24, display: { xs: 'block', sm: 'none' } }}>
+                                    <Image
+                                        src={`/images/${type}/${getImageFromName(f.name)}.png`}
+                                        width={24}
+                                        height={24}
+                                        alt={getImageFromName(f.name)}
+                                    />
+                                </Avatar>
+                            </TableCell>
+                            <TableCell>
+                                <Typography variant="body2" fontWeight="medium">{f.name}</Typography>
+                            </TableCell>
+                            <TableCell sx={{ display: sortBy !== 'days' ? { xs: 'none', sm: 'table-cell' } : 'table-cell' }}>
+                                n/a
+                            </TableCell>
+                            <TableCell sx={{ display: sortBy !== 'banners' ? { xs: 'none', sm: 'table-cell' } : 'table-cell' }}>
+                                n/a
+                            </TableCell>
+                            <TableCell sx={{ display: sortBy !== 'patches' ? { xs: 'none', sm: 'table-cell' } : 'table-cell' }}>
+                                n/a
+                            </TableCell>
+                        </TableRow>
+                    )}
+                </TableBody>
+            </Table>
+        </TableContainer>
     )
 }
