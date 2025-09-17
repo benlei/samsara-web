@@ -84,7 +84,7 @@ export default function AverageRunSummaryPage(
             </Container>
 
             <Box ref={ref}>
-                <Container sx={{ mt: 4 }}>
+                <Container sx={{ mt: 4, mb: 6 }}>
                     <AverageCounterSummary
                         type={type}
                         featuredList={data.featuredList}

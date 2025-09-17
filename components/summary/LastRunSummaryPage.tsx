@@ -79,7 +79,7 @@ export default function LastRunSummaryPage(
             </Container>
 
             <Box ref={ref}>
-                <Container sx={{ mt: 4 }}>
+                <Container sx={{ mt: 4, mb: 6 }}>
                     <RelativeBasicCounterSummary
                         date={data.date}
                         type={type}

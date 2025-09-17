@@ -65,7 +65,7 @@ export default function RunsSummaryPage({ data, title, type }: Properties) {
       </Container>
 
       <Box ref={ref}>
-        <Container sx={{ mt: 4 }}>
+        <Container sx={{ mt: 4, mb: 6 }}>
           <RunsCounterSummary
             type={type}
             order={order}

@@ -32,7 +32,7 @@ export default function RunsCounterSummary(
     )
 
     return (
-        <Box className={'summary relative-row'} sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+        <Box className={'summary relative-row'} sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
             {chunkedSummary.map((summary, j) =>
                 <Box key={j} sx={{ minWidth: 300, flex: '1 1 300px' }}>
                     <Card>

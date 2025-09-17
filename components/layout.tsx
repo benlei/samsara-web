@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import CookieConsent from "react-cookie-consent";
+import { Box } from "@mui/material";
 
 export default function Layout({children}: React.PropsWithChildren) {
     return (
@@ -18,7 +19,9 @@ export default function Layout({children}: React.PropsWithChildren) {
             </Head>
             <main>
                 <Navbar/>
-                {children}
+                <Box sx={{ py: 4 }}>
+                    {children}
+                </Box>
                 <Footer></Footer>
                 <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
             </main>
