@@ -13,7 +13,32 @@ export default function HistorySearch({ onChange }: Properties) {
       placeholder="Filter name..."
       onChange={_.debounce(onChange, 250)}
       className="desktop"
-      sx={{ minWidth: "16em" }}
+      sx={{ 
+        minWidth: "16em",
+        '& .MuiOutlinedInput-root': {
+          backgroundColor: 'transparent',
+          color: 'text.primary',
+          '& fieldset': {
+            borderColor: 'rgba(255, 255, 255, 0.23)',
+          },
+          '&:hover fieldset': {
+            borderColor: 'rgba(255, 255, 255, 0.4)',
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: 'primary.main',
+          },
+          '& input': {
+            color: 'text.primary',
+          },
+          '& input::placeholder': {
+            color: 'rgba(255, 255, 255, 0.5)',
+            opacity: 1,
+          },
+        },
+        '& .MuiInputAdornment-root': {
+          color: 'rgba(255, 255, 255, 0.5)',
+        },
+      }}
       data-html2canvas-ignore
       autoComplete="off"
       size="small"

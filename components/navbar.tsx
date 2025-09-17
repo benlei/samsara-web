@@ -24,6 +24,22 @@ import {
 import { getImageFromName } from "../format/image";
 import Image from "next/image";
 
+// Import the favicon ICO directly
+const SamsaraIcon = ({ sx }: { sx?: any }) => (
+  <Box
+    component="img"
+    src="/favicon.ico"
+    alt="Samsara"
+    sx={{
+      width: '1em',
+      height: '1em',
+      display: 'inline-block',
+      fontSize: 'inherit',
+      ...sx,
+    }}
+  />
+);
+
 type SidebarItemsProps = {
   stars: 5 | 4;
   type: "characters" | "weapons" | "hsr-characters" | "lightcones";
@@ -133,16 +149,29 @@ function SidebarDrawer({
       <Box sx={{ p: 2 }}>
         <Box sx={{ display: "flex", alignItems: "center", mb: 2, pl: 2 }}>
           <Typography 
-            variant="h6"
+            variant="h5"
             sx={{
-              backgroundColor: 'primary.main',
               color: 'white',
-              px: 2,
-              py: 0.5,
-              borderRadius: 1,
-              fontWeight: 'bold',
+              fontWeight: 600,
+              letterSpacing: '0.8px',
+              fontSize: '1.4rem',
+              fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1.2,
+              transition: 'color 0.3s ease',
             }}
           >
+            <SamsaraIcon 
+              sx={{ 
+                fontSize: '1.8rem',
+                color: 'primary.main',
+                '&:hover': {
+                  color: 'primary.dark',
+                },
+                transition: 'color 0.3s ease',
+              }} 
+            />
             SAMSARA
           </Typography>
         </Box>
@@ -206,20 +235,32 @@ export default function Navbar(): React.ReactElement {
             <Button 
               href="/" 
               sx={{ 
-                fontSize: "1.2rem", 
-                fontWeight: "bold",
-                backgroundColor: 'primary.main',
+                fontSize: "1.3rem", 
+                fontWeight: 600,
                 color: 'white',
-                px: 2,
-                py: 1,
-                borderRadius: 1,
-                '&:hover': {
-                  backgroundColor: 'primary.dark',
-                },
+                letterSpacing: '0.8px',
+                fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
                 textTransform: 'none',
-                ml: 0, // Ensure no left margin
+                ml: 0,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1.2,
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                },
+                transition: 'color 0.3s ease',
               }}
             >
+              <SamsaraIcon 
+                sx={{ 
+                  fontSize: '1.6rem',
+                  color: 'primary.main',
+                  '&:hover': {
+                    color: 'primary.dark',
+                  },
+                  transition: 'color 0.3s ease',
+                }} 
+              />
               SAMSARA
             </Button>
             <Box sx={{ display: "flex", gap: 2 }}>

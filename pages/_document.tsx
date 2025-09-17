@@ -5,6 +5,11 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        {/* Favicon setup */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <meta name="theme-color" content="#d32f2f" />
+        
         <script
           dangerouslySetInnerHTML={{
             __html: `
