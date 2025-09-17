@@ -93,7 +93,6 @@ export default function HistoryPage({
 
       <Container sx={{ mt: 2 }}>
         <Box
-          ref={componentRef}
           sx={{
             overflow: 'auto',
             cursor: 'grab',
@@ -153,13 +152,15 @@ export default function HistoryPage({
             document.addEventListener('mouseup', handleMouseUp);
           }}
         >
-          <BannerTable
-            bannerType={bannerType}
-            dataset={dataset}
-            featuredList={featuredList}
-            order={order}
-            sortBy={sortBy}
-          />
+          <Box ref={componentRef}>
+            <BannerTable
+              bannerType={bannerType}
+              dataset={dataset}
+              featuredList={featuredList}
+              order={order}
+              sortBy={sortBy}
+            />
+          </Box>
         </Box>
       </Container>
 
