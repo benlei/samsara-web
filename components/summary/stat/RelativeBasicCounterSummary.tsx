@@ -93,7 +93,7 @@ export default function RelativeBasicCounterSummary({
   return (
     <Box className={"summary relative-row"} sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
       {chunkedSummary.map((summary, j) => (
-        <Box key={j} sx={{ minWidth: 300, flex: '1 1 300px' }}>
+        <Box key={j} sx={{ minWidth: 300, flex: '1 1 calc(50% - 8px)', maxWidth: 'calc(50% - 8px)' }}>
           <Card>
             <CardContent>
               <Typography variant="h6" component="h3">

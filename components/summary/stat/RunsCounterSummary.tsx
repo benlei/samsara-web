@@ -34,7 +34,7 @@ export default function RunsCounterSummary(
     return (
         <Box className={'summary relative-row'} sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
             {chunkedSummary.map((summary, j) =>
-                <Box key={j} sx={{ minWidth: 300, flex: '1 1 300px' }}>
+                <Box key={j} sx={{ minWidth: 300, flex: '1 1 calc(50% - 12px)', maxWidth: 'calc(50% - 12px)' }}>
                     <Card>
                         <CardContent>
                             <Typography variant="h6" component="h3">
