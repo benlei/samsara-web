@@ -57,7 +57,7 @@ export default function RunsSummaryPage({ data, title, type }: Properties) {
             variant="contained"
             startIcon={<Sort />}
             fullWidth
-            sx={{ maxWidth: 400, py: 1.5 }}
+            sx={{ maxWidth: 400 }}
           >
             RUNS
           </Button>
