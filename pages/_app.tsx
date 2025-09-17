@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import App, {AppProps} from 'next/app';
 import Layout from '@/components/layout';
 import ReactGA from 'react-ga4';
@@ -12,11 +12,17 @@ import { useTheme } from 'next-themes';
 ReactGA.initialize(process.env.NEXT_PUBLIC_ANALYTICS_ID ? process.env.NEXT_PUBLIC_ANALYTICS_ID : 'fake');
 
 function AppContent(props: AppProps) {
-    const { theme, systemTheme } = useTheme();
+    const { theme } = useTheme();
+    const [mounted, setMounted] = useState(false);
     
-    // Determine the effective theme considering system preference
-    const effectiveTheme = theme === 'system' ? systemTheme : theme;
-    const muiTheme = effectiveTheme === 'dark' ? darkTheme : lightTheme;
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+    
+    // For server-side rendering, always use dark theme to match default
+    // For client-side, use the actual theme after mounting
+    const currentTheme = mounted ? (theme || 'dark') : 'dark';
+    const muiTheme = currentTheme === 'dark' ? darkTheme : lightTheme;
 
     return (
         <MuiThemeProvider theme={muiTheme}>
@@ -37,8 +43,8 @@ class MyApp extends App<AppProps> {
                 {/* Add any global styles or other components here */}
                 <ThemeProvider 
                     attribute="data-theme" 
-                    defaultTheme="system" 
-                    enableSystem={true}
+                    defaultTheme="dark" 
+                    enableSystem={false}
                     disableTransitionOnChange={false}
                 >
                     <AppContent Component={Component} pageProps={pageProps} router={router} />
