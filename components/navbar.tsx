@@ -197,7 +197,7 @@ function SidebarDrawer({
           <Typography 
             variant="h5"
             sx={{
-              color: 'white',
+              color: 'inherit',
               fontWeight: 600,
               letterSpacing: '0.8px',
               fontSize: '1.4rem',
@@ -283,7 +283,7 @@ export default function Navbar(): React.ReactElement {
               sx={{ 
                 fontSize: "1.3rem", 
                 fontWeight: 600,
-                color: 'white',
+                color: 'inherit',
                 letterSpacing: '0.8px',
                 fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
                 textTransform: 'none',
