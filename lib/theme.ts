@@ -1,6 +1,43 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, ThemeOptions } from '@mui/material/styles';
+
+// Base theme configuration that works with CSS variables
+const baseThemeOptions: ThemeOptions = {
+  typography: {
+    fontFamily: 'Lato, "Helvetica Neue", Arial, Helvetica, sans-serif',
+    h1: {
+      fontSize: '2rem',
+      fontWeight: 700,
+    },
+    h2: {
+      fontSize: '1.714rem',
+      fontWeight: 700,
+    },
+    h3: {
+      fontSize: '1.28rem',
+      fontWeight: 700,
+    },
+    h4: {
+      fontSize: '1.071rem',
+      fontWeight: 700,
+    },
+    h5: {
+      fontSize: '1rem',
+      fontWeight: 700,
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          transition: 'background-color 0.2s ease, color 0.2s ease',
+        },
+      },
+    },
+  },
+};
 
 export const lightTheme = createTheme({
+  ...baseThemeOptions,
   palette: {
     mode: 'light',
     primary: {
@@ -86,6 +123,7 @@ export const lightTheme = createTheme({
 });
 
 export const darkTheme = createTheme({
+  ...baseThemeOptions,
   palette: {
     mode: 'dark',
     primary: {

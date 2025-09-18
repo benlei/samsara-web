@@ -1,4 +1,45 @@
-/* for i in {0..25}; do printf "--hc-${i}: hsl(0, 5%%, %0.1f%%);\n" $((100-1.4*$i)); done */
+/* Theme Variables */
+:root {
+    /* Light theme variables */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --text-primary: rgba(0, 0, 0, 0.87);
+    --text-secondary: rgba(0, 0, 0, 0.6);
+    --text-disabled: rgba(0, 0, 0, 0.38);
+    --divider: rgba(0, 0, 0, 0.12);
+    --border-color: rgba(0, 0, 0, 0.23);
+    
+    /* MUI Component Colors */
+    --mui-paper-bg: #ffffff;
+    --mui-table-header-bg: #f5f5f5;
+    --mui-table-cell-border: rgba(0, 0, 0, 0.12);
+    --mui-card-bg: #ffffff;
+    --mui-primary-main: #c62828;
+    --mui-primary-light: #ff5f52;
+    --mui-primary-dark: #8e0000;
+}
+
+[data-theme='dark'] {
+    /* Dark theme variables */
+    --bg-primary: hsl(0, 2%, 20.0%);
+    --bg-secondary: #1e1e1e;
+    --text-primary: rgba(255, 255, 255, 0.87);
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --text-disabled: rgba(255, 255, 255, 0.38);
+    --divider: rgba(255, 255, 255, 0.12);
+    --border-color: rgba(255, 255, 255, 0.23);
+    
+    /* MUI Component Colors */
+    --mui-paper-bg: hsl(0, 2%, 18.0%);
+    --mui-table-header-bg: hsl(0, 2%, 16.0%);
+    --mui-table-cell-border: rgba(255, 255, 255, 0.12);
+    --mui-card-bg: hsl(0, 2%, 18.0%);
+    --mui-primary-main: #ef5350;
+    --mui-primary-light: #ff867c;
+    --mui-primary-dark: #b61827;
+}
+
+/* Original HSL color scale */
 :root {
     --hc-0: hsl(0, 5%, 100.0%);
     --hc-1: hsl(0, 5%, 98.6%);
@@ -32,110 +73,79 @@
     --light-header-color: #666;
 }
 
-/* Default light mode */
+/* Default styles using CSS variables */
 html, body {
-    background-color: #ffffff;
-    color: rgba(0, 0, 0, 0.87);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     transition: background-color 0.1s ease, color 0.1s ease;
 }
 
-/* System dark mode preference */
-@media (prefers-color-scheme: dark) {
-    html, body {
-        background-color: hsl(0, 2%, 20.0%);
-        color: rgba(255, 255, 255, 0.87);
-    }
+/* MUI Component Theming */
+.MuiPaper-root {
+    background-color: var(--mui-paper-bg) !important;
+    color: var(--text-primary) !important;
 }
 
-/* Manual theme overrides (when user explicitly chooses) */
-[data-theme='light'] html,
-[data-theme='light'] body {
-    background-color: #ffffff !important;
-    color: rgba(0, 0, 0, 0.87) !important;
+.MuiTableContainer-root {
+    background-color: var(--mui-paper-bg) !important;
 }
 
-[data-theme='dark'] html,
-[data-theme='dark'] body {
-    background-color: hsl(0, 2%, 20.0%) !important;
-    color: rgba(255, 255, 255, 0.87) !important;
+.MuiTableCell-root {
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--mui-table-cell-border) !important;
 }
 
-/* System dark mode MUI component overrides - only apply when dark mode is preferred AND no explicit theme is set */
-@media (prefers-color-scheme: dark) {
-    html:not([data-theme="light"]) footer,
-    html:not([data-theme="light"]) .MuiBox-root[component="footer"],
-    html:not([data-theme="light"]) .MuiBox-root:has(> .MuiContainer-root) {
-        background-color: hsl(0, 2%, 18.0%) !important;
-        border-color: rgba(255, 255, 255, 0.12) !important;
-    }
-    
-    html:not([data-theme="light"]) .MuiContainer-root,
-    html:not([data-theme="light"]) .MuiContainer-maxWidthLg {
-        color: rgba(255, 255, 255, 0.87) !important;
-    }
-    
-    html:not([data-theme="light"]) .MuiTypography-root,
-    html:not([data-theme="light"]) .MuiTypography-h6,
-    html:not([data-theme="light"]) .MuiTypography-body2,
-    html:not([data-theme="light"]) .MuiTypography-caption {
-        color: rgba(255, 255, 255, 0.87) !important;
-    }
-    
-    html:not([data-theme="light"]) .MuiFormControlLabel-root,
-    html:not([data-theme="light"]) .MuiFormControlLabel-root .MuiTypography-root {
-        color: rgba(255, 255, 255, 0.87) !important;
-    }
-    
-    html:not([data-theme="light"]) .MuiLink-root {
-        color: #ef5350 !important;
-    }
-    
-    html:not([data-theme="light"]) .MuiListItem-root,
-    html:not([data-theme="light"]) .MuiListItemText-root,
-    html:not([data-theme="light"]) .MuiListItemText-primary {
-        color: rgba(255, 255, 255, 0.87) !important;
-    }
+.MuiTableCell-head {
+    background-color: var(--mui-table-header-bg) !important;
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
 }
 
-/* Manual dark theme overrides - only when explicitly set to dark */
-[data-theme='dark'] footer,
-[data-theme='dark'] .MuiBox-root[component="footer"],
-[data-theme='dark'] .MuiBox-root:has(> .MuiContainer-root) {
-    background-color: hsl(0, 2%, 18.0%) !important;
-    border-color: rgba(255, 255, 255, 0.12) !important;
+.MuiCard-root {
+    background-color: var(--mui-card-bg) !important;
+    border: 1px solid var(--divider) !important;
 }
 
-[data-theme='dark'] .MuiContainer-root,
-[data-theme='dark'] .MuiContainer-maxWidthLg,
-[data-theme='dark'] .MuiTypography-root,
-[data-theme='dark'] .MuiFormControlLabel-root,
-[data-theme='dark'] .MuiListItem-root,
-[data-theme='dark'] .MuiListItemText-root {
-    color: rgba(255, 255, 255, 0.87) !important;
+.MuiTypography-root {
+    color: var(--text-primary) !important;
 }
 
-/* Light theme overrides - ensure light colors when explicitly set to light */
-[data-theme='light'] footer,
-[data-theme='light'] .MuiBox-root[component="footer"],
-[data-theme='light'] .MuiBox-root:has(> .MuiContainer-root) {
-    background-color: #f5f5f5 !important;
-    border-color: rgba(0, 0, 0, 0.12) !important;
+.MuiContainer-root {
+    color: var(--text-primary) !important;
 }
 
-[data-theme='light'] .MuiContainer-root,
-[data-theme='light'] .MuiContainer-maxWidthLg,
-[data-theme='light'] .MuiTypography-root,
-[data-theme='light'] .MuiFormControlLabel-root,
-[data-theme='light'] .MuiListItem-root,
-[data-theme='light'] .MuiListItemText-root {
-    color: rgba(0, 0, 0, 0.87) !important;
+.MuiButton-root {
+    color: var(--text-primary) !important;
 }
 
-[data-theme='light'] .MuiLink-root {
-    color: #c62828 !important;
+.MuiButton-contained {
+    background-color: var(--mui-primary-main) !important;
+    color: #ffffff !important;
 }
 
-/* for i in {0..25}; do printf "--hc-${i}: hsl(0, 2%%, %0.1f%%);\n" $((20-.6*$i)); done */
+.MuiButton-outlined {
+    border-color: var(--divider) !important;
+    color: var(--text-primary) !important;
+}
+
+.MuiFormControlLabel-root {
+    color: var(--text-primary) !important;
+}
+
+.MuiListItem-root,
+.MuiListItemText-root {
+    color: var(--text-primary) !important;
+}
+
+.MuiLink-root {
+    color: var(--mui-primary-main) !important;
+}
+
+.MuiBox-root {
+    color: var(--text-primary) !important;
+}
+
+/* Theme-specific HSL color scales */
 [data-theme='dark'] {
     --hc-0: hsl(0, 2%, 20.0%);
     --hc-1: hsl(0, 2%, 19.4%);
@@ -170,29 +180,7 @@ html, body {
     --light-header-color: #bbb;
 }
 
-/* Dark mode specific fixes for MUI components */
-[data-theme='dark'] .MuiCard-root {
-    background-color: hsl(0, 2%, 18.0%) !important;
-    border-color: rgba(255, 255, 255, 0.12) !important;
-}
-
-[data-theme='dark'] .MuiTypography-root {
-    color: rgba(255, 255, 255, 0.87) !important;
-}
-
-[data-theme='dark'] .MuiTableContainer-root {
-    background-color: hsl(0, 2%, 18.0%) !important;
-    border-color: rgba(255, 255, 255, 0.12) !important;
-}
-
-[data-theme='dark'] .MuiTableCell-root {
-    color: rgba(255, 255, 255, 0.87) !important;
-    border-color: rgba(255, 255, 255, 0.12) !important;
-}
-
-[data-theme='dark'] .MuiTableCell-head {
-    background-color: hsl(0, 2%, 16.0%) !important;
-}
+/* Responsive design fixes */
 
 @media (max-width: 768px) {
     .summary {
@@ -539,6 +527,100 @@ tr.selected {
 
 input:focus {
     border-color: var(--primary-color) !important;
+}
+
+/* MUI Popover theming */
+.MuiPopover-paper {
+    background-color: var(--mui-paper-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+.MuiCard-root {
+    background-color: var(--mui-card-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+.MuiCardContent-root {
+    color: var(--text-primary) !important;
+}
+
+.MuiCardHeader-title {
+    color: var(--text-primary) !important;
+}
+
+.MuiTypography-root {
+    color: inherit !important;
+}
+
+/* Header size fix */
+.MuiTypography-h3,
+.MuiTypography-h4,
+h1.MuiTypography-h3,
+h1.MuiTypography-h4,
+.MuiTypography-root.MuiTypography-h3,
+.MuiTypography-root.MuiTypography-h4,
+.MuiContainer-root .MuiTypography-h3,
+.MuiContainer-root .MuiTypography-h4,
+.MuiContainer-root h1,
+.ui.header.large,
+h1.ui.header {
+    font-size: 1.75rem !important;
+}
+
+/* Fix popover label theming */
+.MuiChip-root {
+    background-color: var(--mui-paper-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--divider) !important;
+}
+
+.MuiChip-label {
+    color: var(--text-primary) !important;
+}
+
+.MuiChip-outlined {
+    background-color: transparent !important;
+    color: var(--text-primary) !important;
+    border-color: var(--divider) !important;
+}
+
+/* Semantic UI Label theming for popovers */
+.ui.label {
+    background-color: var(--mui-paper-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--divider) !important;
+}
+
+/* Remove excessive top margin */
+.MuiContainer-root:first-child {
+    margin-top: 0 !important;
+}
+
+/* Fix AppBar background for theme */
+.MuiAppBar-root {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+.MuiToolbar-root {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Summary page spacing fixes */
+.summary .MuiButtonGroup-root {
+    margin-bottom: 2rem !important;
+}
+
+/* Add spacing between summary sections */
+.summary {
+    margin-top: 2rem !important;
+}
+
+/* Specific spacing for summary content containers */
+.MuiContainer-root:has(.summary),
+.MuiContainer-root .summary {
+    margin-top: 2rem !important;
 }
 
 .history-popover {
