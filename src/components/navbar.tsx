@@ -21,7 +21,7 @@ import {
   ExpandMore,
   StarBorder,
 } from "@mui/icons-material";
-import { getImageFromName } from "../format/image";
+import { getImageFromName } from "@/format/image";
 import Image from "next/image";
 
 // Import the favicon ICO directly

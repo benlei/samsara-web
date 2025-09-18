@@ -8,7 +8,7 @@ import {
   getBannerType,
   isHSRType,
   type ValidCombination
-} from '../../lib/dynamic-page-utils'
+} from '@/lib/dynamic-page-utils'
 
 describe('Dynamic Page Utils', () => {
   describe('VALID_COMBINATIONS', () => {

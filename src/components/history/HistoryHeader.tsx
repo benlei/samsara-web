@@ -2,7 +2,7 @@ import React, { ChangeEvent } from "react";
 import { TableHead, TableRow, TableCell } from "@mui/material";
 import { Refresh } from "@mui/icons-material";
 import { VersionParts } from "@/banners/types";
-import HistorySearch from "./HistorySearch";
+import HistorySearch from "@/components/history/HistorySearch";
 
 type Properties = {
   versionParts: VersionParts[];

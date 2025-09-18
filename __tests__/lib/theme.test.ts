@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { lightTheme, darkTheme } from '../../lib/theme'
+import { lightTheme, darkTheme } from '@/lib/theme'
 
 describe('Theme Configuration', () => {
   describe('lightTheme', () => {

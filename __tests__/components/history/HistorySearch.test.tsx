@@ -1,7 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, fireEvent, cleanup } from '../../test-utils'
-import HistorySearch from '../../../components/history/HistorySearch'
+import { render, screen, fireEvent, cleanup } from '@/test-utils'
+import HistorySearch from '@/components/history/HistorySearch'
 
 describe('HistorySearch Component - User Behaviors', () => {
   let mockOnChange: ReturnType<typeof vi.fn>

@@ -1,8 +1,8 @@
 /// <reference types="@testing-library/jest-dom" />
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, fireEvent, cleanup } from '../test-utils'
+import { render, screen, fireEvent, cleanup } from '@/test-utils'
 import userEvent from '@testing-library/user-event'
-import Navbar from '../../components/navbar'
+import Navbar from '@/components/navbar'
 
 // Mock next/router to control navigation behavior
 const mockPush = vi.fn()

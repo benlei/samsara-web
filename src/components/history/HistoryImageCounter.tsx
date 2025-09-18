@@ -6,7 +6,7 @@ import _ from "lodash";
 import { getImageFromName } from "@/format/image";
 import { chunk } from "@/banners/summaryUtils";
 import clsx from "clsx";
-import { TypeContext } from "../context";
+import { TypeContext } from "@/components/context";
 import Image from "next/image";
 
 type Properties = {

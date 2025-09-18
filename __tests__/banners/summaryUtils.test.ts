@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { chunk } from '../../banners/summaryUtils'
+import { chunk } from '@/banners/summaryUtils'
 
 describe('Summary Utils Module', () => {
   describe('chunk function', () => {

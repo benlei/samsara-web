@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { getBaseVersion, getVersionPart, versionToNumber } from '../../banners/version'
+import { getBaseVersion, getVersionPart, versionToNumber } from '@/banners/version'
 
 describe('Version Module', () => {
   describe('getBaseVersion', () => {

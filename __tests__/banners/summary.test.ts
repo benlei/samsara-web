@@ -7,13 +7,8 @@ import {
   getFilterFunction,
   getPatchGap,
   getBannerGap
-} from '../../banners/summary'
-import type { VersionParts } from '../../banners/types'
-
-// Mock the image format module
-vi.mock('../../format/image', () => ({
-  getImageFromName: vi.fn((name: string) => `${name.toLowerCase()}.png`)
-}))
+} from '@/banners/summary'
+import type { VersionParts } from '@/banners/types'
 
 dayjs.extend(utc)
 

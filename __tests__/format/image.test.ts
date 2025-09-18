@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { getImageFromName } from '../../format/image'
+import { getImageFromName } from '@/format/image'
 
 describe('Image Format Module', () => {
   describe('getImageFromName', () => {

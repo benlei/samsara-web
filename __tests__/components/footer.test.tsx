@@ -1,7 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, cleanup, fireEvent } from '../test-utils'
-import Footer from '../../components/footer'
+import { render, screen, cleanup, fireEvent } from '@/test-utils'
+import Footer from '@/components/footer'
 
 // Mock next-themes to control theme behavior
 const mockSetTheme = vi.fn()

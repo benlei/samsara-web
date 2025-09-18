@@ -2,67 +2,9 @@ import React from 'react'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { vi, describe, it, expect, beforeEach } from 'vitest'
-import HistoryImageCounter from '../../../components/history/HistoryImageCounter'
-import { BannerHistoryDataset, DetailedFeaturedHistory } from '../../../banners/types'
-import { TypeContext } from '../../../components/context'
-
-// Mock lodash with simple implementations for testing
-vi.mock('lodash', () => ({
-  default: {
-    includes: (array: any[], value: any) => array.includes(value),
-    chain: (array: any[]) => ({
-      filter: (predicate: any) => ({
-        map: (iterator: any) => ({
-          orderBy: (iteratees: any[], orders: any[]) => ({
-            value: () => array.filter(predicate).map(iterator).sort()
-          }),
-          value: () => array.filter(predicate).map(iterator)
-        }),
-        first: () => ({
-          value: () => array.filter(predicate)[0]
-        }),
-        value: () => array.filter(predicate)
-      }),
-      map: (iterator: any) => ({
-        value: () => array.map(iterator)
-      }),
-      first: () => ({
-        value: () => array[0]
-      }),
-      orderBy: (iteratees: any[], orders: any[]) => ({
-        value: () => array.sort()
-      }),
-      value: () => array
-    })
-  }
-}));
-
-// Mock the image utility
-vi.mock('../../../format/image', () => ({
-  getImageFromName: (name: string) => `${name.toLowerCase().replace(/\s+/g, '-')}`
-}))
-
-// Mock the banner version utility
-vi.mock('../../../banners/version', () => ({
-  getBaseVersion: (version: string) => version.split('.').slice(0, 2).join('.'),
-  getVersionPart: (version: string) => version.split('.').pop() || ''
-}))
-
-// Mock the summary utils
-vi.mock('../../../banners/summaryUtils', () => ({
-  chunk: (array: any[], keyFn: (item: any) => any) => {
-    const groups: any[] = []
-    const seen = new Set()
-    array.forEach(item => {
-      const key = keyFn(item)
-      if (!seen.has(key)) {
-        seen.add(key)
-        groups.push(array.filter(arrItem => keyFn(arrItem) === key))
-      }
-    })
-    return groups
-  }
-}))
+import HistoryImageCounter from '@/components/history/HistoryImageCounter'
+import { BannerHistoryDataset, DetailedFeaturedHistory } from '@/banners/types'
+import { TypeContext } from '@/components/context'
 
 const mockFeaturedHistory = [
   {

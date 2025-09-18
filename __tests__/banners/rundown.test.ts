@@ -1,21 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
-import { getRundowns } from '../../banners/rundown'
-import type { FeaturedHistory, VersionParts } from '../../banners/types'
-
-// Mock dependencies
-vi.mock('../../banners/version', () => ({
-  default: vi.fn((versions: string[]) => [
-    { version: '1.0', parts: 2 },
-    { version: '1.1', parts: 2 },
-    { version: '1.2', parts: 2 }
-  ]),
-  getBaseVersion: vi.fn((version: string) => version.substring(0, version.lastIndexOf('.'))),
-  getVersionPart: vi.fn((version: string) => parseInt(version.substring(version.lastIndexOf('.') + 1)))
-}))
-
-vi.mock('../../format/image', () => ({
-  getImageFromName: vi.fn((name: string) => `${name.toLowerCase().replace(/\s+/g, '-')}.png`)
-}))
+import { getRundowns } from '@/banners/rundown'
+import type { FeaturedHistory, VersionParts } from '@/banners/types'
 
 describe('Rundown Module', () => {
   describe('getRundowns', () => {
@@ -38,7 +23,7 @@ describe('Rundown Module', () => {
       // Check first character (Venti)
       expect(result[0]).toMatchObject({
         name: 'Venti',
-        image: 'venti.png',
+        image: 'Venti',
         runs: 2,
         versions: ['1.0.1', '1.2.1']
       })
@@ -47,7 +32,7 @@ describe('Rundown Module', () => {
       // Check second character (Zhongli)
       expect(result[1]).toMatchObject({
         name: 'Zhongli',
-        image: 'zhongli.png',
+        image: 'Zhongli',
         runs: 1,
         versions: ['1.1.1']
       })
@@ -72,7 +57,7 @@ describe('Rundown Module', () => {
       expect(result).toHaveLength(1)
       expect(result[0]).toMatchObject({
         name: 'Albedo',
-        image: 'albedo.png',
+        image: 'Albedo',
         runs: 1,
         versions: ['1.2.1']
       })
@@ -92,7 +77,7 @@ describe('Rundown Module', () => {
       expect(result).toHaveLength(1)
       expect(result[0]).toMatchObject({
         name: 'Childe',
-        image: 'childe.png',
+        image: 'Childe',
         runs: 4,
         versions: ['1.1.1', '1.4.1', '2.2.1', '4.0.1']
       })
@@ -114,8 +99,8 @@ describe('Rundown Module', () => {
       const result = getRundowns(featuredList)
 
       expect(result).toHaveLength(2)
-      expect(result[0].image).toBe('hu-tao.png')
-      expect(result[1].image).toBe('kaedehara-kazuha.png')
+      expect(result[0].image).toBe('Hu-Tao')
+      expect(result[1].image).toBe('Kaedehara-Kazuha')
     })
 
     it('should maintain order of input list', () => {

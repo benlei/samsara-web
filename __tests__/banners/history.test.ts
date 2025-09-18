@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import fs from 'fs'
 import YAML from 'yaml'
-import LoadGenshinHistory, { LoadHSRHistory, LoadGenshinBanners, LoadHSRBanners } from '../../banners/history'
-import type { BannerDataset, FeaturedHistory } from '../../banners/types'
+import LoadGenshinHistory, { LoadHSRHistory, LoadGenshinBanners, LoadHSRBanners } from '@/banners/history'
+import type { BannerDataset, FeaturedHistory } from '@/banners/types'
 
 // Mock fs module
 vi.mock('fs')

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import type { Order } from '../../lotypes/sort'
+import type { Order } from '@/lotypes/sort'
 
 describe('Sort Types Module', () => {
   describe('Order type', () => {

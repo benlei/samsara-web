@@ -63,7 +63,18 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './'),
+      '@/styles': path.resolve(__dirname, './src/styles'),
+      '@/banners': path.resolve(__dirname, './src/banners'),
+      '@/artifacts': path.resolve(__dirname, './artifacts'),
+      '@/characters': path.resolve(__dirname, './characters'),
+      '@/format': path.resolve(__dirname, './src/format'),
+      '@/components': path.resolve(__dirname, './src/components'),
+      '@/pages': path.resolve(__dirname, './src/pages'),
+      '@/data': path.resolve(__dirname, './public/data'),
+      '@/lotypes': path.resolve(__dirname, './src/lotypes'),
+      '@/lib': path.resolve(__dirname, './src/lib'),
+      '@/test-utils': path.resolve(__dirname, './__tests__/test-utils'),
+      '@': path.resolve(__dirname, './src'),
       '~': path.resolve(__dirname, './')
     }
   }
