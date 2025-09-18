@@ -14,6 +14,9 @@
     "build": "next build",
     "start": "serve out",
     "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
     "e2e": "playwright test",
     "playwright": "playwright",
     "playwright:install": "playwright install --with-deps"
@@ -46,7 +49,14 @@
   "devDependencies": {
     "@eslint/eslintrc": "3.3.1",
     "@playwright/test": "1.55.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@vitejs/plugin-react": "^4.3.3",
+    "jsdom": "^25.0.1",
     "playwright": "1.55.0",
-    "serve": "14.2.5"
+    "serve": "14.2.5",
+    "vitest": "^2.1.8"
   }
 }
