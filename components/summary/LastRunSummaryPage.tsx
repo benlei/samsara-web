@@ -1,7 +1,6 @@
 import { Button, Container, Typography, ButtonGroup, Box } from "@mui/material";
 import { Sort as SortIcon } from "@mui/icons-material";
 import React, {ReactNode, useEffect, useState} from "react";
-import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
 import RelativeBasicCounterSummary from "@/components/summary/stat/RelativeBasicCounterSummary";
 import clsx from "clsx";
@@ -18,7 +17,6 @@ export default function LastRunSummaryPage(
         type,
     }: Properties
 ) {
-    const ref = React.useRef<any>()
     const [sortBy, setSortBy] = useState('days')
     const [order, setOrder] = useState('asc')
 
@@ -78,7 +76,7 @@ export default function LastRunSummaryPage(
                 </ButtonGroup>
             </Container>
 
-            <Box ref={ref}>
+            <Box>
                 <Container sx={{ mt: 4, mb: 6 }}>
                     <RelativeBasicCounterSummary
                         date={data.date}
@@ -89,12 +87,6 @@ export default function LastRunSummaryPage(
                     />
                 </Container>
             </Box>
-
-            <Container sx={{ mt: 2, textAlign: 'center' }}>
-                <PngDownloadButton node={ref} name={'summary'}
-                                   type={type}
-                />
-            </Container>
         </>
     )
 }

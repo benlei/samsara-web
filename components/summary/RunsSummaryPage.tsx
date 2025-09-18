@@ -1,7 +1,6 @@
 import { Button, Container, Typography, Box } from "@mui/material";
 import { Sort } from "@mui/icons-material";
-import React, { ReactNode, useEffect, useState, useRef } from "react";
-import PngDownloadButton from "@/components/PngDownloadButton";
+import React, { ReactNode, useEffect, useState } from "react";
 import { Featured } from "@/banners/types";
 import RunsCounterSummary from "@/components/summary/stat/RunsCounterSummary";
 import { Order } from "@/lotypes/sort";
@@ -13,7 +12,6 @@ type Properties = {
 };
 
 export default function RunsSummaryPage({ data, title, type }: Properties) {
-  const ref = useRef<any>();
   const [order, setOrder] = useState<Order>("desc");
 
   useEffect(() => {
@@ -64,7 +62,7 @@ export default function RunsSummaryPage({ data, title, type }: Properties) {
         </Box>
       </Container>
 
-      <Box ref={ref}>
+      <Box>
         <Container sx={{ mt: 4, mb: 6 }}>
           <RunsCounterSummary
             type={type}
@@ -73,10 +71,6 @@ export default function RunsSummaryPage({ data, title, type }: Properties) {
           />
         </Container>
       </Box>
-
-      <Container sx={{ mt: 2, textAlign: "center" }}>
-        <PngDownloadButton node={ref} name="summary" type={type} />
-      </Container>
     </>
   );
 }

@@ -1,7 +1,6 @@
 import { Button, Container, Typography, ButtonGroup, Box } from "@mui/material";
 import { Sort as SortIcon } from "@mui/icons-material";
 import React, {ReactNode, useEffect, useState} from "react";
-import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
 import AverageCounterSummary from "@/components/summary/stat/AverageCounterSummary";
 import clsx from "clsx";
@@ -19,7 +18,6 @@ export default function AverageRunSummaryPage(
         type,
     }: Properties
 ) {
-    const ref = React.useRef<any>()
     const [sortBy, setSortBy] = useState('days')
     const [order, setOrder] = useState('desc' as Order)
 
@@ -83,7 +81,7 @@ export default function AverageRunSummaryPage(
                 </ButtonGroup>
             </Container>
 
-            <Box ref={ref}>
+            <Box>
                 <Container sx={{ mt: 4, mb: 6 }}>
                     <AverageCounterSummary
                         type={type}
@@ -94,12 +92,6 @@ export default function AverageRunSummaryPage(
                     />
                 </Container>
             </Box>
-
-            <Container sx={{ mt: 2, textAlign: 'center' }}>
-                <PngDownloadButton node={ref} name={'summary'}
-                                   type={type}
-                />
-            </Container>
         </>
     )
 }

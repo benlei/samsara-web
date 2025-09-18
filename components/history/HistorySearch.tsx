@@ -16,13 +16,13 @@ export default function HistorySearch({ onChange }: Properties) {
       sx={{ 
         minWidth: "16em",
         '& .MuiOutlinedInput-root': {
-          backgroundColor: 'transparent',
+          backgroundColor: 'background.paper',
           color: 'text.primary',
           '& fieldset': {
-            borderColor: 'rgba(255, 255, 255, 0.23)',
+            borderColor: 'divider',
           },
           '&:hover fieldset': {
-            borderColor: 'rgba(255, 255, 255, 0.4)',
+            borderColor: 'text.secondary',
           },
           '&.Mui-focused fieldset': {
             borderColor: 'primary.main',
@@ -33,12 +33,12 @@ export default function HistorySearch({ onChange }: Properties) {
             pointerEvents: 'auto',
           },
           '& input::placeholder': {
-            color: 'rgba(255, 255, 255, 0.5)',
+            color: 'text.disabled',
             opacity: 1,
           },
         },
         '& .MuiInputAdornment-root': {
-          color: 'rgba(255, 255, 255, 0.5)',
+          color: 'text.secondary',
         },
       }}
       data-html2canvas-ignore

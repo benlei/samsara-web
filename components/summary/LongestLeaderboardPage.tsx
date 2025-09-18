@@ -1,7 +1,6 @@
 import { Button, Container, Typography, ButtonGroup, Box } from "@mui/material";
 import { Sort as SortIcon } from "@mui/icons-material";
 import React, {ReactNode, useEffect, useState} from "react";
-import PngDownloadButton from "@/components/PngDownloadButton";
 import {Featured} from "@/banners/types";
 import LeaderboardCounterSummary from "@/components/summary/stat/LeaderboardCounterSummary";
 import {getLongestStatsInBetween} from "@/banners/summary";
@@ -20,7 +19,6 @@ export default function LongestLeaderboardPage(
         type,
     }: Properties
 ) {
-    const ref = React.useRef<any>()
     const [sortBy, setSortBy] = useState('days')
     const [order, setOrder] = useState('desc' as Order)
 
@@ -83,7 +81,7 @@ export default function LongestLeaderboardPage(
                 </Box>
             </Container>
 
-            <Box ref={ref}>
+            <Box>
                 <Container sx={{ mt: 4, mb: 6 }}>
                     <LeaderboardCounterSummary
                         featuredList={data.featuredList}
@@ -96,12 +94,6 @@ export default function LongestLeaderboardPage(
                     />
                 </Container>
             </Box>
-
-            <Container sx={{ mt: 2, textAlign: 'center' }}>
-                <PngDownloadButton node={ref} name={'summary'}
-                                   type={type}
-                />
-            </Container>
         </>
     )
 }

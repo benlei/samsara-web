@@ -20,7 +20,7 @@ export default function HistoryPage({
 }: Properties) {
   const [sortBy, setSortByState] = useState("last");
   const [order, setOrderState] = useState("desc");
-  const componentRef = useRef<any>();
+  const componentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     try {
