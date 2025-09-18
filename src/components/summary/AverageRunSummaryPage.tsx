@@ -59,7 +59,7 @@ export default function AverageRunSummaryPage(
                     being said, miHoYo{"'"}s methodology for reruns might really just be random.
                 </Typography>
 
-                <ButtonGroup variant="contained" fullWidth>
+                <ButtonGroup variant="contained" fullWidth sx={{ mb: 4 }}>
                     <Button 
                         variant={sortBy === 'days' ? 'contained' : 'outlined'}
                         onClick={() => triggerSort('days')}
