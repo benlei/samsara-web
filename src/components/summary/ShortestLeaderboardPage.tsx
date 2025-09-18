@@ -1,0 +1,99 @@
+import { Button, Container, Typography, ButtonGroup, Box } from "@mui/material";
+import { Sort as SortIcon } from "@mui/icons-material";
+import React, {ReactNode, useEffect, useState} from "react";
+import {Featured} from "@/banners/types";
+import LeaderboardCounterSummary from "@/components/summary/stat/LeaderboardCounterSummary";
+import {getShortestStatsInBetween} from "@/banners/summary";
+import {Order} from "@/lotypes/sort";
+import clsx from "clsx";
+
+type Properties = {
+    data: { featuredList: Featured[], date: string }
+    title: ReactNode
+    type: string
+}
+export default function ShortestLeaderboardPage(
+    {
+        data,
+        title,
+        type,
+    }: Properties
+) {
+    const [sortBy, setSortBy] = useState('days')
+    const [order, setOrder] = useState('asc' as Order)
+
+    useEffect(() => {
+        const sSortBy = localStorage.getItem('short_sort')
+        const sOrder = localStorage.getItem('short_order')
+
+        if (sSortBy == 'days' || sSortBy == 'banners' || sSortBy == 'patches') {
+            setSortBy(sSortBy)
+        }
+
+        if (sOrder == 'asc' || sOrder == 'desc') {
+            setOrder(sOrder)
+        }
+    }, [sortBy, order])
+
+    function triggerSort(newSort: string) {
+        if (sortBy != newSort) {
+            setSortBy(newSort)
+            localStorage.setItem('short_sort', newSort)
+        } else {
+            setOrder(order === 'desc' ? 'asc' : 'desc')
+            localStorage.setItem('short_order', order === 'desc' ? 'asc' : 'desc')
+        }
+    }
+
+    return (
+        <>
+            <Container sx={{ mt: 4 }}>
+                <Typography variant="h3" component="h1" gutterBottom>
+                    {title}
+                </Typography>
+
+                <Typography variant="body1" paragraph>
+                    This page shows the shortest leaderboard for how long a character/weapon has waited for
+                    a rerun, including from when they last run until now.
+                </Typography>
+
+                <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
+                    <ButtonGroup variant="contained" fullWidth>
+                        <Button 
+                            variant={sortBy === 'days' ? 'contained' : 'outlined'}
+                            onClick={() => triggerSort('days')}
+                        >
+                            Days {sortBy === 'days' && <SortIcon sx={{ ml: 1 }} />}
+                        </Button>
+                        <Button 
+                            variant={sortBy === 'banners' ? 'contained' : 'outlined'}
+                            onClick={() => triggerSort('banners')}
+                        >
+                            Banners {sortBy === 'banners' && <SortIcon sx={{ ml: 1 }} />}
+                        </Button>
+                        <Button 
+                            variant={sortBy === 'patches' ? 'contained' : 'outlined'}
+                            onClick={() => triggerSort('patches')}
+                        >
+                            Patches {sortBy === 'patches' && <SortIcon sx={{ ml: 1 }} />}
+                        </Button>
+                    </ButtonGroup>
+                </Box>
+            </Container>
+
+            <Box>
+                <Container sx={{ mt: 4, mb: 6 }}>
+                    <LeaderboardCounterSummary
+                        featuredList={data.featuredList}
+                        type={type}
+                        date={data.date}
+                        sortBy={sortBy}
+                        order={order}
+                        triggerSort={triggerSort}
+                        counter={getShortestStatsInBetween}
+                    />
+                </Container>
+            </Box>
+        </>
+    )
+}

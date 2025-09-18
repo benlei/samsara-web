@@ -21,18 +21,19 @@
       }
     ],
     "paths": {
-      "@/styles/*": ["styles/*"],
-      "@/banners/*": ["banners/*"],
+      "@/styles/*": ["src/styles/*"],
+      "@/banners/*": ["src/banners/*"],
       "@/artifacts/*": ["artifacts/*"],
       "@/characters/*": ["characters/*"],
-      "@/format/*": ["format/*"],
-      "@/components/*": ["components/*"],
-      "@/pages/*": ["pages/*"],
+      "@/format/*": ["src/format/*"],
+      "@/components/*": ["src/components/*"],
+      "@/pages/*": ["src/pages/*"],
       "@/data/*": ["public/data/*"],
-      "@/lotypes/*": ["lotypes/*"],
-      "@/lib/*": ["lib/*"]
+      "@/lotypes/*": ["src/lotypes/*"],
+      "@/lib/*": ["src/lib/*"],
+      "@/test-utils": ["__tests__/test-utils"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "test/**/*", "**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx"]
+  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", "test/**/*", "**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx", "vitest.setup.ts", "vitest.config.ts"]
 }
