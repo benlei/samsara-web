@@ -34,7 +34,7 @@ fiveStarCharacters:
       - start: '2025-02-05'
         end: '2025-02-26'
       - start: '2025-09-02'
-        end: ''
+        end: '2025-09-24'
   - name: Luocha
     versions:
       - 1.1.2
@@ -303,11 +303,14 @@ fiveStarCharacters:
     versions:
       - 3.0.1
       - 3.3.1
+      - 3.6.1
     dates:
       - start: '2025-01-15'
         end: '2025-02-05'
       - start: '2025-05-21'
         end: '2025-06-11'
+      - start: '2025-09-24'
+        end: '2025-10-15'
   - name: Aglaea
     versions:
       - 3.0.2
@@ -341,9 +344,12 @@ fiveStarCharacters:
   - name: Anaxa
     versions:
       - 3.2.2
+      - 3.6.2
     dates:
       - start: '2025-04-30'
         end: '2025-05-21'
+      - start: '2025-10-15'
+        end: ''
   - name: Hyacine
     versions:
       - 3.3.1
@@ -385,6 +391,18 @@ fiveStarCharacters:
       - 3.5.2
     dates:
       - start: '2025-09-02'
+        end: '2025-09-24'
+  - name: Evernight
+    versions:
+      - 3.6.1
+    dates:
+      - start: '2025-09-24'
+        end: '2025-10-15'
+  - name: Dan Heng • Permansor Terrae
+    versions:
+      - 3.6.2
+    dates:
+      - start: '2025-10-15'
         end: ''
 fourStarCharacters:
   - name: Hook
@@ -470,6 +488,7 @@ fourStarCharacters:
       - 1.6.2
       - 3.0.2
       - 3.3.2
+      - 3.6.2
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -483,6 +502,8 @@ fourStarCharacters:
         end: '2025-02-26'
       - start: '2025-06-11'
         end: '2025-07-02'
+      - start: '2025-10-15'
+        end: ''
   - name: Tingyun
     versions:
       - 1.0.2
@@ -548,7 +569,7 @@ fourStarCharacters:
       - start: '2025-04-30'
         end: '2025-05-21'
       - start: '2025-09-02'
-        end: ''
+        end: '2025-09-24'
   - name: Serval
     versions:
       - 1.1.1
@@ -558,6 +579,7 @@ fourStarCharacters:
       - 2.3.2
       - 3.2.2
       - 3.3.1
+      - 3.6.2
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -573,6 +595,8 @@ fourStarCharacters:
         end: '2025-05-21'
       - start: '2025-05-21'
         end: '2025-06-11'
+      - start: '2025-10-15'
+        end: ''
   - name: Qingque
     versions:
       - 1.1.2
@@ -593,7 +617,7 @@ fourStarCharacters:
       - start: '2025-06-11'
         end: '2025-07-02'
       - start: '2025-09-02'
-        end: ''
+        end: '2025-09-24'
   - name: Yukong
     versions:
       - 1.1.2
@@ -674,7 +698,7 @@ fourStarCharacters:
       - start: '2024-11-13'
         end: ''
       - start: '2025-09-02'
-        end: ''
+        end: '2025-09-24'
   - name: Lynx
     versions:
       - 1.3.2
@@ -709,6 +733,7 @@ fourStarCharacters:
       - 2.4.2
       - 2.5.2
       - 3.1.1
+      - 3.6.1
     dates:
       - start: '2023-10-27'
         end: '2023-11-15'
@@ -720,6 +745,8 @@ fourStarCharacters:
         end: '2024-10-23'
       - start: '2025-02-26'
         end: '2025-03-19'
+      - start: '2025-09-24'
+        end: '2025-10-15'
   - name: Hanya
     versions:
       - 1.5.2
@@ -728,6 +755,7 @@ fourStarCharacters:
       - 2.4.1
       - 3.0.2
       - 3.4.3
+      - 3.6.2
     dates:
       - start: '2023-12-06'
         end: '2023-12-27'
@@ -741,6 +769,8 @@ fourStarCharacters:
         end: '2025-02-26'
       - start: '2025-07-23'
         end: '2025-08-13'
+      - start: '2025-10-15'
+        end: ''
   - name: Xueyi
     versions:
       - 1.6.1
@@ -749,6 +779,7 @@ fourStarCharacters:
       - 2.6.1
       - 3.1.2
       - 3.3.2
+      - 3.6.1
     dates:
       - start: '2023-12-27'
         end: '2024-01-17'
@@ -762,6 +793,8 @@ fourStarCharacters:
         end: '2025-04-09'
       - start: '2025-06-11'
         end: '2025-07-02'
+      - start: '2025-09-24'
+        end: '2025-10-15'
   - name: Misha
     versions:
       - 2.0.1
@@ -769,6 +802,7 @@ fourStarCharacters:
       - 2.5.2
       - 2.7.2
       - 3.3.1
+      - 3.6.1
     dates:
       - start: '2024-02-06'
         end: '2024-02-29'
@@ -780,6 +814,8 @@ fourStarCharacters:
         end: '2025-01-15'
       - start: '2025-05-21'
         end: '2025-06-11'
+      - start: '2025-09-24'
+        end: '2025-10-15'
   - name: Gallagher
     versions:
       - 2.1.1
@@ -843,7 +879,7 @@ fiveStarWeapons:
       - start: '2025-02-05'
         end: '2025-02-26'
       - start: '2025-09-02'
-        end: ''
+        end: '2025-09-24'
   - name: Echoes of the Coffin
     versions:
       - 1.1.2
@@ -1112,11 +1148,14 @@ fiveStarWeapons:
     versions:
       - 3.0.1
       - 3.3.1
+      - 3.6.1
     dates:
       - start: '2025-01-15'
         end: '2025-02-05'
       - start: '2025-05-21'
         end: '2025-06-11'
+      - start: '2025-09-24'
+        end: '2025-10-15'
   - name: Time Woven Into Gold
     versions:
       - 3.0.2
@@ -1150,9 +1189,12 @@ fiveStarWeapons:
   - name: Life Should Be Cast to Flames
     versions:
       - 3.2.2
+      - 3.6.2
     dates:
       - start: '2025-04-30'
         end: '2025-05-21'
+      - start: '2025-10-15'
+        end: ''
   - name: Long May Rainbows Adorn the Sky
     versions:
       - 3.3.1
@@ -1194,6 +1236,18 @@ fiveStarWeapons:
       - 3.5.2
     dates:
       - start: '2025-09-02'
+        end: '2025-09-24'
+  - name: To Evernight's Stars
+    versions:
+      - 3.6.1
+    dates:
+      - start: '2025-09-24'
+        end: '2025-10-15'
+  - name: Though Worlds Apart
+    versions:
+      - 3.6.2
+    dates:
+      - start: '2025-10-15'
         end: ''
 fourStarWeapons:
   - name: Good Night and Sleep Well
@@ -1213,7 +1267,7 @@ fourStarWeapons:
       - start: '2025-04-09'
         end: '2025-04-30'
       - start: '2025-09-02'
-        end: ''
+        end: '2025-09-24'
   - name: Post-Op Conversation
     versions:
       - 1.0.1
@@ -1271,6 +1325,7 @@ fourStarWeapons:
       - 1.4.2
       - 1.6.2
       - 3.0.1
+      - 3.6.2
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -1280,6 +1335,8 @@ fourStarWeapons:
         end: '2024-02-06'
       - start: '2025-01-15'
         end: '2025-02-05'
+      - start: '2025-10-15'
+        end: ''
   - name: Planetary Rendezvous
     versions:
       - 1.0.2
@@ -1361,6 +1418,7 @@ fourStarWeapons:
       - 1.3.1
       - 2.0.1
       - 3.0.2
+      - 3.6.1
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
@@ -1370,6 +1428,8 @@ fourStarWeapons:
         end: '2024-02-29'
       - start: '2025-02-05'
         end: '2025-02-26'
+      - start: '2025-09-24'
+        end: '2025-10-15'
   - name: Geniuses' Repose
     versions:
       - 1.1.2
@@ -1444,7 +1504,7 @@ fourStarWeapons:
       - start: '2024-12-04'
         end: '2024-12-25'
       - start: '2025-09-02'
-        end: ''
+        end: '2025-09-24'
   - name: Eyes of the Prey
     versions:
       - 1.2.2
@@ -1507,13 +1567,14 @@ fourStarWeapons:
       - start: '2024-12-04'
         end: '2024-12-25'
       - start: '2025-09-02'
-        end: ''
+        end: '2025-09-24'
   - name: Landau's Choice
     versions:
       - 1.3.1
       - 1.6.2
       - 2.2.2
       - 3.0.1
+      - 3.6.2
     dates:
       - start: '2023-08-30'
         end: '2023-09-20'
@@ -1523,6 +1584,8 @@ fourStarWeapons:
         end: '2024-06-19'
       - start: '2025-01-15'
         end: '2025-02-05'
+      - start: '2025-10-15'
+        end: ''
   - name: Perfect Timing
     versions:
       - 1.3.2
@@ -1530,6 +1593,7 @@ fourStarWeapons:
       - 2.2.1
       - 2.4.1
       - 3.1.2
+      - 3.6.2
     dates:
       - start: '2023-09-20'
         end: '2023-10-11'
@@ -1541,6 +1605,8 @@ fourStarWeapons:
         end: '2024-08-21'
       - start: '2025-03-19'
         end: '2025-04-09'
+      - start: '2025-10-15'
+        end: ''
   - name: Trend of the Universal Market
     versions:
       - 1.3.2
@@ -1615,6 +1681,7 @@ fourStarWeapons:
       - 2.3.2
       - 2.6.1
       - 3.2.2
+      - 3.6.1
     dates:
       - start: '2024-07-10'
         end: '2024-07-31'
@@ -1622,6 +1689,8 @@ fourStarWeapons:
         end: '2024-11-13'
       - start: '2025-04-30'
         end: '2025-05-21'
+      - start: '2025-09-24'
+        end: '2025-10-15'
   - name: Poised to Bloom
     versions:
       - 2.4.2
@@ -1646,9 +1715,12 @@ fourStarWeapons:
   - name: Dream's Montage
     versions:
       - 2.6.1
+      - 3.6.1
     dates:
       - start: '2024-10-23'
         end: '2024-11-13'
+      - start: '2025-09-24'
+        end: '2025-10-15'
   - name: Geniuses' Greetings
     versions:
       - 3.0.2
