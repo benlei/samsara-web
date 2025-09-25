@@ -2113,6 +2113,7 @@ fiveStarWeapons:
       - 3.4.2
       - 4.0.1
       - 4.8.2
+      - Luna I.2
     dates:
       - start: '2022-05-31'
         end: '2022-06-21'
@@ -2122,6 +2123,8 @@ fiveStarWeapons:
         end: '2023-09-05'
       - start: '2024-08-06'
         end: '2024-08-28'
+      - start: '2025-09-30'
+        end: ''
   - name: Hunter's Path
     versions:
       - 3.0.1
@@ -2133,7 +2136,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: Staff of the Scarlet Sands
     versions:
       - 3.1.1
@@ -2148,7 +2151,7 @@ fiveStarWeapons:
       - start: '2023-11-28'
         end: '2023-12-20'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: Key of Khaj-Nisut
     versions:
       - 3.1.2
@@ -2163,7 +2166,7 @@ fiveStarWeapons:
       - start: '2024-07-17'
         end: '2024-08-06'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: A Thousand Floating Dreams
     versions:
       - 3.2.1
@@ -2181,7 +2184,7 @@ fiveStarWeapons:
       - start: '2024-10-29'
         end: '2024-11-20'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: Tulaytullah's Remembrance
     versions:
       - 3.3.1
@@ -2196,7 +2199,7 @@ fiveStarWeapons:
       - start: '2024-05-14'
         end: '2024-06-05'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: Light of Foliar Incision
     versions:
       - 3.4.1
@@ -2211,7 +2214,7 @@ fiveStarWeapons:
       - start: '2024-06-05'
         end: '2024-06-25'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: Beacon of the Reed Sea
     versions:
       - 3.5.1
@@ -2223,7 +2226,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: Jadefall's Splendor
     versions:
       - 3.6.2
@@ -2437,12 +2440,18 @@ fiveStarWeapons:
     dates:
       - start: '2025-07-30'
         end: '2025-08-19'
+  - name: Bloodsoaked Ruins
+    versions:
+      - Luna I.2
+    dates:
+      - start: '2025-09-30'
+        end: ''
   - name: Nightweaver's Looking Glass
     versions:
       - Luna I.1
     dates:
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -2479,6 +2488,7 @@ fourStarWeapons:
       - 5.5.2
       - 5.7.1
       - 5.8.2
+      - Luna I.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2546,6 +2556,8 @@ fourStarWeapons:
         end: '2025-07-08'
       - start: '2025-08-19'
         end: '2025-09-10'
+      - start: '2025-09-30'
+        end: ''
   - name: The Bell
     versions:
       - 1.0.1
@@ -2656,7 +2668,7 @@ fourStarWeapons:
       - start: '2025-07-08'
         end: '2025-07-30'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: The Stringless
     versions:
       - 1.0.1
@@ -2707,7 +2719,7 @@ fourStarWeapons:
       - start: '2025-05-27'
         end: '2025-06-18'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: The Widsith
     versions:
       - 1.0.1
@@ -2869,7 +2881,7 @@ fourStarWeapons:
       - start: '2025-07-08'
         end: '2025-07-30'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2887,6 +2899,7 @@ fourStarWeapons:
       - 5.0.2
       - 5.3.2
       - 5.7.1
+      - Luna I.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2918,6 +2931,8 @@ fourStarWeapons:
         end: '2025-02-12'
       - start: '2025-06-18'
         end: '2025-07-08'
+      - start: '2025-09-30'
+        end: ''
   - name: Sacrificial Fragments
     versions:
       - 1.0.2
@@ -2977,7 +2992,7 @@ fourStarWeapons:
       - start: '2025-07-08'
         end: '2025-07-30'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: Sacrificial Greatsword
     versions:
       - 1.0.2
@@ -3031,7 +3046,7 @@ fourStarWeapons:
       - start: '2025-07-30'
         end: '2025-08-19'
       - start: '2025-09-10'
-        end: ''
+        end: '2025-09-30'
   - name: Sacrificial Sword
     versions:
       - 1.0.2
@@ -3259,6 +3274,7 @@ fourStarWeapons:
       - 5.3.1
       - 5.5.2
       - 5.8.1
+      - Luna I.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -3296,6 +3312,8 @@ fourStarWeapons:
         end: '2025-05-07'
       - start: '2025-07-30'
         end: '2025-08-19'
+      - start: '2025-09-30'
+        end: ''
   - name: Favonius Warbow
     versions:
       - 1.1.2
@@ -3366,6 +3384,7 @@ fourStarWeapons:
       - 5.1.2
       - 5.3.2
       - 5.6.2
+      - Luna I.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -3401,6 +3420,8 @@ fourStarWeapons:
         end: '2025-02-12'
       - start: '2025-05-27'
         end: '2025-06-18'
+      - start: '2025-09-30'
+        end: ''
   - name: Favonius Greatsword
     versions:
       - 1.2.1
@@ -3418,6 +3439,7 @@ fourStarWeapons:
       - 5.0.1
       - 5.2.2
       - 5.6.2
+      - Luna I.2
     dates:
       - start: '2020-12-23'
         end: '2021-01-12'
@@ -3449,6 +3471,8 @@ fourStarWeapons:
         end: '2025-01-01'
       - start: '2025-05-27'
         end: '2025-06-18'
+      - start: '2025-09-30'
+        end: ''
   - name: Favonius Sword
     versions:
       - 1.2.1
