@@ -19,7 +19,7 @@ export default function Layout({children}: React.PropsWithChildren) {
             </Head>
             <main>
                 <Navbar/>
-                <Box>
+                <Box sx={{ mt: 0 }}>
                     {children}
                 </Box>
                 <Footer></Footer>

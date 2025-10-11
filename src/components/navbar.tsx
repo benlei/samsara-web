@@ -275,7 +275,7 @@ export default function Navbar(): React.ReactElement {
 
   return (
     <>
-      <AppBar position="static" color="transparent" elevation={0}>
+      <AppBar position="static" color="transparent" elevation={0} sx={{ borderBottom: '1px solid transparent', mb: 0 }}>
         <Container maxWidth="lg" disableGutters>
           <Toolbar sx={{ justifyContent: "space-between", minHeight: "48px", px: 2 }}>
             <Button 
