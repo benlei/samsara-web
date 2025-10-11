@@ -43,14 +43,8 @@ export default defineConfig({
     ],
     // Fastest possible execution
     pool: 'forks',
-    poolOptions: {
-      forks: {
-        singleFork: true,
-        isolate: false // Reduce isolation overhead
-      }
-    },
     // Minimal reporters for speed
-    reporters: ['basic'],
+    reporters: [['default', { summary: false }]],
     coverage: {
       enabled: false // Disable coverage for speed
     },
