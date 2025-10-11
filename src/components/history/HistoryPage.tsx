@@ -115,10 +115,14 @@ export default function HistoryPage({
               },
             },
           }}
+          onContextMenu={(e) => {
+            // Prevent right-click context menu
+            e.preventDefault();
+          }}
           onMouseDown={(e) => {
             // Only respond to left-click (button 0)
             // Ignore middle-click (button 1) to allow native browser autoscroll
-            // Ignore right-click (button 2) to allow context menu
+            // Ignore right-click (button 2) - context menu is disabled via onContextMenu
             if (e.button !== 0) {
               return;
             }
