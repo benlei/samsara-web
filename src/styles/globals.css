@@ -78,6 +78,14 @@ html, body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     transition: background-color 0.1s ease, color 0.1s ease;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* MUI Component Theming */
@@ -591,11 +599,6 @@ h1.ui.header {
     border-color: var(--divider) !important;
 }
 
-/* Remove excessive top margin */
-.MuiContainer-root:first-child {
-    margin-top: 0 !important;
-}
-
 /* Fix AppBar background for theme */
 .MuiAppBar-root {
     background-color: var(--bg-primary) !important;
@@ -610,17 +613,6 @@ h1.ui.header {
 /* Summary page spacing fixes */
 .summary .MuiButtonGroup-root {
     margin-bottom: 2rem !important;
-}
-
-/* Add spacing between summary sections */
-.summary {
-    margin-top: 2rem !important;
-}
-
-/* Specific spacing for summary content containers */
-.MuiContainer-root:has(.summary),
-.MuiContainer-root .summary {
-    margin-top: 2rem !important;
 }
 
 .history-popover {
