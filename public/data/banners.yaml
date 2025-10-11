@@ -67,6 +67,7 @@ fiveStarCharacters:
       - 3.0.1
       - 4.0.2
       - 5.2.2
+      - Luna II.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -80,6 +81,8 @@ fiveStarCharacters:
         end: '2023-09-27'
       - start: '2024-12-10'
         end: '2025-01-01'
+      - start: ''
+        end: ''
   - name: Albedo
     versions:
       - 1.2.1
@@ -358,7 +361,7 @@ fiveStarCharacters:
       - start: '2024-08-06'
         end: '2024-08-28'
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: Tighnari
     versions:
       - 3.0.1
@@ -508,6 +511,7 @@ fiveStarCharacters:
       - 4.2.1
       - 4.7.2
       - 5.4.2
+      - Luna II.1
     dates:
       - start: '2023-11-08'
         end: '2023-11-28'
@@ -515,6 +519,8 @@ fiveStarCharacters:
         end: '2024-07-17'
       - start: '2025-03-04'
         end: '2025-03-26'
+      - start: '2025-10-22'
+        end: ''
   - name: Navia
     versions:
       - 4.3.1
@@ -570,11 +576,14 @@ fiveStarCharacters:
     versions:
       - 4.6.1
       - 5.3.2
+      - Luna II.2
     dates:
       - start: '2024-04-24'
         end: '2024-05-14'
       - start: '2025-01-21'
         end: '2025-02-12'
+      - start: ''
+        end: ''
   - name: Clorinde
     versions:
       - 4.7.1
@@ -697,13 +706,19 @@ fiveStarCharacters:
       - Luna I.2
     dates:
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: Lauma
     versions:
       - Luna I.1
     dates:
       - start: '2025-09-10'
         end: '2025-09-30'
+  - name: Nefer
+    versions:
+      - Luna II.1
+    dates:
+      - start: '2025-10-22'
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -887,7 +902,7 @@ fourStarCharacters:
       - start: '2024-11-20'
         end: '2024-12-10'
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: Xingqiu
     versions:
       - 1.0.2
@@ -1406,7 +1421,7 @@ fourStarCharacters:
       - start: '2024-10-09'
         end: '2024-10-29'
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: Candace
     versions:
       - 3.1.1
@@ -1637,7 +1652,7 @@ fourStarCharacters:
       - Luna I.2
     dates:
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
 fiveStarWeapons:
   - name: Amos' Bow
     versions:
