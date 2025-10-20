@@ -917,6 +917,7 @@ fourStarCharacters:
       - 4.5.2
       - 5.1.2
       - 5.8.1
+      - Luna II.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -942,6 +943,8 @@ fourStarCharacters:
         end: '2024-11-20'
       - start: '2025-07-30'
         end: '2025-08-19'
+      - start: '2025-10-22'
+        end: ''
   - name: Beidou
     versions:
       - 1.1.1
@@ -1392,6 +1395,7 @@ fourStarCharacters:
       - 3.5.1
       - 4.2.1
       - 5.1.1
+      - Luna II.1
     dates:
       - start: '2022-08-24'
         end: '2022-09-09'
@@ -1401,6 +1405,8 @@ fourStarCharacters:
         end: '2023-11-28'
       - start: '2024-10-09'
         end: '2024-10-29'
+      - start: '2025-10-22'
+        end: ''
   - name: Dori
     versions:
       - 3.0.2
@@ -1480,6 +1486,7 @@ fourStarCharacters:
       - 4.4.2
       - 5.2.2
       - 5.7.2
+      - Luna II.1
     dates:
       - start: '2023-01-18'
         end: '2023-02-07'
@@ -1491,6 +1498,8 @@ fourStarCharacters:
         end: '2025-01-01'
       - start: '2025-07-08'
         end: '2025-07-30'
+      - start: '2025-10-22'
+        end: ''
   - name: Mika
     versions:
       - 3.5.2
@@ -2139,7 +2148,7 @@ fiveStarWeapons:
       - start: '2024-08-06'
         end: '2024-08-28'
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: Hunter's Path
     versions:
       - 3.0.1
@@ -2295,6 +2304,7 @@ fiveStarWeapons:
       - 4.2.1
       - 4.7.2
       - 5.4.2
+      - Luna II.1
     dates:
       - start: '2023-11-08'
         end: '2023-11-28'
@@ -2302,6 +2312,8 @@ fiveStarWeapons:
         end: '2024-07-17'
       - start: '2025-03-04'
         end: '2025-03-26'
+      - start: '2025-10-22'
+        end: ''
   - name: Verdict
     versions:
       - 4.3.1
@@ -2460,13 +2472,19 @@ fiveStarWeapons:
       - Luna I.2
     dates:
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: Nightweaver's Looking Glass
     versions:
       - Luna I.1
     dates:
       - start: '2025-09-10'
         end: '2025-09-30'
+  - name: Reliquary of Truth
+    versions:
+      - Luna II.1
+    dates:
+      - start: '2025-10-22'
+        end: ''
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -2572,7 +2590,7 @@ fourStarWeapons:
       - start: '2025-08-19'
         end: '2025-09-10'
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: The Bell
     versions:
       - 1.0.1
@@ -2591,6 +2609,7 @@ fourStarWeapons:
       - 4.8.1
       - 5.2.1
       - 5.5.2
+      - Luna II.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2624,6 +2643,8 @@ fourStarWeapons:
         end: '2024-12-10'
       - start: '2025-04-15'
         end: '2025-05-07'
+      - start: '2025-10-22'
+        end: ''
   - name: The Flute
     versions:
       - 1.0.1
@@ -2947,7 +2968,7 @@ fourStarWeapons:
       - start: '2025-06-18'
         end: '2025-07-08'
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: Sacrificial Fragments
     versions:
       - 1.0.2
@@ -3328,7 +3349,7 @@ fourStarWeapons:
       - start: '2025-07-30'
         end: '2025-08-19'
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: Favonius Warbow
     versions:
       - 1.1.2
@@ -3347,6 +3368,7 @@ fourStarWeapons:
       - 5.1.2
       - 5.5.2
       - 5.8.1
+      - Luna II.1
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -3380,6 +3402,8 @@ fourStarWeapons:
         end: '2025-05-07'
       - start: '2025-07-30'
         end: '2025-08-19'
+      - start: '2025-10-22'
+        end: ''
   - name: Lion's Roar
     versions:
       - 1.1.2
@@ -3436,7 +3460,7 @@ fourStarWeapons:
       - start: '2025-05-27'
         end: '2025-06-18'
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: Favonius Greatsword
     versions:
       - 1.2.1
@@ -3487,7 +3511,7 @@ fourStarWeapons:
       - start: '2025-05-27'
         end: '2025-06-18'
       - start: '2025-09-30'
-        end: ''
+        end: '2025-10-22'
   - name: Favonius Sword
     versions:
       - 1.2.1
@@ -3905,3 +3929,21 @@ fourStarWeapons:
         end: '2025-04-15'
       - start: '2025-08-19'
         end: '2025-09-10'
+  - name: Dawning Frost
+    versions:
+      - Luna II.1
+    dates:
+      - start: '2025-10-22'
+        end: ''
+  - name: Moonweaver's Dawn
+    versions:
+      - Luna II.1
+    dates:
+      - start: '2025-10-22'
+        end: ''
+  - name: Sacrificer's Staff
+    versions:
+      - Luna II.1
+    dates:
+      - start: '2025-10-22'
+        end: ''
