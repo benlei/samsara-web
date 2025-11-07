@@ -81,7 +81,7 @@ fiveStarCharacters:
         end: '2023-09-27'
       - start: '2024-12-10'
         end: '2025-01-01'
-      - start: ''
+      - start: '2025-11-11'
         end: ''
   - name: Albedo
     versions:
@@ -520,7 +520,7 @@ fiveStarCharacters:
       - start: '2025-03-04'
         end: '2025-03-26'
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
   - name: Navia
     versions:
       - 4.3.1
@@ -582,7 +582,7 @@ fiveStarCharacters:
         end: '2024-05-14'
       - start: '2025-01-21'
         end: '2025-02-12'
-      - start: ''
+      - start: '2025-11-11'
         end: ''
   - name: Clorinde
     versions:
@@ -718,7 +718,7 @@ fiveStarCharacters:
       - Luna II.1
     dates:
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -944,7 +944,7 @@ fourStarCharacters:
       - start: '2025-07-30'
         end: '2025-08-19'
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
   - name: Beidou
     versions:
       - 1.1.1
@@ -1185,6 +1185,7 @@ fourStarCharacters:
       - 4.3.1
       - 4.7.2
       - 5.3.2
+      - Luna II.2
     dates:
       - start: '2021-04-06'
         end: '2021-04-28'
@@ -1206,6 +1207,8 @@ fourStarCharacters:
         end: '2024-07-17'
       - start: '2025-01-21'
         end: '2025-02-12'
+      - start: '2025-11-11'
+        end: ''
   - name: Yanfei
     versions:
       - 1.5.1
@@ -1340,6 +1343,7 @@ fourStarCharacters:
       - 3.4.1
       - 3.7.1
       - 4.5.1
+      - Luna II.2
     dates:
       - start: '2022-01-05'
         end: '2022-01-25'
@@ -1353,6 +1357,8 @@ fourStarCharacters:
         end: '2023-06-13'
       - start: '2024-03-13'
         end: '2024-04-02'
+      - start: '2025-11-11'
+        end: ''
   - name: Kuki Shinobu
     versions:
       - 2.7.2
@@ -1406,7 +1412,7 @@ fourStarCharacters:
       - start: '2024-10-09'
         end: '2024-10-29'
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
   - name: Dori
     versions:
       - 3.0.2
@@ -1499,7 +1505,7 @@ fourStarCharacters:
       - start: '2025-07-08'
         end: '2025-07-30'
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
   - name: Mika
     versions:
       - 3.5.2
@@ -1629,9 +1635,12 @@ fourStarCharacters:
   - name: Lan Yan
     versions:
       - 5.3.2
+      - Luna II.2
     dates:
       - start: '2025-01-21'
         end: '2025-02-12'
+      - start: '2025-11-11'
+        end: ''
   - name: Iansan
     versions:
       - 5.5.1
@@ -1784,6 +1793,7 @@ fiveStarWeapons:
       - 3.0.1
       - 4.0.2
       - 5.2.2
+      - Luna II.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -1795,6 +1805,8 @@ fiveStarWeapons:
         end: '2023-09-27'
       - start: '2024-12-10'
         end: '2025-01-01'
+      - start: '2025-11-11'
+        end: ''
   - name: Skyward Atlas
     versions:
       - 1.2.1
@@ -2313,7 +2325,7 @@ fiveStarWeapons:
       - start: '2025-03-04'
         end: '2025-03-26'
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
   - name: Verdict
     versions:
       - 4.3.1
@@ -2351,11 +2363,14 @@ fiveStarWeapons:
     versions:
       - 4.6.1
       - 5.3.2
+      - Luna II.2
     dates:
       - start: '2024-04-24'
         end: '2024-05-14'
       - start: '2025-01-21'
         end: '2025-02-12'
+      - start: '2025-11-11'
+        end: ''
   - name: Absolution
     versions:
       - 4.7.1
@@ -2484,7 +2499,7 @@ fiveStarWeapons:
       - Luna II.1
     dates:
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
 fourStarWeapons:
   - name: Favonius Lance
     versions:
@@ -2644,7 +2659,7 @@ fourStarWeapons:
       - start: '2025-04-15'
         end: '2025-05-07'
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
   - name: The Flute
     versions:
       - 1.0.1
@@ -2849,6 +2864,7 @@ fourStarWeapons:
       - 5.6.2
       - 5.7.2
       - Luna I.1
+      - Luna II.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -2918,6 +2934,8 @@ fourStarWeapons:
         end: '2025-07-30'
       - start: '2025-09-10'
         end: '2025-09-30'
+      - start: '2025-11-11'
+        end: ''
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -2990,6 +3008,7 @@ fourStarWeapons:
       - 5.4.2
       - 5.7.2
       - Luna I.1
+      - Luna II.2
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -3029,6 +3048,8 @@ fourStarWeapons:
         end: '2025-07-30'
       - start: '2025-09-10'
         end: '2025-09-30'
+      - start: '2025-11-11'
+        end: ''
   - name: Sacrificial Greatsword
     versions:
       - 1.0.2
@@ -3403,7 +3424,7 @@ fourStarWeapons:
       - start: '2025-07-30'
         end: '2025-08-19'
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
   - name: Lion's Roar
     versions:
       - 1.1.2
@@ -3826,6 +3847,7 @@ fourStarWeapons:
       - 4.1.1
       - 4.6.1
       - 5.6.1
+      - Luna II.2
     dates:
       - start: '2023-09-27'
         end: '2023-10-17'
@@ -3833,11 +3855,14 @@ fourStarWeapons:
         end: '2024-05-14'
       - start: '2025-05-07'
         end: '2025-05-27'
+      - start: '2025-11-11'
+        end: ''
   - name: The Dockhand's Assistant
     versions:
       - 4.1.1
       - 4.6.1
       - 5.6.1
+      - Luna II.2
     dates:
       - start: '2023-09-27'
         end: '2023-10-17'
@@ -3845,6 +3870,8 @@ fourStarWeapons:
         end: '2024-05-14'
       - start: '2025-05-07'
         end: '2025-05-27'
+      - start: '2025-11-11'
+        end: ''
   - name: Prospector's Drill
     versions:
       - 4.1.2
@@ -3862,6 +3889,7 @@ fourStarWeapons:
       - 4.1.2
       - 4.6.2
       - 5.6.1
+      - Luna II.2
     dates:
       - start: '2023-10-17'
         end: '2023-11-08'
@@ -3869,6 +3897,8 @@ fourStarWeapons:
         end: '2024-06-05'
       - start: '2025-05-07'
         end: '2025-05-27'
+      - start: '2025-11-11'
+        end: ''
   - name: Mountain-Bracing Bolt
     versions:
       - 5.1.1
@@ -3934,16 +3964,16 @@ fourStarWeapons:
       - Luna II.1
     dates:
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
   - name: Moonweaver's Dawn
     versions:
       - Luna II.1
     dates:
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
   - name: Sacrificer's Staff
     versions:
       - Luna II.1
     dates:
       - start: '2025-10-22'
-        end: ''
+        end: '2025-11-11'
