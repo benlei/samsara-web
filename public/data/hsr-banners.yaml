@@ -223,6 +223,7 @@ fiveStarCharacters:
       - 2.3.1
       - 2.7.2
       - 3.4.3
+      - 3.8.1
     dates:
       - start: '2024-06-19'
         end: '2024-07-10'
@@ -230,6 +231,8 @@ fiveStarCharacters:
         end: '2025-01-15'
       - start: '2025-07-23'
         end: '2025-08-13'
+      - start: '2025-12-17'
+        end: '2026-01-07'
   - name: Jade
     versions:
       - 2.3.2
@@ -270,11 +273,14 @@ fiveStarCharacters:
     versions:
       - 2.5.2
       - 3.0.1
+      - 3.8.2
     dates:
       - start: '2024-10-02'
         end: '2024-10-23'
       - start: '2025-01-15'
         end: '2025-02-05'
+      - start: '2026-01-07'
+        end: ''
   - name: Rappa
     versions:
       - 2.6.1
@@ -285,20 +291,26 @@ fiveStarCharacters:
     versions:
       - 2.7.1
       - 3.4.1
+      - 3.8.3
     dates:
       - start: '2024-12-04'
         end: '2024-12-25'
       - start: '2025-07-02'
         end: '2025-07-11'
+      - start: '2026-01-28'
+        end: ''
   - name: Fugue
     versions:
       - 2.7.2
       - 3.2.1
+      - 3.8.2
     dates:
       - start: '2024-12-25'
         end: '2025-01-15'
       - start: '2025-04-09'
         end: '2025-04-30'
+      - start: '2026-01-07'
+        end: ''
   - name: The Herta
     versions:
       - 3.0.1
@@ -315,11 +327,14 @@ fiveStarCharacters:
     versions:
       - 3.0.2
       - 3.3.2
+      - 3.8.3
     dates:
       - start: '2025-02-05'
         end: '2025-02-26'
       - start: '2025-06-11'
         end: '2025-07-02'
+      - start: '2026-01-28'
+        end: ''
   - name: Tribbie
     versions:
       - 3.1.1
@@ -340,7 +355,7 @@ fiveStarCharacters:
       - start: '2025-03-19'
         end: '2025-04-09'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
   - name: Castorice
     versions:
       - 3.2.1
@@ -376,7 +391,7 @@ fiveStarCharacters:
       - start: '2025-06-11'
         end: '2025-07-02'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
   - name: Phainon
     versions:
       - 3.4.1
@@ -385,7 +400,7 @@ fiveStarCharacters:
       - start: '2025-07-02'
         end: '2025-07-11'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
   - name: Archer
     versions:
       - 3.4.2
@@ -428,6 +443,12 @@ fiveStarCharacters:
     dates:
       - start: '2025-11-05'
         end: '2025-11-26'
+  - name: The Dahlia
+    versions:
+      - 3.8.1
+    dates:
+      - start: '2025-12-17'
+        end: '2026-01-07'
 fourStarCharacters:
   - name: Hook
     versions:
@@ -463,6 +484,7 @@ fourStarCharacters:
       - 3.0.1
       - 3.1.2
       - 3.3.1
+      - 3.8.2
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
@@ -480,6 +502,8 @@ fourStarCharacters:
         end: '2025-04-09'
       - start: '2025-05-21'
         end: '2025-06-11'
+      - start: '2026-01-07'
+        end: ''
   - name: Pela
     versions:
       - 1.0.1
@@ -508,7 +532,7 @@ fourStarCharacters:
       - start: '2025-11-05'
         end: '2025-11-26'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
   - name: Sushang
     versions:
       - 1.0.2
@@ -542,6 +566,7 @@ fourStarCharacters:
       - 2.7.1
       - 3.0.2
       - 3.4.1
+      - 3.8.3
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -557,6 +582,8 @@ fourStarCharacters:
         end: '2025-02-26'
       - start: '2025-07-02'
         end: '2025-07-11'
+      - start: '2026-01-28'
+        end: ''
   - name: Asta
     versions:
       - 1.1.1
@@ -655,6 +682,7 @@ fourStarCharacters:
       - 2.6.1
       - 2.7.2
       - 3.4.1
+      - 3.8.3
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
@@ -668,6 +696,8 @@ fourStarCharacters:
         end: '2025-01-15'
       - start: '2025-07-02'
         end: '2025-07-11'
+      - start: '2026-01-28'
+        end: ''
   - name: Arlan
     versions:
       - 1.2.1
@@ -676,6 +706,7 @@ fourStarCharacters:
       - 2.7.1
       - 3.1.2
       - 3.5.1
+      - 3.8.2
     dates:
       - start: '2023-07-19'
         end: '2023-08-09'
@@ -689,6 +720,10 @@ fourStarCharacters:
         end: '2025-04-09'
       - start: '2025-08-13'
         end: '2025-09-02'
+      - start: '2026-01-07'
+        end: ''
+      - start: '2026-01-28'
+        end: ''
   - name: Luka
     versions:
       - 1.2.2
@@ -697,6 +732,7 @@ fourStarCharacters:
       - 2.2.2
       - 2.5.1
       - 3.4.3
+      - 3.8.1
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
@@ -710,6 +746,8 @@ fourStarCharacters:
         end: '2024-10-02'
       - start: '2025-07-23'
         end: '2025-08-13'
+      - start: '2025-12-17'
+        end: '2026-01-07'
   - name: Sampo
     versions:
       - 1.2.2
@@ -717,6 +755,7 @@ fourStarCharacters:
       - 2.0.2
       - 2.6.2
       - 3.5.2
+      - 3.8.2
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
@@ -728,6 +767,8 @@ fourStarCharacters:
         end: ''
       - start: '2025-09-02'
         end: '2025-09-24'
+      - start: '2026-01-07'
+        end: ''
   - name: Lynx
     versions:
       - 1.3.2
@@ -759,7 +800,7 @@ fourStarCharacters:
       - start: '2025-11-05'
         end: '2025-11-26'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
   - name: Guinaifen
     versions:
       - 1.4.2
@@ -856,6 +897,7 @@ fourStarCharacters:
       - 2.3.1
       - 2.7.2
       - 3.2.1
+      - 3.8.1
     dates:
       - start: '2024-03-27'
         end: '2024-04-17'
@@ -865,6 +907,8 @@ fourStarCharacters:
         end: '2025-01-15'
       - start: '2025-04-09'
         end: '2025-04-30'
+      - start: '2025-12-17'
+        end: '2026-01-07'
   - name: Moze
     versions:
       - 2.5.1
@@ -881,7 +925,7 @@ fourStarCharacters:
       - start: '2025-11-05'
         end: '2025-11-26'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
 fiveStarWeapons:
   - name: In the Night
     versions:
@@ -1107,6 +1151,7 @@ fiveStarWeapons:
       - 2.3.1
       - 2.7.2
       - 3.4.3
+      - 3.8.1
     dates:
       - start: '2024-06-19'
         end: '2024-07-10'
@@ -1114,6 +1159,8 @@ fiveStarWeapons:
         end: '2025-01-15'
       - start: '2025-07-23'
         end: '2025-08-13'
+      - start: '2025-12-17'
+        end: '2026-01-07'
   - name: Yet Hope Is Priceless
     versions:
       - 2.3.2
@@ -1154,11 +1201,14 @@ fiveStarWeapons:
     versions:
       - 2.5.2
       - 3.0.1
+      - 3.8.5
     dates:
       - start: '2024-10-02'
         end: '2024-10-23'
       - start: '2025-01-15'
         end: '2025-02-05'
+      - start: ''
+        end: ''
   - name: 'Ninjutsu Inscription: Dazzling Evilbreaker'
     versions:
       - 2.6.1
@@ -1169,20 +1219,26 @@ fiveStarWeapons:
     versions:
       - 2.7.1
       - 3.4.1
+      - 3.8.7
     dates:
       - start: '2024-12-04'
         end: '2024-12-25'
       - start: '2025-07-02'
         end: '2025-07-11'
+      - start: ''
+        end: ''
   - name: Long Road Leads Home
     versions:
       - 2.7.2
       - 3.2.1
+      - 3.8.4
     dates:
       - start: '2024-12-25'
         end: '2025-01-15'
       - start: '2025-04-09'
         end: '2025-04-30'
+      - start: ''
+        end: ''
   - name: Into the Unreachable Veil
     versions:
       - 3.0.1
@@ -1199,11 +1255,14 @@ fiveStarWeapons:
     versions:
       - 3.0.2
       - 3.3.2
+      - 3.8.6
     dates:
       - start: '2025-02-05'
         end: '2025-02-26'
       - start: '2025-06-11'
         end: '2025-07-02'
+      - start: ''
+        end: ''
   - name: If Time Were a Flower
     versions:
       - 3.1.1
@@ -1224,7 +1283,7 @@ fiveStarWeapons:
       - start: '2025-03-19'
         end: '2025-04-09'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
   - name: Make Farewells More Beautiful
     versions:
       - 3.2.1
@@ -1260,7 +1319,7 @@ fiveStarWeapons:
       - start: '2025-06-11'
         end: '2025-07-02'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
   - name: Thus Burns the Dawn
     versions:
       - 3.4.1
@@ -1269,7 +1328,7 @@ fiveStarWeapons:
       - start: '2025-07-02'
         end: '2025-07-11'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
   - name: A Thankless Coronation
     versions:
       - 3.4.2
@@ -1312,6 +1371,12 @@ fiveStarWeapons:
     dates:
       - start: '2025-11-05'
         end: '2025-11-26'
+  - name: Never Forget Her Flame
+    versions:
+      - 3.8.1
+    dates:
+      - start: '2025-12-17'
+        end: '2026-01-07'
 fourStarWeapons:
   - name: Good Night and Sleep Well
     versions:
@@ -1320,6 +1385,7 @@ fourStarWeapons:
       - 2.1.1
       - 3.2.1
       - 3.5.2
+      - 3.8.1
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
@@ -1331,6 +1397,8 @@ fourStarWeapons:
         end: '2025-04-30'
       - start: '2025-09-02'
         end: '2025-09-24'
+      - start: '2025-12-17'
+        end: '2026-01-07'
   - name: Post-Op Conversation
     versions:
       - 1.0.1
@@ -1338,6 +1406,7 @@ fourStarWeapons:
       - 2.1.1
       - 3.1.1
       - 3.2.1
+      - 3.8.4
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
@@ -1349,12 +1418,15 @@ fourStarWeapons:
         end: '2025-03-19'
       - start: '2025-04-09'
         end: '2025-04-30'
+      - start: ''
+        end: ''
   - name: The Moles Welcome You
     versions:
       - 1.0.1
       - 1.4.2
       - 2.4.1
       - 3.2.2
+      - 3.8.4
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
@@ -1364,6 +1436,8 @@ fourStarWeapons:
         end: '2024-08-21'
       - start: '2025-04-30'
         end: '2025-05-21'
+      - start: ''
+        end: ''
   - name: Day One of My New Life
     versions:
       - 1.0.2
@@ -1448,6 +1522,7 @@ fourStarWeapons:
       - 1.4.1
       - 2.3.1
       - 3.1.2
+      - 3.8.1
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -1457,6 +1532,8 @@ fourStarWeapons:
         end: '2024-07-10'
       - start: '2025-03-19'
         end: '2025-04-09'
+      - start: '2025-12-17'
+        end: '2026-01-07'
   - name: Subscribe for More!
     versions:
       - 1.1.1
@@ -1482,6 +1559,7 @@ fourStarWeapons:
       - 2.0.1
       - 3.0.2
       - 3.6.1
+      - 3.8.6
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
@@ -1493,12 +1571,15 @@ fourStarWeapons:
         end: '2025-02-26'
       - start: '2025-09-24'
         end: '2025-10-15'
+      - start: ''
+        end: ''
   - name: Geniuses' Repose
     versions:
       - 1.1.2
       - 2.0.2
       - 2.2.2
       - 3.0.1
+      - 3.8.4
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
@@ -1508,6 +1589,8 @@ fourStarWeapons:
         end: '2024-06-19'
       - start: '2025-01-15'
         end: '2025-02-05'
+      - start: ''
+        end: ''
   - name: A Secret Vow
     versions:
       - 1.2.1
@@ -1677,6 +1760,7 @@ fourStarWeapons:
       - 2.3.2
       - 3.1.1
       - 3.2.2
+      - 3.8.6
     dates:
       - start: '2023-09-20'
         end: '2023-10-11'
@@ -1688,6 +1772,8 @@ fourStarWeapons:
         end: '2025-03-19'
       - start: '2025-04-30'
         end: '2025-05-21'
+      - start: ''
+        end: ''
   - name: Under the Blue Sky
     versions:
       - 1.3.2
@@ -1723,6 +1809,7 @@ fourStarWeapons:
       - 2.1.2
       - 2.7.2
       - 3.7.1
+      - 3.8.1
     dates:
       - start: '2024-04-17'
         end: '2024-05-08'
@@ -1731,7 +1818,9 @@ fourStarWeapons:
       - start: '2025-11-05'
         end: '2025-11-26'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
+      - start: '2025-12-17'
+        end: '2026-01-07'
   - name: Boundless Choreo
     versions:
       - 2.2.1
@@ -1746,7 +1835,7 @@ fourStarWeapons:
       - start: '2025-11-05'
         end: '2025-11-26'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
       - start: ''
         end: ''
   - name: After the Charmony Fall
@@ -1798,11 +1887,14 @@ fourStarWeapons:
     versions:
       - 3.0.2
       - 3.3.2
+      - 3.8.6
     dates:
       - start: '2025-02-05'
         end: '2025-02-26'
       - start: '2025-06-11'
         end: '2025-07-02'
+      - start: ''
+        end: ''
   - name: The Story's Next Page
     versions:
       - 3.4.1
@@ -1813,4 +1905,4 @@ fourStarWeapons:
       - start: '2025-11-05'
         end: '2025-11-26'
       - start: '2025-11-26'
-        end: ''
+        end: '2025-12-17'
