@@ -20,11 +20,11 @@ export default function FiveStarCharactersHome({ dataset }: Properties) {
   return (
     <>
       <Head>
-        <title>5&#x2605; Character Banner History - Samsara</title>
+        <title>5&#x2605; Genshin Character Banner History - Samsara</title>
       </Head>
       <HistoryPage
         bannerType={"characters"}
-        title={<>5&#x2605; Character Banner History</>}
+        title={<>5&#x2605; Genshin Character Banner History</>}
         dataset={dataset}
         featuredList={dataset.fiveStarCharacters}
       />

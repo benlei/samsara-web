@@ -34,8 +34,8 @@ describe('Dynamic Page Utils', () => {
     it('should return correct display text for characters', () => {
       const result = getDisplayText('characters')
       expect(result).toEqual({
-        itemText: 'Character',
-        itemsText: 'Characters'
+        itemText: 'Genshin Character',
+        itemsText: 'Genshin Characters'
       })
     })
 
@@ -50,8 +50,8 @@ describe('Dynamic Page Utils', () => {
     it('should return correct display text for weapons', () => {
       const result = getDisplayText('weapons')
       expect(result).toEqual({
-        itemText: 'Weapon',
-        itemsText: 'Weapons'
+        itemText: 'Genshin Weapon',
+        itemsText: 'Genshin Weapons'
       })
     })
 
@@ -74,27 +74,27 @@ describe('Dynamic Page Utils', () => {
 
   describe('getPageTitle', () => {
     it('should generate correct title for default banner history', () => {
-      expect(getPageTitle('5star', 'characters')).toBe('5★ Character Banner History - Samsara')
-      expect(getPageTitle('4star', 'weapons')).toBe('4★ Weapon Banner History - Samsara')
+      expect(getPageTitle('5star', 'characters')).toBe('5★ Genshin Character Banner History - Samsara')
+      expect(getPageTitle('4star', 'weapons')).toBe('4★ Genshin Weapon Banner History - Samsara')
     })
 
     it('should generate correct title for summary page', () => {
-      expect(getPageTitle('5star', 'characters', 'summary')).toBe('5★ Character Summary - Samsara')
+      expect(getPageTitle('5star', 'characters', 'summary')).toBe('5★ Genshin Character Summary - Samsara')
       expect(getPageTitle('4star', 'hsr-characters', 'summary')).toBe('4★ HSR Character Summary - Samsara')
     })
 
     it('should generate correct title for average page', () => {
-      expect(getPageTitle('5star', 'characters', 'summary-avg')).toBe('5★ Character Average Reruns - Samsara')
+      expect(getPageTitle('5star', 'characters', 'summary-avg')).toBe('5★ Genshin Character Average Reruns - Samsara')
       expect(getPageTitle('4star', 'lightcones', 'summary-avg')).toBe('4★ Lightcone Average Reruns - Samsara')
     })
 
     it('should generate correct title for runs page', () => {
-      expect(getPageTitle('5star', 'weapons', 'runs')).toBe('5★ Weapon Reruns Summary - Samsara')
+      expect(getPageTitle('5star', 'weapons', 'runs')).toBe('5★ Genshin Weapon Reruns Summary - Samsara')
     })
 
     it('should generate correct title for leaderboard pages', () => {
-      expect(getPageTitle('5star', 'characters', 'longest-leaderboard')).toBe('5★ Character Longest Rerun Leaderboard - Samsara')
-      expect(getPageTitle('4star', 'characters', 'shortest-leaderboard')).toBe('4★ Character Shortest Rerun Leaderboard - Samsara')
+      expect(getPageTitle('5star', 'characters', 'longest-leaderboard')).toBe('5★ Genshin Character Longest Rerun Leaderboard - Samsara')
+      expect(getPageTitle('4star', 'characters', 'shortest-leaderboard')).toBe('4★ Genshin Character Shortest Rerun Leaderboard - Samsara')
     })
 
     it('should handle star symbols correctly', () => {
@@ -105,12 +105,12 @@ describe('Dynamic Page Utils', () => {
 
   describe('getPageHeading', () => {
     it('should generate correct heading for default banner history', () => {
-      expect(getPageHeading('5star', 'characters')).toBe('5★ Character Banner History')
-      expect(getPageHeading('4star', 'weapons')).toBe('4★ Weapon Banner History')
+      expect(getPageHeading('5star', 'characters')).toBe('5★ Genshin Character Banner History')
+      expect(getPageHeading('4star', 'weapons')).toBe('4★ Genshin Weapon Banner History')
     })
 
     it('should generate correct heading for summary page', () => {
-      expect(getPageHeading('5star', 'characters', 'summary')).toBe('5★ Character Summary')
+      expect(getPageHeading('5star', 'characters', 'summary')).toBe('5★ Genshin Character Summary')
       expect(getPageHeading('4star', 'hsr-characters', 'summary')).toBe('4★ HSR Character Summary')
     })
 
