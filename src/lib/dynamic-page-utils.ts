@@ -20,11 +20,11 @@ export const VALID_COMBINATIONS: ValidCombination[] = [
 export const getDisplayText = (type: string) => {
   switch (type) {
     case "characters":
-      return { itemText: "Character", itemsText: "Characters" };
+      return { itemText: "Genshin Character", itemsText: "Genshin Characters" };
     case "hsr-characters":
       return { itemText: "HSR Character", itemsText: "HSR Characters" };
     case "weapons":
-      return { itemText: "Weapon", itemsText: "Weapons" };
+      return { itemText: "Genshin Weapon", itemsText: "Genshin Weapons" };
     case "lightcones":
       return { itemText: "Lightcone", itemsText: "Lightcones" };
     default:
