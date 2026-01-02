@@ -493,6 +493,7 @@ fiveStarCharacters:
       - 4.1.1
       - 4.5.2
       - 5.2.2
+      - Luna IV.2
     dates:
       - start: '2023-09-27'
         end: '2023-10-17'
@@ -500,6 +501,8 @@ fiveStarCharacters:
         end: '2024-04-24'
       - start: '2024-12-10'
         end: '2025-01-01'
+      - start: '2026-02-03'
+        end: ''
   - name: Wriothesley
     versions:
       - 4.1.2
@@ -643,7 +646,7 @@ fiveStarCharacters:
       - start: '2025-04-15'
         end: '2025-05-07'
       - start: '2025-12-23'
-        end: ''
+        end: '2026-01-14'
   - name: Chasca
     versions:
       - 5.2.1
@@ -691,7 +694,7 @@ fiveStarCharacters:
       - start: '2025-03-26'
         end: '2025-04-15'
       - start: '2025-12-23'
-        end: ''
+        end: '2026-01-14'
   - name: Escoffier
     versions:
       - 5.6.1
@@ -707,9 +710,18 @@ fiveStarCharacters:
   - name: Ineffa
     versions:
       - 5.8.1
+      - Luna IV.1
     dates:
       - start: '2025-07-30'
         end: '2025-08-19'
+      - start: '2026-01-14'
+        end: '2026-02-03'
+  - name: Columbina
+    versions:
+      - Luna IV.1
+    dates:
+      - start: '2026-01-14'
+        end: '2026-02-03'
   - name: Durin
     versions:
       - Luna III.1
@@ -734,6 +746,12 @@ fiveStarCharacters:
     dates:
       - start: '2025-10-22'
         end: '2025-11-11'
+  - name: Zibai
+    versions:
+      - Luna IV.2
+    dates:
+      - start: '2026-02-03'
+        end: ''
 fourStarCharacters:
   - name: Barbara
     versions:
@@ -1610,7 +1628,7 @@ fourStarCharacters:
       - start: '2025-03-26'
         end: '2025-04-15'
       - start: '2025-12-23'
-        end: ''
+        end: '2026-01-14'
   - name: Gaming
     versions:
       - 4.4.1
@@ -1625,7 +1643,7 @@ fourStarCharacters:
       - start: '2025-03-26'
         end: '2025-04-15'
       - start: '2025-12-23'
-        end: ''
+        end: '2026-01-14'
   - name: Sethos
     versions:
       - 4.7.1
@@ -1679,7 +1697,7 @@ fourStarCharacters:
       - start: '2025-07-08'
         end: '2025-07-30'
       - start: '2025-12-23'
-        end: ''
+        end: '2026-01-14'
   - name: Ifa
     versions:
       - 5.6.1
@@ -1701,6 +1719,12 @@ fourStarCharacters:
     dates:
       - start: '2025-09-30'
         end: '2025-10-22'
+  - name: Illuga
+    versions:
+      - Luna IV.2
+    dates:
+      - start: '2026-02-03'
+        end: ''
   - name: Jahoda
     versions:
       - Luna III.1
