@@ -159,16 +159,20 @@ fiveStarCharacters:
     versions:
       - 2.0.1
       - 2.5.1
+      - 4.0.1
     dates:
       - start: '2024-02-06'
         end: '2024-02-29'
       - start: '2024-09-10'
         end: '2024-10-02'
+      - start: '2026-02-13'
+        end: '2026-03-03'
   - name: Sparkle
     versions:
       - 2.0.2
       - 2.4.2
       - 3.4.1
+      - 4.0.2
     dates:
       - start: '2024-02-29'
         end: '2024-03-27'
@@ -176,6 +180,8 @@ fiveStarCharacters:
         end: '2024-09-10'
       - start: '2025-07-02'
         end: '2025-07-11'
+      - start: '2026-03-03'
+        end: ''
   - name: Acheron
     versions:
       - 2.1.1
@@ -284,9 +290,12 @@ fiveStarCharacters:
   - name: Rappa
     versions:
       - 2.6.1
+      - 4.0.2
     dates:
       - start: '2024-10-23'
         end: '2024-11-13'
+      - start: '2026-03-03'
+        end: ''
   - name: Sunday
     versions:
       - 2.7.1
@@ -416,21 +425,30 @@ fiveStarCharacters:
   - name: Hysilens
     versions:
       - 3.5.1
+      - 4.0.1
     dates:
       - start: '2025-08-13'
         end: '2025-09-02'
+      - start: '2026-02-13'
+        end: '2026-03-03'
   - name: Cerydra
     versions:
       - 3.5.2
+      - 4.0.2
     dates:
       - start: '2025-09-02'
         end: '2025-09-24'
+      - start: '2026-03-03'
+        end: ''
   - name: Evernight
     versions:
       - 3.6.1
+      - 4.0.1
     dates:
       - start: '2025-09-24'
         end: '2025-10-15'
+      - start: '2026-02-13'
+        end: '2026-03-03'
   - name: Dan Heng • Permansor Terrae
     versions:
       - 3.6.2
@@ -449,6 +467,18 @@ fiveStarCharacters:
     dates:
       - start: '2025-12-17'
         end: '2026-01-07'
+  - name: Yao Guang
+    versions:
+      - 4.0.1
+    dates:
+      - start: '2026-02-13'
+        end: '2026-03-03'
+  - name: Sparxie
+    versions:
+      - 4.0.2
+    dates:
+      - start: '2026-03-03'
+        end: ''
 fourStarCharacters:
   - name: Hook
     versions:
@@ -514,6 +544,7 @@ fourStarCharacters:
       - 2.6.2
       - 3.2.1
       - 3.7.1
+      - 4.0.1
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
@@ -533,6 +564,10 @@ fourStarCharacters:
         end: '2025-11-26'
       - start: '2025-11-26'
         end: '2025-12-17'
+      - start: '2026-02-13'
+        end: '2026-03-03'
+      - start: '2026-03-03'
+        end: ''
   - name: March 7th (Preservation)
     versions:
       - 1.0.2
@@ -639,6 +674,7 @@ fourStarCharacters:
       - 2.1.1
       - 3.2.2
       - 3.5.2
+      - 3.8.3
     dates:
       - start: '2023-06-07'
         end: '2023-06-28'
@@ -650,6 +686,8 @@ fourStarCharacters:
         end: '2025-05-21'
       - start: '2025-09-02'
         end: '2025-09-24'
+      - start: '2026-01-28'
+        end: ''
   - name: Serval
     versions:
       - 1.1.1
@@ -685,6 +723,7 @@ fourStarCharacters:
       - 2.7.1
       - 3.3.2
       - 3.5.2
+      - 4.0.1
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
@@ -698,6 +737,10 @@ fourStarCharacters:
         end: '2025-07-02'
       - start: '2025-09-02'
         end: '2025-09-24'
+      - start: '2026-02-13'
+        end: '2026-03-03'
+      - start: '2026-03-03'
+        end: ''
   - name: Yukong
     versions:
       - 1.1.2
@@ -855,6 +898,7 @@ fourStarCharacters:
       - 3.0.2
       - 3.4.3
       - 3.6.2
+      - 4.0.1
     dates:
       - start: '2023-12-06'
         end: '2023-12-27'
@@ -870,6 +914,10 @@ fourStarCharacters:
         end: '2025-08-13'
       - start: '2025-10-15'
         end: '2025-11-05'
+      - start: '2026-02-13'
+        end: '2026-03-03'
+      - start: '2026-03-03'
+        end: ''
   - name: Xueyi
     versions:
       - 1.6.1
@@ -1111,16 +1159,20 @@ fiveStarWeapons:
     versions:
       - 2.0.1
       - 2.5.1
+      - 4.0.1
     dates:
       - start: '2024-02-06'
         end: '2024-02-29'
       - start: '2024-09-10'
         end: '2024-10-02'
+      - start: '2026-02-13'
+        end: '2026-03-03'
   - name: Earthly Escapade
     versions:
       - 2.0.2
       - 2.4.2
       - 3.4.1
+      - 4.0.2
     dates:
       - start: '2024-02-29'
         end: '2024-03-27'
@@ -1128,6 +1180,8 @@ fiveStarWeapons:
         end: '2024-09-10'
       - start: '2025-07-02'
         end: '2025-07-11'
+      - start: '2026-03-03'
+        end: ''
   - name: Along the Passing Shore
     versions:
       - 2.1.1
@@ -1236,9 +1290,12 @@ fiveStarWeapons:
   - name: 'Ninjutsu Inscription: Dazzling Evilbreaker'
     versions:
       - 2.6.1
+      - 4.0.2
     dates:
       - start: '2024-10-23'
         end: '2024-11-13'
+      - start: '2026-03-03'
+        end: ''
   - name: A Grounded Ascent
     versions:
       - 2.7.1
@@ -1368,21 +1425,30 @@ fiveStarWeapons:
   - name: Why Does the Ocean Sing
     versions:
       - 3.5.1
+      - 4.0.1
     dates:
       - start: '2025-08-13'
         end: '2025-09-02'
+      - start: '2026-02-13'
+        end: '2026-03-03'
   - name: Epoch Etched in Golden Blood
     versions:
       - 3.5.2
+      - 4.0.2
     dates:
       - start: '2025-09-02'
         end: '2025-09-24'
+      - start: '2026-03-03'
+        end: ''
   - name: To Evernight's Stars
     versions:
       - 3.6.1
+      - 4.0.1
     dates:
       - start: '2025-09-24'
         end: '2025-10-15'
+      - start: '2026-02-13'
+        end: '2026-03-03'
   - name: Though Worlds Apart
     versions:
       - 3.6.2
@@ -1401,6 +1467,18 @@ fiveStarWeapons:
     dates:
       - start: '2025-12-17'
         end: '2026-01-07'
+  - name: When She Decided To See
+    versions:
+      - 4.0.1
+    dates:
+      - start: '2026-02-13'
+        end: '2026-03-03'
+  - name: Dazzled by a Flowery World
+    versions:
+      - 4.0.2
+    dates:
+      - start: '2026-03-03'
+        end: ''
 fourStarWeapons:
   - name: Good Night and Sleep Well
     versions:
@@ -1507,6 +1585,7 @@ fourStarWeapons:
       - 2.5.2
       - 3.1.1
       - 3.4.1
+      - 4.0.1
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -1522,6 +1601,10 @@ fourStarWeapons:
         end: '2025-03-19'
       - start: '2025-07-02'
         end: '2025-07-11'
+      - start: '2026-02-13'
+        end: '2026-03-03'
+      - start: '2026-03-03'
+        end: ''
   - name: Make the World Clamor
     versions:
       - 1.1.1
@@ -1704,6 +1787,7 @@ fourStarWeapons:
       - 2.5.1
       - 2.7.2
       - 3.4.3
+      - 4.0.1
     dates:
       - start: '2023-08-09'
         end: '2023-08-30'
@@ -1717,6 +1801,10 @@ fourStarWeapons:
         end: '2025-01-15'
       - start: '2025-07-23'
         end: '2025-08-13'
+      - start: '2026-02-13'
+        end: '2026-03-03'
+      - start: '2026-03-03'
+        end: ''
   - name: The Birth of the Self
     versions:
       - 1.2.2
@@ -1923,6 +2011,7 @@ fourStarWeapons:
     versions:
       - 3.4.1
       - 3.7.1
+      - 4.0.1
     dates:
       - start: '2025-07-02'
         end: '2025-07-11'
@@ -1930,3 +2019,7 @@ fourStarWeapons:
         end: '2025-11-26'
       - start: '2025-11-26'
         end: '2025-12-17'
+      - start: '2026-02-13'
+        end: '2026-03-03'
+      - start: '2026-03-03'
+        end: ''
