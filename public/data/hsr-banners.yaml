@@ -1467,7 +1467,7 @@ fiveStarWeapons:
     dates:
       - start: '2025-12-17'
         end: '2026-01-07'
-  - name: When She Decided To See
+  - name: When She Decided to See
     versions:
       - 4.0.1
     dates:
