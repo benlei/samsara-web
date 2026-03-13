@@ -43,7 +43,7 @@ fiveStarCharacters:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Tartaglia
     versions:
       - 1.1.1
@@ -106,7 +106,7 @@ fiveStarCharacters:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Ganyu
     versions:
       - 1.2.2
@@ -190,7 +190,7 @@ fiveStarCharacters:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Kaedehara Kazuha
     versions:
       - 1.6.2
@@ -577,7 +577,7 @@ fiveStarCharacters:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Jean
     versions:
       - 4.5.1
@@ -586,7 +586,7 @@ fiveStarCharacters:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Mona
     versions:
       - 4.5.1
@@ -595,7 +595,7 @@ fiveStarCharacters:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Arlecchino
     versions:
       - 4.6.1
@@ -720,7 +720,7 @@ fiveStarCharacters:
     dates:
       - start: '2025-05-07'
         end: '2025-05-27'
-      - start: ''
+      - start: '2026-03-17'
         end: ''
   - name: Skirk
     versions:
@@ -729,7 +729,7 @@ fiveStarCharacters:
     dates:
       - start: '2025-06-18'
         end: '2025-07-08'
-      - start: ''
+      - start: '2026-03-17'
         end: ''
   - name: Ineffa
     versions:
@@ -760,7 +760,7 @@ fiveStarCharacters:
       - start: '2025-09-30'
         end: '2025-10-22'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Lauma
     versions:
       - Luna I.1
@@ -778,7 +778,7 @@ fiveStarCharacters:
       - Luna V.1
     dates:
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Zibai
     versions:
       - Luna IV.2
@@ -905,7 +905,7 @@ fourStarCharacters:
       - start: '2025-07-08'
         end: '2025-07-30'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Noelle
     versions:
       - 1.0.2
@@ -977,7 +977,7 @@ fourStarCharacters:
       - start: '2025-09-30'
         end: '2025-10-22'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Xingqiu
     versions:
       - 1.0.2
@@ -1253,7 +1253,7 @@ fourStarCharacters:
       - start: '2025-12-03'
         end: '2025-12-23'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Rosaria
     versions:
       - 1.4.2
@@ -1537,7 +1537,7 @@ fourStarCharacters:
         end: '2024-10-29'
       - start: '2025-06-18'
         end: '2025-07-08'
-      - start: ''
+      - start: '2026-03-17'
         end: ''
   - name: Layla
     versions:
@@ -1663,7 +1663,7 @@ fourStarCharacters:
         end: '2023-11-28'
       - start: '2025-03-04'
         end: '2025-03-26'
-      - start: ''
+      - start: '2026-03-17'
         end: ''
   - name: Chevreuse
     versions:
@@ -1774,7 +1774,7 @@ fourStarCharacters:
     dates:
       - start: '2025-06-18'
         end: '2025-07-08'
-      - start: ''
+      - start: '2026-03-17'
         end: ''
   - name: Aino
     versions:
@@ -1833,7 +1833,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Lost Prayer to the Sacred Winds
     versions:
       - 1.0.2
@@ -1857,7 +1857,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Wolf's Gravestone
     versions:
       - 1.0.2
@@ -1872,7 +1872,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Memory of Dust
     versions:
       - 1.1.1
@@ -1908,7 +1908,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: The Unforged
     versions:
       - 1.1.2
@@ -1959,7 +1959,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Summit Shaper
     versions:
       - 1.2.1
@@ -1989,7 +1989,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Primordial Jade Cutter
     versions:
       - 1.3.1
@@ -2070,7 +2070,7 @@ fiveStarWeapons:
       - start: '2025-04-15'
         end: '2025-05-07'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Skyward Blade
     versions:
       - 1.4.1
@@ -2085,7 +2085,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Song of Broken Pines
     versions:
       - 1.5.2
@@ -2103,7 +2103,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Freedom-Sworn
     versions:
       - 1.6.2
@@ -2157,7 +2157,7 @@ fiveStarWeapons:
       - start: '2024-03-13'
         end: '2024-04-02'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Thundering Pulse
     versions:
       - 2.0.2
@@ -2632,15 +2632,21 @@ fiveStarWeapons:
   - name: Symphonist of Scents
     versions:
       - 5.6.1
+      - Luna V.2
     dates:
       - start: '2025-05-07'
         end: '2025-05-27'
+      - start: '2026-03-17'
+        end: ''
   - name: Azurelight
     versions:
       - 5.7.1
+      - Luna V.2
     dates:
       - start: '2025-06-18'
         end: '2025-07-08'
+      - start: '2026-03-17'
+        end: ''
   - name: Fractured Halo
     versions:
       - 5.8.1
@@ -2664,13 +2670,13 @@ fiveStarWeapons:
       - start: '2025-09-30'
         end: '2025-10-22'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Gest of the Mighty Wolf
     versions:
       - Luna V.1
     dates:
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Lightbearing Moonshard
     versions:
       - Luna IV.2
@@ -2739,6 +2745,7 @@ fourStarWeapons:
       - 5.8.2
       - Luna I.2
       - Luna III.2
+      - Luna V.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2810,6 +2817,8 @@ fourStarWeapons:
         end: '2025-10-22'
       - start: '2025-12-23'
         end: '2026-01-14'
+      - start: '2026-03-17'
+        end: ''
   - name: The Bell
     versions:
       - 1.0.1
@@ -2829,6 +2838,7 @@ fourStarWeapons:
       - 5.2.1
       - 5.5.2
       - Luna II.1
+      - Luna V.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2864,6 +2874,8 @@ fourStarWeapons:
         end: '2025-05-07'
       - start: '2025-10-22'
         end: '2025-11-11'
+      - start: '2026-03-17'
+        end: ''
   - name: The Flute
     versions:
       - 1.0.1
@@ -2886,6 +2898,7 @@ fourStarWeapons:
       - 5.7.2
       - Luna I.1
       - Luna IV.1
+      - Luna V.2
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2927,6 +2940,8 @@ fourStarWeapons:
         end: '2025-09-30'
       - start: '2026-01-14'
         end: '2026-02-03'
+      - start: '2026-03-17'
+        end: ''
   - name: The Stringless
     versions:
       - 1.0.1
@@ -3205,7 +3220,7 @@ fourStarWeapons:
       - start: '2025-09-30'
         end: '2025-10-22'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Sacrificial Fragments
     versions:
       - 1.0.2
@@ -3271,7 +3286,7 @@ fourStarWeapons:
       - start: '2025-11-11'
         end: '2025-12-03'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Sacrificial Greatsword
     versions:
       - 1.0.2
@@ -3511,6 +3526,7 @@ fourStarWeapons:
       - 5.1.1
       - 5.4.2
       - 5.7.2
+      - Luna V.2
     dates:
       - start: '2020-11-11'
         end: '2020-12-01'
@@ -3542,6 +3558,8 @@ fourStarWeapons:
         end: '2025-03-26'
       - start: '2025-07-08'
         end: '2025-07-30'
+      - start: '2026-03-17'
+        end: ''
   - name: Favonius Codex
     versions:
       - 1.1.2
@@ -3563,6 +3581,7 @@ fourStarWeapons:
       - 5.5.2
       - 5.8.1
       - Luna I.2
+      - Luna V.2
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -3602,6 +3621,8 @@ fourStarWeapons:
         end: '2025-08-19'
       - start: '2025-09-30'
         end: '2025-10-22'
+      - start: '2026-03-17'
+        end: ''
   - name: Favonius Warbow
     versions:
       - 1.1.2
@@ -3772,7 +3793,7 @@ fourStarWeapons:
       - start: '2026-02-03'
         end: '2026-02-25'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Favonius Sword
     versions:
       - 1.2.1
@@ -3832,7 +3853,7 @@ fourStarWeapons:
       - start: '2025-12-23'
         end: '2026-01-14'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
   - name: Lithic Blade
     versions:
       - 1.3.2
@@ -4252,4 +4273,4 @@ fourStarWeapons:
       - start: '2025-10-22'
         end: '2025-11-11'
       - start: '2026-02-25'
-        end: ''
+        end: '2026-03-17'
