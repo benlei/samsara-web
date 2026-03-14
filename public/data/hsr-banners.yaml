@@ -789,8 +789,6 @@ fourStarCharacters:
         end: '2025-09-02'
       - start: '2026-01-07'
         end: ''
-      - start: '2026-01-28'
-        end: ''
   - name: Luka
     versions:
       - 1.2.2
