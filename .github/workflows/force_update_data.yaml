@@ -8,10 +8,10 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Pull Genshin Impact Banner Data
-        uses: benlei/samsara-tools@v2.0
+        uses: benlei/samsara-tools@v2.1
         with:
           game: gi
           output: ./public/data/banners.yaml
@@ -20,7 +20,7 @@ jobs:
           min-data-size: 70000
 
       - name: Pull HSR Banner Data
-        uses: benlei/samsara-tools@v2.0
+        uses: benlei/samsara-tools@v2.1
         with:
           game: hsr
           output: ./public/data/hsr-banners.yaml
