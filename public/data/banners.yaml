@@ -490,6 +490,7 @@ fiveStarCharacters:
       - 4.0.1
       - 4.6.1
       - 5.2.1
+      - Luna VI.2
     dates:
       - start: '2023-08-16'
         end: '2023-09-05'
@@ -497,6 +498,8 @@ fiveStarCharacters:
         end: '2024-05-14'
       - start: '2024-11-20'
         end: '2024-12-10'
+      - start: ''
+        end: ''
   - name: Neuvillette
     versions:
       - 4.1.1
@@ -541,6 +544,7 @@ fiveStarCharacters:
       - 4.3.1
       - 4.8.1
       - 5.6.1
+      - Luna VI.2
     dates:
       - start: '2023-12-20'
         end: '2024-01-09'
@@ -548,6 +552,8 @@ fiveStarCharacters:
         end: '2024-08-06'
       - start: '2025-05-07'
         end: '2025-05-27'
+      - start: ''
+        end: ''
   - name: Xianyun
     versions:
       - 4.4.1
@@ -612,29 +618,38 @@ fiveStarCharacters:
     versions:
       - 4.7.1
       - 5.3.2
+      - Luna VI.2
     dates:
       - start: '2024-06-05'
         end: '2024-06-25'
       - start: '2025-01-21'
         end: '2025-02-12'
+      - start: ''
+        end: ''
   - name: Sigewinne
     versions:
       - 4.7.2
       - 5.4.1
+      - Luna VI.2
     dates:
       - start: '2024-06-25'
         end: '2024-07-17'
       - start: '2025-02-12'
         end: '2025-03-04'
+      - start: ''
+        end: ''
   - name: Emilie
     versions:
       - 4.8.2
       - 5.7.2
+      - Luna VI.2
     dates:
       - start: '2024-08-06'
         end: '2024-08-28'
       - start: '2025-07-08'
         end: '2025-07-30'
+      - start: ''
+        end: ''
   - name: Mualani
     versions:
       - 5.0.1
@@ -669,11 +684,14 @@ fiveStarCharacters:
     versions:
       - 5.2.1
       - 5.8.2
+      - Luna VI.1
     dates:
       - start: '2024-11-20'
         end: '2024-12-10'
       - start: '2025-08-19'
         end: '2025-09-10'
+      - start: '2026-04-08'
+        end: ''
   - name: Citlali
     versions:
       - 5.3.1
@@ -721,7 +739,7 @@ fiveStarCharacters:
       - start: '2025-05-07'
         end: '2025-05-27'
       - start: '2026-03-17'
-        end: ''
+        end: '2026-04-08'
   - name: Skirk
     versions:
       - 5.7.1
@@ -730,7 +748,7 @@ fiveStarCharacters:
       - start: '2025-06-18'
         end: '2025-07-08'
       - start: '2026-03-17'
-        end: ''
+        end: '2026-04-08'
   - name: Ineffa
     versions:
       - 5.8.1
@@ -764,15 +782,27 @@ fiveStarCharacters:
   - name: Lauma
     versions:
       - Luna I.1
+      - Luna VI.2
     dates:
       - start: '2025-09-10'
         end: '2025-09-30'
+      - start: ''
+        end: ''
+  - name: Linnea
+    versions:
+      - Luna VI.1
+    dates:
+      - start: '2026-04-08'
+        end: ''
   - name: Nefer
     versions:
       - Luna II.1
+      - Luna VI.2
     dates:
       - start: '2025-10-22'
         end: '2025-11-11'
+      - start: ''
+        end: ''
   - name: Varka
     versions:
       - Luna V.1
@@ -1538,7 +1568,7 @@ fourStarCharacters:
       - start: '2025-06-18'
         end: '2025-07-08'
       - start: '2026-03-17'
-        end: ''
+        end: '2026-04-08'
   - name: Layla
     versions:
       - 3.2.2
@@ -1664,7 +1694,7 @@ fourStarCharacters:
       - start: '2025-03-04'
         end: '2025-03-26'
       - start: '2026-03-17'
-        end: ''
+        end: '2026-04-08'
   - name: Chevreuse
     versions:
       - 4.3.2
@@ -1775,7 +1805,7 @@ fourStarCharacters:
       - start: '2025-06-18'
         end: '2025-07-08'
       - start: '2026-03-17'
-        end: ''
+        end: '2026-04-08'
   - name: Aino
     versions:
       - Luna I.2
@@ -2439,6 +2469,7 @@ fiveStarWeapons:
       - 4.0.1
       - 4.6.1
       - 5.2.1
+      - Luna VI.1
     dates:
       - start: '2023-08-16'
         end: '2023-09-05'
@@ -2446,6 +2477,8 @@ fiveStarWeapons:
         end: '2024-05-14'
       - start: '2024-11-20'
         end: '2024-12-10'
+      - start: ''
+        end: ''
   - name: Tome of the Eternal Flow
     versions:
       - 4.1.1
@@ -2490,6 +2523,7 @@ fiveStarWeapons:
       - 4.3.1
       - 4.8.1
       - 5.6.1
+      - Luna VI.1
     dates:
       - start: '2023-12-20'
         end: '2024-01-09'
@@ -2497,6 +2531,8 @@ fiveStarWeapons:
         end: '2024-08-06'
       - start: '2025-05-07'
         end: '2025-05-27'
+      - start: ''
+        end: ''
   - name: Crane's Echoing Call
     versions:
       - 4.4.1
@@ -2534,29 +2570,38 @@ fiveStarWeapons:
     versions:
       - 4.7.1
       - 5.3.2
+      - Luna VI.1
     dates:
       - start: '2024-06-05'
         end: '2024-06-25'
       - start: '2025-01-21'
         end: '2025-02-12'
+      - start: ''
+        end: ''
   - name: Silvershower Heartstrings
     versions:
       - 4.7.2
       - 5.4.1
+      - Luna VI.1
     dates:
       - start: '2024-06-25'
         end: '2024-07-17'
       - start: '2025-02-12'
         end: '2025-03-04'
+      - start: ''
+        end: ''
   - name: Lumidouce Elegy
     versions:
       - 4.8.2
       - 5.7.2
+      - Luna VI.1
     dates:
       - start: '2024-08-06'
         end: '2024-08-28'
       - start: '2025-07-08'
         end: '2025-07-30'
+      - start: ''
+        end: ''
   - name: Surf's Up
     versions:
       - 5.0.1
