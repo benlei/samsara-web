@@ -886,6 +886,7 @@ fourStarCharacters:
       - 5.2.2
       - 5.8.1
       - Luna IV.1
+      - Luna VII.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -909,6 +910,8 @@ fourStarCharacters:
         end: '2025-08-19'
       - start: '2026-01-14'
         end: '2026-02-03'
+      - start: '2026-05-20'
+        end: '2026-06-09'
   - name: Xiangling
     versions:
       - 1.0.1
@@ -1212,6 +1215,7 @@ fourStarCharacters:
       - 3.2.1
       - 3.8.1
       - 4.8.2
+      - Luna VII.1
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -1227,6 +1231,8 @@ fourStarCharacters:
         end: '2023-07-25'
       - start: '2024-08-06'
         end: '2024-08-28'
+      - start: '2026-05-20'
+        end: '2026-06-09'
   - name: Xinyan
     versions:
       - 1.1.2
@@ -2520,7 +2526,7 @@ fiveStarWeapons:
       - start: '2024-11-20'
         end: '2024-12-10'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: Tome of the Eternal Flow
     versions:
       - 4.1.1
@@ -2574,7 +2580,7 @@ fiveStarWeapons:
       - start: '2025-05-07'
         end: '2025-05-27'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: Crane's Echoing Call
     versions:
       - 4.4.1
@@ -2619,7 +2625,7 @@ fiveStarWeapons:
       - start: '2025-01-21'
         end: '2025-02-12'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: Silvershower Heartstrings
     versions:
       - 4.7.2
@@ -2631,7 +2637,7 @@ fiveStarWeapons:
       - start: '2025-02-12'
         end: '2025-03-04'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: Lumidouce Elegy
     versions:
       - 4.8.2
@@ -2643,7 +2649,7 @@ fiveStarWeapons:
       - start: '2025-07-08'
         end: '2025-07-30'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: Surf's Up
     versions:
       - 5.0.1
@@ -2746,12 +2752,21 @@ fiveStarWeapons:
         end: '2025-08-19'
       - start: '2026-01-14'
         end: '2026-02-03'
+  - name: Angelos' Heptades
+    versions:
+      - Luna VII.1
+    dates:
+      - start: '2026-05-20'
+        end: ''
   - name: Athame Artis
     versions:
       - Luna III.1
+      - Luna VII.1
     dates:
       - start: '2025-12-03'
         end: '2025-12-23'
+      - start: '2026-05-20'
+        end: ''
   - name: Bloodsoaked Ruins
     versions:
       - Luna I.2
@@ -2787,7 +2802,7 @@ fiveStarWeapons:
       - start: '2025-09-10'
         end: '2025-09-30'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: Nocturne's Curtain Call
     versions:
       - Luna IV.1
@@ -2802,7 +2817,7 @@ fiveStarWeapons:
       - start: '2025-10-22'
         end: '2025-11-11'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: The Daybreak Chronicles
     versions:
       - Luna III.1
@@ -2923,7 +2938,7 @@ fourStarWeapons:
       - start: '2026-03-17'
         end: '2026-04-08'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: The Bell
     versions:
       - 1.0.1
@@ -2944,6 +2959,7 @@ fourStarWeapons:
       - 5.5.2
       - Luna II.1
       - Luna V.2
+      - Luna VII.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -2981,6 +2997,8 @@ fourStarWeapons:
         end: '2025-11-11'
       - start: '2026-03-17'
         end: '2026-04-08'
+      - start: '2026-05-20'
+        end: ''
   - name: The Flute
     versions:
       - 1.0.1
@@ -3122,6 +3140,7 @@ fourStarWeapons:
       - 5.3.2
       - 5.6.1
       - Luna III.2
+      - Luna VII.1
     dates:
       - start: '2020-09-28'
         end: '2020-10-20'
@@ -3161,6 +3180,8 @@ fourStarWeapons:
         end: '2025-05-27'
       - start: '2025-12-23'
         end: '2026-01-14'
+      - start: '2026-05-20'
+        end: ''
   - name: Dragon's Bane
     versions:
       - 1.0.2
@@ -3200,6 +3221,7 @@ fourStarWeapons:
       - Luna II.2
       - Luna IV.2
       - Luna VI.1
+      - Luna VII.1
     dates:
       - start: '2020-10-20'
         end: '2020-11-11'
@@ -3275,6 +3297,8 @@ fourStarWeapons:
         end: '2026-02-25'
       - start: '2026-04-08'
         end: '2026-04-28'
+      - start: '2026-05-20'
+        end: ''
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -3511,7 +3535,7 @@ fourStarWeapons:
       - start: '2025-04-15'
         end: '2025-05-07'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: Eye of Perception
     versions:
       - 1.1.1
@@ -3628,7 +3652,7 @@ fourStarWeapons:
       - start: '2025-12-03'
         end: '2025-12-23'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: Rust
     versions:
       - 1.1.1
@@ -3802,7 +3826,7 @@ fourStarWeapons:
       - start: '2026-02-03'
         end: '2026-02-25'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: Lion's Roar
     versions:
       - 1.1.2
@@ -4124,6 +4148,7 @@ fourStarWeapons:
       - 4.5.2
       - 5.2.2
       - Luna IV.1
+      - Luna VII.1
     dates:
       - start: '2021-06-09'
         end: '2021-06-29'
@@ -4139,6 +4164,8 @@ fourStarWeapons:
         end: '2025-01-01'
       - start: '2026-01-14'
         end: '2026-02-03'
+      - start: '2026-05-20'
+        end: ''
   - name: Akuoumaru
     versions:
       - 2.2.1
@@ -4390,13 +4417,16 @@ fourStarWeapons:
       - start: '2025-10-22'
         end: '2025-11-11'
       - start: '2026-04-28'
-        end: ''
+        end: '2026-05-20'
   - name: Moonweaver's Dawn
     versions:
       - Luna II.1
+      - Luna VII.1
     dates:
       - start: '2025-10-22'
         end: '2025-11-11'
+      - start: '2026-05-20'
+        end: ''
   - name: Sacrificer's Staff
     versions:
       - Luna II.1
