@@ -273,7 +273,7 @@ fiveStarCharacters:
         end: '2024-10-09'
       - start: '2025-05-27'
         end: '2025-06-18'
-      - start: ''
+      - start: '2026-07-21'
         end: ''
   - name: Sangonomiya Kokomi
     versions:
@@ -706,7 +706,7 @@ fiveStarCharacters:
       - start: '2025-07-30'
         end: '2025-08-19'
       - start: '2026-07-01'
-        end: ''
+        end: '2026-07-21'
   - name: Mavuika
     versions:
       - 5.3.1
@@ -774,7 +774,7 @@ fiveStarCharacters:
     dates:
       - start: '2026-01-14'
         end: '2026-02-03'
-      - start: ''
+      - start: '2026-07-21'
         end: ''
   - name: Durin
     versions:
@@ -835,7 +835,7 @@ fiveStarCharacters:
       - Luna VIII.1
     dates:
       - start: '2026-07-01'
-        end: ''
+        end: '2026-07-21'
   - name: Varka
     versions:
       - Luna V.1
