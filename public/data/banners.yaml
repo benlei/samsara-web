@@ -274,7 +274,7 @@ fiveStarCharacters:
       - start: '2025-05-27'
         end: '2025-06-18'
       - start: '2026-07-21'
-        end: ''
+        end: '2026-08-12'
   - name: Sangonomiya Kokomi
     versions:
       - 2.1.2
@@ -609,6 +609,7 @@ fiveStarCharacters:
     versions:
       - 4.6.1
       - 5.3.2
+      - 7.0.1
       - Luna II.2
     dates:
       - start: '2024-04-24'
@@ -617,6 +618,8 @@ fiveStarCharacters:
         end: '2025-02-12'
       - start: '2025-11-11'
         end: '2025-12-03'
+      - start: '2026-08-12'
+        end: ''
   - name: Clorinde
     versions:
       - 4.7.1
@@ -761,12 +764,33 @@ fiveStarCharacters:
   - name: Ineffa
     versions:
       - 5.8.1
+      - 7.0.2
       - Luna IV.1
     dates:
       - start: '2025-07-30'
         end: '2025-08-19'
       - start: '2026-01-14'
         end: '2026-02-03'
+      - start: ''
+        end: ''
+  - name: Odette
+    versions:
+      - 7.0.1
+    dates:
+      - start: '2026-08-12'
+        end: ''
+  - name: Flins
+    versions:
+      - 7.0.2
+      - Luna I.2
+      - Luna V.1
+    dates:
+      - start: '2025-09-30'
+        end: '2025-10-22'
+      - start: '2026-02-25'
+        end: '2026-03-17'
+      - start: ''
+        end: ''
   - name: Columbina
     versions:
       - Luna IV.1
@@ -775,7 +799,7 @@ fiveStarCharacters:
       - start: '2026-01-14'
         end: '2026-02-03'
       - start: '2026-07-21'
-        end: ''
+        end: '2026-08-12'
   - name: Durin
     versions:
       - Luna III.1
@@ -785,15 +809,6 @@ fiveStarCharacters:
         end: '2025-12-23'
       - start: '2026-05-20'
         end: '2026-06-09'
-  - name: Flins
-    versions:
-      - Luna I.2
-      - Luna V.1
-    dates:
-      - start: '2025-09-30'
-        end: '2025-10-22'
-      - start: '2026-02-25'
-        end: '2026-03-17'
   - name: Lauma
     versions:
       - Luna I.1
@@ -1811,7 +1826,7 @@ fourStarCharacters:
       - start: '2026-01-14'
         end: '2026-02-03'
       - start: '2026-07-21'
-        end: ''
+        end: '2026-08-12'
   - name: Kachina
     versions:
       - 5.0.1
@@ -1835,7 +1850,7 @@ fourStarCharacters:
       - start: '2025-08-19'
         end: '2025-09-10'
       - start: '2026-07-21'
-        end: ''
+        end: '2026-08-12'
   - name: Lan Yan
     versions:
       - 5.3.2
@@ -1878,6 +1893,12 @@ fourStarCharacters:
         end: '2025-07-08'
       - start: '2026-03-17'
         end: '2026-04-08'
+  - name: Alyosha
+    versions:
+      - 7.0.1
+    dates:
+      - start: '2026-08-12'
+        end: ''
   - name: Aino
     versions:
       - Luna I.2
@@ -1910,7 +1931,7 @@ fourStarCharacters:
       - start: '2026-04-28'
         end: '2026-05-20'
       - start: '2026-07-21'
-        end: ''
+        end: '2026-08-12'
   - name: Prune
     versions:
       - Luna VII.1
