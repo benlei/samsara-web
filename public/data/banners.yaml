@@ -746,21 +746,27 @@ fiveStarCharacters:
   - name: Escoffier
     versions:
       - 5.6.1
+      - 7.1.1
       - Luna V.2
     dates:
       - start: '2025-05-07'
         end: '2025-05-27'
       - start: '2026-03-17'
         end: '2026-04-08'
+      - start: ''
+        end: ''
   - name: Skirk
     versions:
       - 5.7.1
+      - 7.1.1
       - Luna V.2
     dates:
       - start: '2025-06-18'
         end: '2025-07-08'
       - start: '2026-03-17'
         end: '2026-04-08'
+      - start: ''
+        end: ''
   - name: Ineffa
     versions:
       - 5.8.1
