@@ -746,7 +746,7 @@ fiveStarCharacters:
   - name: Escoffier
     versions:
       - 5.6.1
-      - 7.1.1
+      - 7.1.2
       - Luna V.2
     dates:
       - start: '2025-05-07'
@@ -758,7 +758,7 @@ fiveStarCharacters:
   - name: Skirk
     versions:
       - 5.7.1
-      - 7.1.1
+      - 7.1.2
       - Luna V.2
     dates:
       - start: '2025-06-18'
@@ -778,7 +778,7 @@ fiveStarCharacters:
       - start: '2026-01-14'
         end: '2026-02-03'
       - start: '2026-09-01'
-        end: ''
+        end: '2026-09-23'
   - name: Odette
     versions:
       - 7.0.1
@@ -796,6 +796,18 @@ fiveStarCharacters:
       - start: '2026-02-25'
         end: '2026-03-17'
       - start: '2026-09-01'
+        end: '2026-09-23'
+  - name: Vesna
+    versions:
+      - 7.1.1
+    dates:
+      - start: '2026-09-23'
+        end: ''
+  - name: Vodyanitsa
+    versions:
+      - 7.1.1
+    dates:
+      - start: '2026-09-23'
         end: ''
   - name: Columbina
     versions:
@@ -1168,6 +1180,7 @@ fourStarCharacters:
       - 4.1.1
       - 5.3.1
       - 5.7.1
+      - 7.1.1
       - Luna VIII.1
     dates:
       - start: '2020-11-11'
@@ -1194,6 +1207,8 @@ fourStarCharacters:
         end: '2025-07-08'
       - start: '2026-07-01'
         end: '2026-07-21'
+      - start: '2026-09-23'
+        end: ''
   - name: Ningguang
     versions:
       - 1.1.1
@@ -1235,6 +1250,7 @@ fourStarCharacters:
       - 3.7.1
       - 4.1.2
       - 5.4.2
+      - 7.1.1
     dates:
       - start: '2020-12-01'
         end: '2020-12-23'
@@ -1254,6 +1270,8 @@ fourStarCharacters:
         end: '2023-11-08'
       - start: '2025-03-04'
         end: '2025-03-26'
+      - start: '2026-09-23'
+        end: ''
   - name: Razor
     versions:
       - 1.1.2
@@ -1672,6 +1690,7 @@ fourStarCharacters:
       - 4.4.1
       - 4.6.2
       - 5.5.2
+      - 7.1.1
       - Luna III.1
     dates:
       - start: '2022-12-07'
@@ -1686,6 +1705,8 @@ fourStarCharacters:
         end: '2025-05-07'
       - start: '2025-12-03'
         end: '2025-12-23'
+      - start: '2026-09-23'
+        end: ''
   - name: Yaoyao
     versions:
       - 3.4.1
@@ -1874,7 +1895,7 @@ fourStarCharacters:
       - start: '2025-11-11'
         end: '2025-12-03'
       - start: '2026-09-01'
-        end: ''
+        end: '2026-09-23'
   - name: Iansan
     versions:
       - 5.5.1
@@ -1889,7 +1910,7 @@ fourStarCharacters:
       - start: '2025-12-23'
         end: '2026-01-14'
       - start: '2026-09-01'
-        end: ''
+        end: '2026-09-23'
   - name: Ifa
     versions:
       - 5.6.1
@@ -1931,7 +1952,7 @@ fourStarCharacters:
       - start: '2026-04-08'
         end: '2026-04-28'
       - start: '2026-09-01'
-        end: ''
+        end: '2026-09-23'
   - name: Illuga
     versions:
       - Luna IV.2
@@ -2850,7 +2871,7 @@ fiveStarWeapons:
       - start: '2026-01-14'
         end: '2026-02-03'
       - start: '2026-09-01'
-        end: ''
+        end: '2026-09-23'
   - name: Whitelake Frostfeather
     versions:
       - 7.0.1
@@ -2868,6 +2889,18 @@ fiveStarWeapons:
       - start: '2026-02-25'
         end: '2026-03-17'
       - start: '2026-09-01'
+        end: '2026-09-23'
+  - name: Beyond the Chrysalis
+    versions:
+      - 7.1.1
+    dates:
+      - start: '2026-09-23'
+        end: ''
+  - name: Hymn of the Maelstrom
+    versions:
+      - 7.1.1
+    dates:
+      - start: '2026-09-23'
         end: ''
   - name: A Teaspoon of Transcendence
     versions:
@@ -3070,7 +3103,7 @@ fourStarWeapons:
       - start: '2026-07-21'
         end: '2026-08-12'
       - start: '2026-09-01'
-        end: ''
+        end: '2026-09-23'
   - name: The Bell
     versions:
       - 1.0.1
@@ -3205,7 +3238,7 @@ fourStarWeapons:
       - start: '2026-03-17'
         end: '2026-04-08'
       - start: '2026-09-01'
-        end: ''
+        end: '2026-09-23'
   - name: The Stringless
     versions:
       - 1.0.1
@@ -3262,7 +3295,7 @@ fourStarWeapons:
       - start: '2025-12-03'
         end: '2025-12-23'
       - start: '2026-09-01'
-        end: ''
+        end: '2026-09-23'
   - name: The Widsith
     versions:
       - 1.0.1
@@ -3362,6 +3395,7 @@ fourStarWeapons:
       - 5.6.2
       - 5.7.2
       - 7.0.1
+      - 7.1.1
       - Luna I.1
       - Luna II.2
       - Luna IV.2
@@ -3449,6 +3483,8 @@ fourStarWeapons:
         end: '2026-07-21'
       - start: '2026-08-12'
         end: '2026-09-01'
+      - start: '2026-09-23'
+        end: ''
   - name: Sacrificial Bow
     versions:
       - 1.0.2
@@ -3763,7 +3799,7 @@ fourStarWeapons:
       - start: '2026-04-08'
         end: '2026-04-28'
       - start: '2026-09-01'
-        end: ''
+        end: '2026-09-23'
   - name: Rainslasher
     versions:
       - 1.1.1
@@ -4082,6 +4118,7 @@ fourStarWeapons:
       - 5.2.2
       - 5.6.2
       - 7.0.2
+      - 7.1.1
       - Luna I.2
       - Luna IV.2
       - Luna V.1
@@ -4123,6 +4160,8 @@ fourStarWeapons:
       - start: '2026-02-25'
         end: '2026-03-17'
       - start: '2026-09-01'
+        end: '2026-09-23'
+      - start: '2026-09-23'
         end: ''
   - name: Favonius Sword
     versions:
@@ -4607,6 +4646,24 @@ fourStarWeapons:
         end: '2026-02-03'
       - start: '2026-07-21'
         end: '2026-08-12'
+  - name: Breezeborne Refrain
+    versions:
+      - 7.1.1
+    dates:
+      - start: '2026-09-23'
+        end: ''
+  - name: New Bough
+    versions:
+      - 7.1.1
+    dates:
+      - start: '2026-09-23'
+        end: ''
+  - name: Winter's Heavy Heart
+    versions:
+      - 7.1.1
+    dates:
+      - start: '2026-09-23'
+        end: ''
   - name: Dawning Frost
     versions:
       - Luna II.1
