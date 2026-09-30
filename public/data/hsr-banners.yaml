@@ -541,7 +541,7 @@ fiveStarCharacters:
       - start: '2026-03-25'
         end: '2026-04-08'
       - start: '2026-09-12'
-        end: ''
+        end: '2026-09-28'
   - name: Silver Wolf LV.999
     versions:
       - 4.2.1
@@ -551,15 +551,21 @@ fiveStarCharacters:
   - name: Evanescia
     versions:
       - 4.2.2
+      - 4.6.1
     dates:
       - start: '2026-05-13'
         end: '2026-06-01'
+      - start: '2026-09-28'
+        end: '2026-10-21'
   - name: Mortenax Blade
     versions:
       - 4.3.1
+      - 4.6.2
     dates:
       - start: '2026-06-01'
         end: '2026-06-24'
+      - start: '2026-10-21'
+        end: ''
   - name: Himeko • Nova
     versions:
       - 4.4.1
@@ -589,7 +595,13 @@ fiveStarCharacters:
       - 4.5.2
     dates:
       - start: '2026-09-12'
-        end: ''
+        end: '2026-09-28'
+  - name: Pearl
+    versions:
+      - 4.6.1
+    dates:
+      - start: '2026-09-28'
+        end: '2026-10-21'
 fourStarCharacters:
   - name: Hook
     versions:
@@ -620,7 +632,7 @@ fourStarCharacters:
       - start: '2026-04-22'
         end: '2026-05-13'
       - start: '2026-09-12'
-        end: ''
+        end: '2026-09-28'
   - name: Natasha
     versions:
       - 1.0.1
@@ -864,6 +876,7 @@ fourStarCharacters:
       - 3.5.2
       - 4.0.1
       - 4.5.1
+      - 4.6.1
     dates:
       - start: '2023-06-28'
         end: '2023-07-19'
@@ -883,6 +896,10 @@ fourStarCharacters:
         end: '2026-03-25'
       - start: '2026-08-26'
         end: '2026-09-12'
+      - start: '2026-09-28'
+        end: '2026-10-21'
+      - start: '2026-10-21'
+        end: ''
   - name: Yukong
     versions:
       - 1.1.2
@@ -990,7 +1007,7 @@ fourStarCharacters:
       - start: '2026-06-01'
         end: '2026-06-24'
       - start: '2026-09-12'
-        end: ''
+        end: '2026-09-28'
   - name: Lynx
     versions:
       - 1.3.2
@@ -1052,7 +1069,7 @@ fourStarCharacters:
       - start: '2026-05-13'
         end: '2026-06-01'
       - start: '2026-09-12'
-        end: ''
+        end: '2026-09-28'
   - name: Hanya
     versions:
       - 1.5.2
@@ -1097,6 +1114,7 @@ fourStarCharacters:
       - 3.3.2
       - 3.6.1
       - 4.2.1
+      - 4.6.1
     dates:
       - start: '2023-12-27'
         end: '2024-01-17'
@@ -1114,6 +1132,10 @@ fourStarCharacters:
         end: '2025-10-15'
       - start: '2026-04-22'
         end: '2026-05-13'
+      - start: '2026-09-28'
+        end: '2026-10-21'
+      - start: '2026-10-21'
+        end: ''
   - name: Misha
     versions:
       - 2.0.1
@@ -1123,6 +1145,7 @@ fourStarCharacters:
       - 3.3.1
       - 3.6.1
       - 4.1.1
+      - 4.6.1
     dates:
       - start: '2024-02-06'
         end: '2024-02-29'
@@ -1140,6 +1163,10 @@ fourStarCharacters:
         end: '2026-04-08'
       - start: '2026-04-08'
         end: '2026-04-22'
+      - start: '2026-09-28'
+        end: '2026-10-21'
+      - start: '2026-10-21'
+        end: ''
   - name: Gallagher
     versions:
       - 2.1.1
@@ -1734,7 +1761,7 @@ fiveStarWeapons:
       - start: '2026-03-25'
         end: '2026-04-08'
       - start: '2026-09-12'
-        end: ''
+        end: '2026-09-28'
   - name: Welcome to the Cosmic City
     versions:
       - 4.2.1
@@ -1744,15 +1771,21 @@ fiveStarWeapons:
   - name: Until the Flowers Bloom Again
     versions:
       - 4.2.2
+      - 4.6.1
     dates:
       - start: '2026-05-13'
         end: '2026-06-01'
+      - start: '2026-09-28'
+        end: '2026-10-21'
   - name: Reforged in Hellfire
     versions:
       - 4.3.1
+      - 4.6.2
     dates:
       - start: '2026-06-01'
         end: '2026-06-24'
+      - start: '2026-10-21'
+        end: ''
   - name: A Star That Lights the Night
     versions:
       - 4.4.1
@@ -1782,7 +1815,13 @@ fiveStarWeapons:
       - 4.5.2
     dates:
       - start: '2026-09-12'
-        end: ''
+        end: '2026-09-28'
+  - name: Colors for Tomorrow
+    versions:
+      - 4.6.1
+    dates:
+      - start: '2026-09-28'
+        end: '2026-10-21'
 fourStarWeapons:
   - name: Good Night and Sleep Well
     versions:
@@ -1816,6 +1855,7 @@ fourStarWeapons:
       - 3.1.1
       - 3.2.1
       - 3.8.4
+      - 4.6.1
     dates:
       - start: '2023-04-26'
         end: '2023-05-17'
@@ -1827,6 +1867,10 @@ fourStarWeapons:
         end: '2025-03-19'
       - start: '2025-04-09'
         end: '2025-04-30'
+      - start: '2026-09-28'
+        end: '2026-10-21'
+      - start: '2026-10-21'
+        end: ''
       - start: ''
         end: ''
   - name: The Moles Welcome You
@@ -1891,7 +1935,7 @@ fourStarWeapons:
       - start: '2025-10-15'
         end: '2025-11-05'
       - start: '2026-09-12'
-        end: ''
+        end: '2026-09-28'
   - name: Planetary Rendezvous
     versions:
       - 1.0.2
@@ -1902,6 +1946,7 @@ fourStarWeapons:
       - 3.1.1
       - 3.4.1
       - 4.0.1
+      - 4.6.1
     dates:
       - start: '2023-05-17'
         end: '2023-06-07'
@@ -1921,6 +1966,10 @@ fourStarWeapons:
         end: '2026-03-03'
       - start: '2026-03-03'
         end: '2026-03-25'
+      - start: '2026-09-28'
+        end: '2026-10-21'
+      - start: '2026-10-21'
+        end: ''
   - name: Make the World Clamor
     versions:
       - 1.1.1
@@ -2212,7 +2261,7 @@ fourStarWeapons:
       - start: '2025-10-15'
         end: '2025-11-05'
       - start: '2026-09-12'
-        end: ''
+        end: '2026-09-28'
   - name: Trend of the Universal Market
     versions:
       - 1.3.2
@@ -2295,6 +2344,7 @@ fourStarWeapons:
       - 2.6.3
       - 3.2.1
       - 3.7.1
+      - 4.6.1
     dates:
       - start: '2024-05-08'
         end: '2024-05-29'
@@ -2304,6 +2354,10 @@ fourStarWeapons:
         end: '2025-11-26'
       - start: '2025-11-26'
         end: '2025-12-17'
+      - start: '2026-09-28'
+        end: '2026-10-21'
+      - start: '2026-10-21'
+        end: ''
       - start: ''
         end: ''
   - name: After the Charmony Fall
@@ -2405,7 +2459,7 @@ fourStarWeapons:
       - start: '2026-03-03'
         end: '2026-03-25'
       - start: '2026-09-12'
-        end: ''
+        end: '2026-09-28'
   - name: A Little Getaway
     versions:
       - 4.5.1
